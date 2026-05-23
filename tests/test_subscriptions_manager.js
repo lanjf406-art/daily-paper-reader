@@ -14,6 +14,7 @@ const {
   refreshQuickRunButtons,
   clearQuickRunUnsavedMessage,
   __setQuickRunMsgEl,
+  __setQuickRunConferenceBtn,
   __setUnsavedChanges,
 } = global.window.SubscriptionsManager.__test;
 
@@ -174,11 +175,53 @@ function testQuickRunUnsavedMessageClearsAfterSave() {
   assert.equal(msgEl.style.color, '#080');
 }
 
+function buildMockButton() {
+  const classes = new Set();
+  return {
+    disabled: false,
+    title: '',
+    textContent: '开始检索',
+    getAttribute(name) {
+      if (name === 'data-default-title') return '一次性触发会议论文拉取任务';
+      return '';
+    },
+    classList: {
+      toggle(name, enabled) {
+        if (enabled) classes.add(name);
+        else classes.delete(name);
+      },
+      contains(name) {
+        return classes.has(name);
+      },
+    },
+  };
+}
+
+function testConferenceRunDisabledWhenUnsaved() {
+  const btn = buildMockButton();
+  __setQuickRunConferenceBtn(btn);
+  __setUnsavedChanges(true);
+  refreshQuickRunButtons();
+
+  assert.equal(btn.disabled, true);
+  assert.equal(btn.classList.contains('chat-quick-run-item--disabled'), true);
+  assert.equal(btn.title, '请先点击“保存”后再发起会议论文检索。');
+
+  __setUnsavedChanges(false);
+  refreshQuickRunButtons();
+
+  assert.equal(btn.disabled, false);
+  assert.equal(btn.classList.contains('chat-quick-run-item--disabled'), false);
+  assert.equal(btn.title, '一次性触发会议论文拉取任务');
+  __setQuickRunConferenceBtn(null);
+}
+
 testNormalizeSubscriptionsAddsBiorxivBackend();
 testNormalizeSubscriptionsPreservesCustomBiorxivBackendFields();
 testNormalizeSubscriptionsConvertsChineseTagToEnglishFallback();
 testRunProfileQuickFetchPassesProfileTagToWorkflow();
 testConferenceCurrentYearDisabledForPendingSources();
 testQuickRunUnsavedMessageClearsAfterSave();
+testConferenceRunDisabledWhenUnsaved();
 
 console.log('subscriptions manager tests passed');

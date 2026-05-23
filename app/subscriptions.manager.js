@@ -484,17 +484,24 @@ window.SubscriptionsManager = (function () {
 
   const refreshQuickRunButtons = () => {
     const blocked = hasUnsavedChanges;
-    [quickRun10dBtn, quickRun30dBtn, quickRun30dStandardBtn].forEach((btn) => {
+    [quickRun10dBtn, quickRun30dBtn, quickRun30dStandardBtn, quickRunConferenceBtn].forEach((btn) => {
       if (!btn) return;
       btn.disabled = blocked;
       btn.classList.toggle('chat-quick-run-item--disabled', blocked);
       btn.title = blocked
-        ? '请先点击“保存”后再发起快速抓取。'
+        ? (btn === quickRunConferenceBtn ? '请先点击“保存”后再发起会议论文检索。' : '请先点击“保存”后再发起快速抓取。')
         : (btn.getAttribute('data-default-title') || btn.textContent || '');
     });
     if (blocked && quickRunMsgEl) {
       quickRunMsgEl.textContent = '检测到未保存修改，请先保存后再发起快速抓取。';
       quickRunMsgEl.style.color = '#c00';
+    }
+    const conferenceMsgEl = document && typeof document.getElementById === 'function'
+      ? document.getElementById('arxiv-admin-conference-run-msg')
+      : null;
+    if (blocked && conferenceMsgEl) {
+      conferenceMsgEl.textContent = '检测到未保存修改，请先保存后再发起会议论文检索。';
+      conferenceMsgEl.style.color = '#c00';
     }
   };
 
@@ -503,6 +510,13 @@ window.SubscriptionsManager = (function () {
     if (/未保存修改|先保存|先点击/.test(quickRunMsgEl.textContent || '')) {
       quickRunMsgEl.textContent = '配置已保存，可以发起快速抓取。';
       quickRunMsgEl.style.color = '#080';
+    }
+    const conferenceMsgEl = document && typeof document.getElementById === 'function'
+      ? document.getElementById('arxiv-admin-conference-run-msg')
+      : null;
+    if (conferenceMsgEl && /未保存修改|先保存|先点击/.test(conferenceMsgEl.textContent || '')) {
+      conferenceMsgEl.textContent = '配置已保存，可以发起会议论文检索。';
+      conferenceMsgEl.style.color = '#080';
     }
   };
 
@@ -600,6 +614,16 @@ window.SubscriptionsManager = (function () {
   };
 
   const runQuickConferenceRetrieval = (msgEl) => {
+    if (hasUnsavedChanges) {
+      const text = '检测到未保存修改，请先点击“保存”后再发起会议论文检索。';
+      if (msgEl) {
+        msgEl.textContent = text;
+        msgEl.style.color = '#c00';
+      }
+      setQuickRunMessage(text, '#c00');
+      refreshQuickRunButtons();
+      return false;
+    }
     const years = selectedConferenceYears.slice();
     const conf = String(selectedConference || '').trim();
     if (!years.length || !conf) {
@@ -607,20 +631,21 @@ window.SubscriptionsManager = (function () {
         msgEl.textContent = '请先选择会议和年份。';
         msgEl.style.color = '#c00';
       }
-      return;
+      return false;
     }
     if (!window.DPRWorkflowRunner || typeof window.DPRWorkflowRunner.runConferenceRetrieval !== 'function') {
       if (msgEl) {
         msgEl.textContent = '工作流触发器未加载到当前页面。';
         msgEl.style.color = '#c00';
       }
-      return;
+      return false;
     }
     window.DPRWorkflowRunner.runConferenceRetrieval(conf, years);
     if (msgEl) {
       msgEl.textContent = `已发起 ${conf} ${years.join(', ')} 会议论文检索任务。`;
       msgEl.style.color = '#080';
     }
+    return true;
   };
 
   const runResetContent = (msgEl) => {
@@ -1156,8 +1181,7 @@ window.SubscriptionsManager = (function () {
     resetContentBtn = document.getElementById('arxiv-admin-reset-content-btn');
     resetContentMsgEl = document.getElementById('arxiv-admin-reset-content-msg');
     if (quickRunConferenceBtn) {
-      quickRunConferenceBtn.disabled = false;
-      quickRunConferenceBtn.classList.remove('chat-quick-run-item--disabled');
+      quickRunConferenceBtn.setAttribute('data-default-title', '一次性触发会议论文拉取任务');
       quickRunConferenceBtn.title = '一次性触发会议论文拉取任务';
     }
     initializeConferenceChoices();
@@ -1324,6 +1348,9 @@ window.SubscriptionsManager = (function () {
       isConferenceYearSelectable: (conference, year) => isConferenceYearSelectable(conference, year),
       __setQuickRunMsgEl: (el) => {
         quickRunMsgEl = el || null;
+      },
+      __setQuickRunConferenceBtn: (el) => {
+        quickRunConferenceBtn = el || null;
       },
       __setUnsavedChanges: (value) => {
         hasUnsavedChanges = !!value;
