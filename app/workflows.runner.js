@@ -37,6 +37,17 @@ window.DPRWorkflowRunner = (function () {
         run_llm_refine: 'true',
       },
     },
+    {
+      key: 'maintain-pubmed',
+      id: 'maintain-pubmed.yml',
+      name: '维护 PubMed 论文池',
+      desc: '从 PubMed 官方 E-utilities 抓取 PMID 记录并同步到 Supabase。',
+      dispatchInputs: {
+        fetch_days: '30',
+        retmax: '200',
+        force_full_window: 'false',
+      },
+    },
   ];
 
   const QUICK_FETCH_PRESETS = {

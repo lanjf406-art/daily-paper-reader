@@ -1,0 +1,105 @@
+name: maintain-pubmed
+
+on:
+  schedule:
+    - cron: "25 1 * * *" # Beijing time 09:25
+  workflow_dispatch:
+    inputs:
+      fetch_days:
+        description: "PubMed Entrez date lookback days (default 30)"
+        required: false
+        default: "30"
+      retmax:
+        description: "Maximum PubMed records to fetch (default 200)"
+        required: false
+        default: "200"
+      query:
+        description: "Optional PubMed query. Defaults to config/pubmed_setting or DPR_PUBMED_QUERY."
+        required: false
+        default: ""
+      force_full_window:
+        description: "Ignore seen state and backfill current window (true/false)"
+        required: false
+        default: "false"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: daily-paper-reader-maintain-pubmed
+  cancel-in-progress: false
+
+jobs:
+  maintain_pubmed:
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    env:
+      SUPABASE_URL: https://lyucdwgefyfbmaiopjbk.supabase.co
+      SUPABASE_SCHEMA: public
+      SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+      SUPABASE_BACKEND_KEY: pubmed
+      SUPABASE_PAPERS_TABLE: pubmed_papers
+      SUPABASE_RETENTION_DAYS: "45"
+      DPR_ENABLE_PUBMED_BACKEND: "1"
+      DPR_PUBMED_ENABLED: "1"
+      DPR_PUBMED_PAPERS_TABLE: pubmed_papers
+      DPR_PUBMED_VECTOR_RPC_EXACT: match_pubmed_papers_exact
+      DPR_PUBMED_BM25_RPC: match_pubmed_papers_bm25
+      NCBI_EMAIL: ${{ secrets.NCBI_EMAIL }}
+      PYTHONUNBUFFERED: "1"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Setup Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+
+      - name: Cache pip + torch
+        uses: actions/cache@v5
+        with:
+          path: |
+            ~/.cache/pip
+            ~/.cache/torch
+          key: ${{ runner.os }}-dpr-pubmed-hf-v1-${{ hashFiles('requirements.txt') }}
+
+      - name: Install deps
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install uv
+          uv pip install --system -r requirements.txt
+
+      - name: Run PubMed Maintain Pipeline
+        run: |
+          set -euo pipefail
+          set -x
+
+          if [ -z "${SUPABASE_SERVICE_KEY}" ]; then
+            echo "[WARN] Missing SUPABASE_SERVICE_KEY, skip PubMed maintain sync."
+            exit 0
+          fi
+
+          FETCH_DAYS="${{ github.event.inputs.fetch_days }}"
+          RETMAX="${{ github.event.inputs.retmax }}"
+          QUERY="${{ github.event.inputs.query }}"
+          FORCE_FULL_WINDOW="${{ github.event.inputs.force_full_window }}"
+          if [ -z "$FETCH_DAYS" ]; then
+            FETCH_DAYS="30"
+          fi
+          if [ -z "$RETMAX" ]; then
+            RETMAX="200"
+          fi
+
+          ARGS=(--fetch-days "$FETCH_DAYS" --retmax "$RETMAX")
+          if [ -n "${QUERY:-}" ]; then
+            ARGS+=(--query "$QUERY")
+          fi
+          if [ -n "${NCBI_EMAIL:-}" ]; then
+            ARGS+=(--email "$NCBI_EMAIL")
+          fi
+          if [ "${FORCE_FULL_WINDOW:-false}" = "true" ]; then
+            ARGS+=(--force-full-window)
+          fi
+          python src/maintain/pubmed.py "${ARGS[@]}"

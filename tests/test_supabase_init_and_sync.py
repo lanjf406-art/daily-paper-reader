@@ -104,6 +104,28 @@ class SupabaseInitAndSyncTest(unittest.TestCase):
         ids = {x.get("id") for x in deduped}
         self.assertEqual(ids, {"A", "B"})
 
+    def test_sync_normalize_paper_preserves_pubmed_identifiers(self):
+        raw = {
+            "id": "pubmed-123456",
+            "source": "pubmed",
+            "source_paper_id": "123456",
+            "pmid": "123456",
+            "pmcid": "PMC123456",
+            "doi": "10.1200/test.doi",
+            "title": "A PubMed paper",
+            "abstract": "Abstract",
+            "authors": ["Li Wang"],
+            "published": "2026-06-02T00:00:00+00:00",
+            "link": "https://pubmed.ncbi.nlm.nih.gov/123456/",
+            "pdf_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC123456/pdf/",
+        }
+        row = self.sync_mod.normalize_paper(raw)
+        self.assertEqual(row["source_paper_id"], "123456")
+        self.assertEqual(row["pmid"], "123456")
+        self.assertEqual(row["pmcid"], "PMC123456")
+        self.assertEqual(row["doi"], "10.1200/test.doi")
+        self.assertEqual(row["pdf_url"], "https://pmc.ncbi.nlm.nih.gov/articles/PMC123456/pdf/")
+
 
 if __name__ == "__main__":
     unittest.main()

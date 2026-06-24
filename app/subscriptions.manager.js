@@ -211,6 +211,7 @@ window.SubscriptionsManager = (function () {
     'arxiv',
     'biorxiv',
     'medrxiv',
+    'pubmed',
     'chemrxiv',
     'neurips',
     'iclr',
@@ -219,7 +220,7 @@ window.SubscriptionsManager = (function () {
     'emnlp',
     'aaai',
   ];
-  const VISIBLE_PAPER_SOURCES = ['arxiv', 'biorxiv'];
+  const VISIBLE_PAPER_SOURCES = ['arxiv', 'biorxiv', 'pubmed'];
   const SOURCE_BACKEND_DEFAULTS = {
     arxiv: {
       papers_table: 'arxiv_papers',
@@ -239,6 +240,15 @@ window.SubscriptionsManager = (function () {
       vector_rpc_exact: 'match_biorxiv_papers_exact',
       use_bm25_rpc: true,
       bm25_rpc: 'match_biorxiv_papers_bm25',
+      schema: 'public',
+    },
+    pubmed: {
+      papers_table: 'pubmed_papers',
+      use_vector_rpc: true,
+      vector_rpc: 'match_pubmed_papers_exact',
+      vector_rpc_exact: 'match_pubmed_papers_exact',
+      use_bm25_rpc: true,
+      bm25_rpc: 'match_pubmed_papers_bm25',
       schema: 'public',
     },
   };

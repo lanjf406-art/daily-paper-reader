@@ -22,7 +22,22 @@ except Exception:  # pragma: no cover
 
 
 ARXIV_SOURCE_KEY = "arxiv"
-DEFAULT_SUPPORTED_SOURCES = (ARXIV_SOURCE_KEY, "biorxiv", "medrxiv", "chemrxiv", "neurips", "iclr", "icml", "acl", "emnlp", "aaai", "cvpr", "eccv", "ijcai")
+DEFAULT_SUPPORTED_SOURCES = (
+    ARXIV_SOURCE_KEY,
+    "biorxiv",
+    "medrxiv",
+    "pubmed",
+    "chemrxiv",
+    "neurips",
+    "iclr",
+    "icml",
+    "acl",
+    "emnlp",
+    "aaai",
+    "cvpr",
+    "eccv",
+    "ijcai",
+)
 
 
 def _norm(value: Any) -> str:
@@ -140,6 +155,24 @@ def build_env_source_backend_overrides() -> Dict[str, Dict[str, Any]]:
         if _norm(os.getenv("DPR_MEDRXIV_SCHEMA")):
             backend["schema"] = _norm(os.getenv("DPR_MEDRXIV_SCHEMA"))
         out["medrxiv"] = backend
+
+    if _env_bool("DPR_ENABLE_PUBMED_BACKEND", False):
+        backend = {
+            "enabled": _env_bool("DPR_PUBMED_ENABLED", True),
+            "papers_table": _norm(os.getenv("DPR_PUBMED_PAPERS_TABLE") or "pubmed_papers"),
+            "use_vector_rpc": _env_bool("DPR_PUBMED_USE_VECTOR_RPC", True),
+            "vector_rpc": _norm(os.getenv("DPR_PUBMED_VECTOR_RPC") or "match_pubmed_papers_exact"),
+            "vector_rpc_exact": _norm(os.getenv("DPR_PUBMED_VECTOR_RPC_EXACT") or "match_pubmed_papers_exact"),
+            "use_bm25_rpc": _env_bool("DPR_PUBMED_USE_BM25_RPC", True),
+            "bm25_rpc": _norm(os.getenv("DPR_PUBMED_BM25_RPC") or "match_pubmed_papers_bm25"),
+        }
+        if _norm(os.getenv("DPR_PUBMED_URL")):
+            backend["url"] = _norm(os.getenv("DPR_PUBMED_URL"))
+        if _norm(os.getenv("DPR_PUBMED_ANON_KEY")):
+            backend["anon_key"] = _norm(os.getenv("DPR_PUBMED_ANON_KEY"))
+        if _norm(os.getenv("DPR_PUBMED_SCHEMA")):
+            backend["schema"] = _norm(os.getenv("DPR_PUBMED_SCHEMA"))
+        out["pubmed"] = backend
 
     if _env_bool("DPR_ENABLE_CHEMRXIV_BACKEND", False):
         backend = {

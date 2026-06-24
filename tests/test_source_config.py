@@ -155,6 +155,30 @@ class SourceConfigMigrationTest(unittest.TestCase):
         self.assertEqual(backend["papers_table"], "medrxiv_papers")
         self.assertEqual(backend["vector_rpc_exact"], "match_medrxiv_papers_exact")
 
+    def test_resolve_source_backends_supports_env_pubmed_backend(self):
+        cfg = {
+            "supabase_shared": {
+                "url": "https://shared.supabase.co",
+                "anon_key": "shared-key",
+                "schema": "public",
+            }
+        }
+        with patch.dict(
+            "os.environ",
+            {
+                "DPR_ENABLE_PUBMED_BACKEND": "1",
+                "DPR_PUBMED_ENABLED": "1",
+                "DPR_PUBMED_PAPERS_TABLE": "pubmed_papers",
+                "DPR_PUBMED_VECTOR_RPC_EXACT": "match_pubmed_papers_exact",
+                "DPR_PUBMED_BM25_RPC": "match_pubmed_papers_bm25",
+            },
+            clear=False,
+        ):
+            backend = get_source_backend(cfg, "pubmed")
+        self.assertEqual(backend["url"], "https://shared.supabase.co")
+        self.assertEqual(backend["papers_table"], "pubmed_papers")
+        self.assertEqual(backend["vector_rpc_exact"], "match_pubmed_papers_exact")
+
     def test_resolve_source_backends_supports_env_chemrxiv_backend(self):
         cfg = {
             "supabase_shared": {

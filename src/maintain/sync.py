@@ -141,6 +141,8 @@ def resolve_default_raw_path(date_str: str, backend_key: str) -> str:
         prefix = "biorxiv_papers"
     elif safe_backend == "medrxiv":
         prefix = "medrxiv_papers"
+    elif safe_backend == "pubmed":
+        prefix = "pubmed_papers"
     elif safe_backend == "chemrxiv":
         prefix = "chemrxiv_papers"
     elif safe_backend == "iclr":
@@ -415,6 +417,10 @@ def normalize_paper(x: Dict[str, Any]) -> Dict[str, Any] | None:
     pdf_url = _norm(x.get("pdf_url"))
     if pdf_url:
         row["pdf_url"] = pdf_url
+    for key in ("source_paper_id", "doi", "pmid", "pmcid", "journal"):
+        value = _norm(x.get(key))
+        if value:
+            row[key] = value
     return row
 
 

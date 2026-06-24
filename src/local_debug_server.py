@@ -344,6 +344,22 @@ def build_command(workflow_key: str, workflow_file: str, inputs: dict[str, str])
         ])
         return ["bash", "-lc", script]
 
+    if workflow_file == "maintain-pubmed.yml" or workflow_key == "maintain-pubmed":
+        cmd = [
+            python,
+            "src/maintain/pubmed.py",
+            "--fetch-days",
+            str(inputs.get("fetch_days") or "30"),
+            "--retmax",
+            str(inputs.get("retmax") or "200"),
+            "--local-maintain",
+        ]
+        if inputs.get("query"):
+            cmd.extend(["--query", str(inputs["query"])])
+        if as_bool(inputs.get("force_full_window"), False):
+            cmd.append("--force-full-window")
+        return cmd
+
     if workflow_file == "reset-content.yml" or workflow_key == "reset-content":
         return [python, "-c", "import shutil, pathlib; root=pathlib.Path('.'); shutil.rmtree(root/'docs', ignore_errors=True); shutil.copytree(root/'docs_init', root/'docs'); print('docs reset from docs_init')"]
 
