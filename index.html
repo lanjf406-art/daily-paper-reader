@@ -154,6 +154,7 @@
       var isLocalHost = /^(localhost|127\.0\.0\.1|::1)$/.test(String(location.hostname || '').toLowerCase());
       var candidateBase = disabled || (isLocalHost && !explicitBase) ? '' : (explicitBase || DEFAULT_CDN_BASE);
       var preferCdn = !!candidateBase;
+      var ASSET_VERSION = String(window.DPR_ASSET_VERSION || '20260625-pubmed').trim();
       window.DPR_CDN_ACTIVE = preferCdn;
       window.DPR_ASSET_BASE = preferCdn ? candidateBase : '';
 
@@ -161,13 +162,25 @@
         return String(path || '').replace(/^\/+/, '');
       }
 
+      function shouldVersionAsset(path) {
+        var normalized = normalizePath(path);
+        return !!ASSET_VERSION && /^app\//.test(normalized) && !/^app\/vendor\//.test(normalized);
+      }
+
+      function withAssetVersion(url, path) {
+        if (!shouldVersionAsset(path)) return url;
+        return url + (url.indexOf('?') === -1 ? '?' : '&') + 'v=' + encodeURIComponent(ASSET_VERSION);
+      }
+
       function localUrl(path) {
-        return normalizePath(path);
+        var normalized = normalizePath(path);
+        return withAssetVersion(normalized, normalized);
       }
 
       function cdnUrl(path) {
-        if (!candidateBase) return localUrl(path);
-        return candidateBase + '/' + normalizePath(path);
+        var normalized = normalizePath(path);
+        if (!candidateBase) return localUrl(normalized);
+        return withAssetVersion(candidateBase + '/' + normalized, normalized);
       }
 
       function shouldLoadStylesheetFromCdn(path, useCdn) {
