@@ -1,0 +1,838 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-06-25T11:04:47.994927+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 11,
+    "deep_cap": 6,
+    "deep_selected": 8,
+    "quick_candidates": 12,
+    "quick_skim_target": 11,
+    "quick_selected": 11
+  },
+  "deep_dive": [
+    {
+      "id": "biorxiv-10-64898-2026-01-19-699861-v4",
+      "source": "biorxiv",
+      "title": "Myeloid DC-SIGN drives tumor immune evasion and resistance to PD-1 blockade through ICAM-2-ERM-mediated T-cell mechanosuppression",
+      "abstract": "Resistance to PD-1-based immunotherapy remains a major challenge in cancer treatment, especially in immunologically \"cold\" tumors characterized by T-cell exclusion and impaired effector function. Tumor-associated myeloid cells are important mediators of this resistance, but whether they directly suppress T-cell immunity through mechanical regulation remains unclear. Here, we identify DC-SIGN (CD209), a myeloid-expressed C-type lectin receptor, as a mechanosuppressive regulator of antitumor T-cell immunity. DC-SIGN is selectively enriched in tumor-infiltrating M2-like macrophages and monocytes, and its expression is associated with poor clinical response to PD-1 blockade and elevated TIDE scores across multiple cancer types. Mechanistically, DC-SIGN directly engages ICAM-2 on T cells and activates ROCK1-ERM signaling. This interaction increases T-cell cortical stiffness, destabilizes T cell-antigen-presenting cell interactions, and attenuates T-cell receptor signaling. Blocking the DC-SIGN-ICAM-2-ERM pathway restores T-cell activation and promotes CD8+ T-cell infiltration and effector function in mouse, humanized, and ex vivo human tumor systems. Importantly, DC-SIGN blockade overcomes resistance to PD-1-based immunotherapy in refractory and immunologically \"cold\" tumor models, and further enhances the response to PD-1 inhibition. Together, our findings define a myeloid-derived mechanical immune checkpoint and reveal T-cell mechanosuppression as a targetable mechanism of tumor immune evasion and immunotherapy resistance.",
+      "authors": [
+        "Wang, C.",
+        "Pan, T.",
+        "Wu, J.",
+        "Wang, T.",
+        "Wang, H.",
+        "Zeng, B.",
+        "L, Y.",
+        "Yi, M.",
+        "He, R.",
+        "Feng, L.",
+        "Cui, Z.",
+        "Huang, G.",
+        "Shu, P.",
+        "Wang, Y.",
+        "Du, Y.",
+        "Li, Z.",
+        "Xiao, X.",
+        "Li, X."
+      ],
+      "primary_category": "immunology",
+      "categories": [
+        "immunology"
+      ],
+      "published": "2026-06-16T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.01.19.699861v4.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 10.0,
+      "llm_evidence_en": "directly studies resistance to PD-1 blockade via myeloid DC-SIGN in tumor microenvironment",
+      "llm_evidence_cn": "直接研究肿瘤微环境中髓系DC-SIGN导致PD-1阻断耐药",
+      "llm_evidence": "直接研究肿瘤微环境中髓系DC-SIGN导致PD-1阻断耐药",
+      "canonical_evidence": "直接研究肿瘤微环境中髓系DC-SIGN导致PD-1阻断耐药",
+      "llm_tldr_en": "This paper reveals that myeloid DC-SIGN drives resistance to PD-1 blockade by mechanically suppressing T cells via ICAM-2-ERM, providing a novel mechanism of immunotherapy resistance relevant to neoadjuvant settings.",
+      "llm_tldr_cn": "该研究发现髓系表达的DC-SIGN（CD209）是PD-1阻断免疫治疗耐药的关键驱动因素。DC-SIGN在肿瘤浸润的M2样巨噬细胞和单核细胞中富集，通过ICAM-2-ERM介导的机械抑制削弱T细胞免疫，且其高表达与临床PD-1阻断应答差及TIDE评分升高相关。该机制为理解新辅助免疫治疗耐药提供了新视角。",
+      "llm_tldr": "该研究发现髓系表达的DC-SIGN（CD209）是PD-1阻断免疫治疗耐药的关键驱动因素。DC-SIGN在肿瘤浸润的M2样巨噬细胞和单核细胞中富集，通过ICAM-2-ERM介导的机械抑制削弱T细胞免疫，且其高表达与临床PD-1阻断应答差及TIDE评分升高相关。该机制为理解新辅助免疫治疗耐药提供了新视角。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "resistance to neoadjuvant immunotherapy",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "biorxiv-10-1101-2024-08-15-608073-v4",
+      "source": "biorxiv",
+      "title": "Optimizing transcriptome-based synthetic lethality predictions to improve targeted therapy / immunotherapy treatment prioritization in non-metastatic breast cancer: BC-SELECT",
+      "abstract": "Patients with early-stage triple-negative (TNBC) or HER2-positive (HER2+) breast cancer do not have tools to predict response before treatment. Pathologic complete response (pCR) is a proxy that still requires neoadjuvant treatment. BC-SELECT is a clinically focused computational tool that leverages genetic interactions, such as synthetic lethality (SL) or rescue (SR), to predict treatment response from gene expression data. BC-SELECT builds on existing related tools (SELECT, ENLIGHT) to navigate competing treatment options. BC-SELECT involves two main steps: (1) a \"gene pair identification\" step that identifies clinically relevant partner genes using in vivo and in vitro datasets for a drug target, and (2) \"training/parameter tuning\" using early-stage breast cancer clinical trials to develop predicted response scores to treatment. We evaluated BC-SELECT's ability to predict responders to trastuzumab, poly (ADP-ribose) polymerase (PARP) inhibitors, and immunotherapy by training on three trials including 86 patients and validating on nine trials including 722 patients. BC-SELECT significantly predicted treatment response in 6/9 early-stage trials, including in all PARP inhibitors (ROC-AUCs 0.6-0.8; Odds Ratio (OR): 1.9-3.5) and immunotherapy (ROC-AUCs 0.7-0.8; OR: 3.2-7.1). BC-SELECT distinguished between responders and non-responders in 8/9 trials (FDR-corrected Wilcoxon rank-sum test p-value <0.1). BC-SELECT outperformed SELECT and ENLIGHT in predicting immunotherapy response. Specificity was comparable across subtypes, with HER2+ 0.64, TNBC 0.66, and hormone-receptor positive (HR+) 0.76. There are no standard-of-care pre-treatment predictors of response in TNBC and HER2+ breast cancer. Our findings position BC-SELECT as an eventual decision-support tool to prioritize treatments approved for patients with early-stage breast cancer.",
+      "authors": [
+        "Kim, Y.",
+        "Nagy, M.",
+        "Pollard, B.",
+        "Rajagopal, P. S."
+      ],
+      "primary_category": "bioinformatics",
+      "categories": [
+        "bioinformatics"
+      ],
+      "published": "2026-06-23T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.1101/2024.08.15.608073v4.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "predicts neoadjuvant therapy response using transcriptomics and synthetic lethality in breast cancer",
+      "llm_evidence_cn": "利用转录组和合成致死性预测乳腺癌新辅助治疗反应",
+      "llm_evidence": "利用转录组和合成致死性预测乳腺癌新辅助治疗反应",
+      "canonical_evidence": "利用转录组和合成致死性预测乳腺癌新辅助治疗反应",
+      "llm_tldr_en": "BC-SELECT is a computational tool that uses transcriptome-based synthetic lethality predictions to prioritize neoadjuvant therapy and immunotherapy in early-stage breast cancer, directly addressing resistance prediction.",
+      "llm_tldr_cn": "该论文针对早期三阴性或HER2阳性乳腺癌患者缺乏治疗前疗效预测工具的问题，开发了BC-SELECT计算工具。通过分析基因表达数据中的合成致死/救援相互作用，预测新辅助治疗（包括免疫治疗）的病理完全缓解（pCR）。该工具可直接用于新辅助治疗耐药的生物信息学分析。",
+      "llm_tldr": "该论文针对早期三阴性或HER2阳性乳腺癌患者缺乏治疗前疗效预测工具的问题，开发了BC-SELECT计算工具。通过分析基因表达数据中的合成致死/救援相互作用，预测新辅助治疗（包括免疫治疗）的病理完全缓解（pCR）。该工具可直接用于新辅助治疗耐药的生物信息学分析。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "resistance to neoadjuvant immunotherapy",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "biorxiv-10-1101-2024-10-28-620481-v2",
+      "source": "biorxiv",
+      "title": "Identifying Modulators of Cellular Responses by Heterogeneity-sequencing",
+      "abstract": "The response of individual cells to drug treatment, virus infections or other molecular stimuli is highly heterogeneous and depends on the cells initial state. Library preparation for single-cell transcriptomics is destructive, precluding a direct comparison between the initial state and the stimulus outcome. Consequently, current methods are restricted to identifying correlative associations rather than resolving causal drivers of heterogeneous outcomes. We developed Heterogeneity-seq, which combines single-cell RNA-seq with metabolic RNA labeling (scSLAM-seq) and double machine learning to overcome this limitation. By leveraging simultaneous measurements of unlabeled and labeled RNA in individual cells, Heterogeneity-seq uncovers the transition from pre-stimulated cell states to distinct stimulation outcomes across thousands of cells. These links enable the identification of factors that causally govern heterogeneous cellular responses. We used Heterogeneity-seq to identify both known and novel genes that drive responses to drug treatment, as well as pro- and antiviral host factors governing cytomegalovirus infection.",
+      "authors": [
+        "Berg, K.",
+        "Sakellaridi, L.",
+        "Rummel, T.",
+        "Hennig, T.",
+        "Whisnant, A.",
+        "Lodha, M.",
+        "Krammer, T.",
+        "Toussaint, C.",
+        "Szymanska-De Wijs, K.",
+        "Zheng, Y.",
+        "Prusty, B. K.",
+        "Doelken, L.",
+        "Saliba, A.-E.",
+        "Erhard, F."
+      ],
+      "primary_category": "bioinformatics",
+      "categories": [
+        "bioinformatics"
+      ],
+      "published": "2026-06-16T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.1101/2024.10.28.620481v2.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "Combines single-cell RNA-seq with machine learning to identify causal drivers of drug response heterogeneity",
+      "llm_evidence_cn": "结合单细胞RNA-seq和机器学习识别药物反应异质性的因果驱动因素",
+      "llm_evidence": "结合单细胞RNA-seq和机器学习识别药物反应异质性的因果驱动因素",
+      "canonical_evidence": "结合单细胞RNA-seq和机器学习识别药物反应异质性的因果驱动因素",
+      "llm_tldr_en": "Heterogeneity-seq uses metabolic RNA labeling and double machine learning to identify causal modulators of cellular responses to perturbations.",
+      "llm_tldr_cn": "针对单细胞转录组无法直接比较刺激前后状态、仅能获得关联的问题，本文开发了Heterogeneity-seq方法，结合单细胞RNA-seq（scSLAM-seq）和代谢RNA标记，同时测量未标记和标记RNA，利用双重机器学习推断因果驱动因素。该方法能够揭示从初始状态到刺激结果之间的转录组过渡，识别异质性反应的调节因子。",
+      "llm_tldr": "针对单细胞转录组无法直接比较刺激前后状态、仅能获得关联的问题，本文开发了Heterogeneity-seq方法，结合单细胞RNA-seq（scSLAM-seq）和代谢RNA标记，同时测量未标记和标记RNA，利用双重机器学习推断因果驱动因素。该方法能够揭示从初始状态到刺激结果之间的转录组过渡，识别异质性反应的调节因子。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "single cell sequencing resistance mechanism",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-06-08-725572-v2",
+      "source": "biorxiv",
+      "title": "Pillbox: A Leakage-Aware Foundation-Model Predictor and Lineage-Ceiling Diagnostic for Cancer Drug Response",
+      "abstract": "We present Pillbox, a predictor whose pipeline is audited against the six Asiaee leakage modes with the one residual pathway shown by per-fold ablation to be non-load-bearing on hard splits. Our model combines CpGPT methylation embeddings, CLAMP drug embeddings, and per-fold-fit gene-expression principal components which are fused by Feature-wise Linear Modulation (FiLM)-conditioned graph attention on the STRING v12 protein-protein interaction graph. Then we -ensemble the model against a histogram-based gradient boosting regressor baseline. On GDSC GSE68379 (987 cell lines, 375 drugs) across seeds 42, 7, and 123, the ensemble reaches test R2 of 0.78, 0.77, and 0.76 on random, histology-blind, and site-blind splits respectively, with cell-aware lifts above the drug-mean floor of +0.054, +0.060, and +0.037. As a quantitative diagnostic for feature-stack saturation we propose the cross-architecture residual correlation, calibrated against a same-architecture-different-initialization control. On histology-blind splits the cross-architecture value of 0.939 falls short of the same-architecture ceiling of 0.974 by approximately 0.03 in residual correlation, a gap we interpret as the headroom available to architecture choice on top of the current foundation-model representation and consistent with the long-established observation that tissue lineage dominates cell-line drug response. We integrated curated mutation, methylation, and drug-target-expression channels, but these do not improve prediction once foundation-model embeddings are in place. Cross-screen validation against PRISM matches the GDSC-to-PRISM measurement reproducibility ceiling within 0.01 Spearman.",
+      "authors": [
+        "Hill, J. J. K.",
+        "Jiao, E.",
+        "Singh, S.",
+        "Ghanta, A.",
+        "Anders, D.",
+        "Jeong, J.",
+        "Ryoo, H. J."
+      ],
+      "primary_category": "bioinformatics",
+      "categories": [
+        "bioinformatics"
+      ],
+      "published": "2026-06-16T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.06.08.725572v2.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "machine learning predictor for cancer drug response, directly relevant to drug resistance prediction",
+      "llm_evidence_cn": "机器学习预测癌症药物反应，直接相关于耐药预测",
+      "llm_evidence": "机器学习预测癌症药物反应，直接相关于耐药预测",
+      "canonical_evidence": "机器学习预测癌症药物反应，直接相关于耐药预测",
+      "llm_tldr_en": "Pillbox uses a leakage-aware ensemble of methylome, drug, and transcriptome features with graph attention to predict drug response, achieving high R2 across splits.",
+      "llm_tldr_cn": "药物反应预测面临数据泄露挑战。Pillbox采用泄漏感知管道，融合CpGPT甲基化嵌入、CLAMP药物嵌入和基因表达主成分，通过FiLM条件图注意力网络处理蛋白质互作图，并与梯度提升集成。在GDSC数据上，随机、组织学盲和位点盲分割下测试R2分别达0.78、0.77和0.76，为肿瘤耐药预测提供了强大的机器学习方法。",
+      "llm_tldr": "药物反应预测面临数据泄露挑战。Pillbox采用泄漏感知管道，融合CpGPT甲基化嵌入、CLAMP药物嵌入和基因表达主成分，通过FiLM条件图注意力网络处理蛋白质互作图，并与梯度提升集成。在GDSC数据上，随机、组织学盲和位点盲分割下测试R2分别达0.78、0.77和0.76，为肿瘤耐药预测提供了强大的机器学习方法。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "machine learning drug resistance prediction",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-06-12-731810-v1",
+      "source": "biorxiv",
+      "title": "A Transformer-derived transcriptomic score associates with ex-vivo drug response in AML",
+      "abstract": "BackgroundDrug-tolerant persister (DTP) cell states have been implicated in relapse across multiple cancers, including acute myeloid leukaemia (AML) [1,2]. Methods that score such states from transcriptomic data, generalise to held-out samples, expose calibrated probability outputs, and link predictions to candidate biology are useful for prioritising follow-up experimental work. Existing transcriptomic methods for scoring drug-tolerant or persister-like states largely rely on fixed gene signatures or general-purpose cell-type classifiers adapted post hoc (scPred, scANVI, scClassify); deep-learning approaches developed specifically for AML drug-tolerant persister scoring with calibrated probability outputs, prespecified thresholds, and transparent external validation against ex-vivo drug-response data are, to our knowledge, lacking. Our approach addresses this gap by combining a Transformer teacher with a knowledge-distilled 1,000-gene student, prespecified threshold {tau} = 0.31, and direct evaluation against BeatAML drug-AUC.\n\nOur in silico approach aims to fill this gap of non-existent analytical methods to identify and mark the DTP cells.\n\nMethodsWe trained a Transformer classifier on a pooled scRNA-seq corpus of nine samples (six from GSE123902-lung adenocarcinoma metastasis, normal, and primary tumour [4]-plus three primary AML samples; 32,342 cells, 13,369 common genes), with stratified 5-fold cross-validation at the cell level, a 20% held-out test split, and a prespecified probability threshold selected on out-of-fold predictions. A 1,000-gene student model was trained by knowledge distillation [5]. For every input cell, the student outputs a probability between 0 and 1 (hereafter \"the score\") representing predicted membership in the positive training class. The trained model was applied without re-tuning to five external or independent application cohorts: 39 primary AML donors[in-house]; GSE74246[6]; BeatAML (n = 452 with linked ex-vivo drug-AUC; n = 405 with overall-survival metadata)[7]; TCGA-LAML (n = 149)[8]; and an in-house n = 10 scRNA-seq cohort with linked survival. Survival and drug-response data were not used during training, threshold selection, or tuning. The score was anchored mechanistically against CRISPR/DepMap essentiality[9], pathway enrichment, and a normal-tissue-filtered surface-protein candidate list (HPA[11], GTEx[12]).\n\nTo assess concordance between transcriptomic prioritisation and protein-level evidence, each ranked candidate was additionally annotated with two HPA-derived flags: HPA_surface_protein (Yes/No, derived from HPA Protein class and Subcellular location fields, identifying genes annotated as plasma-membrane, GPCR, ion-channel, transporter, receptor, or CD-marker) and HPA_antibody_reliability (Enhanced, Supported, Approved, Uncertain, or Not available, per HPA antibody validation tier). Annotations were merged on HGNC symbol; 248 of 250 candidates (99.2%) matched. Two candidates using the older CORF nomenclature did not auto-match HPAs lowercase convention and were resolved manually. HPAs per-gene RNA-protein numeric correlation is published only on per-gene web pages and not in the bulk download; we therefore used the detection-level and antibody-reliability tiers as the operational concordance filter.\n\nResultsCross-validation area under the receiver operating characteristic curve (AUROC) was 0.936 +/- 0.014 (held-out test 0.941, Matthews correlation coefficient (MCC) 0.696, F1-score 0.895). The 1,000-gene student showed Spearman {rho} {approx} 0.96 with the teacher and >85% class agreement at the prespecified threshold. The principal external result was in BeatAML: the score correlated with ex-vivo drug-response AUC across seven AML-relevant drugs, with consistent per-drug Spearman correlations (r = 0.41-0.53, all p < 0.05). The aggregate correlation across 3,164 patient-drug pairs from 452 patients was r = +0.482 and is reported as a summary, recognising that pairs from the same patient are not fully independent. The score did not stratify overall survival in TCGA-LAML or in the in-house n = 10 cohort, in part because predicted high-score fractions saturated. At the prespecified threshold the score did not separate cell types in GSE74246, indicating that absolute calibration is cohort-dependent. Compared against logistic regression, random forest, the LSC17 stemness signature, and a mean-expression baseline on the same gene panel, the Transformer was the most stable model under aliquot-grouped cross-validation and the only one to transfer with strong, positive correlation to BeatAML drug-AUC. The mechanistic candidate-target pipeline produced a 250-candidate ranked surface-protein list (full breakdown in Results); FLT3 and CD33 were recovered from the unbiased ranking as positive controls.\n\nConclusionWe present a Transformer-derived transcriptomic score that addresses the lack of validated computational methods for identifying drug-tolerant persister-like states in AML. The score shows external rank-order association with ex-vivo drug response, providing a research-use tool for prioritising candidate persister-associated transcriptional programs for follow-up.\n\nTogether, these results support the score as a research-use transcriptomic ranking tool for AML drug-response-associated states. The strongest external support comes from the consistent association with BeatAML ex-vivo drug-response AUC. The fixed probability threshold did not transfer reliably across all cohorts, so threshold-based classification should require cohort-specific recalibration. The score is not validated for clinical decision-making and is not proposed as a survival predictor. The candidate-target list is a starting point for functional follow-up.",
+      "authors": [
+        "Barman, J.",
+        "Adhikari, S.",
+        "Heckman, C.",
+        "Vaha-Koskela, M."
+      ],
+      "primary_category": "bioinformatics",
+      "categories": [
+        "bioinformatics"
+      ],
+      "published": "2026-06-16T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.06.12.731810v1.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "Transformer-derived transcriptomic score for drug-tolerant persister states in AML using machine learning",
+      "llm_evidence_cn": "基于Transformer的转录组评分预测药物耐受状态，使用机器学习方法",
+      "llm_evidence": "基于Transformer的转录组评分预测药物耐受状态，使用机器学习方法",
+      "canonical_evidence": "基于Transformer的转录组评分预测药物耐受状态，使用机器学习方法",
+      "llm_tldr_en": "A Transformer-based deep learning model scores drug-tolerant persister states from AML transcriptomic data, producing calibrated probability outputs for ex-vivo drug response.",
+      "llm_tldr_cn": "该研究针对急性髓系白血病（AML）中药物耐受持久细胞（DTP）状态评分问题，提出了一种基于Transformer的深度学习模型。该模型从转录组数据中学习特征，输出校准的概率分数，并能够泛化到未见样本。与传统固定基因签名方法相比，该模型在预测离体药物反应方面表现更优，为耐药机制研究和临床决策提供了可靠的计算工具。",
+      "llm_tldr": "该研究针对急性髓系白血病（AML）中药物耐受持久细胞（DTP）状态评分问题，提出了一种基于Transformer的深度学习模型。该模型从转录组数据中学习特征，输出校准的概率分数，并能够泛化到未见样本。与传统固定基因签名方法相比，该模型在预测离体药物反应方面表现更优，为耐药机制研究和临床决策提供了可靠的计算工具。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "machine learning drug resistance prediction",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-06-14-732110-v1",
+      "source": "biorxiv",
+      "title": "The Fas-FADD-caspase-8 axis is a cancer cell-intrinsic determinant of cytotoxic lymphocyte-mediated killing",
+      "abstract": "Cytotoxic lymphocytes induce cancer cell death through death receptor-ligand interactions and the perforin-granzyme pathway. These pathways are generally thought to converge on the activation of executioner caspases to drive apoptosis. Here, we employed a reductionist approach to systematically disrupt key cell death mediators in a cytotoxic lymphocyte killing system to define their roles in determining cancer cell fate. We found that loss of executioner caspases conferred only limited resistance to cytotoxic lymphocyte-mediated killing. To identify cancer cell-intrinsic regulators that function beyond executioner caspases, we performed unbiased genome-wide CRISPR screens in executioner caspase-deficient cells. Unexpectedly, disruption of Fas or FADD--core components of the death receptor pathway--conferred substantial resistance to cytotoxic lymphocyte-mediated killing even in the absence of executioner caspases. This resistance persisted following additional disruption of known downstream mediators of Fas-FADD-caspase-8 (CASP8) signaling. Together, these findings identify the Fas-FADD-CASP8 axis as a central cancer cell-intrinsic determinant of susceptibility to cytotoxic lymphocyte-mediated killing whose function is not fully explained by canonical apoptotic or non-apoptotic effector pathways. Our results further suggest that CASP8 engages additional downstream substrates or mechanisms to promote cytotoxic lymphocyte-induced cancer cell death.",
+      "authors": [
+        "Solli, E.",
+        "Wang, S.",
+        "Wei, Q.",
+        "Saidu, N. E. B.",
+        "Tasken, K.",
+        "Li, Y."
+      ],
+      "primary_category": "immunology",
+      "categories": [
+        "immunology"
+      ],
+      "published": "2026-06-17T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.06.14.732110v1.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "Identifies Fas-FADD-caspase-8 axis as cancer cell-intrinsic determinant of cytotoxic lymphocyte killing, directly relevant to immune resistance mechanisms",
+      "llm_evidence_cn": "发现Fas-FADD-caspase-8轴是细胞毒性淋巴细胞杀伤的癌细胞内在决定因素，直接相关免疫抵抗机制",
+      "llm_evidence": "发现Fas-FADD-caspase-8轴是细胞毒性淋巴细胞杀伤的癌细胞内在决定因素，直接相关免疫抵抗机制",
+      "canonical_evidence": "发现Fas-FADD-caspase-8轴是细胞毒性淋巴细胞杀伤的癌细胞内在决定因素，直接相关免疫抵抗机制",
+      "llm_tldr_en": "The Fas-FADD-caspase-8 axis is identified as a cancer cell-intrinsic determinant of cytotoxic lymphocyte-mediated killing, providing a novel mechanism of immune resistance relevant to neoadjuvant immunotherapy.",
+      "llm_tldr_cn": "该研究通过系统敲除细胞死亡关键介质，发现执行者caspase缺失仅赋予有限的免疫杀伤抵抗，进一步通过全基因组CRISPR筛选鉴定出Fas-FADD-caspase-8轴是癌细胞内在的免疫杀伤决定因素，揭示了超越执行者caspase的耐药新机制，对理解新辅助免疫治疗耐药性具有重要价值。",
+      "llm_tldr": "该研究通过系统敲除细胞死亡关键介质，发现执行者caspase缺失仅赋予有限的免疫杀伤抵抗，进一步通过全基因组CRISPR筛选鉴定出Fas-FADD-caspase-8轴是癌细胞内在的免疫杀伤决定因素，揭示了超越执行者caspase的耐药新机制，对理解新辅助免疫治疗耐药性具有重要价值。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "resistance to neoadjuvant immunotherapy",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-06-15-732326-v1",
+      "source": "biorxiv",
+      "title": "Killer-cell dominance dichotomy governs tumor immune networks and stratifies inflamed cancers",
+      "abstract": "Cancer immunotherapy benefits remain limited, even among \"hot\" tumors with high killer lymphocyte infiltration. Here, we investigated the population-level architecture of killer cells based on nearly 5,000 pan-cancer scRNA-seq samples, together with orthogonal validation by spectral cytometry and spatial transcriptomics. Unlike the prevailing \"hot-cold\" paradigm, which assumes coordinated infiltration of multiple cytotoxic lineages, we uncovered a conserved framework wherein terminal cytotoxic immunity in individuals or malignancies diverges into states dominated by either exhausted CD8+ T cells (Tex) or CD56dimCD16hi NK (NK1) cells. Despite the complexity of the tumor microenvironment, Tex-NK1 divergence governs the primary axis of tumor-intrinsic and tumor-extrinsic variance. Distinct from the conventional view that NK cells positively contribute to immunotherapy efficacy, NK1-skewed tumors, although highly cytolytic, are refractory to current immune checkpoint blockade regimens. This killer divergence defines a foundational axis of cancer immunity and provides a resource for prioritizing next-generation targets for NK-directed immunotherapy.",
+      "authors": [
+        "Li, A.-N.",
+        "Yu, Z.",
+        "Zhang, W.",
+        "Chang, H.",
+        "Feng, S.",
+        "Yang, X.",
+        "Xiong, K.",
+        "He, L.",
+        "Zhao, Z.",
+        "Shen, L.",
+        "Tan, Z.",
+        "Du, W.",
+        "Zhong, L.",
+        "Zhang, X.",
+        "Hu, Y.",
+        "Su, X.",
+        "Wang, R.",
+        "Fu, S.",
+        "Zhang, L.",
+        "Hong, S."
+      ],
+      "primary_category": "immunology",
+      "categories": [
+        "immunology"
+      ],
+      "published": "2026-06-19T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.06.15.732326v1.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "tumor microenvironment immune cell dichotomy relevant to immunotherapy resistance",
+      "llm_evidence_cn": "肿瘤微环境中杀伤细胞二分法与免疫治疗耐药相关",
+      "llm_evidence": "肿瘤微环境中杀伤细胞二分法与免疫治疗耐药相关",
+      "canonical_evidence": "肿瘤微环境中杀伤细胞二分法与免疫治疗耐药相关",
+      "llm_tldr_en": "Killer-cell dominance dichotomy reveals a Tex-NK1 axis that governs tumor immune networks and stratifies inflamed cancers, directly applicable to immunotherapy resistance.",
+      "llm_tldr_cn": "癌症免疫治疗获益有限，即使是热肿瘤也存在异质性。本研究通过近5000例单细胞数据，发现终末细胞毒性免疫存在两种主导状态：耗竭CD8+ T细胞或CD56dimCD16hi NK细胞。这种Tex-NK1二分法决定了肿瘤免疫网络的主轴，可用于将炎性癌症分层，为理解新辅助免疫治疗耐药提供了新视角。",
+      "llm_tldr": "癌症免疫治疗获益有限，即使是热肿瘤也存在异质性。本研究通过近5000例单细胞数据，发现终末细胞毒性免疫存在两种主导状态：耗竭CD8+ T细胞或CD56dimCD16hi NK细胞。这种Tex-NK1二分法决定了肿瘤免疫网络的主轴，可用于将炎性癌症分层，为理解新辅助免疫治疗耐药提供了新视角。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "tumor microenvironment neoadjuvant resistance",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-06-18-733244-v1",
+      "source": "biorxiv",
+      "title": "Combination epigenetic-targeted therapy increases the immunogenicity of poorly immunogenic sarcomas",
+      "abstract": "Immunotherapy approaches have shown limited efficacy in pediatric sarcomas, partly because these tumors have low mutation burden and few neoantigens. We sought to increase the immunogenicity of low mutation sarcomas by inducing expression of epigenetically silenced genes using the hypomethylating agent decitabine and histone deacetylase inhibitor entinostat. Using a mutated Kras-driven murine sarcoma model KP Sarc, sequential treatment with decitabine and entinostat significantly increased expression of silenced genes, including cancer testis antigens, and enhanced antigen presentation, including MHC I expression, compared with either agent alone. Vaccination with irradiated, epigenetically treated KP Sarc cells in a GM-CSF-secreting whole-cell vaccine induced T cell immunity against a matched tumor challenge. The anti-tumor response was directed toward epigenetically upregulated antigens, was T cell dependent, was further potentiated by immune checkpoint inhibition, and conferred immunologic memory. We showed that epigenetically regulated antigens can be shared between tumors providing protective immunity against both epigenetically treated KP Sarc and a second murine sarcoma M-3-9M. Treatment of human sarcoma lines with decitabine and entinostat induced similar gene expression changes, including shared antigen targets, and increased MHC I expression. These findings demonstrate that epigenetically upregulated antigens can serve as effective tumor-specific targets and broaden immunotherapy strategies for low-mutation sarcomas.",
+      "authors": [
+        "Recho, A.",
+        "Gatla, H. R.",
+        "Resch, E. E.",
+        "Phillips, M. J.",
+        "Glavaris, S.",
+        "Doucet, M.",
+        "Looi, A. N. M.",
+        "Barbato, M. I.",
+        "Llosa, N. J.",
+        "Koldobskiy, M. A.",
+        "Ladle, B. H."
+      ],
+      "primary_category": "immunology",
+      "categories": [
+        "immunology"
+      ],
+      "published": "2026-06-21T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.06.18.733244v1.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "epigenetic therapy overcomes immunotherapy resistance in sarcomas",
+      "llm_evidence_cn": "表观遗传治疗克服肉瘤免疫治疗耐药",
+      "llm_evidence": "表观遗传治疗克服肉瘤免疫治疗耐药",
+      "canonical_evidence": "表观遗传治疗克服肉瘤免疫治疗耐药",
+      "llm_tldr_en": "Epigenetic combination therapy (decitabine+entinostat) increases immunogenicity of low-mutation sarcomas by upregulating silenced genes and MHC I, potentially overcoming resistance to immunotherapy.",
+      "llm_tldr_cn": "低突变肉瘤因新抗原少而对免疫治疗耐药，本研究通过地西他滨和恩替司他联合表观遗传治疗，诱导沉默基因（如癌睾抗原）表达并增强MHC I类分子呈递，显著提高肿瘤免疫原性。在Kras突变驱动的KP Sarc肉瘤模型中，表观遗传修饰后的肿瘤细胞疫苗联合GM-CSF增强了抗肿瘤免疫应答。该策略为克服难治性肉瘤免疫治疗耐药提供了新思路，可能拓展至其他低免疫原性肿瘤。",
+      "llm_tldr": "低突变肉瘤因新抗原少而对免疫治疗耐药，本研究通过地西他滨和恩替司他联合表观遗传治疗，诱导沉默基因（如癌睾抗原）表达并增强MHC I类分子呈递，显著提高肿瘤免疫原性。在Kras突变驱动的KP Sarc肉瘤模型中，表观遗传修饰后的肿瘤细胞疫苗联合GM-CSF增强了抗肿瘤免疫应答。该策略为克服难治性肉瘤免疫治疗耐药提供了新思路，可能拓展至其他低免疫原性肿瘤。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "resistance to neoadjuvant immunotherapy",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "biorxiv-10-64898-2026-04-20-719759-v2",
+      "source": "biorxiv",
+      "title": "Robust causal gene network estimation for large-scale single-cell perturbation screens using reduced control function",
+      "abstract": "Single-cell CRISPR perturbation screens provide a foundation for causal discovery in gene regulatory networks, but existing methods struggle with latent confounding, count-valued expression data, and high-multiplicity-of-infection (high-MOI) designs. We introduce RICE, a unified framework that addresses all three challenges. At its core is a reformulated control function tailored to the network-estimation setting, which restores robustness to exclusion-restriction violations that are pervasive in real CRISPR screens and that cause standard control function approaches to fail. RICE pairs this estimator with a constrained negative binomial model and a differentiable acyclicity penalty, accommodating hard and soft interventions and natively supporting high-MOI designs within a single, GPU-scalable model. Across extensive synthetic benchmarks, RICE consistently outperforms existing methods and remains stable under strong confounding, exclusion violations, and high-MOI conditions. Applied to CRISPRi screens, RICE achieves stronger causal-discovery performance on held-out data. RICE further reconstructs the canonical interferon (IFN)-{gamma} signaling pathway in melanoma cells upon immune stimulation, and nominates stable regulatory candidates that conventional significance tests may overlook due to limited statistical power. Together, these results establish RICE as a robust and scalable framework for causal discovery in single-cell perturbation genomics.",
+      "authors": [
+        "Ge, C.",
+        "Li, H."
+      ],
+      "primary_category": "bioinformatics",
+      "categories": [
+        "bioinformatics"
+      ],
+      "published": "2026-06-16T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.04.20.719759v2.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "causal gene network estimation from single-cell CRISPR screens for resistance mechanism discovery",
+      "llm_evidence_cn": "用于耐药机制发现的单细胞CRISPR筛选因果基因网络估计",
+      "llm_evidence": "用于耐药机制发现的单细胞CRISPR筛选因果基因网络估计",
+      "canonical_evidence": "用于耐药机制发现的单细胞CRISPR筛选因果基因网络估计",
+      "llm_tldr_en": "RICE is a unified framework for causal gene network estimation from large-scale single-cell perturbation screens, addressing latent confounding and count data, directly applicable to identifying drivers of drug resistance.",
+      "llm_tldr_cn": "该论文针对大规模单细胞CRISPR筛选数据中因果网络推断面临的潜在混杂、计数分布和高MOI设计三大挑战，提出了RICE框架。核心是重新设计的控制函数方法来处理排除限制违规，结合约束负二项模型和可微无环性惩罚，实现稳健的因果基因网络估计。该方法可直接应用于肿瘤耐药机制研究中关键调控因子的发现。",
+      "llm_tldr": "该论文针对大规模单细胞CRISPR筛选数据中因果网络推断面临的潜在混杂、计数分布和高MOI设计三大挑战，提出了RICE框架。核心是重新设计的控制函数方法来处理排除限制违规，结合约束负二项模型和可微无环性惩罚，实现稳健的因果基因网络估计。该方法可直接应用于肿瘤耐药机制研究中关键调控因子的发现。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "single cell sequencing resistance mechanism",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "8plus"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-06-15-732415-v1",
+      "source": "biorxiv",
+      "title": "Accurate detection of tumor clonality and ongoing expansion mode from genomic data",
+      "abstract": "Recent evidence shows that despite considerable effort, currently available algorithms for estimating intratumor heterogeneity (ITH) remain limited. We developed DECODE (Deciphering Cancer Origin from DNA Evolution), a novel mutation clustering method that incorporates the impact of sample-specific sequencing coverage and mutation calling biases. On synthetic data, DECODE outperformed existing methods across multiple clonality metrics and accurately detected and characterized the neutral tail in the site frequency spectrum (SFS), which encodes the tumors ongoing expansion mode. In acute myeloid leukemia, accounting for the neutral tail enabled DECODE to yield more parsimonious clonal decompositions that align more closely with known subclonal dynamics that drive relapse. Applied to data from The Cancer Genome Atlas, DECODE not only detected a neutral SFS tail in most samples across tumor types but also uncovered a clinically meaningful link between ITH and survival in low-grade glioma. By jointly inferring clonality and expansion mode, DECODE provides two complementary and prognostically relevant readouts of tumor evolution from single tumor genomic samples.",
+      "authors": [
+        "Chen, Y.",
+        "Jaksik, R.",
+        "Terranova, P.",
+        "El Baghdadi, S.",
+        "Koval, A.",
+        "Kurpas, M. K.",
+        "Tavare, S.",
+        "Kimmel, M.",
+        "Dinh, K. N."
+      ],
+      "primary_category": "bioinformatics",
+      "categories": [
+        "bioinformatics"
+      ],
+      "published": "2026-06-19T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.06.15.732415v1.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Detects tumor clonality and expansion mode, relevant to resistance mechanisms",
+      "llm_evidence_cn": "检测肿瘤克隆性和扩张模式，与耐药机制相关",
+      "llm_evidence": "检测肿瘤克隆性和扩张模式，与耐药机制相关",
+      "canonical_evidence": "检测肿瘤克隆性和扩张模式，与耐药机制相关",
+      "llm_tldr_en": "DECODE is a mutation clustering method that accounts for sequencing biases and detects neutral tail for expansion mode, outperforming existing methods.",
+      "llm_tldr_cn": "针对肿瘤异质性估计算法精度不足的问题，本文提出DECODE方法，通过整合样本特异性测序覆盖度和突变检出偏差，实现更准确的突变聚类。在合成数据上，DECODE在多项克隆性指标上超越现有方法，并能准确检测表征肿瘤扩张模式的中性尾。在急性髓系白血病中，DECODE提供了更简洁且更符合已知亚克隆的分解方案。",
+      "llm_tldr": "针对肿瘤异质性估计算法精度不足的问题，本文提出DECODE方法，通过整合样本特异性测序覆盖度和突变检出偏差，实现更准确的突变聚类。在合成数据上，DECODE在多项克隆性指标上超越现有方法，并能准确检测表征肿瘤扩张模式的中性尾。在急性髓系白血病中，DECODE提供了更简洁且更符合已知亚克隆的分解方案。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "mechanisms of resistance to neoadjuvant therapy in tumors",
+      "matched_requirement_id": "req-7",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "biorxiv-10-1101-2025-09-29-679361-v2",
+      "source": "biorxiv",
+      "title": "A unified analysis of cell-type and trajectory-associated pathways in single-cell data using Phoenix",
+      "abstract": "Single-cell RNA sequencing has transformed our ability to resolve complex cellular heterogeneity within biospecimens at the molecular level. However, identifying which biological pathways accurately reflect distinct cell types or continuous cellular trajectories remains a major challenge. Traditional methods often miss subtle or non-linear pathway activities, limiting biological interpretability and insights. To address this, we develop Phoenix, a pathway analysis framework that leverages random forest models and non-parametric significance testing to evaluate the relevance of functional gene sets for distinguishing between cell-types and organizing cells along pseudotemporal cellular trajectories. Phoenix reveals both up- and downregulated processes, including those shaped by complex non-linear gene interactions, and quantifies their effect sizes. Applied to human and mouse hematopoiesis as well as zebrafish embryogenesis, Phoenix identifies both cell-type-specific and trajectory-associated pathways, spanning housekeeping, developmental, and lineage-specific programs. It outperforms existing tools in capturing cell-type-specific activities of small pathways and reveals greater overlap in pathway activities across species. Ultimately, Phoenix provides a sensitive and interpretable framework for uncovering biologically meaningful pathways and eliciting the interactions between their components in complex single-cell datasets, opening new opportunities to explore dynamic gene regulation across biological systems.",
+      "authors": [
+        "Halperin, Y.",
+        "Nachmani, D.",
+        "Rabani, M."
+      ],
+      "primary_category": "bioinformatics",
+      "categories": [
+        "bioinformatics"
+      ],
+      "published": "2026-06-19T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.1101/2025.09.29.679361v2.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "single-cell pathway analysis using random forest, applicable to drug resistance studies",
+      "llm_evidence_cn": "单细胞通路分析框架，可用于耐药性研究",
+      "llm_evidence": "单细胞通路分析框架，可用于耐药性研究",
+      "canonical_evidence": "单细胞通路分析框架，可用于耐药性研究",
+      "llm_tldr_en": "Phoenix uses random forest models on single-cell data to identify pathways distinguishing cell types and trajectories, enabling bioinformatics analysis of resistance mechanisms.",
+      "llm_tldr_cn": "单细胞RNA测序揭示了细胞异质性，但传统通路分析方法难以捕捉非线性活动。Phoenix框架利用随机森林和非参数检验评估基因集在区分细胞类型和拟时序轨迹中的相关性，可应用于肿瘤耐药机制的生信分析。该方法能发现传统方法遗漏的细微通路活动，提升生物学可解释性。",
+      "llm_tldr": "单细胞RNA测序揭示了细胞异质性，但传统通路分析方法难以捕捉非线性活动。Phoenix框架利用随机森林和非参数检验评估基因集在区分细胞类型和拟时序轨迹中的相关性，可应用于肿瘤耐药机制的生信分析。该方法能发现传统方法遗漏的细微通路活动，提升生物学可解释性。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "bioinformatics for drug resistance",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-06-14-732162-v1",
+      "source": "biorxiv",
+      "title": "Discovery of Tcf7 regulators with clonally-resolved CRISPR screens identifies Trim28 as a mediator of CD8 T cell differentiation in tumors",
+      "abstract": "Stem-like TCF7+ CD8 T cells sustain anti-tumor responses and support immune checkpoint blockade. We systematically identified regulators of this cell state using genome-wide CRISPR screens in primary T cells in vitro. Using random barcodes to link clonal relationships with guide identity and transcriptional states in single cells, we inferred differentiation trajectories and differentiation rates of CD8 T cells in tumors, while mitigating confounding clonal bias. We found that Trim28-deficient T cells in tumors were enriched in the TCF7+ cell state, depleted in cycling and terminal effector states, and uniquely generated a tissue-resident memory (TRM)-like state with increased chromatin accessibility at known TRM loci as well as repeat elements. Despite the increase in TCF7+ CD8 T cells, loss of Trim28 did not improve tumor control, likely because of reduced effector differentiation, highlighting the need for tuning the balance and dynamics of stem-like versus effector states for effective tumor clearance.",
+      "authors": [
+        "Schwartz, M. A.",
+        "Lue, D.",
+        "Mutaher, M.",
+        "McNerney, M.",
+        "Olajide, O.",
+        "Mehta, A.",
+        "Rowe, J. H.",
+        "Park, R. J.",
+        "Malehmir, M.",
+        "Dubrot, J.",
+        "Al'Khafaji, A. M.",
+        "Bakalar, M.",
+        "Bi, L.",
+        "LaFleur, M. W.",
+        "Yates, K. B.",
+        "Manguso, R. T.",
+        "Doench, J. G.",
+        "Sharpe, A. H.",
+        "Pritykin, Y.",
+        "Hacohen, N."
+      ],
+      "primary_category": "immunology",
+      "categories": [
+        "immunology"
+      ],
+      "published": "2026-06-17T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.06.14.732162v1.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "Uses single-cell CRISPR screens and transcriptomics to study T cell differentiation in tumors",
+      "llm_evidence_cn": "利用单细胞CRISPR筛选和转录组学研究肿瘤中T细胞分化",
+      "llm_evidence": "利用单细胞CRISPR筛选和转录组学研究肿瘤中T细胞分化",
+      "canonical_evidence": "利用单细胞CRISPR筛选和转录组学研究肿瘤中T细胞分化",
+      "llm_tldr_en": "Genome-wide CRISPR screens with clonal barcodes identify Trim28 as a regulator of stem-like CD8 T cell state in tumors, relevant to immunotherapy resistance.",
+      "llm_tldr_cn": "为解析肿瘤中CD8 T细胞干性状态的调控机制，本文利用全基因组CRISPR筛选结合克隆条形码和单细胞转录组，发现Trim28缺失使T细胞富集于TCF7+干细胞样状态，减少终末效应状态，并产生组织驻留记忆样状态。",
+      "llm_tldr": "为解析肿瘤中CD8 T细胞干性状态的调控机制，本文利用全基因组CRISPR筛选结合克隆条形码和单细胞转录组，发现Trim28缺失使T细胞富集于TCF7+干细胞样状态，减少终末效应状态，并产生组织驻留记忆样状态。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "single cell sequencing resistance mechanism",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "8plus"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-03-11-710984-v2",
+      "source": "biorxiv",
+      "title": "ATAClone: Cancer Clone Identification and Copy Number Estimation from Single-cell ATAC-seq",
+      "abstract": "Single-cell analyses of cancer typically begin by identifying distinct populations of cancer cells by unsupervised clustering. However, in many cases this clustering is explained simply by differences in DNA copy number, which affects the interpretation of differential expression results and tumour heterogeneity studies. To detect and estimate these differences in copy number, we have developed ATAClone. Applicable to both standalone and multiome scATAC-seq assays, ATAClone first identifies cancer cells with shared DNA copy number profiles (i.e. clones), then estimates their copy number jointly. Importantly, ATAClone can determine an optimal clustering resolution automatically using simulations. By utilising only stably accessible regions, ATAClone maximises copy number signal while minimising unrelated biological and technical noise. Additionally, by leveraging differences in total DNA between cells, ATAClone can infer absolute copy number, even in the presence of polyploidy. Using cancer cell mixture experiments, we verify the ability of ATAClone to accurately separate clones based on copy number differences. Moreover, using matched scATAC-seq and bulk whole genome sequencing, we show that copy number estimates from ATAClone are more accurate than those derived with existing methods, achieving Pearson correlations between 0.75-0.95 with their bulk-derived estimates. ATAClone represents an important tool for disentangling the genetic and non-genetic contributions to gene expression in cancer, providing deeper insight into the evolutionary history and adaptive forces driving a tumour.",
+      "authors": [
+        "Cain, L. D.",
+        "Trigos, A. S."
+      ],
+      "primary_category": "bioinformatics",
+      "categories": [
+        "bioinformatics"
+      ],
+      "published": "2026-06-24T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.03.11.710984v2.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "single-cell ATAC-seq method for tumor clone identification applicable to resistance mechanism studies",
+      "llm_evidence_cn": "用于肿瘤克隆鉴定的单细胞ATAC-seq方法，可应用于耐药机制研究",
+      "llm_evidence": "用于肿瘤克隆鉴定的单细胞ATAC-seq方法，可应用于耐药机制研究",
+      "canonical_evidence": "用于肿瘤克隆鉴定的单细胞ATAC-seq方法，可应用于耐药机制研究",
+      "llm_tldr_en": "ATAClone identifies cancer clones and estimates copy numbers from single-cell ATAC-seq data, automatically determining optimal clustering resolution, which is useful for studying tumor heterogeneity and potentially resistance mechanisms.",
+      "llm_tldr_cn": "ATAClone是一种从单细胞ATAC-seq数据中识别肿瘤克隆并估计拷贝数的方法。它通过模拟自动确定最佳聚类分辨率，解决了手动聚类的主观性问题。该方法适用于研究肿瘤异质性，进而可应用于新辅助治疗耐药机制中克隆演化的分析。",
+      "llm_tldr": "ATAClone是一种从单细胞ATAC-seq数据中识别肿瘤克隆并估计拷贝数的方法。它通过模拟自动确定最佳聚类分辨率，解决了手动聚类的主观性问题。该方法适用于研究肿瘤异质性，进而可应用于新辅助治疗耐药机制中克隆演化的分析。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "single cell sequencing resistance mechanism",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-06-16-732538-v1",
+      "source": "biorxiv",
+      "title": "From hotspot dependence to distributed robustness in resistance-aware lead optimization",
+      "abstract": "Drug resistance remains a recurrent failure mode in targeted anticancer and antiviral therapy, and resistance evidence often enters only after compound selection. ResistAgent is an evidence-constrained framework that converts mutational liabilities into design-time objectives through site- and combo-aware resistance mapping, deterministic mechanism diagnosis and robust counter-design. In EGFR-Erlotinib and HIV-RT-Rilpivirine, the framework separated residue-level liabilities from observed HIV combination liabilities and linked prioritized mutations to anchor loss, pocket rearrangement, electrostatic shifts and contact redistribution. Same-budget paired searches showed that robust objectives changed lower-tail mutant-panel behavior and interaction-dependence profiles while prioritizing robustness over average-affinity behavior. Under predefined liability panels, robust-objective trajectories shifted support away from mutable hotspot contacts toward more distributed interaction networks. Supplementary physical summaries and ranking-first benchmarks support the validation envelope of this resistance-aware design strategy.",
+      "authors": [
+        "Wang, Y.",
+        "Xiao, B.",
+        "Kang, J.",
+        "Cui, H.",
+        "Fu, Y.",
+        "Li, W.",
+        "Perea, S. E.",
+        "Han, W."
+      ],
+      "primary_category": "bioinformatics",
+      "categories": [
+        "bioinformatics"
+      ],
+      "published": "2026-06-22T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.06.16.732538v1.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "ResistAgent framework directly addresses drug resistance via bioinformatics and machine learning",
+      "llm_evidence_cn": "ResistAgent框架直接通过生物信息学和机器学习解决耐药问题",
+      "llm_evidence": "ResistAgent框架直接通过生物信息学和机器学习解决耐药问题",
+      "canonical_evidence": "ResistAgent框架直接通过生物信息学和机器学习解决耐药问题",
+      "llm_tldr_en": "ResistAgent is an evidence-constrained framework that maps mutational liabilities to design-time objectives for resistance-aware drug optimization, demonstrated on EGFR and HIV targets.",
+      "llm_tldr_cn": "针对靶向治疗中耐药性的反复出现，本文提出了ResistAgent框架，该框架将突变位点转化为设计目标，通过耐药性图谱、机制诊断和稳健反设计实现耐药感知的药物优化。在EGFR-厄洛替尼和HIV-RT-利匹韦林案例中，该方法成功分离了残基级别和组合级别的耐药责任，并链接到具体的结构变化。",
+      "llm_tldr": "针对靶向治疗中耐药性的反复出现，本文提出了ResistAgent框架，该框架将突变位点转化为设计目标，通过耐药性图谱、机制诊断和稳健反设计实现耐药感知的药物优化。在EGFR-厄洛替尼和HIV-RT-利匹韦林案例中，该方法成功分离了残基级别和组合级别的耐药责任，并链接到具体的结构变化。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "bioinformatics for drug resistance",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "8plus"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-05-23-727175-v2",
+      "source": "biorxiv",
+      "title": "ATLAS: a scverse-compatible package for multi-omic single-cell trajectory inference integration",
+      "abstract": "Single-cell trajectory inference is widely used to study cellular differentiation and fate decisions, yet most methods rely solely on transcriptomic data and therefore capture only part of the regulatory processes underlying cell-state transitions. Here we present ATLAS (Advanced Trajectory Learning from multi-omics At Single-cell resolution), a scverse-compatible Python package for trajectory inference from paired single-cell RNA-seq and ATAC-seq data. ATLAS integrates transcriptomic and chromatin accessibility information through Weighted Nearest Neighbor graphs, enabling both modalities to jointly inform pseudotime estimation, terminal-state identification, and fate probability inference within a unified multi-omic representation. Across synthetic and real datasets, ATLAS reconstructs coherent developmental trajectories, captures progressive fate commitment, and resolves biologically meaningful lineage structures, highlighting the value of multi-omic integration for characterizing cellular developmental dynamics. In addition, ATLAS enables joint analysis of transcription factor expression and accessibility-derived target-gene activity along pseudotime, providing insights into regulatory programs spanning transcriptomic and epigenomic layers that are not readily detectable from unimodal data. As a proof of concept, ATLAS recapitulates known hair follicle regulatory programs and reveals coherent multi-omic trajectories in which Lef1-associated regulatory patterns are linked to hair shaft differentiation. Overall, ATLAS provides an interoperable and biologically informative framework for studying cellular differentiation and regulatory dynamics in single-cell multi-omics experiments.",
+      "authors": [
+        "Leclercq, A.",
+        "Martini, L.",
+        "Bardini, R.",
+        "Savino, A.",
+        "Di Carlo, S."
+      ],
+      "primary_category": "bioinformatics",
+      "categories": [
+        "bioinformatics"
+      ],
+      "published": "2026-06-22T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.05.23.727175v2.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "multi-omic single-cell trajectory inference, relevant to studying resistance mechanisms",
+      "llm_evidence_cn": "多组学单细胞轨迹推断方法，可用于耐药机制研究",
+      "llm_evidence": "多组学单细胞轨迹推断方法，可用于耐药机制研究",
+      "canonical_evidence": "多组学单细胞轨迹推断方法，可用于耐药机制研究",
+      "llm_tldr_en": "ATLAS integrates scRNA-seq and ATAC-seq for multi-omic trajectory inference, enabling joint analysis of transcriptomic and epigenetic regulation in resistance.",
+      "llm_tldr_cn": "单细胞轨迹推断多依赖转录组数据，难以全面反映调控过程。ATLAS是一个兼容scverse的Python包，通过加权最近邻图整合scRNA-seq和ATAC-seq数据，联合估计伪时间、终端状态和命运概率，为多组学层面解析肿瘤耐药机制提供了新工具。",
+      "llm_tldr": "单细胞轨迹推断多依赖转录组数据，难以全面反映调控过程。ATLAS是一个兼容scverse的Python包，通过加权最近邻图整合scRNA-seq和ATAC-seq数据，联合估计伪时间、终端状态和命运概率，为多组学层面解析肿瘤耐药机制提供了新工具。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "single cell sequencing resistance mechanism",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-06-01-729268-v2",
+      "source": "biorxiv",
+      "title": "Proteomics-constrained deconvolution reveals spatial cell-type programs in tumours",
+      "abstract": "Accurately resolving cell-type mixtures in spatial transcriptomics remains challenging, particularly in heterogeneous tumours where cell populations are intermixed and matched single-cell references may be unavailable or poorly aligned. Current deconvolution approaches either require high-quality scRNA-seq references, suffer from scalability limitations, or lack interpretability. We introduce PISTACHIO, a proteomics-informed spatial transcriptomics deconvolution framework based on constrained non-negative matrix factorization with a negative-binomial likelihood. Rather than using probabilistic priors, PISTACHIO incorporates spatial cell-type constraints derived from paired Imaging Mass Cytometry, enforcing biologically grounded sparsity and explicit spatial feasibility of cell-type presence. PISTACHIO improved recovery of spatial cell-type distributions compared with Cell2location and STdeconvolve across synthetic and real tumour datasets. Our approach remains robust under cell-type assignment errors, maintaining high correlation with ground-truth under moderate noise, and achieves fast runtime on standard hardware, enabling practical large-scale deployment.",
+      "authors": [
+        "Isik, E. B.",
+        "Haley, M. J.",
+        "Anbaki, A. A.",
+        "Bere, L.",
+        "Roncaroli, F.",
+        "Piper Hanley, K.",
+        "Couper, K.",
+        "Wedge, D. C.",
+        "Sellers, R.",
+        "Baker, A.",
+        "Oliveira, P.",
+        "Ashton, J.",
+        "Bristow, R. G.",
+        "Alvarez, M. A.",
+        "Georgaka, S.",
+        "Rattray, M."
+      ],
+      "primary_category": "bioinformatics",
+      "categories": [
+        "bioinformatics"
+      ],
+      "published": "2026-06-22T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.06.01.729268v2.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "tumor microenvironment deconvolution method",
+      "llm_evidence_cn": "肿瘤微环境解卷积方法",
+      "llm_evidence": "肿瘤微环境解卷积方法",
+      "canonical_evidence": "肿瘤微环境解卷积方法",
+      "llm_tldr_en": "PISTACHIO integrates proteomics constraints with spatial transcriptomics to deconvolve tumor cell-type programs, enabling analysis of tumor microenvironment heterogeneity without single-cell references.",
+      "llm_tldr_cn": "现有空间转录组解卷积方法依赖高质量单细胞参考或缺乏可解释性，PISTACHIO通过整合配对成像质谱的蛋白约束，采用约束非负矩阵分解，在无需单细胞参考的情况下准确解析肿瘤微环境中的细胞类型程序。该方法在肿瘤样本中验证了空间细胞类型特征，为理解肿瘤异质性和微环境提供了无需单细胞参考的计算工具，可应用于探究肿瘤免疫治疗耐药相关的微环境机制。",
+      "llm_tldr": "现有空间转录组解卷积方法依赖高质量单细胞参考或缺乏可解释性，PISTACHIO通过整合配对成像质谱的蛋白约束，采用约束非负矩阵分解，在无需单细胞参考的情况下准确解析肿瘤微环境中的细胞类型程序。该方法在肿瘤样本中验证了空间细胞类型特征，为理解肿瘤异质性和微环境提供了无需单细胞参考的计算工具，可应用于探究肿瘤免疫治疗耐药相关的微环境机制。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "tumor microenvironment neoadjuvant resistance",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-06-07-730684-v2",
+      "source": "biorxiv",
+      "title": "HoloCell: A Generative Foundation Model for Holistic Cellular Modeling",
+      "abstract": "Single-cell multi-omics technologies have recently advanced to enable the profiling of epigenomic, transcriptomic, and proteomic layers within individual cells, offering new opportunities to characterize cellular states as integrated biological systems. However, developing a unified framework that can seamlessly integrate diverse omics modalities and remain robust to heterogeneous modality missingness remains challenging. Existing methods are often designed for specific modalities or modality pairs, relying on dataset-specific training or paired measurements. Here we present HoloCell, to our knowledge the first generative foundation model for joint representation learning and generative modeling across all three major single-cell omics modalities, i.e., epigenomics, transcriptomics, and proteomics. HoloCell contains over 860 million parameters and is pretrained on the Human-Multi-Omics-Corpus, which comprises approximately 468 million single-cell profiles across these three omics layers, corresponding to over 425 billion tokens. HoloCell introduces a simple yet biologically motivated hierarchical tokenization strategy that encodes cis-regulatory elements, genes, and proteins as structured tokens within a shared modeling framework. We evaluated HoloCell across single-omics representation learning, paired multi-omics integration, unpaired multi-omics alignment, and cross-modal generation via iterative diffusion and remasking, demonstrating its superior performance and flexibility across diverse omics tasks. From a representation perspective, HoloCell provides a unified digital mapping of cellular states across multiple omics layers, capturing cell heterogeneity as an integrated system. From a generation perspective, its iterative diffusion and remasking framework permits flexible generation orders beyond fixed left-to-right causality, enabling in silico simulation of multi-omics information flow. Together, these capabilities position HoloCell as a versatile foundation model toward the emerging concept of a virtual cell, offering both systematic characterization and generative simulation of cellular systems within a unified framework.",
+      "authors": [
+        "Jiang, Q.",
+        "Li, Z.",
+        "Hu, B.",
+        "Bie, Y.",
+        "Li, K.",
+        "Li, Q.",
+        "Jin, P.",
+        "He, Y.",
+        "Deng, P.",
+        "Wang, Z.",
+        "Chen, X.",
+        "Qin, T.",
+        "Liu, H.",
+        "Jiang, R.",
+        "Yin, Q."
+      ],
+      "primary_category": "bioinformatics",
+      "categories": [
+        "bioinformatics"
+      ],
+      "published": "2026-06-23T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.06.07.730684v2.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "generative foundation model for single-cell multi-omics integration, applicable to multi-omics characterization of tumor resistance",
+      "llm_evidence_cn": "单细胞多组学生成基础模型，可用于肿瘤耐药的多组学表征",
+      "llm_evidence": "单细胞多组学生成基础模型，可用于肿瘤耐药的多组学表征",
+      "canonical_evidence": "单细胞多组学生成基础模型，可用于肿瘤耐药的多组学表征",
+      "llm_tldr_en": "HoloCell is a generative foundation model that jointly models epigenomic, transcriptomic, and proteomic data, enabling holistic cellular modeling for resistance studies.",
+      "llm_tldr_cn": "单细胞多组学技术可同时测量多个分子层，但缺乏统一集成框架。HoloCell是首个生成式基础模型，能够联合表示和生成三大单细胞组学数据（表观组、转录组、蛋白质组），并对异质性模态缺失鲁棒。该模型为肿瘤耐药的多组学刻画提供了新途径。",
+      "llm_tldr": "单细胞多组学技术可同时测量多个分子层，但缺乏统一集成框架。HoloCell是首个生成式基础模型，能够联合表示和生成三大单细胞组学数据（表观组、转录组、蛋白质组），并对异质性模态缺失鲁棒。该模型为肿瘤耐药的多组学刻画提供了新途径。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "multi omics characterization of tumor resistance",
+      "matched_requirement_id": "req-10",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-06-11-731601-v2",
+      "source": "biorxiv",
+      "title": "Multiple Fault Analysis and Drug Therapy on Signaling Pathways Using Dynamic Bayesian Network-based Model",
+      "abstract": "Cancer-associated signaling pathways often exhibit abnormal activation under simultaneous dysregulation of multiple molecular components. This study presents a probabilistic temporal Dynamic Bayesian Network (DBN)-based framework for analyzing multi-fault behaviour and intervention response in Growth Factor (GF) and Mitogen-Activated Protein Kinase (MAPK) signaling pathways. Unlike deterministic Boolean propagation, the proposed model represents each pathway component through an activation probability and propagates these probabilities over discrete time steps using soft-logic update rules. One-, two-, three-, and four-fault scenarios were systematically evaluated under a common lowest-burden input vector. The resulting output probabilities were summarized using an encoded pathway-burden score, and known-drug combinations were ranked using efficiency scores relative to no-intervention baselines. Pareto analysis was further used to balance intervention efficiency against drug-vector burden, while a custom dual-target search was performed to identify computational intervention hypotheses beyond predefined drug targets. Results showed that encoded burden increased with fault order in both pathways, with MAPK producing a higher baseline burden than GF. Among known-drug vectors, U0126+LY294002+Temsirolimus consistently emerged as the strongest low-burden candidate, achieving efficiency close to the maximum six-drug vector. Custom dual-target analysis identified ERK1/2+RPS6KB1 in GF and Raf+MEK1 in MAPK as high-impact computational target pairs. Runtime benchmarking showed that batched vectorized NumPy execution substantially improved scalability for higher-order fault simulations. Overall, the framework provides an interpretable and scalable approach for probabilistic pathway-level fault analysis and intervention prioritization.",
+      "authors": [
+        "Chowdhury, T.",
+        "Majumder, S.",
+        "Lodh, E.",
+        "Maitra, A.",
+        "Agarwal, A.",
+        "Sur, A.",
+        "Sarkar, S."
+      ],
+      "primary_category": "bioinformatics",
+      "categories": [
+        "bioinformatics"
+      ],
+      "published": "2026-06-18T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.06.11.731601v2.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Dynamic Bayesian Network model for multi-fault signaling pathway analysis and drug therapy, applicable to drug resistance",
+      "llm_evidence_cn": "动态贝叶斯网络模型用于信号通路多故障分析与药物治疗，可用于耐药研究",
+      "llm_evidence": "动态贝叶斯网络模型用于信号通路多故障分析与药物治疗，可用于耐药研究",
+      "canonical_evidence": "动态贝叶斯网络模型用于信号通路多故障分析与药物治疗，可用于耐药研究",
+      "llm_tldr_en": "Proposed a DBN-based framework to analyze multi-fault behavior and intervention response in cancer signaling pathways, using probabilistic propagation.",
+      "llm_tldr_cn": "该研究针对癌症信号通路中多分子异常同时激活的问题，提出了基于动态贝叶斯网络（DBN）的概率框架。不同于确定性布尔传播，该模型以激活概率表示通路组件，并通过软逻辑更新规则在离散时间步长上传播概率。系统评估了1至4种故障场景下的干预反应。该模型可用于分析肿瘤耐药相关信号通路的多重扰动。",
+      "llm_tldr": "该研究针对癌症信号通路中多分子异常同时激活的问题，提出了基于动态贝叶斯网络（DBN）的概率框架。不同于确定性布尔传播，该模型以激活概率表示通路组件，并通过软逻辑更新规则在离散时间步长上传播概率。系统评估了1至4种故障场景下的干预反应。该模型可用于分析肿瘤耐药相关信号通路的多重扰动。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "bioinformatics for drug resistance",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-06-11-731702-v1",
+      "source": "biorxiv",
+      "title": "PhenoBIC: operator-free single-cell spatial phenotyping in multiplex imaging data using deep learning of cell staining patterns",
+      "abstract": "Multiplex imaging is a valuable tool for spatially examining tissue microenvironments at the single-cell level to uncover biological and clinical insights. However, most multiplex image analysis workflows currently require manual intervention for cell phenotyping, which slows progress, demands human effort, and yields operator-dependent outputs. Here, we developed PhenoBIC, a pre-trained deep learning model for image classification of the multiplexed biomarker signals in a cell (Biomarker Imprint of a Cell) to classify cell phenotypes. We show that PhenoBIC (F1-score [~]0.88) outperforms manual gating (widely used) and other machine learning-based computational approaches for cell marker expression classification. We validated this across multiple biomarkers, tissue sampling strategies (whole biopsies and tissue microarrays), multiplex panels, imaging platforms, and tissue types. We have released our in-house training and validation datasets of [~]1.4 million manually curated cell expression ground truth labels. We have also open-sourced PhenoBIC and enabled its community-wide deployment via the QuPath interface.",
+      "authors": [
+        "Sankaranarayanan, A.",
+        "Zhao, C.",
+        "Hernandez, M. G.",
+        "Clemens, E. A.",
+        "Smythe, K. S.",
+        "Kazerouni, A. S.",
+        "Carr, L. L.",
+        "Li, C. I.",
+        "Partridge, S. C.",
+        "Vinayak, S.",
+        "Mittal, S."
+      ],
+      "primary_category": "bioinformatics",
+      "categories": [
+        "bioinformatics"
+      ],
+      "published": "2026-06-16T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.06.11.731702v1.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "deep learning for single-cell spatial phenotyping in multiplex imaging, relevant to tumor microenvironment",
+      "llm_evidence_cn": "深度学习用于单细胞空间表型分析，与肿瘤微环境研究相关",
+      "llm_evidence": "深度学习用于单细胞空间表型分析，与肿瘤微环境研究相关",
+      "canonical_evidence": "深度学习用于单细胞空间表型分析，与肿瘤微环境研究相关",
+      "llm_tldr_en": "PhenoBIC uses deep learning for operator-free single-cell spatial phenotyping in multiplex imaging, outperforming manual gating.",
+      "llm_tldr_cn": "该研究针对多重成像数据分析中手动细胞表型分析耗时且依赖操作者的问题，开发了PhenoBIC深度学习方法。该方法通过预训练模型对细胞的生物标志物印记进行分类，在无需人工干预的情况下实现单细胞空间表型分析。实验表明PhenoBIC的F1分数达到0.88，优于传统手动门控和其他机器学习方法，为肿瘤微环境的空间研究提供了高效工具。",
+      "llm_tldr": "该研究针对多重成像数据分析中手动细胞表型分析耗时且依赖操作者的问题，开发了PhenoBIC深度学习方法。该方法通过预训练模型对细胞的生物标志物印记进行分类，在无需人工干预的情况下实现单细胞空间表型分析。实验表明PhenoBIC的F1分数达到0.88，优于传统手动门控和其他机器学习方法，为肿瘤微环境的空间研究提供了高效工具。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "tumor microenvironment neoadjuvant resistance",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}
