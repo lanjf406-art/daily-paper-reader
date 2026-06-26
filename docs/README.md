@@ -6,54 +6,49 @@
 </div>
 
 ## 每次日报
-- 最新运行日期：2026-06-25
-- 运行时间：2026-06-25 23:55:54 UTC
+- 最新运行日期：2026-06-26
+- 运行时间：2026-06-26 23:47:11 UTC
 - 运行状态：成功
-- 本次总论文数：10
+- 本次总论文数：9
 - 精读区：3
-- 速读区：7
+- 速读区：6
 
 ### 今日简报（AI）
-今日聚焦单细胞与空间转录组基础模型OmniCell及肿瘤选择性Mcl1降解新方法，共精读2篇高分论文，速读3篇多组学与类器官相关研究。
-
-最值得关注的两个方向：单细胞与空间转录组的统一基础建模（OmniCell），以及利用AUTAC技术实现肿瘤特异性Mcl1降解以规避心脏毒性。
-
-建议读者优先阅读OmniCell和Mcl1降解论文，理解前沿模型与靶向策略；若对临床转化感兴趣，可结合微流控类器官药敏平台。
-- 详情：[/202606/25/README](/202606/25/README)
+1) 今日9篇论文中，精读揭示黑色素瘤T细胞浸润由组织驻留程序定义，且被调节性T细胞抑制。
+2) 最值得关注：耗竭T细胞的拉曼光谱代谢特征，以及多组学相似性推断框架SEMFA。
+3) 建议深入理解T细胞耗竭的代谢标志，并尝试将SEMFA应用于自身多组学数据。
+- 详情：[/202606/26/README](/202606/26/README)
 
 ### 精读区论文标签
-1. [OmniCell: Unified Foundation Modeling of Single-Cell and Spatial Transcriptomics for Cellular and Molecular Insights](/202606/25/biorxiv-10-64898-2025-12-29-696804-v3-omnicell-unified-foundation-modeling-of-single-cell-and-spatial-transcriptomics-for-cellular-and-molecular-insights)  
+1. [The initial melanoma T cell infiltrate is defined by tissue-resident programs restrained by regulatory T cells](/202606/26/biorxiv-10-1101-2025-10-21-683143-v2-the-initial-melanoma-t-cell-infiltrate-is-defined-by-tissue-resident-programs-restrained-by-regulatory-t-cells)  
+   标签：评分：9.0/10、query:neo-resist
+   evidence：黑色素瘤T细胞浸润与Treg抑制
+2. [Raman spectral signatures reflect altered metabolic state of exhausted T cells](/202606/26/biorxiv-10-64898-2026-06-16-732575-v1-raman-spectral-signatures-reflect-altered-metabolic-state-of-exhausted-t-cells)  
    标签：评分：8.0/10、query:neo-resist
-   evidence：单细胞转录组基础模型，适用于耐药研究
-2. [Tumor-selective Mcl1 degradation by AUTAC uncouples antitumor efficacy from cardiotoxicity](/202606/25/biorxiv-10-64898-2026-06-18-733247-v1-tumor-selective-mcl1-degradation-by-autac-uncouples-antitumor-efficacy-from-cardiotoxicity)  
+   evidence：研究肿瘤微环境中T细胞耗竭，这是新辅助治疗耐药的关键机制
+3. [Tissue-aware elastic net decomposition reveals shared and lineage-specific drug response biomarkers](/202606/26/biorxiv-10-64898-2026-06-21-733619-v1-tissue-aware-elastic-net-decomposition-reveals-shared-and-lineage-specific-drug-response-biomarkers)  
    标签：评分：8.0/10、query:neo-resist
-   evidence：靶向Mcl1驱动的血液恶性肿瘤治疗耐药
-3. [TOX enforces the immunosuppressive program of tumor-infiltrating regulatory T cells](/202606/25/biorxiv-10-64898-2026-06-19-732838-v1-tox-enforces-the-immunosuppressive-program-of-tumor-infiltrating-regulatory-t-cells)  
-   标签：评分：8.0/10、query:neo-resist
-   evidence：肿瘤微环境中Treg细胞的免疫抑制程序与耐药相关
+   evidence：机器学习弹性网络用于药物反应生物标志物发现
 
 ### 速读区论文标签
-1. [Multivariate Random Forests for Cross-Modal Multi-Omics Integration](/202606/25/biorxiv-10-64898-2026-06-17-732933-v1-multivariate-random-forests-for-cross-modal-multi-omics-integration)  
+1. [SEMFA: A General Framework for Inferring Statistical Significance of Mahalanobis Similarity between Multi-Omics Profiled Samples Built on Multiple Factor Analysis](/202606/26/biorxiv-10-64898-2026-06-18-733287-v1-semfa-a-general-framework-for-inferring-statistical-significance-of-mahalanobis-similarity-between-multi-omics-profiled-samples-built-on-multiple-factor-analysis)  
    标签：评分：7.0/10、query:neo-resist
-   evidence：多变量随机森林用于跨模态多组学整合
-2. [Microfluidic Platform for Drug Response Profiling in NSCLC Patient-Derived Organoids](/202606/25/biorxiv-10-64898-2026-06-17-733025-v1-microfluidic-platform-for-drug-response-profiling-in-nsclc-patient-derived-organoids)  
-   标签：评分：7.0/10、query:neo-resist
-   evidence：在NSCLC患者来源类器官中进行药物反应分析，与肿瘤微环境及潜在新辅助治疗耐药相关
-3. [CellOS: Learning a World Model of Cellular State through Joint Embedding Prediction](/202606/25/biorxiv-10-64898-2026-06-18-733163-v1-cellos-learning-a-world-model-of-cellular-state-through-joint-embedding-prediction)  
-   标签：评分：7.0/10、query:neo-resist
-   evidence：单细胞基础模型用于细胞状态，可应用于耐药机制
-4. [CellTosg2Sequence: A Unified Text-Omics-Signaling-Graph Large Language Model for Single-Cell Analysis](/202606/25/biorxiv-10-64898-2026-06-16-732397-v1-celltosg2sequence-a-unified-text-omics-signaling-graph-large-language-model-for-single-cell-analysis)  
+   evidence：通用多组学相似性检验框架，可应用于肿瘤耐药多组学分析
+2. [ScriptManager: a platform for scalable and reproducible high-resolution analysis of genomics datasets](/202606/26/biorxiv-10-64898-2026-06-14-732163-v1-scriptmanager-a-platform-for-scalable-and-reproducible-high-resolution-analysis-of-genomics-datasets)  
    标签：评分：6.0/10、query:neo-resist
-   evidence：单细胞分析大语言模型可用于耐药机制研究
-5. [gamdid: generalized additive models for differential distributions in single cell experiments](/202606/25/biorxiv-10-64898-2026-06-18-733106-v1-gamdid-generalized-additive-models-for-differential-distributions-in-single-cell-experiments)  
+   evidence：可扩展基因组学分析平台
+3. [Drug-Prot: A query system for statistical inference of drug effects and interactions in dynamic proteomic networks](/202606/26/biorxiv-10-64898-2026-06-17-732914-v1-drug-prot-a-query-system-for-statistical-inference-of-drug-effects-and-interactions-in-dynamic-proteomic-networks)  
    标签：评分：6.0/10、query:neo-resist
-   evidence：单细胞实验差异分布分析方法
-6. [Systematic benchmarking of multi-modal approaches for tumor-naive ctDNA detection and quantification](/202606/25/biorxiv-10-64898-2026-06-19-733293-v1-systematic-benchmarking-of-multi-modal-approaches-for-tumor-naive-ctdna-detection-and-quantification)  
+   evidence：基于蛋白质组学的药物效应和相互作用计算框架
+4. [replicateFest: An R Package and Shiny App for Analysis of T Cell Receptor Repertoire Data from the Functional Expansion](/202606/26/biorxiv-10-64898-2026-06-18-733036-v1-replicatefest-an-r-package-and-shiny-app-for-analysis-of-t-cell-receptor-repertoire-data-from-the-functional-expansion)  
    标签：评分：6.0/10、query:neo-resist
-   evidence：多模态ctDNA检测方法基准测试，可用于肿瘤耐药监测
-7. [EnrichViz: An Interactive R Shiny Application for Visualization of Pathway Enrichment Results from Omics Data](/202606/25/biorxiv-10-64898-2026-06-19-733398-v2-enrichviz-an-interactive-r-shiny-application-for-visualization-of-pathway-enrichment-results-from-omics-data)  
+   evidence：TCR库分析工具用于评估免疫检查点阻断疗效
+5. [Learning Perturbation Effects Through Contrastive Alignment of Multimodal Biological Embeddings](/202606/26/biorxiv-10-64898-2026-06-23-734145-v1-learning-perturbation-effects-through-contrastive-alignment-of-multimodal-biological-embeddings)  
    标签：评分：6.0/10、query:neo-resist
-   evidence：组学通路富集可视化的生信工具
+   evidence：单细胞扰动学习
+6. [Computational reconstruction of hierarchical cis-regulatory networks reveals synergistic transcription control and disease-associated rewiring](/202606/26/biorxiv-10-64898-2026-06-24-734159-v1-computational-reconstruction-of-hierarchical-cis-regulatory-networks-reveals-synergistic-transcription-control-and-disease-associated-rewiring)  
+   标签：评分：6.0/10、query:neo-resist
+   evidence：多组学深度学习框架重建调控网络，可用于肿瘤耐药特征刻画
 
 
 <div class="dpr-home-promo-card">
