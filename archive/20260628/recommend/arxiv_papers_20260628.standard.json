@@ -1,0 +1,380 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-06-28T22:45:20.632028+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 1,
+    "deep_cap": 6,
+    "deep_selected": 1,
+    "quick_candidates": 8,
+    "quick_skim_target": 11,
+    "quick_selected": 8
+  },
+  "deep_dive": [
+    {
+      "id": "biorxiv-10-64898-2026-06-17-732859-v1",
+      "source": "biorxiv",
+      "title": "OracleScreen-LILRB4: Machine Learning-Guided Discovery of Myeloid Immune Checkpoint Binders Validated in Patient-Derived Cells",
+      "abstract": "The identification of small molecule modulators of immune checkpoint proteins remains a significant challenge in drug discovery due to the flat, featureless nature of protein-protein interaction interfaces and the characteristically low hit rates observed in conventional high-throughput screening campaigns. Here we report OracleScreen-LILRB4, an ensemble machine learning framework trained on quantitative biophysical screening data from two structurally diverse compound libraries (19,800 compounds total) screened against the myeloid immune checkpoint leukocyte immunoglobulin-like receptor B4 (LILRB4/ILT3). By formulating binding prediction as a regression task targeting continuous {Delta}Fnorm values rather than binary hit classifications, OracleScreen-LILRB4 achieved a mean Spearman R of 0.61 and ROC-AUC of 0.86 under scaffold-aware cross-validation. Prospective virtual screening of a 45,760-member compound library and experimental validation of the top 200 predictions yielded a 28.5% hit rate, representing a 15.0-fold enrichment over baseline, with 16 compounds demonstrating nanomolar-affinity LILRB4 (ILT3) engagement. Lead compounds ORS-22 and ORS-14 restored anti-tumor immune activity across patient-derived colorectal cancer and acute myeloid leukemia co-culture systems, reversing SCG2-mediated immunosuppression and recovering cytotoxic T-cell function. These findings establish OracleScreen-LILRB4 as an effective computational framework for accelerating small molecule discovery against non-enzymatic immune checkpoint targets.\n\nGraphical abstract\n\nO_FIG O_LINKSMALLFIG WIDTH=200 HEIGHT=99 SRC=\"FIGDIR/small/732859v1_ufig1.gif\" ALT=\"Figure 1\">\nView larger version (48K):\norg.highwire.dtl.DTLVardef@1ef70a9org.highwire.dtl.DTLVardef@cd976dorg.highwire.dtl.DTLVardef@1907ebforg.highwire.dtl.DTLVardef@1716aec_HPS_FORMAT_FIGEXP  M_FIG C_FIG",
+      "authors": [
+        "Abdel-Rahman, S.",
+        "Gabr, M."
+      ],
+      "primary_category": "bioinformatics",
+      "categories": [
+        "bioinformatics"
+      ],
+      "published": "2026-06-21T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.06.17.732859v1.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "machine learning discovery of myeloid immune checkpoint binders directly addresses immunotherapy resistance",
+      "llm_evidence_cn": "机器学习发现髓系免疫检查点结合剂直接应对免疫治疗耐药",
+      "llm_evidence": "机器学习发现髓系免疫检查点结合剂直接应对免疫治疗耐药",
+      "canonical_evidence": "机器学习发现髓系免疫检查点结合剂直接应对免疫治疗耐药",
+      "llm_tldr_en": "OracleScreen-LILRB4 uses ensemble machine learning to discover LILRB4 binders, targeting a myeloid checkpoint relevant to immunotherapy resistance in neoadjuvant settings.",
+      "llm_tldr_cn": "小分子免疫检查点调节剂发现困难。OracleScreen-LILRB4 集成机器学习框架，基于定量筛选数据预测 LILRB4 结合剂，并在病人源细胞中验证。该策略直接针对髓系免疫检查点，为克服新辅助免疫治疗耐药提供候选分子。",
+      "llm_tldr": "小分子免疫检查点调节剂发现困难。OracleScreen-LILRB4 集成机器学习框架，基于定量筛选数据预测 LILRB4 结合剂，并在病人源细胞中验证。该策略直接针对髓系免疫检查点，为克服新辅助免疫治疗耐药提供候选分子。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "resistance to neoadjuvant immunotherapy",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "biorxiv-10-64898-2026-05-14-725078-v2",
+      "source": "biorxiv",
+      "title": "IntegrateRigor: annotation-free integration optimization for cell identity recovery reveals cancer-immune interface niches",
+      "abstract": "Integrating single-cell and spatial transcriptomics data across batches is essential for recovering comparable cell identities (including cell types, subtypes, and states) as a prerequisite for downstream analyses in multi-condition and large-scale studies. This task remains challenging because between-batch variation removal often conflicts with cell identity preservation, and current methods typically rely on generic highly variable gene selection and lack principled metrics for hyperparameter tuning when cell identity annotations are unavailable. Together, these limitations often lead to over-integration, which merges biologically distinct cell identities, or under-integration, which leaves cells separated by batch rather than identity. Here we introduce IntegrateRigor, a data-driven, annotation-free, method-agnostic framework that optimizes integration specifically for reliable cell identity recovery across batches. IntegrateRigor first selects genes whose expression patterns are stable across batches using a gene-wise likelihood- based batch stability score, excluding batch-sensitive genes that can bias cell identity alignment during integration. It then identifies the optimal integration configuration across methods and hyperparameters by defining a dataset-level integration score that explicitly balances between-batch variation removal against cell identity preservation, without requiring prior annotations. In a colorectal cancer single-cell and spatial transcriptomics dataset, IntegrateRigor revealed previously uncharacterized cancer-immune interface niches in the tumor microenvironment that were masked by under-integration under default settings and by over-integration in previous literature. Across diverse datasets spanning multiple sources of between-batch variation, IntegrateRigor consistently improved cell identity recovery by mitigating both over-integration and under-integration across five state-of-the-art methods. By transforming integration from a heuristic preprocessing step into a statistically principled, dataset-adaptive procedure for cell identity recovery, IntegrateRigor improves the reproducibility and biological discovery power of large-scale single-cell and spatial transcriptomics analyses.",
+      "authors": [
+        "Zhai, Z.",
+        "Wang, C.",
+        "Jiang, C.",
+        "Rong, Z.",
+        "Li, J. J."
+      ],
+      "primary_category": "bioinformatics",
+      "categories": [
+        "bioinformatics"
+      ],
+      "published": "2026-06-27T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.05.14.725078v2.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "integration optimization for cancer-immune niches enables single-cell resistance mechanism studies",
+      "llm_evidence_cn": "整合优化癌细胞-免疫交界区域有助于单细胞耐药机制研究",
+      "llm_evidence": "整合优化癌细胞-免疫交界区域有助于单细胞耐药机制研究",
+      "canonical_evidence": "整合优化癌细胞-免疫交界区域有助于单细胞耐药机制研究",
+      "llm_tldr_en": "IntegrateRigor optimizes single-cell and spatial data integration without annotations, improving cell identity recovery and revealing cancer-immune niches, applicable to studying resistance mechanisms.",
+      "llm_tldr_cn": "单细胞与空间转录组数据整合存在过整合与欠整合问题。IntegrateRigor提出无标注整合优化方法，通过新指标自动调参，恢复细胞身份并揭示癌细胞-免疫交界区域。该方法为单细胞水平研究肿瘤耐药机制提供了可靠的前处理工具。",
+      "llm_tldr": "单细胞与空间转录组数据整合存在过整合与欠整合问题。IntegrateRigor提出无标注整合优化方法，通过新指标自动调参，恢复细胞身份并揭示癌细胞-免疫交界区域。该方法为单细胞水平研究肿瘤耐药机制提供了可靠的前处理工具。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "single cell sequencing resistance mechanism",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-06-18-733163-v2",
+      "source": "biorxiv",
+      "title": "CellOS: Learning a World Model of Cellular State through Joint Embedding Prediction",
+      "abstract": "Foundation models learned from single-cell transcriptomes are central to the prospect of AI virtual cell that can represent, query and predict cellular state. However, most current single-cell foundation models learn from a single view of gene expression and are optimized primarily through reconstruction or next-token prediction. As a result, they capture expression abundance but cannot explicitly reconcile complementary views of cellular state. Here we present CellOS, a multi-view foundation model that learns cellular representations from paired expression and perception views. CellOS integrates complementary views through a scalable three-stage training strategy that combines causal cell-sentence language modelling, function-preserving dense-to-mixture-of-experts expansion and latent-space alignment via an LLM-JEPA objective. Using this framework, we trained a 12-billion-parameter model on 390.5 million single-cell transcriptomes. Across diverse benchmarks spanning cell-state annotation, batch integration and perturbation-response prediction, CellOS consistently outperformed state-of-the-art single-cell foundation models. Together, these results suggest that predictive alignment between complementary cellular views provides a scalable path toward representation-centric cellular world models and transferable AI virtual cells.",
+      "authors": [
+        "Zhou, Q.",
+        "Le, Y.",
+        "Qi, X.",
+        "Chang, S.",
+        "Lu, H.",
+        "Wu, Y.",
+        "Wang, H.",
+        "Ran, R.",
+        "li, x."
+      ],
+      "primary_category": "bioinformatics",
+      "categories": [
+        "bioinformatics"
+      ],
+      "published": "2026-06-25T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.06.18.733163v2.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "foundation model for cellular state prediction using joint embedding, applicable to machine learning prediction of drug resistance",
+      "llm_evidence_cn": "基于联合嵌入预测的细胞状态基础模型，适用于机器学习预测药物耐药性",
+      "llm_evidence": "基于联合嵌入预测的细胞状态基础模型，适用于机器学习预测药物耐药性",
+      "canonical_evidence": "基于联合嵌入预测的细胞状态基础模型，适用于机器学习预测药物耐药性",
+      "llm_tldr_en": "CellOS learns a multi-view foundation model of cellular state from paired transcriptomic and perception data, enabling predictive modeling that could be applied to drug resistance.",
+      "llm_tldr_cn": "当前单细胞基础模型多从单一基因表达视角学习，无法整合互补信息。CellOS提出多视图联合嵌入预测框架，通过因果细胞句子语言建模和功能保持降维，从配对表达和感知数据中学习细胞表示。该模型能预测细胞状态变化，为基于机器学习的药物耐药性预测提供了新的骨架。",
+      "llm_tldr": "当前单细胞基础模型多从单一基因表达视角学习，无法整合互补信息。CellOS提出多视图联合嵌入预测框架，通过因果细胞句子语言建模和功能保持降维，从配对表达和感知数据中学习细胞表示。该模型能预测细胞状态变化，为基于机器学习的药物耐药性预测提供了新的骨架。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "machine learning drug resistance prediction",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-06-18-733285-v1",
+      "source": "biorxiv",
+      "title": "Systematic benchmarking of zero-shot utility and robustness in single-cell transcriptomic foundation models",
+      "abstract": "Single-cell foundation models (scFMs) have been proposed as reusable representations for transcriptomic analysis, yet their practical utility and robustness when applied without task-specific fine-tuning remain incompletely characterized. Here, we systematically evaluated single-cell transcriptomic representations in zero-shot settings across 20 methods, 6 downstream tasks and 1,607 datasets comprising nearly 21.8 million cells. We characterized model behavior along three complementary dimensions: baseline utility, structural robustness, and dataset-level drivers of performance variability. Our large-scale analysis reveals a decoupling between utility and robustness: methods ranking highly on standard benchmarks often show marked instability under shifts in dataset structure. Furthermore, no single model performs uniformly well across tasks. In several tasks, classical statistical representations based on highly variable genes remain competitive under zero-shot conditions. Together, these results define the practical boundaries of zero-shot use in scFMs and provide a large-scale benchmark and decision framework for representation selection in single-cell genomics.",
+      "authors": [
+        "Liu, T.",
+        "Feng, T.",
+        "Pan, X.",
+        "Chen, Y.",
+        "Ren, L.",
+        "Ye, X.",
+        "Sakurai, T.",
+        "Lin, H.",
+        "Zhang, Y."
+      ],
+      "primary_category": "bioinformatics",
+      "categories": [
+        "bioinformatics"
+      ],
+      "published": "2026-06-23T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.06.18.733285v1.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "benchmarking single-cell foundation models aids transcriptomic analysis for tumor resistance",
+      "llm_evidence_cn": "单细胞基础模型基准测试有助于肿瘤耐药转录组分析",
+      "llm_evidence": "单细胞基础模型基准测试有助于肿瘤耐药转录组分析",
+      "canonical_evidence": "单细胞基础模型基准测试有助于肿瘤耐药转录组分析",
+      "llm_tldr_en": "This benchmark evaluates zero-shot utility of single-cell transcriptomic models, guiding model selection for resistance-related transcriptomics studies.",
+      "llm_tldr_cn": "单细胞基础模型在零样本设置下的实用性和鲁棒性尚未系统评估。本文对20种方法、6个下游任务和1607个数据集进行基准测试，揭示效用与鲁棒性的解耦。该基准为转录组肿瘤耐药研究提供了模型选择依据，避免因模型缺陷导致的错误结论。",
+      "llm_tldr": "单细胞基础模型在零样本设置下的实用性和鲁棒性尚未系统评估。本文对20种方法、6个下游任务和1607个数据集进行基准测试，揭示效用与鲁棒性的解耦。该基准为转录组肿瘤耐药研究提供了模型选择依据，避免因模型缺陷导致的错误结论。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "transcriptomics tumor resistance",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-06-19-733432-v1",
+      "source": "biorxiv",
+      "title": "TIDEST: post-imputation differential expression testing for spatial transcriptomics data",
+      "abstract": "Spatial transcriptomics enables the study of tissue organization in situ, but many high-resolution platforms measure only a limited gene panel, leaving much of the transcriptome unobserved. Although deep learning methods can reconstruct missing genes from matched single-cell references, downstream differential expression (DE) analysis remains unreliable because prediction uncertainty and spatially structured sources of variation are typically ignored. These factors can bias effect estimates and inflate false discoveries. We present TIDEST, a framework for DE testing after spatial transcriptomic imputation. TIDEST uses information from measured genes to correct systematic errors in reconstructed expression and adjusts for latent spatial variation, such as tissue architecture or cell-type composition, that can create spurious differences between biological groups. Across extensive simulations, TIDEST maintains substantially better error control than existing approaches while preserving power. Applications to mouse brain, human glioblastoma, and human breast cancer data recover biologically meaningful DE signals that are missed or distorted by conventional analyses. TIDEST provides a principled framework for DE analysis on reconstructed spatial transcriptomes.",
+      "authors": [
+        "Roeder, K.",
+        "Lei, J.",
+        "Testa, L."
+      ],
+      "primary_category": "genomics",
+      "categories": [
+        "genomics"
+      ],
+      "published": "2026-06-24T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.06.19.733432v1.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "differential expression testing for spatial transcriptomics, applicable to transcriptomics studies of tumor resistance",
+      "llm_evidence_cn": "空间转录组的差异表达检验方法，可用于肿瘤耐药的转录组学研究",
+      "llm_evidence": "空间转录组的差异表达检验方法，可用于肿瘤耐药的转录组学研究",
+      "canonical_evidence": "空间转录组的差异表达检验方法，可用于肿瘤耐药的转录组学研究",
+      "llm_tldr_en": "TIDEST is a framework for differential expression testing after spatial transcriptomic imputation, correcting systematic errors and adjusting for spatial variation.",
+      "llm_tldr_cn": "空间转录组插补后的差异表达分析因忽略预测不确定性和空间变异而不可靠。TIDEST框架利用实测基因信息校正重建表达的系统误差，并调整潜在空间协变量，提供可靠的差异表达检验，适用于肿瘤耐药相关空间转录组研究。",
+      "llm_tldr": "空间转录组插补后的差异表达分析因忽略预测不确定性和空间变异而不可靠。TIDEST框架利用实测基因信息校正重建表达的系统误差，并调整潜在空间协变量，提供可靠的差异表达检验，适用于肿瘤耐药相关空间转录组研究。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "transcriptomics tumor resistance",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-06-21-733596-v1",
+      "source": "biorxiv",
+      "title": "Ambiguity-Aware Multi-Stage Cell-Type Annotation for Spatial Transcriptomics",
+      "abstract": "Spatial transcriptomics enables characterization of cellular organization in intact tissue, but robust cell type annotation remains challenging due to heterogeneous expression profiles, mixed populations, and transitional states. Existing methods often enforce a single label per cluster, obscuring biologically meaningful ambiguity and producing overconfident assignments. We propose an ambiguity-aware, multi-stage framework for spatial cell-type annotation. The method combines hybrid spatial feature clustering with constrained language-model inference over curated label sets, and assigns confidence scores based on marker coverage, candidate separation, and entropy. Low-confidence clusters are selectively refined via local reclustering of ambiguous regions, while unresolved clusters are preserved as mixed rather than forcibly labeled. Applied to 10x Genomics Xenium spatial transcriptomics data from cholangiocarcinoma, the proposed refinement reduces cluster-level ambiguity from 16.1% to 2.27% and cell-level ambiguity from 18.4% to 0.86%, while improving confidence calibration. Spatial ablation confirms that topological integration resolves structural ambiguity over feature-only baselines, while constrained inference via a lightweight language model ensures scalable and biologically coherent annotations. These results highlight the importance of explicit ambiguity handling for reliable spatial annotation in heterogeneous tumors.",
+      "authors": [
+        "Mahmud, M. I.",
+        "Kochat, V.",
+        "Anzum, H.",
+        "Satpati, S.",
+        "Dwarampudi, J. M. R.",
+        "Rai, K.",
+        "Banerjee, T."
+      ],
+      "primary_category": "bioinformatics",
+      "categories": [
+        "bioinformatics"
+      ],
+      "published": "2026-06-25T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.06.21.733596v1.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "method for cell-type annotation in spatial transcriptomics applicable to resistance studies",
+      "llm_evidence_cn": "空间转录组细胞类型注释方法，可用于耐药机制研究",
+      "llm_evidence": "空间转录组细胞类型注释方法，可用于耐药机制研究",
+      "canonical_evidence": "空间转录组细胞类型注释方法，可用于耐药机制研究",
+      "llm_tldr_en": "An ambiguity-aware multi-stage framework for spatial cell-type annotation using hybrid clustering and language-model inference, with confidence scoring.",
+      "llm_tldr_cn": "空间转录组细胞类型注释常因异质性和过渡状态导致标注不准确。本研究提出一种考虑模糊性的多阶段细胞类型标注框架，结合混合空间特征聚类和约束语言模型推理，并基于标记覆盖度和熵值分配置信度，对低置信度簇进行局部重聚类。该方法提高了空间转录组中细胞类型识别的鲁棒性，为肿瘤微环境异质性分析提供了工具。",
+      "llm_tldr": "空间转录组细胞类型注释常因异质性和过渡状态导致标注不准确。本研究提出一种考虑模糊性的多阶段细胞类型标注框架，结合混合空间特征聚类和约束语言模型推理，并基于标记覆盖度和熵值分配置信度，对低置信度簇进行局部重聚类。该方法提高了空间转录组中细胞类型识别的鲁棒性，为肿瘤微环境异质性分析提供了工具。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "single cell sequencing resistance mechanism",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-06-22-733750-v1",
+      "source": "biorxiv",
+      "title": "SPEAK: Spatial Prompting with Expert Aligned Knowledge for Tissue Domain Identification in Spatial Transcriptomics",
+      "abstract": "Spatially resolved transcriptomic (SRT) data requires spatial domain identification to enable tissue microenvironment-specific downstream analyses. Here we present SPEAK (Spatial Prompting with Expert-Aligned Knowledge), a large language model (LLM) -based method to identify spatial domains from SRT data by taking advantage of the prior knowledge from both LLM and human experts. SPEAK constructs a spatial context prompt for each cell/spot based on cell types and marker genes of its neighboring cells, enabling zero-shot inference, expert-guided fine-tuning, and prototype updating through two-stage prompting. Applications to STARmap, Visium, MERFISH and Xenium datasets showed advantages of SPEAK over existing spatial domain identification methods in domain prediction accuracy, robustness to limited prior knowledge, biological interpretability, and capacity for efficient expert-guided fine-tuning with generalizability to other tissue sections.",
+      "authors": [
+        "Wei, H.",
+        "Luo, X.",
+        "Yu, H.",
+        "Liang, J.",
+        "Yang, L.",
+        "Sauler, M.",
+        "Kaminski, N.",
+        "Popa, A.",
+        "Yan, X."
+      ],
+      "primary_category": "bioinformatics",
+      "categories": [
+        "bioinformatics"
+      ],
+      "published": "2026-06-26T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.06.22.733750v1.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "spatial domain identification method enables tumor microenvironment analysis for resistance",
+      "llm_evidence_cn": "空间域识别方法可用于肿瘤微环境耐药分析",
+      "llm_evidence": "空间域识别方法可用于肿瘤微环境耐药分析",
+      "canonical_evidence": "空间域识别方法可用于肿瘤微环境耐药分析",
+      "llm_tldr_en": "SPEAK uses LLM-based spatial prompting for tissue domain identification, applicable to dissecting TME in neoadjuvant resistance.",
+      "llm_tldr_cn": "空间转录组数据需要准确的空间域识别才能进行微环境分析。SPEAK 利用大语言模型和专家知识构建空间上下文提示，实现零样本、微调和原型更新。在多种平台数据上优于现有方法，可帮助识别与耐药相关的肿瘤微环境区域。",
+      "llm_tldr": "空间转录组数据需要准确的空间域识别才能进行微环境分析。SPEAK 利用大语言模型和专家知识构建空间上下文提示，实现零样本、微调和原型更新。在多种平台数据上优于现有方法，可帮助识别与耐药相关的肿瘤微环境区域。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "tumor microenvironment neoadjuvant resistance",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-06-22-733860-v1",
+      "source": "biorxiv",
+      "title": "Spatial co-expression and cell-cell communication inference from spatially resolved transcriptomics with CONCISE",
+      "abstract": "Cell-cell communication is fundamental to tissue organization, homeostasis, and disease progression. Recent advances in spatial transcriptomics provide unprecedented opportunities to systematically characterize ligand-receptor interactions directly within intact tissues. However, robust inference of spatial ligand-receptor interactions remains challenging because intrinsic features of spatial transcriptomics data, including spatial autocorrelation, variation in total molecular counts, and measurement errors, can induce spurious spatial co-expression and lead to inflated false-positive results. Most existing methods do not adequately account for these confounding factors, limiting the reliability of inferred cellular communication. Here, we present CONCISE, a statistical method for spatially constrained co-expression and ligand-receptor interaction inference that jointly models spatial autocorrelation, variation in total molecular counts, measurement errors, and spatial proximity constraints. CONCISE combines efficient moment-based parameter estimation with analytical hypothesis testing, enabling fast and statistically rigorous inference without restrictive distributional assumptions. Through extensive simulations, real-data permutation experiments, and biologically motivated negative-control analyses across different spatial transcriptomics platforms, we show that most existing methods presented inflated false-positive rates, whereas CONCISE achieved well-calibrated inference, robust false-positive control, and improved detection power. Application of CONCISE to high-resolution MERFISH and CosMx datasets from intestinal inflammation and non-small cell lung cancer further highlights its biological utility in disease contexts. CONCISE uncovered inflammation-associated fibroblast-specific interactions during intestinal inflammation and delineated complex tumor-immune and tumor-stromal signaling networks within the tumor microenvironment.",
+      "authors": [
+        "Zhao, J.",
+        "Shan, X.",
+        "Wang, G.",
+        "Chu, T.",
+        "Lin, C.",
+        "Chang, R.",
+        "Zhao, H."
+      ],
+      "primary_category": "bioinformatics",
+      "categories": [
+        "bioinformatics"
+      ],
+      "published": "2026-06-28T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.06.22.733860v1.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "spatial cell-cell communication inference method applicable to TME resistance",
+      "llm_evidence_cn": "空间细胞间通讯推断方法，可用于肿瘤微环境耐药研究",
+      "llm_evidence": "空间细胞间通讯推断方法，可用于肿瘤微环境耐药研究",
+      "canonical_evidence": "空间细胞间通讯推断方法，可用于肿瘤微环境耐药研究",
+      "llm_tldr_en": "CONCISE infers spatial ligand-receptor interactions from spatial transcriptomics, accounting for confounders like autocorrelation and sparsity.",
+      "llm_tldr_cn": "空间转录组数据中推断细胞间通讯常因空间自相关和噪声产生假阳性。本研究提出CONCISE方法，通过考虑空间共表达中的混杂因素（如总分子计数变化和测量误差），稳健推断配体-受体相互作用。该方法为解析肿瘤微环境中免疫细胞与肿瘤细胞的通讯提供了可靠工具，但未直接涉及耐药。",
+      "llm_tldr": "空间转录组数据中推断细胞间通讯常因空间自相关和噪声产生假阳性。本研究提出CONCISE方法，通过考虑空间共表达中的混杂因素（如总分子计数变化和测量误差），稳健推断配体-受体相互作用。该方法为解析肿瘤微环境中免疫细胞与肿瘤细胞的通讯提供了可靠工具，但未直接涉及耐药。",
+      "llm_tags": [
+        "query:neo-resist:composite"
+      ],
+      "matched_query_tag": "query:neo-resist:composite",
+      "matched_query_text": "Papers central to 肿瘤新辅助治疗耐药的生信相关论文, especially work that connects or combines: resistance to neoadjuvant immunotherapy; bioinformatics for drug resistance; tumor microenvironment neoadjuvant resistance; machine learning drug resistance prediction; transcriptomics tumor resistance; single cell sequencing resistance mechanism; mechanisms of resistance to neoadjuvant therapy in tumors; role of tumor microenvironment in neoadjuvant therapy resistance; bioinformatics analysis of drug resistance in neoadjuvant therapy; multi omics characterization of tumor resistance.",
+      "matched_requirement_id": "req-composite-neo-resist",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-06-23-734064-v1",
+      "source": "biorxiv",
+      "title": "Stability-driven multi-omics integration for reproducible latent structure",
+      "abstract": "High-dimensional multi-omics data integration offers novel opportunities to characterize complex biological systems. Even though sampling variability frequently compromises findings, particularly in small cohorts, the reproducibility and generalizability of the derived latent structures are insufficiently evaluated. We propose a Stability-driven framework for multi-omics integration that combines sparse generalized canonical correlation analysis with repeated cross-validation, out-of-sample projection, and systematic evaluation of both component-level and feature-level stability. We apply this framework to untargeted metabolomic and Olink targeted inflammation proteomic profiles in a thyroid cancer case-control cohort (n = 162). Our Stability-driven integration identified reproducible metabolomic and proteomic latent components that showed consistent out-of-sample disease associations and tracked temporally structured changes relative to time to diagnosis. The proposed framework provides a generalizable strategy for identifying reproducible latent structures that improve robustness of biological inference in multi-omics studies.",
+      "authors": [
+        "Guan, H.",
+        "Gerwen, M. v.",
+        "Kim-Schulze, S.",
+        "Colicino, E.",
+        "Dolios, G.",
+        "Petrick, L."
+      ],
+      "primary_category": "bioinformatics",
+      "categories": [
+        "bioinformatics"
+      ],
+      "published": "2026-06-27T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.06.23.734064v1.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "stability-driven multi-omics integration framework relevant to tumor resistance bioinformatics",
+      "llm_evidence_cn": "稳定性驱动的多组学整合框架与肿瘤耐药生信相关",
+      "llm_evidence": "稳定性驱动的多组学整合框架与肿瘤耐药生信相关",
+      "canonical_evidence": "稳定性驱动的多组学整合框架与肿瘤耐药生信相关",
+      "llm_tldr_en": "Stability-driven multi-omics integration using sparse CCA with cross-validation ensures reproducibility, applicable to resistance multi-omics studies.",
+      "llm_tldr_cn": "该研究开发了一个稳定性驱动的多组学整合框架，结合稀疏广义典型相关分析和重复交叉验证，评估成分和特征稳定性。在甲状腺癌队列中验证了方法有效性，为肿瘤新辅助治疗耐药的多组学生信分析提供了可复现的整合工具。",
+      "llm_tldr": "该研究开发了一个稳定性驱动的多组学整合框架，结合稀疏广义典型相关分析和重复交叉验证，评估成分和特征稳定性。在甲状腺癌队列中验证了方法有效性，为肿瘤新辅助治疗耐药的多组学生信分析提供了可复现的整合工具。",
+      "llm_tags": [
+        "query:neo-resist:composite"
+      ],
+      "matched_query_tag": "query:neo-resist:composite",
+      "matched_query_text": "Papers central to 肿瘤新辅助治疗耐药的生信相关论文, especially work that connects or combines: resistance to neoadjuvant immunotherapy; bioinformatics for drug resistance; tumor microenvironment neoadjuvant resistance; machine learning drug resistance prediction; transcriptomics tumor resistance; single cell sequencing resistance mechanism; mechanisms of resistance to neoadjuvant therapy in tumors; role of tumor microenvironment in neoadjuvant therapy resistance; bioinformatics analysis of drug resistance in neoadjuvant therapy; multi omics characterization of tumor resistance.",
+      "matched_requirement_id": "req-composite-neo-resist",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}
