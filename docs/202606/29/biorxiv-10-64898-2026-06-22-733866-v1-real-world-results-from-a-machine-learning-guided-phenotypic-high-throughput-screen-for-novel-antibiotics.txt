@@ -1,0 +1,1325 @@
+Title: Real-world results from a Machine Learning-guided, phenotypic High-Throughput Screen for novel antibiotics
+
+URL Source: https://www.biorxiv.org/content/10.64898/2026.06.22.733866v1.full.pdf
+
+Number of Pages: 33
+
+Markdown Content:
+1
+
+# Real -world results from a Machine Learning -guided, 
+
+# phenotypic High -Throughput Screen for novel 
+
+# antibiotics 
+
+Paul Lukacs *, Kevin C. Hare, Shilpa George, Graham Hone, Gayatri Gollapudi, Lisa Wang 
+
+Jarantow , Jenna Pellegrino, Alita Miller, Kurt Thorn 
+
+ArrePath Inc., 303A College Road East, Princeton, NJ 08540, US 
+
+KEYWORDS: Drug discovery, antibiotics, machine learning, artificial intelligence 
+
+.CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 22, 2026. ;https://doi.org/10.64898/2026.06.22.733866 doi: bioRxiv preprint 2
+
+ABSTRACT 
+
+Antimicrobial resistance is an urgent global health threat, with over 2.8 million multidrug -resistant 
+
+infections killing over 35,000 annually in the US . Machine Learning (ML) has emerged as a 
+
+potential solution to improve efficiency of antibiotic high -throughput screens (HTS) . We report 
+
+ML -guided high -throughput screening against E. coli . Large -scale Learning -to -Rank models were 
+
+trained on public and proprietary datasets to maximize phenotypic inhibition and minimize human 
+
+cell cytotoxicity. We evaluated several pre -plated compound libraries and a set of "cherry -picked", 
+
+structurally nove l compounds. We screened against a hyperpermeable lptD - mutant, followed by 
+
+hit confirmation, profiling, cytotoxicity counter -screening, and MOA determination. Results 
+
+demonstrated a doubled hit rate and 3X fewer toxic hits. Additionally, activity improved against 
+
+both Wild Type E. coli and the lptD - mutant. ML models showed robust predictive power on 
+
+structurally dissimilar compounds. The combination of large -scale HTS, ML innovation, and both 
+
+library -wise selection and cherry -picking strategies distinguishes this study in the antibiotic 
+
+discovery fi eld .
+
+> .CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 22, 2026. ;https://doi.org/10.64898/2026.06.22.733866 doi: bioRxiv preprint
+
+3
+
+INTRODUCTION 
+
+Antimicrobial resistance represents one of the most urgent health threats of the 21 st century. 
+
+Multidrug -resistant bacterial infections result in millions of hospital days and billions in healthcare 
+
+costs annually (Diéguez -Santana & González -Díaz, 2023). The situation has been exacerbated by 
+
+the pharmaceutical industry's retreat from antibiotic development towards more lucrative chronic 
+
+treatments (Durrant & Amaro, 2015). This has created a significant innovation gap, with few novel 
+
+antibiotics entering the market despite the escalating crisis (Balakrishnan, 2022; Brown & Wright ,
+
+2016). 
+
+Small molecules have dominated approved and pending antibiotics (Silver, 2011, Butler et al., 
+
+2017). Historically, pharmaceutical companies have relied on HTS to identify potential antibiotic 
+
+leads with new MOAs . Unfortunately, these efforts have proven inefficient. For example, between 
+
+1995 and 2001, GlaxoSmithKline conducted 70 HTS campaigns yielding only five leads — a
+
+success rate four to five times lower than for other drug targets (Durrant & Amaro, 2015; Payne et 
+
+al., 2007). The challenges are multifaceted: for example, small molecules must not only 
+
+demonstrate activity against bacterial targets but also overcome barriers like bacterial membranes 
+
+(particularly in Gram -negative species) and efflux pumps (Silver, 2011) ; additionally, traditional 
+
+HTS is prohibitively expensive for academic research groups, who are increasingly important 
+
+players as pharmaceutical companies have shifted focus (Tommasi et al., 2015). 
+
+Machine Learning (ML) has emerged as a potential solution to alleviate these problems by: 
+
+1. Improving hit rates: ML can prioritize compounds likely to demonstrate favorable 
+
+properties (Jukič & Bren, 2022). 
+
+> .CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 22, 2026. ;https://doi.org/10.64898/2026.06.22.733866 doi: bioRxiv preprint
+
+4
+
+2. Efficient ly explori ng chemical space: computational methods can generate predictions 
+
+across chemical spaces orders of magnitude more rapidly than compounds can be screened in the 
+
+laboratory or assessed by a medicinal chemist (G. Liu & Stokes, 2022). 
+
+In this study, we focus on so -called enumerative ML workflows as opposed to generating virtual 
+
+compounds de novo . The enumerated compounds can come from commercial or virtual libraries 
+
+or can be combinatorially created based on synthesis schemes. We focus on enumerative methods 
+
+for two reasons: first, they resemble conventional HTS and virtual screening more closely and are 
+
+more compatible with real -world hit finding pipelines (Vamathevan et al., 2019); second, 
+
+generative models are known to propose unrealistic or difficult -to -synthe size compounds (Gao & 
+
+Coley, 2020; Stanley & Segler, 2023) . ML -guided HTS is analogous to virtual screening with two 
+
+main differences: first, the computationally expensive predictor such as molecular docking is 
+
+replaced by a more scalable, data -driven ML model (E. Graff et al., 2021); second, ML models 
+
+can predict phenotypic activity that is beneficial in antibacterial drug discovery when Gram -
+
+negative bacterial efflux and membrane permeation confound protein binding (Nikaido, 1994), or 
+
+when the target protein is unknown (Childers et al., 2020; Croston, 2017). 
+
+ML -guided HTS studies fall into two categories: retrospective and prospective. Retrospective 
+
+studies benchmark ML guidance through cross validation using literature data. Conversely, 
+
+prospective studies acquire previously unseen, ML -prioritized compounds, test them 
+
+experimentally , then evaluate the improvement due to ML guidance (the “ML lift”). 
+
+Retrospective studies are useful as a low -cost, first -line approach to estimate the benefits of ML 
+
+guidance – many studies report promising performance in a variety of use cases (Castillo -Garit et 
+
+al., 2015; Cherkasov, 2005; Dalecki et al., 2019; Karakoc et al., 2006; Marrero -Ponce et al., 2005; 
+
+Masalha et al., 2018; Yang et al., 2009). Importantly, retrospective studies can overestimate 
+
+> .CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 22, 2026. ;https://doi.org/10.64898/2026.06.22.733866 doi: bioRxiv preprint
+
+5
+
+performance due to well -known biases and do not yield insight into operational aspects of ML -
+
+guided drug discovery (van Giffen et al., 2022). 
+
+Prospective studies better emulate real -world hit finding. Several studies explored ML -guided 
+
+screening in academic settings and reported impressive ML lift (Cesaro et al., 2023; Ivanenkov et 
+
+al., 2019; Murcia -Soler et al., 2004; Rahman et al., 2022; Stokes et al., 2020; Wang et al., 2014; 
+
+Wong et al., 2024). The details of these studies are summarized in Table 1. To our knowledge, 
+
+Scalia et al. reported the only study to date that evaluate d ML guidance for antibacterial discovery 
+
+in a non -academic setting. They used GNEprop, a Deep Learning model trained on an extensive 
+
+in -house dataset of 1.2 million compounds with measured activity against two E. coli strains. The 
+
+top -scoring 345 of over 1.7 billion compounds were selected and a hit rate of 24% was observed ,
+
+a 90 -fold improvement over the fraction of actives in their training set. They noted that several of 
+
+the found actives were dissimilar to training compounds (Scalia et al., 2024). 
+
+Table 1 . Summary of prospective ML -guided antibiotics screening studies.                                       
+
+> Reference Application ML technique Training
+> data size
+> Compound
+> selection Result
+> Murcia -Soler et al. ,
+> 2004
+> S. aureus
+> E. faecalis Multilayer Perceptron 433 4 experimentally validated hits
+> Wang et al. , 2014 S. aureus Various 4,541 Top 56 of 7,500 12 were active; Naïve Bayes classifier best model
+> Ivanenkov et al. , 2019 E. coli Various 140,000 5,000 Identified several leads; Kohonen Map best model
+> Stokes et al., 2020 E. coli Directed Message Passing Neural
+> Network (DMPNN) 2,315 ~5,000* Found Halicin, a promising broad -spectrum antibiotic
+> Rahman et al. , 2022 B. cenocepacia DMPNN 29,537 Top ~120 of
+> ~225,000** At least 14 -fold lift; broad -spectrum hits
+> Cesaro and Fuente -
+> Nunez ,2023 A. baumannii DMPNN 7,688 Top 240 of ~5,000 17% hit rate; Abaucin, a hit active against multiple strains
+> Wong et al. , 2024 S. aureus DMPNN 39,312 283 tested Best compounds associated with growth inhibiton and low human
+> toxicity
+
+Our study reports real -world results from an ML -guided HTS against a membrane -compromised 
+
+strain of E. coli . We trained Learning -to -Rank (L2R) ML models that integrated public and 
+
+proprietary datasets to prioritize unseen compounds in terms of their phenotypic inhibition against 
+
+.CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 22, 2026. ;https://doi.org/10.64898/2026.06.22.733866 doi: bioRxiv preprint 6
+
+E. coli and human cell cytotoxicity. To evaluate the ability of ML guidance to select compound 
+
+collections, several pre -plated compound libraries were acquired and screened. In addition, a 
+
+“cherry -picked” (CP) set of compounds was selected that maximized predicte d E. coli activity, 
+
+minimized predicted cytotoxicity and excluded compounds structurally similar to known 
+
+antibiotics. The acquired compounds were screened against a hyperpermeable lptD - mutant of E. 
+
+coli . Hits underwent hit confirmation, hit profiling, cytotoxicity counter -screening and MOA 
+
+determination. The HTS results clearly demonstrated hit enrichment and reduction of cytotoxicity; 
+
+furthermore, hit quality and activity against Wild Type (WT) E. coli improved. Notably, the L2R 
+
+models showed robust predictive power on the unseen, structurally dissimilar screening 
+
+compounds , both in terms of CP performance and evaluating compound libraries. In our view, this 
+
+study is unique for the following reasons: 
+
+1. the scale and commercial environment of the HTS, 
+
+2. the size of the training datasets, 
+
+3. the ML formulation novel to antibiotics discovery, 
+
+4. compound selection for competing objectives, 
+
+5. both library -wise selection and “cherry -picking” individual compounds. 
+
+> .CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 22, 2026. ;https://doi.org/10.64898/2026.06.22.733866 doi: bioRxiv preprint
+
+7
+
+RESULTS AND DISCUSSION 
+
+Approximately 400,000 compounds from Evotec’s screening library were screened for growth 
+
+inhibition of lptD - E. coli in minimal media. The hits were confirmed by retesting in triplicate; 
+
+confirmed hits were profiled and counter -screened for human cell cytotoxicity. These HTS data, 
+
+along with public datasets, formed the training set of a set of ML models (predicting anti biotic 
+
+activity and human cell cytotoxicity) that were used to select compounds in consequent stages of 
+
+the HTS. The 400,000 compounds were selected without ML guidance , based on human -assessed 
+
+medicinal chemistry properties. For the balance of this paper, we refer to this screen as the 
+
+“unguided” baseline. The experimental details of the HTS and technical aspects of the ML models 
+
+and training data can be found in the Experimental Section. 
+
+To estimate expected ranking performance, the trained models were evaluated using cross 
+
+validation. We held out test sets of 10,000 compounds from relevant subsets of the training sets ;
+
+subsets were defined based on the data source, i.e., the originating database and assay . In addition, 
+
+to better evaluate predictive performance on unseen compounds, observations that shared Murcko -
+
+Bemis scaffolds with the test observations were removed from the remaining training data. Figure 
+
+1 shows the results. Estimated performance is reported in terms of the Receiver Operating 
+
+Characteristic (ROC) curves and estimated lifts. When the predicted properties are binary classes 
+
+(active vs. inactive, cytotoxic vs. non -cytotoxic, as in this case), the ROC curves are equivalent to 
+
+discovery curves, i.e., the horizontal axes express the fraction of library screened in the order of 
+
+decreasing predicted compound utility , and the vertical axes indicate the fraction of positives 
+
+(active or non -cytotoxic) discovered at that level of completion. For reference, a diagonal line that 
+
+represents no enrichment (screening in a random order) is drawn. At any % library screened, 
+
+div iding the fraction of positives found by the baseline (here, the random, unguided performance) 
+
+> .CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 22, 2026. ;https://doi.org/10.64898/2026.06.22.733866 doi: bioRxiv preprint
+
+8
+
+yields the lift at that % library screened: the lifts quantify enrichment in positives due to screening 
+
+in preferential order based on ML guidance; e.g., a lift of 2 at 1% library screened means that twice 
+
+as many positives are expected to be found compare d to the random baseline. As seen, significant 
+
+enrichment was estimated in every test set and at every % library screened. The lifts were estimated 
+
+between 2 and 20, indicating significant benefits from ML guidance. When interpreting the results 
+
+of this an alysis note that 1, the random baseline is uncertain and the confidence bounds are a 
+
+function of the library size and the number of positives; 2, lift typically decreases with % library 
+
+screened, indicating diminishing returns as the screening regime leaves the regime of “elite 
+
+selection”; 3, this analysis assu mes single -objective optimization, i.e., selecting for activity or non -
+
+cytotoxicity but not for both. Furthermore, we note that cross validation is a backward -looking 
+
+performance estimation method that can be biased by the train -test splitting scheme. 
+
+Figure 1 . Expected performance of the activity and cytotoxicity rankers estimated in back -testing. 
+
+Left: E. coli activity ROCs when ranking three scaffold -split test sets. Middle: Non -cytotoxicity 
+
+ROCs when ranking two scaffold -split test sets. The dashed black lines indicate the expectation of 
+
+a random baseline. Right: estimated lifts as a function of % of library screened for the five test 
+
+sets. A lift of 2 at 1% screened means that when screening the top -ranked 1% of a library, twice 
+
+as many actives or non -cytotoxic compounds are expected to be found compared to random 
+
+selection. The dashed black line repr esents no lift. 
+
+> .CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 22, 2026. ;https://doi.org/10.64898/2026.06.22.733866 doi: bioRxiv preprint
+
+9
+
+Using the trained ML models, ~50,000 compounds were selected from Enamine’s HTS 
+
+collection (approximately 8,000,000 compounds). This included approximately 45,000 
+
+compounds in pre -plated libraries and 5,000 CP compounds. The pre -plated libraries were selec ted 
+
+jointly by a team of medicinal chemists and a team of ML scientists based on their overall ML -
+
+predicted hit rate, predicted rate of non -cytotoxic compounds, dissimilarity to known antibiotics 
+
+and compounds screened in the first stage, drug -likeness, and ADMET properties. The CP 
+
+compounds were purely ML -selected; the selection l ogic greedily filled a budget of 5,000 
+
+compounds maximizing their predicted activity against E. coli lptD -, simultaneously minimizing 
+
+their human cell cytotoxicity, and strictly avoiding compounds structurally similar to known 
+
+antibiotics and compounds screened in the first stage. The details of the selection schemes can be 
+
+found in the Experimental Section. 
+
+All selected compounds and compound libraries were acquired and tested for inhibition of lptD -
+
+E. coli in a primary screen. Primary hits underwent hit confirmation with triplicate retesting in the 
+
+same assay. The resulting data allowed for evaluating the forward -looking performance of the E. 
+
+coli activity ranking models both compound -by -compound and library -wise. 
+
+Compound -by -compound predictive power was evaluated by comparing predicted and tested 
+
+activities among the compounds that were selected as part of a pre -plated screening library . The 
+
+same analysis was done on the CP compound set , but that yielded low apparent performance 
+
+because the CP set was already highly enriched in hits and thus lacked contrast to demonstrate 
+
+preferential selection. Nevertheless, the compounds selected as part of the screening libraries 
+
+demonstrated robust and significant forward -looking predictive performance across all libraries 
+
+(Fig. 2). 
+
+> .CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 22, 2026. ;https://doi.org/10.64898/2026.06.22.733866 doi: bioRxiv preprint
+
+10 
+
+Figure 2 . ROCs obtained by the E. coli ranker when the tested compound libraries are treated as 
+
+forward -looking test sets. The dashed black line indicates the expectation of a random baseline .
+
+In terms of Area Under ROC (AUROC) or lift, the forward -looking figures were approximately 
+
+equivalent to the lower range of the metrics estimated in cross validation ( Fig. 1): 0.73 across all 
+
+tested compounds and ranging between 0.71 and 0.95 across compound libraries. This was 
+
+expected for two reasons: first, backward -looking cross validation often reports optimistic 
+
+estimates; second, cross validation results assumed single -objective selection, while the forward -
+
+looking results are confounded by selection for the competing non -cytotoxicity objective that is 
+
+expected to lead to fewer actives. Reaching the low range of cross validation -estimated metrics 
+
+even with a competing o bjective and dissimilarity constraints was considered a significant success 
+
+and demonstrated that careful, scaffold -split cross validation estimates forward -looking 
+
+performance albeit optimistically, but still within confidence bounds. 
+
+Figure 3 demonstrates the predictive power of the E. coli ranking model for selecting compound 
+
+libraries. Each circle in the figure represents a tested compound library. The diameters of the 
+
+> .CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 22, 2026. ;https://doi.org/10.64898/2026.06.22.733866 doi: bioRxiv preprint
+
+11 
+
+circles are proportional to the library size. As seen, the hit rate of most compound libraries 
+
+correlated strongly with their predicted quality , defined as the median predicted inhibition score. 
+
+The two outliers were potentially due to either small library size (the DSI -poised library) or 
+
+pronounced chemical dissimilarity to the training set ( the Natural Product -like library , which 
+
+contained molecules larger than training compounds). As a point of reference, we included the CP 
+
+compound set in the figure as a pseudo -library. Its hit rate, 0.8%, was approximately triple the 
+
+average hit rate of non -CP libraries. 
+
+Figure 3 . The predictive performance of the E. coli activity ranker in terms of predicted library 
+
+quality (the median compound rank) and the confirmed library hit rate. “CP” means cherry -picked. 
+
+The dashed black line is a robust linear fit .
+
+> .CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 22, 2026. ;https://doi.org/10.64898/2026.06.22.733866 doi: bioRxiv preprint
+
+12 
+
+To place our hit rates into context, we compare them with prominent literature reports: Stokes 
+
+et al. reported a hit rate of 35% when testing 23 of 107 million compounds (8 out of 23 were active) 
+
+(Stokes et al., 2020). Similarly, Scalia et al. reported a h it rate of 24% when testing 345 of 1.4 
+
+billion compounds (82 of the 345 were active). Both studies used an ML model trained on a 
+
+curated, consistent activity dataset; besides potential structural filtering, no other ML guidance 
+
+was used. At first glance, o ur hit rate of 0.8% seems low compared to the ones reported in the two 
+
+studies; however, the following must be noted about the underlying statistic al behavior :
+
+- Selection freedom — defined as the ratio of the screening library size and the number of 
+
+top predicted compounds selected — increases the apparent hit rate. In other words, when a small 
+
+top fraction of a large parent library is selected, the apparent hit rates will be higher relative to 
+
+selecting a larger top fraction of a smaller library. 
+
+- Optimizing for the competing cytotoxicity objective reduces the apparent hit rate. 
+
+The two references used compound -by -compound selection that more closely resembles our CP 
+
+set. Here, to better compare performances, we can partially correct for the effect of selection 
+
+freedom ; although we cannot estimate the effect of larger parent libraries (8 million in our case vs. 
+
+107 million and 1.4 billion in Stokes’ and Scalia’s case s, respectively), we can narrow our top CP 
+
+selection. When looking at the CP hit rate in the top 345 (resembling Scalia et al.), we find a hit 
+
+rate of 32% (111 of 345). Similarly, when looking at the top 23 (resembling Stokes et al.) , our hit 
+
+rate is 48% (11 of 23). Considering that – compared to the two cited studies – our selection strategy 
+
+additionally constrained for novel compounds and low cytotoxicity, we conclude that our 
+
+performance is at least comparable, but likely better, than those previously reported. The likely 
+
+reason for outperforming Stokes et al. is the much wider coverage of the activity model (trained 
+
+on 1.2 million observations vs. 2,300 observations). It is worth noting that the extreme “elite 
+
+> .CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 22, 2026. ;https://doi.org/10.64898/2026.06.22.733866 doi: bioRxiv preprint
+
+13 
+
+selection” regime of the two cited studies might not be practical in a real -world drug discovery 
+
+setting; since many hits are not progressible due to ADME T or other medicinal chemistry issues, 
+
+most programs require, in the absolute sense, as many early hits as possible. This cannot be 
+
+provided by the extremely narrow screens typically reported in the literature; therefore, the 
+
+reported high hit rates may be inflated a nd unrealistic from a practical point of view. In our view, 
+
+it makes more sense to report lifts up to a reasonable % library screened from ML -guided 
+
+campaigns that explicitly consider at least a few relevant competing objectives. 
+
+The confirmed hits were counter -screened for human cell cytotoxicity. A notable improvement 
+
+of cytotoxicity, both in terms of fewer cytotoxic compounds among the hits ( 13% in the ML -
+
+guided screen vs. 37% in the unguided screen) and widened therapeutic windows (the ratio of 
+
+MICs against E. coli lptD - and a human cell line), was observed. In addition, confirmed hits 
+
+exhibited improved single -concentration inhibition compared to those of hits found in the 
+
+unguided first stage of the campaign. Figure 4 shows these results. 
+
+Figure 4 . Improvement of hit quality in terms of the therapeutic window and single -point 
+
+inhibition of tested compounds in the ML -guided and unguided portions of the HTS. 
+
+> .CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 22, 2026. ;https://doi.org/10.64898/2026.06.22.733866 doi: bioRxiv preprint
+
+14 
+
+The structural novelty and diversity of the hits were evaluated using chemical space visualization 
+
+with TMAP embedding (Probst & Reymond, 2020 ; Fig. 5 ). Visually, the TMAP embedding 
+
+represents chemical space as a minimum spanning tree. Adjacent nodes represent structures that 
+
+differ by a minimal structural transformation; as such, when laying the graph out using a two -
+
+dimensional force -directed layout, node distances approximate chemical dis similarity (Kamada & 
+
+Kawai, 1989). The embedding shows all screened compounds (gray), the found hits (blue), and 
+
+known and approved antibiotics (red and green, respectively). As seen, the found hits covered 
+
+chemical space with very few adjacent known or approved antibiotics; this implies that , on 
+
+average, the found hits were structurally novel. 
+
+While most hits remain undisclosed due to their proprietary nature, Table 1 summarizes the 
+
+features of five hits representing the structural novelty and drug -like features of the screening 
+
+collection. All five meet Lipinski’s rule of five for oral bioavailability (Lipinski, 2004). 
+
+Antibacterial potency against the screening strain on minimal media ranged from 1 to 8 g/mL; 
+
+three of the hits were also active against the parent E. coli strain, demonstrating the ability to 
+
+permeate Gram -negative membranes. Only one, AP -00475532, had weak activity against HepG2 
+
+cells (CC 50 = 56 M); the rest were inactive up to 100 M. Resistance mapping to identify the 
+
+putative target/pathways of inhibition suggest diverse MOAs , including nucleotide, amino acid, 
+
+vitamin or cell wall biosynthesis pathways. These pathways are only essential in minimal media; 
+
+the lack of antibacterial activity of all five hits in rich media supports the putative MOAs identified 
+
+by resistance mapping. The metabolic pathways these molecules target are likely non -essential in 
+
+many sites of infection, making t he se molecules unattractive for further development. For 
+
+completion, we note that w hile these molecules are not further pursu ed , two program s have 
+
+> .CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 22, 2026. ;https://doi.org/10.64898/2026.06.22.733866 doi: bioRxiv preprint
+
+15 
+
+result ed from hits identified in these screens: at the time of writing, one in late -stage lead 
+
+optimization and one in early hit -to -lead optimization .
+
+Figure 5 . HTS chemical space in terms of its TMAP. The blue dots represent hits, the red circles 
+
+represent known antibacterials, and the green crosses represent approved antibiotics. The gray dots 
+
+show all screened compounds .
+
+> .CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 22, 2026. ;https://doi.org/10.64898/2026.06.22.733866 doi: bioRxiv preprint
+
+16 
+
+Table 2 . Biological properties of representative hits. 
+
+MW : molecular weight, MIC : minimum inhibitory concentration required for bacterial killing; 
+
+lptD - = membrane permeable E. coli mutant used for high throughput screening; WT : wild type 
+
+E. coli parent); HepG2 CC 50: concentration at which the growth of 50% of immortalized liver cells 
+
+are inhibited in vitro; NGS : next generation sequencing. lptD - WT 
+
+AP-00429112 346.8 8 8 >100 
+
+PanB (3-methyl-2-
+
+oxobutanoate 
+
+hydroxymethyltransferase) 
+
+Pantothenate (vitamin 
+
+B5) Biosynthesis 
+
+AP-00469177 114.1 1 1 >100 
+
+Upp 
+
+(uracilphosphoribosyltransfer 
+
+ase), UraA (uracil 
+
+permease) 
+
+Uracil Biosynthesis 
+
+AP-00471778 274.4 8 >64 >100 
+
+IlvN (acetolactate synthase); 
+
+LivG (branched chain amino 
+
+acid uptake) 
+
+Valine/Isoleucine 
+
+Biosynthesis 
+
+AP-00475532 374.4 4 >64 56.7 ClsA (cardiolipin synthase) Inner Membrane 
+
+assembly 
+
+AP-00477607 234.3 4 8 >100 Promoter region of cysK -
+
+cysZ Cysteine Biosynthesis 
+
+MIC, g/mL 
+
+HepG2 CC 50 , M
+
+resistance mapping by NGS 
+
+putative mechanism of action 
+
+Structure Compound ID MW 
+
+.CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 22, 2026. ;https://doi.org/10.64898/2026.06.22.733866 doi: bioRxiv preprint 17 
+
+CONCLUSION 
+
+A Machine Learning (ML) -guided High Throughput Screening (HTS) campaign for finding 
+
+small molecules that inhibit the growth of E. coli was carried out in a commercial setting. The HTS 
+
+was guided by Learning -to -Rank (L2R) ML models that predicted growth inhibition and human 
+
+cell cytotoxicity. The L2R approach allowed training on uniquely large training datasets. 50,000 
+
+compounds were acquired : 45,000 in pre -plated libraries and 5,000 individually selected. The 
+
+compounds were tested for E. coli growth inhibition. The confirmed hits were counter -screened 
+
+for human cell cytotoxicity. In the individually selected compounds , ML -guiding doubled the hit 
+
+rate and reduced the number of cytotoxic compounds to one -third relative to a human medicinal 
+
+chemistry baseline , yielding an overall tripling of progressible hits . Among the very top 
+
+compounds, the observed hit rate was 32 -48%, in line with other prospective ML -guided 
+
+antibiotics HTS studies, except that we achieved this hit rate while optimizing for the competing 
+
+low -cytotoxicity objective and explicitly screening for structurally novel compounds. The results 
+
+highlight the potential of ML guid ance in early -stage drug discovery. 
+
+> .CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 22, 2026. ;https://doi.org/10.64898/2026.06.22.733866 doi: bioRxiv preprint
+
+18 
+
+EXPERIMENTAL SECTION 
+
+Learning -to -Rank for antibiotics discovery 
+
+An important concept in ML is generalization (extrapolation), which, in the drug discovery 
+
+domain , translates to retained predictive power over chemical dissimilarity. In other words, an ML 
+
+model that generalizes remains accurate when predicting properties of compounds that are 
+
+dissimilar to compounds in the training set. Naturally, generalization is c ritical in drug discovery 
+
+since only novel compounds can form intellectual property; furthermore, chemical novelty is 
+
+linked to M OA novelty, which in turn is highly valuable from the point of overcoming resistance 
+
+to antibiotics. ML models are known to extrapolate beyond their training data up to a certain 
+
+structural dissimilarity. While modern model formulations generalize better th an conventional 
+
+QSAR models, this effect is of lesser magnitude compared to the effect of expanded chemical 
+
+space coverage due to a larger and more diverse training set. 
+
+The main idea behind our ML modeling approach is that measurement noise in HTS datasets 
+
+dominates prediction performance over model complexity, making broad chemical space coverage 
+
+more valuable than complex model formulations. This leads to the question: how do we increase 
+
+chemical coverage? 
+
+Conventionally, ML models in drug discovery are trained on curated datasets that only contain 
+
+observations consistent in terms of assay conditions. High -quality, consistent, and curated datasets 
+
+are often cited as important pre -requirements of ML -guided dr ug discovery. The public space is 
+
+ripe with high -quality datasets that could expand the coverage of training data; however, these 
+
+HTS datasets are often acquired at different experimental conditions and are thus incomparable to 
+
+each other and to proprietar y data. The consolidation of disparate data sources is therefore 
+
+important to improve ML performance. 
+
+> .CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 22, 2026. ;https://doi.org/10.64898/2026.06.22.733866 doi: bioRxiv preprint
+
+19 
+
+Data consolidation can occur in two ways: data -based and model -based. Data -based 
+
+consolidation is data curation and transformation; for example, HTS datasets can be merged by 
+
+carefully extrapolating inhibition values to higher or lower drug concentrations. Although these 
+
+transformations are more explainable in terms of the underlying science, they are time -consuming 
+
+and often limited (Landrum & Riniker, 2024). In contrast, the model -based approach elects model 
+
+formulations that are insensitive to inconsiste ncies between datasets and can utilize multiple 
+
+disparate sources optimally, without the need for significant a priori data transformation and 
+
+curation. 
+
+From the ML literature, we mention two routes that yield models that can utilize multiple data 
+
+sources: multitask learning and Learning -to -Rank (L2R ). Multitask learning uses model 
+
+formulations that allow for learning from multiple datasets; multitask models were reported as 
+
+promising alternatives to single -task models in drug discovery (Capela et al., 2019; Ramsundar et 
+
+al., 2015; Xu et al., 2017). Ty pically used to improve models by jointly learning to predict multiple, 
+
+correlated target properties, the main drawback of the multitask formulation is having to train 
+
+prediction “head” models for each prediction task. While, when properly parametrized , the head 
+
+models can harmonize multiple tasks, the resulting multitask model might lack a coherent scoring 
+
+function that can prioritize compounds by a single property. Besides classifiers and regressors, 
+
+L2R is a major type of ML approach that is concerne d with ranking or prioritizing queries based 
+
+on their relevance (Cao et al., 2007; T. -Y. Liu, 2009). Although L2R was evaluated for drug 
+
+discovery and molecular property prediction (Agarwal et al., 2010; Rathke et al., 2011; Zhang et 
+
+al., 2015), it has not been u sed in HTS campaigns before. The simplest form of L2R learns to 
+
+compare pairs of observations and predict whether the first or second in each pair is of higher 
+
+“relevance” – relevance in a drug discovery application might refer to inhibition, binding, or a ny 
+
+> .CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 22, 2026. ;https://doi.org/10.64898/2026.06.22.733866 doi: bioRxiv preprint
+
+20 
+
+other property to be optimized; for example, antibiotic compounds that are predicted to be more 
+
+active are assigned higher relevance. When applied to prioritizing compounds, L2R exploits the 
+
+approximate invariance of compound ranks to assay conditions ; for example, within reasonable 
+
+bounds, it is expected that the relative relevance of a pair of compounds observed in a WT assay 
+
+is similar to that observed in an assay of a mutant strain. As such, when learning relative compound 
+
+relevance, an L2R model can learn from multiple, disparate datasets (see Fig. 6). The 
+
+heterogeneous data can come from different HTS assays, can be reported in terms of different 
+
+endpoints (e.g., a single -concentration inhibition or an MIC value), and can overlap if the 
+
+underlying information (compound relevance ) is approximately consistent. In practice, compound 
+
+relevance is a continuous scalar; when unseen compounds are sorted by their predicted relevance, 
+
+they will be approximately ordered by the target property, e.g., inhibition. We trained two L2R 
+
+models: one for ranking by E. coli lptD - activity and one for ranking by human cell cytotoxicity. 
+
+The L2R formulation allowed us to utilize multiple sources in the training data resulting in models 
+
+with state -of -the -art chemical space coverage: the E. coli lptD - activity ranker was trained on over 
+
+1.2 million observations of approximately 700,000 unique compounds, while the cytotoxicity 
+
+ranker was trained on over 2 million observations of 520,000 unique compounds . Table 3 is a
+
+summary of training data sources. 
+
+> .CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 22, 2026. ;https://doi.org/10.64898/2026.06.22.733866 doi: bioRxiv preprint
+
+21 
+
+Figure 6 . L2R concept. During training, an L2R model learns to compare pairs of compounds, 
+
+based on e.g., their relative growth inhibition. During prediction, the model outputs a single score; 
+
+higher scores indicate higher compound relevance, i.e., higher predicted inhibition. The score can 
+
+be used to, e.g., rank -order a virtual library. 
+
+Table 3 . Data sources and dataset sizes for E. coli inhibition and human cell cytotoxicity training 
+
+data . The numbers are the numbers of experimental observations in each dataset. 
+
+Data source  E. coli inhibition  Cytotoxicity 
+
+Proprietary  400,000 
+
+Related patents  140 
+
+CO -ADD  225,000  4,600 
+
+PubChem  490,000  2,114,000 
+
+ChEMBL  6,600 
+
+> .CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 22, 2026. ;https://doi.org/10.64898/2026.06.22.733866 doi: bioRxiv preprint
+
+22 
+
+Compound -by -compound selection 
+
+The CP selection scheme was designed to select compounds one -by -one from Enamine’s Liquid 
+
+Stock collection while maximizing the number of hits, minimizing the number of cytotoxic 
+
+compounds, and simultaneously avoiding known antibiotics and other non -novel compounds . The 
+
+scheme comprised preferential selection and constraints. For simplicity, we discuss the constraints 
+
+first. Using Extended Connectivity Fingerprints (ECFP), a Tanimoto distance cutoff of 0.6 was 
+
+used to exclude compounds similar to known or approved a ntibiotics and compounds screened in 
+
+the first stage of the HTS campaign. The remaining chemical space was scored by the two ranking 
+
+models to predict compound relevance in terms of E. coli activity and non -cytotoxicity. Figure 7
+
+selection shows a two -dimensional histogram of the achieved scores. The inverse correlation 
+
+between inhibition and cytotoxicity was immediately apparent. This was expected , as non -specific 
+
+toxicity is a prevalent factor in bacterial inhibition; therefore, the selection logic had to realize 
+
+optimization over two competing objectives. To identify an optimal tradeoff between activity and 
+
+non -cytotoxicity, a small, held -out, ind ependent dataset was used to estimate the inverse linear 
+
+relationship between the two objectives using a Logistic Regression (LR) model. Starting from the 
+
+non -cytotoxic and active (top right) quadrant in Fig. 7, the normal of the LR decision function was 
+
+used as the direction of greedy compound selection. Compounds that achieved the best aggregate 
+
+LR score were greedily picked. The chemical space was sphere -exclusion clustered and the cluster 
+
+neighbors of every picked compound were excluded; therefore, only the best cluster member was 
+
+picked per next -best compound. Additionally, an arbitrary activity threshold of the 65 th percentile 
+
+of the predicted activity scores was used. Selection proceeded this way iteratively, picking the 
+
+next -best compound in terms of its aggregate score, and excluding its cluster members from further 
+
+selection until the quota of 5,000 diverse, nove l compounds was filled. Note that the zero isoline 
+
+> .CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 22, 2026. ;https://doi.org/10.64898/2026.06.22.733866 doi: bioRxiv preprint
+
+23 
+
+of the LR model was not approached, indicating that the parent library had remaining potential for 
+
+further selection. The selection frontier in terms of the aggregate LR score is denoted as “decision 
+
+margin” in Fig. 7.
+
+Figure 7 . Cherry -picking selection logic. Blue hues show a 2D histogram of compounds in the 
+
+space of predicted non -cytotoxicity and activity (dark blue indicates high density; high non -
+
+cytotoxicity score implies a high likelihood of non -toxicity; high activity sco re implies high 
+
+likelihood of activity). The inverse correlation signifies that generically toxic compounds are more 
+
+likely to be antibiotic. The linear decision boundary is obtained as the separating line of a logistic 
+
+regression model that best separates cytotoxic and not cytotoxic compounds in an independent test 
+
+set. The decision margin represents the boundary that encompasses the cherry -picked compounds 
+
+by greedily filling a selection budget optimizing the predicted therapeutic window and compound 
+
+dive rsity. In addition, compounds that were predicted to be less active than the 65 th percentile of 
+
+predicted activity were excluded. 
+
+> .CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 22, 2026. ;https://doi.org/10.64898/2026.06.22.733866 doi: bioRxiv preprint
+
+24 
+
+Microbiology 
+
+High throughput screening (HTS) was conducted at Evotec (Toulouse, France). The screening 
+
+collection was tested for antibacterial activity at 30 M against 5 x 10 5 CFU membrane -
+
+permeabilized E. coli lptD4213 (Sampson et al., 1989), which was incubated for 24 h at 37 oC in 
+
+in 30 l M9 minimal media (+2% glucose) in a 384 well plate. After equilibrating the plate to 
+
+room temperate, 10 ul of Bac TiterGlo TM reagent (Promega cat # G8233, prepared according to 
+
+the manufacturer’s instructions) was added, mixed briefly on the orbital shaker, incubated for 5 
+
+min and luminescence was recorded with an integration time of 100 ms . Vancomycin and 
+
+tetracycline were used as positive controls. Hit confirmation was done in a triplicate single 
+
+concentration retest at 30 M. Hit profiling was performed in duplicate in an 11 -point dose 
+
+response assay (1:2 dilutions from a top concentration of 100 M). Cytotoxicity testing was also 
+
+performed at Evotec in 384 well plates, with each well containing 3,000 HepG2 cells (ATCC cat 
+
+# HB -8065) in 20 l culture media (Dulbecco’s Modified Eagle’s Medium [DMEM, Gibco cat # 
+
+11885 -084] supplemented with 10% fetal bovine serum [FBS, Gibco cat # A5669701], 1x 
+
+penicillin -streptomycin mixture [Solarbio cat # P1400], 1x non -essential amino acids [NEAA, 
+
+Gibco cat # 11140 -050] and 1% HEPES [Gibco cat # 15630 -080]) incubated for 48 h at 37 oC, 5% 
+
+CO 2 with test compounds in the same dose response set up as above. After incubation, 20 l of 
+
+CellTiterGlo reagent (Promega, cat # G7571), prepared according to the manufacturer’s 
+
+instructions) was added. Plates were incubated at room temperature for 10 min, then luminescence 
+
+was measured as described above. Resistance mapping was performed by plating up to 10⁹ CFU E. 
+
+coli lptD4213 on M9 minimal media (+2% glucose) agar at 4X the agar MIC of selected 
+
+compounds, incubated up to 48 h at 37 oC. Once stable resistance of isolated colonies was 
+
+confirmed by MIC testing, resistance mapping was performed by comparing genomic sequence of 
+
+> .CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 22, 2026. ;https://doi.org/10.64898/2026.06.22.733866 doi: bioRxiv preprint
+
+25 
+
+mutants to the parent strain (sequencing was performed at SeqCenter [Pittsburgh, PA] and analysis 
+
+was performed using breseq software (Deatherage & Barrick, 2014)). 
+
+.CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 22, 2026. ;https://doi.org/10.64898/2026.06.22.733866 doi: bioRxiv preprint 26 
+
+AUTHOR INFORMATION 
+
+Corresponding Author 
+
+Paul Lukacs; ArrePath Inc. , 303A College Road East, Princeton, NJ 08540, United States of 
+
+America 
+
+Author Contributions 
+
+The manuscript was written throug h contributions of all authors. All authors have given approval 
+
+to the final version of the manuscript. 
+
+ABBREVIATIONS 
+
+ML, Machine Learning; cherry -picked (CP); L2R, Learning -to -Rank ; ROC, Receiver Operating 
+
+Characteristic; AUROC, Area Under Receiv er Operating Characteristic Curve .
+
+> .CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 22, 2026. ;https://doi.org/10.64898/2026.06.22.733866 doi: bioRxiv preprint
+
+27 
+
+REFERENCES 
+
+Agarwal, S., Dugar, D., & Sengupta, S. (2010). Ranking Chemical Structures for Drug 
+
+Discovery: A New Machine Learning Approach. Journal of Chemical Information and Modeling, 
+
+50(5), 716 –731. https://doi.org/10.1021/ci9003865 
+
+Balakrishnan, V. S. (2022). WHO’s antibacterial pipeline reports. The Lancet Infectious 
+
+Diseases, 22(10), 1424. https://doi.org/10.1016/S1473 -3099(22)00603 -X
+
+Brown, E. D., & Wright, G. D. (2016). Antibacterial drug discovery in the resistance era. Nature, 
+
+529(7586), 336 –343. https://doi.org/10.1038/nature17042 
+
+Butler, M. S., Blaskovich, M. A., & Cooper, M. A. (2017). Antibiotics in the clinical pipeline at 
+
+the end of 2015. The Journal of Antibiotics, 70(1), 3 –24. https://doi.org/10.1038/ja.2016.72 
+
+Cao, Z., Qin, T., Liu, T. -Y., Tsai, M. -F., & Li, H. (2007). Learning to rank: From pairwise 
+
+approach to listwise approach. Proceedings of the 24th International Conference on Machine 
+
+Learning, 129 –136. https://doi.org/10.1145/1273496.1273513 
+
+Capela, F., Nouchi, V., Deursen, R. V., Tetko, I. V., & Godin, G. (2019). Multitask Learning On 
+
+Graph Neural Networks Applied To Molecular Property Predictions (arXiv:1910.13124). arXiv. 
+
+https://doi.org/10.48550/arXiv.1910.13124 
+
+Castillo -Garit, J. A., Marrero -Ponce, Y., Barigye, S. J., Medina -Marrero, R., Bernal, M. G., 
+
+Vega, J. M. G. de la, Torrens, F., Arán , V. J., Pérez -Giménez, F., García -Domenech, R., & 
+
+Acevedo -Barrios, R. (2015). In silico Antibacterial Activity Modeling Based on the 
+
+TOMOCOMD -CARDD Approach. Journal of the Brazilian Chemical Society, 26, 1218 –1226. 
+
+https://doi.org/10.5935/0103 -5053.20150 087 
+
+> .CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 22, 2026. ;https://doi.org/10.64898/2026.06.22.733866 doi: bioRxiv preprint
+
+28 
+
+Cesaro, A., Bagheri, M., Torres, M., Wan, F., & de la Fuente -Nunez, C. (2023). Deep learning 
+
+tools to accelerate antibiotic discovery. Expert Opinion on Drug Discovery, 18(11), 1245 –1257. 
+
+https://doi.org/10.1080/17460441.2023.2250721 
+
+Cherkasov, A. (2005). Inductive QSAR Descriptors. Distinguishing Compounds with 
+
+Antibacterial Activity by Artificial Neural Networks. International Journal of Molecular Sciences, 
+
+6(1), Article 1. https://doi.org/10.3390/i6010063 
+
+Childers, W. E., Elokely, K. M., & Abou -Gharbia, M. (2020). The Resurrection of Phenotypic 
+
+Drug Discovery. ACS Medicinal Chemistry Letters, 11(10), 1820 –1828. 
+
+https://doi.org/10.1021/acsmedchemlett.0c00006 
+
+Croston, G. E. (2017). The utility of target -based discovery. Expert Opinion on Drug Discovery. 
+
+https://www.tandfonline.com/doi/abs/10.1080/17460441.2017.1308351 
+
+Dalecki, A. G., Zorn, K. M., Clark, A. M., Ekins, S., Narmore, W. T., Tower, N., Rasmussen, 
+
+L., Bostwick, R., Kutsch, O., & Wolschendorf, F. (2019). High -throughput screening and Bayesian 
+
+machine learning for copper -dependent inhibitors of Staphylococcus aureus. Metallomics: 
+
+Integrated Biometal Science, 11(3), 696 –706. https://doi.org/10.1039/c8mt00342d 
+
+Deatherage, D. E., & Barrick, J. E. (2014). Identification of mutations in laboratory -evolved 
+
+microbes from next -generation sequencing data using breseq. Methods in Molecular Biology 
+
+(Clifton, N.J.), 1151, 165 –188. https://doi.org/10.1007/978 -1-4939 -0554 -6_12 
+
+Diéguez -Santana, K., & González -Díaz, H. (2023). Machine learning in antibacterial discovery 
+
+and development: A bibliometric and network analysis of research hotspots and trends. Computers 
+
+in Biology and Medicine, 155, 106638. https://doi.org/10.1016/j.compbiomed .2023.106638 
+
+Durrant, J. D., & Amaro, R. E. (2015). Machine -learning techniques applied to antibacterial drug 
+
+discovery. Chemical Biology & Drug Design, 85(1), 14 –21. https://doi.org/10.1111/cbdd.12423 
+
+> .CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 22, 2026. ;https://doi.org/10.64898/2026.06.22.733866 doi: bioRxiv preprint
+
+29 
+
+E. Graff, D., I. Shakhnovich , E., & W. Coley, C. (2021). Accelerating high -throughput virtual 
+
+screening through molecular pool -based active learning. Chemical Science, 12(22), 7866 –7881. 
+
+https://doi.org/10.1039/D0SC06805E 
+
+Gao, W., & Coley, C. W. (2020). The Synthesizability of Molecules Proposed by Generative 
+
+Models. Journal of Chemical Information and Modeling, 60(12), 5714 –5723. 
+
+https://doi.org/10.1021/acs.jcim.0c00174 
+
+Ivanenkov, Y. A., Zhavoronkov, A., Yamidanov, R. S., Osterman, I. A., Sergiev, P. V., 
+
+Aladinskiy, V. A., Aladinskaya, A. V., Terentiev, V. A., Veselov, M. S., Ayginin, A. A., Kartsev, 
+
+V. G., Skvortsov, D. A., Chemeris, A. V., Baimiev, A. Kh., Sofronova, A. A., Malyshev, A. S., 
+
+Filkov, G. I., Bezrukov, D. S., Zagribelnyy, B. A., … Dontsova, O. A. (2019). Ident ification of 
+
+Novel Antibacterials Using Machine Learning Techniques. Frontiers in Pharmacology, 10, 913. 
+
+https://doi.org/10.3389/fphar.2019.00913 
+
+Jukič , M., & Bren, U. (2022). Machine Learning in Antibacterial Drug Design. Frontiers in 
+
+Pharmacology, 13. https://doi.org/10.3389/fphar.2022.864412 
+
+Kamada, T., & Kawai, S. (1989). An algorithm for drawing general undirected graphs. Inf. 
+
+Process. Lett., 31(1), 7 –15. https://doi.org/10.1016/0020 -0190(89)90102 -6
+
+Karakoc , E., Cherkasov, A., & Sahinalp, S. C. (2006). Distance based algorithms for small 
+
+biomolecule classification and structural similarity search. Bioinformatics, 22(14), e243 –e251. 
+
+https://doi.org/10.1093/bioinformatics/btl259 
+
+Landrum, G. A., & Riniker, S. (2024). Combining IC50 or Ki Values from Different Sources Is 
+
+a Source of Significant Noise. Journal of Chemical Information and Modeling, 64(5), 1560 –1567. 
+
+https://doi.org/10.1021/acs.jcim.4c00049 
+
+> .CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 22, 2026. ;https://doi.org/10.64898/2026.06.22.733866 doi: bioRxiv preprint
+
+30 
+
+Lipinski, C. A. (2004). Lead - and drug -like compounds: The rule -of -five revolution. Drug 
+
+Discovery Today: Technologies, 1(4), 337 –341. https://doi.org/10.1016/j.ddtec.2004.11.007 
+
+Liu, G., & Stokes, J. M. (2022). A brief guide to machine learning for antibiotic discovery. 
+
+Current Opinion in Microbiology, 69, 102190. https://doi.org/10.1016/j.mib.2022.102190 
+
+Liu, T. -Y. (2009). Learning to Rank for Information Retrieval. Foundations and Trends® in 
+
+Information Retrieval, 3(3), 225 –331. https://doi.org/10.1561/1500000016 
+
+Marrero -Ponce, Y., Medina -Marrero, R., Torrens, F., Martinez, Y., Romero -Zaldivar, V., & 
+
+Castro, E. A. (2005). Atom, atom -type, and total nonstochastic and stochastic quadratic 
+
+fingerprints: A promising approach for modeling of antibacterial activity. Bioo rganic & Medicinal 
+
+Chemistry, 13(8), 2881 –2899. https://doi.org/10.1016/j.bmc.2005.02.015 
+
+Masalha, M., Rayan, M., Adawi, A., Abdallah, Z., & Rayan, A. (2018). Capturing antibacterial 
+
+natural products with in silico techniques. Molecular Medicine Reports, 18(1), 763 –770. 
+
+https://doi.org/10.3892/mmr.2018.9027 
+
+Murcia -Soler, M., Pérez -Giménez, F., García -March, F. J., Salabert -Salvador, M. T., Díaz -
+
+Villanueva, W., Castro -Bleda, M. J., & Villanueva -Pareja, A. (2004). Artificial Neural Networks 
+
+and Linear Discriminant Analysis: A Valuable Combination in the Selection of New Antibacterial 
+
+Compounds. Journal of Chemical Information and Computer Sciences, 44(3), 1031 –1041. 
+
+https://doi.org/10.1021/ci030340e 
+
+Nikaido, H. (1994). Prevention of drug access to bacterial targets: Permeability barriers and 
+
+active efflux. Science (New York, N.Y.), 264(5157), 382 –388. 
+
+https://doi.org/10.1126/science.8153625 
+
+> .CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 22, 2026. ;https://doi.org/10.64898/2026.06.22.733866 doi: bioRxiv preprint
+
+31 
+
+Payne, D. J., Gwynn, M. N., Holmes, D. J., & Pompliano, D. L. (2007). Drugs for bad bugs: 
+
+Confronting the challenges of antibacterial discovery. Nature Reviews Drug Discovery, 6(1), 29 –
+
+40. https://doi.org/10.1038/nrd2201 
+
+Probst, D., & Reymond, J. -L. (2020). Visualization of very large high -dimensional data sets as 
+
+minimum spanning trees. Journal of Cheminformatics, 12(1), 12. https://doi.org/10.1186/s13321 -
+
+020 -0416 -x
+
+Rahman, A. S. M. Z., Liu, C., Sturm, H., Hogan, A. M., Davis, R., Hu, P., & Cardona, S. T. 
+
+(2022). A machine learning model trained on a high -throughput antibacterial screen increases the 
+
+hit rate of drug discovery. PLOS Computational Biology, 18(10), e101 0613. 
+
+https://doi.org/10.1371/journal.pcbi.1010613 
+
+Ramsundar, B., Kearnes, S., Riley, P., Webster, D., Konerding, D., & Pande, V. (2015). 
+
+Massively Multitask Networks for Drug Discovery (arXiv:1502.02072). arXiv. 
+
+https://doi.org/10.48550/arXiv.1502.02072 
+
+Rathke, F., Hansen, K., Brefeld, U., & Müller, K. -R. (2011). StructRank: A New Approach for 
+
+Ligand -Based Virtual Screening. Journal of Chemical Information and Modeling, 51(1), 83 –92. 
+
+https://doi.org/10.1021/ci100308f 
+
+Sampson, B. A., Misra, R., & Benson, S. A. (1989). Identification and characterization of a new 
+
+gene of Escherichia coli K -12 involved in outer membrane permeability. Genetics, 122(3), 491 –
+
+501. https://doi.org/10.1093/genetics/122.3.491 
+
+Scalia, G., Rutherford, S. T., Lu, Z., Buchholz, K. R., Skelton, N., Chuang, K., Diamant, N., 
+
+Hütter, J. -C., Luescher, J. -M., Miu, A., Blaney, J., Gendelev, L., Skippington, E., Zynda, G., 
+
+Dickson, N., Koziarski, M., Bengio, Y., Regev, A., Tan, M. -W., & Bi ancalani , T. (2025). Deep -
+
+> .CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 22, 2026. ;https://doi.org/10.64898/2026.06.22.733866 doi: bioRxiv preprint
+
+32 
+
+learning -based virtual screening of antibacterial compounds. Nature Biotechnology, 1–14. 
+
+https://doi.org/10.1038/s41587 -025 -02814 -6
+
+Silver, L. L. (2011). Challenges of Antibacterial Discovery. Clinical Microbiology Reviews, 
+
+24(1), 71 –109. https://doi.org/10.1128/CMR.00030 -10 
+
+Stanley, M., & Segler, M. (2023). Fake it until you make it? Generative de novo design and 
+
+virtual screening of synthesizable molecules. Current Opinion in Structural Biology, 82, 102658. 
+
+https://doi.org/10.1016/j.sbi.2023.102658 
+
+Stokes, J. M., Yang, K., Swanson, K., Jin, W., Cubillos -Ruiz, A., Donghia, N. M., MacNair, C. 
+
+R., French, S., Carfrae, L. A., Bloom -Ackermann, Z., Tran, V. M., Chiappino -Pepe, A., Badran, 
+
+A. H., Andrews, I. W., Chory, E. J., Church, G. M., Brown, E. D., Jaakkola, T. S., Barzilay, R., & 
+
+Collins, J. J. (2020). A Deep Learning Approach to Antibiotic Discovery. Cell, 180(4), 688 -
+
+702.e13. https://doi.org/10.1016/j.cell.2020.01.021 
+
+Tommasi, R., Brown, D. G., Walkup, G. K., Manchester, J. I., & Miller, A. A. (2015). 
+
+ESKAPEing the labyrinth of antibacterial discovery. Nature Reviews Drug Discovery, 14(8), 529 –
+
+542. https://doi.org/10.1038/nrd4572 
+
+Vamathevan, J., Clark, D., Czodrowski, P., Dunham, I., Ferran, E., Lee, G., Li, B., Madabhushi, 
+
+A., Shah, P., Spitzer, M., & Zhao, S. (2019). Applications of machine learning in drug discovery 
+
+and development. Nature Reviews. Drug Discovery, 18(6), 463 –477. 
+
+https://doi.org/10.1038/s 41573 -019 -0024 -5
+
+van Giffen, B., Herhausen, D., & Fahse , T. (2022). Overcoming the pitfalls and perils of 
+
+algorithms: A classification of machine learning biases and mitigation methods. Journal of 
+
+Business Research, 144, 93 –106. https://doi.org/10.1016/j.jbusres.2022.01.076 
+
+> .CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 22, 2026. ;https://doi.org/10.64898/2026.06.22.733866 doi: bioRxiv preprint
+
+33 
+
+Wang, L., Le, X., Li, L., Ju, Y., Lin, Z., Gu, Q., & Xu, J. (2014). Discovering New Agents Active 
+
+against Methicillin -Resistant Staphylococcus aureus with Ligand -Based Approaches. Journal of 
+
+Chemical Information and Modeling, 54(11), 3186 –3197. https://doi .org/10.1021/ci500253q 
+
+Wong, F., Zheng, E. J., Valeri, J. A., Donghia, N. M., Anahtar, M. N., Omori, S., Li, A., Cubillos -
+
+Ruiz, A., Krishnan, A., Jin, W., Manson, A. L., Friedrichs, J., Helbig, R., Hajian, B., Fiejtek, D. 
+
+K., Wagner, F. F., Soutter, H. H., Earl, A. M., Stokes, J . M., … Collins, J. J. (2024). Discovery of 
+
+a structural class of antibiotics with explainable deep learning. Nature, 626(7997), 177 –185. 
+
+https://doi.org/10.1038/s41586 -023 -06887 -8
+
+Xu, Y., Ma, J., Liaw, A., Sheridan, R. P., & Svetnik, V. (2017). Demystifying Multitask Deep 
+
+Neural Networks for Quantitative Structure –Activity Relationships. Journal of Chemical 
+
+Information and Modeling, 57(10), 2490 –2504. https://doi.org/10.1021/acs.jci m.7b00087 
+
+Yang, X. -G., Chen, D., Wang, M., Xue, Y., & Chen, Y. -Z. (2009). Prediction of antibacterial 
+
+compounds by machine learning approaches. Journal of Computational Chemistry, 30(8), 1202 –
+
+1211. https://doi.org/10.1002/jcc.21148 
+
+Zhang, W., Ji, L., Chen, Y., Tang, K., Wang, H., Zhu, R., Jia, W., Cao, Z., & Liu, Q. (2015). 
+
+When drug discovery meets web search: Learning to Rank for ligand -based virtual screening. 
+
+Journal of Cheminformatics, 7(1), 5. https://doi.org/10.1186/s13321 -015 -0052 -z
