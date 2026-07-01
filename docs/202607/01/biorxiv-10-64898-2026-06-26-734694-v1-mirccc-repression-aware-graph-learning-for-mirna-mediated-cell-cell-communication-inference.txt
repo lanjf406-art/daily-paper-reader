@@ -1,0 +1,1125 @@
+Title: mirCCC: Repression-aware graph learning for miRNA-mediated cell-cell communication inference
+
+URL Source: https://www.biorxiv.org/content/10.64898/2026.06.26.734694v1.full.pdf
+
+Published Time: Wed, 01 Jul 2026 23:46:19 GMT
+
+Number of Pages: 24
+
+Markdown Content:
+# mirCCC: Repression-aware graph learning for miRNA-mediated cell-cell communication inference 
+
+Yifan Chen 1, Jiaming Cui 2, Shilong Zhang 1, Enyan Liu 1, Luyao Xie 1, Cong Feng 1* ,Ming Chen 1,3,4* 
+
+1 Department of Bioinformatics, College of Life Sciences, Zhejiang University, No.866 Yuhangtang Road, Xihu District, Hangzhou, Zhejiang 310058, China 
+
+2 School of Computer Science, University of Nottingham Jubilee Campus, Wollaton Road, Nottingham, NG8 1BB, United Kingdom 
+
+3 Zhejiang Key Laboratory of Multi-omics Precision Diagnosis and Treatment of Liver Diseases, Zhejiang University, No.866 Yuhangtang Road, Xihu District, Hangzhou, Zhejiang 310058, China 
+
+4 State Key Laboratory of Vegetation Structure Function and Construction, Zhejiang University, No.866 Yuhangtang Road, Xihu District, Hangzhou, Zhejiang 310058, China * ventson@zju.edu.cn (CF); mchen@zju.edu.cn (MC) 
+
+# Abstract 
+
+Cell–cell communication analyses usually focus on protein ligands and receptors and therefore miss extracellular vesicle transfer of microRNAs, an important route of signalling in cancer. Here we show that microRNA-mediated communication can be inferred from standard single-cell RNA sequencing by detecting coordinated decreases in the expression of validated miRNA target genes. We developed mirCCC, a computational framework that estimates cell-specific microRNA activity, models cellular sending and receiving capacity for extracellular vesicle transfer, and learns microRNA-resolved communication graphs from transcriptomic data. In synthetic benchmarks with strong confounding signals, mirCCC improved whereas all comparison methods declined. Applied to a human colorectal cancer atlas, mirCCC recovered known colorectal cancer-associated microRNAs and identified stromal- and myeloid-to-epithelial communication converging on a plasticity program linked to TGF-β and Wnt/ β-catenin signalling. These results provide a practical route for studying extracellular vesicle-mediated communication in existing single-cell atlases. 
+
+# Author summary 
+
+Cell-cell communication plays important roles across a wide range of biological processes. Most studies of cell-cell communication focus on interactions between ligands and receptors. However, cells can also use extracellular vesicles to deliver microRNAs (miRNAs), which regulate gene activity in receiving cells and contribute to cancer progression, immune regulation, and changes in the tissue environment. Since standard single-cell sequencing does not directly capture miRNAs, this mode of communication remains largely unexplored. Here we developed mirCCC, a computational method for inferring miRNA-mediated communication from standard single-cell transcriptomic data. Instead of detecting miRNAs directly, mirCCC examines the effects they leave in receiving cells. Active miRNAs often cause coordinated suppression of their target genes. mirCCC uses these coordinated reductions in the expression of known target June 25, 2026 1/20 
+
+> .CC-BY 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.26.734694 doi: bioRxiv preprint
+
+genes to estimate miRNA activity and combines them with the ability of sending cells to package and release miRNAs and of receiving cells to process them. It can therefore reconstruct directional communication networks for individual miRNAs. Our evaluations show that mirCCC remains reliable in the presence of misleading signals and reveals biologically meaningful regulatory patterns in human colorectal cancer data. Overall, mirCCC provides a practical way to study miRNA-mediated cell-cell communication using existing single-cell transcriptomics datasets. June 25, 2026 2/20 
+
+> .CC-BY 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.26.734694 doi: bioRxiv preprint
+
+# Introduction 1
+
+Cell-cell communication (CCC) analysis has developed into a rich computational ecosystem. CellChat 2
+
+combines ligand–receptor prior knowledge with a mass-action model to analyze communication probabilities 3
+
+and network patterns [1]; NicheNet links sender-side ligand signals to receiver-side transcriptional 4
+
+responses [2]. LIANA+ integrates multiple CCC resources into a unified framework [3]; ICELLNET˜ v2 5
+
+emphasizes multi-subunit ligand/receptor complexes [4]. More recent methods extend cell–cell 6
+
+communication analysis beyond classical ligand–receptor models. DeepTalk extends CCC to spatial 7
+
+transcriptomics by integrating spatial context into graph-based inference [5]. CellNEST models relay 8
+
+communication to capture multi-step signaling cascades across intermediate cell states [6]. SigXTALK 9
+
+further expands CCC analysis to pathway-level crosstalk by linking signaling pathways across interacting cell 10 
+
+populations [7]. Despite these advances, most of these methods still rely on protein ligand–receptor 11 
+
+interactions as the underlying paradigm. 12 
+
+However, cell-cell communication is not limited to protein ligand–receptor signaling. Extracellular vesicles 13 
+
+(EVs) serve as long-range carriers transferring miRNAs, proteins, and lipids between cells [8], playing 14 
+
+widespread roles in immune evasion, metastasis, microenvironment remodeling, and therapy resistance [9]. 15 
+
+EV-mediated miRNA transfer is functionally distinct from ligand–receptor signaling because it acts through 16 
+
+post-transcriptional gene repression rather than receptor activation, making it difficult to characterize using 17 
+
+existing CCC frameworks [10]. Furthermore, standard single-cell transcriptomic workflows rely on 18 
+
+poly(A)-based capture and cannot directly measure mature miRNAs [11]. 19 
+
+Computational tools for inferring EV-derived miRNA communication at the single-cell level remain scarce. 20 
+
+miRTalk was the first to formalize this task, integrating scRNA-seq data with EV-related prior information 21 
+
+and miRNA-target interaction databases [12]. However, miRTalk relies on detected miRNA expression in 22 
+
+sender cells, whereas conventional poly(A)-based scRNA-seq provides limited coverage of mature miRNAs. 23 
+
+MIR-gene transcripts may not faithfully reflect mature miRNA activity or EV loading. In addition, miRTalk 24 
+
+mainly summarizes miRNA–target interactions between annotated cell types, limiting its ability to resolve 25 
+
+cell-to-cell heterogeneity and reconstruct miRNA-specific communication links at single-cell resolution. 26 
+
+Based on these considerations, we propose mirCCC, a repression-aware graph learning framework for 27 
+
+inferring miRNA-mediated cell–cell communication from standard scRNA-seq data. Rather than treating 28 
+
+miRNA communication as another class of ligand–receptor events, mirCCC infers communication from 29 
+
+receiver-side target-gene repression patterns consistent with miRNA activity. It first employs signed diffusion 30 
+
+on a miRNA–target bipartite graph to estimate cell-level miRNA activity proxies from target-gene 31 
+
+expression, thereby avoiding reliance on direct miRNA detection in conventional poly(A)-based scRNA-seq. 32 
+
+It then estimates cellular sending and receiving capacities from the expression of EV biogenesis, miRNA 33 
+
+sorting, and RISC pathway genes. On this basis, mirCCC constructs directed graphs for individual miRNAs 34 
+
+to resolve communication heterogeneity among cells within the same annotated cell type and to learn 35 
+
+representations of their miRNA-mediated communication context. Crucially, communication strength is 36 
+
+determined by miRNA-specific proxy–repression matching: a high sender-side proxy for a given miRNA must 37 
+
+coincide with repression of its corresponding target genes in the receiver cell. This requirement reduces false 38 
+
+positives caused by co-expression, cell-state covariation, or nonspecific activation of EV-related machinery. 39 
+
+Overall, mirCCC extends single-cell communication inference beyond protein ligand–receptor signaling and 40 
+
+enables the analysis of miRNA-mediated regulation using routine scRNA-seq data. 41 
+
+# Methods 42 
+
+An overview of the full pipeline is shown in Fig. 1. 43 
+
+## Prior knowledge databases 44 
+
+mirCCC relies on four curated gene sets as prior knowledge inputs (Fig. 1a). Experimentally validated 45 
+
+miRNA-target interactions for extracellular vesicle (EV)-derived miRNAs were obtained from miRTalkDB, 46 
+
+the curated database underlying miRTalk [12]. miRTalkDB integrates experimentally verified EV-derived 47 
+
+miRNAs curated from EV-focused resources, including EVmiRNA [13], ExoCarta [14], and Vesiclepedia [15], 48 
+
+3/20 
+
+> .CC-BY 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.26.734694 doi: bioRxiv preprint
+
+Fig 1. mirCCC pipeline overview and model architecture. (a) Input data: scRNA-seq expression matrix and curated miRNA–target interaction database, together with three prior gene sets (EV biogenesis, EV cargo sorting, and RISC loading genes) that define the molecular machinery for EV-miRNA communication. (b) miRNA activity inference: a repression-aware signed bipartite diffusion propagates z-scored target-gene expression through a weighted miRNA–gene adjacency matrix to produce per-cell miRNA proxy scores. (c) Per-miRNA directed graph construction: for each candidate miRNA, sender and receiver cells are selected based on emission and absorption capacity, respectively, and connected by directed edges carrying 6-dimensional continuous features plus a learnable miRNA embedding. (d) Output and visualization: cell-type-level communication matrices and miRNA-resolved chord diagrams. (e) Input representation for the graph neural network: 3-dimensional node features (release, sorting, RISC scores), 22-dimensional augmented edge features (6 continuous + 16-dim miRNA embedding), and directed multi-miRNA graph structure. (f) miRNA-aware encoder architecture: two stacked TransformerConv layers with multi-head attention incorporating edge features, producing 128-dimensional node embeddings. Attention weights α1 and α2 from both layers are retained for downstream scoring. (g) Self-supervised training via Deep Graph Infomax (DGI): a cosine-similarity discriminator contrasts node embeddings from the real graph against those from a corrupted graph (generated by independent node and edge feature shuffling) to learn meaningful representations without labeled data. (h) Model outputs: node embeddings, edge-level attention scores, and aggregated cell-type communication matrices. 4/20 
+
+> .CC-BY 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.26.734694 doi: bioRxiv preprint
+
+together with experimentally validated miRNA-target interactions from miRTarBase [16] and TarBase [17]. 49 
+
+miRTalk further assigns confidence annotations to these interactions, including Functional MTI, Functional 50 
+
+MTI (Weak), and Non-Functional MTI. Three additional pathway gene lists were used to define the 51 
+
+EV-miRNA communication machinery: EV biogenesis, miRNA sorting, and RISC-mediated target silencing. 52 
+
+The complete gene lists are distributed with the pipeline repository. All gene names are unified to HGNC 53 
+
+symbols via an alias-mapping procedure prior to analysis. 54 
+
+## miRNA activity inference via signed graph diffusion 55 
+
+Standard scRNA-seq protocols rely on polyA-tail capture and thus cannot directly measure mature miRNAs, 56 
+
+which are approximately 22 nucleotides long and lack polyA tails. Since active miRNAs leave a detectable 57 
+
+repression footprint on their target genes, we reverse-infer cell-level miRNA activity directly from mRNA 58 
+
+expression data (Fig. 1b). 59 
+
+We construct a weighted bipartite graph G = ( M ∪ T, E ) from miRTalk, where M is the set of miRNAs 60 
+
+and T is the set of target genes present in the expression data. Interactions are filtered by species (human) 61 
+
+and minimum target count ( ≥ 10 per miRNA). Each edge ( m, t ) ∈ E is assigned a confidence weight wmt 62 
+
+reflecting the strength of experimental evidence: 63 
+
+wmt =
+
+
+
+1.0 Functional MTI ,
+
+0.5 Non-Functional MTI ,
+
+0.1 Functional MTI (Weak) ,
+
+0.01 Non-Functional MTI (Weak) .
+
+(1) These raw weights are assembled into a biadjacency matrix Araw ∈ R|M |×| T |. To mitigate the influence of 64 
+
+promiscuous target genes regulated by many miRNAs, we apply inverse document frequency (IDF) weighting 65 
+
+followed by L1 row-normalization. IDF down-scales columns corresponding to genes targeted by many 66 
+
+miRNAs: 67 
+
+IDF( t) = log 
+
+ |M ||{ m : ( m, t ) ∈ E}| + 1 
+
+
+
+, (2) ˜wmt = wmt × IDF( t), Amt = ˜wmt 
+
+P 
+
+> t′
+
+| ˜wmt ′ | . (3) Let W ∈ Rncells ×G denote the expression matrix restricted to target genes retained after preprocessing. 68 
+
+For each target gene, expression values are standardized across cells to obtain a z-scored matrix Wz . These 69 
+
+gene-level signals are then placed on the gene side of the miRNA–target bipartite graph, forming the initial 70 
+
+signal matrix 71 
+
+S(0) =
+
+0|M |× ncells 
+
+W ⊤
+
+> z
+
+
+
+, (4) where the miRNA block is initialized to zero and the gene block contains the transposed target-gene z-scores. 72 
+
+Let Asigned ∈ R|M |× G denote the signed, weighted miRNA–target adjacency matrix. To propagate 73 
+
+repression signals from target genes to miRNAs, we construct the full bipartite adjacency 74 
+
+˜A =
+
+ 0 Asigned 
+
+A⊤ 
+
+> signed
+
+0
+
+
+
+, (5) and apply symmetric degree normalization, 75 
+
+ˆA = D−1/2˜A
+
+˜AD −1/2˜A , (6) where D ˜A is the diagonal degree matrix of ˜A. A single-step signed diffusion is then performed as 76 
+
+S(1) = −D−1row ˆAS (0) , (7) 5/20 
+
+> .CC-BY 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.26.734694 doi: bioRxiv preprint
+
+where Drow = diag( | ˆA|1) is a row-wise normalization term. This additional normalization improves 77 
+
+numerical stability and reduces bias arising from variation in miRNA target-set size. 78 
+
+The negative sign encodes the repressive prior of miRNA regulation: an active miRNA is expected to be 79 
+
+associated with reduced expression of its target genes, such that lower target-gene z-scores are transformed 80 
+
+into higher inferred miRNA proxy values after propagation. The miRNA block of S(1) is then extracted and 81 
+
+arranged into the proxy matrix 82 
+
+P ∈ Rncells ×| M |, (8) which stores the inferred activity proxy of each miRNA in each cell. 83 
+
+To assess target observability, we compute a coverage quality score for each miRNA based on the fraction 84 
+
+of support-weighted target evidence retained in the expression matrix. Let Sall (m) denote the total support 85 
+
+weight of all annotated targets of miRNA m, and let Sobs (m) denote the total support weight of those 86 
+
+targets with detection fraction at least 0.05 across cells. We define 87 
+
+qcov (m) = Sobs (m)
+
+Sall (m) . (9) miRNAs with low target coverage are then down-weighted by multiplying their diffused scores by qcov (m)γ , 88 
+
+where γ = 2 .5 by default. In downstream graph construction, each miRNA-specific proxy vector is further 89 
+
+min–max normalized across cells to [0 , 1], yielding proxy 01 (m, c ). 90 
+
+## Sender and receiver capacity scoring 91 
+
+To quantify sender- and receiver-side molecular capacity, we computed pathway activity scores for the EV 92 
+
+biogenesis, miRNA sorting, and RISC gene sets using mean z-score aggregation of log-normalized expression. 93 
+
+Raw counts were library-size normalized to 10 4 counts per cell and log-transformed using Scanpy [18]. For 94 
+
+each gene g, expression was standardized across cells as 95 
+
+zc,g = xc,g − ¯xg
+
+σg
+
+, (10) where ¯ xg and σg denote the mean and standard deviation of gene g across all cells. For each pathway gene 96 
+
+set Gk, the per-cell pathway score was defined as 97 
+
+score k(c) = 1
+
+|Gk|
+
+X
+
+> g∈Gk
+
+zc,g . (11) This yielded three pathway activity scores per cell: a release score from EV biogenesis genes, a sorting score 98 
+
+from miRNA sorting genes, and a RISC score from RISC pathway genes. Each score was subsequently 99 
+
+min–max normalized to [0 , 1], yielding release 01 (c), sorting 01 (c), and risc 01 (c). 100 
+
+To define sender-side EV-miRNA emission capacity, we required that a cell exhibit both EV biogenesis 101 
+
+activity and miRNA sorting activity. Accordingly, the sender emission prior was defined as 102 
+
+emit prior( c) = z01(release 01 (c) × sorting 01 (c)) , (12) where z01( ·) denotes min–max normalization to [0 , 1] across cells. Intuitively, this score assigns high values 103 
+
+only to cells that jointly exhibit strong vesicle production and active miRNA loading machinery. In contrast, 104 
+
+risc 01 (c) was used as the receiver-side machinery score, reflecting the cellular capacity to process incoming 105 
+
+miRNAs and mediate downstream target repression. 106 
+
+## Per-miRNA directed graph construction 107 
+
+A key design principle of mirCCC is that miRNAs are modeled independently rather than collapsed into a 108 
+
+single aggregate communication score (Fig. 1c). For each candidate miRNA, we constructed a 109 
+
+miRNA-specific directed sender-to-receiver edge set over the shared cell population and retained the miRNA 110 
+
+identity of each edge in the pooled graph representation. 111 
+
+6/20 
+
+> .CC-BY 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.26.734694 doi: bioRxiv preprint
+
+For each miRNA, sender cells were prioritized by combining the cell-level emission prior with the 112 
+
+normalized miRNA proxy, whereas receiver cells were prioritized by the inferred target-repression score. We 113 
+
+then selected the top sender and receiver candidates and, for each sender, retained only the top receiver 114 
+
+partners, yielding a sparse directed graph focused on the most plausible communication routes. Self-loops 115 
+
+and weakly supported edges were removed. Each retained edge was annotated with six features describing 116 
+
+matching strength, sender capacity, receiver state, and miRNA-specific activity, whereas each node carried 117 
+
+three pathway-based features corresponding to EV biogenesis, miRNA sorting, and RISC activity. 118 
+
+Node features. Each cell was represented by three pathway-based node features: normalized EV 119 
+
+biogenesis activity, normalized miRNA sorting activity, and normalized RISC pathway activity (Fig. 1e). 120 
+
+Sender selection. For each miRNA mk, a miRNA-specific sender score was computed for every cell as the 121 
+
+product of the cell-level emission prior and the normalized proxy of mk: 122 
+
+sender score( mk, i ) = emit prior( i) × proxy 01 (i, m k). (13) This favors cells that both exhibit EV-miRNA emission capacity and show evidence of activity for the 123 
+
+corresponding miRNA. The top-S cells were then selected as sender candidates, where S is a configurable 124 
+
+hyperparameter. 125 
+
+Receiver scoring. Receiver candidates were prioritized using a hybrid repression score that combines two 126 
+
+complementary measures of target-gene suppression through their geometric mean: 127 
+
+repress 01 (mk, j ) = prepress ctrl (mk, j ) × repress rank (mk, j ). (14) The first component was a control-adjusted target-module score. For each miRNA, the weighted mean 128 
+
+expression of its target genes in a given cell was compared with that of expression-matched control genes 129 
+
+selected from the same global expression bins, yielding an adjusted target-module signal. Lower adjusted 130 
+
+target-module expression corresponded to stronger inferred repression and was rescaled to [0 , 1] to obtain 131 
+
+repress ctrl . 132 
+
+The second component was a within-cell rank-based repression score computed from the weighted 133 
+
+normalized ranks of target genes. This term captures ordinal repression patterns and is less sensitive to 134 
+
+outliers in absolute expression magnitude. The geometric mean of the two components therefore combines 135 
+
+absolute repression relative to matched controls with rank-based evidence of target suppression. 136 
+
+To incorporate receiver-side processing capacity, the final receiver absorption score was defined as 137 
+
+absorb( mk, j ) = repress 01 (mk, j ) × risc 01 (j). (15) The top-R cells were then selected as receiver candidates, where R is a configurable hyperparameter 138 
+
+(R = 150 in the default configuration). For each sender cell, directed edges were retained only to its top-L 139 
+
+receiver candidates, where L is also configurable ( L = 10 by default). Candidate edges with low combined 140 
+
+sender–receiver weight were discarded using a minimum threshold of 0.005. 141 
+
+Edge features. Each directed edge ( i → j) associated with miRNA mk carried a six-dimensional 142 
+
+continuous feature vector comprising the base sender–receiver matching weight, the sender’s emission prior, 143 
+
+the receiver’s repression score, the receiver’s RISC capacity, the receiver-side control-adjusted target-module 144 
+
+signal, and the sender’s normalized miRNA proxy score. In addition, each edge carried a discrete miRNA 145 
+
+index k, which was used for learnable miRNA embedding lookup in the graph encoder. 146 
+
+## miRNA-aware Graph Transformer encoder 147 
+
+The miRNA-aware encoder jointly integrates cell-level node features with miRNA-specific edge information 148 
+
+(Fig. 1f). Each miRNA index is first mapped to a learnable embedding of dimension 16, which is concatenated 149 
+
+with the 6-dimensional continuous edge feature vector to form an augmented edge representation. 150 
+
+7/20 
+
+> .CC-BY 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.26.734694 doi: bioRxiv preprint
+
+The encoder consists of two stacked TransformerConv layers [19], each using multi-head attention with 151 
+
+edge features incorporated into the attention computation. In the default configuration, we used 4 attention 152 
+
+heads and a hidden dimension of 128, with multi-head outputs aggregated rather than concatenated. A 153 
+
+PReLU activation was applied after the second layer to obtain the final node embeddings zi ∈ R128 . 154 
+
+Attention weights from both layers were retained for downstream analysis, with final-layer attention used in 155 
+
+communication score extraction. 156 
+
+## Self-supervised training via Deep Graph Infomax 157 
+
+Because ground-truth labels for miRNA-mediated communication are unavailable, we trained the encoder 158 
+
+using Deep Graph Infomax (DGI) [20], a self-supervised objective that maximizes agreement between local 159 
+
+node representations and a global graph summary (Fig. 1g). Following the standard DGI formulation, the 160 
+
+graph-level summary vector was computed by applying a sigmoid activation to the mean of all node 161 
+
+embeddings. 162 
+
+Negative examples were generated by a corruption function that independently permuted node features 163 
+
+and continuous edge attributes while keeping the graph topology fixed. This dual corruption yields a 164 
+
+stronger contrastive signal than perturbing only one modality, as the encoder must learn the correspondence 165 
+
+between cellular states and their miRNA-aware communication context. Training then followed a contrastive 166 
+
+objective that distinguishes node embeddings from the original graph from those obtained under corruption. 167 
+
+Specifically, embeddings and the graph summary vector were L2-normalized, and a cosine-similarity 168 
+
+discriminator with temperature τ = 0 .5 was used: 169 
+
+L = − 12|V |
+
+ 
+
+> |V|
+
+X
+
+> i=1
+
+log D(zi, s) +  
+
+> |V|
+
+X
+
+> i=1
+
+log(1 − D(˜ zi, s)) 
+
+ , (16) where D(z, s) = σ ¯z⊤¯s / τ  with ¯ z = z/∥z∥2, zi and ˜ zi denote node embeddings from the original and 170 
+
+corrupted graphs, respectively, and s = σ(mean i zi) denotes the graph summary vector. 171 
+
+Optimization. The model was optimized with Adam using an initial learning rate of 0.001 and a cosine 172 
+
+annealing schedule with a minimum learning rate of 0 .01 × η0. Mini-batch training was performed with 173 
+
+NeighborLoader using two-hop neighborhood sampling with 10 neighbors per hop and a batch size of 1024, 174 
+
+with receiver nodes used as input seeds. The number of training epochs was treated as a configurable 175 
+
+hyperparameter. 176 
+
+## Communication score computation 177 
+
+After training, miRNA-specific communication scores were computed for directed sender–receiver edges by 178 
+
+combining hand-crafted biological priors with learned attention-based modulation (Fig. 1h). For a directed 179 
+
+edge ( i → j) associated with miRNA mk, the final score was defined as 180 
+
+score( i, j, m k) = proxy 01 (i, m k) × repress 01 (mk, j )
+
+| {z }
+
+> match score
+
+× pemit prior( i) × risc 01 (j)
+
+| {z }
+
+> machinery gate
+
+× (1 + attn bonus) . (17) The match score captures miRNA-specific sender–receiver compatibility by combining the sender-side 181 
+
+proxy of mk with the receiver-side repression signal for the same miRNA. The machinery gate acts as a soft 182 
+
+biological filter, increasing scores only when the sender exhibits EV-miRNA emission capacity and the 183 
+
+receiver exhibits RISC loading capacity. Learned attention then provides a mild multiplicative refinement: 184 
+
+attn bonus = ¯d
+
+2 ¯α, (18) 8/20 
+
+> .CC-BY 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.26.734694 doi: bioRxiv preprint
+
+where ¯d denotes the average graph degree and ¯α denotes the mean edge attention derived from the retained 185 
+
+transformer attention weights. The final communication score therefore combines miRNA-specific matching, 186 
+
+sender–receiver molecular competency, and graph-learned contextual refinement. 187 
+
+Aggregation. For downstream summarization, miRNA-specific edge scores were first aggregated at the 188 
+
+cell-pair level by combining all miRNA-mediated edges between the same sender and receiver cells. In the 189 
+
+default setting, this aggregation was performed by summation. Cell-type-level communication matrices were 190 
+
+then obtained by summing the resulting cell-pair scores over all constituent sender–receiver cell pairs 191 
+
+belonging to cell types A and B, respectively (Fig. 1d,h). 192 
+
+## Synthetic benchmark data 193 
+
+To evaluate mirCCC under controlled conditions, we generated two synthetic scRNA-seq benchmark settings, 194 
+
+each containing 2,000 cells, 8 cell types, 2,000 genes, and 3 implanted communication patterns. In the Base 195 
+
+setting, each communication pattern was mediated by 16 ground-truth miRNAs. In the Trap setting, each 196 
+
+communication pattern was mediated by 12 ground-truth miRNAs. Communication signals were injected by 197 
+
+increasing EV biogenesis and miRNA sorting activity in sender cells, increasing RISC activity in receiver 198 
+
+cells, and repressing the corresponding miRNA target genes in receivers. Dropout and expression noise were 199 
+
+added to model technical variability. 200 
+
+Two benchmark settings were used. The Base setting featured uniform miRNA importance, no 201 
+
+orthogonal target-selection trap, no per-miRNA gradient, and predominantly easy negatives (90%). The Trap 202 
+
+setting introduced orthogonal target selection, variable miRNA importance, and graded per-miRNA signals, 203 
+
+with easy negatives reduced to 45%, increasing hard cross-pattern confounders. 204 
+
+Six methods were evaluated: mirCCC and five baselines, including two simple heuristics (Prior-Product, 205 
+
+Matched-Product), one miRNA-oriented (miRTalk-Restored), and two adapted ligand–receptor-style methods 206 
+
+(CellChat-style, NicheNet-style). All were run under the same benchmark framework. miRTalk-Restored is a 207 
+
+paper-faithful reimplementation restoring EVBS-based sender scoring, RISC/RITAC-based receiver scoring, 208 
+
+rank-based target evaluation, optional permutation testing, and specificity calculation, while relying on proxy 209 
+
+miRNA activity. The CellChat-style and NicheNet-style baselines are miRNA-adapted analogs of classical 210 
+
+ligand–receptor methods. Missing ground-truth pairs were completed using the method-specific fill score 211 
+
+defined below, and results were aggregated across user-specified random seeds and settings. 212 
+
+## Benchmark methods and unified evaluation 213 
+
+To ensure comparability across methods, all predictions were converted into a unified cell-pair-level format 214 
+
+containing the sender cell, receiver cell, and communication score. The resulting predictions were merged 215 
+
+with the ground-truth cell-pair labels used in the synthetic benchmark. Ground-truth pairs not covered by a 216 
+
+given method were assigned a score no greater than the minimum score produced by that method. 217 
+
+Performance was subsequently evaluated at both the cell-pair and cell-type levels. 218 
+
+In addition to mirCCC, we implemented five comparison methods. Matched Product calculates the 219 
+
+product of a sender-cell EV-miRNA emission score and the mean receiver-side repression score derived 220 
+
+separately for each miRNA-specific target set. Prior Product instead multiplies the sender-side prior score by 221 
+
+a global receiver-side repression score calculated from the union of all candidate miRNA target genes. 222 
+
+Neither method includes graph representation learning. The distinction between them is that Matched 223 
+
+Product preserves the correspondence between individual miRNAs and their respective target sets before 224 
+
+aggregation, whereas Prior Product collapses all target genes into a single global receiver-side score. 225 
+
+miRTalk-Restored is a benchmark-oriented reimplementation based on the methodological description of 226 
+
+miRTalk [12], rather than a direct execution of the official software. The original miRTalk workflow relies on 227 
+
+detectable sender-side miRNA expression and primarily summarizes communication at the cell-type level, 228 
+
+whereas our benchmark uses standard scRNA-seq data without direct mature-miRNA measurements and 229 
+
+requires scores for predefined individual sender–receiver cell pairs. We therefore reimplemented its core 230 
+
+scoring principles within the unified benchmark framework. The adapted implementation retains the 231 
+
+principal components of miRTalk, including EV biogenesis and sorting-related sender modules, 232 
+
+9/20 
+
+> .CC-BY 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.26.734694 doi: bioRxiv preprint
+
+RISC/RITAC-related receiver modules, miRNA proxy scores, and receiver scoring based on target-gene 233 
+
+expression ranks. For each candidate cell pair, miRNA-specific communication scores were calculated, and 234 
+
+the maximum score across candidate miRNAs was used as the final cell-pair prediction. 235 
+
+CellChat-style and NicheNet-style were constructed as conceptual adaptations of CellChat [1] and 236 
+
+NicheNet [2], respectively, for the miRNA communication setting. In CellChat-style, sender-side miRNA 237 
+
+emission and receiver-side target repression replace conventional ligand and receptor signals, and 238 
+
+communication scores are calculated using a mass-action formulation with a Hill function at the cell-type 239 
+
+level. In NicheNet-style, a miRNA-target regulatory-potential matrix is constructed and combined with 240 
+
+receiver-side target-gene repression patterns to estimate miRNA regulatory activity, which is subsequently 241 
+
+multiplied by the sender-side emission score to obtain a cell-pair communication score. 242 
+
+The official CellChat and NicheNet implementations were not directly applied because their original 243 
+
+models are designed for protein ligand-receptor communication and do not directly accept miRNA proxies, 244 
+
+miRNA-target repression evidence, or EV-related sender and receiver features as inputs. Similarly, the 245 
+
+original miRTalk workflow relies on detectable sender-side miRNA expression and primarily summarizes 246 
+
+communication at the cell-type level, whereas the present benchmark uses standard scRNA-seq data without 247 
+
+direct mature-miRNA measurements and defines ground truth at the individual cell-pair level. We therefore 248 
+
+implemented task-specific adaptations based on the core modeling principles of each method and 249 
+
+standardized their candidate cell pairs, output structure, and evaluation procedure. Full scoring definitions, 250 
+
+parameter settings, output-completion procedures, and implementation details for all benchmark methods 251 
+
+are provided in S1 Appendix and the accompanying code repository. 252 
+
+Enrichment analysis. To assess whether the top-ranked miRNAs were supported by prior knowledge, we 253 
+
+tested the enrichment of literature-curated CRC-associated miRNAs among the top candidates. Specifically, 254 
+
+the top 20% of miRNAs ranked by mirCCC score along each sender–receiver axis were compared to the full 255 
+
+set of candidate miRNAs using Fisher’s exact test to evaluate whether literature miRNAs were 256 
+
+overrepresented. P-values were reported for each axis to quantify the significance of enrichment. 257 
+
+## Evaluation metrics 258 
+
+Model performance was primarily evaluated using AUROC (area under the receiver operating characteristic 259 
+
+curve) and AUPRC (area under the precision–recall curve) for binary classification of ground-truth 260 
+
+communication cell pairs in the synthetic benchmark. For fair comparison, all methods were evaluated on the 261 
+
+same labeled cell-pair set after completing missing predictions using the method-specific fill score defined 262 
+
+above. 263 
+
+## Implementation 264 
+
+mirCCC is implemented in Python using PyTorch and PyTorch Geometric for model training, scanpy and 265 
+
+anndata for scRNA-seq data handling, and scipy for sparse matrix operations. All experiments were 266 
+
+conducted on a single NVIDIA GPU. The source code, installation instructions, and example workflows are 267 
+
+available at https://github.com/yfchen801/mirCCC . 268 
+
+# Results 269 
+
+## Synthetic benchmarking shows robustness to confounding signals 270 
+
+To systematically evaluate the inference accuracy and robustness of mirCCC, we benchmarked it under two 271 
+
+synthetic data settings (see Methods). Both settings contained three ground-truth miRNA communication 272 
+
+axes. In the Base setting, each axis was mediated by 16 miRNAs selected from the miRTalk resource [12]; 273 
+
+sender cells showed increased EV biogenesis and miRNA sorting activity, whereas receiver cells showed 274 
+
+increased RISC activity and systematic repression of the corresponding miRNA target genes. In the Trap 275 
+
+setting, each axis was mediated by 12 miRNAs and included three additional sources of difficulty: (i) 276 
+
+orthogonal target selection reduced target-gene overlap across communication axes, thereby requiring 277 
+
+10/20 
+
+> .CC-BY 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.26.734694 doi: bioRxiv preprint
+
+miRNA-specific resolution; (ii) variable importance assigned stronger repression signals to 35% of the 278 
+
+implanted miRNAs and weaker signals to the remainder; and (iii) the proportion of hard negative cell pairs 279 
+
+increased from 10% to 55%, such that more negative pairs exhibited sender- or receiver-associated machinery 280 
+
+signals without belonging to a true communication pair. Each setting was generated using three independent 281 
+
+random seeds, yielding six experiments in total. 282 
+
+We compared mirCCC against five methods: miRTalk [12], the only existing miRNA communication 283 
+
+inference tool, along with CellChat-style [1], NicheNet-style [2], matched product, and prior product 284 
+
+baselines. To ensure fair comparison, all methods were evaluated on identical ground-truth cell pairs; for 285 
+
+pairs not covered by a given method, predictions were completed using the method-specific fill score defined 286 
+
+in Methods. 287 
+
+Under the Base setting, mirCCC achieved an AUROC of 0 .884 ± 0.014 (AUPRC 0 .892 ± 0.010; mean ± 288 
+
+SD over three runs), which was lower than other methods (AUROC 0.911–0.951), indicating relatively 289 
+
+conservative scoring in the absence of confounders (Fig. 2a–b). In contrast, under the Trap setting, mirCCC 290 
+
+was the only method whose performance improved, with an AUROC of 0 .926 ± 0.020 (absolute increase 291 
+
+∆ = +0 .048), whereas all other methods declined relative to Base: miRTalk by 0.056, CellChat by 0.209, 292 
+
+NicheNet by 0.215, Matched Product by 0.238, and Prior Product by 0.240 (Fig. 2c–f). 293 
+
+This divergence reflects a fundamental difference in method design. The baseline methods (CellChat, 294 
+
+NicheNet, Matched Product, Prior Product) rely on sender–receiver expression correlations or machinery 295 
+
+gene expression levels; decoy cells satisfy these surface-level conditions, leading to false-positive 296 
+
+communication calls. In contrast, mirCCC’s repression-aware scoring infers communication by detecting 297 
+
+systematic suppression of target genes in receiver cells. Although decoy cells express the requisite machinery 298 
+
+genes, they lack genuine miRNA–target repression signals and therefore do not yield high scores. These 299 
+
+results demonstrate that mirCCC’s repression-aware scoring provides robustness against confounding signals 300 
+
+that mislead existing approaches in the Trap scenario. 301 
+
+Fig 2. Cell-pair-level synthetic benchmark performance under standard and confounded settings. (a,b) Receiver operating characteristic (ROC) and precision–recall curves in the Base setting. (c,d) ROC and precision–recall curves in the Trap setting. Base denotes the standard synthetic benchmark, whereas Trap denotes the confounded benchmark with deliberately misleading non-specific sender/receiver signals. Methods are color-coded as mirCCC (red), miRTalk (blue), Matched Product (grey), CellChat (orange), NicheNet (teal), and Prior Product (purple). In (a–d), darker lines indicate mean curves across runs and lighter lines indicate individual runs; dashed diagonals indicate random classification. (e) Summary of area under the ROC curve (AUROC) in the Base and Trap settings; points indicate mean values and error bars indicate standard deviation across runs. (f) Change in AUROC between settings (∆AUROC = Trap −
+
+Base); bars indicate mean change and error bars indicate standard deviation. AUPRC, area under the precision–recall curve. 11/20 
+
+> .CC-BY 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.26.734694 doi: bioRxiv preprint
+
+## CRC communication landscape reveals an Epi-centered receiver context 302 
+
+To evaluate mirCCC on real data, we applied it to the Pelka et al. CRC single-cell atlas (GSE178341) [21], 303 
+
+selecting MMRp patient C162 comprising 9,994 cells across 7 major cell lineages: Epi, Myeloid, Strom, 304 
+
+T/NK/ILC, B, Plasma, and Mast (Fig. 3a). miRNA–target interactions were obtained from miRTalk [12], 305 
+
+based on experimentally validated data from miRTarBase [16], retaining only 12,731 Functional MTI-level 306 
+
+records. After coverage filtering, 185 miRNAs entered the analysis. 307 
+
+The global communication network inferred by mirCCC revealed that Epi cells serve as a major receiver 308 
+
+of miRNA signals, simultaneously accepting inputs from multiple non-epithelial compartments (Fig. 3b). An 309 
+
+Epi-centric paracrine communication view further delineated the relative contributions of each sender 310 
+
+(Fig. 3c). Quantification of sender-specific contributions showed that Myeloid and Strom together accounted 311 
+
+for approximately 94% of the total paracrine communication score directed toward Epi (Myeloid 60.7%, 312 
+
+Strom 33.2%), far exceeding T/NK/ILC (5.1%), Mast (0.8%), and B (0.1%) (Fig. 3d). This pattern was 313 
+
+remarkably consistent across all top 15 miRNAs, with each showing a Myeloid-plus-Strom contribution of 314 
+
+90–95%. The dominance of these two compartments was further supported by a two-dimensional analysis of 315 
+
+sender capacity. Myeloid and Strom had the highest fractions of active sender cells (23.0% and 22.3%, 316 
+
+respectively) and exhibited the highest mean communication score per sender cell directed toward Epi 317 
+
+(Fig. 3e). 318 
+
+Despite the quantitative difference between Myeloid and Strom in overall sender contribution, the 319 
+
+miRNA–target circuit diagram revealed a key qualitative feature: the top-ranked miRNAs on the Strom →Epi 320 
+
+and Myeloid →Epi axes were highly overlapping (Fig. 3f). The 15 miRNAs with the highest combined scores 321 
+
+generally received substantial contributions from both stromal and myeloid senders. This cross-compartment 322 
+
+convergence suggests that stromal and myeloid cells may deliver regulatory signals to epithelial cells through 323 
+
+a shared miRNA repertoire. Based on these observations, subsequent analyses focus on the Strom →Epi and 324 
+
+Myeloid →Epi axes to systematically assess the biological plausibility of mirCCC predictions. 325 
+
+## Convergent stromal and myeloid miRNAs target an epithelial plasticity module 326 
+
+To evaluate whether mirCCC-prioritized candidate miRNAs along the Strom →Epi and Myeloid →Epi axes 327 
+
+are supported by prior CRC biology, we tested their enrichment among literature-curated CRC-associated 328 
+
+miRNAs. On both axes, these literature-curated CRC-associated miRNAs were 3.2-fold enriched within the 329 
+
+top 20% of mirCCC-ranked miRNAs (7/11, Fisher’s exact p = 1 .1 × 10 −3; Fig. 4b). A similar enrichment 330 
+
+was observed on the Epi →TNKILC axis (7/15, 2.3-fold, p = 0 .013), whereas the Myeloid →TNKILC axis 331 
+
+showed no significant enrichment, serving as an internal negative control. These results indicate that 332 
+
+mirCCC recovers biologically relevant candidates without explicitly incorporating prior knowledge of miRNA 333 
+
+function during inference. 334 
+
+More importantly, the predicted targets of the prioritized miRNAs were not dispersed across unrelated 335 
+
+genes but preferentially converged on an epithelial plasticity-related regulatory module. The miRNA–target 336 
+
+prioritization matrix (Fig. 4a) displays 12 representative candidates, comprising three miRNAs highlighted 337 
+
+for their broad coverage of the curated plasticity gene set–miR-200a, miR-204, and miR-506–and nine 338 
+
+additional high-ranking candidates. Specifically, miR-200a targets ZEB1, ZEB2, SMAD2, SMAD3, and 339 
+
+CTNNB1; miR-204 targets SNAI1, SNAI2, VIM, CDH1, and MMP9; and miR-506 targets CTNNB1, SNAI1, 340 
+
+SNAI2, and VIM. Collectively, these three miRNAs cover 14 of the 15 curated EMT/plasticity-related genes, 341 
+
+forming a coherent target module centered on epithelial plasticity regulation. These predictions are broadly 342 
+
+consistent with prior experimental evidence: miR-200a is a canonical EMT suppressor acting through the 343 
+
+miR-200/ZEB double-negative feedback loop. Additional literature support among the displayed candidates 344 
+
+includes the involvement of miR-34a in EMT-associated invasion programs in CRC and experimentally 345 
+
+validated transfer of CAF-derived exosomal miR-200b-3p, supporting the relevance of the miR-200 family in 346 
+
+this context. Among the 12 displayed candidates, eight have direct or family-level literature support in CRC 347 
+
+or EMT contexts (Table 1). The complete rankings for these two epithelial-directed axes, together with the 348 
+
+Epi-to-TNKILC and Myeloid-to-TNKILC comparison axes, are provided in S1 Table. The table includes 349 
+
+total communication scores, edge counts, mean scores per edge, validated target counts, and 350 
+
+EMT/plasticity-related target annotations. 351 
+
+12/20 
+
+> .CC-BY 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.26.734694 doi: bioRxiv preprint
+
+Table 1. Literature support for selected top-ranked miRNAs on the Strom →Epi and Myeloid →Epi axes. Only miRNAs with direct CRC evidence or strong family-level EMT support are shown.                               
+
+> miRNA EMT Targets Known CRC/EMT Role Exosomal miR-200a [22] ZEB1/2, SMAD2/3, CTNNB1 Canonical EMT suppressor, miR-200/ZEB loop ✓a
+> miR-34a [23] CTNNB1, SNAI1 CRC EMT-associated suppressor via the IL-6R/STAT3/miR-34a axis
+> ✓b
+> miR-204 [24] SNAI1/2, VIM, CDH1, MMP9 CRC tumor suppressor; inhibits proliferation and invasion —miR-506 [25] CTNNB1, SNAI1/2, VIM CRC suppressor; inhibits proliferation, migration, and inva-sion —let-7g [26] FN1, SMAD2, TGFBR1 Tumor-suppressive let-7 family member; canonical RAS-regulating background —miR-708 [27] MMP2, SMAD3, ZEB2 CRC tumor suppressor; targets ZEB1 via AKT/mTOR signaling —miR-338 [28] MMP9, ZEB2 Tumor-suppressive / invasion-related miRNA in CRC —miR-129 [29] CDH1, TWIST1, VIM Linked to EMT regulation in CRC via the miR-129-5p/DNMT3A axis —
+> aExosomal evidence is available for the miR-200 family in CRC (CAF-derived miR-200b-3p), rather than miR-200a specifically [30].
+> bMSC-derived extracellular vesicles carrying miR-34a-5p have been reported in CRC [31].
+
+To rule out nonspecific enrichment, we performed Fisher’s exact tests comparing the 362 predicted targets 352 
+
+of the top 10 miRNAs against seven curated pathway gene sets. Targets were most strongly enriched in 353 
+
+EMT/plasticity (14/15 genes, OR = 793, p = 4 .4 × 10 −24 ), TGF-β signaling (7/12, OR = 78), 354 
+
+Wnt/ β-catenin (6/14, OR = 42), and PI3K-AKT (5/17, OR = 23), while genuinely unrelated negative 355 
+
+control gene sets—ribosome, spliceosome, and oxidative phosphorylation—showed zero overlap (Fig. 4c). 356 
+
+This result indicates that the predicted targeting is highly pathway-specific rather than a consequence of 357 
+
+nonspecific enrichment among broadly expressed genes. 358 
+
+Finally, the target genes comprising this module are not uniformly expressed across epithelial cells but 359 
+
+exhibit structured expression variation across Epi subclusters (Fig. 4a, right panel). Cluster C5, which has 360 
+
+the highest plasticity score, shows elevated expression of mesenchymal-associated genes (FN1, VIM, TGFB1) 361 
+
+and reduced expression of the epithelial marker CDH1, while other clusters display the inverse pattern. This 362 
+
+indicates that mirCCC recovers not merely an abstract gene list, but a modular expression program with 363 
+
+detectable heterogeneity in the receiver compartment. Notably, classical EMT transcription factors 364 
+
+(SNAI1/2, ZEB1/2, TWIST1) are minimally expressed across all Epi subclusters, suggesting that this pattern 365 
+
+is more consistent with a graded epithelial plasticity spectrum than with a complete canonical EMT program. 366 
+
+Together, these results support a receiver-centric communication program in which convergent stromal 367 
+
+and myeloid miRNAs preferentially target an epithelial plasticity module in CRC epithelial cells. 368 
+
+# Discussion and conclusion 369 
+
+In this study, we developed mirCCC, a computational framework for inferring miRNA-mediated cell–cell 370 
+
+communication from standard single-cell transcriptomic data. Unlike existing CCC methods that model 371 
+
+protein ligand–receptor interactions, mirCCC reverse-estimates miRNA activity from target gene repression 372 
+
+patterns and performs representation learning on per-miRNA directed communication graphs, incorporating 373 
+
+the miRNA dimension into single-cell communication analysis. 374 
+
+A key feature of mirCCC is its repression-aware design, which ensures that high-scoring communication 375 
+
+events depend on the concordance between sender proxy and receiver-side target gene repression, rather than 376 
+
+on superficial expression correlations. In synthetic benchmarks, mirCCC was the only method whose 377 
+
+performance improved upon the introduction of confounding cells, demonstrating robustness against false 378 
+
+positives driven by surface-level sender/receiver characteristics. As community interest in miRNA 379 
+
+communication inference grows, establishing standardized benchmark datasets will facilitate systematic 380 
+
+comparison across methods. 381 
+
+Application to real data shows that mirCCC identifies biologically interpretable communication modules. 382 
+
+In a CRC single-cell atlas [21], it recovered known CRC-associated miRNAs and revealed a receiver-centric 383 
+
+program in which stromal and myeloid miRNAs converge on an EMT/TGF-β/Wnt/ β-catenin-related 384 
+
+13/20 
+
+> .CC-BY 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.26.734694 doi: bioRxiv preprint
+
+plasticity module in epithelial cells, including IL-6R/STAT3/miR-34a signaling [32] and CAF-derived 385 
+
+miR-200 exosomal signaling [30]. mirCCC identifies candidate miRNAs that converge between senders with 386 
+
+pathway-specific targeting, illustrating its ability to generate modular hypotheses for downstream validation. 387 
+
+Although based on a single MMRp patient, these results provide a foundation for assessing generalizability 388 
+
+across multiple patients, cancer types, and non-tumor contexts. Minimal expression of canonical EMT 389 
+
+transcription factors suggests mirCCC captures a graded epithelial plasticity spectrum rather than a full 390 
+
+EMT program [2]. 391 
+
+Several avenues for future research can be pursued. The current model treats all EV subtypes uniformly 392 
+
+and does not distinguish exosomes from microvesicles [33, 34]. Integrating spatial transcriptomics could 393 
+
+account for intercellular distance constraints [35, 36], and combining EV proteomics with small RNA-seq [37] 394 
+
+would enable more comprehensive characterization of miRNA transfer mechanisms. Expanding the approach 395 
+
+to multiple patients, cancer types, and cross-species scenarios could further enhance applicability. Overall, 396 
+
+mirCCC provides a robust and interpretable framework, laying the groundwork for systematic studies of 397 
+
+miRNA-mediated cell–cell communication. 398 
+
+S1 Appendix. Supplementary benchmark methods and unified evaluation. Detailed descriptions 399 
+
+of the unified prediction format, missing-pair completion procedure, scoring formulas, aggregation strategies, 400 
+
+benchmark-specific adaptations, and parameter settings for mirCCC, Matched Product, Prior Product, 401 
+
+miRTalk-Restored, CellChat-style, and NicheNet-style. 402 
+
+S1 Table. Complete miRNA rankings across four analyzed communication axes. The table 403 
+
+provides the complete miRNA rankings for the Strom-to-Epi, Myeloid-to-Epi, Epi-to-TNKILC, and 404 
+
+Myeloid-to-TNKILC communication axes. For each miRNA, it reports the total communication score, rank, 405 
+
+number of inferred cell-pair edges, mean score per edge, number of validated target genes detected in the 406 
+
+dataset, and the number and identities of targets belonging to the curated epithelial-mesenchymal transition 407 
+
+and epithelial plasticity gene set. 408 
+
+# Acknowledgments 409 
+
+We thank all the members of Ming Chen’s group for their valuable discussions. The authors have declared 410 
+
+that no competing interests exist. 411 
+
+# Funding 412 
+
+This work was supported by the National Natural Science Foundation of China [32570787, 32270709, 413 
+
+32300532 to MC]; the National Key Research and Development Program of China [2023YFE0112300 to MC]; 414 
+
+the 151 Talent Project, and Science and Technology Innovation Leader of Zhejiang Province [2022R52035 to 415 
+
+MC]; and Collaborative Innovation Center for Modern Crop Production co-sponsored by province and 416 
+
+ministry to MC. The funders had no role in study design, data collection and analysis, decision to publish, or 417 
+
+preparation of the manuscript. 418 
+
+# Data availability 419 
+
+The colorectal cancer single-cell RNA-seq dataset used in this study (Pelka et al. 2021) is publicly available 420 
+
+from the Gene Expression Omnibus under accession number GSE178341 421 
+
+(https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE178341 ). miRNA–target interaction data 422 
+
+were obtained from miRTalk [12] ( https://github.com/ZJUFanLab/miRTalk ). 423 
+
+14/20 
+
+> .CC-BY 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.26.734694 doi: bioRxiv preprint
+
+# Code availability 424 
+
+The code used to reproduce the experiments in this study is available at 425 
+
+https://github.com/yfchen801/mirCCC . The repository includes the mirCCC analysis pipeline, 426 
+
+benchmark evaluation code, synthetic data generation scripts, tutorial notebooks, and visualization utilities. 427 
+
+Synthetic benchmark datasets can be reproduced using the scripts and configuration files provided in the 428 
+
+repository. 429 
+
+# Author contributions 430 
+
+Conceptualization: Yifan Chen, Cong Feng, Ming Chen. Data Curation: Yifan Chen. Formal Analysis:Yifan 431 
+
+Chen, Jiaming Cui. Funding Acquisition: Ming Chen. Investigation: Yifan Chen. Methodology: Yifan Chen, 432 
+
+Jiaming Cui. Project Administration: Ming Chen, Cong Feng. Resources: Yifan Chen, Ming Chen, Shilong 433 
+
+Zhang. Software:Yifan Chen, Jiaming Cui, Shilong Zhang. Supervision:Ming Chen, Cong Feng. 434 
+
+Validation:Yifan Chen, Shilong Zhang. Visualization:Yifan Chen, Enyan Liu, Luyao Xie. Writing – Original 435 
+
+Draft Preparation:Yifan Chen. Writing – Review & Editing:Ming Chen, Cong Feng, Yifan Chen. 436 
+
+# References 
+
+1. Jin S, Guerrero-Juarez CF, Zhang L, Chang I, Ramos R, Kuan CH, et al. Inference and analysis of cell-cell communication using CellChat. Nature communications. 2021;12(1):1088. doi:10.1038/s41467-021-21246-9. 2. Browaeys R, Saelens W, Saeys Y. NicheNet: modeling intercellular communication by linking ligands to target genes. Nature methods. 2020;17(2):159-62. doi:10.1038/s41592-019-0667-5. 3. Dimitrov D, Sch¨ afer PSL, Farr E, Rodriguez-Mier P, Lobentanzer S, Badia-i Mompel P, et al. LIANA+ provides an all-in-one framework for cell–cell communication inference. Nature cell biology. 2024;26(9):1613-22. doi:10.1038/s41556-024-01469-w. 4. Massenet-Regad L, Soumelis V. ICELLNET v2: a versatile method for cell–cell communication analysis from human transcriptomic data. Bioinformatics. 2024 Mar;40(3). Available from: 
+
+http://dx.doi.org/10.1093/bioinformatics/btae089 . doi:10.1093/bioinformatics/btae089. 5. Yang W, Wang P, Xu S, Wang T, Luo M, Cai Y, et al. Deciphering cell–cell communication at single-cell resolution for spatial transcriptomics with subgraph-based graph attention network. Nature Communications. 2024 Aug;15(1). Available from: 
+
+http://dx.doi.org/10.1038/s41467-024-51329-2 . doi:10.1038/s41467-024-51329-2. 6. Zohora FT, Paliwal D, Flores-Figueroa E, Li J, Gao T, Notta F, et al. CellNEST reveals cell–cell relay networks using attention mechanisms on spatial transcriptomics. Nature Methods. 2025;22(7):1505–1519. Available from: http://dx.doi.org/10.1038/s41592-025-02721-3 .doi:10.1038/s41592-025-02721-3. 7. Hou J, Zhao W, Nie Q. Dissecting crosstalk induced by cell-cell communication using single-cell transcriptomic data. Nature Communications. 2025;16(1). Available from: 
+
+http://dx.doi.org/10.1038/s41467-025-61149-7 . doi:10.1038/s41467-025-61149-7. 8. Chaudhari AP, Budayr OM, Bonacquisti EE, Kussatz CC, Bannon MS, Law KJ, et al. The status of extracellular vesicles as drug carriers and therapeutics. Nature Reviews Bioengineering. 2026 Feb;4(4):301–318. Available from: http://dx.doi.org/10.1038/s44222-026-00405-x .doi:10.1038/s44222-026-00405-x. 15/20 
+
+> .CC-BY 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.26.734694 doi: bioRxiv preprint
+
+9. Ripoll L, Zickler AM, Vader P, El Andaloussi S, Verweij FJ, van Niel G. Biology and therapeutic potential of extracellular vesicle targeting and uptake. Nature Reviews Molecular Cell Biology. 2026 Jan;27(5):358–376. Available from: http://dx.doi.org/10.1038/s41580-025-00922-4 .doi:10.1038/s41580-025-00922-4. 10. Saadh MJ, Khalifehsoltani A, Hussein AHA, Allela OQB, Sameer HN, Rizaev J, et al. Exosomal microRNAs in cancer metastasis: A bridge between tumor micro and macroenvironment. Pathology -Research and Practice. 2024;263:155666. Available from: 
+
+https://www.sciencedirect.com/science/article/pii/S0344033824005776 .doi:https://doi.org/10.1016/j.prp.2024.155666. 11. Olgun G, Gopalan V, Hannenhalli S. miRSCAPE - inferring miRNA expression from scRNA-seq data. iScience. 2022;25(9):104962. Available from: http://dx.doi.org/10.1016/j.isci.2022.104962 .doi:10.1016/j.isci.2022.104962. 12. Shao X, Yu L, Li C, Qian J, Yang X, Yang H, et al. Extracellular vesicle-derived miRNA-mediated cell–cell communication inference for single-cell transcriptomic data with miRTalk. Genome Biology. 2025 Apr;26(1). Available from: http://dx.doi.org/10.1186/s13059-025-03566-x .doi:10.1186/s13059-025-03566-x. 13. Xie GY, Song D, Luo T, Liao Y, Guo AY, Lei Q. EVmiRNA2.0: an updated database for miRNA expression in comprehensive human extracellular vesicles. Nucleic Acids Research. 2025 Oct;54(D1):D128–D134. Available from: http://dx.doi.org/10.1093/nar/gkaf1054 .doi:10.1093/nar/gkaf1054. 14. Gummadi S, Chitti SV, Kang T, Shahi S, Mathivanan S, Fonseka P. ExoCarta 2024: A Web-based Repository of Small Extracellular Vesicles Cargo. Journal of Molecular Biology. 2025 Aug;437(15):169218. Available from: http://dx.doi.org/10.1016/j.jmb.2025.169218 .doi:10.1016/j.jmb.2025.169218. 15. Chitti SV, Gummadi S, Kang T, Shahi S, Marzan AL, Nedeva C, et al. Vesiclepedia 2024: an extracellular vesicles and extracellular particles repository. Nucleic Acids Research. 2023 Nov;52(D1):D1694–D1698. Available from: http://dx.doi.org/10.1093/nar/gkad1007 .doi:10.1093/nar/gkad1007. 16. Cui S, Yu S, Huang HY, Lin YCD, Huang Y, Zhang B, et al. miRTarBase 2025: updates to the collection of experimentally validated microRNA–target interactions. Nucleic Acids Research. 2024 Nov;53(D1):D147–D156. Available from: http://dx.doi.org/10.1093/nar/gkae1072 .doi:10.1093/nar/gkae1072. 17. Skoufos G, Kakoulidis P, Tastsoglou S, Zacharopoulou E, Kotsira V, Miliotis M, et al. TarBase-v9.0 extends experimentally supported miRNA–gene interactions to cell-types and virally encoded miRNAs. Nucleic Acids Research. 2023 Nov;52(D1):D304–D310. Available from: 
+
+http://dx.doi.org/10.1093/nar/gkad1071 . doi:10.1093/nar/gkad1071. 18. Wolf FA, Angerer P, Theis FJ. SCANPY: large-scale single-cell gene expression data analysis. Genome Biology. 2018 Feb;19(1). Available from: http://dx.doi.org/10.1186/s13059-017-1382-0 .doi:10.1186/s13059-017-1382-0. 19. Shi Y, Huang Z, Feng S, Zhong H, Wang W, Sun Y. Masked Label Prediction: Unified Message Passing Model for Semi-Supervised Classification. In: Proceedings of the Thirtieth International Joint Conference on Artificial Intelligence. IJCAI-2021. International Joint Conferences on Artificial Intelligence Organization; 2021. p. 1548–1554. Available from: 
+
+http://dx.doi.org/10.24963/ijcai.2021/214 . doi:10.24963/ijcai.2021/214. 20. Veliˇ ckovi´ c P, Fedus W, Hamilton WL, Li` o P, Bengio Y, Hjelm RD. Deep Graph Infomax. In: International Conference on Learning Representations (ICLR); 2019. Available from: 
+
+https://openreview.net/forum?id=rklz9iAcKQ .16/20 
+
+> .CC-BY 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.26.734694 doi: bioRxiv preprint
+
+21. Pelka K, Hofree M, Chen JH, Sarkizova S, Pirl JD, Jorgji V, et al. Spatially organized multicellular immune hubs in human colorectal cancer. Cell. 2021;184(18):4734–4752.e20. Available from: 
+
+http://dx.doi.org/10.1016/j.cell.2021.08.003 . doi:10.1016/j.cell.2021.08.003. 22. Gregory PA, Bert AG, Paterson EL, Barry SC, Tsykin A, Farshid G, et al. The miR-200 family and miR-205 regulate epithelial to mesenchymal transition by targeting ZEB1 and SIP1. Nature Cell Biology. 2008 Mar;10(5):593–601. Available from: http://dx.doi.org/10.1038/ncb1722 .doi:10.1038/ncb1722. 23. Rokavec M, ¨Oner MG, Li H, Jackstadt R, Jiang L, Lodygin D, et al. IL-6R/STAT3/miR-34a feedback loop promotes EMT-mediated colorectal cancer invasion and metastasis. Journal of Clinical Investigation. 2015 Mar;125(3):1362–1362. Available from: http://dx.doi.org/10.1172/JCI81340 .doi:10.1172/jci81340. 24. Yin Y, Zhang B, Wang W, Fei B, Quan C, Zhang J, et al. miR-204-5p Inhibits Proliferation and Invasion and Enhances Chemotherapeutic Sensitivity of Colorectal Cancer Cells by Downregulating RAB22A. Clinical Cancer Research. 2014 Nov;20(23):6187–6199. Available from: 
+
+http://dx.doi.org/10.1158/1078-0432.CCR-14-1030 . doi:10.1158/1078-0432.ccr-14-1030. 25. Lin Y, Chen Z, Zheng Y, Liu Y, Gao J, Lin S, et al. MiR-506 Targets UHRF1 to Inhibit Colorectal Cancer Proliferation and Invasion via the KISS1/PI3K/NF-B Signaling Axis. Frontiers in Cell and Developmental Biology. 2019 Nov;7. Available from: 
+
+http://dx.doi.org/10.3389/fcell.2019.00266 . doi:10.3389/fcell.2019.00266. 26. Johnson SM, Grosshans H, Shingara J, Byrom M, Jarvis R, Cheng A, et al. RAS Is Regulated by the let-7 MicroRNA Family. Cell. 2005 Mar;120(5):635–647. Available from: 
+
+http://dx.doi.org/10.1016/j.cell.2005.01.014 . doi:10.1016/j.cell.2005.01.014. 27. Sun S, Hang T, Zhang B, Zhu L, Wu Y, Lv X, et al. miRNA-708 functions as a tumor suppressor in colorectal cancer by targeting ZEB1 through Akt/mTOR signaling pathway. American Journal of Translational Research. 2019;11(9):5338. Available from: 
+
+https://pmc.ncbi.nlm.nih.gov/articles/PMC6789274/ .28. Ju JA, Huang CT, Lan SH, Wang TH, Lin PC, Lee JC, et al. Characterization of a colorectal cancer migration and autophagy-related microRNA miR-338-5p and its target gene PIK3C3. Biomarkers and Genomic Medicine. 2013;5(3):74–78. Available from: 
+
+http://dx.doi.org/10.1016/j.bgm.2013.07.006 . doi:10.1016/j.bgm.2013.07.006. 29. Lin J, Shi Z, Yu Z, He Z. LncRNA HIF1A-AS2 positively affects the progression and EMT formation of colorectal cancer through regulating miR-129-5p and DNMT3A. Biomedicine amp; Pharmacotherapy. 2018 Feb;98:433–439. Available from: 
+
+http://dx.doi.org/10.1016/j.biopha.2017.12.058 . doi:10.1016/j.biopha.2017.12.058. 30. Gong W, Guo Y, Yuan H, Chai R, Wan Z, Zheng B, et al. Loss of exosomal miR-200b-3p from hypoxia cancer-associated fibroblasts promotes tumorigenesis and reduces sensitivity to 5-Flourouracil in colorectal cancer via upregulation of ZEB1 and E2F3. Cancer Gene Therapy. 2023 Mar;30(6):905–916. Available from: http://dx.doi.org/10.1038/s41417-023-00591-5 .doi:10.1038/s41417-023-00591-5. 31. Zhao J, Lin H, Huang K. Mesenchymal Stem Cell-derived Extracellular Vesicles Transmitting MicroRNA-34a-5p Suppress Tumorigenesis of Colorectal Cancer Through c-MYC/DNMT3a/PTEN Axis. Molecular Neurobiology. 2021 Oct;59(1):47–60. Available from: 
+
+http://dx.doi.org/10.1007/s12035-021-02431-9 . doi:10.1007/s12035-021-02431-9. 32. Rokavec M, ¨Oner MG, Li H, Jackstadt R, Jiang L, Lodygin D, et al. IL-6R/STAT3/miR-34a feedback loop promotes EMT-mediated colorectal cancer invasion and metastasis. Journal of Clinical Investigation. 2014 Mar;124(4):1853–1867. Available from: http://dx.doi.org/10.1172/JCI73531 .doi:10.1172/jci73531. 17/20 
+
+> .CC-BY 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.26.734694 doi: bioRxiv preprint
+
+33. van Niel G, D’Angelo G, Raposo G. Shedding light on the cell biology of extracellular vesicles. Nature Reviews Molecular Cell Biology. 2018 Jan;19(4):213–228. Available from: 
+
+http://dx.doi.org/10.1038/nrm.2017.125 . doi:10.1038/nrm.2017.125. 34. Jeppesen DK, Fenix AM, Franklin JL, Higginbotham JN, Zhang Q, Zimmerman LJ, et al. Reassessment of Exosome Composition. Cell. 2019 Apr;177(2):428–445.e18. Available from: 
+
+http://dx.doi.org/10.1016/j.cell.2019.02.029 . doi:10.1016/j.cell.2019.02.029. 35. Longo SK, Guo MG, Ji AL, Khavari PA. Integrating single-cell and spatial transcriptomics to elucidate intercellular tissue dynamics. Nature Reviews Genetics. 2021;22(10):627–644. Available from: 
+
+http://dx.doi.org/10.1038/s41576-021-00370-8 . doi:10.1038/s41576-021-00370-8. 36. Cang Z, Zhao Y, Almet AA, Stabell A, Ramos R, Plikus MV, et al. Screening cell–cell communication in spatial transcriptomics via collective optimal transport. Nature Methods. 2023 Jan;20(2):218–228. Available from: http://dx.doi.org/10.1038/s41592-022-01728-4 .doi:10.1038/s41592-022-01728-4. 37. Miceli RT, Chen T, Nose Y, Tichkule S, Brown B, Fullard JF, et al. Extracellular vesicles, RNA sequencing, and bioinformatic analyses: Challenges, solutions, and recommendations. Journal of Extracellular Vesicles. 2024 Dec;13(12). Available from: http://dx.doi.org/10.1002/jev2.70005 .doi:10.1002/jev2.70005. 18/20 
+
+> .CC-BY 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.26.734694 doi: bioRxiv preprint
+
+Fig 3. CRC communication landscape inferred by mirCCC in patient C162. (a) UMAP visualization of 7 major cell lineages; cell counts are shown in parentheses. (b) Global miRNA-mediated cell-cell communication chord diagram; arc length is proportional to communication flow and arrowheads indicate directionality. (c) Epi-centric paracrine chord diagram, showing the communication contribution from each non-Epi cell type toward Epi. (d) Stacked percentage bar chart of sender cell type contribution per miRNA for paracrine communication toward Epi; numbers on the right indicate absolute communication scores. (e) Paracrine sender capacity scatter plot for non-Epi cell types; x-axis: fraction of cells selected as active senders, y-axis: mean communication score per sender cell toward Epi, bubble size proportional to the number of sender cells. (f) Split bubble plot showing the 15 miRNAs with the highest combined communication scores across the Strom →Epi and Myeloid →Epi axes and their associated target genes. Bubble size represents the sender-specific communication score, and color indicates the sender compartment (red, Strom; blue, Myeloid). 19/20 
+
+> .CC-BY 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.26.734694 doi: bioRxiv preprint
+
+Fig 4. Functional characterization of stromal- and myeloid-derived miRNAs converging on epithelial plasticity. (a) miRNA-target prioritization matrix with epithelial subcluster expression context. (b) Enrichment of literature-curated CRC-associated miRNAs among top-ranked candidates across axes. (c) Pathway enrichment specificity and negative-control pathway comparison for predicted targets. 20/20 
+
+> .CC-BY 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.26.734694 doi: bioRxiv preprint
+
+.CC-BY 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.26.734694 doi: bioRxiv preprint

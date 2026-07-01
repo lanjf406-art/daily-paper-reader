@@ -1,0 +1,890 @@
+Title: A Simple, Cost-Effective, High-Throughput Method for Measuring Chromatin Accessibility and Gene Expression in Single Nuclei
+
+URL Source: https://www.biorxiv.org/content/10.64898/2026.06.29.735326v1.full.pdf
+
+Published Time: Wed, 01 Jul 2026 22:48:04 GMT
+
+Number of Pages: 23
+
+Markdown Content:
+A Simple, Cost -Effective, High -Throughput Method for Measuring Chromatin 1
+
+Accessibility and Gene Expression in Single Nuclei 2
+
+3
+
+Zhifei Luo 1, William J Greenleaf 1,2,* 4
+
+> 1
+
+Department of Genetics, Stanford University, Stanford, CA, USA 5
+
+> 2
+
+Department of Applied Physics, Stanford University, Stanford, CA, USA 6
+
+*Corresponding author: wjg@stanford.edu 7
+
+8
+
+Abstract 9
+
+We describe microfluidic -free, droplet -based methods for single -nucleus epigenomic 10 
+
+measurements: Particle -templated Instant Partition single -nucleus assay for 11 
+
+transposase -accessible chromatin using sequencing (PIP -ATAC -seq) and its multiomic 12 
+
+version (PIP -Multiome -seq). We benchmarked these assays by generating data sets 13 
+
+containing thousands of nuclei using cell lines and mouse brains and compared to other 14 
+
+established methods. PIP -Multiome and PIP -ATAC are straightforward to implement, 15 
+
+affordable, and produce high -quality data, providing useful additions to the single -cell 16 
+
+molecular measurement armamentarium. 17 
+
+Main 18 
+
+Chromatin accessibility is associated with “active” regulatory elements that drive gene 19 
+
+expression programs that define cellular identity. Single -nucleus chromatin accessibility 20 
+
+mapping in complex tissues has allowed a mapping of gene regulatory mechanisms 21 
+
+across neuroscience, development, disease, and aging 1–3. Yet widespread adoption of 22 
+
+single cell chromatin accessibility methods has been hampered by the limitations of 23 
+
+existing single -cell methods, which are often prohibitively expensive or technically 24 
+
+demanding with inconsistent results. 25 
+
+Current approaches for mapping chromatin accessibility — with or without co -profiling of 26 
+
+gene expression — fall into three categories, each with notable drawbacks. Plate -based 27 
+
+methods require sorting individual cells into wells from which sequencing libraries are 28 
+
+generated, making them low -throughput and costly. Microfluidics -based methods depend 29 
+
+on specialized, expensive equipment and reagents to encapsulate single cells in droplets. 30 
+
+Finally, split -pool -based methods are technically cumbersome, subjecting nuclei to 31 
+
+multiple rounds of time -intensive reactions that increase ambient RNA contamination, 32 
+
+promote nuclei clumping, and ultimately compromise data quality. A simpler, more 33 
+
+accessible, and cost -effective alternative to these approaches would likely enable a 34 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 30, 2026. ;https://doi.org/10.64898/2026.06.29.735326 doi: bioRxiv preprint
+
+substantially broader deployment of single -cell chromatin characterization at the single 35 
+
+cell level 4,5 .36 
+
+To address these limitations, we developed a novel single -nucleus chromatin accessibility 37 
+
+method built on Particle -templated Instant Partitioning Sequencing (PIP -seq), an 38 
+
+emerging alternative platform for single -cell assays 4. In PIP -seq, uniformly sized beads 39 
+
+serve as physical templates to generate monodispersed, water -in -oil droplets within 40 
+
+minutes through simple vortexing — eliminating the need for specialized microfluidic 41 
+
+hardware. Nuclei and barcoded beads are co -encapsulated within the same droplets, 42 
+
+enabling straightforward single -nucleus library preparation directly from the partitioned 43 
+
+emulsion. 44 
+
+Relative to existing approaches, our method offers several key advantages: it is 45 
+
+substantially more cost -effective than microfluidics -based platforms, considerably higher 46 
+
+in throughput than plate -based methods, and simpler to execute than split -pool strategies, 47 
+
+with reduced nuclei clumping and minimal nucleic acid leakage. The method supports 48 
+
+profiling of chromatin accessibility alone or in combination with the transcriptome. Using 49 
+
+an adapted commercially available kit, this approach can generate data withi n two days 50 
+
+without costly specialized equipment, while reliably producing high -complexity 51 
+
+sequencing libraries — making it broadly accessible to laboratories without extensive 52 
+
+single -cell genomics infrastructure. 53 
+
+We first developed PIP -ATAC -seq, which is carried out in the following steps: (1) Insertion 54 
+
+of sequencing adapters into open chromatin regions within permeabilized nuclei using 55 
+
+hyperactive Tn5 transposase; (2) Compartmentalization of individual nuclei together with 56 
+
+a single barcoded bead via particle -templated instant partitioning; (3) Cell lysis through 57 
+
+fusion of microemulsions containing lysis reagent (4) Release of chromatin fragments 58 
+
+from the nuclei and hybridization to capture oligos on barcoded beads through splint 59 
+
+oligos; (4) Ligation of chromatin fragments onto the beads; (5) Amplification of sequencing 60 
+
+libraries from the beads (Fig. 1A, Fig. S1). 61 
+
+We next extended the method to enable simultaneous profiling of chromatin accessibility 62 
+
+and gene expression from the same nucleus. The PIP -multiome -seq workflow shares the 63 
+
+same step (1) to (3) as PIP -ATAC -seq with the following differences: Upon lysis in step 64 
+
+(4), released chromatin fragments and RNA are captured by oligonucleotides on the 65 
+
+barcoded bead — chromatin fragments via ligation and RNA via reverse transcription into 66 
+
+cDNA — while ATAC -seq fragments are simultaneously extended. ATAC -seq fragments 67 
+
+then undergo linear amplification, are eluted from the beads, and are indexed by PCR. 68 
+
+The beads are then washed and used for whole -transcriptome amplification, after which 69 
+
+cDNA is purified, fragmented, ligated with sequencing adapters, and indexed by PCR. 70 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 30, 2026. ;https://doi.org/10.64898/2026.06.29.735326 doi: bioRxiv preprint
+
+This sequential processing of chromatin and RNA from the same barcoded bead enables 71 
+
+paired single -nucleus accessibility and transcriptomic profiling (Fig. 1A, Fig. S1). 72 
+
+As proof of concept, we tested PIP -ATAC -seq using the human K562 cell line. We 73 
+
+targeted 2,000 cells and sequenced our ATAC -seq fragment library such that the number 74 
+
+of reads was approximately double the number of aligned fragments. Based on read 75 
+
+complexity per cell, we identified 1,800 cells and then applied quality control filtering (Fig. 76 
+
+S3A–E). Of these, 1,682 cells (93.4%) passed quality control, with a median of 41,801 77 
+
+fragments per cell and a median TSS enrichment score of 14.3. The insert size distribution 78 
+
+exhibited clear nucleosome periodicity typical of ATAC -seq data  6 (Fig. S 3 C). 79 
+
+To assess single -cell specificity, we performed a barnyard experiment by mixing human 80 
+
+K562 and mouse 802T4 cells prior to library preparation. We recovered 750 mouse cells 81 
+
+(median 45,923 fragments; TSS enrichment score = 23.5) and 271 human cells (median 82 
+
+44,435 fragments; TSS enrichment score = 15.4), indicating robust library complexity and 83 
+
+data quality for both species. Cross -contamination was minimal, with only 0.27% of 84 
+
+human fragments detected in mouse cells and 0.42% of mouse fragments in human cells, 85 
+
+confirming high single -cell purity. The observed multiplet rate was 8.08% (97/1,200), 86 
+
+similar to the <8% rate specified by the PIP -seq kit; this rate can be reduced by lowering 87 
+
+nuclei input (Fig. 1 B, Fig. S 3 G). 88 
+
+We also validated PIP -multi -seq using frozen K562 cells. RNA libraries contain 1,717 cells 89 
+
+based on elbow plot (Fig . S3 B). ATAC libraries were sequenced to 52.8% saturation, 90 
+
+and 94.1% of cells passing the RNA filter also passed the ATAC filter. From the final 1,615 91 
+
+high -quality cells, we detected a median of 15,428 transcripts (5,740 genes) and 25,958 92 
+
+ATAC fragments per cell, with a median TSS enrichment score of 15.2 (Fig. S 3 D-F). 93 
+
+To evaluate cross -contamination for the multiomic version, we performed a barnyard 94 
+
+experiment mixing human K562 and mouse 802T4 cells. We recovered 556 human and 95 
+
+835 mouse cells with a multiplet rate of 7.5%. Cross -species RNA contamination was low 96 
+
+(2.38% mouse transcripts in human cells; 2.02% in the reverse direction), and 99% of 97 
+
+cells passing RNA filters also passed ATAC filters. ATAC -seq yielded 832 mouse cells 98 
+
+(median 18,681 fragments; TSS = 24.2) and 553 human cells (median 18,257 fragments; 99 
+
+TSS = 15.3), with cross -species fragment contamination of only 1.61% and 1.25%, 100 
+
+respectively, confirming high single -nucleus purity (Fig. 1 C -D, Fig. S 3 H). 101 
+
+A key technical challenge in multi -omic assays is cross -library contamination —102 
+
+particularly ATAC fragments appearing in RNA libraries. We found that replacing the 103 
+
+Nextera Read 2 adapter with a TruSeq Read 2 adapter in the RNA library preparation 104 
+
+effectively resolved this issue for samples with low RNA content. Long -read sequencing 105 
+
+confirmed the RNA library structure, with fewer than 0.54% ATAC -derived fragments 106 
+
+detected in the RNA library (Table S1). 107 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 30, 2026. ;https://doi.org/10.64898/2026.06.29.735326 doi: bioRxiv preprint
+
+To benchmark our method, we compared it against 10x Genomics, the current gold 108 
+
+standard in single -cell assays. To ensure a fair comparison, we obtained 10x data from 109 
+
+ENCODE and published studies using the same K562 cell line, then downsampled all 110 
+
+datasets to a uniform read depth per cell ( 38 ,375 for ATAC; 69 ,00 9 for RNA) based on 111 
+
+the sample with the lowest read depth, and called peaks using bulk ATAC -seq from 112 
+
+ENCODE . To assess the amount of useful information captured by each assay, we first 113 
+
+quantified the number of unique nuclear fragments in peaks per cell. PIP -ATAC -seq 114 
+
+performed comparably to 10x ATAC -seq, while PIP -multiome -seq showed lower numbers 115 
+
+relative to 10x Multiome -seq. However, the 10x Multiome -seq sample exhibited noticeably 116 
+
+lower TSS enrichment, suggesting it may have been over -transposed (Fig. 1F –J). 117 
+
+Importantly, both PIP -ATAC -seq and PIP -Multiome -seq displayed higher TSS enrichment 118 
+
+than their 10x counterparts, indicating greater specificity and reduced background signal. 119 
+
+To further assess library complexity, we simulated the total number of unique fragments 120 
+
+at infinite sequencing depth; both PIP -ATAC -seq and PIP -Multiome -seq were 121 
+
+comparable to 10x (Fig. 1E). On the RNA -seq side, PIP -Multiome -seq yielded similar 122 
+
+median gene counts per cell compared to 10x Multiome -seq (Fig. 1H –I). Furthermore, the 123 
+
+number of unique fragments and detected genes for PIP -ATAC -seq and PIP -Multiome -124 
+
+seq at their original sequencing depths was substantially higher than values reported for 125 
+
+other open -source methods based on benchmarking in literature  7,8 .126 
+
+We then visually examined bulk ATAC -seq signal tracks for our methods. The PIP -ATAC -127 
+
+seq and PIP -Multiome -seq derived tracks were highly concordant with bulk ATAC -seq 128 
+
+from ENCODE and pseudo -bulk tracks from 10x scATAC -seq (Fig. 1J). The tracks also 129 
+
+demonstrated high sensitivity, with minor peaks clearly distinguishable against minimal 130 
+
+background noise. For the bulk RNA -seq track comparison, we generated a standard 131 
+
+PIP -seq RNA library from frozen K562 nuclei; its track was nearly identical to that of our 132 
+
+Multiome -seq, suggesting that the additional steps do not significantly degrade RNA -seq 133 
+
+quality. Taken together, the distinct signal tracks for each modality indicate no detectable 134 
+
+cross -contamination between them. Regarding throughput, 10x can process up to 10,000 135 
+
+cells per lane, whereas PIP -seq can handle between 2,000 and 100,000 cells per sample 136 
+
+depending on the kit size. Despite comparable performance, PIP -seq can be 10 times 137 
+
+less expensive than 10x, particularly when using this large -scale kit (Fig. 1E). 138 
+
+Finally, we applied PIP -Multiome -seq to frozen mouse brain tissue to assess whether 139 
+
+distinct cell types could be identified from a complex tissue sample. We generated two 140 
+
+biological replicates and obtained 11,829 nuclei passing QC. The ATAC -seq library 141 
+
+yielded a median of 23,055 unique fragments per cell with a TSS enrichment score of 142 
+
+13.1, while the RNA -seq library detected an average of 15,177 transcripts and 4,573 143 
+
+genes per cell (Table S1).To identify cell types, we separately visualized the RNA and 144 
+
+ATAC data using uniform manifold app roximation and projection (UMAP) in two -145 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 30, 2026. ;https://doi.org/10.64898/2026.06.29.735326 doi: bioRxiv preprint
+
+dimensional space. Unsupervised clustering revealed 16 distinct cell types, 146 
+
+encompassing most major cell types found in the mouse frontal cortex. Notably, the 147 
+
+ATAC -seq clustering results were highly concordant with those from RNA -seq, consistent 148 
+
+with the established role of chromatin accessibility in regulating gene expression (Fig. 149 
+
+2A –B). Clustering results were also reproducible across both replicates for RNA and 150 
+
+ATAC -seq, indicating minimal technical variation (Fig. S 4A–B). 151 
+
+To annotate the clusters, we combined automated annotation against a reference 152 
+
+dataset, differential gene expression analysis to identify top marker genes, and manual 153 
+
+inspection of classical marker expression. This approach identified nine subtypes of 154 
+
+excitatory neurons (Slc17a7+) spanning different cortical layers, five subtypes of 155 
+
+inhibitory neurons (Gad2+), and two non -neuronal cell types: astrocytes marked by Fgfr3 156 
+
+and oligodendrocytes marked by Mobp (Fig. 2C). Pseudo -bulk ATAC -seq tracks from 157 
+
+each cluster exhibited distinct chromatin accessibility signatures around marker gene loci, 158 
+
+consistent with their corresponding gene expression patterns (Fig. 2D). 159 
+
+In sum, particle -templated Instant partitioning is a promising strategy for high quality, large 160 
+
+scale, low -cost single cell sequencing. Here, we present its first application to chromatin 161 
+
+accessibility and multiomics . These applications highlight its potential use as a platform 162 
+
+for further method development. For instance, single -cell CUT&TAG, single -cell DNA 163 
+
+methylation sequencing, and single -cell footprinting may also be portable to this platform, 164 
+
+further increasing the toolkit of single cell molecular characterization methods. 165 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 30, 2026. ;https://doi.org/10.64898/2026.06.29.735326 doi: bioRxiv preprint
+
+Fig. 1 | Measuring single -cell chromatin accessibility and gene expression using 166 
+
+PIP -ATAC -seq and PIP -Multiome -seq. a , Overview of the PIP -ATAC -seq and PIP -167 
+
+Multiome -seq workflows. The two methods share most steps; PIP -ATAC -seq can be 168 
+
+extended to multiome by incorporating additional multiome -specific steps (red box). The 169 
+
+ATAC primer marked with * is used exclusively in PIP -ATAC -seq. b–d, Species mixing 170 
+
+test for PIP -ATAC -seq ( b), PIP -Multiome -seq ATAC ( c), and PIP -Multiome -seq RNA ( d). 171 
+
+e, Benchmarking of PIP -ATAC -seq and PIP -Multiome -seq. Expected unique fragments 172 
+
+per cell are based on simulated results at infinite sequencing depth. The fraction of reads 173 
+
+in peaks was calculated on a downsampled dataset using 1,615 cells. Pricing for PIP -seq 174 
+
+is based on quotes for the T2 to T100 kit range; pricing for 10x is based on quotes for 4 -175 
+
+and 16 -reaction kits. f–g, ATAC -seq benchmarking: median unique nuclear fragments 176 
+
+per cell ( f) and TSS enrichment ( g). h–i, RNA -seq benchmarking: number of transcripts 177 
+
+(h) and genes detected (i) per cell. j, Genome browser tracks for cross -method 178 
+
+comparison. 179 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 30, 2026. ;https://doi.org/10.64898/2026.06.29.735326 doi: bioRxiv preprint
+
+180 
+
+181 
+
+.CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 30, 2026. ;https://doi.org/10.64898/2026.06.29.735326 doi: bioRxiv preprint Fig. 2 | Simultaneous measurement of chromatin accessibility and gene expression 182 
+
+in mouse frontal cortex using PIP -Multiome -seq. a, UMAP visualization of RNA -based 183 
+
+clusters. b, UMAP visualization of ATAC -based clusters, colored by RNA cluster identity. 184 
+
+c, Dot plot showing marker gene expression levels and the percentage of cells expressing 185 
+
+each marker gene across clusters annotated by RNA identity. d, Pseudo -bulk ATAC -seq 186 
+
+tracks at marker gene loci for each cell cluster annotated by RNA identity, with 187 
+
+corresponding gene expression shown as violin plots on the side. 188 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 30, 2026. ;https://doi.org/10.64898/2026.06.29.735326 doi: bioRxiv preprint
+
+189 
+
+190 
+
+.CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 30, 2026. ;https://doi.org/10.64898/2026.06.29.735326 doi: bioRxiv preprint Fig. S1 | Detailed workflows of PIP -ATAC -seq and PIP -Multiome -seq. The 191 
+
+workflows for each method are shown separately. 192 
+
+.CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 30, 2026. ;https://doi.org/10.64898/2026.06.29.735326 doi: bioRxiv preprint 193 
+
+194 
+
+.CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 30, 2026. ;https://doi.org/10.64898/2026.06.29.735326 doi: bioRxiv preprint Fig. S2 | A pre -processing snakemake pipeline to generate ATAC -seq fragment 195 
+
+files .196 
+
+197 
+
+.CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 30, 2026. ;https://doi.org/10.64898/2026.06.29.735326 doi: bioRxiv preprint Fig. S 3 | PIP -ATAC -seq and PIP -Multiome -seq data quality for cell lines and 198 
+
+species mixing experiments. a–b, Elbow plots for selecting the number of cells for 199 
+
+downstream analysis: PIP -ATAC -seq ( a) and PIP -Multiome -seq ( b). c–d, ATAC -seq 200 
+
+fragment size distribution for PIP -ATAC -seq ( c) and PIP -Multiome -seq ( d). e–f, TSS 201 
+
+enrichment versus unique fragments plots for visualizing data quality: PIP -ATAC -seq ( e)202 
+
+and PIP -Multiome -seq ( f). g–h, Elbow plots for species mixing experiments: PIP -ATAC -203 
+
+seq ( g) and PIP -Multiome -seq ( h). Cells with more than 90% human reads are shown in 204 
+
+red; cells with more than 90% mouse reads are shown in blue; remaining cells are 205 
+
+shown in green and classified as mixed. 206 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 30, 2026. ;https://doi.org/10.64898/2026.06.29.735326 doi: bioRxiv preprint
+
+207 
+
+208 
+
+.CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 30, 2026. ;https://doi.org/10.64898/2026.06.29.735326 doi: bioRxiv preprint Fig. S 4 | PIP -Multiome -seq mouse brain data quality and splint length optimization .209 
+
+a–b, UMAP visualizations colored by replicate identity: RNA -based clusters ( a) and 210 
+
+ATAC -based clusters ( b). c, Splint artifacts can be eliminated by optimizing splint length. 211 
+
+.CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 30, 2026. ;https://doi.org/10.64898/2026.06.29.735326 doi: bioRxiv preprint 212 
+
+213 
+
+.CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 30, 2026. ;https://doi.org/10.64898/2026.06.29.735326 doi: bioRxiv preprint Methods 214 
+
+Cell Culture. Human K562 cells were obtained from ATCC and cultured in IMDM (ATCC 215 
+
+no. 30 -2005) supplemented with 10% FBS and penicillin/streptomycin. Mouse 8024T 216 
+
+cells were cultured in DMEM supplemented with 10% FBS and penicillin/streptomycin. All 217 
+
+cells were maintained at 37°C with 5% CO ₂. Cells were dissociated using TrypLE and 218 
+
+cryopreserved in Bambanker freezing medium (Bulldog Bio, cat. no. BB05) for use in 219 
+
+single -cell assays. 220 
+
+Brain Nuclei Isolation. Fresh -frozen mouse brain tissue from C57BL/6J mice was 221 
+
+purchased from Jackson Laboratory. The frontal cortex was dissected and processed for 222 
+
+nuclei isolation following a previously described protocol 223 
+
+(https://dx.doi.org/10.17504/protocols.io.kxygxmr34l8j/v2). 224 
+
+PIP -ATAC -seq. See Supplementary Note S1 for a detailed step -by -step protocol. 225 
+
+PIP -Multiome -seq. See Supplementary Note S2 for a detailed step -by -step protocol. 226 
+
+Briefly, the multiome version is a further refined protocol built upon the ATAC -seq version 227 
+
+with additional optimizations. Specifically, the length of the splint oligo was optimized to 228 
+
+reduce artifact formation introduced during the reverse transcription step. (Fig. S 4 B). 229 
+
+Mixed -Species Experiment. Frozen K562 and 8024T cells were thawed at 37°C. 230 
+
+Adherent 8024T cells were passed through a 10 μm cell strainer to reduce clumping. Cells 231 
+
+were counted using an automated cell counter in freezing medium. Equal numbers of 232 
+
+cells from each species were combined and processed together for nuclei isolation, 233 
+
+followed by library preparation for either PIP -ATAC -seq or PIP -Multiome -seq. 234 
+
+PIP -seq. Frozen K562 cells were thawed and processed for nuclei isolation using the 235 
+
+same protocol as PIP -Multiome -seq. A total of 5,000 nuclei were used to prepare 236 
+
+standard PIP -seq libraries using the PIP -seq T2 kit following the manufacturer's nuclei 237 
+
+protocol (Fluent Biosciences). 238 
+
+Sequencing. RNA -seq libraries from PIP -Multiome -seq were sequenced on a NovaSeq 239 
+
+X Plus using 2 × 151 bp paired -end reads with a 10 bp index, performed by Novogene. 240 
+
+ATAC -seq libraries were sequenced either on a NextSeq 550 using a 150 -cycle kit (R1: 241 
+
+45 bp, R2: 50 bp, Index1: 50 bp, Index2: 10 bp) or on a NovaSeq X Plus using a 200 -242 
+
+cycle kit (R1: 45 bp, R2: 75 bp, Index1: 75 bp, Index2: 10 bp). Custom sequencing 243 
+
+primers were used for ATAC -seq library sequencing as described in Supplementary 244 
+
+Notes S1 and S2. Standard PIP -seq libraries were sequenced on a MiSeq using a 150 -245 
+
+cycle kit. 246 
+
+Verification of RNA -seq Library Purity. RNA -seq libraries from PIP -Multiome -seq 247 
+
+were submitted to Plasmidsaurus for long -read sequencing. Partial Nextera Read 1 and 248 
+
+its reverse complement sequences (TCGTCGGCAGCGTCAGATGTGTATA and 249 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 30, 2026. ;https://doi.org/10.64898/2026.06.29.735326 doi: bioRxiv preprint
+
+TATACACATCTGACGCTGCCGACGA) were used to identify ATAC -seq -derived 250 
+
+fragments contaminating the RNA -seq library. 251 
+
+PIP -ATAC -seq and PIP -Multiome -seq ATAC Data Pre -processing. We developed a 252 
+
+Snakemake pipeline enabling parallelized data processing to convert raw FASTQ files 253 
+
+to fragment files for downstream analysis (https://github.com/GreenleafLab/PIP -ATAC -254 
+
+Pipeline). The pipeline consists of the following steps (Fig S2) :255 
+
+Quality control. Raw reads were quality -trimmed and adapter sequences were removed 256 
+
+using fastp (v1.0.1) 9. R1 reads containing cell barcodes were processed independently, 257 
+
+while I1 and R2 reads containing genomic sequences were processed as paired files. 258 
+
+Quality reports were generated for each sample. 259 
+
+Cell barcode extraction. Cell barcodes were extracted from R1 reads using PIPseeker 260 
+
+(v3.3.0) with the --chemistry V setting. Barcodes were incorporated into the read headers 261 
+
+of the corresponding I1 and R2 reads using a custom Python script that built an in -memory 262 
+
+lookup table mapping each R1 read to its 16 bp cell barcode. The barcode was embedded 263 
+
+as a CB: tag in the read header to enable barcode -aware downstream processing. Read 264 
+
+headers were also cleaned of extraneous nucleotide sequences appended during 265 
+
+sequencing. 266 
+
+Alignment and filtering. Quality -controlled I1 and R2 reads (with embedded cell barcodes) 267 
+
+were aligned to the reference genome using Bowtie2 (v2.5.4) 10  in --very -sensitive mode 268 
+
+with a maximum insert size of 2,000 bp. Aligned reads were converted to BAM format 269 
+
+and processed with SAMtools (v1.20) 11 , including read name sorting, mate -pair fixing, 270 
+
+coordinate sorting, and barcode -aware PCR duplicate marking using samtools markdup. 271 
+
+Duplicate -marked reads were filtered to retain only properly paired alignments with a 272 
+
+minimum mapping quality of MAPQ ≥ 30. 273 
+
+Fragment file generation. Filtered BAM files were converted to fragment files using a 274 
+
+custom Python script implemented with pysam (v0.23.3). For each properly paired read, 275 
+
+Tn5 transposase insertion sites were identified by applying a +4/−4 bp offset correction 276 
+
+to read start positions, which resolves the 1 bp mismatch introduced by the conventional 277 
+
++4/−5 bp offset approach and improves base pair -resolution analysis 3. Fragment 278 
+
+coordinates (chromosome, start, end, and cell barcode) were output in BED format, 279 
+
+coordinate -sorted with GNU sort, compressed with bgzip, and indexed with tabix for 280 
+
+efficient random -access queries. 281 
+
+Computational infrastructure. All pipeline steps were executed on an HPC cluster via 282 
+
+SLURM job scheduling, managed through Snakemake's SLURM executor plugin. Conda 283 
+
+environments were used to ensure software reproducibility. 284 
+
+PIP -seq and PIP -Multiome -seq RNA Data Pre -processing. Raw FASTQ files (R1 and 285 
+
+R2) were processed using PIPseeker (v3.3.0) with the --chemistry V setting. The same 286 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 30, 2026. ;https://doi.org/10.64898/2026.06.29.735326 doi: bioRxiv preprint
+
+reference files used for ATAC -seq alignment were used for RNA -seq. Human data were 287 
+
+aligned to the hg38 analysis set without alternative contigs 288 
+
+(GCA_000001405.15_GRCh38_no_alt_plus_hs38d1_analysis_set.fna). The GENCODE 289 
+
+v49 annotation file was used for human samples, with chromosome names edited to 290 
+
+match the reference and filtered to retain only protein -coding, lncRNA, and 291 
+
+immunoglobulin genes as recommended by 10x Genomics. Mouse data were aligned to 292 
+
+mm39, with the GENCODE vM38 annotation file filtered usin g the same criteria. Both 293 
+
+filtered and unfiltered count matrices were retained for downstream analysis. 294 
+
+PIP -ATAC -seq and PIP -Multiome -seq QC and Filtering. For PIP -ATAC -seq, fragment 295 
+
+files were used to generate read count versus cell rank plots, and real cells were 296 
+
+distinguished from background using the elbow point. Fragment files were further 297 
+
+analyzed using ArchR (v1.0.3) 12  with parameters minTSS = 6 and minFrags = 3,000 to 298 
+
+remove low -quality cells and quantify unique nuclear fragments and TSS enrichment 299 
+
+scores. Only cells passing both filters were retained for downstream analysis. For PIP -300 
+
+Multiome -seq, cell numbers were first estimated from an elbow plot generated by 301 
+
+PIPseeker based on RNA -seq data. Cells were further filtered based on the number of 302 
+
+unique transcripts, number of detected genes, percentage of mitochondrial reads, TSS 303 
+
+enrichment score, and number of unique ATAC fragments. All per -sample filtering 304 
+
+thresholds are summarized in Table S1. 305 
+
+Mixed -Species Analysis. For ATAC -seq, sequenced reads were aligned to a barnyard 306 
+
+genome combining hg38 and mm39 using the PIP -ATAC -Pipeline. Real cells were first 307 
+
+distinguished from background using an elbow plot, and cells with more than 90% of reads 308 
+
+mapping to a single species were assigned to that species; otherwise, they were 309 
+
+classified as multiplets. For RNA -seq, FASTQ files were aligned to a barnyard reference 310 
+
+(hg38 + mm39 genome; GENCODE v49 + vM38 annotation) using PIPseeker with the --311 
+
+run -barnyard setting. We observed that PIPseeker tended to over -assign reads to three 312 
+
+hg38 genes (ENSG00000280441, ENSG00000293668, ENSG00000285708) located 313 
+
+within ENCODE blacklist regions; reads mapping to these genes were therefore 314 
+
+excluded. Species assignment was based on a threshold of >85% of reads mapping to a 315 
+
+single species as reported by PIPseeker. 316 
+
+Brain Data Analysis. RNA -seq data from QC -filtered cells were used for doublet 317 
+
+detection with DoubletFinder (v2.0.6), applied independently to each replicate. For each 318 
+
+sample, raw RNA counts were normalized using SCTransform with mitochondrial read 319 
+
+percentage regressed out, implemented in Seurat (v5.4.0) 13 . Principal component 320 
+
+analysis (PCA) was performed using the top 30 components, followed by UMAP 321 
+
+embedding, neighborhood graph construction, and Louvain clustering (resolution = 0.5). 322 
+
+The optimal neighborhood size parameter (pK ) was determined empirically via a323 
+
+parameter sweep (paramSweep, summarizeSweep). Doublets were identified using 324 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 30, 2026. ;https://doi.org/10.64898/2026.06.29.735326 doi: bioRxiv preprint
+
+DoubletFinder with parameters pN = 0.25, pK = 0.005, and an expected doublet rate of 325 
+
+8%, and predicted doublets were removed prior to downstream analysis. 326 
+
+Singlet -filtered replicates were merged into a single Seurat object and re -normalized 327 
+
+using SCTransform (regressing out percent mitochondrial reads), followed by PCA and 328 
+
+UMAP embedding using the top 40 principal components. Shared nearest -neighbor 329 
+
+graphs were constructed using 40 PCs, and cells were clustered using the Louvain 330 
+
+algorithm at resolution 0.8. Clusters were examined following automated cell type 331 
+
+annotation by Azimuth (v0.5.0) using the Mouse Motor Cortex reference 332 
+
+(mousecortexref ). Clusters exhibiting biologically implausible co -expression of markers 333 
+
+from distinct cell types — suggestive of residual doublets — or lacking clear cell type -334 
+
+defining marker genes were removed if their cell count was very low or were subclustered 335 
+
+and only biologically interpretable subclusters were retained. This served as an additional 336 
+
+QC step. After removing low -quality clusters, the process was repeated from 337 
+
+unnormalized RNA counts until no further low -quality clusters were identified. Final cluster 338 
+
+annotations were based on both automated annotation and canonical marker gene 339 
+
+expression. 340 
+
+ATAC -seq data from retained cells were processed using ArchR . Dimensionality 341 
+
+reduction was performed using iterative Latent Semantic Indexing (LSI) on the 500 bp tile 342 
+
+matrix, retaining the top 25,000 variable features across 2 iterations with 30 LSI 343 
+
+dimensions. Cells were clustered using the Seurat -based Louvain algorithm (resolution = 344 
+
+0.8) applied to the LSI embedding. UMAP visualization was generated using 40 345 
+
+neighbors, a minimum distance of 0.4, and cosine distance metric. 346 
+
+Benchmarking Data Analysis. Raw FASTQ files from 10x Genomics ATAC -seq 347 
+
+datasets were downloaded from ENCODE (ENCSR308ZGJ, ENCSR332SXG, 348 
+
+ENCSR217VXJ), and 10x Multiome -seq data were downloaded from ArrayExpress 349 
+
+(ERR9847049, ERR9847050). The same genome and annotation files used for PIP -350 
+
+ATAC -seq were used to build reference files for 10x data analysis. 10x ATAC -seq and 351 
+
+Multiome -seq data were processed using Cell Ranger ATAC (v2.2.0) 14  and Cell Ranger 352 
+
+ARC (v2.1.0), respectively. For 10x ATAC -seq, real cells were identified using an elbow 353 
+
+plot and filtered based on TSS enrichment and unique fragment counts . For 10x 354 
+
+Multiome -seq, real cells were identified using an elbow plot based on RNA -seq and 355 
+
+filtered based on number of genes, number of UMIs, percentage of mitochondrial reads, 356 
+
+TSS enrichment, and unique fragment counts. For cross -platform ATAC -seq 357 
+
+comparisons, raw FASTQ files were downsampled to match the sequencing depth per 358 
+
+cell of the lowest -depth sample prior to reprocessing. TSS enrichment scores and unique 359 
+
+fragment counts were assessed in ArchR using cells identified at the original sequencing 360 
+
+depth, as fewer cells are typically recovered after downsampling. Peaks were called using 361 
+
+MACS3 (v3.0.4) 15  on a bulk ATAC -seq sample from ENCODE (ENCLB918NXF) and used 362 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 30, 2026. ;https://doi.org/10.64898/2026.06.29.735326 doi: bioRxiv preprint
+
+for all samples . RNA -seq data were similarly compared at 69 ,00 9 reads per cell. Detailed 363 
+
+statistics are provided in Table S2. 364 
+
+Estimation of Library Complexity. Aligned BAM files retaining PCR duplicates were 365 
+
+filtered by cell barcode to retain only reads from real cells identified at the original 366 
+
+sequencing depth using a python script. Library complexity at saturation depth was 367 
+
+estimated using the lc_extrap function in Preseq (v3.2.0) 16  with -B -P for paired end bam 368 
+
+file. 369 
+
+370 
+
+Author Contributions 371 
+
+Z.L. and W.J.G. conceived of the study and Z.L. developed the methods. Z.L. performed 372 
+
+the experiments and analyzed the data. Z.L. wrote the analysis pipeline. Z.L. and W.J.G. 373 
+
+wrote the manuscript. W.J.G. supervised the work. 374 
+
+375 
+
+Acknowledgements 376 
+
+We thank Betty B. Liu and Samuel H. Kim for providing the unloaded Tn5. We thank all 377 
+
+members of the Greenleaf Lab for helpful discussions. This work is supported by US 378 
+
+National Institutes of Health (U19AI057266, R01HG013317, 5R01HL171611, 379 
+
+DP1HG013599, R01 NS128028 -01) and Arc Institute 380 
+
+381 
+
+Competing Interests 382 
+
+W.J.G. is a consultant and equity holder for 10x Genomics, Guardant Health, Quantapore, 383 
+
+and Ultima Genomics and cofounder of Protillion Biosciences and is named on patents 384 
+
+describing ATAC -seq. Stanford University has filed a provisional patent application on the 385 
+
+methods described, Z.L. and W.J.G. are named as inventors. 386 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 30, 2026. ;https://doi.org/10.64898/2026.06.29.735326 doi: bioRxiv preprint
+
+References 387 
+
+388 
+
+1.  Corces , M. R.  et al.  The chromatin accessibility landscape of primary human 389 
+
+cancers.  Science  362 , eaav1898 (2018). 390 
+
+2.  Trevino, A. E.  et al.  Chromatin and gene -regulatory dynamics of the developing 391 
+
+human cerebral cortex at single -cell resolution.  Cell  184 , 5053 –5069.e23 (2021). 392 
+
+3.  Liu, B. B.  et al.  Multiomics and deep learning dissect regulatory syntax in human 393 
+
+development.  Nature  1–14 (2026). 394 
+
+4.  Clark, I. C.  et al.  Microfluidics -free single -cell genomics with templated 395 
+
+emulsification.  Nat. Biotechnol.  41 , 1557 –1566 (2023). 396 
+
+5.  Ding, J.  et al.  Systematic comparison of single -cell and single -nucleus RNA -397 
+
+sequencing methods.  Nat. Biotechnol.  38 , 737 –746 (2020). 398 
+
+6.  Buenrostro, J. D., Giresi, P. G., Zaba, L. C., Chang, H. Y. & Greenleaf, W. J. 399 
+
+Transposition of native chromatin for fast and sensitive epigenomic profiling of open 400 
+
+chromatin, DNA -binding proteins and nucleosome position.  Nat. Methods  10 ,401 
+
+1213 –1218 (2013). 402 
+
+7.  Lobato -Moreno, S.  et al.  Single -cell ultra -high -throughput multiplexed chromatin 403 
+
+and RNA profiling reveals gene regulatory dynamics.  Nat. Methods  22 , 1213 –1225 404 
+
+(2025). 405 
+
+8.  Xu, W.  et al.  ISSAAC -seq enables sensitive and flexible multimodal profiling of 406 
+
+chromatin accessibility and gene expression in single cells.  Nat. Methods  19 ,407 
+
+1243 –1249 (2022). 408 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 30, 2026. ;https://doi.org/10.64898/2026.06.29.735326 doi: bioRxiv preprint
+
+9.  Chen, S., Zhou, Y., Chen, Y. & Gu, J. fastp: an ultra -fast all -in -one FASTQ 409 
+
+preprocessor.  Bioinformatics  34 , i884 –i890 (2018). 410 
+
+10.  Langmead, B. & Salzberg, S. L. Fast gapped -read alignment with Bowtie 411 
+
+2.  Nat. Methods  9, 357 –359 (2012). 412 
+
+11.  Danecek, P.  et al.  Twelve years of SAMtools and BCFtools.  Gigascience 413 
+
+10 , giab008 (2021). 414 
+
+12.  Granja, J. M.  et al.  ArchR is a scalable software package for integrative 415 
+
+single -cell chromatin accessibility analysis.  Nat. Genet.  53 , 403 –411 (2021). 416 
+
+13.  Hao, Y.  et al.  Dictionary learning for integrative, multimodal and scalable 417 
+
+single -cell analysis.  Nat. Biotechnol.  42 , 293 –304 (2024). 418 
+
+14.  Satpathy, A. T.  et al.  Massively parallel single -cell chromatin landscapes 419 
+
+of human immune cell development and intratumoral T cell exhaustion.  Nat. 420 
+
+Biotechnol.  37 , 925 –936 (2019). 421 
+
+15.  Zhang, Y.  et al.  Model -based analysis of ChIP -Seq (MACS).  Genome Biol. 422 
+
+9, R137 (2008). 423 
+
+16.  Daley, T. & Smith, A. D. Predicting the molecular complexity of 424 
+
+sequencing libraries.  Nat. Methods  10 , 325 –327 (2013). 425
