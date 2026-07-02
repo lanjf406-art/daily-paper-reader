@@ -1,0 +1,2448 @@
+Title: Multi-compartment immune and tumor cell reprogramming by IFNa2 overcomes colon cancer immunotherapy resistance
+
+URL Source: https://www.biorxiv.org/content/10.64898/2026.06.26.734809v1.full.pdf
+
+Published Time: Thu, 02 Jul 2026 23:32:44 GMT
+
+Number of Pages: 47
+
+Markdown Content:
+1
+
+Multi -compartment immune and tumor cell r eprogramming by IFN 2 overcomes colo n
+
+cancer immun otherapy resistance 
+
+Zainab Tiamiyu 1,2 *, Patrick Czabala 1,2 *, Jennifer Worthy 3, Luis Velasquez Zarate 3, Mei Zheng 3,
+
+Dakota B. Poschel 1,2 , Kendra Fick 1,2 , Dafeng Yang 1,2 , Henry R. Monnig 1, Richa Rashmi 4, Sergei 
+
+Bombin 4, Priscilla S. Redd 1,2, 5#, and Kebin Liu 1,2, 4#,
+
+> 1
+
+Department of Biochemistry and Molecular Biology, Medical College of Georgia, Augusta 
+
+University, Augusta, GA. 2VA Augusta Health Care System , Augusta, GA. 3Department of 
+
+Pathology, Medical College of Georgia, Augusta University, 4Georgia Cancer Center, Medical 
+
+College of Georgia, Augusta University, Augusta, GA. 5CheMedImmune Inc. , Augusta, GA. USA .
+
+* Equal contr ibutions 
+
+Running title: IFN 2 reprograms both immune and tumor comportments in lung metastasis 
+
+Conflict of interest: The authors declare no potential conflicts of interest 
+
+> #
+
+Correspondence: Priscilla S. Redd, email:  Predd@augusta.edu , or Kebin Liu, email: 
+
+Kliu@augusta.edu . 1410 Laney Walker Blvd, Augusta, GA 30912. USA. Tel: 706 -721 -9483 
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.26.734809 doi: bioRxiv preprint
+
+2
+
+SUMMARY 
+
+Tumor cell PD -L1 represses IFN signaling to limit anti -tumor immunity, despite an IFN -
+
+responsive immuno phenotype predicting colorectal cancer response to immune checkpoint 
+
+inhibitor therapy. Lipid nanoparticle (LNP) -encapsulated IFNα2 -encoding nanoplasmid (LNP -
+
+mIFNα2) gene therapy suppresses tumor progression, however, the underlying mechanism and 
+
+therapeutic trade -offs of the accompanying proinflammatory cytokine response triggered by 
+
+nucleic acid delivery remain undefined . Here, we show that LNP -mIF Nα2 selectively transfects 
+
+tumor cells to restore local IFNα2 production in lung metastases , suppressing colon cancer lung 
+
+metastasis in syngeneic and humanized mouse models and sensitizing tumors to ICI therapy. 
+
+Efficacy required canonical IFNAR1 signaling, and was further enhanced by neutralizing co -
+
+induced IL6 . Single -cell RNA sequencing revealed coordinated tumor microenvironment 
+
+reprogramming with SPP1 + macrophages underwent apoptosis while incoming monocytes 
+
+acquired an IFN -responsive identity, Tpex cells lost their quiescence program and expanded, and 
+
+tumor cells lost their high -cycling ph enotype while increasing antigen presentation and immune -
+
+cell -recruiting chemokines. Tumor cells also shifted away from a hypoxia/HIF -1α -driven 
+
+cuproptosis -resistance program, with increased Fdx1 and copper -importer expression and 
+
+decreased metallothionein Mt1, suggesting sensitization to cop roptosis pathway. The LNP -
+
+mIFNα2 -treated tumor microenvironment transcriptionally recapitulated T cell and myeloid 
+
+signatures of pembrolizumab -responsive patients. Our findings establish LNP -delivered IFNα2 
+
+as a multi -compartment TME regulator that reprograms myeloid suppression, reinvigorates 
+
+exhausted T cells, and restores tumor immunogenicity. 
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.26.734809 doi: bioRxiv preprint
+
+3
+
+Key points: 
+
+LNP -mIFNα2 eliminates SPP1+ TAMs and reprograms monocytes to an IFN -responsive state 
+
+LNP -mIFNα2 relieves Tpex quiescence to expand Tpex and contract Tex -term cells 
+
+Tumor cells lose a high -cycling state and a HIF1α -driven cuproptosis -resistance phenotype 
+
+LNP -mIFNα2 -reprogrammed mouse TME mirrors pembrolizumab -responsive human tumors 
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.26.734809 doi: bioRxiv preprint
+
+4
+
+INTRODUCTION 
+
+Immune checkpoint inhibitor (ICI) immunotherapy has transformed outcomes in human cancer 
+
+therapy and has been approved for colorectal cancer (CRC) patients harboring mismatch repair -
+
+deficient (dMMR) or microsatellite instability -high (MSI -H) tumors 1,2 . However, fewer than 50% 
+
+of dMMR /MSI CRC patients respond durably 1,3 , and, critically, approximately 85 -90 % of CRC 
+
+cases are proficient mismatch repair (pMMR) tumors that are broadly non -responsive to ICI 
+
+therapy 4-6. The molecular mechanisms underlying ICI resistance remain poorly understood, and 
+
+no effective strategy exists to convert checkpoint -resistant CRC into an immunotherapy -
+
+responsive state. Interferon (IFN) is an essential component of host cancer immune surveillance 7-
+
+> 19
+
+. A large body of evidence implicates defective IFN response in cancer patient as a key 
+
+determinant of ICI resistance 20,21 . Loss -of -function mutations in JAK1 and JAK2 , key transducers 
+
+of IFN receptor signaling , confer both primary and acquired resistance to ICI immunotherapy 20 -27 .
+
+Conversely, a constitutive interferon -high immunophenotype has recently been defined as a robust 
+
+predictor of ICI response specifically in CRC 6, reinforcing IFN signaling as a central axis of 
+
+antitumor immune competence. These observations collectively establish the loss of IFN function 
+
+as a mechanism of tumor immune evasion and suggest that restoring IFN -I activity within the 
+
+tumor immune microenvironment is a mechanistically grounded strategy to overcome ICI 
+
+resistance. 
+
+The PD -(L) 1 axis suppresses antitumor immunity through multiple cellular mechanisms. 
+
+Beyond the canonical engagement of PD -1 on cytotoxic T lymphocytes (CTLs) to inhibit their 
+
+activation, tumor cell PD -L1 also engages PD -1 expressed on myeloid cells, an interaction we 
+
+have previously shown to suppress IFN -I production, repress CXCL9 expression, and impair CTL 
+
+recruitment to lung metastases 28 . Loss of IFN -I expression thus emerges as a critical and proximal 
+
+consequence of PD -L1 immune suppression within the metastatic niche, providing a mechanistic 
+
+rationale for directly restoring IFN -I rather than relying on ICI alone to relieve this suppression in 
+
+a TME that has already silenced the upstream innate immune signal. 
+
+Recombinant IFNα is an FDA -approved anticancer agent with clinical activity in melanoma 
+
+and renal cell carcinoma 29 -31 . However, its short half -life necessitates frequent high doses , resulting 
+
+in substantial toxicity including inflammatory symptoms, hematologic toxicity, and tissue 
+
+injury 32,33 . Pegylat ion of IFNα extends its half -life and reduces dosing frequency but does not 
+
+significantly reduce overall toxicity 34 -36 . Other engineered approaches, such as tumor -activated 
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.26.734809 doi: bioRxiv preprint
+
+5
+
+IFN prodrugs or antibody -cytokine fusion proteins, aim to improve tumor targeting but still rely 
+
+on systemic recombinant protein delivery 37,38 . These limitations highlight the challenge of 
+
+achieving potent, localized IFN  activity while minimizing systemic toxicity. 
+
+The clinical success of lipid nanoparticle (LNP) -based mRNA vaccines has validated LNP 
+
+platforms as safe and effective systems for in vivo nucleic acid delivery 39 . LNPs enable 
+
+intracellular expression of therapeutic proteins following nucleic acid transfection. Consistent with 
+
+this paradigm, plasmid DNA can be encapsulated in lipid nanoparticles to drive therapeutic protein 
+
+expression in vivo. DOTAP -cholesterol LNPs accumulate preferentially in tumor tissues and 
+
+facilitate efficient gene delivery vivo 40 -43 . Systemic administration of mRNA -LNPs has been 
+
+shown to elicit a transient IFN -I surge that resets the TME and sensitizes immunologically cold 
+
+tumors to ICI therapy 19 . However, LNP delivery of plasmid DNA (pDNA) introduces an 
+
+additional layer of innate immune activation via cytosolic cGAS -STING sensing of the DNA 
+
+backbone, which drives robust but transient production of IFN -I and pro -inflammatory cytokines 
+
+including IL 644 . This dual mechanism , cGAS -STING -driven innate activation plus transgene -
+
+encoded IFNα2 protein signaling through IFNAR1 , creates both an opportunity and a challenge: 
+
+the opportunity to achieve durable IFN -I activity within the TME, and the challenge of managing 
+
+the pDNA -associated inflammatory response to preserve tolerability. 
+
+Underscoring the clinical relevance of restoring tumor IFN -I activity, a recent first -in -human 
+
+phase 1/2a trial in glioblastoma used genetically engineered autologous hematopoietic stem cells 
+
+to enable tumor -restricted, myeloid cell -mediated IFNα2 gene the rapy, demonstrating feasibility, 
+
+safety, and reprogramming of the tumor immune microenvironment without systemic toxicity 45 .
+
+While this cell -based platform establishes proof -of -concept for IFNα2 gene therapy in human 
+
+cancer , it requires ex vivo lentiviral transduction and myeloablative conditioning, underscoring the 
+
+need for a simpler, off -the -shelf strategy capable of achieving comparable tumor -restricted IFN -I
+
+activity through direct systemic administration. 
+
+Here, we use LNP -mIFNα2, a lipid nanoparticle -encapsulated nanoplasmid, to assess systemic 
+
+proinflammatory response and dissect how restoring IFN -I signaling reprograms the metastatic 
+
+tumor microenvironment and . We define its multi -compartment TME reprogramming activity, 
+
+including reversal of a tumor -intrinsic cuproptosis -resistance program, its cytokine profile, and 
+
+IFNAR1 -dependent antitumor activity, revealing IL6 as a targetable liability. We show that LNP -
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.26.734809 doi: bioRxiv preprint
+
+6
+
+mIFNα2 transcriptionally reprograms the TME to mirror immunotherapy -responsive human 
+
+cancer, offering a strategy to overcome ICI resistance in metastatic CRC. 
+
+RESULTS 
+
+LNP -mIFN 2 transgene selectively transfects tumor cell s to express IFN 2 locally to 
+
+overcome colon tumor lung metastasis resistance to PD -1 blockade immunotherapy 
+
+Lipid nanoparticle -encapsulated mouse codon usage -optimized IFN 2-encoding 
+
+nanoplasmid 46 (LNP -mIFN 2) gene immunotherapy selectively delivers the nano plasmid to 
+
+tumor -bearing lungs in mice 47 . To determine the target cells of LNP -mIFN 2 in the metastases -
+
+bearing lungs , LNP -mIFN 2 was administered to CT26 tumor -bearing mice using an experimental 
+
+lung metastasis model (Fig. 1A -B) . Single cells were prepared from the tumor -bearing lungs and 
+
+CD45 -PD -L1 + tumor cells , T (CD3 +), and myeloid (CD11b +) cells were sorted out (Fig. 1C). 
+
+Codon -usage -optimized mIFN 2 sequence -specific PCR analysis 47 detected transgene expression 
+
+predominantly in tumor cells , with lower expression in T and myeloid cells (Fig. 1D -E) . Systemic 
+
+IFN 2 protein production was detected in serum which peaked within 4-12 hours of LNP -mIFN 2
+
+treatment and declined to near baseline by day 3 (Fig. 1F). In tumor -bearing lungs, mIFN 2
+
+protein reached plateau at 12 hours and remained detectable through day 9 (Fig. 1G), 
+
+demonstrating a durable local IFN 2 production within the metastatic site. 
+
+We next evaluated antitumor efficacy in mouse colon tumor syngeneic lung metastasis models, 
+
+which are resistant to PD -(L)1 ICI monotherapy 48,49 . Intravenous injection of CT26 cells followed 
+
+by treatment with LNP -mIFN 2 alone or in combination with anti -PD -1 mAb reduced lung 
+
+metastasis, while anti -PD -1 monotherapy had no effect (Fig. 1H). When treatment was delayed to 
+
+day 5 resemble a higher tumor burden, both LNP -mIFN 2 and the combination remained highly 
+
+effective (Fig. 1H) . To assess generalizability across colon tumor models, we tested LNP -mIFN 2
+
+in the MC38 -met model, a metastatic variant of the MC38 colon adenocarcinoma cell line 28 . Anti -
+
+PD -1 monotherapy was again ineffective, while LNP -mIFN 2 alone and in combination with anti -
+
+PD -1 significantly reduced lung metastasis (Fig. 1I). To evaluate translational potential, we 
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.26.734809 doi: bioRxiv preprint
+
+7
+
+established a humanized NSG mouse model by engrafting human peripheral blood mononuclear 
+
+cells (PBMCs), followed by intravenous injection of the human colon cancer cell line SW620. 
+
+Treatment with LNP -hIFN 2 alone and in combination with nivolumab significantly suppressed 
+
+SW620 lung metastasis, while nivolumab alone had no significant effect (Fig. 1J). Together, these 
+
+results establish that LNP -IFN 2 overcomes colon cancer resistance to PD -1 blockade 
+
+immunotherapy to suppress colon cancer lung metastasis across multiple syngeneic and humanized 
+
+preclinical models. 
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.26.734809 doi: bioRxiv preprint
+
+8
+
+Figure 1 . LNP -mIFN 2 gene immunotherapy forces tumor cells to express IFNα2 to 
+
+overcomes colon tumor resistance to PD -1 inhibitor immunotherap y. 
+
+A. Schematic of LNP -mIFN 2 formulation. Codon -usage -optimized mouse IFN 2-encoding 
+
+nano plasmid NTC9385R was formulated with a DOTAP -cholesterol lipid to assemble lipid 
+
+nanoparticles (LNP -mIFN 2). 
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.26.734809 doi: bioRxiv preprint
+
+9
+
+B. Scanning electron microscopy image of LNP -mIFN 2. Scale bar, 100 nm. 
+
+C. Flow cytometry gating strategy for isolation of T (CD45 +CD3 +), myeloid (CD45 +CD11b +)
+
+and tumor (CD45 -PD -L1 +) cells from CT26 metastas es-bearing lungs. 
+
+D. PCR detection of codon usage -optimized mIFN 2 transgene (cuo -IFN 2) in tumor cells ,
+
+tumor -bearing total lung tissues (lung cells), T cells (CD3 +), and myeloid cells (CD11b +) as 
+
+shown in C. β-Actin serves as a loading control. 
+
+E. Quantification of cuo -mIFNα2 transgene expression across sorted cell populations as shown 
+
+in D. The expression level in myeloid cells was arbitrarily set at 1 and used as reference for 
+
+other cell types. 
+
+F. Serum mIFN 2 protein kinetics after intravenous LNP -mIFNα2 administration in CT26 
+
+metastasis -bearing mice, measured by ELISA. Data represent mean ± SD .
+
+G. mIFN 2 protein kinetics in tumor -bearing lung tissue after intravenous LNP -mIFNα2 
+
+administration, measured by ELISA. Data represent mean ± SD .
+
+H. Antitumor efficacy of LNP -mIFNα2 alone and in combination with anti -PD -1 antibody in the 
+
+CT26 syngeneic lung metastasis model. CT26 cells were injected intravenously into BALB/c 
+
+mice. Mice were treated with LNP, anti -PD -1, LNP -mIFNα2, or LNP -mIFNα2 + anti -PD -1
+
+beginning on day 3 (upper panel) or day 5 (lower panel) post -tumor inoculation. Upper panel, 
+
+left: representative gross photographs of representative metastasis -bearing lungs at 
+
+experimental endpoint of the day 3 treatment; top right: treatment sch eme; bottom right: lung 
+
+metastasis nodule counts for day 3 treatment initiation cohort. Lower panel, top: treatment 
+
+scheme; bottom: nodule counts for day 5 treatment initiation cohort. 
+
+I. Antitumor efficacy in the MC38 -met syngeneic lung metastasis model. MC38 -met cells were 
+
+injected intravenously into C57BL/6 mice. Mice were treated with LNP, anti -PD -1, LNP -
+
+mIFNα2 , or LNP -mIFNα2 + anti -PD -1 beginning on day 3 post -tumor inoculation as in H. 
+
+Left: representative gross photographs of metastasis -bearing lungs. Right top: experiment 
+
+scheme; right bottom: lung metastasis nodule counts. Data represent mean ± SD. 
+
+J. Antitumor efficacy of LNP -hIFNα2 in a humanized NSG mouse model of human colon cancer 
+
+lung metastasis. Tumor -bearing humanized mice were treated with LNP, nivolumab, LNP -
+
+hIFNα2 (LNP -encapsulated human IFN 2-encoding plasmid, or LNP -hIFN 2+nivolumab. 
+
+Left: representative gross photographs of metastasis -bearing lungs. Right top : experiment 
+
+scheme; right bottom: lung metastasis nodule counts. Data represent mean ± SD. 
+
+LNP -mIFN 2 induces a transient cytokine response 
+
+A major adverse effect for LNP -based nucleic acid therapies is the induction of a systemic 
+
+inflammatory cytokine response 44 . To characterize the cytokine profile induced by LNP -
+
+mIFNα2, we collected serum from mice and measured a broad panel of cytokines (Fig. 2A -H). 
+
+Among pro -inflammatory cytokines, IL6 , a driver of acute phase reactant production , was 
+
+marke dly elevated at 4 h in LNP -mIFNα2 -treated mice and returned toward baseline by 24 h 
+
+(Fig. 2A), consistent with an acute, self -resolving innate response to LNP administration. 
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.26.734809 doi: bioRxiv preprint
+
+10 
+
+Importantly, the classical pro -inflammatory cytokines IL1α, IL1β, TNFα, and GM -CSF remained 
+
+at low levels. 
+
+Regulatory cytokines IL10 and TGFβ were modestly elevated in LNP -mIFNα2 -treated mice, 
+
+particularly at 4 h, and declined by 24 h (Fig. 2B). Th1 -associated cytokines showed a selective 
+
+and distinctive pattern (Fig. 2C). IL12p70 , IL27 and IL2 were not induced . In contrast, IFNγ was 
+
+substantially elevated at 4 h in LNP -mIFNα2 -treated mice and declined by 24 h, indicating rapid 
+
+NK cell or T cell activation in response to type I IFN signaling. Total IFNα levels were robustly 
+
+elevated at 4 h and declined shar ply by 24 h. IFNβ levels were modestly elevated at 4 h. Th2 -
+
+associated cytokines remained at baseline across all conditions and timepoints (Fig. 2D). Th17 -
+
+associated cytokines showed a selective elevation pattern (Fig. 2E). IL17α and IL -17F were not 
+
+signif icantly induced. However, IL22 and IL23 were modestly elevated at 4 h in LNP -mIFNα2 -
+
+treated mice, suggesting limited inflammasome or innate lymphoid cell activation in response to 
+
+LNP -delivered nucleic acid. VEGF, representing the angiogenic cytokine class , was not 
+
+significantly altered in LNP -mIFNα2 -treated mice compared to controls at either timepoint (Fig. 
+
+2F). 
+
+Chemokines CXCL1, Cxcl9, and CXCL10 were elevated at 4 h in LNP -mIFNα2 -treated mice 
+
+(Fig. 2G). CXCL10 is a canonical IFN -I-stimulated gene product that recruits CXCR3 + effector T 
+
+cells and NK cells to sites of infection and inflammation 50 , directly linking the IFNα2 response to 
+
+anti -tumor immune cell trafficking. CCL2 were also elevated at 4 h, indicating monocyte 
+
+chemoattractant signaling. CXCL2 and CXCL20 showed modest elevation. CCL3, CCL4, CCL5, 
+
+CCL11, CCL24, CCL9, CX3CL1, and CXCL12 w ere largely unchanged. XCL1 was markedly 
+
+elevated at 4 h, particularly in LNP -mIFNα2 -treated mice. XCL1 is a unique chemokine produced 
+
+by activated CD8 + T cells and NK cells that recruits XCR1 + cDC1s for cross -presentation, 
+
+suggesting early innate immune c oordination. Collectively, the chemokine response is consistent 
+
+with IFN -driven recruitment of cytotoxic effector cells rather than pro -inflammatory myeloid cell 
+
+influx. 
+
+Serum IFNα2 protein was at high levels at 4 h and remains detectable by 24 h (Fig. 2H), 
+
+consistent with the pharmacokinetic profile observed in tumor -bearing lungs (Fig. 1F -G). The 
+
+absence of detectable IFNα2 in LNP and control groups confirms that the measured IFNα2 protein 
+
+is derived from in vivo transgene translation. LNP -mIFNα2 boost therapy induces a similar 
+
+cytokine profile as the prime therapy (Fig. S1A -H). 
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.26.734809 doi: bioRxiv preprint
+
+11 
+
+To contextualize these mouse findings in human cancer, we analyzed serum cytokines and 
+
+chemokines from CRC patients and healthy donors (Fig . S2A-F). CRC patients exhibited 
+
+significantly elevated IL6 and GM -CSF (Fig. S 2A), IL12p70 (Fig. S 2B), IL10 (Fig. S 2D), and the 
+
+chemokines CXCL10 and CXCL5 (Fig. S 2F), while Th2 - and Th17 -associated cytokines were 
+
+unchanged (Fig. S 2C & E). The elevation of the chemokine CXCL10 was also induced by LNP -
+
+mIFN 2 in mice (Fig. 2G). 
+
+Figure 2 . LNP -mIFNα2 induces a transient type I interferon and chemokine response. 
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.26.734809 doi: bioRxiv preprint
+
+12 
+
+A. Pro -inflammatory cytokines in mouse serum . Mice were treated with LNP or LNP -mIFNα2 
+
+and serum was collected 4 and 24h after treatment. IL6 is shown at left on an independent y -
+
+axis scale . Each dot represents measurement from one mouse. Data represent mean± SD. 
+
+B-F. Serum c ytokines are measured by multiplex immunoassay as in A and grouped by 
+
+functional class. 
+
+G. Chemokines are measured by multiplex immunoassay as in A. Cxcl9 is shown at left on an 
+
+independent y -axis scale (bottom panel) .
+
+H. Serum IFN 2 protein levels at 4 h and 24 h after LNP or LNP -mIFNα2 administration 
+
+measured by mouse IFNα2 -specific ELISA. 
+
+LNP -mIFN 2 induces a transient and self -resolving intrapulmonary neutrophil response 
+
+To assess the pathological changes in the lungs, H&E -stained lung sections were evaluated by 
+
+board -certified pathologists . In untreated control mice, lung sections showed preserved alveolar 
+
+architecture with mild emphysematous changes and evidence of poorly differentiated parenchymal 
+
+malignancy consistent with CT26 metastatic disease (Fig. 3A). In LNP -treated mice, the 
+
+histological appear ance at 4 h was largely unchanged, sections showed benign lung tissue or mild 
+
+emphysematous changes (Fig. 3B). By 24 h after LNP treatment, mild to moderate emphysematous 
+
+changes and focal perivascular lymphocytic infiltration were noted, without significa nt 
+
+neutrophilia (Fig. 3C, left), consistent with very mild, resolving vehicle -related changes. 
+
+LNP -mIFNα2 -treated mice displayed a distinct, time -dependent neutrophil response. At 4 h, 
+
+average intra -alveolar neutrophil counts were elevated approximately twice the control baseline 
+
+and 2.6 -fold above the LNP 4 h level , indicating a robust but compartmentalized neutrophil influx 
+
+into the alveolar space (Fig. 3B, 3D). Higher -magnification images of LNP -mIFNα2 -treated lungs 
+
+at 4 h confirmed the presence of neutrophils , characterized by multi -lobed nuclei , accumulating 
+
+within alveolar spaces (Fig. 3D ), adjacent to structurally intact bronchioles and pulmonary arteries, 
+
+without evidence of vessel wall disruption, necrosis, diffuse alveolar damage, or parenchymal 
+
+tissue injury. Despite the elevated neutrophil count, pathological evaluation noted no evid ence of 
+
+tissue injury or inflammation at this timepoint. 
+
+By 24 h post -LNP -mIFNα2 injection, alveolar neutrophil counts resolved substantially to a 
+
+level that is comparable to the untreated control level , demonstrating rapid clearance of the early 
+
+neutrophil influx (Fig. 3C, 3E). Histologically, LNP -mIFNα2 -treated lungs at 24 h showed only 
+
+mild emphysematous changes in some sections, with benign lung tissue in others, and no evidence 
+
+of persistent tissue injury or inflammation. LNP -mIFNα2 boost therapy induced a similar 
+
+pathological change in tumor -bearing mo use lungs (Fig. 3A-D). 
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.26.734809 doi: bioRxiv preprint
+
+13 
+
+Figure 3 . LNP -mIFNα2 induces a transient and self -resolving alveolar neutrophil influx. 
+
+was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.26.734809 doi: bioRxiv preprint 14 
+
+A. Representative H&E -stained lung section from an untreated control CT26 metastasis -bearing 
+
+mouse. Yellow arrow: Pulmonary arteries ; Blue arrow: bronchioles .
+
+B-C. Representative H&E -stained lung sections at 4 (B) and 24 (C) hours after LNP (left) and 
+
+LNP -mIFNα2 (right) treatment .
+
+D. Higher -magnification H&E images of representative lung sections from LNP -treated (left) 
+
+and LNP -mIFNα2 -treated (right) mice at 4 h post -treatment. Black circles indicate 
+
+neutrophils. Blue arrow: bronchiole. Yellow arrow: pulmonary artery. With intact vesse l wall 
+
+and no evidence of vasculitis or endothelial disruption. Circle: neutrophils located within the 
+
+alveolar space. 
+
+E. Quantification of average intra -alveolar neutrophil counts per 10 HPF across all experimental 
+
+groups as indicated. Each data point represents one mouse (n=4 per group). Data represent 
+
+mean ± SD. 
+
+To validate the histological neutrophil influx, flow cytometry was performed on tumor -bearing 
+
+lungs after prime and boost treatment . LNP -mIFNα2 increased neutrophil frequencies at 4 h post -
+
+prime and post -boost, returning toward baseline by 24 h (Fig. S4A -H). This complimentary cell -
+
+based quantification confirms the transient, self -resolving neutrophil response observed by H&E 
+
+histopath ology. 
+
+Collectively, the pathological and flow cytometric analyses demonstrate that LNP -mIFNα2 
+
+immunotherapy induces a transient alveolar neutrophil influx that peaks at 4 h and resolves by 24h 
+
+after both prime and boost dosing, without tissue injury, diffu se alveolar damage, vascular 
+
+disruption, or persistent pulmonary inflammation (Fig. 3, S3, S4). The convergence of histological 
+
+and flow cytometric findings across two complementary approaches confirms that this neutrophil 
+
+response is robust, reproducible, and self -limiting. This profile is consistent with the serum 
+
+cytokine data (Fig. 2, S2) showing a self -resolving innate immune response and supports the 
+
+tolerability of LNP -mIFNα2 for repeat intravenous dosing. 
+
+LNP -mIFNα2 induces antitumor efficacy through IFNAR1 signaling .
+
+Systemic administration of mRNA -LNPs elicits a viraemia -like surge in IFN -I and innate 
+
+immune activation 19 . However, LNP -mediated delivery of plasmid DNA (pDNA) introduces an 
+
+additional layer of innate immune stimulation, driving rapid production of IFN -I and pro -
+
+inflammatory cytokine IL6 44 . We therefore hypothesized that LNP -encapsulated murine IFNα2 
+
+(LNP -mIFNα2), which delivers a pDNA transgene encoding IFNα2, would engage both the innate 
+
+response inherent to pDNA delivery and the direct IFNAR1 -mediated antitumor activity of the 
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.26.734809 doi: bioRxiv preprint
+
+15 
+
+encoded IFNα2 protein, and that this dual mechanism of IFN -I induction would confer superior 
+
+antimetastatic efficacy. At 4 h after injection, LNP -mIFNα2 -treated mice showed elevated serum 
+
+levels of IL6, GM -CSF, TNFα, IFNα, IFNβ, IFNγ, Cxcl9, CXCL10, IL10, and IL17A compared 
+
+with untreated controls, with most cytokines declining substantially by 24 h. Notably, LNP -
+
+Vector -treated mice also displayed measurable cytokine induction above baseline at 4h (Fig. 4A). 
+
+This inflammatory response elicited by the empty vector LNP -pDNA is consistent with cGAS -
+
+STING -mediated sensing of the encapsulated plasmid DNA backbone, which drives IFN -I
+
+production independently of transgene expression 44,51 . In line with active IFNα2 transgene 
+
+expression, serum IFNα2 protein was significantly elevated only in LNP -mIFNα2 -treated mice at 
+
+4 h and remained detectable at 24 h, whereas LNP -Vector -treated animals showed no measurable 
+
+IFNα2 protein (Fig. 4B), confir ming that LNP -mIFNα2 drives a quantitatively and qualitatively 
+
+distinct interferon response beyond baseline pDNA -mediated innate activation. 
+
+To assess whether the augmented interferon response of LNP -mIFNα2 translates into 
+
+antitumor efficacy, we quantified pulmonary metastatic burden following treatment at Day 3 or 
+
+Day 5 post -tumor injection, representing early and late metastatic stages, respectively (Fig. 4C). 
+
+At both time points, LNP -Vector and LNP -mIFNα2 significantly reduced lung metastatic nodule 
+
+counts compared with LNP control. The therapeutic advantage of LNP -mIFNα2 over LNP -Vector 
+
+was pronounced at Day 5, a time point that mimics high tumor burden in the clinical setting, 
+
+suggesting that robust transgene -driven IFNα2 expression and direct IFNAR1 signaling are 
+
+especially critical when the immunosuppressive tumor microenvironment is more established, 
+
+consistent with observations tha t mRNA -LNP -induced IFN -I is required to sensitize 
+
+immunologically cold tumors to checkpoint blockade 19 . To confirm IFNAR1 dependence, mice 
+
+were treated with anti -IFNAR1 blocking antibody during treatment (Fig. 4D). IFNAR1 blockade 
+
+diminished the antitumor effect of LNP -Vector and LNP -mIFNα2. These results demonstrate that 
+
+the antitumor efficacy of LNP -Vect or and LNP -mIFNα2 is dependent on canonical IFNAR1 
+
+signaling and is quantitatively superior to the cGAS -STING -mediated baseline inflammatory 
+
+response to the vector backbone, particularly under conditions of high tumor burden. 
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.26.734809 doi: bioRxiv preprint
+
+16 
+
+Figure 4 . LNP -mIFNα2 suppresses CT26 pulmonary metastases through IFNAR1 signaling 
+
+and is associated with IL6 induction. 
+
+A. Serum cytokine profiles in CT26 metastases -bearing mice. Mice were treated intravenously 
+
+with lipid nanoparticle (LNP) -encapsulated empty vector (LNP -Vector) or LNP -encapsulated 
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.26.734809 doi: bioRxiv preprint
+
+17 
+
+murine IFNα2 (LNP -mIFNα2). Serum concentrations of IL6 , GM -CSF, TNFα, IL -10, IFNα, 
+
+IFNβ, IFNγ, IL -17A, Cxcl9, and Cxcl10 were measured at 4 h and 24 h after treatment. Data 
+
+are shown as mean ± SD. 
+
+B. Serum IFNα2 protein levels in mice treated as in (A), measured at 4 h and 24 h after 
+
+treatment. Data are shown as mean ± SD. 
+
+C. Quantification of pulmonary metastatic nodule number in CT26 metastases -bearing mice 
+
+treated with LNP, LNP -Vector, or LNP -mIFNα2 administered at Day 3 or Day 5 after tumor 
+
+cell injection. Each dot represents one mouse. Data are shown as mean ± SD. 
+
+D. Quantification of pulmonary metastatic nodule number in CT26 metastases -bearing mice 
+
+treated with LNP -Vector or LNP -mIFNα2 in the presence of IgG or anti -IFNAR1 monoclonal 
+
+antibody. Each dot represents one mouse. Data are shown as mean ± SD. 
+
+E. Quantification of pulmonary metastatic nodule number in CT26 metastases -bearing mice 
+
+treated with LNP or LNP -mIFNα2. The LNP -mIFNα2 -treated group was further divided and 
+
+treated with IgG or anti -IL6 neutralizing monoclonal antibody administered once prior to 
+
+LNP -mIFNα2 treatment. Each dot represents one mouse. Data are shown as mean ± SD. 
+
+Neutralization of IL6 enhances LNP -mIFNα2 antitumor therapeutic activity 
+
+Among the cytokines transiently induced by LNP -mIFNα2, IL6 was among the most 
+
+significantly elevated at 4 h and rapidly resolved by 24 h (Fig. 4A). This acute IL6 surge is 
+
+characteristic of pDNA -LNP -induced inflammation driven by cGAS -STING activatio n, which 
+
+prominently upregulates IL6 44 . To determine the functional consequence of this transient IL6 
+
+response on antitumor activity, we treated CT26 metastases -bearing mice with LNP -mIFNα2 in 
+
+combination with either isotype control (IgG) or an anti -IL6 neutralizing monoclonal antibody 
+
+adminis tered once prior to LNP -mIFNα2 (Fig. 4E). Neutralization of IL6 significantly enhanced 
+
+the antitumor efficacy of LNP -mIFNα2, resulting in a further reduction of pulmonary metastatic 
+
+nodule counts compared with LNP -mIFNα2+IgG controls. These observations in dicate that the 
+
+transient IL6 surge induced by LNP -mIFNα2 is not required for its antitumor effect and may 
+
+instead dampen therapeutic activity, a known downstream consequence of acute IL6 elevation in 
+
+the tumor microenvironment 52 . Blocking this IL6 burst therefore unmasks an augmented antitumor 
+
+response, positioning transient IL6 as a modulatable liability of pDNA -LNP -based IFNα2 therapy. 
+
+Together, these findings suggest that co -administration of IL6 blockade with LNP -mIFNα2 
+
+represe nts a rational combinatorial strategy to maximize the antimetastatic efficacy of IFN -I-based 
+
+nanoparticle targeted immunotherapy. 
+
+LNP -mIFNα2 broadly reprograms the tumor -infiltrating immune compartments toward an 
+
+antitumor immune phenotype 
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.26.734809 doi: bioRxiv preprint
+
+18 
+
+To probe the effect of LNP -mIFNα2 on the tumor microenvironment (TME), we isolated 
+
+CD45 + cells from CT26 tumor lung metastases (Fig. S5A & B) and performed single cell RNA 
+
+sequencing (scRNAseq). After integration and clustering, cells were annotated into major immune 
+
+and residual stromal populations based on differentially expressed genes and canonical marker 
+
+genes (Fig. S5C -F). Inspection of the split UMAP and proportion plot revealed striking differences 
+
+in both the proportion of monocytes versus ma crophages and in the composition of the T cell 
+
+compartment between conditions (Fig. 5A & B). In the LNP control tumor, there were high Tumor -
+
+associated Macrophages (TAMs) and low Ly6 + inflammatory monocytes. In contrast, the LNP -
+
+mIFNα2 -treated tumor harbored low TAMs and high monocytes. We also observed an expansion 
+
+of Tpex -like T cells in the LNP -mIFNα2 -treated tumor. To investigate these differences at higher 
+
+resolution, we separatel y subclustered the monocyte/macrophage and T cell compartments. 
+
+LNP -mIFNα2 reprogrammed the monocyte/macrophage compartment in lung metastasis .
+
+To probe the effect of LNP -mIFNα2 on the tumor microenvironment (TME), we isolated CD45 +
+
+cells from CT26 tumor lung metastases (Fig. S5A & B) and performed single cell RNA sequencing 
+
+(scRNAseq). After integration and clustering, cells were annotated into major immune and residual 
+
+stromal populations based on differentially expressed genes and canonical marker genes (Fig. S5C -
+
+F) . Inspection of the split UMAP and proportion plot revealed striking differences in both the 
+
+proportion of monocytes versus macrophages and in the composition of the T cell compartment 
+
+between conditions (Fig. 5A, B). In the LNP control tumor, there were high Tumor -associated 
+
+Macrophages (TAMs) and low Ly6 + inflammatory monocytes. In contrast, the LNP -mIFN α2-
+
+treated tumor harbored low TAMs and high monocytes. We also observed an expansion of Tpex -
+
+like T cells in the LNP -mIFNα2 -treated tumor. To investigate these differences at higher 
+
+resolution, we separately subclustered the monocyte/macrophage and T cell compartments. 
+
+LNP -mIFNα2 reprogrammed the monocyte/macrophage compartment in lung metastasis .
+
+The three monocyte/macrophage clusters from the overall UMAP (Ly6 + Inflammatory 
+
+Monocytes, Macrophages, and Tumor -Associated Macrophages) were subsetted and re -clustered. 
+
+Non -myeloid clusters identified by expression of lineage -specific markers were excluded prior to 
+
+downstream analysis (Fig. S6A, B). The remaining clust ers were annotated into 12 cell types using 
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.26.734809 doi: bioRxiv preprint
+
+19 
+
+a combination of differential gene expression, canonical marker genes, and pairwise DEG analysis 
+
+between selected clusters (Fig. S6C). 
+
+Quantification of myeloid subtype proportions revealed that the broad shift from macrophages 
+
+to monocytes observed in the overall UMAP (Fig. 5A, B) was attributable specifically to a 
+
+reduction in Hypoxic SPP1 TAMs, a population of myeloid cell with po tent immune suppressive 
+
+function 53 -56 , and Lipid -associated TAMs, with a corresponding increase in Inflammatory and 
+
+Patrolling Monocytes in the LNP -mIFNα2 group (Fig. 5C, D). In the LNP control, Patrolling 
+
+Monocytes, Inflammatory Monocytes, and Hypoxic SPP1 TAMs all expressed higher levels o f
+
+Arginase 1 ( Arg1 ), a key immunosuppressive enzyme in the TME. Hypoxic SPP1 TAMs 
+
+additionally expressed higher levels of Spp1 in LNP control tumors. We have previously shown 
+
+that IRF8 represses Spp1 expression in myeloid cells 28 . Given that LNP -mIFNα2 elevates type I 
+
+IFN levels in the TME, IRF8 -mediated transcriptional repression of Spp1 in myeloid cells may 
+
+represent a key mechanism of LNP -mIFNα2 efficacy. Consistent with this, Spp1 expression was 
+
+globally repressed across myeloid cells in the LNP -mIFNα2 group (Fig. S6G ). Hypoxic SPP1 
+
+TAMs in the LNP -mIFNα2 group additionally downregulated suppressive markers including 
+
+Trem2 and Arg1 , and upregulated IFN -response genes to among the highest levels of any myeloid 
+
+subtype (Fig. 5C, Fig. S6G -I). 
+
+The striking reduction in Hypoxic SPP1 TAMs in LNP -mIFNα2 -treated tumors prompted us 
+
+to investigate the fate of these cells. We hypothesized that SPP1 TAMs in LNP -mIFNα2 -treated 
+
+tumors were undergoing apoptosis . We compared apoptotic gene expression in SPP1 TAMs 
+
+between conditions (Fig. 5D). SPP1 TAMs exhibited meaningfully higher apoptotic module scores 
+
+in LNP -mIFNα2 -treated tumors compared to LNP controls (Fig. 5D), suggesting that LNP -
+
+mIFNα2 drives both trans criptional programming and apoptotic elimination of this 
+
+immunosuppressive population. 
+
+In the Inflammatory Monocytes cluster, distinguished from Patrolling Monocytes by 
+
+expression of Sell , Itga4 , Prtn3 , Mmp8 , and Fn1 , while Patrolling Monocytes expressed Itgax ,
+
+Cd300e , Lilra5 , Cd36 , and Vegfc (Fig. S6C), LNP -mIFNα2 induced upregulation of interferon -
+
+inducible GTPase Lgp1 and granzyme Gzma (Fig. 5C). Further analysis confirmed high expression 
+
+of canonical IFN -response genes in the Inflammatory Monocytes of LNP -mIFNα2 -treated tumors 
+
+(Fig. S6F). Co -expression of Prtn3 , Elane , and Mmp8 in t his population is consistent with 
+
+emergency myelopoiesis generating granulocyte -monocyte precursor -derived monocytes that are 
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.26.734809 doi: bioRxiv preprint
+
+20 
+
+subsequently reinforced toward an IFN -responsive identity by the LNP -mIFNα2 treatment . Direct 
+
+comparison of the two monocyte clusters confirmed their distinct identities, with Inflammatory 
+
+Monocytes enriched for granule and emergency myelopoiesis transcripts and Patrolling 
+
+Monocytes enriched for patrolling/scavenger markers (Fig. S6I ). 
+
+LNP -mIFNα2 expanded the CD8 Tpex compartment and relieved Tpex quiescence 
+
+The elimination of SPP1 TAMs and emergence of IFN -responsive monocytes, which are 
+
+known to stimulate T cells in tumors 57,58 , in LNP -mIFNα2 -treated tumors prompted us to examine 
+
+whether myeloid reprogramming was accompanied by favorable changes in the T cell 
+
+compartment. The six T cell clusters from the overall UMAP were subsetted and re -clustered using 
+
+the same pipeline as for the myeloid compartment. Non -T cell clusters were identified and 
+
+excluded (Fig. S7A, B) and the remaining cells were integrated using Harmony prior to final 
+
+cluster annotation (Fig. S7C -F). LNP -mIFNα2 expanded the total T cell compartment (Fig. 5E). 
+
+LNP -mIFNα2 induced significant changes in T cell subtype composition (Fig. 5F & G). 
+
+Terminally exhausted CD8 T cells (CD8 Tex -term) were reduced in the treatment group, while 
+
+progenitor -exhausted CD8 T cells (CD8 Tpex), the subtype known to expand an d respond to anti -
+
+PD -1 immunotherapy, increased approximately two -fold in number (Fig. 5G). Effector Tregs 
+
+(eTregs) were reduced in LNP -mIFNα2, and Naïve CD4 T cells, γδ T cells, and Proliferating T 
+
+cells were expanded (Fig. 5G). DEG analysis of the remaining T cell subtypes (CD8 Tex -interm), 
+
+Tpex -early, eTregs, and IL17 + γδ T cells) similarly revealed upregulation of IFN -stimulated genes 
+
+in the LNP -mIFNα2 group (Fig. 5H, Fig. S7G, Fig S8A). DEG analysis of the CD8 Tpex cluster 
+
+revealed that in LNP control tumors, CD8 Tpex are maintained in a quiescent state, characterized 
+
+by elevated e xpression of the mRNA destablizer Zfp36l2 , the metabolic checkpoint Txnip , and the 
+
+immunosuppressive enzyme Arg1 (Fig. 5H, Fig. S8A). LNP -mIFNα2 relieved this quiescent state 
+
+and directed CD8 Tpex toward and IFN -response phenotype, evidenced by significant 
+
+upregulation of IFN -stimulated genes Ifi27l2a and Ly6a (Fig. 5H). 
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.26.734809 doi: bioRxiv preprint
+
+21 
+
+Figure 5 . LNP -mIFN 2 reshapes the tumor immune microenvironment in lung metastases. 
+
+A. UMAP of CD45+ tumor -infiltrating immune cells split by LNP control vs. LNP -mIFNα2. 
+
+was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.26.734809 doi: bioRxiv preprint 22 
+
+B. Stacked bar chart showing the proportion of cell types in the scRNAseq samples. 
+
+C. UMAP split by sample of re -clustered monocyte/macrophage subtypes (original UMAP 
+
+clusters: Ly6 + Inflammatory monocytes, Macrophages, Tumor -Associated Macrophages). 
+
+D. Stacked bar chart showing the proportion of cell types from (C). 
+
+E. Volcano plots of differentially expressed genes in LNP control or LNP -mIFNα2. in the 
+
+indicated re -clustered myeloid cells 
+
+F. Violin plot of apoptosis module score of Hypoxic SPP1 TAMs between LNP control and 
+
+LNP -mIFNα2. Wilcoxon rank -sum test (pseudoreplication). 
+
+G. Bar plot showing the total number of T cells in each scRNAseq sample. 
+
+H. UMAP split by sample of re -clustered T cell subtypes (original UMAP clusters: CD8 Tex -
+
+intermediate, eTregs, IL -17 -producing gd T cells, Naïve/Stem -like CD8 T cells (Tpex -early), 
+
+Tgd cells, Tpex -like T cells). 
+
+I. Stacked bar chart showing the proportion of cell types from (H). 
+
+J. Bar plots showing the absolute number of each re -clustered T cell subtype split by sample. 
+
+K. Volcano plot of differentially expressed genes in the CD8 Tpex cluster in LNP control or 
+
+mIFNα2. 
+
+LNP -mIFNα2 expands cytotoxic NK cell subsets and drives an IFN -stimulated gene 
+
+signature across the B cell compartment. 
+
+In addition to the myeloid and T cell compartments, LNP -mIFNα2 reprogrammed the 
+
+intratumoral B and NK cell populations. B cells showed proportional shifts toward Plasma Cells 
+
+and mature B cell states in the LNP -mIFNα2 group, and differential gene expression analysis of 
+
+the major B cell subsets, including IgD +CD20 + naive mature B cells, naive B cells, plasma cells, 
+
+and mature naive B cells, demonstrated consistent upregulation of interferon -stimulated genes 
+
+across all subsets following LNP -mIFNα2 treatment (Fig. S8B). Activated NK cells and 
+
+Proliferating Cytotoxic NK cells, identified from the overall UMAP, were both substantially 
+
+expanded in proportion and in absolute number in the LNP -mIFNα2 group relative to LNP control 
+
+(Fig. S9A-C). Differential gene expression analysis of these two NK subsets revealed broad 
+
+upregulation of IFN -stimulated and cytotoxic effector transcripts in LNP -mIFNα2 -treated tumors 
+
+(Fig. S9D), consistent with the cytolytic reprogramming observed across other immune 
+
+compartments. Together with the myeloid and T cell findings, these data indicate that LNP -
+
+mIFNα2 broadly reprograms the tu mor immune microenvironment across innate and adaptive 
+
+lymphoid compartments to promote antitumor immunity. 
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.26.734809 doi: bioRxiv preprint
+
+23 
+
+LNP -mIFNα2 depletes high cycling tumor cell s and reverses cuproptosis -resistance 
+
+programs in tumor cells 
+
+To characterize the direct effects of LNP -mIFN  on tumor and stromal cell populations in the 
+
+CT26 lung metastatic niche, we performed scRNAseq on the CD45 - cells from LNP - and LNP -
+
+mIFNα2 -treated mice. Because the LNP -mIFNα2 -treated samples has shrinked tumor cells and 
+
+enriched immune cells, CD45 + cells were removed by CD45 thresholding prior to analysis (LNP: 
+
+20,947 cells; LNP -mIFNα2: 7,097 cells after filtering, Fig. S10A & B ). Supervised clustering 
+
+resolved seven transcriptionally distinct populations (Fig. 6A & B), which were annotated based 
+
+on mouse colon tumor marker genes 59 . UMAP visualization and proportional composition analysis 
+
+revealed striking LNP -mIFNα2 -driven remodeling of the tumor cell landscape: the proportion of 
+
+High Cycling C was markedly reduced in LNP -mIFNα2 -treated tumors, while the proportion of 
+
+IFN Response CC was substantially increased (Fig. 6A -B). 
+
+Module scoring confirmed the compositional shifts observed by UMAP: the high cycling score 
+
+was highest in High Cycling CC and was broadly reduced in LNP -mIFNα2, while the IFN response 
+
+score was observed more broadly across cell populations (Fig. 6C). The expression of SPP1 , an 
+
+oncogenic driver in cancer cells 60,61 , was decreased across all tumor subtypes in LNP -mIFNα2 -
+
+treated mice (Fig. 6D). In addition, tumor cells in LNP -mIFNα2 -treated mice showed remodeled 
+
+chemokine expression consistent with enhanced antitumor immune recruitment. Ccl5 , Cxcl9 , Ccl4 ,
+
+Cx3cl1 , and Cxcl6 , which broadly recruit NK cells, dendritic cells, and CD8 + T cells, were elevated 
+
+in the treatment group (Fig. 6E, Fig. S10D & E ). To interrogate the functional consequence of 
+
+chemokine expression remodeling, we performed receptor -ligand interaction analysis using 
+
+CellChat, restricting the sender role to tumor cell subtypes. The tumor -cell derived chemokine 
+
+network was substantially expanded in LNP -mIFNα2 -treated mice relative to LNP controls, with 
+
+all tumor cell subtypes showing increased number and strength of interactions with immune cell 
+
+populations (Fig. 6F). 
+
+Given that IFN signaling axis has recently been shown to directly transactivate FDX1 and 
+
+sensitize tumor cells to cuproptosis and overcome tumor cell resistance to cuproptosis 62 -65 , we 
+
+asked whether LNP -mIFNα2 engages this pathway in tumor cells. Across tumor cell subtypes, 
+
+LNP -mIFNα2 treatment increased expression of upstream IFN -signaling components ( Jak1 ,
+
+Ifngr1 , Stat2 , Irf9 ) and the canonical IRF1 -dependent MHC I antigen -presentation program 
+
+(Tap1/2 , Psmb8/9 , B2m , H2 -K1/D1 ) (Fig. 6G). This was accompanied by a consistent increase in 
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.26.734809 doi: bioRxiv preprint
+
+24 
+
+Fdx1 , the rate -limiting cuproptosis effector and direct IRF1 transcriptional target, across all tumor 
+
+cell subtypes (Fig. 6H). A reciprocal and broad decrease in the copper -sequestering 
+
+metallothionein Mt1 (Fig. 6H) and downregulation ofHif1a -regulated curroptosis -resistance 
+
+signature (Fig. 6I) was also observed in LNP -mIFNα2 -treated tumors (Fig. 6I) . This Fdx1 -up/Mt1 -
+
+down configuration is the converse of the signature associated with cuproptosis resistance in IFN -
+
+experienced tumors, in which BACH1 loss de -represses MT1E/MT1X to blunt cuproptosis despite 
+
+active STAT1 -IRF1 signaling 62,64,65 . Together with our finding that LNP -mIFNα2 increases 
+
+copper -importer expression ( Slc31a1 , Slc31a2 ) across tumor subtypes (Fig. 6H), these data 
+
+suggest that LNP -mIFNα2 -induced IFN signaling sensitize tumor cells to coproptosis, raising the 
+
+possibility that cuproptosis represents a previously unappreciated layer of tumor -intrinsic 
+
+reprogramming by IFNα2 therapy. 
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.26.734809 doi: bioRxiv preprint
+
+25 
+
+Figure 6. mIFNα2 transgene therapy driv es depletion of high cycling cancer cell and 
+
+reverses cuproptosis -resistance programs in tumor cells .
+
+A. UMAP of all CD45 − cells colored by annotated cluster identity split by sample. 
+
+was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.26.734809 doi: bioRxiv preprint 26 
+
+B. Stacked proportion bar plot of tumor cell populations as in (A). 
+
+C. Feature plots of module scores for proliferation, hypoxia, IFN response, and mesenchymal 
+
+gene programs. 
+
+D. Violin plots split by sample of SPP1 .
+
+E. Violin plots split by sample of Chemokine expression genes 
+
+F. CellChat circle plots of chemokine network specifically/only showing tumor cells as the 
+
+senders of LNP control (left) and LNP -mIFN 2 (right) 
+
+G. DotPlot of IFN signal transduction genes and MHC I antigen -presentation genes across tumor 
+
+cell subtypes, comparing LNP -mIFNα2 to LNP. Dot color indicates average log2 fold -change 
+
+(LNP -mIFNα2 vs. LNP); dot size indicates the percentage of cells expressing each gene in the 
+
+LNP -mIFNα2 group. 
+
+H. Bar plot of average log2 fold -change (LNP -mIFNα2 vs LNP) for core cuproptosis pathway 
+
+genes across the same tumor subtypes, grouped by function: copper import, the 
+
+lipoylation/Hif axis, and copper sequestration. 
+
+I. Bar plot of average log2 fold -change (LNP -mIFNα2 vs LNP) of genes of cuproptosis -
+
+resistance signature in the indicated tumor cell subtypes. 
+
+The immune landscape of LNP -mIFNα2 -treated mouse tumors transcriptionally 
+
+recapitulates the T cell and myeloid expansion signatures of PD -1 blockade responding 
+
+human cancer patients 
+
+To determine whether LNP -mIFNα2 -induced immune reprogramming in mouse tumors 
+
+recapitulates human immunotherapy response programs, we analyzed a publicly available scRNA -
+
+seq dataset from breast cancer patients treated with neoadjuvant pembrolizumab 66 . Patients were 
+
+stratified into T cell clonotype expanders (E), those exhibiting clonal T cell expansion upon 
+
+pembrolizumab treatment, and non -expanders (NE), providing a human benchmark for 
+
+immunotherapy -responsive versus -resistant tumor immune microenvi ronments. Analysis of the 
+
+human T cell compartment resolved ten distinct phenotypes by UMAP, including Cytotoxic 
+
+Effector CD8 +, Tpex, IFN -stimulated T cells, and Proliferating T cells, all of which were enriched 
+
+in E patients (Fig. 7A). Conversely, Naive/S tem -like CD8 + and Treg populations predominated in 
+
+NE patients. Boxplot quantification confirmed significant enrichment of Tpex/Follicular and 
+
+Proliferating T cells in E patients, along with Cytotoxic Effector and Terminal/Exhausted CD8 +
+
+subsets (Fig. 7B). Volcano plot analysis of the Tpex population revealed upregulation of effector 
+
+and cytotoxic genes, including PRF1 , GZMB , NKG7 , IFNG , and CXCL13 , in E patients, closely 
+
+mirroring the gene programs upregulated in LNP -mIFNα2 -treated mouse CD8 T cells, where 
+
+Gzmb , Nkg7 , Prf1 , and Ccl5 were induced and Tpex -early populations expanded markedly (Fig. 
+
+7B). 
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.26.734809 doi: bioRxiv preprint
+
+27 
+
+Figure 7. LNP -mIFNα2 -treated mouse tumors transcriptionally recapitulate the T cell and 
+
+myeloid responder phenotypes associated with response to pembrolizumab in 
+
+human cancer patients. 
+
+A. Human T cell compartment analysis. Left: UMAP of T/NK cells from all patients colored by 
+
+annotated phenotype, resolving ten distinct subpopulations Center: same UMAP colored by 
+
+expansion status (E =orange; NE =blue ). Right: Stacked proportion bar chart showing the 
+
+relative contribution of each T cell phenotype in E vs NE patients. 
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.26.734809 doi: bioRxiv preprint
+
+28 
+
+B. Quantitative analysis of human T cell subpopulation proportions and differential gene 
+
+expression. Left: boxplots of comparison of the indicated T cell subpopulations between E 
+
+(orange) and NE (blue) patients. Right: Volcano plot of differentially expressed genes in the 
+
+Tpex/Follicular population comparing E (right, orange) vs. NE (left, blue) patients. 
+
+C. Human myeloid compartment analysis. Left: UMAP of myeloid cells colored by annotated 
+
+phenotype, resolving seven populations. Center: same UMAP colored by expansion status 
+
+(E =orange ; NE =blue ). Right: Stacked proportion bar chart comparing myeloid subpopulation 
+
+composition between E and NE patients. 
+
+D. Boxplot quantification of myeloid subpopulation proportions comparing E (orange) and NE 
+
+(blue) patients. Boxes indicate median ± interquartile range .
+
+In the myeloid compartment, analysis resolved seven macrophage/myeloid phenotypes. E 
+
+patients were enriched for IFN -stimulated macrophages and transitional monocytes, while NE 
+
+patients were dominated by complement macrophages (Fig. 7C, D). These findi ngs directly 
+
+parallel our mouse LNP -mIFNα2 data: the depletion of immunosuppressive TAMs expressing 
+
+SPP1 , Arg1 , and C1q , corresponding to the NE -associated complement macrophage phenotype, 
+
+and compensatory expansion of Ly6 + inflammatory monocytes with ISG signatures mirroring the 
+
+E-associated IFN -stimulated macrophage phenotype (Fig. 7C, D). 
+
+Taken together , these cross -species analyses demonstrate that LNP -mIFNα2 shifts the tumor 
+
+immune microenvironment into a state transcriptionally and compositionally mirroring the 
+
+immunotherapy -responsive expander phenotype, expanding cytotoxic and progenitor exhausted T
+
+cell subsets while eliminating inhibitory macrophage populations and enriching IFN -stimulated 
+
+myeloid subsets , thereby establishing a translational link between LNP -mIFNα2 -driven 
+
+reprogramming in mice and effective immunotherapy respon ses in human cancer. 
+
+DISCUSSION 
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.26.734809 doi: bioRxiv preprint
+
+29 
+
+Most CRC remain refractory to PD -(L) 1-based ICI immunotherapy 4. We show that LNP -
+
+mIFNα2 overcomes this resistance through multi -compartment reprogramming of the tumor 
+
+microenvironment, captured here at single -cell resolution across the myeloid, T, NK, B, and tumor 
+
+cell compartments. Within the myeloid compartment, LNP -mIFNα2 collapsed 
+
+immunosuppressive Hypoxic SPP1 + TAMs and Lipid -associated TAMs while expanding 
+
+Inflammatory and Patrolling Monocytes bearing strong interferon -stimulated gene signatures. We 
+
+have previously shown that tumor PD -L1 engages myeloid PD -1 to repress IFN -I and impair 
+
+CXCL9 -dependent T cell re cruitment 28 and restoring IFN 2 via lipid nanoparticle delivery of 
+
+IFNa2 transgene suppress tumor growth 47 . T he present mechanistic data indicate that restoring 
+
+IFN -I directly reverses this circuit, driving IRF8 -associated repression of SPP1 and apoptotic 
+
+clearance of SPP1 + TAMs rather than their simple reprogramming 67 . The resulting shift away from 
+
+a complement/ SPP1 -high macrophage state toward an ISG -high monocyte state directly parallels 
+
+the myeloid phenotype that distinguishes pembrolizumab responders from non -responders in 
+
+human breast cancer 66 , reinforcing the myeloid compartment as a primary, rather than bystander, 
+
+effector of IFNα2 -driven tumor growth control. 
+
+This myeloid remodeling was accompanied by relief of CD8 Tpex quiescence: LNP -mIFNα2 
+
+reduced expression of the quiescence -associated Zfp36l2, Txnip, and Arg1 program and redirected 
+
+Tpex cells toward an ISG -high state, with a two -fold expansion of this progenitor -exhausted subset 
+
+that is mechanistically linked to anti -PD -1 responsiveness 68 . Terminally exhausted CD8 T cells 
+
+and effector Tregs, which are linked to resistance to PD -1 blockade immunotherapy 69,70 , contracted 
+
+in parallel, while proliferating and γδ T cells expanded. NK cells showed comparable 
+
+reprogramming, with both activated and proliferating cytotoxic subsets expanding alongside 
+
+upregulated cytotoxic effector transcripts, and B cells shifted tow ard plasma cell and mature states 
+
+with broadly elevated ISG expression. Together, these compartment -level changes show that IFN -
+
+I restoration acts cell -autonomously across innate and adaptive lymphoid lineages to convert an 
+
+exhausted, suppressive infiltrat e into a cytolytic one. 
+
+A further layer of reprogramming occurred within tumor cells themselves. LNP -mIFNα2 
+
+depleted the high -cycling tumor cell state and broadly induced IRF7 - and IRF8 -associated IFN 
+
+signaling across all tumor subtypes, with consequent upregulation of MHC -I antigen presentation 
+
+machinery and immune -recruiting chemokines that expanded tumor -immune cell connectivity in 
+
+CellChat analysis. Within this same dataset, tumor cells showed a transcriptional pattern consistent 
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.26.734809 doi: bioRxiv preprint
+
+30 
+
+with relief of the hypoxia/HIF -1α -driven cuproptosis -resistance program 64 : reduced HIF -1α and 
+
+glycolytic gene expression, increased copper -importer expression, and reduced copper -
+
+sequestering metallothionein, mirroring the reversal of the BACH1 -MT1E/X resistance axis in 
+
+cuproptosis and consistent with the foundational cuproptosis mechanism 62,63,65 . This tumor -
+
+intrinsic IFN -cuproptosis crosstalk represents a previously unappreciated layer of LNP -mIFNα2 
+
+action that warrants further functional study .
+
+A key mechanistic finding is that antitumor efficacy strictly required canonical IFNAR1 
+
+signaling: anti -IFNAR1 blockade abrogated the effect of LNP -mIFNα2, establishing that efficacy 
+
+derives from the encoded IFNα2 protein rather than only cGAS -STING sensing of the plasmid 
+
+backbone 51 . The transient IL6 surge induced by LNP -mIFNα2, a known consequence of cGAS -
+
+STING activation 44 , attenuated rather than supported antitumor efficacy . Single -dose IL6 
+
+neutralization prior to treatment further reduced metastatic burden, identifying IL6 as a
+
+modulatable liability rather than a required component of the antitumor response, and supporting 
+
+anti -IL6 co -administration as a rational combination strategy. 
+
+The LNP -pDNA -associated proinflammatory cytokine and neutrophil profiles remained 
+
+transient and self -resolved rapidly. T he systemic cytokine response was dominated by IFN -I and 
+
+IFN -driven chemokines (CXCL10, XCL1, CXCL9) rather than broad pro -inflammatory cytokines 
+
+(IL1α, IL1β, TNFα, GM -CSF), and the transient intrapulmonary neutrophil influx resolved fully 
+
+by 24 hours with out tissue injury, including upon repeat boost dosing. This toxicity profile is 
+
+consistent with findings made in cell -based IFN 2 gene therapy in human cancer patients 45 .
+
+Elevated IL6 and GM -CSF in CRC patient serum relative to healthy donors further supports the 
+
+rationale for IL6 co -blockade in this population. 
+
+The recent first -in -human clinical trial with Temferon, a genetically engineered autologous 
+
+hematopoietic stem cell product that generates tumor -infiltrating myeloid progeny to deliver 
+
+IFNα2 gene therapy locally within the glioblastoma microenvironme nt 45 , provides important 
+
+clinical validation of the central premise of our study that restoring tumor -restricted IFN -I activity 
+
+reprograms a myeloid -dominant, immunosuppressive TME toward antitumor immune activation 
+
+without provoking systemic toxicity. That tr ial achieved durable local IFNα2 exposure and a shift 
+
+of tumor -associated macrophages toward inflammatory, interferon -stimulated gene -high states 45 ,
+
+mirroring the myeloid reprogramming we observe with LNP -mIFNα2 in colon tumor lung 
+
+metastases, but required ex vivo lentiviral transduction of CD34 + cells, myeloablative 
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.26.734809 doi: bioRxiv preprint
+
+31 
+
+conditioning, and manufacturing process inherent to autologous cell therapy. LNP -mIFNα2 
+
+achieves a conceptually convergent outcome, coordinated, multi -compartment reprogramming of 
+
+myeloid, T, NK, B, and tumor cell states toward an immunotherapy -responsive phenotype, through 
+
+a single intravenous injection of an off -the -shelf nanoparticle formulation. This positions LNP -
+
+mIFNα2 as a readily scalable and repeatable alternative strategy for tumor -targeted IFN -I
+
+restoration . The convergence of independent local I FN -I gene therapy strategies, one cell -based 
+
+and intracranial, the other nanoparticle -based, on overlapping myeloid and lymphoid 
+
+reprogramming outcomes across two distinct, immunologically cold tumor types strengthens the 
+
+rationale that tumor IFN -I restora tion is a generalizable strategy for overcoming myeloid -driven 
+
+immunotherapy resistance, and supports LNP -mIFNα2 for clinical translation in metastatic CRC. 
+
+METHODS 
+
+Cell lines. The murine colon carcinoma cell line CT26 and the human colon adenocarcinoma 
+
+cell line SW620 were obtained from the American Type Culture Collection (ATCC , Manassas, 
+
+VA ). The MC38 -met cell line, a metastatic variant of the MC38 murine colon adenocarcinoma 
+
+selected for efficient pulmonary colonization, was maintained in culture as previously described 
+
+> 28
+
+. All cell lines were cultured in RPMI -1640 supplemented with 10% fetal bovine serum at 37°C 
+
+in a humidified 5% CO2 incubator . Cell lines wer e tested bimonthly for mycoplasma and 
+
+mycoplasma -negative at time of experiments. 
+
+Reagents . The following monoclonal antibodies were used for in vivo treatment: anti -mouse PD -
+
+1 (clone RMP1 -14, Bio X Cell , Lebanon, NH ), Nivolumab ( BioXCell ), anti -mouse IFNAR1 
+
+blocking antibody (clone MAR1 -5A3; Bio X Cell), anti -mouse IL6 neutralizing antibody, and 
+
+corresponding isotype controls (BioXCell). 
+
+LNP -mIFNα2 formulation. A codon -usage -optimized murine IFNα2 (mIFNα2) coding 
+
+sequence was cloned into the NTC9385R nanoplasmid 71,72 (Aldevron /Nature Technology 
+
+Corporation , Fargo, ND ). A codon -usage -optimized human IFNα2 ( hIFNα2) coding sequence 
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.26.734809 doi: bioRxiv preprint
+
+32 
+
+was cloned into NTC9385R . Nanoplasmid DNA was purified in Alde vron under endotoxin -free 
+
+conditions . Clinical grade DOTAP -cholesterol (1:1) was provided by Genprex Corp (Austin, 
+
+TX). LNP -mIFNα2 and LNP -hIFNα2 were formulated as previously described 47 .
+
+Syngeneic experimental lung metastasis mouse models. CT26 cells (1.5x10 5 cells/mouse) or 
+
+MC38 -met cells (3.5x10 5 cells/mouse) were suspended in 100 μl PBS and injected intravenously 
+
+(i.v.) via the tail vein of female mice on day 0. Mice were randomized into treatment groups on 
+
+the day of treatment. Treatments consisted of: LNP (control, empty lipid nanoparticles), a nti -PD -
+
+1 monoclonal antibody (clone RMP1 -14, 200 μg/mouse i.p., every 3 days), LNP -mIFNα2 
+
+(administered i.v. via tail vein, every 7 days), or LNP -mIFNα2 + anti -PD -1 combination. Two 
+
+treatment start timepoints were evaluated: day 3 post -tumor injection (ear ly/low burden) and day 
+
+5 post -tumor injection (late/high burden). Mice were euthanized at the experimental endpoint, 
+
+lungs were inflated with ink to visualize tumor nodules as described 73 . All animal experiments 
+
+were approved by Augusta University and VA Augusta Health Care System Institutional Animal 
+
+Care and Use Committees (Protocols # 2008 -0162 and 22 -04 -134). 
+
+Human colon cancer cell lung metastasis xenograft h umanized mouse model . NOD -scid 
+
+IL2Rγ -null (NSG) male mice were obtained from The Jackson Laboratory. Humanized mice 
+
+were generated by intravenous injection of 3x 10 6 human peripheral blood mononuclear cells 
+
+(PBMCs) isolated from health y man donor . Four days after PBMC engraftment, 3x10 6 SW620 
+
+cells were injected i.v. to establish lung metastases. Beginning on Day 5 post -tumor inoculation, 
+
+mice received LNP control, nivolumab ( 200 g/ mouse i.p., every 3 days), LNP -hIFNα2 (i.v., 
+
+every 7 days), or (d) LNP -hIFNα2 + nivolumab combination. Mice were euthanized at the 
+
+experimental endpoint and lungs were processed for nodule quantification as described above. 
+
+IFNAR1 and IL6 Blockade Experiments . For IFNAR1 dependence studies, CT26 tumor -
+
+bearing mice were administered anti -IFNAR1 blocking antibody (200 g/mouse i.p.) or isotype 
+
+control IgG prior to LNP -mIFNα2 or LNP -Vector (NCT9385R nanoplasmid) treatment. For IL6 
+
+neutralization experiments, anti -IL6 neutralizing monoclonal antibody or isotype control IgG 
+
+was administered i.p. as a single dose approximately 1h prior to the first LNP -mIFNα2 injection. 
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.26.734809 doi: bioRxiv preprint
+
+33 
+
+Pulmonary metastatic nodule counts were assessed at experimental endpoint as the primary 
+
+efficacy readout. 
+
+Transgene biodistribution and cell -type tropism. To determine the cellular tropism of LNP -
+
+mIFNα2 in vivo, CT26 tumor -bearing mice were administered LNP -mIFNα2 i.v. and sacrificed 
+
+2 days post -injection. Tumor -bearing lungs were enzymatically di gested with collagenase 
+
+solution and distinct cell populations were isolated by fluorescence -activated cell sorting (FACS) 
+
+using the following markers: CD45 -PD -L1 + cells (tumor cells ), CD3 + cells (T cells), and CD11b +
+
+cells (myeloid cells). Sorted populations were lysed and RNA extracted. Transgene expression 
+
+was det ected by PCR using primers specific to the codon -usage -optimized (cuo) mIFNα2 
+
+sequence, which is specific for the cuo m IFNα2 , not the endogenous m IFNα2 47 . Transgene 
+
+expression was normalized to the myeloid cell fraction, which was arbitrarily set to 1 as the 
+
+reference comparator. 
+
+IFN 2 protein pharmacokinetics. To characterize IFNα2 protein production kinetics, CT26 
+
+tumor -bearing mice were administered LNP -mIFNα2 i.v. and sacrificed at serial timepoints: 4 
+
+hours, 12 hours, and days 1, 2, 3, 6, and 9 post -injection. Blood was collected using a gel column 
+
+and serum was isolated by centrifugation at 2,000 xg for 5 minutes and stored at -80°C until 
+
+analysis. Tumor -bearing lung tissues were homogenized in total protein lysis buffer with 
+
+protease inhibitor cocktail, clarified by centrifugation , and protein concentration determined by 
+
+BCA assay. Serum and lung lysate IFNα2 protein levels were quantified by mouse IFNα2 -
+
+specific ELISA (Cat# ab211648 Abcam, Cambridge , MA) following the manufacturer's 
+
+instructions. This kit specifically detects mouse IFN 2 with no known cross reactivity to other 
+
+mouse IFN  isoforms. IFNα2 protein level was calculated using R package 74 installed on R 
+
+3.6.1 (https://www.r -project.org/). The limit of detection was calculated as an average of 
+
+background samples plus 3 x SD. 
+
+Prime treatment and cytokine analysis . CT26 tumor -bearing mice were treated with LNP, 
+
+LNP -Vector, or LNP -mIFNα2. Serum was collected 4 hours and 24 hours after treatment. 
+
+Detection of cytokines in serum or lysates was performed using LEGENDplex Mouse 
+
+Inflammation Panel (TNFα, IFNγ, IL1 , IL1 , IL6 , IL10, IL17A, IL12p70, GM -CSF, IL -23, 
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.26.734809 doi: bioRxiv preprint
+
+34 
+
+IFN , MCP -1, IL27; BioLegend Cat# 740446), or Mouse Proinflammatory Chemokine Panel 
+
+V02 (custom 2 -plex set for CXCL9 and CXCL10; BioLegend Cat# 741295) according to 
+
+manufacturer’s instructions. In brief, serum samples were diluted 2 -fold with Assay Buffer and 
+
+standards were mixed with Matrix Solution (Biolegend). For measurements in cell lysates, 
+
+samples were diluted 4x with Assay Buffer and standards were appropriately mixed with the 
+
+Lysis Buffer. Standards and samples were plated with capture beads and incuba ted overnight at 
+
+4oC on plate shaker (350 rpm). After washing the plate, detection antibodies were added to each 
+
+well and the plate was incubated on shaker (600 rpm) for 1h at room temperature. Finally, 
+
+without washing, SA -PE was added and incubated for 30 min. Samples were acquired on 
+
+Novocyte Quanteon flow cytometer (Agilent Technologies). Standard curves and protein 
+
+concentration were calculated using R package 74 installed on R 3.6.1. The limit of detection was 
+
+calculated as an average of background samples plus 3xSD. Assay and data calculations were 
+
+performed at. Total IFN  was measured using Legendplex beads (Biolegend) that detect IFN 1, 
+
+IFN 6, and IFN 9. 
+
+Boost treatment cytokine analysis. To evaluate the cytokine response upon repeat LNP -
+
+mIFNα2 administration, mice that had received a prime LNP -mIFNα2 treatment were re -dosed 
+
+(boost) with LNP or LNP -mIFNα2 seven days after the prime dose. Serum was collected 4 and 
+
+24 hours after the boost tr eatment and analyzed for the same cytokine/chemokine panel and 
+
+IFNα2 protein as described for the prime treatment analysis. 
+
+Human colorectal cancer patient serum cytokine analysis . Serum samples were collected 
+
+from healthy adult donors in Augusta Shepeard Community Blood Center (n=10) and colorectal 
+
+cancer patients in VA Augusta Health Care System (n=20) under institutional review board 
+
+(IRB) -approved protocol with written informed consent (IRB Protocol# 1314554 -19). The same 
+
+multiplexed cytokine/chemokine panel used for mouse serum analysis was applied to measure: 
+
+pro -inflammatory cytokines ( IL6 , GMCSF, IL -1β, TNFα, IL -8); Th1 -associated cytokines 
+
+(IFNα2, IL12p70, IFNγ, IL2, IFNα, IFNβ, IL28α, IFNL1); Th2 -associated cytokines (IL -4, IL -5, 
+
+IL -9, IL -13); immunoregulatory cytokine IL10; Th17 -associated cytokines (IL17A, IL17F, 
+
+IL22); and chemokines (CXCL10, CXCL5, and an extended c hemokine panel). Results were 
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.26.734809 doi: bioRxiv preprint
+
+35 
+
+compared between healthy donors and CRC patients by Mann -Whitney U test; p< 0.05 was 
+
+considered statistically significant. 
+
+Histopathological analysis . Lung tissues from untreated control, LNP -treated, and LNP -
+
+mIFNα2 -treated CT26 tumor -bearing mice were collected at 4 hours and 24 hours post -
+
+treatment. Fixed lungs were processed through graded alcohols, embedded in paraffin, and 
+
+sectioned at 5 μm thicknes s. Sections were stained with hematoxylin and eosin (H&E) by 
+
+standard protocols. H&E -stained sections were evaluated by two board -certified pathologists. 
+
+The following parameters were assessed: alveolar architecture, evidence o f tissue injury (diffuse 
+
+alveolar damage, necrosis), vascular integrity (vasculitis, endothelial disruption), perivascular 
+
+inflammation, and intra -alveolar neutrophil content. Quantification of neutrophils was performed 
+
+by counting neutrophils in 10 consec utive high -power fields (HPF, ×200 magnification) per 
+
+section; average neutrophil count per 10 HPF was calculated for each animal. Statistical 
+
+comparisons of neutrophil counts between treatment groups and timepoints were performed by 
+
+one -way ANOVA with Tuk ey's post -hoc test. An analogous histopathological assessment was 
+
+performed on lung tissues collected 4 and 24 hours after a second (boost) LNP -mIFNα2 dose 
+
+administered 7 days after the prime treatment. 
+
+Flow cytometry a nalysis . Tumor -bearing lungs were harvested and enzymatically dissociated 
+
+using a collagenase solution ( 1 mg/ml collagenase, Cat#C0130, Collagenase, Sigma -Aldrich, 
+
+MO; 0.1 mg/ml hyaluronidase, cat#H3506, Sigma -Aldrich; and 30 U/ml DNase I, cat#EN0531, 
+
+Thermo) at room temperature for 1 h , followed by filtration through a 100 μm cell strainer. Red 
+
+blood cells were lysed using ACK lysis buffer. Single -cell suspensions were washed in FACS 
+
+buffer (PBS + 1% FBS) . For myeloid infiltrate characteriz ation, cells were stained with the 
+
+following antibody panels: CD45 -FITC, CD11b -APC, Ly6G -PE. For flow cytometric 
+
+quantification of immune cell subsets (4 hours and 24 hours post -prime and post -boost 
+
+treatment), cells were acquired on a flow cytometer (BD F ortessa) and data analyzed using 
+
+FlowJo v10. Gating strategies are shown in Figure S3 and described in detail therein. Cell 
+
+populations are expressed as percentage of total CD45+ cells, percentage of CD11b+ cells, and 
+
+as percentage of CD45+CD11b+CD11b− fra ctions . For cell sorting to assess transgene 
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.26.734809 doi: bioRxiv preprint
+
+36 
+
+biodistribution, FACS -purified populations (CD45 -PD -L1 +, CD3 +, CD11b +) were collected for 
+
+RNA extraction. 
+
+Single -cell RNA sequencing . CT26 tumor -bearing mice were treated with LNP control or LNP -
+
+mIFNα2. At the experimental endpoint, tumor -bearing lungs were harvested and processed to 
+
+single -cell suspensions as described above. CD45 + tumor -infiltrating immune cells were isolated 
+
+by positive selection using CD45 nanobeads (Biolegend ) according to the manufacturer's 
+
+protocol, achieving >95% purity as confirmed by post -selection flow cytometry. Cells were 
+
+resuspended in PBS + 1% BSA. Cell viability was assessed by trypan blue exclusion and wa s
+
+>85% for all samples included in sequencing. Single -cell RNA -seq libraries were generated 
+
+using the 10x Genomics Chromium platform. Raw BCL files were demultiplexed using Cell 
+
+Ranger mkfastq v10.0.0. Gene expression was quantified per sample using Cell Ranger count 
+
+v10.0.0 aligned to the GRCm39 -2024 -A mouse reference genome. All samples were normalized 
+
+independently using SCTransform v2 (3,000 variable features, mitochondrial content regressed) 
+
+and jointly integrated using Reciprocal PCA (RPCA) with SCT n ormalization across 50 
+
+dimensions. PCA was performed on 100 components; the optimal number of PCs (49) was 
+
+selected using variance -explained criteria (co1=78, co2=20). UMAP and tSNE embeddings were 
+
+computed at 49 PCs. Clustering was performed at resolution s 0.1 -1.2; resolution 0.3 yielding 31 
+
+clusters was selected as optimal based on Clustree stability analysis. The resulting integrated 
+
+object served as the sole input for all downstream analysis without re -integration. 
+
+scRNA -sequencing of immune cells . For the immune cell compartment, the integrated object 
+
+was subset ted to purified CD45 + immune cells, preserving existing UMAP coordinates. 
+
+Unsupervised clustering was performed to identify 31 clusters. Sub -UMAPs, proportion barplots, 
+
+and count barplots were generated for T cells, NK cells, myeloid cells, and B cells. Cell clusters 
+
+were annotated to major immune lineages and subpopulations by examination of canonical 
+
+marker gene expression using DotPlot visualization of know n markers . Di fferentially expressed 
+
+genes (DEGs) between LNP control and LNP -mIFNα2 -treated cells were identified within each 
+
+annotated cell population using the Wilcoxon rank -sum test implemented in Seurat 
+
+(FindMarkers), with a minimum log2 fold -change threshold of 0. 25 and minimum detection 
+
+fraction of 0.1 in either group. Adjusted p -values were computed using Bonferroni correction. 
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.26.734809 doi: bioRxiv preprint
+
+37 
+
+DEGs are visualized as single -cell heatmaps (log2 fold -change scale). Interferon -stimulated gene 
+
+(ISG) expression was visualized by DotPlot, with dot size representing percentage of cells 
+
+expressing each gene and color representing average scaled expressio n. Cell composition 
+
+changes were quantified as proportional bar charts and absolute cell counts per annotated 
+
+population across treatment conditions. 
+
+sc RNA sequencing of tumor cell and stromal cells . To collect the non -immune cells, t he 
+
+supernatant fractions of the CD45 + cell isolated samples above were loaded on top of 
+
+lymphocyte separation medium ( Cat # 25 -072 -C1 , Mediatech Inc., Manassas, VA ) and 
+
+centrifuges at 2000 RPM for 20 min. The live cells were collected at the interface, washed in 
+
+PBS, and analyzed for tumor cell/epithelial cell enrichment by flow cytometry. Single -cell 
+
+library construction and sequencing were performed as described for the CD45 + compartment .
+
+Raw data were processed using Cell Ranger and analyzed in Seurat using the same pipeline as 
+
+the immune compartment. The LNP -mIFNα2 -treated samples contain only ~30% CD45 - cells, 
+
+direct comparison of the full LNP -mIFNα2 sample against LNP samples would be confounded 
+
+by immune cell dilution effects. All CD45 + immune contamination is therefore removed via 
+
+CD45 thresholding before any focused comparison is made. Only after this step are the two 
+
+samples comparably enriched for CD45 - tumor/stromal cells. Supervised clustering resolved 
+
+seven transcriptionally distinct populations, which were annotated based on canonical mouse 
+
+colon cancer marker gene expression 59 . Treatment -driven changes in cell population 
+
+composition were quantified as proportional bar charts and absolute cell counts. DEG analysis 
+
+between treatment groups within each population was performed as described for the CD45 +
+
+compartment. 
+
+Cross -species human immunotherapy response analysis . To assess the transcriptomic 
+
+correspondence between LNP -mIFNα2 -induced mouse TME reprogramming and human 
+
+immunotherapy response signatures, we analyzed a publicly available scRNA -seq dataset from 
+
+human breast cancer patients receiving neoadjuvant pembroliz umab (GSE160246 )66 . In this 
+
+dataset, patients were classified as T cell clonotype Expanders (E) or Non -Expanders (NE) based 
+
+on T cell receptor clonotype expansion upon pembrolizumab treatment, serving as a surrogate for 
+
+immunotherapy responsiveness. The human dataset was processed using Seurat with human 
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.26.734809 doi: bioRxiv preprint
+
+38 
+
+genome reference GRCh38. Cell type annotation was performed using human -specific canonical 
+
+markers for T cell subsets (CD8A, CD4, FOXP3, TCF7, HAVCR2, PRF1, GZMB, NKG7, 
+
+IFNG, CXCL13) and myeloid subsets (CD68, MRC1, C1QA, ISG15, IFITM3, FCN1, CD14). 
+
+Cell p opulations were resolved into ten T/NK cell phenotypes and seven myeloid/macrophage 
+
+phenotypes by UMAP clustering. Proportional composition of each cell population in E versus 
+
+NE patients was compared using boxplot visualization and Mann -Whitney U test. Di fferential 
+
+gene expression in the Tpex/Follicular T cell population between E and NE patients was 
+
+visualized by volcano plot (log2 fold -change on x -axis, -log10 adjusted p-value on y -axis). Gene 
+
+programs enriched in E patients were compared to gene programs upregulated in LNP -mIFNα2 -
+
+treated mouse T cell and myeloid populations to identify cross -species transcriptomic 
+
+concordance. 
+
+Statistical Analysis . All statistical analysis was carried out using GraphPad Prism 10. Oridinary 
+
+One Way ANOVAs followed by Tukey’s multiple comparisons and paired Student’s t -test were 
+
+used to determine statistical significance. A p<0.05 is considered as significant. 
+
+Acknowledgements 
+
+We thank Ms. Jennifer Parks at Augusta Shepeard Community Blood Center for providing 
+
+blood specimens from healthy donors. We acknowledge the support and contribution of the 
+
+Integrated Genomics Core Shared Resources at the Georgia Cancer Center, Augusta University 
+
+(RRID: SCR_026483). We acknowledge the support and contribution of the Immune Monitoring 
+
+Shared Resource at the Georgia Cancer Center, Augusta University (RRID: SCR_026590), 
+
+including Rafal Pacholczyk , Valentyna Fesenkova, and Atsuko Matsunag a. We thank Donna 
+
+Kumiski in the Electron Microscopy & Histology Core Facility at Medical College of Georgia 
+
+for assistance in cytokine analysis and histology .
+
+Funding . Grant support from the US Department of Veterans Affairs I01CX001364 (to K.L). 
+
+National Cancer Institute R01CA278852 (to K.L.), and R43CA287611 (to P. S. R.) .
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.26.734809 doi: bioRxiv preprint
+
+39 
+
+Author Contributions : Conceptualization ( ZT , PC, PSR , KL), Methodology: ( ZT , PC, DBP, 
+
+HRM, KF, DY ), Funding acquisition: ( PSR, KL), Project administration ( PSR, KL), 
+
+Bioinformatics ( PC, RR, SB), Pathological analysis (JW, LVZ, MZ), Writing : original draft ( ZT ,
+
+PC, PSR , KL), Writing : review & editing: ( PC, ZT, JW, LVZ, MZ, PSR, KL )
+
+Conflict of interest : None. 
+
+Data availability : The scRNA -Seq transcriptomics datasets are deposited in GEO database. 
+
+Accession #GS E335642 .
+
+REFERENCES 
+
+1. Andre, T., Shiu, K.K., Kim, T.W., Jensen, B.V., Jensen, L.H., Punt, C., Smith, D., Garcia -
+
+Carbonero, R., Benavides, M., Gibbs, P., et al. (2020). Pembrolizumab in Microsatellite -
+
+Instability -High Advanced Colorectal Cancer. N Engl J Med 383 , 2207 -2218. 
+
+10.1056/NEJMoa2017699. 
+
+2. Cercek, A., Lumish, M., Sinopoli, J., Weiss, J., Shia, J., Lamendola -Essel, M., El Dika, I.H., 
+
+Segal, N., Shcherba, M., Sugarman, R., et al. (2022). PD -1 Blockade in Mismatch Repair -
+
+Deficient, Locally Advanced Rectal Cancer. N Engl J Med 386 , 2363 -2376. 
+
+10.1056/NEJMoa2201445. 
+
+3. Diaz, L.A., Jr., Shiu, K.K., Kim, T.W., Jensen, B.V., Jensen, L.H., Punt, C., Smith, D., 
+
+Garcia -Carbonero, R., Benavides, M., Gibbs, P., et al. (2022). Pembrolizumab versus 
+
+chemotherapy for microsatellite instability -high or mismatch repair -deficient meta static 
+
+colorectal cancer (KEYNOTE -177): final analysis of a randomised, open -label, phase 3 
+
+study. Lancet Oncol 23 , 659 -670. 10.1016/S1470 -2045(22)00197 -8. 
+
+4. Brahmer, J.R., Tykodi, S.S., Chow, L.Q., Hwu, W.J., Topalian, S.L., Hwu, P., Drake, C.G., 
+
+Camacho, L.H., Kauh, J., Odunsi, K., et al. (2012). Safety and activity of anti -PD -L1 
+
+antibody in patients with advanced cancer. N Engl J Med 366 , 2455 -2465. 
+
+10.1056/NEJMoa1200694. 
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.26.734809 doi: bioRxiv preprint
+
+40 
+
+5. Le, D.T., Kim, T.W., Van Cutsem, E., Geva, R., Jager, D., Hara, H., Burge, M., O'Neil, B., 
+
+Kavan, P., Yoshino, T., et al. (2020). Phase II Open -Label Study of Pembrolizumab in 
+
+Treatment -Refractory, Microsatellite Instability -High/Mismatch Repair -Deficient Metastatic 
+
+Colorectal Cancer: KEYNOTE -164. J Clin Oncol 38 , 11 -19. 10.1200/JCO.19.02107. 
+
+6. Acha -Sagredo, A., Andrei, P., Clayton, K., Taggart, E., Antoniotti, C., Woodman, C.A., 
+
+Afrache, H., Fourny, C., Armero, M., Moinudeen, H.K., et al. (2025). A constitutive 
+
+interferon -high immunophenotype defines response to immunotherapy in colorectal canc er. 
+
+Cancer Cell 43 , 292 -307 e297. 10.1016/j.ccell.2024.12.008. 
+
+7. Diamond, M.S., Kinder, M., Matsushita, H., Mashayekhi, M., Dunn, G.P., Archambault, 
+
+J.M., Lee, H., Arthur, C.D., White, J.M., Kalinke, U., et al. (2011). Type I interferon is 
+
+selectively required by dendritic cells for immune rejection of tumors. J Exp Me d 208 , 1989 -
+
+2003. 10.1084/jem.20101158. 
+
+8. Dunn, G.P., Bruce, A.T., Sheehan, K.C., Shankaran, V., Uppaluri, R., Bui, J.D., Diamond, 
+
+M.S., Koebel, C.M., Arthur, C., White, J.M., and Schreiber, R.D. (2005). A critical function 
+
+for type I interferons in cancer immunoediting. Nat Immunol 6, 722 -729. 
+
+9. Shankaran, V., Ikeda, H., Bruce, A.T., White, J.M., Swanson, P.E., Old, L.J., and Schreiber, 
+
+R.D. (2001). IFNgamma and lymphocytes prevent primary tumour development and shape 
+
+tumour immunogenicity. Nature 410 , 1107 -1111. 10.1038/35074122. 
+
+10. Zitvogel, L., Galluzzi, L., Kepp, O., Smyth, M.J., and Kroemer, G. (2015). Type I interferons 
+
+in anticancer immunity. Nat Rev Immunol 15 , 405 -414. 10.1038/nri3845. 
+
+11. Sistigu, A., Yamazaki, T., Vacchelli, E., Chaba, K., Enot, D.P., Adam, J., Vitale, I., Goubar, 
+
+A., Baracco, E.E., Remedios, C., et al. (2014). Cancer cell -autonomous contribution of type I 
+
+interferon signaling to the efficacy of chemotherapy. Nat Med 20 , 1301 -1309. 
+
+10.1038/nm.3708nm.3708 [pii]. 
+
+12. Stone, M.L., Chiappinelli, K.B., Li, H., Murphy, L.M., Travers, M.E., Topper, M.J., Mathios, 
+
+D., Lim, M., Shih, I.M., Wang, T.L., et al. (2017). Epigenetic therapy activates type I 
+
+interferon signaling in murine ovarian cancer to reduce immunosuppression and tumor 
+
+burden. Proc Natl Acad Sci U S A 114 , E10981 -E10990. 
+
+10.1073/pnas.17125141141712514114 [pii]. 
+
+13. Cauwels, A., Van Lint, S., Garcin, G., Bultinck, J., Paul, F., Gerlo, S., Van der Heyden, J., 
+
+Bordat, Y., Catteeuw, D., De Cauwer, L., et al. (2018). A safe and highly efficient tumor -
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.26.734809 doi: bioRxiv preprint
+
+41 
+
+targeted type I interferon immunotherapy depends on the tumor microenvironment. 
+
+Oncoimmunology 7, e1398876. 10.1080/2162402X.2017.13988761398876 [pii]. 
+
+14. Cauwels, A., Van Lint, S., Paul, F., Garcin, G., De Koker, S., Van Parys, A., Wueest, T., 
+
+Gerlo, S., Van der Heyden, J., Bordat, Y., et al. (2018). Delivering Type I Interferon to 
+
+Dendritic Cells Empowers Tumor Eradication and Immune Combination Treatment s. Cancer 
+
+Res 78 , 463 -474. 10.1158/0008 -5472.CAN -17 -19800008 -5472.CAN -17 -1980 [pii]. 
+
+15. Brown, M.C., Holl, E.K., Boczkowski, D., Dobrikova, E., Mosaheb, M., Chandramohan, V., 
+
+Bigner, D.D., Gromeier, M., and Nair, S.K. (2017). Cancer immunotherapy with recombinant 
+
+poliovirus induces IFN -dominant activation of dendritic cells and tumor antigen -specific 
+
+CTLs. Sci Transl Med 9. eaan4220 [pii]10.1126/scitranslmed.aan42209/408/eaan4220 [pii]. 
+
+16. Gozgit, J.M., Vasbinder, M.M., Abo, R.P., Kunii, K., Kuplast -Barr, K.G., Gui, B., Lu, A.Z., 
+
+Molina, J.R., Minissale, E., Swinger, K.K., et al. (2021). PARP7 negatively regulates the 
+
+type I interferon response in cancer cells and its inhibition triggers an titumor immunity. 
+
+Cancer Cell 39 , 1214 -1226 e1210. 10.1016/j.ccell.2021.06.018. 
+
+17. Duong, E., Fessenden, T.B., Lutz, E., Dinter, T., Yim, L., Blatt, S., Bhutkar, A., Wittrup, 
+
+K.D., and Spranger, S. (2021). Type I interferon activates MHC class I -dressed CD11b(+) 
+
+conventional dendritic cells to promote protective anti -tumor CD8(+) T cell immunity. 
+
+Immunity. 10.1016/j.immuni.2021.10.020. 
+
+18. Propper, D.J., and Balkwill, F.R. (2022). Harnessing cytokines and chemokines for cancer 
+
+therapy. Nat Rev Clin Oncol. 10.1038/s41571 -021 -00588 -9. 
+
+19. Grippin, A.J., Marconi, C., Copling, S., Li, N., Braun, C., Woody, C., Young, E., Gupta, P., 
+
+Wang, M., Wu, A., et al. (2025). SARS -CoV -2 mRNA vaccines sensitize tumours to immune 
+
+checkpoint blockade. Nature 647 , 488 -497. 10.1038/s41586 -025 -09655 -y. 
+
+20. Shin, D.S., Zaretsky, J.M., Escuin -Ordinas, H., Garcia -Diaz, A., Hu -Lieskovan, S., Kalbasi, 
+
+A., Grasso, C.S., Hugo, W., Sandoval, S., Torrejon, D.Y., et al. (2017). Primary Resistance to 
+
+PD -1 Blockade Mediated by JAK1/2 Mutations. Cancer Discov 7, 188 -201. 10.1158/2159 -
+
+8290.CD -16 -1223. 
+
+21. Zaretsky, J.M., Garcia -Diaz, A., Shin, D.S., Escuin -Ordinas, H., Hugo, W., Hu -Lieskovan, 
+
+S., Torrejon, D.Y., Abril -Rodriguez, G., Sandoval, S., Barthly, L., et al. (2016). Mutations 
+
+Associated with Acquired Resistance to PD -1 Blockade in Melanoma. N Engl J Med 375 ,
+
+819 -829. 10.1056/NEJMoa1604958. 
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.26.734809 doi: bioRxiv preprint
+
+42 
+
+22. Kalbasi, A., Tariveranmoshabad, M., Hakimi, K., Kremer, S., Campbell, K.M., Funes, J.M., 
+
+Vega -Crespo, A., Parisi, G., Champekar, A., Nguyen, C., et al. (2020). Uncoupling interferon 
+
+signaling and antigen presentation to overcome immunotherapy resistance d ue to JAK1 loss 
+
+in melanoma. Sci Transl Med 12 . 10.1126/scitranslmed.abb0152. 
+
+23. Torrejon, D.Y., Abril -Rodriguez, G., Champhekar, A.S., Tsoi, J., Campbell, K.M., Kalbasi, 
+
+A., Parisi, G., Zaretsky, J.M., Garcia -Diaz, A., Puig -Saus, C., et al. (2020). Overcoming 
+
+Genetically Based Resistance Mechanisms to PD -1 Blockade. Cancer Discov 10 , 1140 -1157. 
+
+10.1158/2159 -8290.CD -19 -1409. 
+
+24. Gao, J., Shi, L.Z., Zhao, H., Chen, J., Xiong, L., He, Q., Chen, T., Roszik, J., Bernatchez, C., 
+
+Woodman, S.E., et al. (2016). Loss of IFN -gamma Pathway Genes in Tumor Cells as a 
+
+Mechanism of Resistance to Anti -CTLA -4 Therapy. Cell 167 , 397 -404 e399. S0092 -
+
+8674(16)31167 -9 [pii]10.1016/j.cell.2016.08.069. 
+
+25. Mowat, C., Mosley, S.R., Namdar, A., Schiller, D., and Baker, K. (2021). Anti -tumor 
+
+immunity in mismatch repair -deficient colorectal cancers requires type I IFN -driven CCL5 
+
+and CXCL10. J Exp Med 218 . 10.1084/jem.20210108. 
+
+26. Huang, K.C., Chiang, S.F., Chang, H.Y., Hong, W.Z., Chen, J.Y., Lee, P.C., Liang, J.A., Ke, 
+
+T.W., Peng, S.L., Shiau, A.C., et al. (2024). Colorectal cancer -specific IFNbeta delivery 
+
+overcomes dysfunctional dsRNA -mediated type I interferon signaling to inc rease the 
+
+abscopal effect of radiotherapy. J Immunother Cancer 12 . 10.1136/jitc -2023 -008515. 
+
+27. Krieg, A.M. (2025). New insights into the role of IFN -alpha/beta and TLR7/8/9 in cancer 
+
+immunotherapy and systemic autoimmunity. J Immunother Cancer 13 . 10.1136/jitc -2025 -
+
+012165. 
+
+28. Klement, J.D., Redd, P.S., Lu, C., Merting, A.D., Poschel, D.B., Yang, D., Savage, N.M., 
+
+Zhou, G., Munn, D.H., Fallon, P.G., and Liu, K. (2023). Tumor PD -L1 engages myeloid PD -
+
+1 to suppress type I interferon to impair cytotoxic T lymphocyte recruitment. C ancer Cell 41 ,
+
+620 -636 e629. 10.1016/j.ccell.2023.02.005. 
+
+29. Kirkwood, J. (2002). Cancer immunotherapy: the interferon -alpha experience. Semin Oncol 
+
+29 , 18 -26. S0093 -7754(02)50195 -0 [pii]. 
+
+30. Garbe, C., and Eigentler, T.K. (2007). Diagnosis and treatment of cutaneous melanoma: state 
+
+of the art 2006. Melanoma Res 17 , 117 -127. 10.1097/CMR.0b013e328042bb3600008390 -
+
+200704000 -00007 [pii]. 
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.26.734809 doi: bioRxiv preprint
+
+43 
+
+31. Hervas -Stubbs, S., Perez -Gracia, J.L., Rouzaut, A., Sanmamed, M.F., Le Bon, A., and 
+
+Melero, I. (2011). Direct effects of type I interferons on cells of the immune system. Clin 
+
+Cancer Res 17 , 2619 -2627. 10.1158/1078 -0432.CCR -10 -11141078 -0432.CCR -10 -1114 [pii]. 
+
+32. Trinchieri, G. (2010). Type I interferon: friend or foe? J Exp Med 207 , 2053 -2063. 
+
+10.1084/jem.20101664. 
+
+33. Hauschild, A., Dummer, R., Ugurel, S., Kaehler, K.C., Egberts, F., Fink, W., Both -Skalsky, 
+
+J., Laetsch, B., and Schadendorf, D. (2008). Combined treatment with pegylated interferon -
+
+alpha -2a and dacarbazine in patients with advanced metastatic melanoma: a phase 2 study. 
+
+Cancer 113 , 1404 -1411. 10.1002/cncr.23722. 
+
+34. Eliason, J.F. (2001). Pegylated cytokines: potential application in immunotherapy of cancer. 
+
+BioDrugs 15 , 705 -711. 10.2165/00063030 -200115110 -00001. 
+
+35. Lee, S., and Margolin, K. (2011). Cytokines in cancer immunotherapy. Cancers (Basel) 3,
+
+3856 -3893. 10.3390/cancers3043856. 
+
+36. Dummer, R., and Mangana, J. (2009). Long -term pegylated interferon -alpha and its potential 
+
+in the treatment of melanoma. Biologics 3, 169 -182. 10.2147/btt.2009.3051. 
+
+37. Cao, X., Liang, Y., Hu, Z., Li, H., Yang, J., Hsu, E.J., Zhu, J., Zhou, J., and Fu, Y.X. (2021). 
+
+Next generation of tumor -activating type I IFN enhances anti -tumor immune responses to 
+
+overcome therapy resistance. Nat Commun 12 , 5866. 10.1038/s41467 -021 -26112 -2. 
+
+38. Yang, X., Zhang, X., Fu, M.L., Weichselbaum, R.R., Gajewski, T.F., Guo, Y., and Fu, Y.X. 
+
+(2014). Targeting the tumor microenvironment with interferon -beta bridges innate and 
+
+adaptive immune responses. Cancer Cell 25 , 37 -48. 10.1016/j.ccr.2013.12.004. 
+
+39. Dolgin, E. (2021). The tangled history of mRNA vaccines. Nature 597 , 318 -324. 
+
+10.1038/d41586 -021 -02483 -w. 
+
+40. Lu, C., Stewart, D.J., Lee, J.J., Ji, L., Ramesh, R., Jayachandran, G., Nunez, M.I., Wistuba, 
+
+II, Erasmus, J.J., Hicks, M.E., et al. (2012). Phase I clinical trial of systemically administered 
+
+TUSC2(FUS1) -nanoparticles mediating functional gene transfer i n humans. PLoS One 7,
+
+e34833. 10.1371/journal.pone.0034833. 
+
+41. Meraz, I.M., Majidi, M., Cao, X., Lin, H., Li, L., Wang, J., Baladandayuthapani, V., Rice, D., 
+
+Sepesi, B., Ji, L., and Roth, J.A. (2018). TUSC2 Immunogene Therapy Synergizes with Anti -
+
+PD -1 through Enhanced Proliferation and Infiltration of Natural Killer Cells in Syngeneic 
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.26.734809 doi: bioRxiv preprint
+
+44 
+
+Kras -Mutant Mouse Lung Cancer Models. Cancer Immunol Res 6, 163 -177. 10.1158/2326 -
+
+6066.CIR -17 -0273. 
+
+42. Al Subeh, Z.Y., Poschel, D.B., Redd, P.S., Klement, J.D., Merting, A.D., Yang, D., Mehta, 
+
+M., Shi, H., Colson, Y.L., Oberlies, N.H., et al. (2022). Lipid Nanoparticle Delivery of Fas 
+
+Plasmid Restores Fas Expression to Suppress Melanoma Growth In Vivo. ACS Nano 16 ,
+
+12695 -12710. 10.1021/acsnano.2c04420. 
+
+43. Merting, A.D., Poschel, D.B., Lu, C., Klement, J.D., Yang, D., Li, H., Shi, H., Chapdelaine, 
+
+E., Montgomery, M., Redman, M.T., et al. (2022). Restoring FAS Expression via Lipid -
+
+Encapsulated FAS DNA Nanoparticle Delivery Is Sufficient to Suppress Colon Tum or 
+
+Growth In Vivo. Cancers (Basel) 14 . 10.3390/cancers14020361. 
+
+44. Patel, M.N., Tiwari, S., Wang, Y., O'Neill, S., Wu, J., Omo -Lamai, S., Espy, C., Chase, L.S., 
+
+Majumder, A., Hoffman, E., et al. (2026). Safer non -viral DNA delivery using lipid 
+
+nanoparticles loaded with endogenous anti -inflammatory lipids. Nat Biotechnol 44 , 79 -89. 
+
+10.1038/s41587 -025 -02556 -5. 
+
+45. Gentner, B., Eoli, M., Farina, F., Barcella, M., Capotondo, A., Mazzoleni, S., Brambilla, V., 
+
+Francavilla, A., Garramone, M., Carrabba, M.G., et al. (2026). Tumor -targeted interferon -
+
+alpha gene therapy for glioblastoma: a phase 1 trial. Nat Med 32 , 2216 -2226. 
+
+10.1038/s41591 -026 -04419 -1. 
+
+46. Seyed, N., Zahedifard, F., Habibzadeh, S., Yousefi, R., Lajevardi, M.S., Gholami, E., and 
+
+Rafati, S. (2022). Antibiotic -Free Nanoplasmids as Promising Alternatives for Conventional 
+
+DNA Vectors. Vaccines (Basel) 10 . 10.3390/vaccines10101710. 
+
+47. Fick, K., Kerns, N., Zhao, Y., Tiamiyu, Z., Poschel, D., Czabala, P., Yang, D., Tang, Y., Xie, 
+
+J., Fesenkova, V., et al. (2025). Lipid nanoparticle -delivered IFNalpha2 activates Cxcl9 to 
+
+increase T cell tumor recruitment to suppress lung metastasis. J Imm unother Cancer 13 .
+
+10.1136/jitc -2024 -011415. 
+
+48. Liu, S.Y., Huang, W.C., Yeh, H.I., Ko, C.C., Shieh, H.R., Hung, C.L., Chen, T.Y., and Chen, 
+
+Y.J. (2019). Sequential Blockade of PD -1 and PD -L1 Causes Fulminant Cardiotoxicity -From 
+
+Case Report to Mouse Model Validation. Cancers (Basel) 11 . 10.3390/cancers11040580. 
+
+49. Song, W., Shen, L., Wang, Y., Liu, Q., Goodwin, T.J., Li, J., Dorosheva, O., Liu, T., Liu, R., 
+
+and Huang, L. (2018). Synergistic and low adverse effect cancer immunotherapy by 
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.26.734809 doi: bioRxiv preprint
+
+45 
+
+immunogenic chemotherapy and locally expressed PD -L1 trap. Nat Commun 9, 2237. 
+
+10.1038/s41467 -018 -04605 -x. 
+
+50. Makuch, E., Jasyk, I., Kula, A., Lipinski, T., and Siednienko, J. (2022). IFNbeta -Induced 
+
+CXCL10 Chemokine Expression Is Regulated by Pellino3 Ligase in Monocytes and 
+
+Macrophages. Int J Mol Sci 23 . 10.3390/ijms232314915. 
+
+51. Negishi, H., Wada, Y., Shirasaki, Y., Hayashi, T., Kubota, Y., Iwasaki, T., Kurosawa, M., 
+
+Ban, T., Muto, D., Suenaga, Y., et al. (2026). cGAS -IFN -I responses by extracting nuclear 
+
+DNA from dying cells via nucleocytosis. Nat Commun 17 , 1658. 10.1038/s41467 -026 -
+
+68839 -w. 
+
+52. Hailemichael, Y., Johnson, D.H., Abdel -Wahab, N., Foo, W.C., Bentebibel, S.E., Daher, M., 
+
+Haymaker, C., Wani, K., Saberian, C., Ogata, D., et al. (2022). Interleukin -6 blockade 
+
+abrogates immunotherapy toxicity and promotes tumor immunity. Cancer Cell 40 , 509 -523 
+
+e506. 10.1016/j.ccell.2022.04.004. 
+
+53. Liu, S., Zhang, Z., Wang, Z., Liu, C., Liang, G., Xu, T., Li, Z., Duan, X., Xu, G., Feng, X., et 
+
+al. (2026). SPP1 Drives Colorectal Cancer Liver Metastasis and Immunotherapy Resistance 
+
+by Stimulating CXCL12 Production in Cancer -Associated Fibroblasts. Can cer Res 86 , 58 -79. 
+
+10.1158/0008 -5472.CAN -24 -4916. 
+
+54. Qi, J., Sun, H., Zhang, Y., Wang, Z., Xun, Z., Li, Z., Ding, X., Bao, R., Hong, L., Jia, W., et 
+
+al. (2022). Single -cell and spatial analysis reveal interaction of FAP(+) fibroblasts and 
+
+SPP1(+) macrophages in colorectal cancer. Nat Commun 13 , 1742. 10.1038/s41467 -022 -
+
+29366 -6. 
+
+55. Trehan, R., Huang, P., Zhu, X.B., Wang, X., Soliman, M., Strepay, D., Nur, A., Kedei, N., 
+
+Arhin, M., Ghabra, S., et al. (2025). SPP1 + macrophages cause exhaustion of tumor -specific 
+
+T cells in liver metastases. Nat Commun 16 , 4242. 10.1038/s41467 -025 -59529 -0. 
+
+56. Bill, R., Wirapati, P., Messemaker, M., Roh, W., Zitti, B., Duval, F., Kiss, M., Park, J.C., 
+
+Saal, T.M., Hoelzl, J., et al. (2023). CXCL9:SPP1 macrophage polarity identifies a network 
+
+of cellular programs that control human cancers. Science 381 , 515 -524. 
+
+10.1126/science.ade2292. 
+
+57. Kwart, D., He, J., Srivatsan, S., Lett, C., Golubov, J., Oswald, E.M., Poon, P., Ye, X., Waite, 
+
+J., Zaretsky, A.G., et al. (2022). Cancer cell -derived type I interferons instruct tumor 
+
+monocyte polarization. Cell Rep 41 , 111769. 10.1016/j.celrep.2022.111769. 
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.26.734809 doi: bioRxiv preprint
+
+46 
+
+58. Elewaut, A., Estivill, G., Bayerl, F., Castillon, L., Novatchkova, M., Pottendorfer, E., 
+
+Hoffmann -Haas, L., Schonlein, M., Nguyen, T.V., Lauss, M., et al. (2025). Cancer cells 
+
+impair monocyte -mediated T cell stimulation to evade immunity. Nature 637 , 716 -725. 
+
+10.1038/s41586 -024 -08257 -4. 
+
+59. Gao, J., Wu, Z., Zhao, M., Zhang, R., Li, M., Sun, D., Cheng, H., Qi, X., Shen, Y., Xu, Q., et 
+
+al. (2022). Allosteric inhibition reveals SHP2 -mediated tumor immunosuppression in colon 
+
+cancer by single -cell transcriptomics. Acta Pharm Sin B 12 , 149 -166. 
+
+10.1016/j.apsb.2021.08.006. 
+
+60. Ahmed, M., Sottnik, J.L., Dancik, G.M., Sahu, D., Hansel, D.E., Theodorescu, D., and 
+
+Schwartz, M.A. (2016). An Osteopontin/CD44 Axis in RhoGDI2 -Mediated Metastasis 
+
+Suppression. Cancer Cell 30 , 432 -443. 10.1016/j.ccell.2016.08.002. 
+
+61. Czabala, P., Zhao, Y., Klement, J.D., Redd, P.S., Poschel, D., Carver, K., Fick, K., Tiamiyu, 
+
+Z., Zoccheddu, M., Schoenlein, P., et al. (2026). Distinct and cooperative roles of host and 
+
+tumor Osteopontin in colorectal cancer liver metastasis. bioRxiv, 20 26.2002.2019.706899. 
+
+10.64898/2026.02.19.706899. 
+
+62. Lei, G., Lu, Z., Xu, Z., Braun, C., Huo, D., Gao, J., Tan, L., Hong, T., Wu, S., Sun, M., et al. 
+
+(2026). Cuproptosis -immunity crosstalk informs strategy to overcome immunotherapy 
+
+resistance. Cell. 10.1016/j.cell.2026.05.036. 
+
+63. Lei, G., Sun, M., Cheng, J., Ye, R., Lu, Z., Horbath, A., Huo, D., Wu, S., Alapati, A., 
+
+Aggarwal, S., et al. (2025). Radiotherapy promotes cuproptosis and synergizes with 
+
+cuproptosis inducers to overcome tumor radioresistance. Cancer Cell 43 , 1076 -1092 e1075. 
+
+10.1016/j.ccell.2025.03.031. 
+
+64. Yang, Z., Su, W., Wei, X., Pan, Y., Xing, M., Niu, L., Feng, B., Kong, W., Ren, X., Huang, 
+
+F., et al. (2025). Hypoxia inducible factor -1alpha drives cancer resistance to cuproptosis. 
+
+Cancer Cell 43 , 937 -954 e939. 10.1016/j.ccell.2025.02.015. 
+
+65. Dang, D., Deogharkar, A., McKolay, J., Smith, K.S., Panwalkar, P., Hoffman, S., Tian, W., 
+
+Ji, S., Azambuja, A.P., Natarajan, S.K., et al. (2025). Isocitrate dehydrogenase 1 primes 
+
+group -3 medulloblastomas for cuproptosis. Cancer Cell 43 , 1159 -1174 e1158. 
+
+10.1016/j.ccell.2025.04.013. 
+
+66. Bassez, A., Vos, H., Van Dyck, L., Floris, G., Arijs, I., Desmedt, C., Boeckx, B., Vanden 
+
+Bempt, M., Nevelsteen, I., Lambein, K., et al. (2021). A single -cell map of intratumoral 
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.26.734809 doi: bioRxiv preprint
+
+47 
+
+changes during anti -PD1 treatment of patients with breast cancer. Nat Med 27 , 820 -832. 
+
+10.1038/s41591 -021 -01323 -8. 
+
+67. Wei, J., Marisetty, A., Schrand, B., Gabrusiewicz, K., Hashimoto, Y., Ott, M., Grami, Z., 
+
+Kong, L.Y., Ling, X., Caruso, H., et al. (2019). Osteopontin mediates glioblastoma -
+
+associated macrophage infiltration and is a potential therapeutic target. J Clin I nvest 129 ,
+
+137 -149. 10.1172/JCI121266. 
+
+68. Nose, Y., Yasumizu, Y., Saito, T., Nakamura, Y., Jinushi, K., Fujikawa, K., Momose, K., 
+
+Yamashita, K., Tanaka, K., Yamamoto, K., et al. (2026). PD -1 antibody -bound progenitor -
+
+exhausted CD8(+) T cells in lymph nodes boost PD -1-blockade anti -tumor immunity in 
+
+gastrointestinal cancer. Nat Commun 17 . 10.1038/s41467 -026 -70751 -2. 
+
+69. Chakravarti, M., Dhar, S., Bera, S., Sinha, A., Roy, K., Sarkar, A., Dasgupta, S., Bhuniya, 
+
+A., Saha, A., Das, J., et al. (2023). Terminally Exhausted CD8+ T Cells Resistant to PD -1
+
+Blockade Promote Generation and Maintenance of Aggressive Cancer Stem Cel ls. Cancer 
+
+Res 83 , 1815 -1833. 10.1158/0008 -5472.CAN -22 -3864. 
+
+70. Watson, M.J., Vignali, P.D.A., Mullett, S.J., Overacre -Delgoffe, A.E., Peralta, R.M., 
+
+Grebinoski, S., Menk, A.V., Rittenhouse, N.L., DePeaux, K., Whetstone, R.D., et al. (2021). 
+
+Metabolic support of tumour -infiltrating regulatory T cells by lactic acid. N ature 591 , 645 -
+
+651. 10.1038/s41586 -020 -03045 -2. 
+
+71. Souto, E.B., Blanco -Llamero, C., Krambeck, K., Kiran, N.S., Yashaswini, C., Postwala, H., 
+
+Severino, P., Priefer, R., Prajapati, B.G., and Maheshwari, R. (2024). Regulatory insights 
+
+into nanomedicine and gene vaccine innovation: Safety assessment, challeng es, and 
+
+regulatory perspectives. Acta Biomater 180 , 1 -17. 10.1016/j.actbio.2024.04.010. 
+
+72. Williams, J.A. (2013). Vector Design for Improved DNA Vaccine Efficacy, Safety and 
+
+Production. Vaccines (Basel) 1, 225 -249. 10.3390/vaccines1030225. 
+
+73. Paschall, A.V., and Liu, K. (2016). An Orthotopic Mouse Model of Spontaneous Breast 
+
+Cancer Metastasis. J Vis Exp. 10.3791/54040. 
+
+74. Sanz, H., Aponte, J.J., Harezlak, J., Dong, Y., Ayestaran, A., Nhabomba, A., Mpina, M., 
+
+Maurin, O.R., Diez -Padrisa, N., Aguilar, R., et al. (2017). drLumi: An open -source package 
+
+to manage data, calibrate, and conduct quality control of multiplex bead -bas ed 
+
+immunoassays data analysis. PLoS One 12 , e0187901. 10.1371/journal.pone.0187901.

@@ -1,0 +1,69 @@
+{
+  "label": "2026-07-02",
+  "date": "2026-07-02",
+  "generated_at": "2026-07-02T23:33:59",
+  "count": 4,
+  "papers": [
+    {
+      "paper_id": "202607/02/biorxiv-10-64898-2026-06-26-734809-v1-multi-compartment-immune-and-tumor-cell-reprogramming-by-ifna2-overcomes-colon-cancer-immunotherapy-resistance",
+      "section": "deep",
+      "title_en": "Multi-compartment immune and tumor cell reprogramming by IFNa2 overcomes colon cancer immunotherapy resistance",
+      "authors": "Tiamiyu, Z., Czabala, P., Worthy, J., Zarate, L. V., Zheng, M., Poschel, D. B., Fick, K., Yang, D., Monnig, H. R., Rashmi, R., Bombin, S., Redd, P. S., Liu, K.",
+      "date": "2026-07-01",
+      "pdf": "https://www.biorxiv.org/content/10.64898/2026.06.26.734809v1.full.pdf",
+      "score": "9.0",
+      "evidence": "直接研究结肠癌免疫治疗耐药及IFNa2的逆转作用",
+      "tldr": "肿瘤细胞PD-L1抑制IFN信号导致免疫治疗耐药，但IFN反应性免疫表型预示ICI疗效。LNP包裹的IFNa2纳米质粒（LNP-mIFNa2）选择性转染肿瘤细胞，恢复局部IFNa2产生，在同基因和人源化小鼠模型中抑制结肠癌肺转移并增敏ICI。单细胞测序显示微环境重编程：SPP1+巨噬细胞凋亡，单核细胞获IFN反应性，Tpex细胞扩增，肿瘤细胞下调周期并上调抗原呈递和趋化因子，同时脱离铜死亡抵抗。该研究确立了LNP-IFNa2作为多隔室TME调节剂，可转化免疫抑制并克服结肠癌免疫治疗耐药。",
+      "tags": "query:neo-resist",
+      "abstract_en": "Tumor cell PD-L1 represses IFN signaling to limit anti-tumor immunity, despite an IFN-responsive immunophenotype predicting colorectal cancer response to immune checkpoint inhibitor therapy. Lipid nanoparticle (LNP)-encapsulated IFNa2-encoding nanoplasmid (LNP-mIFNa2) gene therapy suppresses tumor progression, however, the underlying mechanism and therapeutic trade-offs of the accompanying proinflammatory cytokine response triggered by nucleic acid delivery remain undefined. Here, we show that LNP-mIFNa2 selectively transfects tumor cells to restore local IFNa2 production in lung metastases, suppressing colon cancer lung metastasis in syngeneic and humanized mouse models and sensitizing tumors to ICI therapy. Efficacy required canonical IFNAR1 signaling, and was further enhanced by neutralizing co-induced IL6. Single-cell RNA sequencing revealed coordinated tumor microenvironment reprogramming with SPP1+ macrophages underwent apoptosis while incoming monocytes acquired an IFN-responsive identity, Tpex cells lost their quiescence program and expanded, and tumor cells lost their high-cycling phenotype while increasing antigen presentation and immune-cell-recruiting chemokines. Tumor cells also shifted away from a hypoxia/HIF1a-driven cuproptosis-resistance program, with increased Fdx1 and copper-importer expression and decreased metallothionein Mt1, suggesting sensitization to coproptosis pathway. The LNP-mIFN2-treated tumor microenvironment transcriptionally recapitulated T cell and myeloid signatures of pembrolizumab-responsive patients. Our findings establish LNP-delivered IFNa2 as a multi-compartment TME regulator that reprograms myeloid suppression, reinvigorates exhausted T cells, and restores tumor immunogenicity.",
+      "source": "biorxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202607/02/biorxiv-10-64898-2026-06-28-735106-v2-tabular-foundation-models-are-competitive-cellular-perturbation-predictors-across-biological-scales",
+      "section": "quick",
+      "title_en": "Tabular Foundation Models Are Competitive Cellular Perturbation Predictors Across Biological Scales",
+      "authors": "Palla, G., Hillsley, A., Kim, Y.-J., Royer, L. A.",
+      "date": "2026-07-02",
+      "pdf": "https://www.biorxiv.org/content/10.64898/2026.06.28.735106v2.full.pdf",
+      "score": "7.0",
+      "evidence": "表格基础模型用于扰动预测；适用于药物耐药预测",
+      "tldr": "细胞扰动预测是药物发现与功能基因组学的核心挑战。当前领域特定单细胞基础模型虽多，但其实际优势不明确。本文系统评估了通用表格基础模型（如TabICL、TabPFN）与领域特定模型在四种细胞预测场景中的表现。结果发现，表格基础模型在多个层次上相当或优于专用模型，表明通用上下文学习可作为有力的可扩展替代方案。",
+      "tags": "query:neo-resist",
+      "abstract_en": "Predicting how cells respond to genetic and chemical perturbations is a central challenge in drug discovery and functional genomics. A growing ecosystem of specialized single-cell foundation models has been developed to address this problem, yet their practical advantage over domain-agnostic approaches remains unclear. Here we evaluate the power of Tabular Foundation Models such as TabICL and TabPFN, general-purpose pre-trained regression models, against domain-specific architectures including PRESAGE, scGPT, scLAMBDA, STACK and Prophet across four complementary evaluation settings: cell-level in-context cross-cell-type prediction, pseudobulk perturbation prediction on five Perturb-seq datasets of cell-lines, a genome-wide CRISPR screen in primary human CD4+ T cells, and embryo-level cell-type composition prediction in a zebrafish developmental perturbation atlas. In the cell-level cross-cell type perturbation prediction, Tabular Foundation Models perform on par or better than specialized models. On pseudobulk perturbation prediction, Tabular Foundation Models consistently outperform specialized baselines across multiple evaluation metrics and datasets. On whole-emrbryo cell-type composition prediction, Tabular Foundation Models are competitive with specialized baselines. These results demonstrate that general-purpose tabular in-context learning provides a strong and scalable alternative to bespoke biological architectures for perturbation response modeling across cell systems and scales.",
+      "source": "biorxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202607/02/biorxiv-10-1101-2024-08-23-609473-v2-robustness-and-reliability-of-single-cell-regulatory-multi-omics-with-deep-mitochondrial-mutation-profiling",
+      "section": "quick",
+      "title_en": "Robustness and reliability of single-cell regulatory multi-omics with deep mitochondrial mutation profiling",
+      "authors": "Weng, C., Weissman, J. S., Sankaran, V. G.",
+      "date": "2026-06-30",
+      "pdf": "https://www.biorxiv.org/content/10.1101/2024.08.23.609473v2.full.pdf",
+      "score": "6.0",
+      "evidence": "单细胞测序方法可用于耐药机制研究中的谱系追踪",
+      "tldr": "单细胞线粒体DNA突变检测可为人类细胞谱系追踪提供高分辨率信息，但以往方法局限于高异质性突变，导致谱系信息有限且偏差。为此，提出 ReDeeM 框架，通过实验与计算整合，重点检测中低异质性突变，利用共识纠错和 filter2 过滤实现高保真变异检测。慢病毒条形码验证表明，该方法能高精度恢复真实克隆结构，优于现有方法。引入 MitoDrift 进一步量化谱系推断的不确定性，增强了可靠性。",
+      "tags": "query:neo-resist",
+      "abstract_en": "The detection of mitochondrial DNA (mtDNA) mutations in single cells holds considerable potential to define clonal relationships at scale, coupled with information on cell state in humans. Previous methods focused on higher heteroplasmy mutations, which, while informative, are few in number and may be shaped by functional selection, providing limited lineage information and potentially introducing biases for tracing. Although more challenging to detect, intermediate- to low-heteroplasmy mtDNA mutations are valuable due to their high diversity, abundance, and lower propensity to selection. To enhance mtDNA mutation detection and facilitate fine-scale lineage tracing, we developed the single-cell Regulatory multi-omics with Deep Mitochondrial mutation profiling (ReDeeM) approach, an integrated experimental and computational framework. Here, we specifically address two analytical challenges central to single-cell mtDNA-based lineage analysis: the fidelity of variant-calling workflows and the reliability of phylogenetic inference. We demonstrate that, by leveraging consensus-based error correction, ReDeeMs mtDNA mutation calls achieve high fidelity, aligning with bona fide mutational signatures even for mutations supported by a single molecule per cell. We also developed an improved post-consensus filtering approach, termed \"filter2\" that systematically identifies and filters residual edge-enriched artifacts, even though these affect only a minority of mutation calls. To systematically validate ReDeeM, we recently conducted a lentiviral barcoding experiment in human HSCs, uniquely labeling each cell prior to expansion and differentiation to provide a ground truth for assessing lineage tracing accuracy1. Such validation demonstrate that the original ReDeeM analytic approach (filter1)2 robustly recovers true clonal structure at high resolution and recall. Including intermediate to low-heteroplasmy variants (<10% per cell) strongly improves lineage inference, whereas excluding mutations supported by a single molecule per cell removes true clonal signal and degrades recovery of true clones. Both filter1 and filter2 accurately recover true clones and outperform prior mtDNA-based lineage tracing approaches in ground-truth precision and recall, with filter2 providing additional gains in performance. Finally, while ReDeeM advances mtDNA-based lineage tracing by recovering true clones at high resolution, yet quantifying the phylogenetic uncertainty from mitochondrial inheritance remains unmet. To address this, we recently developed and validated MitoDrift1 as a next-generation, drift-aware framework for mtDNA lineage tracing that further strengthens phylogenetic inference and provides interpretable uncertainty estimates.",
+      "source": "biorxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202607/02/biorxiv-10-64898-2026-06-28-735106-v1-tabular-foundation-models-are-competitive-cellular-perturbation-predictors-across-biological-scales",
+      "section": "quick",
+      "title_en": "Tabular Foundation Models Are Competitive Cellular Perturbation Predictors Across Biological Scales",
+      "authors": "Palla, G., Hillsley, A., Kim, Y.-J., Royer, L. A.",
+      "date": "2026-07-01",
+      "pdf": "https://www.biorxiv.org/content/10.64898/2026.06.28.735106v1.full.pdf",
+      "score": "6.0",
+      "evidence": "表格基础模型用于预测细胞扰动响应，与耐药预测相关",
+      "tldr": "细胞扰动预测是药物发现的关键挑战，现有专业基础模型性能是否优于通用模型尚不明确。本研究系统比较了Tabular Foundation Models（如TabICL和TabPFN）与scGPT等专业模型在四种实验设置下的表现。结果显示，通用模型在交叉细胞类型、伪批量、CRISPR筛选及胚胎发育等任务中均与专业模型持平或更优。这表明通用表格上下文学习可作为可扩展的替代方案。",
+      "tags": "query:neo-resist",
+      "abstract_en": "Predicting how cells respond to genetic and chemical perturbations is a central challenge in drug discovery and functional genomics. A growing ecosystem of specialized single-cell foundation models has been developed to address this problem, yet their practical advantage over domain-agnostic approaches remains unclear. Here we evaluate the power of Tabular Foundation Models such as TabICL and TabPFN, general-purpose pre-trained regression models, against domain-specific architectures including PRESAGE, scGPT, scLAMBDA, STACK and Prophet across four complementary evaluation settings: cell-level in-context cross-cell-type prediction, pseudobulk perturbation prediction on five Perturb-seq datasets of cell-lines, a genome-wide CRISPR screen in primary human CD4+ T cells, and embryo-level cell-type composition prediction in a zebrafish developmental perturbation atlas. In the cell-level cross-cell type perturbation prediction, Tabular Foundation Models perform on par or better than specialized models. On pseudobulk perturbation prediction, Tabular Foundation Models consistently outperform specialized baselines across multiple evaluation metrics and datasets. On whole-emrbryo cell-type composition prediction, Tabular Foundation Models are competitive with specialized baselines. These results demonstrate that general-purpose tabular in-context learning provides a strong and scalable alternative to bespoke biological architectures for perturbation response modeling across cell systems and scales.",
+      "source": "biorxiv",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "errors": []
+}
