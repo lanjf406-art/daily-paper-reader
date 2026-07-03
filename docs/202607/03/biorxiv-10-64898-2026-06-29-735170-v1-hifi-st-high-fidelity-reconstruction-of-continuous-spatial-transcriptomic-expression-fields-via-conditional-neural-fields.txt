@@ -1,0 +1,1524 @@
+Title: HiFi-ST: High-Fidelity Reconstruction of Continuous Spatial Transcriptomic Expression Fields via Conditional Neural Fields
+
+URL Source: https://www.biorxiv.org/content/10.64898/2026.06.29.735170v1.full.pdf
+
+Published Time: Fri, 03 Jul 2026 22:23:21 GMT
+
+Number of Pages: 45
+
+Markdown Content:
+> 1/31
+
+1 HiFi-ST: High-Fidelity Reconstruction of Continuous Spatial Transcriptomic 
+
+2 Expression Fields via Conditional Neural Fields 
+
+3 Lei Tang 1, Wenshuai Han 1, Xiao Yang 1, Xiaozhou Chen 1*, Huamei Li 2*
+
+45 * Correspondence: 
+
+6 Huamei Li 
+
+7 (lihuamei@aa.seu.edu.cn) 
+
+8 Xiaozhou Chen 
+
+9 (ch_xiaozhou@163.com) 
+
+10 1 School of Mathematics and Computer Science, Yunnan Minzu University, Kunming, Yunnan 
+
+11 Province 650500, China. 
+
+12 2 Department of Rheumatology and Immunology, Nanjing Drum Tower Hospital, Affiliated 
+
+13 Hospital of Medical School, Nanjing University,Nanjing, Jiangsu Province 210008, China. 
+
+14 Abstract 
+
+15 Spatial transcriptomics characterizes tissue-scale gene expression patterns, yet its 
+
+16 observations are sparse discrete samples of an underlying continuous molecular 
+
+17 field, leading to spatial aliasing and sub-resolution information loss. Existing methods 
+
+18 usually formulate this task as spot-level point regression, making it difficult to capture 
+
+19 both expression continuity and the regional nature of observation. Here, we propose 
+
+20 HiFi-ST, a conditional neural field framework for continuous spatial transcriptomics 
+
+21 modeling. HiFi-ST formulates spatial gene expression prediction as continuous   
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 2, 2026. ;https://doi.org/10.64898/2026.06.29.735170 doi: bioRxiv preprint 2/31
+
+22 expression field learning, models each spot as a regional observation over a finite 
+
+23 support domain, approximates local integration through Monte Carlo sampling, and 
+
+24 integrates multiscale tissue feature extraction with FiLM-based conditional 
+
+25 modulation to improve modeling of complex spatial heterogeneity and consistency 
+
+26 with the underlying measurement process. Systematic evaluation on three 
+
+27 independent datasets (HER2+, cSCC, and Alex_NatGen) showed that HiFi-ST 
+
+28 outperformed mclSTExp, BLEEP, THItoGene, His2ST, and HisToGene on key 
+
+29 metrics. On HER2+, HiFi-ST achieved an average PCC improvement of 65.1% and 
+
+30 an average MSE reduction of 40.9%; on cSCC, PCC improved by 10.2% and MSE 
+
+31 decreased by 51.2%; on Alex_NatGen, PCC improved by 80.0% and MSE 
+
+32 decreased by 16.3%. In addition, the learned multiscale tissue representations 
+
+33 supported downstream spatial immunoanalysis, including assisted identification of 
+
+34 candidate TLS regions. Overall, HiFi-ST provides a unified framework bridging 
+
+35 discrete measurements and continuous expression field reconstruction for tumor 
+
+36 microenvironment analysis and spatial immune structure characterization. 
+
+37 Keywords : Spatial transcriptomics; Implicit neural representation; Neural field; 
+
+38 Monte Carlo integration; Multiscale feature modulation; Tertiary lymphoid structures. 
+
+39 40 Introduction 
+
+41 Gene expression in biological tissues is intrinsically continuous, whereas current 
+
+42 spatial transcriptomics technologies discretely sample the underlying molecular field   
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 2, 2026. ;https://doi.org/10.64898/2026.06.29.735170 doi: bioRxiv preprint 3/31
+
+43 because of physical capture-array spacing, causing spatial aliasing and sub-
+
+44 resolution information loss [1-3] . Predicting spatial gene expression from H&E images 
+
+45 has therefore become an important strategy for mitigating these limitations [4-6] .
+
+46 Representative methods include Vision Transformer-based sequence modeling, 
+
+47 graph neural network-based topological modeling, and multimodal contrastive 
+
+48 learning approaches such as HisToGene [7] , His2ST [8] , BLEEP [9] , and mclSTExp [10] .
+
+49 However, these methods still follow a discrete spot-level supervision paradigm and 
+
+50 do not explicitly model expression continuity or regional observation [11, 12] .
+
+51 To address this issue, we propose HiFi-ST, a conditional neural field [13] framework 
+
+52 for continuous spatial transcriptomics modeling. HiFi-ST reformulates spatial gene 
+
+53 expression prediction as continuous expression field learning, models each spot as a 
+
+54 regional observation over a finite support domain [14] , and approximates local 
+
+55 integration through Monte Carlo sampling. It further combines multiscale tissue 
+
+56 feature extraction with FiLM-based conditional modulation [15] to improve modeling of 
+
+57 complex spatial heterogeneity. 
+
+58 Our contributions are threefold: (i) reformulating spatial gene expression prediction 
+
+59 from discrete point-wise regression to continuous expression field learning; (ii) 
+
+60 explicitly introducing regional observation modeling to better match the measurement 
+
+61 mechanism; and (iii) integrating multiscale conditional modulation with conditional 
+
+62 neural field decoding for high-fidelity reconstruction of continuous expression 
+
+63 patterns in complex tissues.   
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 2, 2026. ;https://doi.org/10.64898/2026.06.29.735170 doi: bioRxiv preprint 4/31
+
+64 Materials and Methods 
+
+65 HiFi-ST Framework 
+
+66 Each tissue section is associated with an H&E image 𝐼 and a set of sequencing 
+
+67 locations 𝑥 𝑖 with known spatial positions. HiFi-ST takes multiscale histological 
+
+68 images and spatial coordinates as input, reconstructs gene expression in continuous 
+
+69 space, and obtains spot-level predictions through regional sampling and 
+
+70 aggregation. The framework consists of four steps: data preprocessing, multiscale 
+
+71 feature extraction, conditional modulation, and random-sampling-based prediction 
+
+72 and aggregation. 
+
+73 Data preprocessing 
+
+74 Given N spatial locations and G genes, the raw count matrix is denoted as: 
+
+75 𝐶 ∈ ℝ𝑁 ×𝐺 (1)
+
+76 where 𝐶 𝑖𝑗 represents the raw transcript count of the j-th gene at the i-th spatial 
+
+77 location. 
+
+78 Highly variable gene (HVG) selection was first performed to reduce low-information 
+
+79 noise and improve cross-sample consistency. Within each tissue section, library-size 
+
+80 normalization and log transformation were applied, followed by HVG identification 
+
+81 using Scanpy; stable candidate genes were then integrated across sections [10] . We 
+
+82 used 1000 HVGs as the default upper limit, although the final number of genes 
+
+83 included for prediction could be smaller because of cross-section gene overlap and 
+
+84 data-quality constraints (Supplementary Table S1).   
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 2, 2026. ;https://doi.org/10.64898/2026.06.29.735170 doi: bioRxiv preprint 5/31
+
+85 After defining the HVG subspace, CPM-like normalization and log transformation 
+
+86 were applied to obtain the expression matrix: 
+
+87 E𝑖𝑗 = log 1 + 𝐶 𝑖𝑗 
+
+∑𝐺  
+
+> 𝑔 =1
+
+𝐶 𝑖𝑔 
+
+× 10 6 , 𝑖 = 1,…,𝑁 ,𝑗 = 1,…,𝐺. (2)
+
+88 where ∑𝐺  
+
+> 𝑔 =1
+
+𝐶 𝑖𝑔 denotes the total count of the i-th spot. The resulting normalized 
+
+89 expression matrix is given by: 
+
+90 𝐸 ∈ ℝ𝑁 ×𝐺 (3)
+
+91 This matrix is used as the regression supervision signal for the model. 
+
+92 The spatial coordinate 𝑥 𝑖 ∈ ℝ2 is defined in the pixel coordinate system of the tissue 
+
+93 section and is used to extract local image patches aligned with the corresponding 
+
+94 spot from the H&E image. To enhance the capacity for continuous spatial modeling, 
+
+95 the model further incorporates spatial coordinate embeddings based on Fourier 
+
+96 positional encoding. In addition, to model the global expression structure, we used 
+
+97 offline precomputed PCA results to reduce the dimensionality of the normalized 
+
+98 expression matrix and retained the first 8 principal components as low-dimensional 
+
+99 expression embeddings: 
+
+100 𝑒 𝑃𝐶𝐴  
+
+> 𝑖
+
+∈ ℝ8(4)
+
+101 This embedding serves as an auxiliary conditional prior. The shared global condition 
+
+102 vector is denoted as: 
+
+103 𝑔 ∈ ℝ𝑑 𝑔 (5)  
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 2, 2026. ;https://doi.org/10.64898/2026.06.29.735170 doi: bioRxiv preprint 6/31
+
+104 The optional expression PCA branch first projects 𝑒 𝑃𝐶𝐴  
+
+> 𝑖
+
+into the conditional space, 
+
+105 with dropout applied during the mapping process. The projected representation is 
+
+106 then fused with the shared global condition vector to form the final conditional vector: 
+
+107 𝑐 𝑖 ∈ ℝ128 (6)
+
+108 where 𝑐 𝑖 denotes the conditional vector used in subsequent conditional feature 
+
+109 modulation and conditional neural field prediction. 
+
+110 Multi-scale feature extraction 
+
+111 To capture tissue morphological information at different spatial scales, HiFi-ST 
+
+112 constructs three input fields of view around each spatial location 𝑥 𝑖 : 112×112, 
+
+113 224×224, and 448×448. 
+
+114 Specifically, the 224×224 image patch is derived from a pre-cropped patch aligned 
+
+115 with the spot coordinates; the 112×112 image patch is obtained by downsampling 
+
+116 the 224×224 patch; and the 448×448 image patch is dynamically cropped from the 
+
+117 full-resolution H&E section centered at 𝑥 𝑖 . Therefore, only the 448×448 scale relies 
+
+118 on dynamic cropping from the whole tissue section, whereas the other scales are 
+
+119 obtained from patch-level data. 
+
+120 Each image patch 𝐼 𝑠,𝑖 at scale 𝑠 is fed into its corresponding convolutional neural 
+
+121 network encoder Φ𝑠 to obtain the visual feature representation: 
+
+122 𝑓 𝑠,𝑖 = Φ𝑠 (𝐼 𝑠,𝑖 ) ∈ ℝ256 (7)
+
+123 where Φ𝑠 denotes the image encoder corresponding to scale 𝑠 , and 𝑓 𝑠,𝑖 denotes the 
+
+124 visual feature at that scale.   
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 2, 2026. ;https://doi.org/10.64898/2026.06.29.735170 doi: bioRxiv preprint 7/31
+
+125 After obtaining the features at each scale, the model first performs conditional 
+
+126 modulation, and then conducts multiscale fusion using learnable scale weights α𝑠 :
+
+127 𝑓 𝑖 =
+
+> 𝑠 ∈{112,224,448}
+
+𝛼 𝑠 ∙ 𝑓 𝑠,𝑖 (8)
+
+128 where 𝑓 𝑠,𝑖 denotes the conditionally modulated feature, and α𝑠 is a learnable 
+
+129 parameter initialized with a uniform value and jointly optimized during training. In this 
+
+130 study, no softmax normalization constraint is imposed on α𝑠 ; therefore, the sum of 
+
+131 the weights across scales is not required to be strictly equal to 1. 
+
+132 Conditional feature modulation 
+
+133 HiFi-ST adopts Feature-wise Linear Modulation (FiLM) to inject contextual priors into 
+
+134 visual features. For each scale 𝑠 , the conditional vector 𝑐 𝑖 is mapped to modulation 
+
+135 parameters: 
+
+136 (𝛾 𝑠,𝑖 ,𝛽 𝑠,𝑖 ) = MLP 𝑠 (𝑐 𝑖 )(9)
+
+137 which are then applied channel-wise to the feature 𝑓 𝑠,𝑖 :
+
+138 𝑓 𝑠,𝑖 = 𝛾 𝑠,𝑖 ⊙ 𝑓 𝑠,𝑖 + 𝛽 𝑠,𝑖 (10 )
+
+139 where 𝛾 𝑠,𝑖 and 𝛽 𝑠,𝑖 denote the scaling and shifting parameters, respectively, and 𝑓 𝑠,𝑖 
+
+140 denotes the scale-specific feature after conditional modulation. The modulated 
+
+141 multiscale features are then fed into the multiscale fusion module for aggregation. 
+
+142 Prediction and Aggregation Based on Random Sampling 
+
+143 To improve robustness to spatial noise and minor registration errors, HiFi-ST 
+
+144 performs random multi-point sampling within the neighborhood of each spatial 
+
+145 location and approximates the expected regional observation by mean aggregation.   
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 2, 2026. ;https://doi.org/10.64898/2026.06.29.735170 doi: bioRxiv preprint 8/31
+
+146 For each location 𝑥 𝑖 , M perturbations are sampled from an isotropic Gaussian 
+
+147 distribution: 
+
+148 𝑥 𝑖,𝑚 = 𝑥 𝑖 + 𝜖 𝑚 , 𝜖 𝑚 ~𝒩 (0, 𝜎 2𝐼 )(11 )
+
+149 where σ = 0.1 and M=16. For each sampled coordinate 𝑥 𝑖,𝑚 , its spatial 
+
+150 representation is constructed as: 
+
+151 ∅(𝑥 𝑖,𝑚 )(12 )
+
+152 where ∅( ∙ ) denotes the positional encoding function. When Fourier positional 
+
+153 encoding is enabled, ∅ corresponds to the Fourier feature mapping; otherwise, the 
+
+154 raw coordinates are used directly. 
+
+155 Subsequently, the fused multiscale visual feature 𝑓 𝑖 is concatenated with the spatial 
+
+156 representation to form the neural field input. If the spatial PCA branch is enabled, the 
+
+157 precomputed spatial PCA feature 𝑢 𝑖 is further incorporated: 
+
+158 𝑢 𝑖 ∈ ℝ𝑑 𝑢 (13 )
+
+159 where 𝑑 𝑢 denotes the dimensionality of the spatial PCA feature. The neural field 
+
+160 input is then represented as: 
+
+161 𝑧 𝑖,𝑚 = Concat (𝑓 𝑖 ,∅ (𝑥 𝑖,𝑚 ),𝑢 𝑖 )(14 )
+
+162 where 𝑢 𝑖 is optional. When this branch is disabled, the input reduces to: 
+
+163 𝑧 𝑖,𝑚 = Concat (𝑓 𝑖 ,∅ (𝑥 𝑖,𝑚 ))(15 )
+
+164 where 𝑓 𝑖 denotes the multiscale fused visual representation, 𝑢 𝑖 denotes the optional 
+
+165 spatial prior feature, and ∅(𝑥 𝑖,𝑚 ) denotes the spatial encoding of the sampled 
+
+166 coordinate.   
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 2, 2026. ;https://doi.org/10.64898/2026.06.29.735170 doi: bioRxiv preprint 9/31
+
+167 Based on the above input, the model employs a conditional neural field 𝐹 𝜃 for 
+
+168 expression prediction: 
+
+169 𝑒 𝑖,𝑚 = 14 ∙ 𝜎 (𝐹 𝜃 (𝑧 𝑖,𝑚 ,𝑐 𝑖 ))(16 )
+
+170 where 𝑐 𝑖 denotes the conditional vector, and σ( ∙ ) denotes the sigmoid function. The 
+
+171 constant 14 represents the unified output upper bound, which is used to constrain 
+
+172 the predicted values to the interval [0,14]. Finally, multiple sampled predictions 
+
+173 corresponding to the same spatial location are averaged to obtain a stable 
+
+174 expression estimate: 
+
+175 𝑦 𝑖 = 1
+
+𝑀 
+
+> 𝑀
+> 𝑚 =1
+
+𝑒 𝑖,𝑚 (17 )
+
+176 This sampling–aggregation strategy is used to improve prediction stability. 
+
+177 Performance evaluation metric framework 
+
+178 Model performance was evaluated from three perspectives: numerical accuracy of 
+
+179 expression abundance, spatial pattern consistency, and tissue-level topological 
+
+180 fidelity. Predictions and ground-truth targets were clipped to [0,14] before evaluation. 
+
+181 MSE and MAE were computed in log-transformed space, whereas PCC and 
+
+182 HEG_PCC were computed in clipped expression space. The final prediction was 
+
+183 obtained by averaging Monte Carlo samples (M=16). 
+
+184 Expression abundance error and spatial pattern consistency 
+
+185 Let N denote the total number of spots in a tissue section and G denote the total 
+
+186 number of genes. 𝑦 𝑖𝑗 and 𝑦 𝑖𝑗 represent the ground-truth and predicted values, 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 2, 2026. ;https://doi.org/10.64898/2026.06.29.735170 doi: bioRxiv preprint
+
+10 / 31 
+
+187 respectively, of the j-th gene at the i-th spot. The clipped ground-truth and predicted 
+
+188 values are first defined as: 
+
+189 𝑦 𝑖𝑗 (𝑐 ) = 𝑐𝑙𝑖𝑝 𝑦 𝑖𝑗 ,0,14 , 𝑦 𝑖𝑗 (𝑐 ) = 𝑐𝑙𝑖𝑝 𝑦 𝑖𝑗 ,0,14 (18 )
+
+190 In the following text, ACG_PCC has the same meaning as PCC (ACG) in the tables, 
+
+191 and HEG_PCC has the same meaning as PCC (HEG). 
+
+192  Mean Square Error (MSE) and Mean Absolute Error (MAE) 
+
+193 In this study, MSE and MAE are defined in the log (1 + 𝑥) -transformed space: 
+
+194 MSE = 1
+
+𝑁𝐺 
+
+> 𝑁
+> 𝑖 =1
+> 𝐺
+> 𝑗 =1
+
+log (1 + 𝑦 𝑖𝑗 (𝑐) ) ― log (1 + 𝑦 𝑖𝑗 (𝑐) ) 2
+
+(19 )
+
+195 MAE = 1
+
+𝑁𝐺 
+
+> 𝑁
+> 𝑖 =1
+> 𝐺
+> 𝑗 =1
+
+|log (1 + 𝑦 𝑖𝑗 (𝑐) ) ― log (1 + 𝑦 𝑖𝑗 (𝑐) )|(20 )
+
+196 Smaller values indicate better agreement; MSE is more sensitive to large deviations, 
+
+197 whereas MAE reflects average error. 
+
+198  Gene-wise Pearson correlation coefficient (PCC) 
+
+199 To evaluate the model’s ability to recover spatial expression structures, we compute 
+
+200 the Pearson correlation coefficient for each gene in the clipped expression-value 
+
+201 space: 
+
+202 𝑃𝐶𝐶 𝑔 = ∑𝑁  
+
+> 𝑖 =1
+
+𝑦 𝑖𝑔 (𝑐) ― 𝑦 𝑔 (𝑐) 𝑦 𝑖𝑔 (𝑐) ― 𝑦 𝑔 (𝑐) 
+
+∑𝑁  
+
+> 𝑖 =1
+
+𝑌 𝑖𝑗 ― 𝑌 𝑗  
+
+> 2
+
+∑𝑁  
+
+> 𝑖 =1
+
+𝑌 𝑖𝑗 ― 𝑌 𝑗 
+
+> 2
+
+(21 )  
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 2, 2026. ;https://doi.org/10.64898/2026.06.29.735170 doi: bioRxiv preprint 11 /31
+
+203 where 𝑦 𝑔 (𝑐) and 𝑦 𝑔 (𝑐) denote the mean predicted value and the mean ground-truth 
+
+204 value of gene 𝑔 across all spots, respectively. The overall metric is then obtained by 
+
+205 averaging over all genes: 
+
+206 ACG_PCC = 1
+
+𝐺 
+
+> 𝐺
+> 𝑔 =1
+
+𝑃𝐶𝐶 𝑔 (22 )
+
+207 PCC reflects spatial pattern consistency rather than absolute abundance error. Its 
+
+208 value ranges from [-1,1] .209  Highly Expressed Gene Spatial Correlation (HEG_PCC) 
+
+210 To evaluate the model’s ability to recover key high-signal genes, the top 50 genes 
+
+211 with the highest mean expression levels were selected to form the set ℊHEG , and 
+
+212 their average spatial correlation was calculated as: 
+
+213 HEG_PCC = 1
+
+|ℊHEG | 𝑔 ϵℊHEG 
+
+𝑃𝐶𝐶 𝑔 (23 )
+
+214 This metric evaluates recovery of spatial patterns for highly expressed genes. 
+
+215 Evaluation of spatial structure and topological fidelity 
+
+216 Beyond the single-gene level, tissue-level reconstruction was further evaluated by 
+
+217 applying dimensionality reduction and multiple clustering strategies to the predicted 
+
+218 expression matrix, followed by comparison with pathologist annotations using ARI 
+
+219 and NMI. 
+
+220  Adjusted Rand Index( ARI) [16]   
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 2, 2026. ;https://doi.org/10.64898/2026.06.29.735170 doi: bioRxiv preprint 12 /31
+
+221 ARI =
+
+∑𝑖𝑗 
+
+𝑛 𝑖𝑗 
+
+2 ― ∑𝑖 
+
+𝑎 𝑖 
+
+2 ∑𝑗 
+
+𝑏 𝑗 
+
+2 / 𝑛 
+
+2
+
+1
+
+2 ∑𝑖 
+
+𝑎 𝑖 
+
+2 + ∑𝑗 
+
+𝑏 𝑗 
+
+2 ― ∑𝑖 
+
+𝑎 𝑖 
+
+2 ∑𝑗 
+
+𝑏 𝑗 
+
+2 / 𝑛 
+
+2
+
+(24 )
+
+222 where 𝑛 𝑖𝑗 denotes the number of samples that simultaneously belong to cluster i and 
+
+223 ground-truth class j, 𝑎 𝑖 and 𝑏 𝑗 denote the numbers of samples in cluster i and class j, 
+
+224 respectively, and n denotes the total number of samples. ARI is used to measure the 
+
+225 consistency between clustering results and ground-truth labels, with a value range of 
+
+226 [-1,1]. 
+
+227  Normalized Mutual Information (NMI) [17] 
+
+228 NMI = 2 ⋅ 𝐼 (𝐶;𝐾 )
+
+𝐻 (𝐶 ) + 𝐻 (𝐾 )(25 )
+
+229 where 𝐼 (𝐶;𝐾 ) denotes the mutual information between the clustering result C and the 
+
+230 ground-truth annotation K, while 𝐻 (𝐶 ) and 𝐻 (𝐾 ) denote their respective entropies. 
+
+231 NMI is used to measure the degree of shared information between two clustering 
+
+232 results, with a value range of [0,1]. 
+
+233 Unified Assessment Protocol and Post-Aggregation Verification 
+
+234 To ensure fair comparison at the same observational scale, all methods were 
+
+235 evaluated in spot-level observation space. For discrete baselines, spot-level 
+
+236 predictions were compared directly with measurements. For HiFi-ST, the continuous 
+
+237 expression field was first reconstructed and then aggregated to the spot level using 
+
+238 the same Monte Carlo sampling mechanism as in training: 
+
+239 𝑒 𝑖 = 1 
+
+> 𝑀
+
+∑𝑀  
+
+> 𝑚 =1
+
+𝑒 𝑖,𝑚 (26 )where M=16 and 𝜎 = 0.1 . All metrics were computed from the 
+
+240 aggregated predictions. This procedure is referred to as verify-after-aggregation.   
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 2, 2026. ;https://doi.org/10.64898/2026.06.29.735170 doi: bioRxiv preprint 13 /31
+
+241 Baseline models 
+
+242 In this study, five representative baseline methods were selected: 
+
+243  HisToGene [7] : This method uses a Vision Transformer to perform sequence 
+
+244 modeling on histological images, captures long-range dependencies through the 
+
+245 self-attention mechanism, and regresses gene expression. 
+
+246  His2ST [8] : This method explicitly models spatial adjacency relationships among 
+
+247 spots and combines visual feature extraction with graph convolution for local 
+
+248 structural modeling. 
+
+249  THItoGene [18] : This method integrates dynamic convolution and capsule 
+
+250 networks to enhance the adaptability of feature representations and the ability to 
+
+251 model hierarchical relationships. 
+
+252  BLEEP [9] : This method constructs a shared embedding space between images 
+
+253 and gene expression profiles through contrastive learning, enabling zero-shot 
+
+254 expression retrieval based on image queries. 
+
+255  mclSTExp [10] : This method jointly models visual, spatial, and expression 
+
+256 information as a multimodal sequence and achieves modality alignment through 
+
+257 contrastive learning. 
+
+258 HiFi-ST experimental settings 
+
+259 HiFi-ST was implemented in PyTorch [19] and trained with Adam [20] and a cosine 
+
+260 annealing scheduler. The initial learning rate was set to 5e-5 for HER2+ and 
+
+261 Alex_NatGen and 2e-5 for cSCC. Models were trained for 100 epochs with batch   
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 2, 2026. ;https://doi.org/10.64898/2026.06.29.735170 doi: bioRxiv preprint 14 /31
+
+262 size 256. Dropout, weight decay, and FiLM regularization were used to improve 
+
+263 robustness. All baselines were reproduced as closely as possible to their original 
+
+264 implementations under the same data partitioning and evaluation protocol. 
+
+265 Benchmark datasets and cross-validation strategies 
+
+266 We evaluated HiFi-ST on three public spatial transcriptomics datasets: HER2+ [21] ,
+
+267 cSCC [22] , and Alex_NatGen [23] (Supplementary Table S1). HER2+ and cSCC were 
+
+268 generated using Legacy ST and were used to evaluate reconstruction under sparse 
+
+269 supervision and strong structural heterogeneity, respectively. Alex_NatGen was 
+
+270 generated using 10x Visium and was used to assess generalization under dense 
+
+271 sampling and cross-patient distribution shift. 
+
+272 To reduce bias from spatial autocorrelation, all experiments adopted slice-level 
+
+273 partitioning, such that all spots from the same section belonged exclusively to either 
+
+274 training or test data. Five-fold cross-validation was used for HER2+ and cSCC, 
+
+275 whereas leave-one-out cross-validation was used for Alex_NatGen. Spots outside 
+
+276 tissue regions or annotated as artifacts were removed during preprocessing. 
+
+277 Results 
+
+278 Overview of the HiFi-ST model 
+
+279 HiFi-ST formulates spatial expression prediction as a continuous expression field 
+
+280 learning problem and reconstructs continuous expression distributions through a 
+
+281 conditional neural field jointly constrained by multiscale H&E images, spatial 
+
+282 coordinates, and conditional vectors. The model further integrates FiLM-based   
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 2, 2026. ;https://doi.org/10.64898/2026.06.29.735170 doi: bioRxiv preprint 15 /31
+
+283 conditional modulation with Monte Carlo local sampling and aggregation to obtain 
+
+284 the final spot-level expression predictions (Figure 1). Based on this framework, the 
+
+285 following results sequentially report overall performance, single-gene spatial 
+
+286 patterns, downstream applications, and validation in special scenarios; ablation 
+
+287 results for key components are provided in the Supplementary Materials. 
+
+288 Evaluation of High-Fidelity Continuous Field Reconstruction under Multi-level 
+
+289 Organizational Heterogeneity 
+
+290 To evaluate the expression reconstruction capability of HiFi-ST under different 
+
+291 spatial complexity scenarios, we conduct a unified comparison with HisToGene, 
+
+292 His2ST, THItoGene, BLEEP, and mclSTExp on the HER2+, cSCC, and 
+
+293 Alex_NatGen datasets under a slice-level data isolation protocol, as reported in 
+
+294 Table 1. All methods are evaluated at the spot-level observation scale. For HiFi-ST, 
+
+295 continuous field predictions are first aggregated via Monte Carlo sampling and then 
+
+296 aligned with ground-truth spot-level expression. 
+
+297 298 Table 1 summarizes the overall performance of the various methods across the 
+
+299 three datasets. 
+
+HER2+ 
+
+Methods 
+
+PCC (ACG) PCC (HEG) MSE MAE 
+
+HisToGene 0.0842 0.0711 0.5202 0.6422 
+
+His2ST 0.1443 0.1849 0.5135 0.6087 
+
+THItoGene 0.1736 0.2809 0.5012 0.5956 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 2, 2026. ;https://doi.org/10.64898/2026.06.29.735170 doi: bioRxiv preprint
+
+16 / 31 
+
+BLEEP 0.1873 0.2909 0.6015 0.5824 
+
+mclSTExp 0.2304 0.3866 0.5897 0.5813 
+
+HiFi-ST (Ours) 0.3805 0.5722 0.3485 0.3256 
+
+300 
+
+cSCC 
+
+Methods 
+
+PCC (ACG) PCC (HEG) MSE MAE 
+
+HisToGene 0.0771 0.0919 0.6805 0.6234 
+
+His2ST 0.1838 0.2175 0.6748 0.6107 
+
+THItoGene 0.2373 0.2719 0.6546 0.6012 
+
+BLEEP 0.2449 0.3122 0.5163 0.5399 
+
+mclSTExp 0.3235 0.4261 0.4302 0.5208 
+
+HiFi-ST (Ours) 0.3566 0.4169 0.2097 0.2001 
+
+301 
+
+Alex_NatGen 
+
+Methods 
+
+PCC (ACG) PCC (HEG) MSE MAE 
+
+HisToGene 0.0618 0.0984 0.4565 0.4973 
+
+His2ST 0.1299 0.1784 0.3788 0.4492 
+
+THItoGene 0.1384 0.2156 0.3672 0.4315 
+
+BLEEP 0.1552 0.2825 0.2593 0.4050 
+
+mclSTExp 0.1949 0.3611 0.2329 0.3897 
+
+HiFi-ST (Ours) 0.3508 0.6986 0.2720 0.2610 
+
+302 303 On HER2+, HiFi-ST achieved the best performance in both spatial correlation and 
+
+304 error-based metrics, with ACG_PCC/HEG_PCC of 0.3805/0.5722 and MSE/MAE of 
+
+305 0.3485/0.3256. On cSCC, HiFi-ST achieved an ACG_PCC of 0.3566 and the best 
+
+306 error-based metrics, while its HEG_PCC (0.4169) was close to the best-performing   
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 2, 2026. ;https://doi.org/10.64898/2026.06.29.735170 doi: bioRxiv preprint 17 /31
+
+307 mclSTExp (0.4261). On Alex_NatGen, HiFi-ST showed the clearest advantage in 
+
+308 spatial correlation, with ACG_PCC/HEG_PCC of 0.3508/0.6986; its MAE was the 
+
+309 best, whereas its MSE was slightly higher than that of mclSTExp. 
+
+310 Overall, HiFi-ST showed a consistent advantage across most key metrics, 
+
+311 particularly in spatial correlation. 
+
+312 Single-gene significance and spatial pattern reconstruction 
+
+313 Building on the overall performance evaluation, we further examined the ability of 
+
+314 HiFi-ST to recover fine-grained spatial expression patterns at the single-gene level. 
+
+315 For each tissue section, gene-wise PCC was calculated across the spot dimension, 
+
+316 and its distribution across genes was summarized (Figures 2–4). Genes containing 
+
+317 NaN/inf values or zero variance were excluded from the statistics. Overall, HiFi-ST 
+
+318 exhibited higher median correlations and a richer distribution of highly correlated 
+
+319 genes across multiple datasets. 
+
+320 Furthermore, for each tissue section, we performed a Pearson correlation test for 
+
+321 each gene and defined the significance score based on the corresponding p value 
+
+322 as: 
+
+323 𝑆 𝑔 = 1
+
+|𝒟 𝑔 | 𝒹 ∈ 𝒟 𝑔 
+
+― log 10 (𝑝 𝑔, 𝒹 )(27 )
+
+324 where 𝑆 𝑔 denotes the set of computable tissue sections for the corresponding gene. 
+
+325 High-confidence genes extracted based on this metric are listed in Supplementary   
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 2, 2026. ;https://doi.org/10.64898/2026.06.29.735170 doi: bioRxiv preprint 18 /31
+
+326 Tables S4–S5, and Table 2 provides representative high-confidence genes identified 
+
+327 by each method on the HER2+ dataset. 
+
+328 Figure 5 shows representative spatial expression visualizations. It should be noted 
+
+329 that the PCC values shown in the figure are all slice-level PCC values for specific 
+
+330 gene–section combinations, rather than averages across sections (Supplementary 
+
+331 Figure S1). For genes such as FN1 [24] , IGKC [25] , and HLA-DRA [26] , HiFi-ST 
+
+332 predictions are more consistent with ground-truth spatial distributions. 
+
+333 In summary, HiFi-ST shows more stable reconstruction of key functional spatial 
+
+334 patterns. 
+
+335 Table 2. Top 50 genes ranked by prediction significance in the HER2+ dataset 
+
+Rank HiFi-ST mclSTExp BLEEP THItoGene His2ST HisToGene 
+
+1 IGKC TACSTD2 TACSTD2 TMEM123 ACAD10 TACSTD2 
+
+2 PSMB3 FN1 FER TACSTD2 TPM2 ZNF737 
+
+3 FN1 POSTN CARD16 ITGB6 MICAL3 COX5A 
+
+4 MUCL1 SPARC COX5A FN1 VPS13C CARD16 
+
+5 SCD NDRG1 SPTY2D1-AS1 MUCL1 ZNF44 RNF145 
+
+6 TACSTD2 TMEM123 TRBC2 NDRG1 TACSTD2 SVIP 
+
+7 B2M GNAS PSMA5 POSTN PEAK1 PPP1R1B 
+
+8 ZNF429 ITGB6 ACKR1 MUC1 ZEB2 DNAJC15 
+
+9 EIF3L COL3A1 CTNNBL1 BSG FMNL2 PRAM1 
+
+10 CDR1 MUCL1 TPM2 CX3CL1 TAOK3 KPNA6 
+
+11 IGLC7 PXDN NES CRABP2 KPNA6 EGFL7 
+
+12 LRRC6 HLA-DRA CPSF3 SPARC SYCP2 ACAD10 
+
+13 NLRP3 ANGPTL4 PCM1 LAMTOR2 SVIP PDE5A 
+
+14 CLSPN HLA-DRB1 TTC27 CLDN4 RNF145 CAPG 
+
+15 ZNF737 GATA3 HLA-DPB1 FAM193B WFDC2 ISG15 
+
+16 CCDC171 LUM EGFL7 CLU ITGA7 TRBC2 
+
+17 HIST1H4C CLDN4 PSMC3 ADI1 POLR2B ZNF44 
+
+18 KCNIP3 FAM193B ENY2 EIF3B ISG15 NUDT22 
+
+19 ANKRD36B HES1 RNF145 NDUFA1 PNPLA7 SYNGAP1 
+
+20 IGFBP7 BSG CD7 CCL2 ATP5C1 RAPGEF5 
+
+21 SEC61G VIM EIF2D GNAS CCDC66 HSD17B4 
+
+22 LUM CCL19 NDUFAF5 QSOX1 EGFL7 TMF1 
+
+336 Continued from Table 2. Top 50 genes ranked by prediction significance in the 
+
+337 HER2+ dataset   
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 2, 2026. ;https://doi.org/10.64898/2026.06.29.735170 doi: bioRxiv preprint 19 /31
+
+Rank HiFi-ST mclSTExp BLEEP THItoGene His2ST HisToGene 
+
+23 LYZ CRACR2B S100P HCFC1R1 RAD50 RAD50 
+
+24 KLRB1 ADI1 TALDO1 MYL12B UXT TRO 
+
+25 ATP5C1 FSTL1 TPR STMN1 IGHG1 PLK2 
+
+26 IGSF21 HLA-DPA1 C11orf80 MID1IP1 TRO REL 
+
+27 POSTN LTF TTC3 CRACR2B PPP1R1B EIF2D 
+
+28 HLA-DRA LAMTOR2 PEX16 TNC CARD16 PNPLA7 
+
+29 IGLC2 FADS2 LTA4H ATP6AP1 TRBC2 FMNL2 
+
+30 RBX1 CRABP2 ANKRD36B GSK3A OPLAH FOXC1 
+
+31 IGHG3 TNC LUC7L PRKCSH CAPG ZEB2 
+
+32 CCL19 EIF3B TNNI2 ANGPTL4 EIF2D VPS13C 
+
+33 C8orf59 MYL12B TAOK3 GATA3 WDR70 COL27A1 
+
+34 IGHA1 PRKCSH SLF1 BAD IFI27L2 CYBA 
+
+35 HLA-B CX3CL1 RBP7 HES1 OCEL1 VPS36 
+
+36 CD74 GANAB EIF3K S100A9 PRDX4 ITGA7 
+
+37 PIP IGKC TMEM219 HLA-DRA TMF1 MICAL3 
+
+38 COL1A1 THBS1 CCL19 JAK1 DNAJC15 LRRFIP1 
+
+39 COMMD6 CAPG QARS HMGB2 PAXBP1 SEC11C 
+
+40 TXN AEBP1 PLA2G16 AGPAT2 TARSL2 CCL19 
+
+41 MDH1 RHOB MCUR1 RHOB REL GTF2IRD1 
+
+42 SERP1 APOC1 USP48 GANAB NES CCT4 
+
+43 NDUFB6 ATP6AP1 NAP1L1 THBS1 FCHO2 DZIP3 
+
+44 RBP5 STMN1 HOOK3 SOX4 HDAC2 EIF2B3 
+
+45 APOE MUC1 ATRX BTG1 GTF2IRD1 WDR70 
+
+46 HLA-DRB1 PTGDS SCT LTF HCST CD163 
+
+47 TXNDC17 QSOX1 FASTKD1 BABAM1 TWIST1 HLA-E 
+
+48 HLA-DPA1 A2M CCDC191 FADS2 CAST OPLAH 
+
+49 CCT4 CCL2 TRAPPC2L ADAM15 PRAM1 LUC7L 
+
+50 TTN MYL9 IGF1 FSTL1 GPN3 UXT 
+
+338 339 Assisted identification of candidate TLS regions using multiscale 
+
+340 representations 
+
+341 To assess the downstream utility of HiFi-ST representations, we evaluated candidate 
+
+342 TLS region identification [27, 28] . This was an independent within-sample supervised 
+
+343 task and was not included in the slice-level generalization comparison. 
+
+344 Three image scales (112×112, 224×224, and 448×448) were encoded by the HiFi-
+
+345 ST multiscale encoder, followed by an MLP classification head. kNN-based relative 
+
+346 displacement features (k=5) were used as auxiliary inputs. TLS annotations from   
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 2, 2026. ;https://doi.org/10.64898/2026.06.29.735170 doi: bioRxiv preprint 20 /31
+
+347 pathologists [29] were used for supervision, with TLS_2_cat = 'TLS' as the positive 
+
+348 class. Thresholds were selected on the validation set by maximizing F1-score. 
+
+349 As summarized in Table 3, the detector achieved high recall but limited precision, 
+
+350 indicating that it is more suitable for candidate-region prioritization than for replacing 
+
+351 manual diagnosis (Figure 6). 
+
+352 Table 3. TLS candidate region identification based on HiFi-ST encoded features 
+
+Sample ID Recall Precision F1-Score 
+
+A 0.88 0.23 0.37 B 0.61 0.17 0.12 C 0.57 0.13 0.16 D 0.66 0.40 0.50 Mean value 0.68 0.23 0.29 
+
+353 354 Fidelity-preserving molecular profile decoding under extreme morphological 
+
+355 variation in the cSCC cohort 
+
+356 The cSCC cohort, characterized by dense keratinocyte arrangement, nonlinear 
+
+357 deformation, and local tissue mixing, served as a representative robustness test. 
+
+358 HiFi-ST still recovered key spatially structured molecular signals, with gene-wise 
+
+359 PCCs of 0.850 and 0.838 for FTL and SPRR2A, respectively, whereas 
+
+360 representative baselines generally ranged from 0.2 to 0.6. Biologically, FTL is 
+
+361 associated with oxidative stress and iron metabolism reprogramming [30] , whereas   
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 2, 2026. ;https://doi.org/10.64898/2026.06.29.735170 doi: bioRxiv preprint 21 /31
+
+362 SPRR2A is related to keratinization [31] . The stable reconstruction of these genes 
+
+363 suggests that HiFi-ST preserves key molecular patterns even under severe 
+
+364 morphological perturbation and can capture molecular distributions associated with 
+
+365 typical cSCC pathological features such as keratin pearl formation and stratum 
+
+366 corneum thickening [32, 33] (Figures 7 and 8). 
+
+367 Generalization of microenvironmental patterns across patients in the 
+
+368 Alex_NatGen cohort 
+
+369 In Alex_NatGen, HiFi-ST reconstructed relatively stable spatial patterns for tumor 
+
+370 microenvironment-related genes across patients. ECM-related genes including 
+
+371 POSTN [34] , DCN, and COL1A1 [35] remained co-localized with stroma-enriched 
+
+372 regions across sections (Supplementary Figures S2–S3), indicating that the model 
+
+373 captures structurally constrained spatial patterns despite cross-patient variation. 
+
+374 Spatial topological domain identification based on continuous expression 
+
+375 reconstruction 
+
+376 We performed unsupervised clustering on reconstructed expression matrices and 
+
+377 evaluated consistency with reference annotations using ARI and NMI. Multiple 
+
+378 dimensionality-reduction and clustering strategies were explored rather than a single 
+
+379 fixed pipeline. HiFi-ST achieved higher ARI/NMI in some samples and produced 
+
+380 more coherent boundaries in representative sections, although the benefit was not 
+
+381 universal (Figure 9). Thus, the value of continuous reconstruction in spatial domain 
+
+382 identification is better interpreted as a conditional gain.   
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 2, 2026. ;https://doi.org/10.64898/2026.06.29.735170 doi: bioRxiv preprint 22 /31
+
+383 Ablation experiments and core component results 
+
+384 Systematic ablation experiments were conducted on HER2+, cSCC, and 
+
+385 Alex_NatGen to examine the contributions of spatial encoding, multiscale modeling, 
+
+386 conditional modulation, regional sampling and aggregation, HEG optimization, and 
+
+387 model capacity. Overall, HiFi-ST gains arise from the synergy of high-frequency 
+
+388 spatial encoding, multiscale conditional modulation, and regional observation 
+
+389 modeling rather than from any single module. Detailed results are provided in 
+
+390 Supplementary Tables S6–S13 and Supplementary Figure S5. 
+
+391 Discussion 
+
+392 The discrete sampling mechanism of spatial transcriptomics limits the 
+
+393 characterization of continuous expression fields. To address this issue, we propose 
+
+394 HiFi-ST, a continuous spatial expression reconstruction framework based on 
+
+395 conditional neural fields. Unlike conventional spot-level point regression methods, 
+
+396 HiFi-ST integrates continuous expression field learning, spot-level regional 
+
+397 observation modeling, and multiscale conditional modulation within a unified 
+
+398 framework, thereby jointly accounting for expression continuity, consistency with the 
+
+399 measurement mechanism, and cross-scale morphology–molecule mapping 
+
+400 capability. 
+
+401 Experimental results demonstrate that HiFi-ST achieves overall competitive 
+
+402 performance on the HER2+, cSCC, and Alex_NatGen datasets and outperforms 
+
+403 baseline methods across most key metrics. In particular, the model shows consistent   
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 2, 2026. ;https://doi.org/10.64898/2026.06.29.735170 doi: bioRxiv preprint 23 /31
+
+404 advantages in spatial correlation metrics (PCC and HEG_PCC), indicating improved 
+
+405 recovery of spatial gene expression structure. Moreover, the learned continuous 
+
+406 expression representations can support downstream spatial immunoanalysis tasks, 
+
+407 such as assisted identification of candidate TLS regions, highlighting its potential 
+
+408 value in tumor microenvironment analysis and spatial functional interpretation. 
+
+409 Despite these promising results, several limitations remain. First, the current model 
+
+410 performs continuous modeling only in two-dimensional tissue-section space and 
+
+411 does not explicitly incorporate three-dimensional structural information. Second, the 
+
+412 regional integration strategy relies on uniform sampling assumptions and does not 
+
+413 yet leverage biologically informed, non-uniform priors such as nuclei density or tissue 
+
+414 morphology constraints. Third, TLS analysis still depends on supervised annotations, 
+
+415 which may limit scalability in fully unsupervised settings. Finally, the study does not 
+
+416 report uncertainty estimates stratified by tissue sections or statistical significance 
+
+417 testing across folds, which limits the statistical rigor of cross-method comparisons. 
+
+418 Conclusion 
+
+419 HiFi-ST provides a unified framework that elevates spatial transcriptomics from 
+
+420 discrete spot-based observations to continuous expression field modeling. By 
+
+421 bridging conditional neural fields with histology-guided multiscale representation 
+
+422 learning, the model enables coherent reconstruction of spatial gene expression while 
+
+423 maintaining consistency with the underlying measurement process.   
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 2, 2026. ;https://doi.org/10.64898/2026.06.29.735170 doi: bioRxiv preprint 24 /31
+
+424 Overall, HiFi-ST offers a principled approach for integrating morphological and 
+
+425 molecular information in spatial omics. It demonstrates strong potential for improving 
+
+426 spatial expression reconstruction and supporting downstream analyses such as 
+
+427 tumor microenvironment characterization and spatial immune structure identification. 
+
+428 This work highlights the value of continuous neural field modeling as a general 
+
+429 paradigm for high-fidelity spatial transcriptomics inference. 
+
+430 431 Funding 
+
+432 This work was supported by the National Natural Science Foundation of China 
+
+433 (Grant No. 31460297). 
+
+434 Conflict of Interest 
+
+435 The authors declare no conflicts of interest. 
+
+436 Data Availability 
+
+437 Details of the three public datasets used in this study are provided in the section 
+
+438 “Benchmark datasets and cross-validation strategies.” 
+
+439 Code Availability 
+
+440 The complete code has been made publicly available on GitHub: 
+
+441 https://github.com/Tang-Item/HiFi-ST.git. 
+
+442 Acknowledgements   
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 2, 2026. ;https://doi.org/10.64898/2026.06.29.735170 doi: bioRxiv preprint 25 /31
+
+443 The authors thank their supervisor, senior colleagues, and members of the research 
+
+444 group for their valuable comments and constructive suggestions during the writing 
+
+445 and revision of this manuscript. 
+
+446 Author Contributions 
+
+447 Lei Tang designed the methodology, implemented the model, performed data 
+
+448 processing and experiments, generated the visualizations, and drafted the 
+
+449 manuscript. Huamei Li contributed to experimental analysis, methodological 
+
+450 guidance, and manuscript revision. Xiaozhou Chen contributed to research 
+
+451 conceptualization, funding acquisition, resource provision, supervision, and 
+
+452 manuscript revision. Wenshuai Han and Xiao Yang participated in methodological 
+
+453 discussion, experimental validation, and manuscript revision. All authors read and 
+
+454 approved the final manuscript. 
+
+455 Declarations 
+
+456 Ethics approval and consent to participate 
+
+457 Not applicable. 
+
+458 Consent for publication 
+
+459 Not applicable. 
+
+460 References 
+
+461 [1] BURGESS D J. Spatial transcriptomics coming of age [J]. Nature Reviews 
+
+462 Genetics, 2019, 20(6): 317-317.   
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 2, 2026. ;https://doi.org/10.64898/2026.06.29.735170 doi: bioRxiv preprint 26 /31
+
+463 [2] MARX V. Method of the Year: spatially resolved transcriptomics [J]. Nature 
+
+464 methods, 2021, 18(1): 9-14. 
+
+465 [3] STåHL P L, SALMéN F, VICKOVIC S, et al. Visualization and analysis of 
+
+466 gene expression in tissue sections by spatial transcriptomics [J]. Science, 
+
+467 2016, 353(6294): 78-82. 
+
+468 [4] RODRIQUES S G, STICKELS R R, GOEVA A, et al. Slide-seq: A scalable 
+
+469 technology for measuring genome-wide expression at high spatial resolution 
+
+470 [J]. Science, 2019, 363(6434): 1463-1467. 
+
+471 [5] CHEN A, LIAO S, CHENG M, et al. Spatiotemporal transcriptomic atlas of 
+
+472 mouse organogenesis using DNA nanoball-patterned arrays [J]. Cell, 2022, 
+
+473 185(10): 1777-1792.e1721. 
+
+474 [6] VICKOVIC S, ERASLAN G, SALMéN F, et al. High-definition spatial 
+
+475 transcriptomics for in situ tissue profiling [J]. Nature methods, 2019, 16(10): 
+
+476 987-990. 
+
+477 [7] PANG M, SU K, LI M. Leveraging information in spatial transcriptomics to 
+
+478 predict super-resolution gene expression from histology images in tumors [J]. 
+
+479 BioRxiv, 2021: 2021.2011. 2028.470212. 
+
+480 [8] ZENG Y, WEI Z, YU W, et al. Spatial transcriptomics prediction from histology 
+
+481 jointly through Transformer and graph neural networks [J]. Briefings in 
+
+482 bioinformatics, 2022, 23(5).   
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 2, 2026. ;https://doi.org/10.64898/2026.06.29.735170 doi: bioRxiv preprint 27 /31
+
+483 [9] XIE R, PANG K, CHUNG S, et al. Spatially resolved gene expression 
+
+484 prediction from histology images via bi-modal contrastive learning [J]. 
+
+485 Advances in neural information processing systems, 2023, 36: 70626-70637. 
+
+486 [10] MIN W, SHI Z, ZHANG J, et al. Multimodal contrastive learning for spatial 
+
+487 gene expression prediction using histology images [J]. Briefings in 
+
+488 bioinformatics, 2024, 25. 
+
+489 [11] ILSE M, TOMCZAK J, WELLING M. Attention-based deep multiple instance 
+
+490 learning; proceedings of the International Conference On Machine learning, F, 
+
+491 2018 [C]. PMLR. 
+
+492 [12] SRINIDHI C L, CIGA O, MARTEL A L. Deep neural network models for 
+
+493 computational histopathology: A survey [J]. Medical Image Analysis, 2021, 67: 
+
+494 101813. 
+
+495 [13] MILDENHALL B, SRINIVASAN P P, TANCIK M, et al. Nerf: Representing 
+
+496 scenes as neural radiance fields for view synthesis [J]. Communications of the 
+
+497 ACM, 2021, 65(1): 99-106. 
+
+498 [14] ZHANG D, SCHROEDER A, YAN H, et al. Inferring super-resolution tissue 
+
+499 architecture by integrating spatial transcriptomics with histology [J]. Nature 
+
+500 biotechnology, 2024, 42(9): 1372-1377. 
+
+501 [15] PEREZ E, STRUB F, DE VRIES H, et al. Film: Visual reasoning with a 
+
+502 general conditioning layer; proceedings of the Proceedings Of The AAAI 
+
+503 Conference On Artificial Intelligence, F, 2018 [C].   
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 2, 2026. ;https://doi.org/10.64898/2026.06.29.735170 doi: bioRxiv preprint 28 /31
+
+504 [16] HUBERT L, ARABIE P. Comparing partitions [J]. Journal of Classification, 
+
+505 1985, 2(1): 193-218. 
+
+506 [17] VISSER O, DATTA S. Selection of single cell clustering methodologies 
+
+507 through rank aggregation of multiple performance measures [J]. arXiv e-
+
+508 prints, 2024. 
+
+509 [18] JIA Y, LIU J, CHEN L, et al. THItoGene: a deep learning method for predicting 
+
+510 spatial transcriptomics from histological images [J]. Briefings in bioinformatics, 
+
+511 2023, 25(1). 
+
+512 [19] PASZKE A, GROSS S, MASSA F, et al. Pytorch: An imperative style, high-
+
+513 performance deep learning library [J]. Advances in neural information 
+
+514 processing systems, 2019, 32. 
+
+515 [20] KINGMA D P, BA J. Adam: A Method for Stochastic Optimization [J]. CoRR, 
+
+516 2014, abs/1412.6980. 
+
+517 [21] ANDERSSON A, BERGENSTRåHLE J, ASP M, et al. Single-cell and spatial 
+
+518 transcriptomics enables probabilistic inference of cell type topography [J]. 
+
+519 Communications biology, 2020, 3(1): 565-565. 
+
+520 [22] JI A L, RUBIN A J, THRANE K, et al. Multimodal Analysis of Composition and 
+
+521 Spatial Architecture in Human Squamous Cell Carcinoma [J]. Cell, 2020, 
+
+522 182(2): 497-514.e422. 
+
+523 [23] WU S Z, AL E G, RODEN D L, et al. A single-cell and spatially resolved atlas 
+
+524 of human breast cancers [J]. Nature Genetics, 2021, 53(9): 1334-1347.   
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 2, 2026. ;https://doi.org/10.64898/2026.06.29.735170 doi: bioRxiv preprint 29 /31
+
+525 [24] FERNANDEZ-GARCIA B, EIRó N, MARíN L, et al. Expression and prognostic 
+
+526 significance of fibronectin and matrix metalloproteases in breast cancer 
+
+527 metastasis [J]. Histopathology, 2014, 64(4): 512-522. 
+
+528 [25] SCHMIDT M, EDLUND K, HENGSTLER J G, et al. Prognostic Impact of 
+
+529 Immunoglobulin Kappa C (IGKC) in Early Breast Cancer [J]. Cancers, 2021, 
+
+530 13(14): 3626-3626. 
+
+531 [26] FORERO A, LI Y, CHEN D, et al. Expression of the MHC Class II Pathway in 
+
+532 Triple-Negative Breast Cancer Tumor Cells Is Associated with a Good 
+
+533 Prognosis and Infiltrating Lymphocytes [J]. Cancer immunology research, 
+
+534 2016, 4(5): 390-399. 
+
+535 [27] SALTZ J, GUPTA R, HOU L, et al. Spatial Organization and Molecular 
+
+536 Correlation of Tumor-Infiltrating Lymphocytes Using Deep Learning on 
+
+537 Pathology Images [J]. Cell Rep, 2018, 23(1): 181-193 e187. 
+
+538 [28] JANESICK A, SHELANSKY R, GOTTSCHO A D, et al. High resolution 
+
+539 mapping of the tumor microenvironment using integrated single-cell, spatial 
+
+540 and in situ analysis [J]. Nature Communications, 2023, 14(1): 8353-8353. 
+
+541 [29] SCHMAUCH B, ROMAGNONI A, PRONIER E, et al. A deep learning model 
+
+542 to predict RNA-Seq expression of tumours from whole slide images [J]. 
+
+543 Nature communications, 2020, 11(1): 3877. 
+
+544 [30] TORTI S V, TORTI F M. Iron and cancer: more ore to be mined [J]. Nature 
+
+545 reviews Cancer, 2013, 13(5): 342-355.   
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 2, 2026. ;https://doi.org/10.64898/2026.06.29.735170 doi: bioRxiv preprint 30 /31
+
+546 [31] CARREGARO F, STEFANINI A C B, HENRIQUE T, et al. Study of small 
+
+547 proline-rich proteins (SPRRs) in health and disease: a review of the literature 
+
+548 [J]. Archives of dermatological research, 2013, 305(10): 857-866. 
+
+549 [32] CANDI E, SCHMIDT R, MELINO G. The cornified envelope: a model of cell 
+
+550 death in the skin [J]. Nature reviews Molecular cell biology, 2005, 6(4): 328-
+
+551 340. 
+
+552 [33] LI B, CUI Y, NAMBIAR D K, et al. The Immune Subtypes and Landscape of 
+
+553 Squamous Cell Carcinoma [J]. Clinical Cancer Research, 2019, 25(12): 3528-
+
+554 3537. 
+
+555 [34] CHEN C, GUO Q, LIU Y, et al. Single ‐cell and spatial transcriptomics reveal 
+
+556 POSTN+ cancer ‐associated fibroblasts correlated with immune suppression 
+
+557 and tumour progression in non ‐ small cell lung cancer [J]. Clinical And 
+
+558 Translational Medicine, 2023, 13(12). 
+
+559 [35] LIU Y, XUE J, ZHONG M, et al. Prognostic Prediction, Immune 
+
+560 Microenvironment, and Drug Resistance Value of Collagen Type I Alpha 1 
+
+561 Chain: From Gastrointestinal Cancers to Pan-Cancer Analysis [J]. Frontiers in 
+
+562 Molecular Biosciences, 2021, 8. 
+
+563 564 Figure Legends   
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 2, 2026. ;https://doi.org/10.64898/2026.06.29.735170 doi: bioRxiv preprint 31 /31
+
+565 Figure 1. Overall framework of HiFi-ST. (A) Multiscale image encoding and 
+
+566 conditional vector construction. (B) Multiscale conditional modulation and feature 
+
+567 fusion. (C) Conditional neural field decoding and local sampling aggregation. 
+
+568 Figure 2. Boxplot of the gene-wise PCC distribution on the HER2+ dataset. 
+
+569 Figure 3. Boxplot of the gene-wise PCC distribution on the cSCC dataset. 
+
+570 Figure 4. Boxplot of the gene-wise PCC distribution on the Alex_NatGen 
+
+571 dataset. 
+
+572 Figure 5. Spatial expression visualization of key genes in the HER2+ dataset. 
+
+573 Figure 6. Spatial correspondence between model predictions and expert 
+
+574 annotations. 
+
+575 Figure 7. Visualization of the top-ranked genes in the cSCC dataset based on 
+
+576 significance ranking. 
+
+577 Figure 8. Visualization of the top-ranked genes in the cSCC dataset based on 
+
+578 PCC ranking. 
+
+579 Figure 9. Comparison of spatial domain identification results on the HER2+ 
+
+580 dataset. 
+
+581 Supplementary Figures (S1–S5) and Supplementary Tables (S1–S13) are 
+
+582 provided in the Supplementary Materials. 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 2, 2026. ;https://doi.org/10.64898/2026.06.29.735170 doi: bioRxiv preprint
+
+.CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 2, 2026. ;https://doi.org/10.64898/2026.06.29.735170 doi: bioRxiv preprint .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 2, 2026. ;https://doi.org/10.64898/2026.06.29.735170 doi: bioRxiv preprint .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 2, 2026. ;https://doi.org/10.64898/2026.06.29.735170 doi: bioRxiv preprint .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 2, 2026. ;https://doi.org/10.64898/2026.06.29.735170 doi: bioRxiv preprint .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 2, 2026. ;https://doi.org/10.64898/2026.06.29.735170 doi: bioRxiv preprint .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 2, 2026. ;https://doi.org/10.64898/2026.06.29.735170 doi: bioRxiv preprint .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 2, 2026. ;https://doi.org/10.64898/2026.06.29.735170 doi: bioRxiv preprint

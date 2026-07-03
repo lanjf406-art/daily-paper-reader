@@ -1,0 +1,167 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-07-03T22:23:20.917400+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 0,
+    "deep_cap": 6,
+    "deep_selected": 0,
+    "quick_candidates": 4,
+    "quick_skim_target": 11,
+    "quick_selected": 4
+  },
+  "deep_dive": [],
+  "quick_skim": [
+    {
+      "id": "biorxiv-10-64898-2026-07-01-735806-v1",
+      "source": "biorxiv",
+      "title": "GenPerturb: sequence-grounded interpretation of perturbation transcriptomes using pretrained genomic models",
+      "abstract": "Background: Perturb-seq captures transcriptional responses to thousands of genetic and chemical perturbations, but does not directly resolve the cis-regulatory elements or transcription factor motifs underlying those responses. Existing approaches rely on indirect post hoc analyses or external epigenomic annotations, making it difficult to connect gene-level responses to specific regulatory element Results: We present GenPerturb, a framework that leverages pretrained sequence-to-expression models to link perturbation-induced expression changes to candidate cis-regulatory elements. By contrasting perturbation and control states, GenPerturb prioritizes regulatory regions and transcription factor motifs associated with each perturbation. The model recapitulates perturbation-dependent gene expression patterns and enables sequence-level interpretation without requiring matched chromatin data. Across multiple perturbation types, GenPerturb identifies biologically meaningful regulatory programs, including lineage-specific and signaling-associated motif activities, even when corresponding transcription factor expression changes are limited. Conclusions: GenPerturb converts gene-level expression responses from Perturb-seq into perturbation-specific, sequence-grounded cis-regulatory hypotheses. By prioritizing candidate regulatory elements and transcription factor motifs responsive to each perturbation without requiring matched chromatin data, GenPerturb enables mechanistic interpretation of transcriptional regulation and guides downstream experimental validation.",
+      "authors": [
+        "Nikaido, I.",
+        "Shiihashi, T."
+      ],
+      "primary_category": "bioinformatics",
+      "categories": [
+        "bioinformatics"
+      ],
+      "published": "2026-07-03T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.07.01.735806v1.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "interprets perturbation transcriptomes using pretrained models, applicable to drug resistance",
+      "llm_evidence_cn": "利用预训练模型解读扰动转录组，可应用于耐药机制研究",
+      "llm_evidence": "利用预训练模型解读扰动转录组，可应用于耐药机制研究",
+      "canonical_evidence": "利用预训练模型解读扰动转录组，可应用于耐药机制研究",
+      "llm_tldr_en": "GenPerturb uses pretrained sequence-to-expression models to link perturbation-induced expression changes to cis-regulatory elements, enabling mechanistic interpretation of drug resistance transcriptomes.",
+      "llm_tldr_cn": "该工作提出GenPerturb框架，利用预训练基因组模型将扰动转录组变化与顺式调控元件关联，可直接用于解析药物耐药相关的转录调控机制，为耐药生物标志物发现提供新工具。",
+      "llm_tldr": "该工作提出GenPerturb框架，利用预训练基因组模型将扰动转录组变化与顺式调控元件关联，可直接用于解析药物耐药相关的转录调控机制，为耐药生物标志物发现提供新工具。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "transcriptomics tumor resistance",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-05-08-723625-v2",
+      "source": "biorxiv",
+      "title": "Mechanisms Matter: Transportability of Cellular Perturbation Effects",
+      "abstract": "Predicting cellular responses to genetic or chemical perturbations across biological contexts is central to drug development and disease understanding. Despite increases in data and model scale, deep learning models have not consistently outperformed simple baselines. Leveraging causal transportability theory, we show that cross-context generalization is governed by shared causal mechanisms, not merely distributional similarity. To enable controlled evaluation, we develop a causal simulator that generates realistic semi-synthetic Perturb-seq datasets with tunable mechanistic divergence, providing benchmarks with known ground-truth causal structure. Further, we adapt the Vendi diversity score to the perturbation setting as a diagnostic for mode collapse, a failure mode invisible to standard per-perturbation metrics. Extensive experiments across four deep learning models and six simple baselines on semi-synthetic and real Perturb-seq datasets reveal a cross-context generalization gap: performance under cross-context splits drops substantially, often to simple baseline levels. Notably, even on synthetic data with fully specified causal structure, no model generalized across contexts with different causal mechanisms. These results underscore the need for cross-context evaluation, diversity-aware metrics, and mechanistically grounded inductive biases.",
+      "authors": [
+        "Qi, S.-a.",
+        "Chapfuwa, P."
+      ],
+      "primary_category": "bioinformatics",
+      "categories": [
+        "bioinformatics"
+      ],
+      "published": "2026-07-02T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.05.08.723625v2.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "causal transportability framework for perturbation prediction relevant to drug resistance prediction",
+      "llm_evidence_cn": "因果可迁移性框架，与药物耐药预测相关",
+      "llm_evidence": "因果可迁移性框架，与药物耐药预测相关",
+      "canonical_evidence": "因果可迁移性框架，与药物耐药预测相关",
+      "llm_tldr_en": "This paper uses causal transportability theory to show cross-context generalization of perturbation effects depends on shared causal mechanisms, with a simulator for drug resistance prediction benchmarks.",
+      "llm_tldr_cn": "本研究基于因果可迁移性理论，证明细胞扰动效应的跨上下文泛化由共享因果机制决定，而不仅仅是分布相似性。开发了一个因果模拟器生成半合成Perturb-seq数据集，用于评估扰动预测模型。该方法可为机器学习药物耐药预测提供因果驱动的基准测试框架，从而提升预测模型的可靠性和可迁移性。",
+      "llm_tldr": "本研究基于因果可迁移性理论，证明细胞扰动效应的跨上下文泛化由共享因果机制决定，而不仅仅是分布相似性。开发了一个因果模拟器生成半合成Perturb-seq数据集，用于评估扰动预测模型。该方法可为机器学习药物耐药预测提供因果驱动的基准测试框架，从而提升预测模型的可靠性和可迁移性。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "machine learning drug resistance prediction",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-06-29-734828-v1",
+      "source": "biorxiv",
+      "title": "Multi-modality Graph Representation Learning for Malignant Cell Identification from scRNA-seq using DeepMalignant",
+      "abstract": "Distinguishing malignant from normal cells in single-cell RNA sequencing data remains a critical yet challenging task in cancer genomics. Existing methods often suffer from poor precision, limited generalizability across cancer types, and reduced robustness across different sequencing platforms. We developed DeepMalignant, an unsupervised multimodal graph attention autoencoder for malignant cell identification that jointly integrates gene expression and copy number alteration (CNA) information. We applied DeepMalignant to five datasets covering 26 samples and four cancer types (breast, colorectal, pancreatic, and ovarian cancers), generated by three platforms (10x Genomics, inDrop, and Drop-seq) for benchmarking and compared it with existing state-of-the-art methods including scMalignantFinder, PreCanCell, CopyKAT, ikarus, and Cancer-Finder. DeepMalignant achieved the best overall balance of precision and recall and consistently outperformed the existing methods that used either gene expression or CNA in F1 scores. Ablation studies showed that both CNA-based edge weighting and graph attention aggregation contribute independently to performance, and attribution analysis further indicated that the learned embeddings capture biologically meaningful malignant programs. We further applied DeepMalignant to two ductal carcinoma in situ (DCIS) samples, DCIS2 and DCIS1, that have matched spatial transcriptomics and scRNA-seq data. DeepMalignant identified tumor-enriched regions that were highly consistent with the matched histological image. The downstream cell-cell communications analysis revealed that fibroblast-derived C3 and MIF both directed signaling more toward normal epithelial cells than tumor epithelial cells, demonstrating that accurate tumor-normal cell classification by DeepMalignant enables biologically meaningful interrogation of the tumor microenvironment and revealing how stromal cells differentially communicate with malignant versus normal epithelial populations.",
+      "authors": [
+        "Bhattarrai, P.",
+        "Yuan, W.",
+        "Chi, H.",
+        "Zhou, X. M.",
+        "Mallory, X."
+      ],
+      "primary_category": "bioinformatics",
+      "categories": [
+        "bioinformatics"
+      ],
+      "published": "2026-07-03T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.06.29.734828v1.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "single-cell method for malignant cell identification applicable to resistance mechanism studies",
+      "llm_evidence_cn": "可用于耐药机制研究的恶性细胞识别单细胞方法",
+      "llm_evidence": "可用于耐药机制研究的恶性细胞识别单细胞方法",
+      "canonical_evidence": "可用于耐药机制研究的恶性细胞识别单细胞方法",
+      "llm_tldr_en": "DeepMalignant uses a multimodal graph attention autoencoder integrating gene expression and CNA to identify malignant cells from scRNA-seq, enabling better characterization of tumor heterogeneity relevant to resistance.",
+      "llm_tldr_cn": "DeepMalignant提出一种无监督多模态图注意力自编码器，整合基因表达和拷贝数变异信息，从单细胞RNA测序数据中识别恶性细胞。该方法在乳腺癌、结直肠癌、胰腺癌和卵巢癌的26个样本上验证，性能优于现有方法，为研究肿瘤异质性和耐药机制提供了可靠的单细胞分析基础。",
+      "llm_tldr": "DeepMalignant提出一种无监督多模态图注意力自编码器，整合基因表达和拷贝数变异信息，从单细胞RNA测序数据中识别恶性细胞。该方法在乳腺癌、结直肠癌、胰腺癌和卵巢癌的26个样本上验证，性能优于现有方法，为研究肿瘤异质性和耐药机制提供了可靠的单细胞分析基础。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "single cell sequencing resistance mechanism",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-06-29-735170-v1",
+      "source": "biorxiv",
+      "title": "HiFi-ST: High-Fidelity Reconstruction of Continuous Spatial Transcriptomic Expression Fields via Conditional Neural Fields",
+      "abstract": "Spatial transcriptomics characterizes tissue-scale gene expression patterns, yet its observations are sparse discrete samples of an underlying continuous molecular field, leading to spatial aliasing and sub-resolution information loss. Existing methods usually formulate this task as spot-level point regression, making it difficult to capture both expression continuity and the regional nature of observation. Here, we propose HiFi-ST, a conditional neural field framework for continuous spatial transcriptomics modeling. HiFi-ST formulates spatial gene expression prediction as continuous expression field learning, models each spot as a regional observation over a finite support domain, approximates local integration through Monte Carlo sampling, and integrates multiscale tissue feature extraction with FiLM-based conditional modulation to improve modeling of complex spatial heterogeneity and consistency with the underlying measurement process. Systematic evaluation on three independent datasets (HER2+, cSCC, and Alex_NatGen) showed that HiFi-ST outperformed mclSTExp, BLEEP, THItoGene, His2ST, and HisToGene on key metrics. On HER2+, HiFi-ST achieved an average PCC improvement of 65.1% and an average MSE reduction of 40.9%; on cSCC, PCC improved by 10.2% and MSE decreased by 51.2%; on Alex_NatGen, PCC improved by 80.0% and MSE decreased by 16.3%. In addition, the learned multiscale tissue representations supported downstream spatial immunoanalysis, including assisted identification of candidate TLS regions. Overall, HiFi-ST provides a unified framework bridging discrete measurements and continuous expression field reconstruction for tumor microenvironment analysis and spatial immune structure characterization.",
+      "authors": [
+        "Li, H.",
+        "Tang, L.",
+        "Han, W.",
+        "Yang, X.",
+        "Chen, X."
+      ],
+      "primary_category": "genomics",
+      "categories": [
+        "genomics"
+      ],
+      "published": "2026-07-02T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.06.29.735170v1.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "spatial transcriptomics reconstruction method applicable to tumor resistance studies",
+      "llm_evidence_cn": "空间转录组重建方法，可应用于肿瘤耐药研究",
+      "llm_evidence": "空间转录组重建方法，可应用于肿瘤耐药研究",
+      "canonical_evidence": "空间转录组重建方法，可应用于肿瘤耐药研究",
+      "llm_tldr_en": "HiFi-ST uses conditional neural fields for continuous spatial transcriptomic expression field reconstruction from sparse spot data, enabling high-fidelity gene expression mapping.",
+      "llm_tldr_cn": "HiFi-ST框架通过条件神经场将离散的空间转录组点数据重建为连续的基因表达场，解决了空间混叠和信息丢失问题。该方法将每个点视为有限支撑域上的区域观测，而非单点回归，从而更准确地捕捉表达连续性和区域特征。为转录组水平的肿瘤耐药研究提供了高保真空间表达图谱重建工具。",
+      "llm_tldr": "HiFi-ST框架通过条件神经场将离散的空间转录组点数据重建为连续的基因表达场，解决了空间混叠和信息丢失问题。该方法将每个点视为有限支撑域上的区域观测，而非单点回归，从而更准确地捕捉表达连续性和区域特征。为转录组水平的肿瘤耐药研究提供了高保真空间表达图谱重建工具。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "transcriptomics tumor resistance",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}

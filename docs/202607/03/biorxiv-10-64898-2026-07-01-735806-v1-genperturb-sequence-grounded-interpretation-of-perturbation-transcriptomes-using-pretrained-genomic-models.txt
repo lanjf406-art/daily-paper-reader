@@ -1,0 +1,3202 @@
+Title: GenPerturb: sequence-grounded interpretation of perturbation transcriptomes using pretrained genomic models
+
+URL Source: https://www.biorxiv.org/content/10.64898/2026.07.01.735806v1.full.pdf
+
+Published Time: Fri, 03 Jul 2026 22:23:23 GMT
+
+Number of Pages: 65
+
+Markdown Content:
+1
+
+GenPerturb: sequence-grounded interpretation of perturbation transcriptomes 1
+
+using pretrained genomic models 2
+
+3
+
+Takuya Shihashi 1,2 , Itoshi Nikaido 1,2,3 
+
+4
+
+5
+
+> 1
+
+Omics AI Research Team, Advanced General Intelligence for Science Program 6
+
+(AGIS), TRIP Headquarters, RIKEN, Wako, Saitama, Japan 7
+
+> 2
+
+Doctoral Program in Life Science Innovation (Bioinformatics), Degree Programs in 8
+
+Systems and Information Engineering, Graduate School of Science and Technology, 9
+
+University of Tsukuba, Tsukuba, Ibaraki, Japan 10 
+
+> 3
+
+Medical Research Laboratory (MRL), Institute of Integrated Research (IIR), Institute 11 
+
+of Science Tokyo, Bunkyo, Japan 12 
+
+13 
+
+Corresponding author 14 
+
+Itoshi Nikaido 15 
+
+E-mail: itoshi.nikaido@riken.jp 16 
+
+17 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 3, 2026. ;https://doi.org/10.64898/2026.07.01.735806 doi: bioRxiv preprint
+
+2
+
+Abstract 18 
+
+Background: Perturb-seq captures transcriptional responses to thousands of 19 
+
+genetic and chemical perturbations, but does not directly resolve the cis-regulatory 20 
+
+elements or transcription factor motifs underlying those responses. Existing 21 
+
+approaches rely on indirect post hoc analyses or external epigenomic annotations, 22 
+
+making it difficult to connect gene-level responses to specific regulatory element 23 
+
+24 
+
+Results: We present GenPerturb, a framework that leverages pretrained sequence-25 
+
+to-expression models to link perturbation-induced expression changes to candidate 26 
+
+cis-regulatory elements. By contrasting perturbation and control states, GenPerturb 27 
+
+prioritizes regulatory regions and transcription factor motifs associated with each 28 
+
+perturbation. The model recapitulates perturbation-dependent gene expression 29 
+
+patterns and enables sequence-level interpretation without requiring matched 30 
+
+chromatin data. Across multiple perturbation types, GenPerturb identifies biologically 31 
+
+meaningful regulatory programs, including lineage-specific and signaling-associated 32 
+
+motif activities, even when corresponding transcription factor expression changes 33 
+
+are limited. 34 
+
+35 
+
+Conclusions: GenPerturb converts gene-level expression responses from Perturb-36 
+
+seq into perturbation-specific, sequence-grounded cis-regulatory hypotheses. By 37 
+
+prioritizing candidate regulatory elements and transcription factor motifs responsive 38 
+
+to each perturbation without requiring matched chromatin data, GenPerturb enables 39 
+
+mechanistic interpretation of transcriptional regulation and guides downstream 40 
+
+experimental validation. 41 
+
+42 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 3, 2026. ;https://doi.org/10.64898/2026.07.01.735806 doi: bioRxiv preprint
+
+3
+
+Keywords: Perturb-seq, cis-regulatory elements, pretrained sequence-to-expression 43 
+
+models, differential attribution, transfer learning, hypothesis prioritization 44 
+
+45 
+
+46 
+
+.CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 3, 2026. ;https://doi.org/10.64898/2026.07.01.735806 doi: bioRxiv preprint 4
+
+Background 47 
+
+Large-scale perturbation profiling approaches such as Perturb-seq have 48 
+
+enabled the measurement of transcriptional responses to hundreds to thousands of 49 
+
+genetic perturbations at single-cell resolution [1–2]. However, Perturb-seq captures 50 
+
+only the gene expression changes following perturbation and does not provide direct 51 
+
+access to the underlying transcriptional regulatory states, such as which transcription 52 
+
+factors are activated or which cis-regulatory elements are involved. In other words, 53 
+
+modeling transcriptional regulatory states based solely on gene expression data is 54 
+
+inherently limited, and additional information, including chromatin states and cis-55 
+
+regulatory context, is fundamentally required. 56 
+
+To address this limitation, a variety of approaches based on existing genome 57 
+
+annotations and prior knowledge networks—such as motif enrichment analysis, 58 
+
+enhancer–gene linking, and regulon inference—have been widely used [3–8]. While 59 
+
+these methods provide effective strategies for indirectly inferring regulatory states, 60 
+
+they often rely on annotations derived from specific cell types or steady-state 61 
+
+conditions. As a result, they may not fully capture context-dependent regulatory 62 
+
+states in newly generated datasets, particularly under perturbation conditions. Given 63 
+
+these limitations, an ideal approach would be to simultaneously measure gene 64 
+
+expression and chromatin states within the same cell, thereby directly linking 65 
+
+transcriptional responses to their regulatory basis. As an experimental solution to this 66 
+
+problem, Multiome Perturb-seq enables the simultaneous measurement of gene 67 
+
+expression and chromatin accessibility in the same cell following perturbation [9–12]. 68 
+
+This approach allows transcriptional responses to be directly associated with 69 
+
+chromatin changes at regulatory regions. However, the addition of epigenomic 70 
+
+measurements introduces constraints in terms of experimental cost and throughput, 71 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 3, 2026. ;https://doi.org/10.64898/2026.07.01.735806 doi: bioRxiv preprint
+
+5
+
+and cannot be applied retrospectively to the large body of existing RNA-only Perturb-72 
+
+seq datasets. Therefore, if cis-regulatory information could be computationally 73 
+
+extracted from RNA-only perturbation data, it would be possible to extend analyses 74 
+
+to a broader perturbation space, including existing datasets, without requiring 75 
+
+additional experiments. Achieving this requires explicitly modeling the relationship 76 
+
+between gene expression and the underlying sequence information. 77 
+
+A promising computational framework for this purpose is sequence-to-78 
+
+expression modeling, which directly predicts gene expression and chromatin states 79 
+
+from DNA sequences. Models such as Enformer, Borzoi, and AlphaGenome 80 
+
+leverage long-range sequence context spanning hundreds of kilobases and are 81 
+
+capable of capturing regulatory sequence features associated with molecular 82 
+
+phenotypes [13–15]. Through attribution analysis, these models can identify 83 
+
+sequence elements that contribute to their predictions [16-17]. However, these 84 
+
+models are primarily trained on steady-state data, and their attribution outputs reflect 85 
+
+sequence features important for gene regulation under non-perturbed conditions. 86 
+
+Consequently, identifying regulatory elements that are newly engaged or repressed 87 
+
+in response to perturbations requires a framework that explicitly extracts 88 
+
+perturbation-dependent sequence contributions by comparing with control 89 
+
+conditions. 90 
+
+To address this challenge, we propose GenPerturb, an analytical framework 91 
+
+for deriving sequence-grounded regulatory hypotheses from observed Perturb-seq 92 
+
+responses (Fig. 1). GenPerturb uses pretrained sequence-to-expression models as 93 
+
+regulatory sequence representations and adapts them to a target RNA-only Perturb-94 
+
+seq dataset by fitting observed expression outputs for the control condition and each 95 
+
+perturbation condition. For each gene, control and perturbation outputs are fitted 96 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 3, 2026. ;https://doi.org/10.64898/2026.07.01.735806 doi: bioRxiv preprint
+
+6
+
+from the same local genomic sequence. This places fitted expression responses and 97 
+
+attribution profiles on a shared gene locus and sequence coordinate system, 98 
+
+enabling the identification of candidate regulatory elements and motif instances. 99 
+
+GenPerturb then computes differential attribution scores by subtracting control 100 
+
+attribution profiles from perturbation attribution profiles, producing perturbation-101 
+
+minus-control attribution tracks [18–19] that highlight sequence positions associated 102 
+
+with the fitted perturbation response. These tracks are summarized as ranked 103 
+
+candidate regulatory elements and motif instances for each gene–perturbation pair. 104 
+
+In this way, GenPerturb turns RNA-only Perturb-seq responses into locus-resolved, 105 
+
+sequence-grounded regulatory hypotheses without requiring matched ATAC-seq, 106 
+
+ChIP-seq, or multiome data from the target experiment (see Supplementary Table 1 107 
+
+for the positioning of our method relative to existing approaches). 108 
+
+Here, we demonstrate the ability of GenPerturb to extract sequence-109 
+
+grounded regulatory information from Perturb-seq datasets without requiring 110 
+
+matched chromatin measurements in the target experiment. First, we show that the 111 
+
+fitted sequence-based model retains perturbation-dependent expression structure 112 
+
+across multiple Perturb-seq datasets. Comparison with perturbation multiome data 113 
+
+further demonstrates that differential attribution can rank candidate cis-regulatory 114 
+
+regions and transcription factor motifs with support comparable to, and in aggregate 115 
+
+modestly exceeding, annotation-based methods. 116 
+
+Application of GenPerturb to regulator perturbations along the erythroid and 117 
+
+granulocyte differentiation lineages reveals that fitted outputs retain lineage-118 
+
+associated structure and that motif-level attribution captures activity-like regulatory 119 
+
+signals along these differentiation axes. Finally, analysis of compound perturbations 120 
+
+shows that motif-level attribution can recover activity-like regulatory programs linked 121 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 3, 2026. ;https://doi.org/10.64898/2026.07.01.735806 doi: bioRxiv preprint
+
+7
+
+to ligand-dependent receptor activation, stress-response signaling, and inflammatory 122 
+
+signaling, even when matched or motif-associated transcription factor mRNA levels 123 
+
+change only weakly, supporting regulatory interpretation of compound effects 124 
+
+through ranked candidate programs. 125 
+
+126 
+
+Results 127 
+
+GenPerturb anchors control and perturbation responses to shared sequence 128 
+
+coordinates for differential attribution 129 
+
+GenPerturb was designed to model perturbation-resolved expression 130 
+
+responses within a shared genomic sequence framework (Fig. 1). For each gene, 131 
+
+pretrained sequence representations are fitted to control and perturbation-resolved 132 
+
+expression outputs, so that all condition-specific outputs can be compared on the 133 
+
+same genomic input (Fig. 1a; Fig. S1). After fitting, GenPerturb compares output-to-134 
+
+input attribution profiles between perturbation and control outputs on the same 135 
+
+sequence coordinates. This control-subtracted differential attribution provides the 136 
+
+basis for ranking perturbation-associated candidate regions and motif-level 137 
+
+sequence patterns (Fig. 1b). 138 
+
+We further use in silico motif mutation as a model-internal sensitivity 139 
+
+analysis, testing whether ranked motif instances alter the fitted perturbation-control 140 
+
+difference (Fig. 1c). For each gene-perturbation pair, GenPerturb thus produces 141 
+
+ranked candidate enhancer-like regions and motif instances that can be used for 142 
+
+downstream regulatory interpretation and integration with existing enhancer or motif 143 
+
+annotations. 144 
+
+To support this framework, we evaluated GenPerturb in three 145 
+
+complementary validation layers throughout the remainder of the study: (i) retention 146 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 3, 2026. ;https://doi.org/10.64898/2026.07.01.735806 doi: bioRxiv preprint
+
+8
+
+of perturbation-dependent fitted expression structure across diverse Perturb-seq 147 
+
+datasets (Fig. 2); (ii) agreement of differential attribution with independent multiome-148 
+
+derived chromatin and motif evidence, benchmarked against rE2G extended, rE2G, 149 
+
+ABC, and TSS-distance baselines (Fig. 3); and (iii) sensitivity of fitted perturbation 150 
+
+responses to counterfactual motif disruption by in silico mutation of ranked motif 151 
+
+instances (Fig. 3). Together these layers test whether expression structure, 152 
+
+sequence-level priors, and sequence-level counterfactuals each support the ranked 153 
+
+candidate regulatory features. Lineage-associated and compound perturbation 154 
+
+analyses (Figs. 4, 5) then illustrate how the resulting motif-level signals can capture 155 
+
+activity-like regulatory variation that is not fully explained by transcription factor 156 
+
+mRNA abundance. 157 
+
+158 
+
+GenPerturb captures perturbation-dependent expression structure across 159 
+
+diverse Perturb-seq datasets 160 
+
+Before using differential attribution to rank perturbation-associated cis-161 
+
+regulatory candidates, we first asked whether the transferred sequence-based model 162 
+
+retained the expression structure required for comparing control and perturbed 163 
+
+conditions. Using AlphaGenome as the primary backbone [15], we applied 164 
+
+GenPerturb to twelve Perturb-seq datasets from Norman et al., Replogle et al., 165 
+
+Martin et al., Jiang et al., and Srivatsan et al., spanning CRISPR activation, CRISPR 166 
+
+interference, CRISPR knockout, and compound perturbations across both genetic 167 
+
+and chemical perturbation modalities [12,20-23] (Supplementary Table 2). As an 168 
+
+initial assessment, fitted expression profiles showed high agreement with observed 169 
+
+expression across genes within each perturbation condition, with correlations 170 
+
+consistently around 0.8 or higher across datasets (Fig. 2a). This result indicates that 171 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 3, 2026. ;https://doi.org/10.64898/2026.07.01.735806 doi: bioRxiv preprint
+
+9
+
+dataset-specific transfer preserves the dominant gene-level expression structure of 172 
+
+each perturbation state. Because across-gene evaluation is strongly influenced by 173 
+
+stable basal expression differences among genes, we next asked whether transfer to 174 
+
+the target Perturb-seq dataset was necessary. Under non-perturbed conditions, 175 
+
+direct use of the original pretrained AlphaGenome output showed substantially lower 176 
+
+agreement with observed expression than the transferred model. For example, 177 
+
+across-gene correlation improved from r = 0.345 to r = 0.844 in K562 and from r = 178 
+
+0.222 to r = 0.889 in CD8 T cells after transfer (Fig. 2b). These results indicate that 179 
+
+pretrained sequence representations cannot be used as static expression outputs for 180 
+
+Perturb-seq interpretation, but instead must be adapted to the target assay, cell 181 
+
+state, and expression scale. 182 
+
+We then evaluated whether the transferred model retained perturbation-183 
+
+dependent variation at the level of individual genes. In contrast to the across-gene 184 
+
+analysis, this evaluation measures whether each gene shows concordant variation 185 
+
+across perturbation conditions, and therefore more directly tests the condition-186 
+
+dependent structure required for downstream differential attribution. Agreement was 187 
+
+strongest for highly expressed genes and in datasets with strong perturbation 188 
+
+structure (roughly r = 0.3-0.7), whereas lowly expressed genes showed weaker 189 
+
+correspondence (roughly r = 0.1-0.5; Fig. 2c). To determine whether this across-190 
+
+perturbation signal could be explained by trivial expression structure, we compared 191 
+
+GenPerturb with simple baselines. Both the control-copy and perturbation-mean 192 
+
+baselines showed high across-gene correlations, confirming that this metric alone 193 
+
+can be dominated by stable expression differences among genes. However, these 194 
+
+baselines failed to reproduce gene-wise variation across perturbations, with across-195 
+
+perturbation correlations compressed near zero for most datasets and expression 196 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 3, 2026. ;https://doi.org/10.64898/2026.07.01.735806 doi: bioRxiv preprint
+
+10 
+
+bins (Fig. S2). This calibration against simple baselines follows recent work 197 
+
+emphasizing that mean-like predictors can appear competitive under poorly 198 
+
+calibrated perturbation-response metrics [24]. Thus, the signal observed in Fig. 2c is 199 
+
+not explained by simply reusing the non-perturbed expression profile or by applying 200 
+
+a shared average response across perturbations. This supports the use of condition-201 
+
+specific predicted outputs for downstream differential attribution. 202 
+
+We further examined whether the global organization of perturbation states 203 
+
+was preserved in low-dimensional expression space. Observed and predicted 204 
+
+profiles showed broadly concordant organization. Datasets with pronounced 205 
+
+perturbation structure in the observed space, such as Jiang et al. CD8 T cells and 206 
+
+Norman K562, retained similarly separated structure in the predicted space (Fig. 2d), 207 
+
+whereas datasets with more diffuse observed structure, such as the Srivatsan 208 
+
+compound perturbation datasets, showed correspondingly weaker separation (Fig. 209 
+
+S3). Cluster concordance metrics showed consistent trends across datasets, 210 
+
+supporting that GenPerturb retains not only gene-wise expression structure but also 211 
+
+the global geometry of perturbation-induced transcriptional states (Fig. 2e). 212 
+
+Finally, we examined the contribution of pretrained sequence 213 
+
+representations and the stability of the transfer procedure. In comparisons across 214 
+
+Enformer [13], Borzoi [14], AlphaGenome [15], and a Simple CNN trained without 215 
+
+large-scale regulatory pretraining, AlphaGenome-derived representations showed 216 
+
+stronger agreement both in correlation-based evaluations and in low-dimensional 217 
+
+perturbation geometry (Figs. S4, S5). Multifold evaluation using fold-specific 218 
+
+pretrained AlphaGenome checkpoints and matched genomic splits showed 219 
+
+consistent results across the tested settings, supporting the robustness of the 220 
+
+retained perturbation-dependent structure to the evaluated split and checkpoint 221 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 3, 2026. ;https://doi.org/10.64898/2026.07.01.735806 doi: bioRxiv preprint
+
+11 
+
+choices (Fig. S6). We also compared full fine-tuning, LoRA [25], and feature 222 
+
+extraction, which yielded comparable agreement across evaluation metrics. We 223 
+
+therefore used feature extraction in subsequent analyses to reduce computational 224 
+
+cost while retaining the perturbation-dependent expression structure required for 225 
+
+attribution analysis (Fig. S7). This expression-level evaluation provides the first layer 226 
+
+of validation for GenPerturb: fitted expression profiles retain perturbation-dependent 227 
+
+structure before sequence-level interpretation. 228 
+
+229 
+
+Differential attribution prioritizes perturbation-associated cis-regulatory 230 
+
+elements 231 
+
+Having established that GenPerturb preserves perturbation-dependent 232 
+
+expression structure, we next examined whether differential attribution can highlight 233 
+
+cis-regulatory elements associated with perturbation responses. This step is 234 
+
+designed to go beyond post hoc motif enrichment of differentially expressed genes 235 
+
+by asking which sequence elements and motif instances at the corresponding gene 236 
+
+loci are candidates for contributing to each fitted perturbation-associated response. 237 
+
+To define an external benchmark for enhancer-oriented validation, we surveyed 238 
+
+publicly available perturbation multiome resources. Although several candidate 239 
+
+datasets contained paired RNA and chromatin measurements, most could not be 240 
+
+used for quantitative perturbation-resolved enhancer evaluation because 241 
+
+perturbation identities, sufficient perturbation-associated expression changes, or 242 
+
+corresponding perturbation-associated ATAC changes were not available at the 243 
+
+required scale (Supplementary Table 3). We therefore used the Martin et al. 244 
+
+erythroid Perturb-multiome dataset as the primary external benchmark, as it provides 245 
+
+perturbation-resolved chromatin accessibility together with enhancer-gene reference 246 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 3, 2026. ;https://doi.org/10.64898/2026.07.01.735806 doi: bioRxiv preprint
+
+12 
+
+information [12]. Although this restricts the benchmark to 12 perturbation conditions, 247 
+
+it is the largest publicly available resource that satisfies our perturbation-resolved 248 
+
+AUPRC evaluation criteria. This limited availability of usable perturbation-multiome 249 
+
+benchmarks also illustrates the practical motivation for GenPerturb: in many RNA-250 
+
+only perturbation studies, direct chromatin measurements are unavailable, and 251 
+
+sequence-based hypothesis prioritization can provide a regulatory interpretation 252 
+
+layer for selecting candidate elements and motifs for follow-up analyses. 253 
+
+Before evaluating enhancer-level agreement, we first asked whether control-254 
+
+subtracted differential attribution provided an appropriate ranking signal for 255 
+
+perturbation-associated responses. In the Martin dataset, differential attribution 256 
+
+showed stronger enrichment for genes with large observed perturbation responses 257 
+
+than either control-output attribution or perturbation-output attribution alone, 258 
+
+particularly at stringent top-gene cutoffs. Across perturbations within each gene, 259 
+
+differential attribution also showed higher concordance with observed absolute fold-260 
+
+change than perturbation-output attribution without control subtraction, especially 261 
+
+among genes with larger response magnitudes (Fig. S8). This supports the use of 262 
+
+control-subtracted attribution as the ranking signal for downstream regulatory 263 
+
+prioritization, while leaving enhancer-level validation to the independent chromatin 264 
+
+benchmark. 265 
+
+As an illustrative locus-level example before aggregate benchmarking, we 266 
+
+examined NRXN3 under FOSL1 perturbation (Fig. 3a-c). Differential attribution 267 
+
+highlighted a discrete noncoding region whose signal differed between control and 268 
+
+perturbation outputs. This region overlapped a FOSL1-related motif instance 269 
+
+identified by TF-MoDISco, consistent with the perturbed regulator analyzed at this 270 
+
+locus. In silico mutation of this motif instance partially attenuated the model-derived 271 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 3, 2026. ;https://doi.org/10.64898/2026.07.01.735806 doi: bioRxiv preprint
+
+13 
+
+perturbation-associated expression changes, illustrating how sequence features 272 
+
+highlighted by differential attribution can be connected to fitted responses within the 273 
+
+model (Fig. 3a-c). 274 
+
+Having established differential attribution as the ranking signal, we next 275 
+
+asked whether the resulting candidate regions were supported by independent 276 
+
+perturbation-resolved chromatin evidence. We compared differential attribution 277 
+
+against rE2G extended, rE2G, ABC, and TSS-distance baselines using perturbation-278 
+
+resolved AUPRC evaluation [4-5]. Across the aggregate evaluation, GenPerturb 279 
+
+achieved a small but consistent advantage over the strongest annotation-based 280 
+
+comparators, and the advantage was clearer in distal regions where promoter-281 
+
+proximal motif enrichment and distance-based linking alone provide limited 282 
+
+resolution (Fig. 3d). The differences are modest in absolute magnitude, and we 283 
+
+interpret them as evidence that an RNA-only sequence-fitted model can match or 284 
+
+modestly exceed annotation-heavy enhancer-linking baselines on perturbation-285 
+
+sensitive accessible chromatin, rather than as a claim of broadly superior enhancer 286 
+
+prediction. ABC and rE2G provide strong annotation-based comparators when 287 
+
+matched epigenomic resources are available, whereas GenPerturb does not require 288 
+
+a precomputed enhancer-gene map for the target RNA-only perturbation experiment 289 
+
+and instead derives candidate regulatory regions directly from the perturbation 290 
+
+expression data itself. Per-perturbation analysis across promoter-proximal and distal 291 
+
+strata showed that performance depended strongly on the number of evaluable 292 
+
+positive regions per perturbation (Fig. S9). Differential attribution was often among 293 
+
+the strongest scoring schemes when many positive enhancer candidates were 294 
+
+available. In contrast, for perturbations with sparse positive regions, ABC or rE2G 295 
+
+extended sometimes performed better, consistent with the increased sensitivity of 296 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 3, 2026. ;https://doi.org/10.64898/2026.07.01.735806 doi: bioRxiv preprint
+
+14 
+
+AUPRC under sparse-positive settings and with the different information sources 297 
+
+used by each method. These results argue against a single universally optimal 298 
+
+enhancer score. Instead, they support a complementary use of model-derived 299 
+
+differential attribution and annotation-based enhancer-linking approaches, with the 300 
+
+most informative score depending on the perturbation, genomic distance stratum, 301 
+
+and density of evaluable regulatory changes (Fig. 3d; Fig. S9). 302 
+
+We next assessed motif recovery using two complementary procedures. 303 
+
+First, TF-MoDISco was applied directly to differential attribution profiles to extract 304 
+
+recurring sequence patterns from attribution-derived regions [26], with motif identities 305 
+
+assigned using Tomtom from the MEME Suite [7-8]. Second, to enable a like-for-like 306 
+
+comparison with ABC and rE2G, we performed GimmeMotifs known-motif 307 
+
+enrichment on each candidate-CRE region set under a unified framework, applying 308 
+
+the same enrichment procedure to GenPerturb-derived regions and annotation-309 
+
+based regions [3-5]. The TSS ± 1 kb analysis represents the closest promoter-310 
+
+proximal counterpart to conventional post hoc motif enrichment over responsive 311 
+
+genes, whereas ABC and rE2G extend the same enrichment framework to 312 
+
+annotation-based enhancer-linked regions. Under this unified GimmeMotifs 313 
+
+framework, GenPerturb-derived regions yielded a small but consistent advantage 314 
+
+over the annotation-based region sets in recovering motifs corresponding to the 315 
+
+perturbed transcription factor or its JASPAR cluster (cluster-matched ratio 0.83, 316 
+
+10/12 perturbations, for GenPerturb-derived regions vs 0.75, 9/12, for the next-best 317 
+
+annotation-based region set, rE2G extended), and TF-MoDISco directly on 318 
+
+attribution recovered overlapping motif identities (cluster match 0.83, 10/12) [27]. 319 
+
+Similar results were reproduced in an independent CRISPRa dataset, with 320 
+
+consistently strong recovery performance observed across both CRISPR KO and 321 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 3, 2026. ;https://doi.org/10.64898/2026.07.01.735806 doi: bioRxiv preprint
+
+15 
+
+CRISPRa perturbations (Fig. 3e; Fig. S10a). 322 
+
+To further examine the functional relevance of these motifs within the model, 323 
+
+we performed in silico motif mutation. For each motif instance, the sequence was 324 
+
+randomized and the resulting change in model output was measured. Stronger 325 
+
+differential attribution was associated with larger output changes upon mutation. In 326 
+
+contrast, regions lacking motif instances or showing low attribution strength exhibited 327 
+
+little to no such relationship when used as negative controls. These results support a 328 
+
+model-internal correspondence between attribution magnitude and sequence 329 
+
+sensitivity, rather than serving as direct experimental evidence of enhancer function 330 
+
+(Fig. 3f; Fig. S10b). Together with the expression-structure analyses in Fig. 2 and the 331 
+
+independent chromatin and motif evidence in Fig. 3d,e,f, this provides three 332 
+
+complementary evaluation layers: retention of perturbation-dependent expression 333 
+
+structure, agreement with external regulatory evidence, and model-internal sensitivity 334 
+
+to motif perturbation. 335 
+
+336 
+
+GenPerturb links differentiation-associated expression axes to motif-level 337 
+
+regulatory signals 338 
+
+We next applied GenPerturb to lineage-associated perturbation responses, 339 
+
+focusing on erythroid differentiation in the Norman K562 CRISPRa dataset (Fig. 4) 340 
+
+[20]. We used perturbation program annotations and erythroid signature gene sets 341 
+
+from the original study to evaluate whether lineage-associated structure was retained 342 
+
+in the fitted expression profiles. Perturbations annotated as erythroid, granulocyte, 343 
+
+megakaryocytic, and cell-cycle related programs formed structured groups in both 344 
+
+observed and fitted low-dimensional expression spaces, indicating that multiple 345 
+
+annotated biological axes were preserved in the model-derived profiles (Fig. 4a). The 346 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 3, 2026. ;https://doi.org/10.64898/2026.07.01.735806 doi: bioRxiv preprint
+
+16 
+
+erythroid axis was then quantified using the corresponding signature gene set. 347 
+
+Signature scores computed from fitted profiles were highly concordant with those 348 
+
+derived from observed data, and erythroid-promoting perturbations retained high 349 
+
+fitted scores. These results indicate that the fitted sequence-based outputs preserve 350 
+
+a biologically interpretable erythroid differentiation axis (Fig. 4b). 351 
+
+We next compared TF-MoDISco-derived motif significance scores from 352 
+
+differential attribution profiles, defined as -log10-transformed q-values (-log10 q), 353 
+
+with TF mRNA associations along the erythroid axis. Notably, many perturbations 354 
+
+annotated as erythroid-promoting in the original study correspond to non-355 
+
+transcription factor genes rather than direct regulators (Fig. 4a,b). Despite this 356 
+
+indirect perturbation setting, GenPerturb successfully recovered canonical erythroid 357 
+
+transcription factors such as GATA1, KLF1, and TAL1 as top-associated regulators 358 
+
+along the erythroid axis. This suggests that the model captures downstream 359 
+
+regulatory structure rather than merely reflecting the perturbed gene identities. 360 
+
+Regulators such as KLF1, TAL1, and NFE2 showed concordant positive 361 
+
+associations in both layers, consistent with established erythroid transcription factor 362 
+
+networks [28]. However, associations based on motif significance scores did not 363 
+
+simply mirror TF mRNA associations across regulators, and GATA1 signals were 364 
+
+prioritized more strongly by motif significance scores than would be expected from 365 
+
+TF mRNA association alone. This pattern supports the interpretation that the motif 366 
+
+significance layer captures a regulatory signal that is not fully reflected by TF mRNA 367 
+
+abundance alone (Fig. 4c). In addition, motif degeneracy within TF families means 368 
+
+that attribution at a single motif instance may reflect contributions from multiple 369 
+
+related regulators rather than a one-to-one correspondence with individual TF 370 
+
+expression trajectories. We then performed in silico motif mutation to test whether 371 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 3, 2026. ;https://doi.org/10.64898/2026.07.01.735806 doi: bioRxiv preprint
+
+17 
+
+lineage-associated motifs contributed to the fitted erythroid signature shifts within the 372 
+
+model. Randomizing prioritized motif instances attenuated erythroid signature 373 
+
+contributions in lineage-consistent directions, supporting a model-internal link 374 
+
+between the motif significance signal and differentiation-associated fitted outputs 375 
+
+(Fig. 4d). 376 
+
+Similar analyses along the granulocyte axis recovered CEBP- and 377 
+
+SPI1/PU.1-related motif significance signals as the top-ranked programs, consistent 378 
+
+with their established role as lineage-determining regulators in granulocyte-379 
+
+macrophage regulatory programs [29]. In silico mutation of these motif instances 380 
+
+attenuated the fitted granulocyte signature in lineage-consistent directions, in 381 
+
+contrast to the erythroid axis where GATA motifs dominated. Together, these results 382 
+
+indicate that the same framework can resolve distinct lineage-associated regulatory 383 
+
+programs within the same dataset and prioritize axis-specific TF families through 384 
+
+motif significance scores rather than recovering a generic differentiation signal (Fig. 385 
+
+S11). 386 
+
+To contextualize these lineage-associated signals relative to existing 387 
+
+regulatory inference approaches, GenPerturb-derived regulator rankings along the 388 
+
+erythroid and granulocyte axes were compared with motif enrichment over 389 
+
+GenPerturb regions, rE2G extended, rE2G, ABC, TSS-proximal regions, and 390 
+
+SCENIC regulon activity [6]. These methods recovered overlapping but non-identical 391 
+
+regulator sets, including GATA, KLF, TAL, NFE, CEBP, and SPI1-related factors, 392 
+
+supporting a complementary interpretation of sequence attribution, regulon activity, 393 
+
+and enhancer annotation rather than a strict ranking among methods (Fig. S12). 394 
+
+395 
+
+Attribution-derived motif significance scores capture compound-associated 396 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 3, 2026. ;https://doi.org/10.64898/2026.07.01.735806 doi: bioRxiv preprint
+
+18 
+
+regulatory activity beyond TF expression 397 
+
+We next analyzed compound perturbations in the Jiang et al. CD8 T-cell 398 
+
+dataset to test whether GenPerturb-derived motif significance scores could recover 399 
+
+upstream regulatory programs activated by compound treatment, including cases 400 
+
+where TF activity is controlled through ligand binding, protein stability, or nuclear 401 
+
+translocation rather than TF transcription [22]. 402 
+
+As a positive-control setting, we first examined glucocorticoids, which bind 403 
+
+and activate the glucocorticoid receptor NR3C1 and were represented by multiple 404 
+
+corticosteroid compounds in the dataset [30]. Upon ligand binding, NR3C1 is 405 
+
+released from cytoplasmic chaperone complexes, translocates to the nucleus, and 406 
+
+activates glucocorticoid response elements without requiring increased NR3C1 407 
+
+transcription [30-31]. NR3C1-associated motifs were significantly enriched among 408 
+
+glucocorticoid-treated samples, consistent with activation of glucocorticoid receptor 409 
+
+regulatory programs at the sequence-attribution level (Fig. 5a). Notably, NR3C1 410 
+
+expression was not consistently induced across these compounds, indicating that 411 
+
+motif significance scores capture regulatory activity beyond TF transcript abundance 412 
+
+alone (Fig. 5b). 413 
+
+We next examined natural-product compounds, where phenotypic screens 414 
+
+often identify bioactivity before the upstream regulatory mechanism is fully resolved. 415 
+
+Curcumin and Rutaecarpine both showed strong enrichment of NRF2-associated 416 
+
+motifs despite limited induction of NRF2 expression. This is consistent with known 417 
+
+regulation of NRF2/NFE2L2 activity through KEAP1-dependent degradation and 418 
+
+stress-induced protein stabilization, rather than transcriptional induction of the TF 419 
+
+[32]. Curcumin has been reported to stabilize NRF2 protein through KEAP1 cysteine 420 
+
+modification without increasing Nrf2 mRNA, and Rutaecarpine has been reported to 421 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 3, 2026. ;https://doi.org/10.64898/2026.07.01.735806 doi: bioRxiv preprint
+
+19 
+
+inhibit KEAP1-NRF2 interaction and promote NRF2 activation (Fig. 5c) [33-34]. We 422 
+
+similarly examined Sophoricoside and Isoalantolactone, compounds with reported 423 
+
+anti-inflammatory effects mediated in part through inhibition of NF-κB signaling, to 424 
+
+test whether their attribution profiles implicated NF-κB-associated regulatory 425 
+
+programs. Both compounds showed RELA-associated motif signals without strong 426 
+
+induction of REL/RELA mRNA. Because RELA/p65 activity is primarily regulated 427 
+
+through IκBα/NFKBIA-dependent cytoplasmic retention, signal-dependent IκBα 428 
+
+degradation, and nuclear translocation rather than by RELA transcript abundance, 429 
+
+this result suggests that motif significance scores can identify NF-κB-linked 430 
+
+regulatory responses even when TF mRNA levels are not strongly induced (Fig. 5d) 431 
+
+[35-39]. 432 
+
+Together, these examples show that GenPerturb-derived motif significance 433 
+
+scores can recover regulatory programs linked to compound classes whose activity 434 
+
+is mediated by ligand-dependent receptor activation, KEAP1–NRF2 protein 435 
+
+stabilization, or NF-κB-linked regulatory state changes. These results support 436 
+
+sequence-level motif significance scoring as a complementary framework for 437 
+
+compound mechanism-of-action analysis, particularly in phenotypic screens where 438 
+
+TF mRNA abundance alone may fail to identify the relevant upstream regulatory 439 
+
+program. We present these compounds as illustrative positive-control and candidate 440 
+
+examples rather than as a compound-wide systematic benchmark. 441 
+
+442 
+
+Discussion 443 
+
+In this study, we introduced GenPerturb, a model-based interpretation 444 
+
+framework that converts gene-level perturbation responses into element-level, locus-445 
+
+anchored cis-regulatory hypotheses using pretrained sequence representations. By 446 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 3, 2026. ;https://doi.org/10.64898/2026.07.01.735806 doi: bioRxiv preprint
+
+20 
+
+fitting perturbation-resolved expression outputs from a shared genomic input and 447 
+
+comparing attribution profiles between control and perturbation states, GenPerturb 448 
+
+prioritizes candidate regulatory regions, motif instances, and perturbation-associated 449 
+
+regulatory programs from Perturb-seq data (Fig. 1). The main contribution is the 450 
+
+translation of gene-level perturbation responses into locus-resolved, sequence-451 
+
+grounded regulatory hypotheses. 452 
+
+This framework addresses a central limitation of standard Perturb-seq 453 
+
+analysis [1–2]. While Perturb-seq captures downstream transcriptional responses, it 454 
+
+does not directly resolve the underlying cis-regulatory elements or sequence motifs. 455 
+
+Conventional approaches typically rely on post hoc analyses, such as differential 456 
+
+expression, pathway enrichment, and motif enrichment [3–8]. In contrast, 457 
+
+GenPerturb directly links perturbation responses to regulatory sequence features 458 
+
+within a shared sequence-based framework, enabling interpretation at the level of 459 
+
+candidate regulatory regions and motif instances. Rather than asking which motifs 460 
+
+are enriched in responsive gene sets, GenPerturb identifies motif instances at 461 
+
+specific loci associated with perturbation responses. 462 
+
+Our results support three main conclusions. First, pretrained sequence 463 
+
+representations can be transferred to Perturb-seq datasets and retain meaningful 464 
+
+perturbation-dependent expression structure across CRISPR activation, interference, 465 
+
+knockout, and compound perturbation datasets. Comparisons with Enformer, Borzoi, 466 
+
+AlphaGenome, and a Simple CNN baseline highlight the importance of pretrained 467 
+
+regulatory features [13–15]. Notably, alignment to the target assay and cell state 468 
+
+requires dataset-specific fitting, indicating that pretrained outputs alone are 469 
+
+insufficient. Thus, GenPerturb uses foundation sequence models as transferable 470 
+
+regulatory representations for interpreting perturbation responses, rather than as 471 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 3, 2026. ;https://doi.org/10.64898/2026.07.01.735806 doi: bioRxiv preprint
+
+21 
+
+standalone predictors. 472 
+
+Second, control-subtracted differential attribution enables prioritization of 473 
+
+perturbation-associated cis-regulatory regions and motif instances supported by 474 
+
+independent chromatin information. A key aspect is the comparison between fitted 475 
+
+control and perturbation outputs on the same genomic input, which mitigates 476 
+
+constitutive contributions and highlights perturbation-specific effects. Using this 477 
+
+approach, GenPerturb showed a small but consistent advantage over rE2G 478 
+
+extended, rE2G, ABC, and TSS-distance baselines, particularly for distal regulatory 479 
+
+elements (Fig. 3d) [4–5]. Rather than indicating broadly superior enhancer 480 
+
+prediction, these results support the idea that an RNA-only sequence-fitted model 481 
+
+can recover biologically meaningful signals. Unlike annotation-based approaches 482 
+
+that rely on precomputed enhancer–gene links, GenPerturb is fitted directly to the 483 
+
+perturbation dataset and identifies sequence features whose contribution changes 484 
+
+between conditions. Motif analyses similarly demonstrate improved recovery 485 
+
+compared with annotation-derived regions [3,7–8], and in silico motif perturbation 486 
+
+attenuates fitted responses, supporting a link between prioritized sequence features 487 
+
+and perturbation-associated outputs (Fig. 3c,f). Together, these properties position 488 
+
+GenPerturb as complementary to existing enhancer-linking frameworks and suitable 489 
+
+for prioritizing regulatory hypotheses. 490 
+
+Third, applications to differentiation and compound perturbation show that 491 
+
+motif-level attribution captures regulatory signals not fully explained by transcription 492 
+
+factor mRNA abundance. In lineage differentiation, GenPerturb recovered known 493 
+
+regulatory programs, including cases where TF transcripts showed minimal changes. 494 
+
+In compound perturbations, motif programs consistent with NR3C1, NRF2, and NF-495 
+
+κB signaling were identified even when corresponding transcripts changed little (Fig. 496 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 3, 2026. ;https://doi.org/10.64898/2026.07.01.735806 doi: bioRxiv preprint
+
+22 
+
+5) [30,32–33,35–37]. Many compounds modulate TF activity without corresponding 497 
+
+transcript-level shifts, limiting inference based on TF mRNA alone. By relying on 498 
+
+sequence-based attribution, GenPerturb provides complementary regulatory insight 499 
+
+and supports hypothesis generation for mechanism-of-action studies. 500 
+
+More broadly, GenPerturb illustrates how foundation sequence models can 501 
+
+be integrated into perturbation biology as an interpretation framework. By combining 502 
+
+sequence-to-expression modeling with differential attribution, it links perturbation 503 
+
+responses to specific regulatory regions and motif instances in a unified framework, 504 
+
+bridging sequence modeling, enhancer annotation, and regulon inference. This 505 
+
+approach complements multiomic regulatory inference methods and differs from 506 
+
+observational sequence-to-expression models by explicitly contrasting fitted control 507 
+
+and perturbation outputs [40–43]. It is particularly useful for retrospective analysis of 508 
+
+RNA-only Perturb-seq datasets lacking matched chromatin data. 509 
+
+Several limitations should be considered. First, GenPerturb is fitted to 510 
+
+observed perturbation conditions within a specific cell type and is not designed to 511 
+
+predict responses to unseen perturbations or cell types, but rather to interpret 512 
+
+responses within a defined experimental context [44]. Second, attribution reflects 513 
+
+model-derived interpretation rather than direct measurement of enhancer activity, 514 
+
+transcription factor binding, chromatin accessibility, or protein-level regulatory 515 
+
+activity; prioritized regions and motif instances should therefore be regarded as 516 
+
+hypotheses requiring experimental validation [45]. This is particularly relevant in 517 
+
+compound perturbation settings, where motif-level signals can nominate candidate 518 
+
+regulatory programs but do not by themselves establish targets or mechanisms of 519 
+
+action. Third, motif interpretation is constrained by motif degeneracy and 520 
+
+transcription factor family ambiguity, limiting unique TF assignment. Fourth, 521 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 3, 2026. ;https://doi.org/10.64898/2026.07.01.735806 doi: bioRxiv preprint
+
+23 
+
+attribution depends on the pretrained sequence representation, which may introduce 522 
+
+biases; in practice, the backbone is typically frozen, making sequence sensitivity 523 
+
+largely determined by the pretrained model, with perturbation specificity captured in 524 
+
+condition-dependent outputs. Fifth, the current framework operates on condition-525 
+
+level pseudobulk outputs and does not resolve cellular heterogeneity. Sixth, limited 526 
+
+availability of perturbation-resolved multiome datasets constrains external validation, 527 
+
+with benchmarking largely anchored to available resources such as the Martin et al. 528 
+
+erythroid dataset (Supplementary Table 3). Finally, the reliability of attribution 529 
+
+depends on the quality of the fitted perturbation response, and weak or noisy signals 530 
+
+may reduce interpretability. 531 
+
+In summary, GenPerturb provides a practical framework for extracting 532 
+
+sequence-grounded regulatory hypotheses from RNA-only perturbation data by 533 
+
+integrating pretrained sequence representations, perturbation-resolved modeling, 534 
+
+and differential attribution. 535 
+
+536 
+
+Conclusions 537 
+
+GenPerturb translates gene-level perturbation responses into locus-resolved, 538 
+
+sequence-grounded regulatory hypotheses by fitting pretrained sequence-to-539 
+
+expression representations to observed Perturb-seq outputs and contrasting 540 
+
+attribution profiles between control and perturbation states. This approach captures 541 
+
+perturbation-dependent expression structure and prioritizes regulatory regions and 542 
+
+motif instances associated with perturbation responses, including regulatory 543 
+
+programs not fully explained by transcription factor expression changes. By 544 
+
+operating directly on RNA-only perturbation datasets without requiring matched 545 
+
+chromatin measurements, GenPerturb complements existing regulatory inference 546 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 3, 2026. ;https://doi.org/10.64898/2026.07.01.735806 doi: bioRxiv preprint
+
+24 
+
+approaches and provides a unified, sequence-anchored view of genes, regulatory 547 
+
+elements, and motif instances. It serves as a practical hypothesis-prioritization layer 548 
+
+for both prospective and retrospective Perturb-seq studies, enabling downstream 549 
+
+experimental validation of candidate regulatory mechanisms. 550 
+
+551 
+
+.CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 3, 2026. ;https://doi.org/10.64898/2026.07.01.735806 doi: bioRxiv preprint 25 
+
+Figure legends 552 
+
+553 
+
+Figure 1. GenPerturb links observed perturbation responses to cis-regulatory 554 
+
+sequence features. 555 
+
+a, Overview of transfer learning-based sequence modeling of observed perturbation 556 
+
+responses. Genomic DNA sequence around each gene, illustrated here as a window 557 
+
+centered on the transcription start site, is used as input to GenPerturb. Pretrained 558 
+
+sequence representations are transferred to the target Perturb-seq dataset by fitting 559 
+
+condition-specific output channels corresponding to control and observed 560 
+
+perturbation states, adapting regulatory sequence features to the target assay, cell 561 
+
+state, and expression scale while representing all outputs on a shared gene locus 562 
+
+and sequence coordinate system. b, Differential attribution for nominating and 563 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 3, 2026. ;https://doi.org/10.64898/2026.07.01.735806 doi: bioRxiv preprint
+
+26 
+
+ranking perturbation-associated cis-regulatory candidates. Output-to-input attribution 564 
+
+is computed separately for control and perturbation-specific outputs by 565 
+
+backpropagating each condition output to the input sequence. Subtracting the control 566 
+
+attribution profile from each perturbation attribution profile yields differential 567 
+
+attribution tracks, which are used to rank candidate regulatory regions and motif-568 
+
+level sequence patterns associated with fitted perturbation responses. c, In silico 569 
+
+motif mutation for evaluating model-internal sequence sensitivity. Ranked motif 570 
+
+instances are mutated in the input sequence, and changes in fitted control and 571 
+
+perturbation outputs are compared between wild-type and mutated sequences. 572 
+
+Reduction of the perturbation-associated output difference after motif mutation 573 
+
+supports a model-internal contribution of the candidate sequence feature to the fitted 574 
+
+perturbation response. 575 
+
+576 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 3, 2026. ;https://doi.org/10.64898/2026.07.01.735806 doi: bioRxiv preprint
+
+27 
+
+577 
+
+Figure 2. GenPerturb retains perturbation-dependent expression structure 578 
+
+after fitting to observed Perturb-seq data. 579 
+
+a, Across-gene agreement between observed expression and fitted GenPerturb 580 
+
+outputs for each perturbation condition across Perturb-seq datasets (Pearson r 581 
+
+across genes, computed per perturbation condition; held-out test split). Bars show 582 
+
+correlation across genes within each condition, summarized for each dataset. 583 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 3, 2026. ;https://doi.org/10.64898/2026.07.01.735806 doi: bioRxiv preprint
+
+28 
+
+b, Comparison of observed control expression with fitted outputs from the transferred 584 
+
+AlphaGenome-based GenPerturb model and baseline non-perturbed outputs from 585 
+
+the original pretrained AlphaGenome prediction head, in K562 and CD8 T cells 586 
+
+(Pearson r across genes). 587 
+
+c, Across-perturbation agreement for individual genes (Pearson r across 588 
+
+perturbations, computed per gene; expression quintiles; held-out test split). For each 589 
+
+gene, observed and fitted expression values were compared across perturbation 590 
+
+conditions, showing stronger agreement for highly expressed genes (roughly r = 0.3-591 
+
+0.7 across datasets) and weaker agreement for lowly expressed genes (roughly r = 592 
+
+0.1-0.5). 593 
+
+d, Low-dimensional organization of observed and fitted expression profiles for 594 
+
+datasets with pronounced perturbation structure in the observed space. Dots in both 595 
+
+observed and fitted UMAPs are colored by Leiden clusters computed from the 596 
+
+observed expression space; clustering of the same colors in the fitted UMAP 597 
+
+indicates preservation of observed perturbation-state structure. 598 
+
+e, Cluster concordance between observed and fitted expression spaces across 599 
+
+datasets (ARI, NMI; observed vs fitted Leiden partitions; held-out test split). 600 
+
+601 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 3, 2026. ;https://doi.org/10.64898/2026.07.01.735806 doi: bioRxiv preprint
+
+29 
+
+602 
+
+Figure 3. Differential attribution prioritizes perturbation-associated cis-603 
+
+regulatory elements and motifs. 604 
+
+a, Representative locus-level example showing perturbation-resolved ATAC-seq 605 
+
+signal, condition-specific attribution, and control-subtracted differential attribution at 606 
+
+the NRXN3 locus under FOSL1 perturbation. Differential attribution highlights 607 
+
+discrete noncoding regions within the same genomic coordinate system used for 608 
+
+control and perturbation outputs. 609 
+
+b, Sequence-level zoom of a prioritized region, showing differential attribution over 610 
+
+nucleotide positions and the corresponding motif instance (FOSL1). 611 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 3, 2026. ;https://doi.org/10.64898/2026.07.01.735806 doi: bioRxiv preprint
+
+30 
+
+c, Model-internal in silico motif mutation for the representative locus. Randomizing 612 
+
+the prioritized motif instance partially attenuates the fitted perturbation-associated 613 
+
+expression change, using mutant predictions averaged across five mononucleotide-614 
+
+preserving random shuffle seeds. 615 
+
+d, Enhancer prioritization benchmark using perturbation-resolved TF-sensitive 616 
+
+accessible chromatin regions (Martin et al. Table S2) as reference positives 617 
+
+(AUPRC; mean across perturbations; |log2FC| ≥ 0.5 for gene expression fold 618 
+
+change; ≥10 positive peaks per distance-based bin). Differential attribution, rE2G 619 
+
+extended, rE2G, ABC, and TSS-distance scores were compared across promoter-620 
+
+proximal (<1 kb), proximal (1–10 kb), distal (10–100 kb), and very distal (>100 kb) 621 
+
+regulatory regions. Bars show the mean AUPRC across perturbations and whiskers 622 
+
+the across-perturbation standard error of the mean (SEM), with each perturbation 623 
+
+contributing one observation per stratum. Of the 12 Martin et al. perturbation 624 
+
+conditions, only those with at least 10 positive peaks within a given distance stratum 625 
+
+were evaluated, yielding 7 perturbations per stratum and 28 perturbation × distance 626 
+
+strata in total. Performance varied across perturbations and distance strata. 627 
+
+e, Motif recovery analysis comparing attribution-derived motifs and annotation-based 628 
+
+regulatory regions (evaluated separately for each perturbation and motif-discovery 629 
+
+method; TF-MoDISco and GimmeMotifs enrichments filtered at q ≤ 0.05; gene match 630 
+
+or JASPAR transcription factor family cluster match to the perturbed transcription 631 
+
+factor). Two complementary procedures were applied to GenPerturb attribution: (i) 632 
+
+TF-MoDISco directly on differential attribution profiles to obtain attribution-derived 633 
+
+seqlet motifs, and (ii) GimmeMotifs known-motif enrichment on attribution peak 634 
+
+regions within the same unified motif-enrichment framework applied to annotation-635 
+
+based regions (rE2G extended, rE2G, ABC, TSS-proximal). Bars indicate the 636 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 3, 2026. ;https://doi.org/10.64898/2026.07.01.735806 doi: bioRxiv preprint
+
+31 
+
+fraction of perturbations for which motifs corresponding to the perturbed transcription 637 
+
+factor were successfully recovered. 638 
+
+f, In silico mutation analysis of TF-MoDISco-identified motif instances whose 639 
+
+Tomtom annotation matches the perturbed transcription factor or its JASPAR cluster 640 
+
+(q ≤ 0.05), stratified by differential attribution strength (5 mononucleotide-preserving 641 
+
+random shuffle seeds averaged per mutated interval; groups = tertiles of attribution 642 
+
+strength plus paired length-matched negative controls at motif-absent loci; one-sided 643 
+
+Mann-Whitney U for high vs negative control where shown). 644 
+
+645 
+
+646 
+
+Figure 4. GenPerturb links differentiation-associated expression axes to motif-647 
+
+level regulatory associations. 648 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 3, 2026. ;https://doi.org/10.64898/2026.07.01.735806 doi: bioRxiv preprint
+
+32 
+
+a, Low-dimensional organization of observed and fitted expression profiles annotated 649 
+
+by lineage-related perturbation programs from the original Norman study. Each dot 650 
+
+represents a perturbation and is colored by the original study annotation. Structured 651 
+
+lineage-associated organization observed in the original data is retained in the fitted 652 
+
+expression space. 653 
+
+b, Comparison of observed and fitted erythroid signature scores across perturbations 654 
+
+using the erythroid signature from the original Norman study (Pearson r). Each dot 655 
+
+represents a perturbation; red dots indicate perturbations annotated as erythroid 656 
+
+differentiation and blue dots indicate perturbations annotated as granulocyte 657 
+
+differentiation in the original study. 658 
+
+c, Relationship between TF-MoDISco-derived motif significance scores (-log10 q) 659 
+
+and TF mRNA expression along the erythroid axis. For each motif or TF family, the 660 
+
+y-axis shows the correlation between TF mRNA expression and the erythroid 661 
+
+signature score (Pearson r), and the x-axis shows the correlation between the motif 662 
+
+significance score and the erythroid signature score. 663 
+
+d, In silico mutation of erythroid marker gene–associated and TF-MoDISco–identified 664 
+
+motif instances (5 mononucleotide-preserving random shuffle seeds averaged per 665 
+
+motif instance). Each dot represents a motif instance, and the y-axis shows the 666 
+
+change in erythroid marker-gene signature score after motif mutation (ΔΔpred). 667 
+
+Larger negative values indicate stronger cancellation of perturbation-associated 668 
+
+erythroid signature changes following motif disruption. X-axis labels are colored 669 
+
+using the original Norman study annotations as in panel b, with erythroid 670 
+
+differentiation perturbations in red and granulocyte differentiation perturbations in 671 
+
+blue. 672 
+
+673 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 3, 2026. ;https://doi.org/10.64898/2026.07.01.735806 doi: bioRxiv preprint
+
+33 
+
+674 
+
+Figure 5. Attribution-derived motif significance scores recover activity-like 675 
+
+regulatory programs in compound perturbations. 676 
+
+GenPerturb was applied to the Jiang et al. CD8 T-cell compound Perturb-seq 677 
+
+dataset to compare TF-MoDISco-derived motif significance scores (-log10 q) with TF 678 
+
+mRNA abundance across compound perturbations. Motif significance scores are 679 
+
+summarized as within-compound rank percentiles, with higher values indicating 680 
+
+stronger motif significance within that compound. 681 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 3, 2026. ;https://doi.org/10.64898/2026.07.01.735806 doi: bioRxiv preprint
+
+34 
+
+a, Positive-control comparison of NR3C1 motif rank percentile between 682 
+
+corticosteroid compounds (n = 22 single-compound perturbations) and all other 683 
+
+compounds. Each dot is a compound; horizontal bars denote group medians (one-684 
+
+sided Wilcoxon rank-sum p-value). 685 
+
+b, Across-compound scatter of NR3C1 motif rank percentile (y-axis) against NR3C1 686 
+
+TF mRNA log2 fold change versus control (x-axis), with corticosteroid compounds 687 
+
+highlighted in red. 688 
+
+c, Per-compound comparison of TF mRNA change and motif rank percentile for two 689 
+
+natural products selected to probe NRF2 (NFE2L2)-linked stress-response 690 
+
+programs, Curcumin and Rutaecarpine. Each dot represents a motif-associated TF, 691 
+
+with heterodimer motifs represented by their component TFs. For heterodimer motif 692 
+
+labels, the component TF whose mRNA value is plotted is shown in black, matching 693 
+
+monomer labels, whereas the partner TF not used for the mRNA coordinate is 694 
+
+shown in light gray. NRF2-family motifs are highlighted in green; other TF dots are 695 
+
+shown in gray. 696 
+
+d, Same per-compound layout as panel c for two natural products with reported NF-697 
+
+κB-inhibitory anti-inflammatory activity, Sophoricoside and Isoalantolactone, using 698 
+
+the same heterodimer label-color convention. NF-κB-family motifs (REL, RELA) are 699 
+
+highlighted in dark blue; other TF dots are shown in gray. Both panels c and d show 700 
+
+that target-class motifs appear within the top motif rank percentile range even when 701 
+
+the corresponding TF mRNA is not strongly induced or repressed, consistent with 702 
+
+model-internal attribution capturing upstream regulatory state that is not directly 703 
+
+reflected in TF transcript abundance. 704 
+
+705 
+
+706 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 3, 2026. ;https://doi.org/10.64898/2026.07.01.735806 doi: bioRxiv preprint
+
+35 
+
+Methods 707 
+
+Data preprocessing for perturbation data 708 
+
+We assembled twelve perturbation datasets from five published studies covering 709 
+
+CRISPR activation, CRISPR interference, CRISPR knockout, and small-molecule 710 
+
+perturbations: Norman et al. K562 CRISPRa [20], Replogle et al. K562 genome-wide 711 
+
+and essential-gene CRISPRi screens and an RPE1 essential-gene CRISPRi screen 712 
+
+[21], Martin et al. erythroid-lineage Perturb-multiome [12], Jiang et al. compound 713 
+
+perturbations in primary CD4 T, CD8 T, B, and myeloid cells [22], and Srivatsan et 714 
+
+al. sci-Plex compound perturbations in A549, K562, and MCF7 [23]. Processed 715 
+
+single-cell objects for Norman, Replogle, and Srivatsan were obtained from 716 
+
+scPerturb [46] and the sc-pert repository (https://github.com/theislab/sc-pert). The 717 
+
+Jiang et al. datasets were downloaded from the original study repository 718 
+
+(GSE217460, https://data.caltech.edu/records/2cjss-wgh69). The Martin et al. 719 
+
+erythroid Perturb-multiome data were downloaded from GEO (GSE274113). 720 
+
+For CRISPR datasets, unperturbed cells (those that failed gRNA-induced expression 721 
+
+change of the target gene) were excluded using Mixscape [47] as implemented in 722 
+
+pertpy (v0.10.0) [48]. Highly variable genes were defined within each gRNA cell 723 
+
+group using `scanpy.pp.highly_variable_genes` with `min_disp = 0.2` (Scanpy 724 
+
+v1.11.2) [49], and the union of HVGs across gRNA groups was retained. 725 
+
+For all datasets, Pseudobulk expression matrices were generated using adpbulk 726 
+
+(v0.1.4) with `method = "sum"`, summing UMI counts per perturbation condition. 727 
+
+Perturbation conditions represented by 100 cells or fewer after Mixscape filtering 728 
+
+were removed to ensure stable condition-level expression estimates. Pseudobulk 729 
+
+counts were CPM-normalized and log2(x + 1)-transformed, and only genes with 730 
+
+CPM > 2 in at least one perturbation condition were retained. 731 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 3, 2026. ;https://doi.org/10.64898/2026.07.01.735806 doi: bioRxiv preprint
+
+36 
+
+For knockdown (CRISPRi) and overexpression (CRISPRa) perturbations targeting 732 
+
+expressed genes, the pseudobulk expression value of the target gene itself was 733 
+
+replaced with the corresponding value from the non-targeting control before model 734 
+
+fitting, preventing the model from learning a trivial sequence-to-expression mapping 735 
+
+in which the target gene's own promoter directly encodes its perturbation response. 736 
+
+Martin et al. erythroid Perturb-multiome dataset was processed through the same 737 
+
+Mixscape, HVG, pseudobulking, CPM normalization, log2 transform, and gene-filter 738 
+
+steps. For the matched ATAC-seq modality, cells passing the RNA-seq–based 739 
+
+filtering and perturbation-label assignment steps were retained, and ATAC profiles 740 
+
+were pseudobulked using the corresponding perturbation-condition labels. 741 
+
+Control conditions were defined according to each original study: non-targeting 742 
+
+gRNA for Norman, Replogle, and Martin et al.; the drug-free control condition for 743 
+
+Jiang et al.; and vehicle (DMSO) for Srivatsan et al. 744 
+
+745 
+
+Reference genome and training/validation/test split 746 
+
+The human reference genome was GRCh38.p14, and gene models were obtained 747 
+
+from the GENCODE v46 basic annotation [50]. Only protein-coding mRNAs and 748 
+
+lncRNAs were retained. For each gene, one representative transcription start site 749 
+
+(TSS) was selected by prioritizing transcripts annotated as Ensembl canonical; when 750 
+
+absent, transcripts were ordered by annotation rank (as provided in the GENCODE 751 
+
+annotation), with transcript identifiers serving as a deterministic tie-breaker. 752 
+
+Training, validation, and test partitions followed the genome partitioning scheme 753 
+
+defined in the AlphaGenome pretraining dataset [15]. Fold assignments were 754 
+
+obtained from the official AlphaGenome `fold_intervals` interface and mapped to the 755 
+
+retained representative TSS positions. All evaluations reported here were conducted 756 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 3, 2026. ;https://doi.org/10.64898/2026.07.01.735806 doi: bioRxiv preprint
+
+37 
+
+using a fixed downstream split corresponding to fold_0. This same downstream 757 
+
+partition was consistently applied across all backbone models (AlphaGenome, 758 
+
+Enformer, Borzoi, and a Simple CNN baseline) to ensure fair comparison. 759 
+
+760 
+
+DNA foundation model embeddings 761 
+
+To decouple representation extraction from prediction-head training, embeddings 762 
+
+from pretrained DNA foundation models were computed once for every retained 763 
+
+representative TSS and cached for downstream use. 764 
+
+1. AlphaGenome Embeddings were extracted with the `alphagenome-pytorch` re-765 
+
+implementation (v0.2.6) [15]. The official `alphagenome` Python package was used 766 
+
+to obtain genome-fold intervals. The primary transfer models used embeddings from 767 
+
+the all-fold AlphaGenome checkpoint. A context window of 1,048,576 bp centered on 768 
+
+each TSS was provided to the model, and activations were taken from the layer 769 
+
+immediately preceding the final prediction head. The four 128-bp bins (512 bp in 770 
+
+total) surrounding the TSS were retained directly, yielding a per-gene representation 771 
+
+of shape (4, 3072) = 12,288 dimensions, where 3072 is the number of channels in 772 
+
+the extracted hidden representation. 773 
+
+2. Enformer. Enformer embeddings were extracted with the `enformer-pytorch` 774 
+
+implementation (v0.8.10) [13]. A context window of 196,608 bp centered on each 775 
+
+TSS was used, and the four 128-bp bins surrounding the TSS were retained directly 776 
+
+to produce a per-gene representation of shape (4, 3072) = 12,288 dimensions, 777 
+
+where 3072 is the number of channels in the extracted hidden representation. 778 
+
+3. Borzoi. Borzoi embeddings were extracted with the `borzoi-pytorch` 779 
+
+implementation (v0.4.2) [14]. A context window of 524,288 bp centered on each TSS 780 
+
+was provided to the model. At Borzoi's 32-bp resolution, 16 bins (≈512 bp) 781 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 3, 2026. ;https://doi.org/10.64898/2026.07.01.735806 doi: bioRxiv preprint
+
+38 
+
+surrounding the TSS were retained directly, yielding a per-gene representation of 782 
+
+shape (16, 1920) = 30,720 dimensions, where 1920 is the number of channels in the 783 
+
+extracted hidden representation. 784 
+
+4. Simple CNN baseline. A non-pretrained baseline operating on 40,001-bp DNA 785 
+
+windows centered on the TSS was trained end-to-end from random initialization 786 
+
+without prior representation learning. 787 
+
+788 
+
+Model architecture 789 
+
+For all backbones the prediction head was a multi-output linear layer mapping the 790 
+
+per-gene embedding to a vector with one element per perturbation condition, 791 
+
+followed by a ReLU activation. The output dimensionality equals the number of 792 
+
+perturbation conditions in the dataset, comprising every perturbation together with 793 
+
+the non-targeting control, and output values correspond to per-gene log2(CPM + 1) 794 
+
+expression for each condition. Importantly, perturbation identity is not provided as an 795 
+
+input feature; perturbation-dependent responses are represented entirely as 796 
+
+differences among the condition-specific output channels anchored to the same 797 
+
+gene locus and sequence coordinate. The same head architecture was used across 798 
+
+AlphaGenome, Enformer, Borzoi, and the Simple CNN baseline, differing only in 799 
+
+input dimensionality. 800 
+
+801 
+
+Training 802 
+
+All training was performed with PyTorch v2.3.1 (PyTorch v2.4.1 + CUDA 12.1 in the 803 
+
+Borzoi environment) using NVIDIA H200 GPUs [51]. The optimiser was AdamW with 804 
+
+learning rate 1 × 10 ⁻⁴ and weight decay 5 × 10 ⁻³, the loss was mean squared error 805 
+
+(MSE), and the gradient clipping value was 0.2. Training was terminated when the 806 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 3, 2026. ;https://doi.org/10.64898/2026.07.01.735806 doi: bioRxiv preprint
+
+39 
+
+validation MSE did not improve for twenty consecutive epochs. Four training 807 
+
+strategies were used: 808 
+
+809 
+
+1. Feature extraction (transfer). Pre-computed embeddings were fed directly to the 810 
+
+prediction head; the backbone was held frozen. Training ran for up to 100 epochs 811 
+
+with batch size 256 in fp32 precision. This was the default strategy and was used 812 
+
+throughout the main results. 813 
+
+2. LoRA fine-tuning. Low-rank adaptation [25] was applied through the PEFT library 814 
+
+(v0.4.0) [52]. Adaptation targeted the attention query, key, value, and output 815 
+
+projections of the backbone (`to_qkv` and `to_out` for AlphaGenome) while the 816 
+
+prediction head remained trainable, with α = 2 and rank r ∈ {64, 256, 512}. Training 817 
+
+ran for up to 100 epochs at effective batch size 256 (per-device batch 2 with 128-818 
+
+step gradient accumulation) in bf16 mixed precision. 819 
+
+3. Full fine-tuning. The entire backbone together with the head was fine-tuned for 820 
+
+up to 150 epochs at the same effective batch size of 256 in bf16 mixed precision. 821 
+
+4. Simple CNN baseline. The Simple CNN was trained end-to-end from random 822 
+
+initialization on 40,001-bp DNA sequence input for up to 150 epochs at effective 823 
+
+batch size 256 in bf16 mixed precision. 824 
+
+825 
+
+For AlphaGenome cached-embedding extraction and sequence-mode runs (LoRA, 826 
+
+full fine-tuning, and DNA-side prediction), the running-variance update of the internal 827 
+
+`BatchRMSNorm` modules was disabled to prevent evaluation-time statistics drift. 828 
+
+For AlphaGenome sequence-mode runs, gradient checkpointing was enabled in the 829 
+
+transformer and U-Net blocks to fit the 1,048,576-bp context window into memory. 830 
+
+For feature-extraction runs, predictions were obtained by applying the trained head 831 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 3, 2026. ;https://doi.org/10.64898/2026.07.01.735806 doi: bioRxiv preprint
+
+40 
+
+to the cached per-gene embedding. For fine-tuning, LoRA, and Simple CNN runs, 832 
+
+predictions were obtained by forwarding the representative-TSS-centered sequence 833 
+
+through the backbone using the GRCh38.p14 reference. 834 
+
+835 
+
+Pearson correlation evaluation 836 
+
+Agreement between observed and fitted outputs was assessed on the held-out test 837 
+
+split using two complementary Pearson correlations. The across-genes correlation 838 
+
+was computed per perturbation between observed and fitted values, summarizing 839 
+
+how well the model reproduces the gene-level expression profile of each condition. 840 
+
+The across-perturbations correlation was computed per gene between observed and 841 
+
+fitted log2(CPM + 1) values across all perturbation conditions, capturing condition-842 
+
+dependent variation at a fixed locus. Genes were stratified into five quintile bins of 843 
+
+mean expression to expose expression-level effects on correlation (Fig. 2a,c). 844 
+
+845 
+
+Pretrained versus transferred AlphaGenome under unperturbed conditions 846 
+
+To test whether the original AlphaGenome representation could be used directly as 847 
+
+an expression output, raw AlphaGenome predictions under the unperturbed 848 
+
+condition were contrasted with predictions from the transferred model in CD8T and 849 
+
+K562 cells. AlphaGenome raw outputs were taken from the prediction-head layer 850 
+
+that concatenates the seven human genome track heads (rna_seq, cage, dnase, 851 
+
+procap, atac, chip_tf, chip_histone) into 4,992 tracks; for each dataset, CAGE-seq 852 
+
+replicates corresponding to the study cell types (CD8T or K562) were identified using 853 
+
+the published track metadata, summed across the four 128-bp center bins 854 
+
+surrounding the TSS and across the ± strand pair, and log-transformed before 855 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 3, 2026. ;https://doi.org/10.64898/2026.07.01.735806 doi: bioRxiv preprint
+
+41 
+
+comparison with the observed log2(CPM + 1) values and with the transferred 856 
+
+AlphaGenome prediction. 857 
+
+858 
+
+Baseline predictors 859 
+
+To assess the contribution of perturbation-specific fitting beyond trivial expression 860 
+
+structure, two baseline predictors were constructed. The control-copy baseline 861 
+
+replaced values for all non-control perturbations with those of the control condition 862 
+
+plus small Gaussian noise (σ = 0.001). The perturbation-mean baseline replaced 863 
+
+each perturbation with the gene-wise mean across all perturbations (excluding the 864 
+
+control) plus identical noise, while the control condition was preserved. Baselines 865 
+
+were evaluated using the same across-gene and across-perturbation Pearson 866 
+
+correlation pipeline as the trained models. 867 
+
+868 
+
+Embedding and clustering analysis 869 
+
+Observed and fitted expression matrices were each loaded as Scanpy v1.11.2 870 
+
+AnnData objects (rows = perturbation conditions; columns = genes), with genes z-871 
+
+scored using `sc.pp.scale`. PCA, a k-nearest-neighbor graph (`n_neighbors = 10`), 872 
+
+Leiden community detection (`resolution = 1.5`), and UMAP were computed 873 
+
+independently on observed and fitted profiles restricted to the held-out test set. To 874 
+
+visualize cluster transfer between modalities, observed Leiden labels were overlaid 875 
+
+on the fitted UMAP, producing the paired observed/fitted UMAP panels in Fig. 2d, 876 
+
+Fig. S3a, and Fig. S5a,b. 877 
+
+878 
+
+Cluster concordance metrics 879 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 3, 2026. ;https://doi.org/10.64898/2026.07.01.735806 doi: bioRxiv preprint
+
+42 
+
+Leiden clustering was performed independently on the observed and fitted 880 
+
+expression matrices, and concordance between the resulting partitions was 881 
+
+quantified using the adjusted Rand index (ARI) and normalized mutual information 882 
+
+(NMI) computed with scikit-learn (v1.7.0). 883 
+
+884 
+
+Multifold evaluation 885 
+
+Robustness to the train/validation/test partition was assessed using the four rotating 886 
+
+split configurations defined by the AlphaGenome pretraining scheme (fold_0–fold_3). 887 
+
+In each fold, both the genomic data partition and the backbone embeddings were 888 
+
+fold-specific: the transferred prediction head was trained, validated, and tested on 889 
+
+that fold's own train/validation/test split, using embeddings from the matching 890 
+
+pretrained AlphaGenome checkpoint. 891 
+
+We additionally included an "all_folds" condition, in which embeddings were drawn 892 
+
+from the AlphaGenome all_folds checkpoint. In this setting, the downstream 893 
+
+prediction head was trained, validated, and tested on the fold_0 data split (i.e., the 894 
+
+same downstream partition as the fold_0 setting). 895 
+
+896 
+
+Differential attribution and peak calling 897 
+
+For track visualization, motif discovery, and in silico mutation analyses, per-base 898 
+
+attribution scores were computed using Captum (v0.8.0) [53]. For each selected 899 
+
+input sequence, Input × Gradient [16] and Saliency [54] were computed for the non-900 
+
+targeting control output channel and for the target perturbation output channel. The 901 
+
+perturbation-specific differential attribution track was defined as the element-wise 902 
+
+difference between perturbation-channel and control-channel Input × Gradient on the 903 
+
+same input sequence. For peak calling, the per-base differential attribution scores 904 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 3, 2026. ;https://doi.org/10.64898/2026.07.01.735806 doi: bioRxiv preprint
+
+43 
+
+were first converted to absolute values and then binned to 128-bp resolution. The 905 
+
+resulting 128-bp binned absolute attribution tracks were processed with MACS3 906 
+
+bdgpeakcall (v3.0.3) [55] using cutoff = 0.0001, minimum length = 100 bp, and 907 
+
+maximum gap = 150 bp. The 128-bp windows overlapping each called peak were 908 
+
+retained for motif discovery and in silico mutation analyses. For visualization, signed 909 
+
+differential attribution tracks were also written as BedGraph files. 910 
+
+911 
+
+Gene-level evaluation of raw and differential attribution against observed fold 912 
+
+changes 913 
+
+For the Martin et al. dataset, raw output-channel attribution and control-subtracted 914 
+
+differential attribution were compared at the gene level using observed fold changes 915 
+
+as the reference measure (Fig. S8). For each perturbation with genome-wide 916 
+
+attribution profiles, three per-gene attribution summaries were computed: 917 
+
+1. the sum of absolute Input × Gradient attribution for the control output 918 
+
+2. the sum of absolute Input × Gradient attribution for the perturbation output 919 
+
+3. the sum of absolute control-subtracted differential Input × Gradient attribution 920 
+
+Attribution scores were matched to pseudobulk |FC| values for the same genes, 921 
+
+where |FC| was computed as the absolute difference in log2(CPM + 1) between 922 
+
+each perturbation and the non-targeting control. 923 
+
+Rank-based enrichment was evaluated for perturbations with at least 100 evaluable 924 
+
+genes. Within each perturbation and attribution type, genes were ranked 925 
+
+independently by attribution magnitude and observed |FC|. Top-ranked gene sets 926 
+
+were selected using matched percentile cutoffs ranging from 0.25% to 25% of 927 
+
+evaluable genes. For each cutoff, the overlap between attribution-ranked and |FC|-928 
+
+ranked genes was divided by the overlap expected under independence, k²/n, where 929 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 3, 2026. ;https://doi.org/10.64898/2026.07.01.735806 doi: bioRxiv preprint
+
+44 
+
+k is the number of selected genes and n is the number of evaluable genes. 930 
+
+Enrichment ratios were then averaged across perturbations. 931 
+
+Gene-wise consistency across perturbations was evaluated by computing, for each 932 
+
+gene, the Spearman correlation between attribution magnitude and observed |FC| 933 
+
+across perturbations. This analysis was performed separately for raw perturbation-934 
+
+output attribution and control-subtracted differential attribution. Genes were further 935 
+
+grouped by their maximum observed |FC| across perturbations to assess how 936 
+
+attribution–response agreement varied with response magnitude. 937 
+
+938 
+
+Enhancer AUPRC benchmark 939 
+
+In the Martin et al. benchmark, the RNA modality was used as the target response 940 
+
+for model fitting. Matched ATAC-derived TF perturbation–responsive accessible 941 
+
+chromatin regions from Table S2 of Martin et al. and TF perturbation–responsive 942 
+
+differentially expressed genes (DEGs) from Table S3 of the same study were used 943 
+
+only for benchmark construction. 944 
+
+TF perturbation–responsive accessible chromatin regions from Martin et al. Table S2 945 
+
+were converted into per-perturbation reference BED files. Candidate regions were 946 
+
+constructed for genes listed in the Martin et al. TF perturbation–responsive DEG 947 
+
+table (Table S3) with |log2FC| ≥ 0.50 by combining GenPerturb attribution peaks with 948 
+
+precomputed rE2G extended, rE2G, and ABC region sets provided as BED files [4– 949 
+
+5]. Because cell-context-matched rE2G and ABC predictions were not available for 950 
+
+the Martin et al. erythroid context, K562 predictions were used as the closest 951 
+
+available erythroid-lineage proxy. 952 
+
+All source-specific BED files were restricted to the 1,048,576-bp TSS-centered 953 
+
+model input window for each target gene. Regions from GenPerturb, rE2G extended, 954 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 3, 2026. ;https://doi.org/10.64898/2026.07.01.735806 doi: bioRxiv preprint
+
+45 
+
+rE2G, ABC, and the TSS-distance baseline were merged within each target gene to 955 
+
+define a shared candidate-region universe for each perturbation. Overlapping 956 
+
+genomic intervals linked to different genes were retained as distinct enhancer–gene 957 
+
+relationships. 958 
+
+Candidate regions were labelled positive if they overlapped the corresponding TF 959 
+
+perturbation–responsive accessible chromatin region from Martin et al. Table S2 for 960 
+
+the same perturbation; all other candidate regions were labelled negative. For each 961 
+
+candidate region, scores were assigned from differential attribution, rE2G extended, 962 
+
+rE2G, ABC, and TSS distance. Differential attribution scores were calculated from 963 
+
+the raw per-base differential Input × Gradient array. At each base pair, attribution 964 
+
+magnitude was defined as the sum of absolute values across the four nucleotide 965 
+
+channels. The region-level attribution score was defined as the mean magnitude 966 
+
+over the top 10% highest-scoring base pairs within the candidate region. ENCODE-967 
+
+rE2G, ENCODE-rE2G extended, and ABC scores were joined only from overlapping 968 
+
+records linked to the same target gene. When multiple matching records overlapped 969 
+
+a candidate region, the maximum score was used. Candidate regions without an 970 
+
+overlapping same-gene rE2G, rE2G extended, or ABC record were retained and 971 
+
+assigned a score of zero for that method. The TSS-distance baseline was defined as 972 
+
+1 / (1 + d), where d is the base-pair distance from the candidate-region midpoint to 973 
+
+the target gene TSS. AUPRC was computed separately for each perturbation and for 974 
+
+four TSS-distance strata (0–1 kb, 1–10 kb, 10–100 kb, and >100 kb). Perturbation– 975 
+
+stratum combinations with fewer than 10 positive regions were excluded. Mean 976 
+
+AUPRC across perturbations, paired comparisons between methods within each 977 
+
+distance stratum, and within-perturbation 95% bootstrap confidence intervals were 978 
+
+calculated using 1,000 bootstrap iterations. 979 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 3, 2026. ;https://doi.org/10.64898/2026.07.01.735806 doi: bioRxiv preprint
+
+46 
+
+980 
+
+Motif discovery and recovery 981 
+
+TF-MoDISco analysis was performed with tfmodisco-lite (v2.5.2) [26] on differential 982 
+
+attribution profiles. For each perturbation, the 200 genes with the largest absolute 983 
+
+observed fold changes and their 128-bp attribution peak windows were used as 984 
+
+input. Saliency was supplied as the hypothetical-contribution input after per-position 985 
+
+zero-centering across the four nucleotide channels, following the hypothetical-986 
+
+contribution convention used by tfmodisco-lite, and tfmodisco-lite internally 987 
+
+constructed the contribution signal as the element-wise product of the one-hot 988 
+
+reference sequence and this hypothetical contribution. Parameters were 989 
+
+`sliding_window_size = 15`, `flank_size = 5`, `target_seqlet_fdr = 0.2`, 990 
+
+`trim_to_window_size = 15`, `initial_flank_to_add = 5`, `final_flank_to_add = 5`, 991 
+
+`final_min_cluster_size = 20`, and `subcluster_perplexity = 10`. Discovered patterns 992 
+
+were annotated with Tomtom (MEME Suite v5.5.9) [7-8] against the JASPAR 2022 993 
+
+CORE vertebrate non-redundant PFM database [27]. Complementary known-motif 994 
+
+enrichment was performed with GimmeMotifs (v0.18.1) [3] using `gimme motifs --995 
+
+known` against the JASPAR 2022 vertebrate PFM database, applying the same 996 
+
+enrichment procedure to attribution, rE2G extended, rE2G standard, ABC, and TSS 997 
+
+± 1 kbp region sets. Per-perturbation TF-MoDISco Tomtom matches and 998 
+
+GimmeMotifs motif matches were summarized at q < 0.05 as gene matches to the 999 
+
+perturbed TF and as JASPAR-cluster matches to the perturbed TF family. 1000 
+
+1001 
+
+In silico motif mutation and representative locus 1002 
+
+Motif regions were defined using the width of JASPAR motifs matched to TF-1003 
+
+MoDISco–identified motifs. For the Fig. 3f and Fig. S10b boxplots, we tested whether 1004 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 3, 2026. ;https://doi.org/10.64898/2026.07.01.735806 doi: bioRxiv preprint
+
+47 
+
+model-internal sequence sensitivity increased with differential-attribution strength 1005 
+
+using motifs whose Tomtom annotation matched the perturbed TF or a TF in the 1006 
+
+same JASPAR cluster at q < 0.05. Every unique matched site was retained (2,735 1007 
+
+Martin et al. sites across 515 genes; 8,323 Norman sites across 1,226 genes). For 1008 
+
+each motif, a length-matched negative-control interval was placed at the nearest 1009 
+
+available offset from a discrete set of {±500, ±1,000, ±2,000, ±3,000} bp within the 1010 
+
+1,048,576-bp model input window and outside annotated motif regions extended by 1011 
+
+10 bp. Each motif target and paired negative-control interval was mutated five times 1012 
+
+with independent mononucleotide-preserving random shuffles of the reference 1013 
+
+bases, and all perturbation output channels were re-predicted for every shuffled 1014 
+
+sequence with the trained GenPerturb model. The choice of mononucleotide-1015 
+
+preserving shuffling as the in-silico motif-perturbation control follows the convention 1016 
+
+adopted by scooby [42]. The five mutant predictions were averaged for each target 1017 
+
+before calculating downstream mutation effects. The cancellation magnitude for each 1018 
+
+target and perturbation channel was then defined as |(seed-averaged mutant 1019 
+
+perturbation-control fold change) - (wild-type perturbation-control fold change)|. 1020 
+
+Matched motif targets were stratified into tertiles by the absolute Input × Gradient 1021 
+
+attribution sum over the motif and compared with the paired negative-control group; 1022 
+
+High-attribution versus negative-control separation was tested with a one-sided 1023 
+
+Mann-Whitney U statistic. 1024 
+
+1025 
+
+Analysis of lineage-associated perturbation programs in the Norman et al. 1026 
+
+dataset 1027 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 3, 2026. ;https://doi.org/10.64898/2026.07.01.735806 doi: bioRxiv preprint
+
+48 
+
+Observed and fitted perturbation-level expression profiles from the Norman et al. 1028 
+
+K562 CRISPRa dataset were projected into two-dimensional space using UMAP and 1029 
+
+annotated with the perturbation program labels reported in the original study. 1030 
+
+Erythroid and granulocytic perturbation programs and the corresponding signature 1031 
+
+gene sets were obtained from Norman et al. [20]. The erythroid signature comprised 1032 
+
+HBG1, HBG2, HBZ, HBA1, HBA2, GYPA, and ERMAP, whereas the granulocyte 1033 
+
+signature comprised ITGAM, CSF3R, LST1, and CD33. Signature scores were 1034 
+
+computed independently for observed and fitted AnnData objects using 1035 
+
+`scanpy.tl.score_genes` with default parameters. For each lineage signature, 1036 
+
+observed and fitted per-perturbation scores were compared across all perturbations 1037 
+
+using Pearson correlation. 1038 
+
+1039 
+
+Motif versus TF mRNA correlations along the signature axis 1040 
+
+To compare motif-level and TF expression-level associations with lineage-signature 1041 
+
+variation, we computed motif–signature and TF mRNA–signature correlations for 1042 
+
+matched motif–TF pairs. TF-MoDISco Tomtom annotations were converted into 1043 
+
+perturbation-level motif score matrices by transforming Tomtom q-values as 1044 
+
+−log10(q). For each lineage signature, Pearson correlations were calculated 1045 
+
+between motif scores and observed perturbation-level signature scores across 1046 
+
+perturbations. When multiple TF-MoDISco pattern groups were annotated to the 1047 
+
+same motif, the correlation with the largest absolute Pearson r was retained. For 1048 
+
+each matched motif–TF pair, TF mRNA expression was correlated with the same 1049 
+
+signature scores across the same perturbations. Each plotted point therefore 1050 
+
+represents the motif–signature correlation (x-axis) and the corresponding TF mRNA– 1051 
+
+signature correlation (y-axis) for a matched motif–TF pair. 1052 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 3, 2026. ;https://doi.org/10.64898/2026.07.01.735806 doi: bioRxiv preprint
+
+49 
+
+1053 
+
+In silico motif mutation along the signature axis in the Norman et al. dataset 1054 
+
+To test whether lineage-associated TF-MoDISco motif instances contributed to fitted 1055 
+
+signature shifts, we performed in silico motif mutation at lineage marker genes. We 1056 
+
+analyzed six erythroid marker genes (HBG1, HBG2, HBZ, HBA1, HBA2, and GYPA) 1057 
+
+and three granulocyte marker genes (ITGAM, CSF3R, and LST1). Signature genes 1058 
+
+lacking recovered TF-MoDISco motif instances (ERMAP and CD33) were excluded 1059 
+
+from the mutation analysis. Among TF-MoDISco–identified motifs at these genes, we 1060 
+
+selected motif instances belonging to the GATA, KLF, CEBP/ATF, and SP/GC-box 1061 
+
+motif families. STAT-family motifs were included as a negative-control motif class. 1062 
+
+Only motif instances recovered by TF-MoDISco at the analyzed marker genes were 1063 
+
+considered. For each selected motif instance, the motif sequence was mutated 1064 
+
+using five independent mononucleotide-preserving random shuffles of the reference 1065 
+
+bases, following the same shuffle convention as in the Martin et al. analysis. The 1066 
+
+trained GenPerturb model was then re-evaluated on each shuffled sequence, and 1067 
+
+wild-type and mutant fold changes were calculated relative to the non-targeting 1068 
+
+control for all perturbation output channels. For each motif instance, perturbation, 1069 
+
+and marker gene, the mutation effect was defined as ΔΔpred = (mutant perturbation– 1070 
+
+control fold change) − (wild-type perturbation–control fold change) and averaged 1071 
+
+across the five shuffles. To summarize effects at the lineage-signature level, gene-1072 
+
+level ΔΔpred values were averaged across genes within each signature. 1073 
+
+1074 
+
+SCENIC regulon inference 1075 
+
+SCENIC regulon activity per cell was inferred from the Mixscape-processed Norman 1076 
+
+AnnData using pySCENIC (v0.12.1) [6,56]. The pipeline was: (i) co-expression 1077 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 3, 2026. ;https://doi.org/10.64898/2026.07.01.735806 doi: bioRxiv preprint
+
+50 
+
+network inference with GRNBoost2 [57] using a human TF list as the regulator 1078 
+
+vocabulary; (ii) cisTarget motif-based pruning against the v10 clustered databases 1079 
+
+(`hg38_10kbp_up_10kbp_down_full_tx_v10_clust` rankings and the `motifs-1080 
+
+v10nr_clust-nr.hgnc-m0.001-o0.0` motif annotation); (iii) regulon construction from 1081 
+
+pruned motifs; and (iv) AUCell scoring per cell. Per-cell AUCell scores were 1082 
+
+averaged within each perturbation to obtain a per-regulon perturbation-level activity 1083 
+
+matrix. 1084 
+
+1085 
+
+Lineage-regulator UpSet plots 1086 
+
+Lineage-regulator summary plots were generated to compare how predefined 1087 
+
+lineage transcription factors (TFs) were prioritized by six regulatory evidence 1088 
+
+sources. The sources were: (i) TF-MoDISco motif scores from GenPerturb 1089 
+
+differential attribution; (ii–v) GimmeMotifs enrichment scores computed on 1090 
+
+GenPerturb attribution peaks, rE2G extended, rE2G, ABC, and TSS ± 1 kbp regions, 1091 
+
+respectively; and (vi) SCENIC regulon activity summarized by mean AUCell score 1092 
+
+per perturbation. For each source, we computed the correlation between its scores 1093 
+
+and the lineage signature score across perturbations, and ranked features by the 1094 
+
+absolute Pearson correlation coefficient (p < 0.05). For visualization, we used an 1095 
+
+UpSet-style representation in which evidence sources are arranged along the 1096 
+
+horizontal axis and predefined lineage regulators along the vertical axis. The lineage-1097 
+
+defining TF sets were defined as follows: erythroid = {GATA1, KLF1, TAL1, LMO2, 1098 
+
+NFE2} and granulocyte = {CEBPA, SPI1, CEBPB, CEBPE, GFI1, IRF4, IRF8, 1099 
+
+BATF3, KLF4, MAFB}. Within each evidence source, all TFs (motif-family clusters) 1100 
+
+were ranked by the absolute Pearson correlation coefficient (|r|). The lower matrix 1101 
+
+summarizes the ranking of each lineage regulator, with the number inside each circle 1102 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 3, 2026. ;https://doi.org/10.64898/2026.07.01.735806 doi: bioRxiv preprint
+
+51 
+
+indicating its correlation-based rank. The upper bar plots show the total number of 1103 
+
+significant TF–motif clusters. Because SCENIC regulons are generated using motif-1104 
+
+ranking databases that already group TFs with similar binding specificities, no 1105 
+
+additional collapsing into motif families was applied to SCENIC-derived results. For 1106 
+
+GimmeMotifs-based sources, motifs were retained only when at least one associated 1107 
+
+TF showed a mean observed log2(CPM) expression ≥ 0.5. 1108 
+
+1109 
+
+Glucocorticoid positive-control benchmark 1110 
+
+Analyses were performed using the Jiang et al. CD8 T-cell compound Perturb-seq 1111 
+
+dataset [22] and the corresponding fitted GenPerturb model trained with 1112 
+
+AlphaGenome feature-extraction transfer. Motifs were ranked within each compound 1113 
+
+by −log10(q-value), with non-detected motifs assigned a score of 0. NR3C1 mRNA 1114 
+
+log2 fold change relative to the non-perturbed control was calculated from observed 1115 
+
+pseudobulk counts with a pseudocount of 1. Only single-compound perturbations 1116 
+
+were included. 1117 
+
+Single compounds annotated as corticosteroids based on PubChem and related 1118 
+
+pharmacological resources were assigned to a corticosteroid group (n = 22), and all 1119 
+
+remaining single compounds were assigned to the background group. NR3C1 motif 1120 
+
+rank percentiles were compared between groups using a one-sided Wilcoxon rank-1121 
+
+sum test. NR3C1 motif rank percentiles were also compared with NR3C1 mRNA 1122 
+
+log2 fold changes across all single compounds. 1123 
+
+1124 
+
+Per-compound motif × TF mRNA decomposition 1125 
+
+For each compound, motifs passing the TF-MoDISco significance threshold (q ≤ 1126 
+
+0.05) were retained and rank percentiles were recomputed within the filtered set. 1127 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 3, 2026. ;https://doi.org/10.64898/2026.07.01.735806 doi: bioRxiv preprint
+
+52 
+
+Motif names were split on "::", and each component was mapped to a gene symbol 1128 
+
+by case-insensitive matching to the pseudobulk expression matrix. For heterodimer 1129 
+
+motifs, each TF component was assigned the same motif rank percentile and paired 1130 
+
+with its corresponding mRNA log2 fold change. For visualization, TF-family 1131 
+
+annotations were used to highlight NRF2-related motifs (NFE2L2, MAF, MAFB, 1132 
+
+MAFF, MAFG, MAFK, MAF::NFE2, MAFG::NFE2L1, and Bach1::Mafk) and NF-κB-1133 
+
+related motifs (REL and RELA). 1134 
+
+1135 
+
+Data availability 1136 
+
+The perturbed scRNA-seq data were obtained from multiple sources: Norman et al. 1137 
+
+and Replogle et al. from scPerturb (http://projects.sanderlab.org/scperturb/); 1138 
+
+Srivatsan et al. from the sc-pert repository (https://github.com/theislab/sc-pert); Jiang 1139 
+
+et al. from GSE217460 (https://data.caltech.edu/records/2cjss-wgh69); and Martin et 1140 
+
+al. from GEO (GSE274113). Martin et al. Supplementary Tables S2 and S3 1141 
+
+associated with the original article [12] were used for TF-sensitive ACR and TF-1142 
+
+sensitive gene annotations. The GRCh38.p14 reference genome and GENCODE 1143 
+
+v46 basic gene annotation were downloaded from GENCODE release 46 1144 
+
+(https://www.gencodegenes.org/human/release_46.html), including 1145 
+
+`GRCh38.p14.genome.fa.gz`, 1146 
+
+`gencode.v46.chr_patch_hapl_scaff.basic.annotation.gff3.gz`, and 1147 
+
+`gencode.v46.chr_patch_hapl_scaff.basic.annotation.gtf.gz`; representative TSS 1148 
+
+coordinates were parsed from these annotation files by prioritizing Ensembl-1149 
+
+canonical transcripts and using deterministic fallbacks when needed. Pretrained 1150 
+
+model weights were obtained through their model-specific download interfaces, 1151 
+
+including the official AlphaGenome JAX weights and Hugging Face repositories used 1152 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 3, 2026. ;https://doi.org/10.64898/2026.07.01.735806 doi: bioRxiv preprint
+
+53 
+
+by the PyTorch implementations. ENCODE-rE2G enhancer-gene predictions were 1153 
+
+downloaded from the ENCODE Portal, including the K562 standard files 1154 
+
+ENCFF497HEA and ENCFF246ZQE and K562 extended files ENCFF269DKY and 1155 
+
+ENCFF950FTI (https://www.encodeproject.org/). ABC predictions were downloaded 1156 
+
+from the Engreitz Lab AvgHiC ABC0.015 minus150 ForABCPaperV3 release 1157 
+
+(ftp://ftp.broadinstitute.org/outgoing/lincRNA/ABC/AllPredictions.AvgHiC.ABC0.015. 1158 
+
+minus150.ForABCPaperV3.txt.gz) and converted from hg19 to hg38 using the hg19-1159 
+
+to-hg38 mapping invoked by `pyliftover.LiftOver("hg19", "hg38")`, corresponding to 1160 
+
+the UCSC hg19ToHg38 chain resource 1161 
+
+(http://hgdownload.soe.ucsc.edu/goldenPath/hg19/liftOver/hg19ToHg38.over.chain.g 1162 
+
+z). Known motif sequences and cluster annotations were downloaded from JASPAR 1163 
+
+(https://jaspar.elixir.no/). SCENIC/cisTarget reference data were downloaded from 1164 
+
+the Aerts Lab resources: the human TF list 1165 
+
+(https://resources.aertslab.org/cistarget/tf_lists/allTFs_hg38.txt), the hg38 v10 1166 
+
+clustered rankings database 1167 
+
+(https://resources.aertslab.org/cistarget/databases/homo_sapiens/hg38/refseq_r80/ 1168 
+
+mc_v10_clust/gene_based/hg38_10kbp_up_10kbp_down_full_tx_v10_clust.genes_v 1169 
+
+s_motifs.rankings.feather), and the motif-to-TF annotation table 1170 
+
+(https://resources.aertslab.org/cistarget/motif2tf/motifs-v10nr_clust-nr.hgnc-m0.001-1171 
+
+o0.0.tbl). Compound annotations for Fig. 5 were curated from PubChem using PUG-1172 
+
+REST and PUG-View (https://pubchem.ncbi.nlm.nih.gov/); the PubChem screening 1173 
+
+script and cached evidence tables are provided with the analysis code. 1174 
+
+1175 
+
+Code availability 1176 
+
+The analysis code is available at https://github.com/rikenbit/GenPerturb. 1177 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 3, 2026. ;https://doi.org/10.64898/2026.07.01.735806 doi: bioRxiv preprint
+
+54 
+
+1178 
+
+1179 
+
+Data availability 1180 
+
+The perturbed scRNA-seq data were obtained from multiple sources: Norman et al. 1181 
+
+and Replogle et al. from scPerturb (http://projects.sanderlab.org/scperturb/); 1182 
+
+Srivatsan et al. from the sc-pert repository (https://github.com/theislab/sc-pert); Jiang 1183 
+
+et al. from GSE217460 (https://data.caltech.edu/records/2cjss-wgh69); and Martin et 1184 
+
+al. from GEO (GSE274113). Martin et al. Supplementary Tables S2 and S3 1185 
+
+associated with the original article [19] were used for TF-sensitive ACR and TF-1186 
+
+sensitive gene annotations. The GRCh38.p14 reference genome and GENCODE 1187 
+
+v46 basic gene annotation were downloaded from GENCODE release 46 1188 
+
+(https://www.gencodegenes.org/human/release_46.html), including 1189 
+
+`GRCh38.p14.genome.fa.gz`, 1190 
+
+`gencode.v46.chr_patch_hapl_scaff.basic.annotation.gff3.gz`, and 1191 
+
+`gencode.v46.chr_patch_hapl_scaff.basic.annotation.gtf.gz`; representative TSS 1192 
+
+coordinates were parsed from these annotation files by prioritizing Ensembl-1193 
+
+canonical transcripts and using deterministic fallbacks when needed. Pretrained 1194 
+
+model weights were obtained through their model-specific download interfaces, 1195 
+
+including the official AlphaGenome JAX weights and Hugging Face repositories used 1196 
+
+by the PyTorch implementations. ENCODE-rE2G enhancer-gene predictions were 1197 
+
+downloaded from the ENCODE Portal, including the K562 standard files 1198 
+
+ENCFF497HEA and ENCFF246ZQE and K562 extended files ENCFF269DKY and 1199 
+
+ENCFF950FTI (https://www.encodeproject.org/). ABC predictions were downloaded 1200 
+
+from the Engreitz Lab AvgHiC ABC0.015 minus150 ForABCPaperV3 release 1201 
+
+(ftp://ftp.broadinstitute.org/outgoing/lincRNA/ABC/AllPredictions.AvgHiC.ABC0.015. 1202 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 3, 2026. ;https://doi.org/10.64898/2026.07.01.735806 doi: bioRxiv preprint
+
+55 
+
+minus150.ForABCPaperV3.txt.gz) and converted from hg19 to hg38 using the hg19-1203 
+
+to-hg38 mapping invoked by `pyliftover.LiftOver("hg19", "hg38")`, corresponding to 1204 
+
+the UCSC hg19ToHg38 chain resource 1205 
+
+(http://hgdownload.soe.ucsc.edu/goldenPath/hg19/liftOver/hg19ToHg38.over.chain.g 1206 
+
+z). Known motif sequences and cluster annotations were downloaded from JASPAR 1207 
+
+(https://jaspar.elixir.no/). SCENIC/cisTarget reference data were downloaded from 1208 
+
+the Aerts Lab resources: the human TF list 1209 
+
+(https://resources.aertslab.org/cistarget/tf_lists/allTFs_hg38.txt), the hg38 v10 1210 
+
+clustered rankings database 1211 
+
+(https://resources.aertslab.org/cistarget/databases/homo_sapiens/hg38/refseq_r80/ 1212 
+
+mc_v10_clust/gene_based/hg38_10kbp_up_10kbp_down_full_tx_v10_clust.genes_v 1213 
+
+s_motifs.rankings.feather), and the motif-to-TF annotation table 1214 
+
+(https://resources.aertslab.org/cistarget/motif2tf/motifs-v10nr_clust-nr.hgnc-m0.001-1215 
+
+o0.0.tbl). Compound annotations for Fig. 5 were curated from PubChem using PUG-1216 
+
+REST and PUG-View (https://pubchem.ncbi.nlm.nih.gov/); the PubChem screening 1217 
+
+script and cached evidence tables are provided with the analysis code. 1218 
+
+1219 
+
+Code availability 1220 
+
+The analysis code is available at https://github.com/rikenbit/GenPerturb. 1221 
+
+1222 
+
+Data availability 1223 
+
+The perturbed scRNA-seq data were obtained from multiple sources: Norman et al. 1224 
+
+and Replogle et al. from scPerturb (http://projects.sanderlab.org/scperturb/); 1225 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 3, 2026. ;https://doi.org/10.64898/2026.07.01.735806 doi: bioRxiv preprint
+
+56 
+
+Srivatsan et al. from the sc-pert repository (https://github.com/theislab/sc-pert); Jiang 1226 
+
+et al. from GSE217460 (https://data.caltech.edu/records/2cjss-wgh69); and Martin et 1227 
+
+al. from GEO (GSE274113). Martin et al. Supplementary Tables S2 and S3 1228 
+
+associated with the original article [12] were used for TF-sensitive ACR and TF-1229 
+
+sensitive gene annotations. The GRCh38.p14 reference genome and GENCODE 1230 
+
+v46 basic gene annotation were downloaded from GENCODE release 46 1231 
+
+(https://www.gencodegenes.org/human/release_46.html), including 1232 
+
+`GRCh38.p14.genome.fa.gz`, 1233 
+
+`gencode.v46.chr_patch_hapl_scaff.basic.annotation.gff3.gz`, and 1234 
+
+`gencode.v46.chr_patch_hapl_scaff.basic.annotation.gtf.gz`; representative TSS 1235 
+
+coordinates were parsed from these annotation files by prioritizing Ensembl-1236 
+
+canonical transcripts and using deterministic fallbacks when needed. Pretrained 1237 
+
+model weights were obtained through their model-specific download interfaces, 1238 
+
+including the official AlphaGenome JAX weights and Hugging Face repositories used 1239 
+
+by the PyTorch implementations. ENCODE-rE2G enhancer-gene predictions were 1240 
+
+downloaded from the ENCODE Portal, including the K562 standard files 1241 
+
+ENCFF497HEA and ENCFF246ZQE and K562 extended files ENCFF269DKY and 1242 
+
+ENCFF950FTI (https://www.encodeproject.org/). ABC predictions were downloaded 1243 
+
+from the Engreitz Lab AvgHiC ABC0.015 minus150 ForABCPaperV3 release 1244 
+
+(ftp://ftp.broadinstitute.org/outgoing/lincRNA/ABC/AllPredictions.AvgHiC.ABC0.015. 1245 
+
+minus150.ForABCPaperV3.txt.gz) and converted from hg19 to hg38 using the hg19-1246 
+
+to-hg38 mapping invoked by `pyliftover.LiftOver("hg19", "hg38")`, corresponding to 1247 
+
+the UCSC hg19ToHg38 chain resource 1248 
+
+(http://hgdownload.soe.ucsc.edu/goldenPath/hg19/liftOver/hg19ToHg38.over.chain.g 1249 
+
+z). Known motif sequences and cluster annotations were downloaded from JASPAR 1250 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 3, 2026. ;https://doi.org/10.64898/2026.07.01.735806 doi: bioRxiv preprint
+
+57 
+
+(https://jaspar.elixir.no/). SCENIC/cisTarget reference data were downloaded from 1251 
+
+the Aerts Lab resources: the human TF list 1252 
+
+(https://resources.aertslab.org/cistarget/tf_lists/allTFs_hg38.txt), the hg38 v10 1253 
+
+clustered rankings database 1254 
+
+(https://resources.aertslab.org/cistarget/databases/homo_sapiens/hg38/refseq_r80/ 1255 
+
+mc_v10_clust/gene_based/hg38_10kbp_up_10kbp_down_full_tx_v10_clust.genes_v 1256 
+
+s_motifs.rankings.feather), and the motif-to-TF annotation table 1257 
+
+(https://resources.aertslab.org/cistarget/motif2tf/motifs-v10nr_clust-nr.hgnc-m0.001-1258 
+
+o0.0.tbl). Compound annotations for Fig. 5 were curated from PubChem using PUG-1259 
+
+REST and PUG-View (https://pubchem.ncbi.nlm.nih.gov/); the PubChem screening 1260 
+
+script and cached evidence tables are provided with the analysis code. 1261 
+
+1262 
+
+Code availability 1263 
+
+The analysis code is available at https://github.com/rikenbit/GenPerturb. 1264 
+
+1265 
+
+References 1266 
+
+1. Dixit A, Parnas O, Li B, et al. Perturb-Seq: dissecting molecular circuits with 1267 
+
+scalable single-cell RNA profiling of pooled genetic screens. Cell 167, 1853-1268 
+
+1866.e17 (2016). doi:10.1016/j.cell.2016.11.038. 1269 
+
+2. Adamson B, Norman TM, Jost M, et al. A multiplexed single-cell CRISPR 1270 
+
+screening platform enables systematic dissection of the unfolded protein response. 1271 
+
+Cell 167, 1867-1882.e21 (2016). doi:10.1016/j.cell.2016.11.048. 1272 
+
+3. Bruse N, van Heeringen SJ. GimmeMotifs: an analysis framework for transcription 1273 
+
+factor motif analysis. bioRxiv (2018). doi:10.1101/474403. 1274 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 3, 2026. ;https://doi.org/10.64898/2026.07.01.735806 doi: bioRxiv preprint
+
+58 
+
+4. Fulco CP, Nasser J, Jones TR, et al. Activity-by-contact model of enhancer-1275 
+
+promoter regulation from thousands of CRISPR perturbations. Nature Genetics 51, 1276 
+
+1664-1669 (2019). doi:10.1038/s41588-019-0538-0. 1277 
+
+5. Gschwind AR, Mualim KS, Karbalayghareh A, et al. An encyclopedia of enhancer-1278 
+
+gene regulatory interactions in the human genome. bioRxiv (2023). 1279 
+
+doi:10.1101/2023.11.09.563812. 1280 
+
+6. Aibar S, Gonzalez-Blas CB, Moerman T, et al. SCENIC: single-cell regulatory 1281 
+
+network inference and clustering. Nature Methods 14, 1083-1086 (2017). 1282 
+
+doi:10.1038/nmeth.4463. 1283 
+
+7. Bailey TL, Johnson J, Grant CE, Noble WS. The MEME Suite. Nucleic Acids 1284 
+
+Research 43, W39-W49 (2015). doi:10.1093/nar/gkv416. 1285 
+
+8. Gupta S, Stamatoyannopoulos JA, Bailey TL, Noble WS. Quantifying similarity 1286 
+
+between motifs. Genome Biology 8, R24 (2007). doi:10.1186/gb-2007-8-2-r24. 1287 
+
+9. Yan RE, Corman A, Katgara L, et al. Pooled CRISPR screens with joint single-1288 
+
+nucleus chromatin accessibility and transcriptome profiling. Nature Biotechnology 43, 1289 
+
+1628-1634 (2025). doi:10.1038/s41587-024-02475-x. 1290 
+
+10. Metzner F, Southard KM, Norman TM. Multiome Perturb-seq unlocks scalable 1291 
+
+discovery of integrated perturbation effects on the transcriptome and epigenome. 1292 
+
+Cell Systems 16, 101161 (2025). doi:10.1016/j.cels.2024.12.002. 1293 
+
+11. Shevade K, Yang YA, Feng K, et al. Simultaneous capture of single cell RNA-1294 
+
+seq, ATAC-seq, and CRISPR perturbation enables multiomic screens to identify 1295 
+
+gene regulatory relationships. Cell Reports Methods 5, 101222 (2025). 1296 
+
+doi:10.1016/j.crmeth.2025.101222. 1297 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 3, 2026. ;https://doi.org/10.64898/2026.07.01.735806 doi: bioRxiv preprint
+
+59 
+
+12. Martin-Rufino JD, Caulier A, Lee S, et al. Transcription factor networks 1298 
+
+disproportionately enrich for heritability of blood cell phenotypes. Science 388, 52-59 1299 
+
+(2025). doi:10.1126/science.ads7951. 1300 
+
+13. Avsec Z, Agarwal V, Visentin D, et al. Effective gene expression prediction from 1301 
+
+sequence by integrating long-range interactions. Nature Methods 18, 1196-1203 1302 
+
+(2021). doi:10.1038/s41592-021-01252-x. 1303 
+
+14. Linder J, Srivastava D, Yuan H, Agarwal V, Kelley DR. Predicting RNA-seq 1304 
+
+coverage from DNA sequence as a unifying model of gene regulation. Nature 1305 
+
+Genetics 57, 949-961 (2025). doi:10.1038/s41588-024-02053-6. 1306 
+
+15. Avsec Z, Latysheva N, Cheng J, et al. Advancing regulatory variant effect 1307 
+
+prediction with AlphaGenome. Nature 649, 1206-1218 (2026). doi:10.1038/s41586-1308 
+
+025-10014-0. 1309 
+
+16. Ancona M, Ceolini E, Oztireli C, Gross M. Towards better understanding of 1310 
+
+gradient-based attribution methods for deep neural networks. International 1311 
+
+Conference on Learning Representations (2018). arXiv:1711.06104. 1312 
+
+17. Novakovsky G, Dexter N, Libbrecht MW, et al. Obtaining genetics insights from 1313 
+
+deep learning via explainable artificial intelligence. Nature Reviews Genetics 24, 1314 
+
+125-137 (2023). doi:10.1038/s41576-022-00532-2. 1315 
+
+18. Gu J, Yang Y, Tresp V. Understanding individual decisions of CNNs via 1316 
+
+contrastive backpropagation. Asian Conference on Computer Vision (2018). 1317 
+
+doi:10.48550/arXiv.1812.02100. 1318 
+
+19. Jacovi A, Swayamdipta S, Ravfogel S, Elazar Y, Choi Y, Goldberg Y. Contrastive 1319 
+
+explanations for model interpretability. Proceedings of the 2021 Conference on 1320 
+
+Empirical Methods in Natural Language Processing , 1597-1611 (2021). 1321 
+
+doi:10.18653/v1/2021.emnlp-main.120. 1322 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 3, 2026. ;https://doi.org/10.64898/2026.07.01.735806 doi: bioRxiv preprint
+
+60 
+
+20. Norman TM, Horlbeck MA, Replogle JM, et al. Exploring genetic interaction 1323 
+
+manifolds constructed from rich single-cell phenotypes. Science 365, 786-793 1324 
+
+(2019). doi:10.1126/science.aax4438. 1325 
+
+21. Replogle JM, Saunders RA, Pogson AN, et al. Mapping information-rich 1326 
+
+genotype-phenotype landscapes with genome-scale Perturb-seq. Cell 185, 2559-1327 
+
+2575.e28 (2022). doi:10.1016/j.cell.2022.05.013. 1328 
+
+22. Jiang J, Chen S, Tsou T, et al. D-SPIN constructs regulatory network models 1329 
+
+from scRNA-seq that reveal organizing principles of perturbation response. Cell 1330 
+
+(2026). doi:10.1016/j.cell.2026.04.028. 1331 
+
+23. Srivatsan SR, McFaline-Figueroa JL, Ramani V, et al. Massively multiplex 1332 
+
+chemical transcriptomics at single-cell resolution. Science 367, 45-51 (2020). 1333 
+
+doi:10.1126/science.aax6234. 1334 
+
+24. Mejia GM, Miller HE, Leblanc FJA, Wang B, Swain BM, de Lima Camillo LP. 1335 
+
+Diversity by design: Addressing mode collapse improves scRNA-seq perturbation 1336 
+
+modeling on well-calibrated metrics. arXiv :2506.22641 (2025). 1337 
+
+doi:10.48550/arXiv.2506.22641. 1338 
+
+25. Hu EJ, Shen Y, Wallis P, et al. LoRA: low-rank adaptation of large language 1339 
+
+models. arXiv :2106.09685 (2021). doi:10.48550/arXiv.2106.09685. 1340 
+
+26. Shrikumar A, Tian K, Avsec Z, et al. Technical note on transcription factor motif 1341 
+
+discovery from importance scores (TF-MoDISco) version 0.5.6.5. arXiv :1811.00416 1342 
+
+(2018). doi:10.48550/arXiv.1811.00416. 1343 
+
+27. Castro-Mondragon JA, Riudavets-Puig R, Rauluseviciute I, et al. JASPAR 2022: 1344 
+
+the 9th release of the open-access database of transcription factor binding profiles. 1345 
+
+Nucleic Acids Research 50, D165-D173 (2022). doi:10.1093/nar/gkab1113. 1346 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 3, 2026. ;https://doi.org/10.64898/2026.07.01.735806 doi: bioRxiv preprint
+
+61 
+
+28. Hattangadi SM, Wong P, Zhang L, Flygare J, Lodish HF. From stem cell to red 1347 
+
+cell: regulation of erythropoiesis at multiple levels by multiple proteins, RNAs, and 1348 
+
+chromatin modifications. Blood 118, 6258-6268 (2011). doi:10.1182/blood-2011-07-1349 
+
+356006. 1350 
+
+29. Friedman AD. Transcriptional control of granulocyte and monocyte development. 1351 
+
+Oncogene 26, 6816-6828 (2007). doi:10.1038/sj.onc.1210764. 1352 
+
+30. Weikum ER, Knuesel MT, Ortlund EA, Yamamoto KR. Glucocorticoid receptor 1353 
+
+control of transcription: precision and plasticity via allostery. Nature Reviews 1354 
+
+Molecular Cell Biology 18, 159-174 (2017). doi:10.1038/nrm.2016.152. 1355 
+
+31. Frank F, Ortlund EA, Liu X. Structural insights into glucocorticoid receptor 1356 
+
+function. Biochemical Society Transactions 49, 2333-2343 (2021). 1357 
+
+doi:10.1042/BST20210419. 1358 
+
+32. Suzuki T, Yamamoto M. Molecular basis of the Keap1-Nrf2 system. Free Radical 1359 
+
+Biology and Medicine 88, 93-100 (2015). doi:10.1016/j.freeradbiomed.2015.06.006. 1360 
+
+33. Zhang Y, Yan T, Sun D, et al. Rutaecarpine inhibits KEAP1-NRF2 interaction to 1361 
+
+activate NRF2 and ameliorate dextran sulfate sodium-induced colitis. Free Radical 1362 
+
+Biology and Medicine 148, 33-41 (2020). doi:10.1016/j.freeradbiomed.2019.12.012. 1363 
+
+34. Shin JW, Chun KS, Kim DH, et al. Curcumin induces stabilization of Nrf2 protein 1364 
+
+through Keap1 cysteine modification. Biochemical Pharmacology 173, 113820 1365 
+
+(2020). doi:10.1016/j.bcp.2020.113820. 1366 
+
+35. Hayden MS, Ghosh S. NF-kappaB, the first quarter-century: remarkable progress 1367 
+
+and outstanding questions. Genes & Development 26, 203-234 (2012). 1368 
+
+doi:10.1101/gad.183434.111. 1369 
+
+36. Lee HK, Kim HS, Kim YJ, et al. Sophoricoside isolated from Sophora japonica 1370 
+
+ameliorates contact dermatitis by inhibiting NF-kappaB signaling in B cells. 1371 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 3, 2026. ;https://doi.org/10.64898/2026.07.01.735806 doi: bioRxiv preprint
+
+62 
+
+International Immunopharmacology 15, 467-473 (2013). 1372 
+
+doi:10.1016/j.intimp.2013.01.025. 1373 
+
+37. He G, Zhang X, Chen Y, et al. Isoalantolactone inhibits LPS-induced 1374 
+
+inflammation via NF-kappaB inactivation in peritoneal macrophages and improves 1375 
+
+survival in sepsis. Biomedicine & Pharmacotherapy 90, 598-607 (2017). 1376 
+
+doi:10.1016/j.biopha.2017.03.095. 1377 
+
+38. Giridharan S, Srinivasan M. Mechanisms of NF-kappaB p65 and strategies for 1378 
+
+therapeutic manipulation. Journal of Inflammation Research 11, 407-419 (2018). 1379 
+
+doi:10.2147/JIR.S140188. 1380 
+
+39. Ding YH, Song YD, Wu YX, et al. Isoalantolactone suppresses LPS-induced 1381 
+
+inflammation by inhibiting TRAF6 ubiquitination and alleviates acute lung injury. Acta 1382 
+
+Pharmacologica Sinica 40, 64-74 (2019). doi:10.1038/s41401-018-0061-3. 1383 
+
+40. Bravo Gonzalez-Blas C, De Winter S, Hulselmans G, et al. SCENIC+: single-cell 1384 
+
+multiomic inference of enhancers and gene regulatory networks. Nature Methods 20, 1385 
+
+1355-1367 (2023). doi:10.1038/s41592-023-01938-4. 1386 
+
+41. Fu X, Mo S, Buendia A, et al. A foundation model of transcription across human 1387 
+
+cell types. Nature 637, 965-973 (2025). doi:10.1038/s41586-024-08391-z. 1388 
+
+42. Hingerl JC, Martens LD, Karollus A, et al. scooby: modeling multimodal genomic 1389 
+
+profiles from DNA sequence at single-cell resolution. Nature Methods (2025). 1390 
+
+doi:10.1038/s41592-025-02854-5. 1391 
+
+43. Lal A, Karollus A, Gunsalus L, et al. Decoding sequence determinants of gene 1392 
+
+expression in diverse cellular and disease states. Nature Methods (2026). 1393 
+
+doi:10.1038/s41592-026-03102-0. 1394 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 3, 2026. ;https://doi.org/10.64898/2026.07.01.735806 doi: bioRxiv preprint
+
+63 
+
+44. Roohani Y, Huang K, Leskovec J. Predicting transcriptional outcomes of novel 1395 
+
+multigene perturbations with GEARS. Nature Biotechnology 42, 927-935 (2024). 1396 
+
+doi:10.1038/s41587-023-01905-6. 1397 
+
+45. Majdandzic A, Rajesh C, Koo PK. Correcting gradient-based interpretations of 1398 
+
+deep neural networks for genomics. Genome Biology 24, 109 (2023). 1399 
+
+doi:10.1186/s13059-023-02956-3. 1400 
+
+46. Peidli S, Green TD, Shen C, et al. scPerturb: harmonized single-cell perturbation 1401 
+
+data. Nature Methods 21, 531-540 (2024). doi:10.1038/s41592-023-02144-y. 1402 
+
+47. Papalexi E, Mimitou EP, Butler AW, et al. Characterizing the molecular regulation 1403 
+
+of inhibitory immune checkpoints with multimodal single-cell screens. Nature 1404 
+
+Genetics 53, 322-331 (2021). doi:10.1038/s41588-021-00778-2. 1405 
+
+48. Heumos L, Ji Y, May L, et al. Pertpy: an end-to-end framework for perturbation 1406 
+
+analysis. Nature Methods 23, 350-359 (2026). doi:10.1038/s41592-025-02909-7. 1407 
+
+49. Wolf FA, Angerer P, Theis FJ. SCANPY: large-scale single-cell gene expression 1408 
+
+data analysis. Genome Biology 19, 15 (2018). doi:10.1186/s13059-017-1382-0. 1409 
+
+50. Frankish A, Carbonell-Sala S, Diekhans M, et al. GENCODE: reference 1410 
+
+annotation for the human and mouse genomes in 2023. Nucleic Acids Research 51, 1411 
+
+D942-D949 (2023). doi:10.1093/nar/gkac1071. 1412 
+
+51. Paszke A, Gross S, Massa F, et al. PyTorch: an imperative style, high-1413 
+
+performance deep learning library. Advances in Neural Information Processing 1414 
+
+Systems 32, 8024-8035 (2019). 1415 
+
+52. Mangrulkar S, Gugger S, Debut L, Belkada Y, Paul S, Bossan B. PEFT: state-of-1416 
+
+the-art parameter-efficient fine-tuning methods. GitHub (2022). 1417 
+
+https://github.com/huggingface/peft. 1418 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 3, 2026. ;https://doi.org/10.64898/2026.07.01.735806 doi: bioRxiv preprint
+
+64 
+
+53. Kokhlikyan N, Miglani V, Martin M, et al. Captum: a unified and generic model 1419 
+
+interpretability library for PyTorch. arXiv :2009.07896 (2020). 1420 
+
+doi:10.48550/arXiv.2009.07896. 1421 
+
+54. Simonyan K, Vedaldi A, Zisserman A. Deep inside convolutional networks: 1422 
+
+visualising image classification models and saliency maps. arXiv :1312.6034 (2014). 1423 
+
+55. Zhang Y, Liu T, Meyer CA, et al. Model-based analysis of ChIP-Seq (MACS). 1424 
+
+Genome Biology 9, R137 (2008). doi:10.1186/gb-2008-9-9-r137. 1425 
+
+56. Van de Sande B, Flerin C, Davie K, et al. A scalable SCENIC workflow for single-1426 
+
+cell gene regulatory network analysis. Nature Protocols 15, 2247-2276 (2020). 1427 
+
+doi:10.1038/s41596-020-0336-2. 1428 
+
+57. Moerman T, Aibar Santos S, Bravo Gonzalez-Blas C, et al. GRNBoost2 and 1429 
+
+Arboreto: efficient and scalable inference of gene regulatory networks. Bioinformatics 1430 
+
+35, 2159-2161 (2019). doi:10.1093/bioinformatics/bty916. 1431 
+
+1432 
+
+Acknowledgements 1433 
+
+We thank the members of the Omics AI Research Team, particularly Akihiro 1434 
+
+Matsushima, for their management of the IT infrastructure. 1435 
+
+We thank the members of the Omics AI Research Team for their discussion of 1436 
+
+single-cell RNA-sequencing technologies. 1437 
+
+1438 
+
+Funding 1439 
+
+This work was partially supported by the Japan Science and Technology Agency, 1440 
+
+CREST Grant Numbers JPMJCR16G3, JPMJCR21N6, and JPMJCR1926, Japan. 1441 
+
+This work was partially supported by the Japan Agency for Medical Research and 1442 
+
+Development (AMED) under Grant Numbers JP20bm0404024 and JP21bm0404073. 1443 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 3, 2026. ;https://doi.org/10.64898/2026.07.01.735806 doi: bioRxiv preprint
+
+65 
+
+This work was partially supported by the RIKEN TRIP initiative (RIKEN TRIP-AGIS) 1444 
+
+in RIKEN and the Medical Research Center Initiative for High Depth Omics in 1445 
+
+Science Tokyo. 1446 
+
+1447 
+
+Contributions 1448 
+
+T.S. and I.N. designed and configured the various approaches used in this study. 1449 
+
+T.S. performed the training of transfer learning. T.S. analyzed the data. T.S.. and I.N. 1450 
+
+prepared the figures and wrote the manuscript. All authors read and approved the 1451 
+
+final manuscript. 1452 
+
+1453 
+
+Corresponding author 1454 
+
+Correspondence to: Itoshi Nikaido itoshi.nikaido@riken.jp 1455 
+
+1456 
+
+Ethics declarations 1457 
+
+Ethics approval and consent to participate 1458 
+
+Not applicable. 1459 
+
+1460 
+
+Consent for publication 1461 
+
+Not applicable. 1462 
+
+1463 
+
+Competing interests 1464 
+
+The authors report no competing interests. 1465 
+
+1466
