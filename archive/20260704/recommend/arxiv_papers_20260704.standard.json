@@ -1,0 +1,344 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-07-04T22:40:11.349894+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 2,
+    "deep_cap": 6,
+    "deep_selected": 2,
+    "quick_candidates": 6,
+    "quick_skim_target": 11,
+    "quick_selected": 6
+  },
+  "deep_dive": [
+    {
+      "id": "biorxiv-10-64898-2026-07-03-736369-v1",
+      "source": "biorxiv",
+      "title": "Benchmarking the translational potential of AI-based drug-resistance prediction from Mycobacterium tuberculosis whole-genome sequencing data",
+      "abstract": "Background: Tuberculosis, especially drug-resistant tuberculosis (DR-TB) including multidrug-resistant (MDR) and extensively drug-resistant (XDR) strains, remains a leading cause of infectious death worldwide. The rapid accumulation of whole-genome sequencing (WGS) data had spurred numerous computational methods for predicting antimicrobial resistance in Mycobacterium tuberculosis. However, heterogeneous datasets, preprocessing pipelines, and evaluation protocols have made fair comparisons impossible and have hindered clinical translation. A critical yet missing resource is a large-scale, unified benchmark to systematically assess and compare existing methods. Methods: We curated an integrated MTB WGS--phenotypic drug susceptibility testing (pDST) dataset from three sources: the CRyPTIC dataset (Comprehensive Resistance Prediction for Tuberculosis: an International Consortium), a published multi-study compilation, and newly curated literature-derived datasets. The final benchmark contains 54,364 paired WGS-pDST records with broad geographic, lineage, and drug coverage. After harmonizing phenotypes and generating standardized variant features, we evaluated seven models (including classical machine learning and deep learning architectures) across 18 drug-level and six clinical resistance category prediction tasks. Results: XGBoost achieved the highest mean drug-level AUPRC (0.674) and F1-score (0.620) and ranked first in AUPRC for 11 of 18 drugs, whereas WDNN achieved the highest mean AUROC. Random forest yielded the highest mean specificity (0.956) and accuracy (0.933), whereas logistic regression achieved the highest mean recall (0.774), highlighting distinct clinical trade-offs. Drug-level difficulty was highly heterogeneous: rifampicin and isoniazid were predicted robustly, whereas bedaquiline, delamanid, linezolid, and clofazimine remained persistently difficult. In clinical resistance category evaluation, RR-TB, MDR-TB, and pan-susceptibility were well predicted, but XDR-TB and other resistance categories constituted major bottlenecks. Conclusions: Under the largest unified benchmark to date, classical machine-learning methods, particularly XGBoost, provided the strongest precision--recall and F1 performance overall, while neural models remained competitive by AUROC. Emerging drugs (bedaquiline, delamanid, linezolid, clofazimine) and XDR cases remain persistently difficult to predict, identifying key bottlenecks for future method development. This benchmark can serve as a community standard for evaluating MTB resistance prediction and the provided evaluation pipeline offers an actionable baseline for regulatory qualification and clinical decision support system validation, accelerating the translation of WGS-based resistance prediction into practice.",
+      "authors": [
+        "Liu, C.",
+        "Zhu, H.",
+        "Zhou, P.",
+        "Thanh, N. T.",
+        "Dat, N. Q.",
+        "Atmosukarto, I.",
+        "Cheong, I. H.",
+        "Kozlakidis, Z.",
+        "Adisasmito, W.",
+        "Zheng, X.",
+        "Wang, H.",
+        "Yang, Y."
+      ],
+      "primary_category": "bioinformatics",
+      "categories": [
+        "bioinformatics"
+      ],
+      "published": "2026-07-03T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.07.03.736369v1.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "benchmarking AI-based drug-resistance prediction from WGS data, directly addresses machine learning for resistance",
+      "llm_evidence_cn": "基于全基因组测序数据的AI耐药预测基准测试，直接针对机器学习耐药预测",
+      "llm_evidence": "基于全基因组测序数据的AI耐药预测基准测试，直接针对机器学习耐药预测",
+      "canonical_evidence": "基于全基因组测序数据的AI耐药预测基准测试，直接针对机器学习耐药预测",
+      "llm_tldr_en": "This work curates a large-scale unified benchmark for evaluating AI-based drug-resistance prediction methods from Mycobacterium tuberculosis WGS data, enabling fair comparison.",
+      "llm_tldr_cn": "结核分枝杆菌耐药预测方法众多但缺乏统一评估标准。本研究构建了大规模标准化基准数据集和流程，系统比较了多种AI方法预测结核耐药的效果。该基准框架和评估策略可直接迁移至肿瘤新辅助治疗耐药预测模型的开发与比较。",
+      "llm_tldr": "结核分枝杆菌耐药预测方法众多但缺乏统一评估标准。本研究构建了大规模标准化基准数据集和流程，系统比较了多种AI方法预测结核耐药的效果。该基准框架和评估策略可直接迁移至肿瘤新辅助治疗耐药预测模型的开发与比较。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "machine learning drug resistance prediction",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "biorxiv-10-1101-2025-06-27-661992-v2",
+      "source": "biorxiv",
+      "title": "MORPH Predicts the Single-Cell Outcome of Genetic Perturbations Across Conditions and Data Modalities",
+      "abstract": "Modeling cellular responses to genetic perturbations is a significant challenge in computational biology. Measuring all gene perturbations and their combinations across cell types and conditions is experimentally challenging, highlighting the need for predictive models that generalize across data types to support this task. Here we present MORPH, a MOdular framework for predicting Responses to Perturbational cHanges. MORPH combines a discrepancy-based variational autoencoder with an attention mechanism to predict cellular responses to unseen perturbations. It supports both single-cell transcriptomics and imaging outputs and can generalize to unseen perturbations, combinations of perturbations, and perturbations in new cellular contexts. The attention-based framework enables inference of gene interactions and regulatory networks, while the learned gene embeddings can guide the design of informative perturbations, as demonstrated in two applications. Overall, MORPH is a flexible tool for optimizing perturbation experiments, enabling efficient exploration of the perturbation space to advance understanding of cellular programs for fundamental research and therapeutic applications.",
+      "authors": [
+        "He, C.",
+        "Zhang, J.",
+        "Dahleh, M. A.",
+        "Uhler, C."
+      ],
+      "primary_category": "bioinformatics",
+      "categories": [
+        "bioinformatics"
+      ],
+      "published": "2026-07-01T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.1101/2025.06.27.661992v2.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "machine learning model predicting single-cell perturbation outcomes, applicable to drug resistance prediction",
+      "llm_evidence_cn": "机器学习模型预测单细胞扰动结果，可应用于药物耐药预测",
+      "llm_evidence": "机器学习模型预测单细胞扰动结果，可应用于药物耐药预测",
+      "canonical_evidence": "机器学习模型预测单细胞扰动结果，可应用于药物耐药预测",
+      "llm_tldr_en": "MORPH is a modular deep learning framework that predicts single-cell responses to genetic perturbations using variational autoencoder and attention, supporting transcriptomics and imaging.",
+      "llm_tldr_cn": "基因扰动实验覆盖面有限，需要预测模型。MORPH结合差异变分自编码器和注意力机制，从单细胞转录组或成像数据预测未见扰动（包括组合）的细胞响应。该模型可应用于预测耐药突变对肿瘤细胞表型的影响，助力耐药机制研究。",
+      "llm_tldr": "基因扰动实验覆盖面有限，需要预测模型。MORPH结合差异变分自编码器和注意力机制，从单细胞转录组或成像数据预测未见扰动（包括组合）的细胞响应。该模型可应用于预测耐药突变对肿瘤细胞表型的影响，助力耐药机制研究。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "machine learning drug resistance prediction",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "biorxiv-10-1101-2025-09-14-676067-v3",
+      "source": "biorxiv",
+      "title": "SpatialFuser: a unified framework for integrative analysis of unpaired spatial multi-omics data",
+      "abstract": "Recent advances in spatial multi-omics technologies provide unprecedented opportunities to interpret molecular features in tissue microenvironments, but integrative analysis across heterogeneous datasets remains challenging. Here we present SpatialFuser, a deep learning framework for integrative analysis of unpaired spatial multi-omics data across epigenomics, transcriptomics, proteomics, and metabolomics. SpatialFuser consists of three coordinated modules: MCGATE, a Multi-head Collaborative Graph Attention auToEncoder that learns multi-scale spatial representations to decipher fine-grained spatial heterogeneity beyond predefined spatial neighbourhoods; an optional geometric pre-matching module that provides coarse initialization under tissue geometry mismatch; and an iterative matching-fusion module that couples geometry-constrained optimal transport matching with contrastive-learning-guided modality fusion for cross-slice alignment and integration. Systematic benchmarks demonstrate superior performance and reliability compared with existing state-of-the-art methods in spatial domain identification, cross-slice alignment, and multi-omics integration. Applications to real datasets illustrate that SpatialFuser resolves precise spatial molecular patterns, reveals developmental dynamics, and recovers complementary signals across modalities. Cross-resolution integration of weakly correlated modalities by our method further uncovers previously obscured biological variation. The generalizability and versatility of our framework enable customized analytical scenarios and potential extension for emerging omics.",
+      "authors": [
+        "Cai, W.",
+        "Li, W."
+      ],
+      "primary_category": "bioinformatics",
+      "categories": [
+        "bioinformatics"
+      ],
+      "published": "2026-07-02T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.1101/2025.09.14.676067v3.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Spatial multi-omics integration for tumor microenvironment",
+      "llm_evidence_cn": "空间多组学整合分析肿瘤微环境",
+      "llm_evidence": "空间多组学整合分析肿瘤微环境",
+      "canonical_evidence": "空间多组学整合分析肿瘤微环境",
+      "llm_tldr_en": "SpatialFuser integrates unpaired spatial multi-omics data across epigenomics, transcriptomics, proteomics, and metabolomics, enabling comprehensive characterization of tumor resistance mechanisms.",
+      "llm_tldr_cn": "针对空间多组学数据整合分析难题，本文提出SpatialFuser深度学习框架，可整合来自不同实验的未配对空间多组学数据（表观组、转录组、蛋白组、代谢组）。通过多尺度图注意力自编码器和几何预匹配模块，有效刻画空间异质性。该框架可应用于肿瘤耐药机制的多组学特征刻画。",
+      "llm_tldr": "针对空间多组学数据整合分析难题，本文提出SpatialFuser深度学习框架，可整合来自不同实验的未配对空间多组学数据（表观组、转录组、蛋白组、代谢组）。通过多尺度图注意力自编码器和几何预匹配模块，有效刻画空间异质性。该框架可应用于肿瘤耐药机制的多组学特征刻画。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "multi omics characterization of tumor resistance",
+      "matched_requirement_id": "req-10",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-06-25-734643-v2",
+      "source": "biorxiv",
+      "title": "Genetically informed single-cell and spatial mapping of metabolic programs in human health and disease",
+      "abstract": "Defining cell-type-specific endogenous metabolic features, the spatial distribution of cell-level metabolic states and cellular responses to exogenous metabolites is very important for understanding disease mechanisms. However, existing transcriptome-based metabolic models primarily infer intracellular reaction or pathway-level activities, and therefore cannot directly assess associations between individual metabolite levels and cellular states, particularly for metabolites that act extracellularly as signalling molecules rather than entering cells as metabolic substrates. To overcome this problem, we introduce the gmMAP (Genetically informed metabolite trait mapping across single-cell and spatial tissues), a framework that integrates metabolite GWAS summary statistics with single-cell and spatial transcriptomes to map metabolic programmes at cellular and spatial resolution. Notably, the gmMAP enables the prediction of endogenous metabolic process activation while also revealing intrinsic associations between exogenous metabolites and diverse cellular functional states. To further capture the connectivity of cellular metabolic networks, we incorporated a constraint-based metabolic flux model to evaluate global metabolic activity. To evaluate the accuracy and generalizability of gmMAP, we applied the framework across representative biological contexts spanning human development, physiological homeostasis, inflammation and cancer. In human kidney development, the gmMAP captured dynamic metabolic programmes, which was validated using paired transcriptomic and metabolomic reference datasets, supporting its reliability in metabolite identification and metabolic-flow inference. At the organ level, the gmMAP reconstructed spatial metabolite distribution patterns across 17 mouse organs under homeostatic and autoimmune inflammatory conditions, and further extension of gmMAP to 24 normal human tissues generated a multi-scale metabolic atlas at both organ and cellular resolutions. In disease settings, gmMAP revealed metabolic reprogramming across 29 pan-cancer cell populations, and identified potential links between exogenous metabolites and inflammation-associated stromal metabolic remodelling in ulcerative colitis. Together, gmMAP can consistently connect genetically informed metabolite traits with cell states, spatial tissue organization and disease pathology.",
+      "authors": [
+        "Xu, H.",
+        "Huang, G.",
+        "Zhang, L.",
+        "Liu, W.",
+        "Wu, Q.",
+        "Chen, M.",
+        "Zhao, D.",
+        "Zhang, Y.",
+        "Xu, A."
+      ],
+      "primary_category": "genomics",
+      "categories": [
+        "genomics"
+      ],
+      "published": "2026-06-30T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.06.25.734643v2.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "single-cell and spatial mapping of metabolic programs, applicable to tumor resistance mechanisms",
+      "llm_evidence_cn": "单细胞和空间代谢图谱方法，可应用于肿瘤耐药机制研究",
+      "llm_evidence": "单细胞和空间代谢图谱方法，可应用于肿瘤耐药机制研究",
+      "canonical_evidence": "单细胞和空间代谢图谱方法，可应用于肿瘤耐药机制研究",
+      "llm_tldr_en": "gmMAP integrates single-cell and spatial transcriptomics to map cell-type-specific metabolic states, enabling analysis of metabolic reprogramming in diseases including potentially cancer resistance.",
+      "llm_tldr_cn": "现有转录组代谢模型难以将单个代谢物与细胞状态关联，gmMAP框架通过整合遗传信息与单细胞/空间转录组数据，实现了细胞类型特异性代谢特征的定位。该方法能揭示肿瘤微环境中代谢重编程与免疫抑制的关联，为理解新辅助治疗耐药的非遗传机制提供新视角。",
+      "llm_tldr": "现有转录组代谢模型难以将单个代谢物与细胞状态关联，gmMAP框架通过整合遗传信息与单细胞/空间转录组数据，实现了细胞类型特异性代谢特征的定位。该方法能揭示肿瘤微环境中代谢重编程与免疫抑制的关联，为理解新辅助治疗耐药的非遗传机制提供新视角。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "single cell sequencing resistance mechanism",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-06-26-734894-v1",
+      "source": "biorxiv",
+      "title": "Phenotypic inference from sparse tumor genomes informs an explainable deep-learning model for cancer prognosis",
+      "abstract": "Somatic genomic alterations are widely profiled in cancer and remain the primary source for personalized therapy, yet their clinical utility is limited to few actionable targets. AI/ML models offer opportunities to capture genome-wide complexities, but clinical translation is hindered by poor interpretability, often limited to single-gene effects, and overlooks higher-order phenotypic interactions. To address this, we developed PhenoMap, a machine-learning framework that infers tumor phenotypic states from somatic variants. Trained on 9,000 pan-cancer genomes and transcriptomes, PhenoMap accurately reconstructs expression-based pathway enrichment scores and consolidated hallmark cancer phenotypes, enabling multilevel interpretation at phenotype, pathway, and gene scales. PhenoMap captured molecular subtypes and key resistance pathways across breast, lung, and brain cancers. We leveraged these features in PhenoSurv, a deep survival model integrating phenotypic reconstruction loss, Kullback-Leibler divergence, and survival loss to learn biologically-grounded predictors. PhenoSurv outperformed state-of-the-art survival models while providing robust mechanistic explanations. NOTCH1 signaling and SMARCA4 mutations emerged as a major prognostic factor in hormone receptor-positive breast cancer. TGF-{beta} signaling and inflammasomes, potentially modulated by FAT1, predicted lung adenocarcinoma outcomes, while inositol metabolism and PI3K signaling were key drivers in brain cancer. Together, PhenoMap and PhenoSurv provide accurate, interpretable, and clinically actionable models for precision oncology.\n\nGraphical Abstract\n\nO_FIG O_LINKSMALLFIG WIDTH=200 HEIGHT=191 SRC=\"FIGDIR/small/734894v1_ufig1.gif\" ALT=\"Figure 1\">\nView larger version (37K):\norg.highwire.dtl.DTLVardef@10101f1org.highwire.dtl.DTLVardef@1269ec3org.highwire.dtl.DTLVardef@81211borg.highwire.dtl.DTLVardef@1a48f91_HPS_FORMAT_FIGEXP  M_FIG C_FIG PhenoMap framework leverages genomic data and explainable deep learning to identify phenotype, pathway, and gene-level prognostic markers for precision oncology.",
+      "authors": [
+        "Grant, S.",
+        "Nath, A."
+      ],
+      "primary_category": "bioinformatics",
+      "categories": [
+        "bioinformatics"
+      ],
+      "published": "2026-07-01T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.06.26.734894v1.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "machine learning framework for phenotypic inference from tumor genomes, applicable to drug resistance prediction",
+      "llm_evidence_cn": "基于肿瘤基因组的机器学习表型推断框架，可应用于耐药预测",
+      "llm_evidence": "基于肿瘤基因组的机器学习表型推断框架，可应用于耐药预测",
+      "canonical_evidence": "基于肿瘤基因组的机器学习表型推断框架，可应用于耐药预测",
+      "llm_tldr_en": "Develops PhenoMap, an explainable deep-learning model that infers tumor phenotypic states from sparse genomes, enabling multi-level analysis relevant to drug resistance prediction.",
+      "llm_tldr_cn": "基于体细胞变异的AI/ML模型在癌症预后中可解释性差且局限于单基因效应。本研究开发了PhenoMap框架，从稀疏肿瘤基因组推断表型状态，在9000例泛癌样本上训练，能准确重构通路富集分数和标志性癌症表型。该方法推动了机器学习在肿瘤耐药预测中的应用，提供了可解释的表型推断工具。",
+      "llm_tldr": "基于体细胞变异的AI/ML模型在癌症预后中可解释性差且局限于单基因效应。本研究开发了PhenoMap框架，从稀疏肿瘤基因组推断表型状态，在9000例泛癌样本上训练，能准确重构通路富集分数和标志性癌症表型。该方法推动了机器学习在肿瘤耐药预测中的应用，提供了可解释的表型推断工具。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "machine learning drug resistance prediction",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-06-29-735200-v1",
+      "source": "biorxiv",
+      "title": "Mapping the immune landscape in small cell lung cancer unveils a distinct tumor-reactive CD8+ T cell molecular signature",
+      "abstract": "Small cell lung cancer (SCLC) is a highly aggressive malignancy with limited therapeutic advances. Unlike many other cancers, its immune landscape, particularly immune competence and T cell recognition, remains poorly characterized. Here, we generate a single-cell transcriptome atlas of the SCLC immune microenvironment with paired T cell receptor (TCR) sequencing. By linking T cell states with clonality and a multilayered functional screening, we identify 6 tumor-reactive TCRs that recognize and eradicate autologous SCLC cell lines. We delineate a novel SCLC-reactive CD8+ T cell signature (SCLC_TR), enabling the identification of 47 further SCLC-reactive TCRs. The SCLC_TR signature performs extremely well in pancreatic ductal adenocarcinoma (PDAC), another immune-cold tumor indication, and, most strikingly, patients with elevated SCLC_TR signature scores exhibited significantly improved survival, underlining its prognostic potential. Comparative cell-cell interaction analyses implicate several immunosuppressive mechanisms, with myeloid cells and CD4+ regulatory T cells possibly acting as counterbalances to effector T cell activity in SCLC. In summary, our study challenges the prevailing notion of SCLC as an immune-cold tumor type by providing direct evidence of tumor-reactive T cell responses and introduces the SCLC_TR signature as a tool to identify tumor-specific T cells and their microenvironmental restraints and escape mechanisms, ultimately shaping next-generation immunotherapeutic strategies.",
+      "authors": [
+        "Khinvasara, K.",
+        "Diken, E.",
+        "Gerbracht, J. V.",
+        "Huduti, E.",
+        "D'Rozario, J.",
+        "Omokoko, T.",
+        "Newrzela, S.",
+        "Akilli, O.",
+        "Lang, F.",
+        "Schroers, B.",
+        "Hoepker, K.",
+        "Stanganello, E.",
+        "Schork, M.",
+        "Gargano, A.",
+        "Al Alwash, A.",
+        "Weber, J.-P.",
+        "George, J.",
+        "Thomas, R. K.",
+        "Kuebler, A.",
+        "Diken, M.",
+        "Sahin, U.",
+        "Kolb, L."
+      ],
+      "primary_category": "immunology",
+      "categories": [
+        "immunology"
+      ],
+      "published": "2026-07-03T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.06.29.735200v1.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "single-cell transcriptome atlas of SCLC immune microenvironment, enabling resistance mechanism studies",
+      "llm_evidence_cn": "小细胞肺癌免疫微环境的单细胞转录组图谱，为耐药机制研究奠定基础",
+      "llm_evidence": "小细胞肺癌免疫微环境的单细胞转录组图谱，为耐药机制研究奠定基础",
+      "canonical_evidence": "小细胞肺癌免疫微环境的单细胞转录组图谱，为耐药机制研究奠定基础",
+      "llm_tldr_en": "Generates a single-cell transcriptome atlas of SCLC immune microenvironment, identifies tumor-reactive TCRs and a novel CD8+ T cell signature, relevant for understanding resistance to immunotherapy.",
+      "llm_tldr_cn": "小细胞肺癌（SCLC）免疫景观尚不明确，尤其是T细胞识别机制。本研究构建了SCLC免疫微环境的单细胞转录组图谱，结合TCR测序和功能筛选，鉴定出6个肿瘤反应性TCR并定义SCLC反应性CD8+ T细胞转录组特征（SCLC_TR）。该特征可识别更多反应性TCR，为理解免疫治疗耐药提供了新的分子标志物和机制线索。",
+      "llm_tldr": "小细胞肺癌（SCLC）免疫景观尚不明确，尤其是T细胞识别机制。本研究构建了SCLC免疫微环境的单细胞转录组图谱，结合TCR测序和功能筛选，鉴定出6个肿瘤反应性TCR并定义SCLC反应性CD8+ T细胞转录组特征（SCLC_TR）。该特征可识别更多反应性TCR，为理解免疫治疗耐药提供了新的分子标志物和机制线索。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "transcriptomics tumor resistance",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-06-29-735224-v1",
+      "source": "biorxiv",
+      "title": "Scalable multi-group nonnegative spatial factorization for spatial genomics data with cell-type heterogeneity",
+      "abstract": "Spatial transcriptomics (ST) technologies enable the study of gene expression within the spatial context of tissues, providing insights into tissue structure, cellular interactions, and disease progression. However, existing dimension reduction methods often overlook spatial information or struggle to distinguish spatial gene patterns from those driven by cell-type differences, limiting biological interpretability by convolving differences in gene expression patterns with differences in cell-type proportions. To address these challenges, we introduce the scalable multi-group nonnegative spatial factorization (smNSF), a computationally-tractable probabilistic framework that integrates spatial coordinates and cell-type labels into a unified matrix factorization model. By using multi-group Gaussian processes (MGGPs) as priors, our model captures complex spatial variation in a cell-type specific way while enforcing nonnegativity to enhance interpretability. We develop a variational inference framework for MGGPs that supports scalable optimization and improves the numerical stability of smNSF. Across seven spatial transcriptomics datasets spanning diverse technologies and tissues, smNSF recovers sparse, interpretable spatial factors and, through its cell-type conditional posteriors, organizes them into cell-type enriched, cell-type specific, and universal spatial programs that are not apparent from marginal factors alone. Given cell-type labels in ST data, smNSF enables cell-type aware spatial decompositions and supports cell-type conditional posteriors for in silico exploration of relationships between spatial patterns and cellular identity.",
+      "authors": [
+        "Chumpitaz-Diaz, L.",
+        "Shrestha, P.",
+        "Engelhardt, B. E."
+      ],
+      "primary_category": "genomics",
+      "categories": [
+        "genomics"
+      ],
+      "published": "2026-07-03T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.06.29.735224v1.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "spatial transcriptomics method applicable to tumor microenvironment resistance studies",
+      "llm_evidence_cn": "空间转录组学方法可用于肿瘤微环境耐药研究",
+      "llm_evidence": "空间转录组学方法可用于肿瘤微环境耐药研究",
+      "canonical_evidence": "空间转录组学方法可用于肿瘤微环境耐药研究",
+      "llm_tldr_en": "Proposes smNSF, a scalable spatial factorization method that disentangles cell-type and spatial gene patterns, offering a tool for studying tumor microenvironment in neoadjuvant resistance.",
+      "llm_tldr_cn": "现有空间转录组学降维方法常混淆细胞类型差异与空间基因模式。本文提出了可扩展的多组非负空间因子分解（smNSF）框架，整合空间坐标与细胞类型信息，可有效分离空间基因模式与细胞类型驱动的表达差异。该方法为探索肿瘤微环境在治疗耐药中的作用提供了计算工具，有助于揭示新辅助治疗耐药的微环境机制。",
+      "llm_tldr": "现有空间转录组学降维方法常混淆细胞类型差异与空间基因模式。本文提出了可扩展的多组非负空间因子分解（smNSF）框架，整合空间坐标与细胞类型信息，可有效分离空间基因模式与细胞类型驱动的表达差异。该方法为探索肿瘤微环境在治疗耐药中的作用提供了计算工具，有助于揭示新辅助治疗耐药的微环境机制。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "role of tumor microenvironment in neoadjuvant therapy resistance",
+      "matched_requirement_id": "req-8",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-06-29-735313-v1",
+      "source": "biorxiv",
+      "title": "AART enables fast and accurate cross-platform proteomic translation",
+      "abstract": "Plasma proteomic profiling has been widely used for biomarker discovery, disease prediction and diagnosis, and patient stratification. However, technical differences across assay platforms often result in low-to-moderate agreement, limiting study reproducibility, data integration, and model transferability. Here we present AART, a cross-platform proteomic translation framework that integrates matched-protein ridge regression with proteome-wide residual learning. We benchmarked AART spanning three independent cohorts profiled using three major platforms, including Olink, SomaScan, and mass spectrometry. Across all six translation directions, AART achieved the best performance compared with baseline methods for both overlapping and non-overlapping protein translations, with a relative improvement of 92.0% on average over direct mapping and by up to 31.6% over cpiVAE, the strongest baseline. Proteins that were accurately translated and improved by AART were enriched for extracellular, vesicle-associated, and tissue-restricted plasma biology. In downstream applications, AART improved the reproducibility of proteomic association analyses relative to direct cross-platform comparison by 75.5% for type 2 diabetes and 370.6% for Alzheimer's disease. AART-enabled cohort integration enhanced diagnostic accuracy for amyotrophic lateral sclerosis by 92.6% compared with non-integration analysis. AART was overall one to three orders of magnitude faster than cpiVAE, facilitating biobank-scale applications. Together, these results establish AART as a fast, accurate, and scalable framework for cross-platform proteomic translation, enabling more reproducible, transferable, and integrated proteomic research.",
+      "authors": [
+        "chen, y.",
+        "Zhang, S."
+      ],
+      "primary_category": "bioinformatics",
+      "categories": [
+        "bioinformatics"
+      ],
+      "published": "2026-07-03T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.06.29.735313v1.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "cross-platform proteomic translation method applicable to drug resistance biomarker integration",
+      "llm_evidence_cn": "跨平台蛋白质组翻译方法，可用于耐药生物标志物整合",
+      "llm_evidence": "跨平台蛋白质组翻译方法，可用于耐药生物标志物整合",
+      "canonical_evidence": "跨平台蛋白质组翻译方法，可用于耐药生物标志物整合",
+      "llm_tldr_en": "AART is a cross-platform proteomic translation framework integrating matched-protein ridge regression and proteome-wide residual learning, achieving best performance across Olink, SomaScan, and mass spectrometry platforms, enabling data integration for biomarker discovery in drug resistance studies.",
+      "llm_tldr_cn": "该研究针对不同蛋白质组平台间的技术差异导致数据难以整合的问题，提出了AART跨平台翻译框架，整合匹配蛋白岭回归和残差学习。在Olink、SomaScan和质谱三大平台上的基准测试中，AART在所有六个翻译方向上均优于基线方法。该工具可应用于药物耐药相关生物标志物的跨平台整合分析。",
+      "llm_tldr": "该研究针对不同蛋白质组平台间的技术差异导致数据难以整合的问题，提出了AART跨平台翻译框架，整合匹配蛋白岭回归和残差学习。在Olink、SomaScan和质谱三大平台上的基准测试中，AART在所有六个翻译方向上均优于基线方法。该工具可应用于药物耐药相关生物标志物的跨平台整合分析。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "bioinformatics for drug resistance",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}

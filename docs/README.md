@@ -6,35 +6,46 @@
 </div>
 
 ## 每次日报
-- 最新运行日期：2026-07-03
-- 运行时间：2026-07-03 22:23:34 UTC
+- 最新运行日期：2026-07-04
+- 运行时间：2026-07-04 22:41:57 UTC
 - 运行状态：成功
-- 本次总论文数：4
-- 精读区：0
-- 速读区：4
+- 本次总论文数：8
+- 精读区：2
+- 速读区：6
 
 ### 今日简报（AI）
-今天速读了4篇论文，重点包括扰动转录组解读、可迁移性机制及恶性细胞识别。
-最值得关注的是《GenPerturb》（7.0/10）利用预训练基因组模型实现序列级扰动解释，以及《Mechanisms Matter》（6.0/10）探讨扰动效应跨条件迁移的关键因素。
-建议从“序列化扰动建模”入手，结合基因组预训练方法快速理解前沿研究方向。
-- 详情：[/202607/03/README](/202607/03/README)
+1) 今日8篇论文聚焦AI在结核病耐药预测与单细胞扰动预测，精读两篇高分研究。  
+2) 最值得关注的是基于全基因组测序的AI耐药预测和跨条件单细胞表型预测，均获8分以上评价。  
+3) 建议优先精读这两篇，并留意空间多组学统一框架对整合分析的启发。
+- 详情：[/202607/04/README](/202607/04/README)
 
 ### 精读区论文标签
-- 本次无精读推荐。
+1. [Benchmarking the translational potential of AI-based drug-resistance prediction from Mycobacterium tuberculosis whole-genome sequencing data](/202607/04/biorxiv-10-64898-2026-07-03-736369-v1-benchmarking-the-translational-potential-of-ai-based-drug-resistance-prediction-from-mycobacterium-tuberculosis-whole-genome-sequencing-data)  
+   标签：评分：9.0/10、query:neo-resist
+   evidence：基于全基因组测序数据的AI耐药预测基准测试，直接针对机器学习耐药预测
+2. [MORPH Predicts the Single-Cell Outcome of Genetic Perturbations Across Conditions and Data Modalities](/202607/04/biorxiv-10-1101-2025-06-27-661992-v2-morph-predicts-the-single-cell-outcome-of-genetic-perturbations-across-conditions-and-data-modalities)  
+   标签：评分：8.0/10、query:neo-resist
+   evidence：机器学习模型预测单细胞扰动结果，可应用于药物耐药预测
 
 ### 速读区论文标签
-1. [GenPerturb: sequence-grounded interpretation of perturbation transcriptomes using pretrained genomic models](/202607/03/biorxiv-10-64898-2026-07-01-735806-v1-genperturb-sequence-grounded-interpretation-of-perturbation-transcriptomes-using-pretrained-genomic-models)  
-   标签：评分：7.0/10、query:neo-resist
-   evidence：利用预训练模型解读扰动转录组，可应用于耐药机制研究
-2. [Mechanisms Matter: Transportability of Cellular Perturbation Effects](/202607/03/biorxiv-10-64898-2026-05-08-723625-v2-mechanisms-matter-transportability-of-cellular-perturbation-effects)  
+1. [SpatialFuser: a unified framework for integrative analysis of unpaired spatial multi-omics data](/202607/04/biorxiv-10-1101-2025-09-14-676067-v3-spatialfuser-a-unified-framework-for-integrative-analysis-of-unpaired-spatial-multi-omics-data)  
    标签：评分：6.0/10、query:neo-resist
-   evidence：因果可迁移性框架，与药物耐药预测相关
-3. [Multi-modality Graph Representation Learning for Malignant Cell Identification from scRNA-seq using DeepMalignant](/202607/03/biorxiv-10-64898-2026-06-29-734828-v1-multi-modality-graph-representation-learning-for-malignant-cell-identification-from-scrna-seq-using-deepmalignant)  
+   evidence：空间多组学整合分析肿瘤微环境
+2. [Genetically informed single-cell and spatial mapping of metabolic programs in human health and disease](/202607/04/biorxiv-10-64898-2026-06-25-734643-v2-genetically-informed-single-cell-and-spatial-mapping-of-metabolic-programs-in-human-health-and-disease)  
    标签：评分：6.0/10、query:neo-resist
-   evidence：可用于耐药机制研究的恶性细胞识别单细胞方法
-4. [HiFi-ST: High-Fidelity Reconstruction of Continuous Spatial Transcriptomic Expression Fields via Conditional Neural Fields](/202607/03/biorxiv-10-64898-2026-06-29-735170-v1-hifi-st-high-fidelity-reconstruction-of-continuous-spatial-transcriptomic-expression-fields-via-conditional-neural-fields)  
+   evidence：单细胞和空间代谢图谱方法，可应用于肿瘤耐药机制研究
+3. [Phenotypic inference from sparse tumor genomes informs an explainable deep-learning model for cancer prognosis](/202607/04/biorxiv-10-64898-2026-06-26-734894-v1-phenotypic-inference-from-sparse-tumor-genomes-informs-an-explainable-deep-learning-model-for-cancer-prognosis)  
    标签：评分：6.0/10、query:neo-resist
-   evidence：空间转录组重建方法，可应用于肿瘤耐药研究
+   evidence：基于肿瘤基因组的机器学习表型推断框架，可应用于耐药预测
+4. [Mapping the immune landscape in small cell lung cancer unveils a distinct tumor-reactive CD8+ T cell molecular signature](/202607/04/biorxiv-10-64898-2026-06-29-735200-v1-mapping-the-immune-landscape-in-small-cell-lung-cancer-unveils-a-distinct-tumor-reactive-cd8-t-cell-molecular-signature)  
+   标签：评分：6.0/10、query:neo-resist
+   evidence：小细胞肺癌免疫微环境的单细胞转录组图谱，为耐药机制研究奠定基础
+5. [Scalable multi-group nonnegative spatial factorization for spatial genomics data with cell-type heterogeneity](/202607/04/biorxiv-10-64898-2026-06-29-735224-v1-scalable-multi-group-nonnegative-spatial-factorization-for-spatial-genomics-data-with-cell-type-heterogeneity)  
+   标签：评分：6.0/10、query:neo-resist
+   evidence：空间转录组学方法可用于肿瘤微环境耐药研究
+6. [AART enables fast and accurate cross-platform proteomic translation](/202607/04/biorxiv-10-64898-2026-06-29-735313-v1-aart-enables-fast-and-accurate-cross-platform-proteomic-translation)  
+   标签：评分：6.0/10、query:neo-resist
+   evidence：跨平台蛋白质组翻译方法，可用于耐药生物标志物整合
 
 
 <div class="dpr-home-promo-card">

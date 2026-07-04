@@ -1,0 +1,2140 @@
+Title: 2026.06.29.735224v1.full.pdf
+
+URL Source: https://www.biorxiv.org/content/10.64898/2026.06.29.735224v1.full.pdf
+
+Published Time: Sat, 04 Jul 2026 22:41:13 GMT
+
+Number of Pages: 39
+
+Markdown Content:
+# Scalable multi-group nonnegative spatial factorization for spatial genomics data with cell-type heterogeneity 
+
+Luis Chumpitaz-Diaz 1,2 , Priyanka Shrestha 3, Barbara E Engelhardt 2,4* 
+
+1 Biophysics Program, Stanford University, Stanford, CA, USA 
+
+2 Gladstone Institute of Data Science and Biotechnology, Gladstone Institutes, San Francisco, CA, USA 
+
+3 Department of Computer Science, Stanford University, Stanford, California, USA 
+
+4 Department of Biomedical Data Science, Stanford University, Stanford, California, USA * barbarae@stanford.edu 
+
+# Abstract 
+
+Spatial transcriptomics (ST) technologies enable the study of gene expression within the spatial context of tissues, providing insights into tissue structure, cellular interactions, and disease progression. However, existing dimension reduction methods often overlook spatial information or struggle to distinguish spatial gene patterns from those driven by cell-type differences, limiting biological interpretability by convolving differences in gene expression patterns with differences in cell-type proportions. To address these challenges, we introduce the scalable multi-group nonnegative spatial factorization (smNSF), a computationally-tractable probabilistic framework that integrates spatial coordinates and cell-type labels into a unified matrix factorization model. By using multi-group Gaussian processes (MGGPs) as priors, our model captures complex spatial variation in a cell-type specific way while enforcing nonnegativity to enhance interpretability. We develop a variational inference framework for MGGPs that supports scalable optimization and improves the numerical stability of smNSF. Across seven spatial transcriptomics datasets spanning diverse technologies and tissues, smNSF recovers sparse, interpretable spatial factors and, through its cell-type conditional posteriors, organizes them into cell-type enriched, cell-type specific, and universal spatial programs that are not apparent from marginal factors alone. Given cell-type labels in ST data, smNSF enables cell-type aware spatial decompositions and supports cell-type conditional posteriors for in silico exploration of relationships between spatial patterns and cellular identity. 
+
+# Author summary 
+
+Most current analysis methods for spatial transcriptomics either ignore spatial structure or fail to separate gene-driven spatial patterns from cell-type driven differences. In this work, we develop a method that uses spatial coordinates and cell-type labels together to better uncover patterns of gene expression. Our approach, scalable multi-group nonnegative spatial factorization (smNSF), uses Gaussian processes to model spatial structure, which we extend to capture both spatial structure and cell type within a unified framework called multi-group Gaussian processes. Applying smNSF to spatial transcriptomics datasets from mouse brain and human tissues, we find that conditioning on different cell types reveals spatial patterns that are June 12, 2026 1/39 
+
+> .CC-BY-NC-ND 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 3, 2026. ;https://doi.org/10.64898/2026.06.29.735224 doi: bioRxiv preprint
+
+invisible in standard analyses: some cell types suppress a pattern, others sharpen it, and some reveal structure that only emerges after conditioning. This helps us understand how cell-type specific spatial programs contribute to tissue organization. To make this analysis tractable on the scale of modern spatial experiments, we also introduce a new computational approximation for Gaussian processes that is directly applicable in principle to other latent variable GP models. Together, these tools help disentangle biological sources of variation and support in silico exploration of how gene expression might change under different tissue or cell-type compositions. 
+
+# 1 Introduction 1
+
+Spatially resolved transcriptomics (ST) technologies enable the measurement of gene 2
+
+expression while preserving spatial coordinates of those genes in tissue sections. This 3
+
+spatial information is crucial for understanding how gene activity varies across different 4
+
+tissue regions [1], how cells interact with their neighbors [2], and how multicellular 5
+
+structure and function emerge in health and disease [3]. Such insights have been 6
+
+instrumental in the study of embryonic development [4 –6], tumor progression [7, 8], and 7
+
+immune compartmentalization [9, 10]. 8
+
+Dimension reduction methods such as principal component analysis (PCA), factor 9
+
+analysis (FA) [11], and nonnegative matrix factorization (NMF) [12] are commonly used 10 
+
+to analyze high-dimensional single-cell RNA-sequencing (scRNA-seq) data [13–15]. 11 
+
+These methods can also be applied to ST datasets, but they disregard spatial 12 
+
+information. 13 
+
+More recently, spatially aware models such as MEFISTO [16], SpatialPCA [17], and 14 
+
+nonnegative spatial factorization (NSF) [18] use Gaussian processes (GPs) [19] or 15 
+
+related kernel-based priors to capture smooth spatial variation. MEFISTO uses an 16 
+
+explicit GP formulation, while SpatialPCA uses a multivariate normal prior with spatial 17 
+
+kernel-defined covariance, which is functionally similar to a GP. While these models 18 
+
+recover spatial structure, their dense real-valued factors may be difficult to interpret. 19 
+
+NSF improves interpretability by enforcing nonnegativity via exponentiated GP priors, 20 
+
+yielding sparse, parts-based decompositions [18]; mNSF [20] extends NSF to 21 
+
+multi-sample analysis through alignment-free sample-specific spatial correlation 22 
+
+modeling. Other nonnegative spatial methods, including spatial LDA [21], neighborhood 23 
+
+NMF [22], and FISHFactor [23], similarly produce interpretable spatial patterns. 24 
+
+However, none of these methods — nonnegative or otherwise — take cell-type labels as 25 
+
+input, limiting their ability to distinguish spatial patterns driven by gene-expression 26 
+
+changes across space from those driven by cell-type-proportion changes within tissues. 27 
+
+More modern methods such as CELESTA [24] consider spatial context when 28 
+
+inferring cell types. Meanwhile, methods such as cell2location [9], DestVI [25], and 29 
+
+C-SIDE [26] focus on estimating cell-type composition across spatial locations using 30 
+
+reference single-cell data and spatial information. However, these approaches are 31 
+
+designed to recover cell-type labels, not spatially structured gene expression patterns. 32 
+
+A spatial gene expression pattern , as recovered by spatially-aware dimension 33 
+
+reduction methods [16 –18], captures changes in the expression levels smoothly across a 34 
+
+tissue slice. Without explicit modeling and consideration of cell types, it is impossible 35 
+
+to know when spatial changes in gene expression are due to expression changes within a 36 
+
+cell type across the tissue, or changes in cell-type proportions across the tissue, because 37 
+
+cell types generally express different sets of genes [27]. Deconvolving the impact of both 38 
+
+types of changes on gene expression in spatial samples is an important task. 39 
+
+Clarifying the contribution of each source is essential for understanding how spatial 40 
+
+regulation and cellular identity shape tissue architecture. For example, during 41 
+
+embryonic development, positional information precedes cell identity: gradients of 42 
+
+June 12, 2026 2/39 
+
+> .CC-BY-NC-ND 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 3, 2026. ;https://doi.org/10.64898/2026.06.29.735224 doi: bioRxiv preprint
+
+morphogens guide gene expression, differentiation, and tissue patterning before distinct 43 
+
+cell types have formed. Methods such as DistMap [4] use spatial references to localize 44 
+
+scRNA-seq cells in developing embryos. In tumor microenvironments, spatial 45 
+
+organization reflects interactions between malignant and immune cells, often forming 46 
+
+structured niches. Methods like Starfysh [7], stKeep [28], and SpaTopic [8] have 47 
+
+uncovered spatial domains using expression patterns and graph-based decompositions. 48 
+
+In this work, we introduce scalable multi-group nonnegative spatial factorization 49 
+
+(smNSF), a fast, flexible, and interpretable factorization method for spatial 50 
+
+transcriptomics. smNSF integrates both spatial coordinates and known or inferred 51 
+
+cell-type labels into a unified framework using multi-group Gaussian processes 52 
+
+(MGGPs) [29]. Unlike standard GPs, MGGPs enable the modeling of structured 53 
+
+variation across distinct groups (e.g., cell types) while sharing statistical strength across 54 
+
+the spatial domain and across the group structure. smNSF extends the NSF 55 
+
+framework [18] by replacing the GP priors with multi-group GP priors over spatial 56 
+
+factors, building on the general MGGP framework of [29]. This modification allows 57 
+
+smNSF to model cell-type specific variation in gene expression across space within the 58 
+
+interpretable and sparse structure of nonnegative factorization. To make this concrete, 59 
+
+we construct a new non-separable Mat´ ern family of MGGP kernels in which group 60 
+
+distance modulates both the spatial amplitude and the effective lengthscale; the kernel 61 
+
+is derived from first principles via the spectral route (Bochner’s theorem) and proven 62 
+
+positive-definite by Schoenberg’s theorem (Supplement §3). We develop a variational 63 
+
+inference framework for MGGPs — including a new approximation we call locally 64 
+
+conditioned Gaussian processes (LCGP) — to enable stable, scalable training on 65 
+
+datasets with hundreds of thousands of cells. We demonstrate that smNSF recovers 66 
+
+interpretable spatial factors across diverse ST platforms and enables cell-type 67 
+
+conditional posterior predictions that distinguish spatial patterns driven by cell-type 68 
+
+heterogeneity from those driven by spatial gradients of gene expression. 69 
+
+June 12, 2026 3/39 
+
+> .CC-BY-NC-ND 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 3, 2026. ;https://doi.org/10.64898/2026.06.29.735224 doi: bioRxiv preprint
+
+# 2 Materials and methods 70 
+
+## 2.1 Nonnegative spatial factorization 71 
+
+MEFISTO uses Gaussian processes as spatially-aware priors within factor analysis 72 
+
+(FA) [16]. However, because FA is real-valued and not restricted to nonnegative values, 73 
+
+the resulting MEFISTO patterns are often hard to interpret and not sparse [18]. 74 
+
+Nonnegative spatial factorization (NSF) is a method that expands probabilistic 75 
+
+nonnegative matrix factorization (PNMF), a probabilistic version of NMF, by using a 76 
+
+Gaussian process as the prior instead of a univariate Gaussian prior. Restricting weights 77 
+
+and factors to nonnegative values leads to a naturally sparse, parts-based decomposition. 78 
+
+In NSF, this restriction provides interpretable nonnegative factors that capture small 79 
+
+groups of genes that are co-expressed in a spatially smooth way [18]. 80 
+
+The NSF model is as follows: 81 
+
+yij ∼ Poisson( νiλij )
+
+λij =
+
+> L
+
+X
+
+> l=1
+
+wjl efil 
+
+fil ∼ GP( fil |μl(xi), K l(xi, X )) ,
+
+where: 82 
+
+• νi is a per-cell normalization constant (e.g., total counts), 83 
+
+• wjl are nonnegative gene loadings, enforced via softplus transformation, 84 
+
+• fil are spatial latent factors drawn from a GP prior. 85 
+
+Here, the data consists of a cell-by-gene matrix of raw transcript counts Y ∈ RN ×J and 86 
+
+spatial cell coordinates X ∈ RN ×D for each cell. Here, we consider 2D spatial 87 
+
+coordinates (i.e., D = 2). 88 
+
+## 2.2 Multi-group Gaussian processes 89 
+
+Multi-group Gaussian processes (MGGPs) provide a family of positive-definite 90 
+
+covariance kernel functions to perform Gaussian process regression on multi-group 91 
+
+data [29]. The multidimensional inputs, X ∈ RN ×D , also contain group labels, 92 
+
+C = {c1, c 2, . . . , c N }, and outcomes Y ∈ RN : 93 
+
+p(Y |X, C X ; θ) = MGGP( Y |X, C X ; K(( X, C X ), (X, C X ))) ,
+
+where the kernel takes both the input and group label: 94 
+
+K(( x, c j ), (x′, c j′ )) : X × X → R.
+
+Various reductive special cases of MGGPs exist. The simplest case is separate GPs 95 
+
+(SGP), where K(( x, c j ), (x′, c j′ )) = 0, equivalent to training a separate GP per 96 
+
+group [29]. Separate GPs per group do not allow information to be shared across 97 
+
+groups, and SGP struggles when groups are imbalanced in size. In genomics, the SGP 98 
+
+approach is not useful as it means training a separate NSF model per cell type, 99 
+
+resulting in zero shared factors across cell types. The union GP (UGP) is equivalent to 100 
+
+setting K(( x, c j ), (x′, c j′ )) = K(x, x ′), meaning group labels are ignored, which is the 101 
+
+current baseline of the NSF model. Separable MGGPs use the covariance function as 102 
+
+the Kronecker product of two kernels: K(( x, c j ), (x′, c j′ )) = K1(x, x ′)K2(ci, c j′ ). 103 
+
+However, these covariance functions can lead to “ridges” and discontinuities [29, 30]. For 104 
+
+this work, we use the inseparable Mat´ ern-3/2 MGGP kernel constructed in §2.3 (full 105 
+
+derivation in Supplement §3). 106 
+
+June 12, 2026 4/39 
+
+> .CC-BY-NC-ND 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 3, 2026. ;https://doi.org/10.64898/2026.06.29.735224 doi: bioRxiv preprint
+
+## 2.3 Scalable multi-group nonnegative spatial factorization 107 
+
+## (smNSF) 108 
+
+Scalable multi-group nonnegative spatial factorization (smNSF) extends the 109 
+
+nonnegative spatial factorization (NSF) framework [18] to incorporate both spatial 110 
+
+coordinates and discrete group labels into a unified generative model. Here, we use 111 
+
+cell-type labels as the group labels, allowing us to recover factors that distinguish 112 
+
+structure in each cell type but with patterns shared across all cell types. smNSF 113 
+
+recovers spatially structured latent factors using multi-group Gaussian processes 114 
+
+(MGGPs) [29], enabling both (i) smooth signal sharing across similar groups and (ii) 115 
+
+structured differences between groups. 116 
+
+Relative to NSF ( §2.1), the input includes spatial coordinates X, but also a vector of 117 
+
+group labels C = {c1, . . . , c N }; the MGGP prior now conditions on the pair ( xi, c i). 118 
+
+Using the MGGP, dimension reduction operates on the gene-by-count matrix, while 119 
+
+taking into account spatial coordinates and cell-type labels (Fig. 1) . 120 
+
+smNSF model. 
+
+yij ∼ Poisson( νiλij ),λij =
+
+> L
+
+X
+
+> l=1
+
+wjl efil ,fil ∼ MGGP  0, K l
+
+ (xi, c i), (X, C ) .
+
+Here, νi and the nonnegative loadings wjl are as in §2.1; the novelty is that the latent 121 
+
+factors fil are drawn from an MGGP prior (S1 Fig) that explicitly accounts for the 122 
+
+group label ci. 123 
+
+smNSF kernel. 
+
+K(( x, c i), (x′, c j )) = σ2 1
+
+ 1 + a2d2
+
+> ij
+
+p/ 2
+
+1 + 
+
+√3 rℓ
+
+q
+
+1 + a2d2
+
+> ij
+
+ exp 
+
+−√3 rℓ
+
+q
+
+1 + a2d2
+
+> ij
+
+ ,
+
+where dij encodes group (cell-type) distances (e.g., dij =0 if i=j, dij =1 otherwise), σ is 124 
+
+the marginal scale, a controls the strength of difference between groups (cell types), ℓ is 125 
+
+the spatial inverse length-scale and p is the dimensionality of the data. Throughout this 126 
+
+work, we use the Mat´ ern-3/2 variant of the MGGP kernel, which allows controlled 127 
+
+roughness at group boundaries while maintaining smoothness within groups. The 128 
+
+closed-form expression for the Mat´ ern-3/2 MGGP kernel is derived in Supplement §3. 129 
+
+## 2.4 MGGP inference 130 
+
+2.4.1 Stochastic variational multi-group Gaussian processes 131 
+
+Exact inference under the NSF model is intractable: Gaussian process priors scale 132 
+
+cubically with the number of observations, and the Poisson likelihood is non-conjugate, 133 
+
+ruling out closed-form posteriors. We therefore adapt stochastic variational Gaussian 134 
+
+processes (SVGP) [18, 31–34], which introduce a small set of M representative spatial 135 
+
+locations called inducing points Z = {zm}Mm=1 to reduce the computational burden. 136 
+
+Then, SVGP performs variational inference over the function values at those locations. 137 
+
+To extend SVGP to MGGPs, each inducing point also carries a cell-type label cm, 138 
+
+forming inducing groups (Z, C Z ) = {(zm, c m)}Mm=1 that mirror the structure of the 139 
+
+observed group inputs; we sample CZ from the empirical group distribution to ensure 140 
+
+June 12, 2026 5/39 
+
+> .CC-BY-NC-ND 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 3, 2026. ;https://doi.org/10.64898/2026.06.29.735224 doi: bioRxiv preprint
+
+Fig 1. Overview of smNSF and cell-type conditional spatial factorization. A) Comparison of dimension reduction methods by their input data. Classical methods (PCA, NMF, UMAP, T-SNE) operate on the cell-by-gene matrix Y alone; NSF and MEFISTO additionally incorporate spatial coordinates X; smNSF further incorporates cell-group labels C (e.g., cell type, tissue region, or disease status). B) Incorporating spatial information transforms an independent cell signal into a smooth function across space: we learn a Gaussian process decomposition in which each factor is a nonnegative, continuous spatial function. The Mat´ ern-3/2 kernel enables the model to capture sharp spatial signals without oversmoothing or compromising spatial correlation across the tissue. C) A single learned spatial factor can be conditioned on individual cell types; by incorporating cell-type information via our multi-group Gaussian process, we can compute the posterior conditioned on a given cell type, revealing how the decomposition of the tissue region would look if it were composed of that cell type alone. adequate coverage of every cell type. With this construction, we define a variational 141 
+
+distribution q(U ) over the inducing function values. The resulting evidence lower bound 142 
+
+(ELBO) decomposes into a Poisson likelihood term, approximated by Monte Carlo and 143 
+
+a closed-form KL divergence to the inducing prior. The full derivation is in Supplement 144 
+
+§1 and §2. The Poisson expected log-likelihood expansion and multiplicative-update 145 
+
+training methods are described in Supplement §11. 146 
+
+2.4.2 Locally conditioned Gaussian processes (LCGP) 147 
+
+The cubic cost of inverting KZZ restricts standard SVGPs to M ≈ 3,000 inducing 148 
+
+points — far below the actual cell counts in modern ST datasets. To capture both 149 
+
+means and scales while preserving scalability, we derive a new variational approximation 150 
+
+that maintains local covariance structure (full derivation in Supplement §5). We 151 
+
+approximate the full-rank variational covariance via local neighborhood factors using an 152 
+
+embedding Lu ∈ RM ×K . For each neighborhood n(i): 153 
+
+Sn(j) n(j) ≈ Ln(j)L⊤
+
+> n(j)
+
+,
+
+and we adopt the conditional variational structure: 154 
+
+q(U ) = Y
+
+> j
+
+q Uj | Un(j)
+
+, q Un(j)
+
+ = N mn(j), L n(j)L⊤
+
+> n(j)
+
+.
+
+June 12, 2026 6/39 
+
+> .CC-BY-NC-ND 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 3, 2026. ;https://doi.org/10.64898/2026.06.29.735224 doi: bioRxiv preprint
+
+This formulation uses a full local covariance rather than independent variances, 155 
+
+preserving cross-cell and cross-group correlations within each neighborhood 156 
+
+(Supplement §8); the rank of each local covariance matrix is chosen by the 157 
+
+spectral-decay criterion described in Supplement §6, giving a compact but expressive 158 
+
+representation. Because the same conditional factorization is applied to q(U ), the KL 159 
+
+divergence decomposes into a sum of closed-form terms over neighborhoods 160 
+
+(Supplement §5). Finally, neighbors are selected via kernel-conditioned sampling rather 161 
+
+than Euclidean distance, producing neighborhood sets whose spatial extent remains 162 
+
+stable across varying data densities (Supplement §7). 163 
+
+The resulting approach, which we term locally conditioned Gaussian processes 164 
+
+(LCGPs), enables setting M = N (inducing points equal to total data points) without 165 
+
+the O(M 3) bottleneck, while accurately capturing both the means and scales of spatial 166 
+
+factors. We demonstrate the M = N regime on the Slide-seqV2 hippocampus (41,783 167 
+
+spots; Fig. 2); the same inference machinery scales to larger datasets, since the 168 
+
+expensive local linear algebra depends on the neighborhood size K rather than requiring 169 
+
+an M × M factorization, so per-step cost scales linearly rather than cubically in M 170 
+
+when K is fixed. This is critical for smNSF: the scales encode biologically meaningful 171 
+
+uncertainty and cell-type specific variance that would be lost under diagonal 172 
+
+approximations. 173 
+
+## 2.5 Cell-type conditional posteriors from smNSF 174 
+
+Now that we have the variational construction, we can compute a posterior GP that 175 
+
+depends only on the corresponding inputs ( Xi, C i) [34]. 176 
+
+q(F | X, C ; θ) = 
+
+Z
+
+p(F | U, X, C, Z, C Z ; θ) q(U ) dU. 
+
+Critically, unlike a standard SVGP, the MGGP form permits predictions not only at 177 
+
+new spatial locations but also under new or altered group labels . Enabling us to ask 178 
+
+questions such as “what if the entire tissue were cell type A?”, turning the model into a 179 
+
+practical, cell-type specific framework rather than stopping at a smooth factorization of 180 
+
+heterogeneous cells. 181 
+
+To quantify the dependence of spatial factors on cell-type labels, we perform in silico 182 
+
+perturbation experiments. Given a trained model, we hold spatial coordinates X fixed, 183 
+
+and we replace all labels CX with a new configuration CXnew , e.g., we set all labels to a 184 
+
+single cell-type. 185 
+
+q(F | X, C new  
+
+> X
+
+; θ) = 
+
+Z
+
+p(F | U, X, C new  
+
+> X
+
+, Z, C Z ; θ) q(U ) dU. 
+
+This allows us to generate posterior maps of spatial factors under controlled label 186 
+
+perturbations, revealing three qualitatively distinct specificity classes for each factor 187 
+
+with respect to group labels (Fig. 3): 188 
+
+• cell-type enriched — a spatial pattern that emerges from conditioning a factor on 189 
+
+a given cell type but is absent or attenuated in the marginal factor considering all 190 
+
+cell types. These patterns are only visible using the MGGP prior, and they reflect 191 
+
+the patterns considering a hypothetical abundance of the conditioned cell type 192 
+
+that are otherwise masked by heterogeneous and sparse cell-type representation. 193 
+
+• cell-type specific — a spatial pattern that is largely unchanged for a given cell type 194 
+
+but is depleted (approaches zero) when conditioning on other groups, isolating the 195 
+
+pattern to a single cell type. 196 
+
+June 12, 2026 7/39 
+
+> .CC-BY-NC-ND 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 3, 2026. ;https://doi.org/10.64898/2026.06.29.735224 doi: bioRxiv preprint
+
+• universal — a spatial pattern that is nearly invariant to group conditioning, 197 
+
+representing spatial structure shared broadly across cell types. 198 
+
+We quantify these classes from each factor’s conditional profile across groups, 199 
+
+combining the L1-ratio of conditional to marginal posterior with cross-label specificity. 200 
+
+The L1-ratio is ∥Fl | c∥1/∥Fl∥1, where Fl is the marginal posterior of factor l and Fl | c 201 
+
+is its posterior conditioned on group label c; values > 1 indicate enrichment under c, 202 
+
+values < 1 indicate depletion, and values ≈ 1 indicate invariance. The three classes use 203 
+
+this metric differently: cell-type enriched flags a (factor, group) pair when its L1-ratio 204 
+
+exceeds 1 .5× (the threshold used throughout Results); cell-type specific requires the 205 
+
+dominant group’s L1-ratio to stay near 1 while other groups deplete to near zero (i.e., 206 
+
+cross-label depletion, not the single-group ratio alone); universal requires all conditional 207 
+
+L1-ratios close to 1, equivalently near-maximal Shannon entropy across the group axis. 208 
+
+## 2.6 Implementation details 209 
+
+Unlike the original NSF, which requires an NMF warm-start to initialize its factors [18], 210 
+
+smNSF initializes both the nonnegative loading matrix W and the GP variational 211 
+
+parameters ( m, L ) randomly. We find that training reliably converges from random 212 
+
+initialization under MGGP-SVGP and MGGP-LCGP priors (Fig. 2). Recovered factors 213 
+
+are broadly consistent across random seeds; as expected given the convergence to a local 214 
+
+minimum inherent to NMF, factor identity is not strictly seed-invariant, although the 215 
+
+sparsity of the parts-based representation inherent in NMF encourages identifiability up 216 
+
+to label switching. We apply stochastic variational inference with mini-batches of 6,000 217 
+
+cells. For LCGP, we set the neighborhood size K = 50 across all experiments. Spatial 218 
+
+coordinates are standardized to unit scale per axis. All experiments used PyTorch on an 219 
+
+NVIDIA A30 GPU (24 GB). Code is available at 220 
+
+https://github.com/luisdiaz1997/GPzoo (MGGP and LCGP inference), 221 
+
+https://github.com/luisdiaz1997/Probabilistic-NMF (nonnegative and spatial 222 
+
+nonnegative factorizations), and 223 
+
+https://github.com/luisdiaz1997/Spatial-Factorization (full smNSF pipeline). 224 
+
+## 2.7 Datasets and preprocessing 225 
+
+We applied smNSF to seven spatial transcriptomics datasets spanning different 226 
+
+technologies, scales, and biological contexts. 227 
+
+• Slide-seqV2 mouse hippocampus : Mouse hippocampus tissue with 41,783 228 
+
+spots that are composed of multiple cells, 17,702 genes, and 14 annotated groups 229 
+
+(10 cell types and 4 hippocampal subfield regions) [35]; the dataset used in the 230 
+
+original NSF publication [18]. Used for computational benchmarking (LCGP vs. 231 
+
+standard SVGP, enabled by the moderate dataset size) and for group-conditional 232 
+
+analysis of hippocampal cell types and subfield regions. 233 
+
+• HuColonCa-FFPE MERFISH human colorectal cancer : The 234 
+
+HuColonCa-FFPE dataset (Vizgen) [22, 36] spans approximately 1.1 million cells 235 
+
+across multiple patients; we analyze Patient 1, which contains 844,468 cells before 236 
+
+subsampling and 137,693 cells after 6 × subsampling, with 211 genes and 13 237 
+
+cell-type groups collapsed from the fine-grained annotation. 238 
+
+• osmFISH mouse somatosensory cortex : osmFISH data from mouse primary 239 
+
+somatosensory cortex with 4,727 cells, 33 genes, and 28 distinct cell-type 240 
+
+labels [37]. Data accessed via Squidpy tutorials [38]. 241 
+
+June 12, 2026 8/39 
+
+> .CC-BY-NC-ND 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 3, 2026. ;https://doi.org/10.64898/2026.06.29.735224 doi: bioRxiv preprint
+
+• Human liver (healthy vs. fibrotic) MERFISH : FFPE MERFISH liver 242 
+
+samples, 317 genes, with three healthy donors (AM042, AM048, AM061; 243 
+
+27,722–33,878 cells each) and three fibrotic donors (AM031, AM062, AM072; 244 
+
+65,668–82,178 cells each); three healthy donors are additionally re-fit under the 245 
+
+joint healthy–fibrotic label schema for cross-condition comparison, yielding nine 246 
+
+per-sample fits in total. Cell-type annotations cover 15 distinct types across the 247 
+
+cohort (5–8 per sample, varying with tissue state). Used to demonstrate 248 
+
+disease-specific spatial remodeling of factors and cell-type conditional posterior 249 
+
+interpretations. 250 
+
+• MERFISH mouse hypothalamus (3D) : Three-dimensional MERFISH data 251 
+
+from mouse hypothalamic preoptic region with 71,939 cells across multiple z-slices 252 
+
+and 161 genes [39]. The original dataset contains 16 annotated cell classes; after 253 
+
+filtering rare cell types below 1% frequency, 11 cell-type groups were used for 254 
+
+training. Demonstrates smNSF extension to volumetric spatial data. Data 255 
+
+accessed via Squidpy tutorials [38]. 256 
+
+• 10x Visium adult mouse brain : Coronal Section 1 from the 10x Genomics 257 
+
+Adult Mouse Brain dataset (2,688 spots, 16,944 genes, 15 brain region groups) 258 
+
+accessed via Squidpy [38]. Sequencing-based spatial platform; each 55 μm spot 259 
+
+mixes multiple cell types. 260 
+
+• DLPFC (SDMBench, 10x Visium) : Human dorsolateral prefrontal cortex 261 
+
+across 12 tissue sections [40], 3,611–4,381 spots per section, 33,538 genes, with 7 262 
+
+annotated cortical layers per section. As this dataset contains layer annotations 263 
+
+rather than cell-type labels, we applied K-means clustering to smNSF factors and 264 
+
+compared against published benchmarks from SDMBench [41]. 265 
+
+Across all datasets we applied a common base pipeline: cells or spots with missing 266 
+
+spatial coordinates, expression values, or group labels were removed, and any 267 
+
+annotation group comprising fewer than 1% of the cells in a sample was dropped, with 268 
+
+the surviving group labels re-encoded contiguously. For the two datasets ingested from 269 
+
+raw transcriptome-wide counts—the Slide-seqV2 hippocampus and the 10x Visium 270 
+
+mouse brain—we additionally applied standard single-cell quality control: cells or spots 271 
+
+with fewer than 100 total counts were removed, genes detected in fewer than 10 cells 272 
+
+were removed, and mitochondrial genes were excluded (the Slide-seqV2 puck 273 
+
+additionally excluded beads with more than 20% mitochondrial counts). The targeted 274 
+
+imaging panels (MERFISH colorectal cancer, osmFISH cortex, MERFISH 275 
+
+hypothalamus, and MERFISH liver) carry small curated gene sets and were not 276 
+
+subjected to count-based cell or gene filtering; the colorectal cancer sample was further 277 
+
+subsampled to every sixth cell (844 ,468 → 137 ,693 cells) to reduce computational cost. 278 
+
+The DLPFC sections were used as preprocessed by SDMBench [41], with the same 279 
+
+group-fraction filter applied. All cell, spot, and gene counts reported above are 280 
+
+post-quality-control. Spatial coordinates were standardized to unit scale per axis, and 281 
+
+for LCGP inference we used mini-batches of 6,000 cells and K = 50 in all datasets. 282 
+
+## 2.8 Computational benchmark methodology for smNSF 283 
+
+To evaluate the computational efficiency of the LCGP approximation, we compared 284 
+
+against standard SVGP on the Slide-seqV2 hippocampus dataset (41,783 barcodes). For 285 
+
+LCGP, we set inducing points M = N (all data points serve as inducing points) and 286 
+
+varied the neighborhood size K ∈ { 10 , 25 , 50 , 75 }. For SVGP, we used M = 3 ,000 287 
+
+inducing points, representing the practical upper limit under equivalent GPU memory 288 
+
+constraints (NVIDIA A30, 24 GB). 289 
+
+June 12, 2026 9/39 
+
+> .CC-BY-NC-ND 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 3, 2026. ;https://doi.org/10.64898/2026.06.29.735224 doi: bioRxiv preprint
+
+We measured: (i) wall-clock time per optimization step, (ii) peak GPU memory 290 
+
+usage, and (iii) convergence behavior over 10,000 training steps. All experiments used 291 
+
+identical hyperparameters (learning rate, batch size of 6,000 cells, 10 latent factors) and 292 
+
+were repeated three times to account for variability. 293 
+
+## 2.9 Spatial domain benchmark methodology 294 
+
+To compare smNSF against spatial domain identification methods, we evaluated on the 295 
+
+DLPFC dataset [40] using published benchmarks from SDMBench [41]. smNSF takes 296 
+
+the Maynard et al. cortical layer annotations as its MGGP group labels at training time, 297 
+
+and is a factorization rather than a clustering method. We nonetheless include this 298 
+
+benchmark because SDMBench is the standard comparison axis for spatial 299 
+
+transcriptomics methods on DLPFC. Concretely, we apply K-means ( K = 7, matching 300 
+
+the seven annotated layers) to the learned spatial factors and score the resulting cluster 301 
+
+assignments against the same Maynard et al. layer annotations using the SDMBench 302 
+
+metrics below. “Clustering accuracy” throughout this section refers to that 303 
+
+cluster-vs-layer agreement. 304 
+
+We report the following metrics following the SDMBench protocol: 305 
+
+• Adjusted rand index (ARI) : Clustering accuracy adjusted for chance. 306 
+
+• Normalized mutual information (NMI) : Mutual information between 307 
+
+predicted and true labels, normalized to [0 , 1]. 308 
+
+• Homogeneity (HOM) : Whether clusters contain only members of a single class. 309 
+
+• Completeness (COM) : Whether all members of a class are assigned to the 310 
+
+same cluster. 311 
+
+• CHAOS : Spatial chaos score measuring cluster fragmentation. 312 
+
+• Percentage of abnormal spots (PAS) : Lower percentages indicate better 313 
+
+spatial continuity. 314 
+
+• Average silhouette width (ASW) : Average silhouette width of the factor 315 
+
+embedding. 316 
+
+• Moran’s I : Spatial autocorrelation of factors. 317 
+
+We compared results from smNSF against 14 methods benchmarked in SDMBench, 318 
+
+including SpaGCN, BayesSpace [42], STAGATE [43], SpaceFlow, BASS, and others, 319 
+
+using their published results on identical DLPFC sections. 320 
+
+## 2.10 Baseline methods 321 
+
+We benchmarked smNSF against a range of existing methods for spatial decomposition, 322 
+
+domain discovery, and spatial deconvolution: 323 
+
+• PCA / FA : non-spatial linear factor models [11], 324 
+
+• NMF / PNMF : nonnegative factorization without spatial priors [12], 325 
+
+• NSF : nonnegative spatial factorization using exponentiated GP priors [18]. 326 
+
+This broad landscape of spatial transcriptomics methods vary in fundamental ways; 327 
+
+direct quantitative comparisons were performed against the three methods above 328 
+
+(Table 1). 329 
+
+June 12, 2026 10/39 
+
+> .CC-BY-NC-ND 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 3, 2026. ;https://doi.org/10.64898/2026.06.29.735224 doi: bioRxiv preprint
+
+Three spatially aware methods that we discuss but are excluded from the 330 
+
+head-to-head benchmark warrant brief justification. MEFISTO [16] uses a 331 
+
+GP-over-spatial-coordinates prior over real-valued factors. NSF dominates MEFISTO 332 
+
+on spatial-transcriptomics benchmarks [18], so the smNSF vs. NSF comparison below is 333 
+
+the binding bar for spatially aware nonnegative factorization in this class. 334 
+
+SpatialPCA [17] shares the spatial-smoothing goal but lacks nonnegativity and 335 
+
+cell-type conditioning. We therefore use NSF as the more relevant nonnegative 336 
+
+spatial-factorization baseline. 337 
+
+NSFH [18] is the hybrid spatial/nonspatial variant of NSF. We neither incorporate 338 
+
+this split into smNSF nor benchmark against NSFH, because the spatial/nonspatial 339 
+
+decomposition addresses a different problem from the cell-type conditioned spatial 340 
+
+factorization studied here. 341 
+
+Table 1. Comparison of spatial transcriptomics methods. Methods differ in whether they incorporate spatial information, account for cell types, use nonnegativity constraints, and in their modeling goals. 
+
+Method Spatial Cell-Type Nonneg. Inputs Goal 
+
+PCA / FA No No No Expression only Linear projection NMF / PNMF No No Yes Expression only Parts-based decomposition SpatialPCA Yes No No Expression + spatial Spatial decomposition NSF / mNSF Yes No Yes Expression + spatial Interpretable spatial decompositions MEFISTO Yes No No Expression + spatial Spatial decomposition SpaTopic Yes No Yes Expression + graph Domain discovery FISHFactor Yes No Yes smFISH coords Subcellular modeling DistMap Yes No No scRNA-seq + spatial atlas Map cells to embryo Starfysh Yes No No Expression + graph Graph convolutional smoothing stKeep Yes No No Expression + kNN graph Region segmentation smNSF (Ours) Yes Yes Yes Expression + spatial + cell-type Spatial+cell-type decomposition June 12, 2026 11/39 
+
+> .CC-BY-NC-ND 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 3, 2026. ;https://doi.org/10.64898/2026.06.29.735224 doi: bioRxiv preprint
+
+Fig 2. Comparison of MGGP-SVGP and MGGP-LCGP: cell-type conditional posteriors in mouse hippocampus and scalability with dataset size. a) Left: spatial factors learned by smNSF using an MGGP-SVGP prior (M = 3 ,000 global inducing points). Although conditioning on cell types is possible via the multi-group Gaussian process, the 3,000 inducing points must represent the full tissue across all annotated groups (here, 14 groups). The fraction of inducing points available to represent any single cell type is therefore small, yielding a weak and spatially underresolved conditional signal. Right: corresponding cell-type conditional posteriors from MGGP-LCGP, which uses all 41 ,783 cells as inducing points. Each cell’s posterior factor value is computed by conditioning on K=50 local neighbors (see Supplement), providing a dense approximation to the otherwise computationally intractable true posterior. Comparing the two models, LCGP recovers a qualitatively similar but substantially richer conditional signal, closer to the true posterior. Conditioning reveals distinct modes of cell-type specific spatial organization. Some cell types deplete the learned factor signal, others isolate it into a sharper spatial pattern, and others uncover spatial structure that is only apparent upon conditioning—spatial signals that are diluted or obscured when all cell types are pooled together, but emerge as distinct patterns within a single cell-type specific conditional posterior. b) Scalability comparison of LCGP versus SVGP as dataset size N increases. SVGP inference is restricted to a fixed number of inducing points ( M = 3 ,000), limiting expressiveness regardless of data size. LCGP sets M = N in this benchmark, using all 41,783 Slide-seqV2 spots as inducing points, and replaces the cubic inducing-point bottleneck with local K-neighbor computations. June 12, 2026 12/39 
+
+> .CC-BY-NC-ND 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 3, 2026. ;https://doi.org/10.64898/2026.06.29.735224 doi: bioRxiv preprint
+
+Fig 3. Three specificity classes of cell-type conditioning. Representative Slide-seqV2 hippocampus factors illustrating each class, ordered left to right as introduced in the text: cell-type enriched (Factor 8), cell-type specific (Factor 1), and 
+
+universal (Factor 4). For each factor, the upper rows show the marginal factor alongside posteriors conditioned on individual cell-type labels; the lower bar plot shows the conditional-to-marginal L1-ratio across all groups. A cell-type enriched factor is amplified by a single group, a cell-type specific factor persists under one or two groups while depleting under the rest, and a universal factor is nearly invariant to conditioning. June 12, 2026 13/39 
+
+> .CC-BY-NC-ND 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 3, 2026. ;https://doi.org/10.64898/2026.06.29.735224 doi: bioRxiv preprint
+
+# 3 Results 342 
+
+## Overview 343 
+
+We evaluate smNSF on seven spatial transcriptomics datasets spanning MERFISH, 344 
+
+Slide-seq, osmFISH, and 10x Visium technologies: mouse hippocampus (Slide-seqV2, 345 
+
+41,783 spots, 14 groups), human colorectal cancer (MERFISH, 137,693 cells, 13 cell-type 346 
+
+groups), mouse somatosensory cortex (osmFISH, 4,727 cells, 28 cell-type groups), 347 
+
+human liver (MERFISH, 9 samples, 27k–82k cells each, 15 cell-type groups across the 348 
+
+cohort), mouse hypothalamic preoptic region (MERFISH, 71,939 cells, 11 cell-type 349 
+
+groups), mouse brain (10x Visium, 2,688 spots, 15 brain region groups), and human 350 
+
+DLPFC (12 Visium sections, ∼4,200 spots each, 7 cortical layer groups). We assess (i) 351 
+
+scalability and computational efficiency of LCGP versus standard SVGP, (ii) factor 352 
+
+interpretability through sparsity and spatial coherence, and (iii) cell-type specificity 353 
+
+through conditional posterior analysis. We benchmark clustering accuracy on DLPFC 354 
+
+against NSF, PCA, NMF, and 14 methods from SDMBench [41]. 355 
+
+## LCGP enables scalable inference with accurate variance 356 
+
+## estimation in smNSF 357 
+
+A key limitation of NSF is the O(M 3) cost of standard SVGP inference, which restricts 358 
+
+inducing points to M ≈ 3,000 under typical GPU memory constraints. For large ST 359 
+
+datasets with >100,000 cells, this severely limits model expressiveness. 360 
+
+We compared LCGP against SVGP on the Slide-seqV2 hippocampus dataset [35] 361 
+
+(∼41,783 spots, 14 groups) to evaluate computational trade-offs (Fig. 2b). Per training 362 
+
+step with L factors and batch size B, SVGP scales as O(LBM 2) while LCGP scales as 363 
+
+O(LBK 3), reflecting the cost of inverting K×K matrices in the local approximation 364 
+
+(full derivation in Supplement §5). Critically, LCGP’s cost depends on K, not M , 365 
+
+allowing M =N without the cubic growth in M that limits standard SVGPs. 366 
+
+For LCGP, we set M = N (inducing points equal to data points) and varied the 367 
+
+neighborhood size K ∈ { 10 , 25 , 50 , 75 }. For SVGP, we used M = 3 ,000 inducing 368 
+
+points—the practical limit under equivalent memory constraints (NVIDIA A30, 24 GB). 369 
+
+At K = 10, LCGP was 4 × faster than SVGP (73 vs. 301 ms/step) with lower peak 370 
+
+memory (5.72 vs. 6.17 GB). At K = 50, per-step time remained faster than SVGP (234 371 
+
+vs. 301 ms) while memory grew to 10.64 GB. At K = 75, both time (397 ms) and 372 
+
+memory (14.77 GB) exceeded SVGP as the full M =N inducing set saturates GPU 373 
+
+capacity. We select K = 50 across all experiments to balance speed and expressiveness. 374 
+
+Beyond computational efficiency, LCGP also produces substantially richer cell-type 375 
+
+conditional posteriors than SVGP (Fig. 2a). Conditioning on individual cell types 376 
+
+reveals distinct modes of spatial organization: some cell types deplete the learned factor 377 
+
+signal (e.g., oligodendrocytes in factors 2 and 4), others isolate it into a sharper spatial 378 
+
+pattern (e.g., dentate pyramidal neurons in factor 4), and others uncover spatial 379 
+
+structure that is only apparent upon conditioning—spatial signals that are diluted or 380 
+
+obscured when all cell types are pooled together, but emerge as distinct patterns within 381 
+
+a single cell-type conditional posterior (e.g., CA1/CA2/CA3 subiculum neurons and 382 
+
+oligodendrocytes in Fig. 2a, where each cell type’s conditional posterior reveals a sharp 383 
+
+tissue program in a factor whose marginal map is near-uniform). Although 384 
+
+ground-truth conditional posteriors are unavailable for these data, the agreement 385 
+
+between SVGP and LCGP—which use fundamentally different variational 386 
+
+approximations—and across random initializations suggests these patterns reflect 387 
+
+genuine biological structure rather than inference artifacts. 388 
+
+June 12, 2026 14/39 
+
+> .CC-BY-NC-ND 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 3, 2026. ;https://doi.org/10.64898/2026.06.29.735224 doi: bioRxiv preprint
+
+## Gain from finite group-distance coupling 389 
+
+The previous subsection establishes that MGGP-LCGP produces interpretable cell-type 390 
+
+conditional posteriors. A natural follow-up question is whether the multi-group 391 
+
+component of the MGGP framework is contributing anything beyond what an ensemble 392 
+
+of independent per-cell-type Gaussian processes would deliver. The non-separable 393 
+
+Mat´ ern 3/2 MGGP kernel of §2.2 has a single group-distance parameter a governing 394 
+
+cross-group correlation: at a = 0 the kernel reduces to a standard single-group Mat´ ern 395 
+
+(all cells share one GP regardless of cell type), and at a → ∞ the cross-group covariance 396 
+
+collapses to zero and each cell type is fit by a separate GP, with no shared signal across 397 
+
+groups. The regime 0 < a < ∞ is where the multi-group machinery does useful 398 
+
+work—each cell type’s conditional posterior borrows strength from cells in correlated 399 
+
+cell types without being forced to share a single global mean. 400 
+
+To isolate the contribution of this finite-a coupling we fit two MGGP-LCGP variants 401 
+
+that differ only in the value of a. Everything else—kernel form, K = 50, M = N , 402 
+
+probabilistic neighbor selection, loadings parameterization, training schedule, and the 403 
+
+fixed cell-type distance matrix—is held fixed. The first variant pins a = 1, a moderate 404 
+
+cross-group coupling intermediate between a → 0 (which collapses the prior toward a 405 
+
+single shared GP across all cell types) and a → ∞ (which recovers independent 406 
+
+per-cell-type GPs); the second variant pins a = 10 6, large enough to drive the 407 
+
+off-diagonal MGGP covariance below numerical precision and recover the separate-GPs 408 
+
+limit in practice (Figure 4). 409 
+
+We selected the two universal factors on the finite-a side (factors whose Shannon 410 
+
+entropy of normalized L1 specificity ratios is near uniform across cell types) and 411 
+
+matched them to the a → ∞ side by best Pearson correlation on the per-factor 412 
+
+gene-loading vectors, so that the same biological gene program is being compared across 413 
+
+blocks; exact factor indices are not preserved across fits because nonnegative matrix 414 
+
+factorization is rotation- and permutation-invariant in the nonnegative cone. Cell-type 415 
+
+rows are the four groups (ependymal, oligodendrocytes, astrocytes, neurogenesis) where 416 
+
+the matched a → ∞ factors are most depleted by the L1 specificity ratio. 417 
+
+The marginal posteriors in the top row are broadly similar across the two fits, as 418 
+
+expected for factors with diffuse cell-type usage. The per-cell-type conditionals 419 
+
+illustrate the role of cross-group coupling. Under large a the model is still LCGP—the 420 
+
+probabilistic neighbor-selection scheme continues to weight candidates by kernel 421 
+
+similarity—but the group-distance term drives those weights to favor same-group 422 
+
+neighbors, so each cell type’s conditional posterior is in practice built with cells from its 423 
+
+cell type alone. Cross-group covariance collapses to zero, and the model reduces to a 424 
+
+collection of decoupled per-group GPs that share inducing locations but exchange no 425 
+
+information at inference time. 426 
+
+This decoupling diminishes the conditional posterior of universal factors specifically. 427 
+
+A universal factor carries shared signal across many cell types; without a non-zero 428 
+
+between-group covariance the model has no mechanism for one group’s data to inform 429 
+
+another group’s conditional posterior on that factor. Each per-group GP must then 430 
+
+recover the shared structure from its own observations alone, and where the per-group 431 
+
+sample is small or noisy the conditional reconstruction degrades (Fig. 4). Under finite a, 432 
+
+the same factor is anchored to a shared latent variable through non-zero off-diagonal 433 
+
+group-kernel entries, and the conditional posteriors recover a coherent spatial pattern 434 
+
+across the same groups. 435 
+
+## Comparison to baseline and published methods on DLPFC 436 
+
+To benchmark smNSF against established dimension reduction methods, we evaluated 437 
+
+these methods on the DLPFC dataset [40], which contains twelve tissue sections with 438 
+
+June 12, 2026 15/39 
+
+> .CC-BY-NC-ND 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 3, 2026. ;https://doi.org/10.64898/2026.06.29.735224 doi: bioRxiv preprint
+
+Fig 4. Gain from finite group-distance coupling on Slide-seqV2 mouse hippocampus. Both blocks are MGGP-LCGP fits with identical kernel form, K = 50, 
+
+M = N , probabilistic neighbor selection, and the same fixed cell-type distance matrix; only the MGGP group-distance parameter a differs. Left: a → ∞ (specifically a = 10 6), the separate-GPs limit. Right: a = 1, a moderate cross-group coupling where the multi-group kernel borrows strength across cell types. Each block shows the unconditional spatial factor map (top row) and four cell-type conditional posteriors below; the leftmost column of the left block shows which cells belong to each group. See main text for factor and cell-type selection rationale. June 12, 2026 16/39 
+
+> .CC-BY-NC-ND 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 3, 2026. ;https://doi.org/10.64898/2026.06.29.735224 doi: bioRxiv preprint
+
+seven annotated cortical layers. We compared six model variants: PCA, PNMF (NMF 439 
+
+without a spatial prior), SVGP (standard variational GP, equivalent to NSF), LCGP 440 
+
+NSF (our scalable GP version of NSF), MGGP-SVGP, and MGGP-LCGP (smNSF). 441 
+
+For all methods, we applied k-means clustering ( K = 7) to the learned factors and 442 
+
+evaluated against ground-truth layer annotations using metrics from SDMBench [41]. 443 
+
+smNSF (MGGP-LCGP) achieved the highest clustering accuracy among our 444 
+
+methods (ARI: 0.37, NMI: 0.51), substantially exceeding the standard spatial GP 445 
+
+baselines (LCGP ARI: 0.22, NMI: 0.32; SVGP ARI: 0.33, NMI: 0.44) and non-spatial 446 
+
+methods (PCA ARI: 0.15, NMI: 0.23; PNMF ARI: 0.30, NMI: 0.41; Fig. 5). The 447 
+
+MGGP prior provided a 59% improvement in NMI over LCGP alone on these data, 448 
+
+demonstrating that even region-level group structure aids factor recovery. 449 
+
+We further compared smNSF against 14 published spatial domain identification 450 
+
+methods from SDMBench (Fig. 6). smNSF achieved the highest factor spatial 451 
+
+autocorrelation of all 20 methods (Moran’s I = 0 .645 vs. 0 .385 for the best published 452 
+
+method, SEDR), reflecting the MGGP prior’s strong spatial regularization (Fig. 7; Figs. 453 
+
+S2–S13). On clustering accuracy, smNSF ranked 8th of 20 (NMI = 0 .514), which is 454 
+
+notable given that smNSF is designed to leverage cell-type labels as input rather than 455 
+
+to predict spatial domains, and competitive with dedicated domain identification 456 
+
+methods that leverage spatial neighborhood graphs (GraphST: 0 .613, BASS: 0 .609, 457 
+
+BayesSpace: 0 .601). 458 
+
+The DLPFC annotations represent cortical layers (spatial regions) rather than cell 459 
+
+types . On these region labels, smNSF achieves competitive clustering accuracy and the 460 
+
+highest spatial coherence among all benchmarked methods, but no layer exceeds the 461 
+
+1.5× L1-ratio threshold defined in §2.5 (Fig. 7c). The next section summarizes the 462 
+
+cell-type-vs-region pattern this exemplifies across the seven datasets in our analysis. 463 
+
+## Cell-type labels are enriched across regions; region groups are 464 
+
+## localized 465 
+
+The smNSF result reflects a structural property of the MGGP prior that generalizes 466 
+
+across datasets. When smNSF conditions on cell types , which are scattered throughout 467 
+
+the tissue, signal propagates across the full spatial domain, producing conditional 468 
+
+posteriors that show enrichment of single cell types in specific factors ( L1-ratio > 1.5×). 469 
+
+When it conditions on spatial regions , which are locally confined, the prior collapses 470 
+
+signal to that single location, suppressing enrichment everywhere else. We quantified 471 
+
+this pattern by computing, for every group across all seven datasets, whether at least 472 
+
+one factor reached an L1-ratio above 1 .5× (Table 2). 473 
+
+Across 75 cell-type groups, 61% (46/75) showed enrichment above 1 .5×. Across 28 474 
+
+region groups, 0 out of 28 reached 1 .5×—the strongest region enrichment across any 475 
+
+dataset was 1 .41 × (CA1 subfield, Slide-seqV2 mouse hippocampus). This distinction 476 
+
+holds within individual datasets that contain both group types: in the Slide-seq 477 
+
+hippocampus, 5/10 cell types were enriched above 1 .5× (microglia: 5 .4×, 478 
+
+oligodendrocytes: 3 .2×, astrocytes: 2 .6×) while 0/4 hippocampal subfields were 479 
+
+enriched; in osmFISH, 10/26 cell types were enriched while 0/2 region groups were 480 
+
+enriched. Datasets annotated exclusively with cell types showed consistently high 481 
+
+enrichment rates (colon 69%, MERFISH hypothalamus 82%, liver 87%); datasets 482 
+
+annotated exclusively with regions (10x Visium, DLPFC) showed no enrichment. This 483 
+
+structural distinction—scattered cell types propagate signal, localized region labels 484 
+
+collapse it—explains why smNSF’s cell-type conditional signals are strongest in tissues 485 
+
+with intermingled, heterogeneous cell types and absent in region-annotated data, and 486 
+
+provides a diagnostic for interpreting enrichment patterns in new datasets. 487 
+
+June 12, 2026 17/39 
+
+> .CC-BY-NC-ND 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 3, 2026. ;https://doi.org/10.64898/2026.06.29.735224 doi: bioRxiv preprint
+
+Table 2. Cell-type groups enrich; region groups do not. Percentage of groups with at least one factor exceeding 1 .5× L1-ratio enrichment, stratified by group label type (cell type vs. region). 
+
+Dataset Cell types % >1.5 × Regions % >1.5 ×
+
+Slide-seq hippocampus 10 50.0% 4 0.0% MERFISH colon 13 69.2% 0 —osmFISH cortex 26 38.5% 2 0.0% MERFISH hypothalamus 11 81.8% 0 —10x Visium brain 0 — 15 0.0% DLPFC (12 Visium slices) 0 — 7 0.0% MERFISH liver (9 samples) 15 86.7% 0 —
+
+Total 75 61.3% 28 0.0% 
+
+## Three specificity classes organize cell-type conditional posteriors 488 
+
+The cell-type-vs-region distinction above establishes that smNSF’s conditional 489 
+
+posteriors carry interpretable cell-type information; the next question is how those 490 
+
+conditional responses are distributed across factors. We organize the per-dataset results 491 
+
+that follow around the three specificity classes introduced in §2.5— cell-type enriched , 492 
+
+cell-type specific , and universal —computed from each factor’s conditional profile across 493 
+
+groups, with cell-type groups specialized to the cell-type conditional case and region or 494 
+
+layer groups specialized to the region- or layer-conditional case. 495 
+
+• Cell-type enriched factors supply most of the biological findings: spatial 496 
+
+programs that are masked by composition effects in the marginal and become 497 
+
+visible only under conditioning on one cell type. We flag a factor as enriched for a 498 
+
+group when its L1-ratio exceeds 1 .5×, the threshold used in the aggregate count 499 
+
+above. 500 
+
+• Cell-type specific factors are present in the marginal and stay present under 501 
+
+their dominant cell type, but deplete toward zero under the others; their 502 
+
+identification therefore depends on cross-label depletion rather than the 503 
+
+single-group L1-ratio alone. 504 
+
+• Universal factors are nearly invariant to label conditioning—all conditional 505 
+
+L1-ratios close to 1, with near-maximal Shannon entropy across the cell-type axis. 506 
+
+These represent tissue-level architecture rather than cell-type specific gene 507 
+
+programs. 508 
+
+The three classes are descriptive end-points of a continuous specificity spectrum, 509 
+
+parameterized by the conditional-to-marginal L1 ratios together with the cross-label 510 
+
+specificity (depletion or entropy) that distinguishes single-label dominance from broad 511 
+
+invariance. The per-dataset walkthroughs that follow name the dominant class for each 512 
+
+factor they discuss, and the curated factor panels in each dataset figure show concrete 513 
+
+examples of all three classes. 514 
+
+## smNSF resolves cell-type spatial programs in Slide-seqV2 515 
+
+## hippocampus 516 
+
+The Slide-seqV2 hippocampus dataset [35] contains 41,783 barcoded beads. For the 517 
+
+smNSF analysis, each bead is assigned one group label from a 14-label annotation set. 518 
+
+The 14 labels comprise two biologically different label types: ten identify cell types, 519 
+
+which are spatially scattered across the tissue, and four identify hippocampal subfield 520 
+
+regions, which are spatially localized anatomical domains. This mixed label set provides 521 
+
+June 12, 2026 18/39 
+
+> .CC-BY-NC-ND 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 3, 2026. ;https://doi.org/10.64898/2026.06.29.735224 doi: bioRxiv preprint
+
+a direct within-dataset test of whether smNSF behaves differently when the group 522 
+
+variable encodes dispersed cell identity versus confined anatomical region. We quantify 523 
+
+the distinction using the maximum conditional-to-marginal L1-ratio for each group 524 
+
+across all factors: a group is counted as enriched if at least one factor exceeds the 1 .5× 525 
+
+threshold. smNSF fit L = 10 spatial factors under the MGGP prior (Fig. 8; full 526 
+
+conditional posteriors in S14 Fig). 527 
+
+The cell-type conditional analysis revealed five cell types with enrichment above 528 
+
+1.5× (Table 3). Conditioning on each cell type revealed a distinct spatial program: 529 
+
+Microglia (5 .4×, Factor 10) showed the strongest enrichment. In the marginal 530 
+
+factor, their signal is diluted by the dominant neuronal and glial populations; 531 
+
+conditioning on microglia reveals a spatial program that spans the full hippocampal 532 
+
+formation, consistent with the broad parenchymal distribution of microglia in the 533 
+
+annotated dataset [35]. 534 
+
+Oligodendrocytes (3 .2×, Factor 8) were enriched in a factor that anatomically 535 
+
+maps to the white matter tracts of the fimbria and alveus. Conditioning isolates this 536 
+
+white-matter compartment: the conditional posterior is strong along the fimbria and 537 
+
+weak elsewhere, matching the spatial distribution of oligodendrocyte-annotated bins in 538 
+
+the source dataset [35]. 539 
+
+Astrocytes (2 .6×, Factor 9) mark a glial niche distinct from the oligodendrocyte 540 
+
+program. Although astrocytes are broadly distributed across the hippocampal 541 
+
+parenchyma in the annotated dataset [35], smNSF finds that they carry a coherent 542 
+
+spatial signal that does not coincide with the dominant neuronal factors. 543 
+
+Vascular endothelium (2 .4×, Factor 5) was enriched jointly with endothelial tip 544 
+
+(1 .5×) and mural cells (1 .5× in the same factor). smNSF discovers this vascular unit 545 
+
+without being given any vascular grouping: the three vasculature-associated cell types 546 
+
+annotated in the dataset [35] converge on Factor 5 because they share a common spatial 547 
+
+program. 548 
+
+Interneurons (1 .9×, Factor 2) were enriched jointly with CA1/CA2/CA3 subfield 549 
+
+neurons. The conditional posterior is strongest in the CA1 subfield, matching the 550 
+
+spatial distribution of interneuron-annotated bins in the source dataset [35]. 551 
+
+Three additional factors (F3, F4, and F7) showed near-maximal Shannon entropy 552 
+
+(0.96–0.99) and were classified as universal—their spatial patterns were nearly 553 
+
+unperturbed by cell-type conditioning, representing spatial structure shared broadly 554 
+
+across cell types. 555 
+
+In contrast, none of the four hippocampal subfield regions (CA1/CA2/CA3, dentate 556 
+
+pyramids, subiculum/entorhinal clades) included groups that exceeded 1 .5× enrichment. 557 
+
+The strongest region signal was CA1/CA2/CA3 at 1 .41 × in Factor 6, compared to 558 
+
+5.36 × for microglia. This within-dataset contrast—scattered cell types enriched up to 559 
+
+5.4× while localized subfields stall below 1 .5×—is the within-dataset signature of the 560 
+
+same MGGP behavior: scattered cell-type labels let conditional signal propagate across 561 
+
+the tissue and produce strong factor enrichments, while spatially confined region labels 562 
+
+restrict signal to their own subfield and suppress it. 563 
+
+Across methods, smNSF achieved moderate spatial autocorrelation (Moran’s I 564 
+
+= 0 .66 vs. SVGP: 0 .99; Fig. 8a), consistent with its cell-type specific factorization 565 
+
+producing spatially localized factors rather than the globally smooth patterns of the 566 
+
+non-grouped GP. 567 
+
+## smNSF separates macrophage, stromal, and T-cell programs in 568 
+
+## MERFISH colorectal cancer 569 
+
+We applied smNSF to a 6 × subsample of Patient 1 from the HuColonCa-FFPE 570 
+
+MERFISH dataset [22, 36] (137,693 cells, 211 genes, 13 cell-type groups). smNSF fit 571 
+
+June 12, 2026 19/39 
+
+> .CC-BY-NC-ND 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 3, 2026. ;https://doi.org/10.64898/2026.06.29.735224 doi: bioRxiv preprint
+
+Table 3. Factor specificity in Slide-seqV2 hippocampus. Maximum L1-ratio per group across ten factors. Groups classified as cell type or region. 
+
+Group Type Max L1-ratio (Factor) 
+
+Microglia cell type 5.36 × (F10) Oligodendrocytes cell type 3.24 × (F8) Astrocytes cell type 2.63 × (F9) Endothelial Stalk cell type 2.43 × (F5) Interneurons cell type 1.92 × (F2) Endothelial Tip cell type 1.49 × (F5) Mural cell type 1.48 × (F5) CA1/CA2/CA3 Subiculum region 1.41 × (F6) Dentate Pyramids region 1.40 × (F7) Subiculum Entorhinal cl2 region 1.19 × (F4) Ependymal cell type 1.17 × (F5) Subiculum Entorhinal cl3 region 1.11 × (F3) Neurogenesis cell type 1.10 × (F10) Polydendrocytes cell type 1.09 × (F8) 
+
+L = 10 spatial factors that exhibited distinct anatomical localizations across the tissue 572 
+
+(Fig. 9; full grid in S15 Fig). 573 
+
+The cell-type conditional analysis revealed three dominant spatial programs, each 574 
+
+defined by a distinct set of co-enriched cell types (Fig. 9b, Table 4): 575 
+
+Macrophage program (Factor 1, 6 .2×). Macrophages were the most strongly 576 
+
+enriched cell type. The conditional posterior reveals a spatial pattern concentrated at 577 
+
+the tumor periphery, consistent with the distribution of macrophages along the invasive 578 
+
+front in the source dataset [36]. Without conditioning, this signal is masked by the 579 
+
+dominant epithelial and stromal populations that fill the tumor bulk. 580 
+
+Stromal–vascular niche (Factor 9, fibroblasts: 4 .8×, endothelial cells: 3 .2×). 581 
+
+Fibroblasts and endothelial cells co-enrich in a single factor. smNSF recovers this 582 
+
+stromal–vascular unit without being given any spatial annotation of the tumor 583 
+
+microenvironment. The conditional posterior maps to the stromal bands that separate 584 
+
+tumor epithelial nests [36]. 585 
+
+T-cell infiltrate program (Factor 8, CD8 + T cells: 3 .4×, CD4 + T cells: 2 .5×, 586 
+
+plasma cells: 3 .0×). Three adaptive immune cell types co-enrich in the same factor, 587 
+
+identifying a coordinated immune infiltrate program. Mast cells, in contrast, are 588 
+
+strongly depleted in this factor (0 .1×), indicating that their spatial distribution is 589 
+
+anti-correlated with the T-cell/plasma cell compartment. This separation—adaptive 590 
+
+immune cells on one side, mast cells on the other—mirrors the functional organization 591 
+
+of the tumor immune microenvironment, where lymphoid and myeloid compartments 592 
+
+occupy distinct spatial niches [36]. 593 
+
+smNSF’s per cell-type factors showed near-zero spatial autocorrelation (Moran’s I 594 
+
+< 0.001; Fig. 9a), reflecting the disentanglement of cell-type specific domains—each 595 
+
+factor is spatially active only where its associated cell types reside, in contrast to 596 
+
+SVGP’s uniform spatial autocorrelation (0 .999) from over-smoothing across cell-type 597 
+
+boundaries. 598 
+
+## smNSF recovers the oligodendrocyte lineage and interneuron 599 
+
+## subtypes in osmFISH 600 
+
+The osmFISH mouse cortex dataset [37] (4,727 cells, 33 genes, 28 groups: 26 cell types 601 
+
+and 2 region annotations) provides a dense cell-type taxonomy for testing smNSF’s 602 
+
+June 12, 2026 20/39 
+
+> .CC-BY-NC-ND 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 3, 2026. ;https://doi.org/10.64898/2026.06.29.735224 doi: bioRxiv preprint
+
+Table 4. Factor specificity in MERFISH colorectal cancer. Maximum L1-ratio per group across ten factors. All 13 groups are cell types. 
+
+Group Type Max L1-ratio (Factor) 
+
+Macro cell type 6.22 × (F1) Fibro cell type 4.78 × (F9) TCD8 cell type 3.36 × (F8) Endo cell type 3.15 × (F9) Mono cell type 3.14 × (F4) Plasma cell type 3.00 × (F8) TCD4 cell type 2.51 × (F8) EpiT cell type 1.79 × (F10) DC cell type 1.75 × (F7) Granulo cell type 1.43 × (F2) EpiN cell type 0.83 × (F4) B cell type 0.83 × (F7) Mast cell type 0.82 × (F2) ability to resolve fine-grained subtypes. smNSF fit L = 10 spatial factors (Fig. 10; full 603 
+
+grid in S16 Fig). 604 
+
+Ten cell types showed enrichment above 1 .5× (Table 5), and the enriched factors 605 
+
+partitioned into biologically interpretable programs: 606 
+
+Vascular program (Factor 7, endothelial cells: 4 .1×). Endothelial cells were 607 
+
+strongly enriched and nearly absent from all neuronal populations. This is the same 608 
+
+vascular signal seen across datasets—endothelial cells form blood vessels, a spatially 609 
+
+coherent structure that is independent of neuronal or glial organization. The conditional 610 
+
+posterior maps to the tissue’s microvasculature. 611 
+
+Oligodendrocyte lineage (Factors 10, 6, and 3). The annotated oligodendrocyte 612 
+
+lineage stages [37]—oligodendrocyte precursor cells (OPCs), committed oligodendrocyte 613 
+
+precursors (COP), and mature oligodendrocytes—were resolved across three separate 614 
+
+factors: OPCs enriched Factor 10 (3 .7×), COPs enriched Factor 6 (2 .6×), and mature 615 
+
+oligodendrocytes enriched Factor 3 (2 .0×). smNSF separates immature and mature 616 
+
+oligodendrocyte stages into distinct spatial factors without being given any 617 
+
+developmental ordering. 618 
+
+Inhibitory interneuron program (Factor 9). Three inhibitory interneuron 619 
+
+subtypes—Crhbp (2 .4×), Kcnip2 (1 .9×), and CP (1 .9×)—converge on Factor 9. These 620 
+
+subtypes are annotated as distinct cell types in the source dataset [37], yet smNSF 621 
+
+assigns them to a shared spatial factor, indicating that their spatial distributions in this 622 
+
+cortical section overlap. 623 
+
+Astrocyte and pyramidal neuron factors (Factors 5 and 4). Astrocyte Mfge8 624 
+
+selectively enriched Factor 5 (2 .0×), and deep-layer pyramidal L6 neurons enriched 625 
+
+Factor 4 (1 .7×). These enrichments are more moderate, consistent with the broader 626 
+
+spatial distributions of astrocyte-annotated and L6-annotated cells in this section [37]; 627 
+
+their conditional posteriors are less sharply localized than those of the vascular or 628 
+
+oligodendrocyte programs. 629 
+
+The two region groups—C. plexus and hippocampus—showed no enrichment above 630 
+
+1.5× (max 1 .21 ×), consistent with the cell-type versus region distinction observed 631 
+
+across all datasets. 632 
+
+smNSF achieved moderate spatial autocorrelation (Moran’s I = 0 .38 vs. SVGP: 0 .51; 633 
+
+Fig. 10a), balancing spatial continuity with the cell-type specificity needed to resolve 28 634 
+
+groups including 26 fine-grained subtypes. 635 
+
+June 12, 2026 21/39 
+
+> .CC-BY-NC-ND 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 3, 2026. ;https://doi.org/10.64898/2026.06.29.735224 doi: bioRxiv preprint
+
+Table 5. Factor specificity in osmFISH mouse cortex. Maximum L1-ratio per group across ten factors. Full 28-group table in Supplement. 
+
+Group Type Max L1-ratio (Factor) 
+
+Endothelial cell type 4.10 × (F7) Oligodendrocyte precursor cell type 3.73 × (F10) Oligodendrocyte COP cell type 2.55 × (F6) Inhibitory Crhbp cell type 2.42 × (F9) Oligodendrocyte Mature cell type 2.02 × (F3) Astrocyte Mfge8 cell type 1.98 × (F5) Inhibitory Kcnip2 cell type 1.93 × (F9) Inhibitory CP cell type 1.92 × (F9) Pyramidal L6 cell type 1.66 × (F4) Inhibitory Vip cell type 1.54 × (F8) 
+
+(16 additional cell types in Supplement) 
+
+C. plexus region 1.21 × (F8) Hippocampus region 0.85 × (F8) 
+
+Fig 5. Benchmark comparison on DLPFC dataset. Box plots show performance across 12 tissue sections for PCA, NMF, LCGP (spatial GP without cell-type information), and smNSF (MGGP with group labels). Top row : Clustering accuracy metrics—adjusted Rand index (ARI), normalized mutual information (NMI), homogeneity (HOM), and completeness (COM). Higher values indicate better agreement with ground-truth layer annotations. Middle row : Spatial continuity metrics—CHAOS score, percentage of abnormal spots (PAS; lower is better), and average silhouette width (ASW). Bottom row : Factor spatial autocorrelation—Moran’s I. smNSF achieves the highest clustering accuracy, while both GP-based methods (LCGP, smNSF) show dramatically improved spatial continuity (low PAS) compared to non-spatial methods. 
+
+## Human liver: macrophage–stellate sinusoidal program across 636 
+
+## conditions 637 
+
+We analyzed nine MERFISH human liver samples (three healthy, six fibrotic) [44] with 638 
+
+approximately 100,000 cells each. Here we focus on a matched healthy–diseased pair 639 
+
+from donor AM048 (Fig. 11–12); per-sample panels for the other seven samples are in 640 
+
+S17–S23 Figs; conditional posteriors for all nine samples in S24–S32 Figs. 641 
+
+Across all nine samples, hepatic stellate cells (HSC) and macrophages (mac) were 642 
+
+the most consistently enriched cell types in L1-ratio, reaching 1 .7–1 .9× in AM048 and 643 
+
+up to 5 .3× in other samples. In AM048 healthy liver, mac 2 and HSC 1 co-enriched in 644 
+
+June 12, 2026 22/39 
+
+> .CC-BY-NC-ND 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 3, 2026. ;https://doi.org/10.64898/2026.06.29.735224 doi: bioRxiv preprint
+
+Fig 6. Comparison with SDMBench baselines on DLPFC dataset. Box plots show performance across 12 tissue sections for our six model variants (PCA, NMF, SVGP, LCGP, MGGP-SVGP, smNSF) alongside 14 published spatial domain identification methods from SDMBench [41]: BayesSpace, BASS, CCST, conST, GraphST, Leiden, Louvain, SCAN-IT, SEDR, SpaGCN, SpaGCN(HE), STAGATE, stLearn, SpaceFlow. SDMBench methods are sorted left-to-right by median NMI. Metrics shared with SDMBench: NMI (normalized mutual information), HOM (homogeneity), COM (completeness), CHAOS, PAS (percentage of abnormal spots; lower is better), and ASW (average silhouette width). smNSF achieves competitive clustering accuracy (NMI, HOM, COM) relative to top SDMBench methods, while both GP-based methods (LCGP, smNSF) show markedly better spatial continuity (low PAS, low CHAOS) than all 14 baselines. Factor 4 (1 .9× and 1 .8×, respectively; Table 6), while in AM048 diseased liver, mac and 645 
+
+HSC co-enriched in Factor 6 (1 .8× and 1 .7×). smNSF assigns these two annotated cell 646 
+
+types to a shared spatial factor; in the source dataset, HSCs are annotated as 647 
+
+perisinusoidal and macrophages as sinusoidal Kupffer cells [44]. In both conditions, mac 648 
+
+and HSC are depleted from each other’s secondary factors, indicating that smNSF 649 
+
+captures their coupled spatial co-occurrence without being given their anatomical 650 
+
+proximity. 651 
+
+Hepatocyte subtypes (central hep, portal hep, hepatocyte 1/2/3) showed moderate 652 
+
+enrichment (1 .8–1 .9× in AM048 healthy; 1 .8× for central hep and portal hep in AM048 653 
+
+diseased), consistent with metabolic zonation being a continuous 654 
+
+pericentral-to-periportal gradient rather than a discrete group signal. The MGGP’s 655 
+
+group-discrete kernel is inherently less sensitive to continuous spatial gradients—this is 656 
+
+a feature, not a bug, as it prevents zonation from dominating the factorization. 657 
+
+In fibrotic samples, disease-emergent compartments appeared: Fibrotic hepatocyte 658 
+
+populations were depleted below 1 .0× in AM048 diseased (fibrotic hep 1: 0 .91 ×, fibrotic 659 
+
+hep 2: 0 .76 ×), indicating that the fibrotic niche loses spatial coherence relative to the 660 
+
+dominant sinusoidal program. In other diseased samples (S19–S23 Figs), annotated 661 
+
+fibrotic hepatocyte subtypes [44] formed their own spatially coherent compartments at 662 
+
+up to 3 .3× enrichment, suggesting smNSF can detect disease-specific spatial 663 
+
+restructuring when the fibrotic signal is sufficiently strong. 664 
+
+## smNSF on volumetric MERFISH hypothalamus 665 
+
+We applied smNSF to MERFISH data from the mouse hypothalamic preoptic region 666 
+
+(71,939 cells across multiple z-slices, 161 genes, 11 cell-type groups) [39]. This is the 667 
+
+June 12, 2026 23/39 
+
+> .CC-BY-NC-ND 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 3, 2026. ;https://doi.org/10.64898/2026.06.29.735224 doi: bioRxiv preprint
+
+Fig 7. smNSF analysis of DLPFC slice 151507 (representative). a) 
+
+Cross-method benchmark comparison on a single DLPFC slice. b) Curated layer-conditional posterior factors across specificity classes. Within each factor block: top row shows spatial domains of the selected layers (binary masks); bottom row shows the marginal factor (leftmost) followed by posteriors conditioned on the layer above each column. c) Factor specificity bar chart showing per-layer enrichment/depletion patterns. No cell-type enrichments exceed 1 .5× across factors, consistent with cortical layers representing spatially segregated regions rather than intermingled cell types. only three-dimensional dataset in our study, and the only one where every one of the 668 
+
+ten factors was classified as cell-type enriched (Fig. 13; full conditional posteriors in S33 669 
+
+Fig). The hypothalamus dataset contains many spatially structured, molecularly 670 
+
+distinct annotated cell classes [39], which likely drives the uniformly high enrichment 671 
+
+rate: each factor captures a different compartment of the annotated tissue. 672 
+
+The strongest L1-ratio enrichments reached 10 .1× (OD immature 1 in Factor 6) and 673 
+
+9.9× (endothelial 1 in Factor 4), the highest L1-ratios observed across any dataset 674 
+
+(Fig. 13b, Table 7). Four biological programs emerged: 675 
+
+Oligodendrocyte lineage (Factors 6, 5, and 10). As in osmFISH, immature and 676 
+
+mature oligodendrocyte populations [39] separated into distinct factors: OD immature 1 677 
+
+dominated Factor 6 (10 .1×) while OD mature 2 enriched Factors 5 (5 .7×) and 10 678 
+
+(4 .9×). The separation of the two annotated stages into different spatial axes is 679 
+
+recovered by smNSF without supervision. 680 
+
+Vascular program (Factor 4). Endothelial 1 (9 .9×) and endothelial 3 (4 .4×) 681 
+
+co-enriched in Factor 4. This is the same vascular signal observed in Slide-seqV2, colon, 682 
+
+and osmFISH—endothelial cells consistently co-enrich because they share the spatial 683 
+
+architecture of the tissue’s blood vessel network, regardless of species or brain region. 684 
+
+Neuronal excitation–inhibition split (Factors 2, 7, 1, and 9). Excitatory and 685 
+
+inhibitory neurons [39] were cleanly assigned to separate factors: excitatory neurons 686 
+
+were enriched in Factors 2 (3 .4×) and 7 (2 .5×), while inhibitory neurons were enriched 687 
+
+in Factors 1 (2 .0×) and 9 (1 .8×). This separation is not imposed by smNSF—the model 688 
+
+June 12, 2026 24/39 
+
+> .CC-BY-NC-ND 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 3, 2026. ;https://doi.org/10.64898/2026.06.29.735224 doi: bioRxiv preprint
+
+Fig 8. smNSF analysis of Slide-seqV2 mouse hippocampus. a) Cross-method benchmark comparison showing spatial quality (Moran’s I), clustering accuracy (ARI, NMI, HOM, COM), and spatial continuity (CHAOS, PAS, ASW) across PCA, PNMF, SVGP, MGGP-SVGP, LCGP, MGGP-LCGP, and a conditional baseline. b) Curated cell-type conditional posterior factors (4 representative factors spanning cell-type enriched, cell-type specific, and universal classes). Within each factor block: top row shows the spatial domains of three selected cell types (binary masks of cell-type membership); bottom row shows the marginal factor (leftmost) followed by posteriors conditioned on the cell type shown directly above each column. c) Factor specificity quantified as log 2(∥conditional ∥1/∥marginal ∥1) per factor per cell type; values above 1 indicate enrichment, below 1 indicate depletion. receives only cell-type labels, not neurotransmitter identity—yet it recovers the 689 
+
+excitatory/inhibitory division annotated in the source dataset into distinct spatial axes. 690 
+
+Astrocyte program (Factor 3). Astrocytes were selectively enriched in Factor 3 691 
+
+(4 .2×) with depletion in most other groups. Their isolation into a single factor indicates 692 
+
+a coherent spatial organization that is independent of the neuronal and vascular 693 
+
+programs in this section [39]. 694 
+
+As in colon, smNSF’s factors showed near-zero spatial autocorrelation (Moran’s I < 695 
+
+0.001; Fig. 13a), consistent with the dataset’s cell-type annotations and the MGGP’s 696 
+
+disentanglement of cell-type specific spatial domains. 697 
+
+## smNSF generalizes to 10x Visium with region-only annotations 698 
+
+We applied smNSF to a 10x Visium adult mouse brain coronal section [38] (2,688 spots, 699 
+
+16,944 genes, 15 groups). All 15 groups are anatomically defined brain regions (cortex 700 
+
+subregions, hippocampus, thalamus, hypothalamus, striatum, fiber tracts). Consistent 701 
+
+with the cell-type versus region label distinction, no group exceeded 1 .5× L1-ratio 702 
+
+enrichment (Table 8). The greatest enrichment was fiber tract at 1 .38 × in Factor 8. 703 
+
+Despite the absence of group-level enrichment, smNSF recovered anatomically 704 
+
+June 12, 2026 25/39 
+
+> .CC-BY-NC-ND 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 3, 2026. ;https://doi.org/10.64898/2026.06.29.735224 doi: bioRxiv preprint
+
+Fig 9. smNSF analysis of MERFISH human colorectal cancer (HuColonCa-FFPE). a) Cross-method benchmark comparison. b) Curated cell-type conditional posterior factors across specificity classes (cell-type enriched, cell-type specific, universal). Within each factor block: top row shows spatial domains of the selected cell types (binary masks); bottom row shows the marginal factor (leftmost) followed by posteriors conditioned on the cell type above each column. c) Factor specificity bar chart showing per cell-type enrichment or depletion patterns. structured factors (Fig. 14; full grid in S34 Fig), with hippocampus, cortex, and white 705 
+
+matter regions occupying distinct factor axes. The weaker specificity relative to 706 
+
+MERFISH datasets reflects both the region-only annotation and the inherent per-spot 707 
+
+cell-type mixing of Visium’s 55 μm spots. This dataset serves as a negative control 708 
+
+confirming that region annotations, regardless of platform, do not produce enriched 709 
+
+conditional posteriors under the MGGP prior. 710 
+
+smNSF achieved the highest spatial autocorrelation among methods (Moran’s I 711 
+
+= 0 .84 vs. SVGP: 0 .82, LCGP: 0 .79; Fig. 14a), consistent with the pattern on DLPFC. 712 
+
+For region-only annotations, the MGGP prior provides stronger spatial regularization 713 
+
+than standard GPs: the group-discrete kernel reduces correlation across groups, so 714 
+
+signal propagates less between samples from different groups. This effect is amplified for 715 
+
+region labels because each region occupies a confined spatial domain—unlike scattered 716 
+
+cell types, region-specific signal cannot spread beyond its anatomical boundary. 717 
+
+# Discussion and Conclusion 718 
+
+smNSF addresses a fundamental challenge in spatial transcriptomics: distinguishing 719 
+
+spatial patterns driven by gene regulation within a cell type from those driven by shifts 720 
+
+in cell-type composition across space. By conditioning the GP prior on cell-type labels 721 
+
+through multi-group kernels, smNSF places each spatial factor on a specificity 722 
+
+spectrum—from universal factors shared across all cell types, to cell-type enriched 723 
+
+June 12, 2026 26/39 
+
+> .CC-BY-NC-ND 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 3, 2026. ;https://doi.org/10.64898/2026.06.29.735224 doi: bioRxiv preprint
+
+Fig 10. smNSF analysis of osmFISH mouse cortex. a) Cross-method benchmark comparison. b) Curated cell-type conditional posterior factors across specificity classes (cell-type enriched, cell-type specific, universal). Within each factor block: top row shows spatial domains of the selected cell types (binary masks); bottom row shows the marginal factor (leftmost) followed by posteriors conditioned on the cell type above each column. c) Factor specificity bar chart showing per cell-type enrichment or depletion patterns. 
+
+Table 6. Factor specificity in human liver sample AM048. Top L1-ratio per group. Healthy (eight groups) and diseased (seven groups) from matched donors. 
+
+AM048 Healthy Group Factor L1-ratio 
+
+Mac 2 F4 1.94 ×
+
+Hepatocyte 1 F5 1.88 ×
+
+HSC 1 F4 1.79 ×
+
+Hepatocyte 3 F1 1.77 ×
+
+Hepatocyte 2 F1 1.38 ×
+
+Mac 1 F4 1.14 ×
+
+LSEC F10 0.38 ×
+
+HSC 2 F4 0.66 ×
+
+AM048 Diseased Group Factor L1-ratio 
+
+Central Hep F2 1.81 ×
+
+Portal Hep F3 1.73 ×
+
+Mac F6 1.75 ×
+
+HSC F6 1.66 ×
+
+Fibrotic Hep 1 F1 0.91 ×
+
+Fibrotic Hep 2 F6 0.76 ×
+
+LSEC F7 0.43 ×
+
+June 12, 2026 27/39 
+
+> .CC-BY-NC-ND 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 3, 2026. ;https://doi.org/10.64898/2026.06.29.735224 doi: bioRxiv preprint
+
+Fig 11. smNSF analysis of MERFISH human liver — healthy sample AM048. a) Cross-method benchmark comparison. b) Curated cell-type conditional posterior factors across specificity classes (cell-type enriched, cell-type specific, universal). Within each factor block: top row shows spatial domains of the selected cell types (binary masks); bottom row shows the marginal factor (leftmost) followed by posteriors conditioned on the cell type above each column. c) Factor specificity bar chart showing per cell-type enrichment or depletion patterns. 
+
+Table 7. Factor specificity in MERFISH mouse hypothalamus. Maximum 
+
+L1-ratio per group across ten factors. All eleven group labels are cell types; 9/11 are enriched above 1 .5× in specific factors (the highest rate across datasets). 
+
+Group Type Max L1-ratio (factor) 
+
+OD Immature 1 cell type 10.06 × (F6) Endothelial 1 cell type 9.85 × (F4) OD Mature 2 cell type 5.71 × (F5) Microglia cell type 5.32 × (F6) Endothelial 3 cell type 4.37 × (F4) Astrocyte cell type 4.18 × (F3) Excitatory cell type 3.35 × (F2) Inhibitory cell type 2.00 × (F1) Ambiguous cell type 1.69 × (F10) OD Mature 1 cell type 1.30 × (F5) Ependymal cell type 1.13 × (F3) factors, to factors dominated by a single cell type—and supports counterfactual queries 724 
+
+of the form “what would this factor look like if the tissue were composed entirely of cell 725 
+
+type X?” 726 
+
+A consistent structural property of the MGGP prior emerged from the cross-dataset 727 
+
+analysis: enrichment depends on whether group labels are spatially scattered or 728 
+
+confined in a local neighborhood. Cell-type labels, typically intermingled across the 729 
+
+June 12, 2026 28/39 
+
+> .CC-BY-NC-ND 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 3, 2026. ;https://doi.org/10.64898/2026.06.29.735224 doi: bioRxiv preprint
+
+Fig 12. smNSF analysis of MERFISH human liver — diseased sample AM048. a) Cross-method benchmark comparison. b) Curated cell-type conditional posterior factors across specificity classes (cell-type enriched, cell-type specific, universal). Within each factor block: top row shows spatial domains of the selected cell types (binary masks); bottom row shows the marginal factor (leftmost) followed by posteriors conditioned on the cell type above each column. c) Factor specificity bar chart showing per cell-type enrichment or depletion patterns. 
+
+Table 8. Factor specificity in 10x Visium mouse brain. All fifteen groups are brain regions; none exceed 1 .5× L1-ratio enrichment. 
+
+Group Type Max L1-ratio (Factor) 
+
+Fiber tract region 1.38 × (F8) Lateral ventricle region 1.23 × (F10) Thalamus 1 region 1.11 × (F3) Hippocampus region 0.96 × (F9) Cortex 1 region 0.95 × (F2) Hypothalamus 1 region 0.92 × (F1) Striatum region 0.91 × (F4) Thalamus 2 region 0.90 × (F6) Cortex 5 region 0.90 × (F9) Cortex 3 region 0.90 × (F2) Cortex 2 region 0.85 × (F5) Hypothalamus 2 region 0.84 × (F6) Cortex 4 region 0.83 × (F7) Pyramidal layer dentate gyrus region 0.75 × (F9) Pyramidal layer region 0.70 × (F7) tissue, allow cell-type specific signal to be shared globally and produce cell-type 730 
+
+enriched conditional posteriors in 61% of groups (46/75). On the other hand, region 731 
+
+labels, locally confined by definition, never exceeded the 1 .5× enrichment threshold in 732 
+
+June 12, 2026 29/39 
+
+> .CC-BY-NC-ND 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 3, 2026. ;https://doi.org/10.64898/2026.06.29.735224 doi: bioRxiv preprint
+
+Fig 13. smNSF analysis of MERFISH mouse hypothalamus. a) Cross-method benchmark comparison. b) Curated cell-type conditional posterior factors across specificity classes (cell-type enriched, cell-type specific, universal). Within each factor block: top row shows spatial domains of the selected cell types (binary masks); bottom row shows the marginal factor (leftmost) followed by posteriors conditioned on the cell type above each column. c) Factor specificity bar chart showing per cell-type enrichment or depletion patterns. conditional posteriors (0/28). Within datasets containing both annotation types 733 
+
+—Slide-seqV2 hippocampus and osmFISH cortex—this distinction held. This behavior is 734 
+
+not a limitation but a diagnostic: it indicates when smNSF will yield interpretable 735 
+
+cell-type specific factors and when the given annotation structure precludes it. 736 
+
+Recovered factors in suitable datasets with purely cell-type labels captured 737 
+
+dataset-consistent spatial organization. For example, smNSF finds that hepatic stellate 738 
+
+cells and macrophages are co-enriched in a shared sinusoidal program across healthy 739 
+
+and fibrotic liver, the oligodendrocyte lineage resolves across three factors in osmFISH 740 
+
+cortex, and macrophage, stromal, vascular, and T-cell compartments separate cleanly in 741 
+
+specific colorectal tumor samples. 742 
+
+The LCGP inference framework is independently useful. By approximating the 743 
+
+variational posterior locally rather than globally, LCGP allows M = N on datasets with 744 
+
+tens of thousands of cells (demonstrated on the Slide-seqV2 hippocampus) and lifts the 745 
+
+O(M 3) ceiling that has effectively capped GP-based methods at a few thousand 746 
+
+inducing points; the same inference machinery scales to larger datasets. The approach is 747 
+
+not specific to smNSF and applies to any latent-variable GP model. The computational 748 
+
+trade-offs favor LCGP when the number of cells exceeds ∼40,000 or when capturing 749 
+
+local spatial heterogeneity is important; for smaller datasets with smooth spatial 750 
+
+patterns, standard SVGP remains efficient. 751 
+
+Several considerations apply to use of our method. 752 
+
+June 12, 2026 30/39 
+
+> .CC-BY-NC-ND 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 3, 2026. ;https://doi.org/10.64898/2026.06.29.735224 doi: bioRxiv preprint
+
+Fig 14. smNSF analysis of 10x Visium adult mouse brain coronal section. a) 
+
+Cross-method benchmark comparison. b) Curated region-conditional posterior factors across specificity classes. Within each factor block: top row shows spatial domains of the selected brain regions (binary masks); bottom row shows the marginal factor (leftmost) followed by posteriors conditioned on the region above each column. c) 
+
+Factor specificity bar chart showing per-region enrichment or depletion patterns. 
+
+Group labels and label quality. smNSF requires discrete group labels for 753 
+
+conditional analysis: labels capturing cell types, anatomical regions, or cortical layers 754 
+
+were used across our datasets. When those labels are inferred cell types rather than 755 
+
+ground-truth annotations—most ST datasets lack the latter, so labels are typically 756 
+
+obtained from unsupervised clustering or label transfer from reference scRNA-seq 757 
+
+data [10, 13]—label quality propagates into the conditional posteriors: the MGGP prior 758 
+
+treats the supplied labels as known, so noisy or misassigned labels may smooth or 759 
+
+distort the per-group factor maps. 760 
+
+Equidistant group structure. The choice of group distance dcc ′ in the MGGP 761 
+
+kernel currently treats all distinct group pairs as equidistant. Incorporating cell-type 762 
+
+hierarchies or continuous embeddings could improve modeling of related cell states. 763 
+
+Volumetric data. While we demonstrate extensions to 3D data, systematic 764 
+
+evaluation of smNSF on volumetric tissues remains future work. 765 
+
+Factor capacity. Our analyses used L = 10 factors across all datasets. With richer 766 
+
+factorizations ( L = 50–100), smNSF could in principle reconstruct the full dataset and 767 
+
+support gene-expression imputation under specific cell-type compositions—asking, for 768 
+
+example, how the gene expression of the tissue would appear if only macrophages were 769 
+
+present. More work is needed to scale the MGGP to higher latent dimensions—either by 770 
+
+scaling multi-group LCGP or using a different approximation for the multi-group 771 
+
+GP—while maintaining numerical stability. 772 
+
+June 12, 2026 31/39 
+
+> .CC-BY-NC-ND 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 3, 2026. ;https://doi.org/10.64898/2026.06.29.735224 doi: bioRxiv preprint
+
+In silico, not causal. The cell-type conditional posterior is an in silico query under 773 
+
+the fitted MGGP prior rather than a prediction of an experimental perturbation: it 774 
+
+answers how the model expects spatial factors to change for a hypothetical cell-type 775 
+
+composition, given the data, but does not establish a causal effect of cell-type identity 776 
+
+on gene expression. Causal interpretation would require an experimental 777 
+
+intervention—e.g., targeted ablation of a cell population or directed differentiation—and 778 
+
+the model’s predictions for such interventions would need separate validation. 779 
+
+smNSF’s conditional posteriors describe how spatial factors shift when conditioning 780 
+
+on a cell type, not how individual genes vary across cell types. This makes factor-level 781 
+
+validation more difficult: the method cannot directly answer questions such as “is gene 782 
+
+X upregulated in macrophages specifically?” The gene programs underlying each factor 783 
+
+are encoded in the loadings W , but linking those programs to a specific cell type and 784 
+
+not to individual factors that cannot be conditioned on cell type would require a 785 
+
+different model. 786 
+
+Our method provides a foundation for several extensions. The MGGP framework 787 
+
+can incorporate multiple grouping variables (e.g., cell type and disease state) through 788 
+
+product kernels, and could be combined with multi-sample extensions of NSF such as 789 
+
+mNSF [20] to enable joint cell-type aware factorization across samples. Integration with 790 
+
+differential expression analysis could identify genes whose spatial patterns differ across 791 
+
+conditions while controlling for cell-type composition. Also, combining smNSF with 792 
+
+velocity or trajectory inference could reveal how spatial gene programs evolve during 793 
+
+development or disease progression. 794 
+
+Taken together, smNSF with LCGP addresses two bottlenecks that have limited the 795 
+
+adoption of GP-based spatial factorization methods: the inability to disentangle 796 
+
+group-driven from gene-expression-driven spatial patterns, and the computational 797 
+
+ceiling that restricted spatial GP priors to a few thousand observations. The consistent 798 
+
+enrichment pattern across 75 cell-type and 28 region groups (103 groups total; Table 2) 799 
+
+provides a practical diagnostic: if group labels are scattered, the MGGP prior enriches 800 
+
+conditionally; if they are spatially confined, it does not—giving us a clear criterion for 801 
+
+when conditional analysis is likely to be informative. More broadly, the group structure 802 
+
+in the MGGP prior is not restricted to cell types: groups can encode treatment 803 
+
+conditions, time points, disease states, donors, or other experimental covariates, 804 
+
+providing a generative framework to ask biological questions directly within a dimension 805 
+
+reduction framework. 806 
+
+# Data Availability 807 
+
+All datasets analyzed in this study are publicly available. Slide-seqV2 mouse 808 
+
+hippocampus data are from Stickels et al. (2021) [35], accessed via the Squidpy tutorial 809 
+
+data repository [38]. osmFISH mouse somatosensory cortex data are from Codeluppi et 810 
+
+al. (2018) [37], accessed via the Squidpy tutorial data repository [38]. MERFISH mouse 811 
+
+hypothalamus data are from Moffitt et al. (2018) [39], accessed via the Squidpy tutorial 812 
+
+data repository [38]. 10x Visium adult mouse brain data (Coronal Section 1) are from 813 
+
+10x Genomics, accessed via the Squidpy tutorial data repository [38]. Human colorectal 814 
+
+cancer MERFISH data (HuColonCa-FFPE) are from the Vizgen MERFISH data 815 
+
+release, accessed via Laursen et al. (2026) [22]. Human DLPFC Visium data are from 816 
+
+Maynard et al. (2021) [40] via the spatialLIBD resource ( http://spatial.libd.org/ ), 817 
+
+accessed through the SDMBench benchmark suite [41]. Human liver MERFISH data 818 
+
+are from Watson et al. (2025) [44]. 819 
+
+All code is available at https://github.com/luisdiaz1997/GPzoo (MGGP and 820 
+
+LCGP inference), https://github.com/luisdiaz1997/Probabilistic-NMF 821 
+
+(nonnegative and spatial nonnegative factorizations), and 822 
+
+June 12, 2026 32/39 
+
+> .CC-BY-NC-ND 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 3, 2026. ;https://doi.org/10.64898/2026.06.29.735224 doi: bioRxiv preprint
+
+https://github.com/luisdiaz1997/Spatial-Factorization (full smNSF pipeline). 823 
+
+# AI-assisted writing disclosure 824 
+
+The authors used large language model tools, including ChatGPT and Claude, to assist 825 
+
+with manuscript editing, organization, and wording during drafting and revision. The 826 
+
+authors reviewed and edited all AI-assisted text, verified factual claims and citations, 827 
+
+and take full responsibility for the final content. No AI tools were used to generate 828 
+
+primary data or to perform the reported statistical analyses. 829 
+
+# Acknowledgments 830 
+
+LCD, PS, and BEE were funded in part by grants from the Parker Institute for Cancer 831 
+
+Immunology (PICI), the Chan-Zuckerberg Institute (CZI), the Biswas Family 832 
+
+Foundation, NIH NHGRI R01 HG012967, and NIH NHGRI R01 HG013736. BEE is a 833 
+
+CIFAR Fellow in the Multiscale Human Program. 834 
+
+BEE is on the Scientific Advisory Board for ArrePath Inc, GSK AI for Cancer, and 835 
+
+Freenome; she consults for Neumora. 836 
+
+# References 
+
+1. Svensson V, Teichmann SA, Stegle O. SpatialDE: identification of spatially variable genes. Nat Methods. 2018;15(5):343–346. 2. Verma A, Jena SG, Isakov DR, Aoki K, Toettcher JE, Engelhardt BE. A self-exciting point process to study multicellular spatial signaling patterns. Proc Natl Acad Sci U S A. 2021;118(32). 3. Moses L, Pachter L. Museum of spatial transcriptomics. Nat Methods. 2022;19(5):534–546. 4. Karaiskos N, Wahle P, Alles J, Boltengagen A, Ayoub S, Kipar C, et al. The Drosophila embryo at single-cell transcriptome resolution. Science. 2017;358(6360):194–199. 5. Lohoff T, Ghazanfar S, Missarova A, Koulena N, Pierson N, Griffiths JA, et al. Integration of spatial and single-cell transcriptomic data elucidates mouse organogenesis. Nat Biotechnol. 2022;40(1):74–85. 6. Hallou A, He R, Simons BD, Dumitrascu B. A computational pipeline for spatial mechano-transcriptomics. Nat Methods. 2025;22(4):737–750. 7. He S, Jin Y, Nazaret A, Shi L, Chen X, Rampersaud S, et al. Starfysh integrates spatial transcriptomic and histologic data to reveal heterogeneous tumor-immune hubs. Nat Biotechnol. 2025;43(2):223–235. 8. Zhang Y, Yu B, Ming W, Zhou X, Wang J, Chen D. SpaTopic: A statistical learning framework for exploring tumor spatial architecture from spatially resolved transcriptomic data. Sci Adv. 2024;10(39):eadp4942. 9. Kleshchevnikov V, Shmatko A, Dann E, Aivazidis A, King HW, Li T, et al. Cell2location maps fine-grained cell types in spatial transcriptomics. Nat Biotechnol. 2022;40(5):661–671. June 12, 2026 33/39 
+
+> .CC-BY-NC-ND 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 3, 2026. ;https://doi.org/10.64898/2026.06.29.735224 doi: bioRxiv preprint
+
+10. Cable DM, Murray E, Zou LS, Goeva A, Macosko EZ, Chen F, et al. Robust decomposition of cell type mixtures in spatial transcriptomics. Nat Biotechnol. 2022;40(4):517–526. 11. Bartholomew DJ, Knott M, Moustaki I. Latent Variable Models and Factor Analysis: A Unified Approach. John Wiley & Sons; 2011. 12. Lee DD, Seung HS. Learning the parts of objects by non-negative matrix factorization. Nature. 1999;401(6755):788–791. 13. Sun S, Zhu J, Ma Y, Zhou X. Accuracy, robustness and scalability of dimensionality reduction methods for single-cell RNA-seq analysis. Genome Biol. 2019;20(1):269. 14. Wolf FA, Angerer P, Theis FJ. SCANPY: large-scale single-cell gene expression data analysis. Genome Biol. 2018;19(1):15. 15. Butler A, Hoffman P, Smibert P, Papalexi E, Satija R. Integrating single-cell transcriptomic data across different conditions, technologies, and species. Nat Biotechnol. 2018;36(5):411–420. 16. Velten B, Braunger JM, Argelaguet R, Arnol D, Wirbel J, Bredikhin D, et al. Identifying temporal and spatial patterns of variation from multimodal data using MEFISTO. Nat Methods. 2022;19(2):179–186. 17. Shang L, Zhou X. Spatially aware dimension reduction for spatial transcriptomics. Nat Commun. 2022;13(1):7203. 18. Townes FW, Engelhardt BE. Nonnegative spatial factorization applied to spatial genomics. Nat Methods. 2023;20(2):229–238. 19. Rasmussen CE, Williams CKI. Gaussian processes for machine learning;. 
+
+ftp://nozdr.ru/biblio/kolxoz/Cs/CsAi/Rasmussen%20C.,%20Williams% 20C.%20Gaussian%20Processes%20for%20Machine%20Learning(MIT,%202006) (ISBN%20026218253X)(266s)_CsAi_.pdf .20. Wang Y, Woyshner K, Sriworarat C, Stein-O’Brien G, Goff LA, Hansen KD. mNSF: multi-sample non-negative spatial factorization. Genome Biol. 2025;26(1):149. 21. Chen Z, Soifer I, Hilton H, Keren L, Jojic V. Modeling multiplexed images with spatial-LDA reveals novel tissue microenvironments. J Comput Biol. 2020;27(8):1204–1218. 22. Laursen R, Chen H, Demaray J, Pelka K, Engelhardt BE. Neighborhood nonnegative matrix factorization identifies patterns and spatially-variable genes in large-scale spatial transcriptomics data. Genome Biol. 2026;27(1):31. 23. Walter FC, Stegle O, Velten B. FISHFactor: a probabilistic factor model for spatial transcriptomics data with subcellular resolution. Bioinformatics. 2023;39(4). 24. Zhang W, Li I, Reticker-Flynn NE, Good Z, Chang S, Samusik N, et al. Identification of cell types in multiplexed in situ images by combining protein expression and spatial information using CELESTA. Nat Methods. 2022;19(6):759–769. June 12, 2026 34/39 
+
+> .CC-BY-NC-ND 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 3, 2026. ;https://doi.org/10.64898/2026.06.29.735224 doi: bioRxiv preprint
+
+25. Lopez R, Li B, Keren-Shaul H, Boyeau P, Kedmi M, Pilzer D, et al. DestVI identifies continuums of cell types in spatial transcriptomics data. Nat Biotechnol. 2022;40(9):1360–1369. 26. Cable DM, Murray E, Shanmugam V, Zhang S, Zou LS, Diao M, et al. Cell type-specific inference of differential expression in spatial transcriptomics. Nat Methods. 2022;19(9):1076–1087. 27. Jena SG, Verma A, Engelhardt BE. Answering open questions in biology using spatial genomics and structured methods. BMC Bioinformatics. 2024;25(1):291. 28. Zuo C, Xia J, Chen L. Dissecting tumor microenvironment from spatially resolved transcriptomics data by heterogeneous graph learning. Nat Commun. 2024;15(1):5057. 29. Li D, Jones A, Banerjee S, Engelhardt B. Bayesian multi-group Gaussian process models for heterogeneous group-structured data. J Mach Learn Res. 2025;26(30):30. 30. Stein ML. Space–Time Covariance Functions. J Am Stat Assoc. 2005;100(469):310–321. 31. Titsias M. Variational Learning of Inducing Variables in Sparse Gaussian Processes. In: Artificial Intelligence and Statistics. PMLR; 2009. p. 567–574. 32. Hensman J, Fusi N, Lawrence ND. Gaussian Processes for Big Data. arXiv [csLG]. 2013;. 33. Hensman J, Matthews A, Ghahramani Z. Scalable Variational Gaussian Process Classification. arXiv [statML]. 2014; p. 351–360. 34. Salimbeni H, Deisenroth M. Doubly stochastic variational inference for deep Gaussian processes. Adv Neural Inf Process Syst. 2017;30. 35. Stickels RR, Murray E, Kumar P, Li J, Marshall JL, Di Bella DJ, et al. Highly sensitive spatial transcriptomics at near-cellular resolution with Slide-seqV2. Nat Biotechnol. 2021;39(3):313–319. 36. Pelka K, Hofree M, Chen JH, Sarkizova S, Pirl JD, Jorgji V, et al. Spatially organized multicellular immune hubs in human colorectal cancer. Cell. 2021;184(18):4734–4752.e20. 37. Codeluppi S, Borm LE, Zeisel A, La Manno G, van Lunteren JA, Svensson CI, et al. Spatial organization of the somatosensory cortex revealed by osmFISH. Nat Methods. 2018;15(11):932–935. 38. Palla G, Spitzer H, Klein M, Fischer D, Schaar AC, Kuemmerle LB, et al. Squidpy: a scalable framework for spatial omics analysis. Nat Methods. 2022;19(2):171–178. 39. Moffitt JR, Bambah-Mukku D, Eichhorn SW, Vaughn E, Shekhar K, Perez JD, et al. Molecular, spatial, and functional single-cell profiling of the hypothalamic preoptic region. Science. 2018;362(6416):eaau5324. 40. Maynard KR, Collado-Torres L, Weber LM, Uytingco C, Barry BK, Williams SR, et al. Transcriptome-scale spatial gene expression in the human dorsolateral prefrontal cortex. Nat Neurosci. 2021;24(3):425–436. June 12, 2026 35/39 
+
+> .CC-BY-NC-ND 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 3, 2026. ;https://doi.org/10.64898/2026.06.29.735224 doi: bioRxiv preprint
+
+41. Yuan Z, Zhao F, Lin S, Zhao Y, Yao J, Cui Y, et al. Benchmarking spatial clustering methods with spatially resolved transcriptomics data. Nat Methods. 2024;21(4):712–722. 42. Zhao E, Stone MR, Ren X, Guenthoer J, Smythe KS, Pulliam T, et al. Spatial transcriptomics at subspot resolution with BayesSpace. Nat Biotechnol. 2021;39(11):1375–1384. 43. Dong K, Zhang S. Deciphering spatial domains from spatially resolved transcriptomics with an adaptive graph attention auto-encoder. Nat Commun. 2022;13(1):1739. 44. Watson BR, Paul B, Rahman RU, Amir-Zilberstein L, Segerstolpe Epstein ET, et al. Spatial transcriptomics of healthy and fibrotic human liver at single-cell resolution. Nat Commun. 2025;16(1):319. 
+
+# Supporting Information 
+
+S1 Fig. MGGP prior illustration on a 2D toy dataset. Samples drawn from the Mat´ ern-3/2 MGGP prior across four group-kernel lengthscales (a ∈ { 0.01 , 0.1, 1.0, 10 .0}) over four stripe-pattern ground-truth group configurations, visualized as 3D surfaces in both a smooth regime and a noisy regime. Illustrates how the group-difference parameter a controls sharing between groups (cell types): small a
+
+yields near-identical across-group factors; large a yields group-specific factors. 
+
+S2 Fig. MGGP-LCGP group-conditional spatial factors for DLPFC slice 151507. Full grid of group-conditional spatial factors for Maynard et al. DLPFC slice 151507 (Visium; 7 annotated cortical layers). 
+
+S3 Fig. MGGP-LCGP group-conditional spatial factors for DLPFC slice 151508. Full grid of group-conditional spatial factors for Maynard et al. DLPFC slice 151508. 
+
+S4 Fig. MGGP-LCGP group-conditional spatial factors for DLPFC slice 151509. Full grid of group-conditional spatial factors for Maynard et al. DLPFC slice 151509. 
+
+S5 Fig. MGGP-LCGP group-conditional spatial factors for DLPFC slice 151510. Full grid of group-conditional spatial factors for Maynard et al. DLPFC slice 151510. 
+
+S6 Fig. MGGP-LCGP group-conditional spatial factors for DLPFC slice 151669. Full grid of group-conditional spatial factors for Maynard et al. DLPFC slice 151669. 
+
+S7 Fig. MGGP-LCGP group-conditional spatial factors for DLPFC slice 151670. Full grid of group-conditional spatial factors for Maynard et al. DLPFC slice 151670. 
+
+S8 Fig. MGGP-LCGP group-conditional spatial factors for DLPFC slice 151671. Full grid of group-conditional spatial factors for Maynard et al. DLPFC slice 151671. June 12, 2026 36/39 
+
+> .CC-BY-NC-ND 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 3, 2026. ;https://doi.org/10.64898/2026.06.29.735224 doi: bioRxiv preprint
+
+S9 Fig. MGGP-LCGP group-conditional spatial factors for DLPFC slice 151672. Full grid of group-conditional spatial factors for Maynard et al. DLPFC slice 151672. 
+
+S10 Fig. MGGP-LCGP group-conditional spatial factors for DLPFC slice 151673. Full grid of group-conditional spatial factors for Maynard et al. DLPFC slice 151673. 
+
+S11 Fig. MGGP-LCGP group-conditional spatial factors for DLPFC slice 151674. Full grid of group-conditional spatial factors for Maynard et al. DLPFC slice 151674. 
+
+S12 Fig. MGGP-LCGP group-conditional spatial factors for DLPFC slice 151675. Full grid of group-conditional spatial factors for Maynard et al. DLPFC slice 151675. 
+
+S13 Fig. MGGP-LCGP group-conditional spatial factors for DLPFC slice 151676. Full grid of group-conditional spatial factors for Maynard et al. DLPFC slice 151676. 
+
+S14 Fig. MGGP-LCGP group-conditional spatial factors for Slide-seqV2 mouse hippocampus. Full grid of all L = 10 smNSF spatial factors conditioned on each of the 14 annotated groups (10 cell types and 4 hippocampal subfield regions) in the Slide-seqV2 hippocampus dataset (41,783 spatial barcodes). Complements the curated subset shown in Fig 2 and the consolidated Slide-seq main-text panel. 
+
+S15 Fig. MGGP-LCGP cell-type conditional spatial factors for HuColonCa-FFPE MERFISH human colorectal cancer. Full grid of cell-type conditional spatial factors for the HuColonCa-FFPE MERFISH human colorectal cancer dataset (137,693 cells after 6 × subsample, 13 cell-type groups collapsed from ∼50 fine annotations). Complements the curated subset shown in the colon main-text panel. 
+
+S16 Fig. MGGP-LCGP cell-type conditional spatial factors for osmFISH mouse somatosensory cortex. Full grid of cell-type conditional spatial factors for the osmFISH mouse cortex dataset (4,727 cells, 33 genes, 28 cell types). Complements the curated subset shown in the osmFISH main-text panel. 
+
+S17 Fig. smNSF analysis of MERFISH human liver — healthy sample AM042. Per-sample panel for the healthy AM042 liver sample. 
+
+S18 Fig. smNSF analysis of MERFISH human liver — healthy sample AM061. Per-sample panel for the healthy AM061 liver sample. 
+
+S19 Fig. smNSF analysis of MERFISH human liver — diseased sample AM031. Per-sample panel for the diseased AM031 liver sample. 
+
+S20 Fig. smNSF analysis of MERFISH human liver — diseased sample AM042. Per-sample panel for the diseased AM042 liver sample. 
+
+S21 Fig. smNSF analysis of MERFISH human liver — diseased sample AM061. Per-sample panel for the diseased AM061 liver sample. June 12, 2026 37/39 
+
+> .CC-BY-NC-ND 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 3, 2026. ;https://doi.org/10.64898/2026.06.29.735224 doi: bioRxiv preprint
+
+S22 Fig. smNSF analysis of MERFISH human liver — diseased sample AM062. Per-sample panel for the diseased AM062 liver sample. 
+
+S23 Fig. smNSF analysis of MERFISH human liver — diseased sample AM072. Per-sample panel for the diseased AM072 liver sample. 
+
+S24 Fig. MGGP-LCGP cell-type conditional spatial factors for MERFISH human liver — healthy sample AM048. Full grid of cell-type conditional spatial factors for the healthy AM048 liver sample. 
+
+S25 Fig. MGGP-LCGP cell-type conditional spatial factors for MERFISH human liver — healthy sample AM042. Full grid of cell-type conditional spatial factors for the healthy AM042 liver sample. 
+
+S26 Fig. MGGP-LCGP cell-type conditional spatial factors for MERFISH human liver — healthy sample AM061. Full grid of cell-type conditional spatial factors for the healthy AM061 liver sample. 
+
+S27 Fig. MGGP-LCGP cell-type conditional spatial factors for MERFISH human liver — diseased sample AM031. Full grid of cell-type conditional spatial factors for the diseased AM031 liver sample. 
+
+S28 Fig. MGGP-LCGP cell-type conditional spatial factors for MERFISH human liver — diseased sample AM042. Full grid of cell-type conditional spatial factors for the diseased AM042 liver sample. 
+
+S29 Fig. MGGP-LCGP cell-type conditional spatial factors for MERFISH human liver — diseased sample AM048. Full grid of cell-type conditional spatial factors for the diseased AM048 liver sample. 
+
+S30 Fig. MGGP-LCGP cell-type conditional spatial factors for MERFISH human liver — diseased sample AM061. Full grid of cell-type conditional spatial factors for the diseased AM061 liver sample. 
+
+S31 Fig. MGGP-LCGP cell-type conditional spatial factors for MERFISH human liver — diseased sample AM062. Full grid of cell-type conditional spatial factors for the diseased AM062 liver sample. 
+
+S32 Fig. MGGP-LCGP cell-type conditional spatial factors for MERFISH human liver — diseased sample AM072. Full grid of cell-type conditional spatial factors for the diseased AM072 liver sample. 
+
+S33 Fig. MGGP-LCGP cell-type conditional spatial factors for MERFISH mouse hypothalamus. Full grid of cell-type conditional spatial factors for the MERFISH hypothalamus dataset (Moffitt2018; 71,939 cells, 161 genes, 11 groups). 
+
+S34 Fig. MGGP-LCGP group-conditional spatial factors for 10x Visium Adult Mouse Brain (Coronal Section 1). Full grid of group-conditional spatial factors for the 10x Visium mouse brain slice (2,688 spots, 16,944 genes, 15 brain region groups). Complements the curated subset shown in the Visium main-text panel. June 12, 2026 38/39 
+
+> .CC-BY-NC-ND 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 3, 2026. ;https://doi.org/10.64898/2026.06.29.735224 doi: bioRxiv preprint
+
+S35 Fig. Convergence of the three multiplicative-update methods on a synthetic nonnegative-matrix benchmark. Side-by-side comparison of the Jensen lower bound (Method 1), the expanded/hybrid estimator (Method 2), and full Monte Carlo (Method 3) when factorizing a random nonnegative matrix into L = 10 components. The expanded estimator is substantially more stable than full Monte Carlo while attaining a lower final loss than the analytic lower bound, motivating its use as the default in all spatial experiments. 
+
+S36 Fig. Kernel-conditioned neighbor selection remains stable as data density grows. Each panel shows the K=50 neighbors (orange) of the same query point in subsamples of the Slide-seqV2 hippocampus dataset at 
+
+N ∈ { 5,000 , 10 ,000 , 40 ,000 } cells. Top row: baseline Euclidean KNN—the neighborhood radius collapses with increasing N . Bottom row: LCGP with kernel-conditioned neighbor selection (RBF kernel, lengthscale ℓ=8 .0)—the neighborhood extent stays well-behaved across all densities. 
+
+S37 Fig. LCGP replaces the global KL with M local KLs. Left: the exact MGGP-SVGP KL connects every inducing point to every other and costs O(M 3). 
+
+Middle: LCGP samples a neighbor set n(j) of size K for each inducing point j with probability proportional to the MGGP kernel k (zj , c j ), (zi, c i); same-group neighbors (blue circles) are preferred but cross-group neighbors (red triangles) enter the set whenever the kernel ranks them highly. Right: repeating this sampling at every inducing point yields the LCGP connectivity graph—a sparse graph whose local KL costs O(M K 3), making M = N inducing points tractable for the KL term. 
+
+S38 Fig. Probabilistic vs. K-nearest-neighbor selection in LCGP on Slide-seqV2 hippocampus. Both blocks are MGGP-LCGP fits at a = 10 6 (so the multi-group coupling is effectively removed and the only remaining difference is the neighbor-selection rule). Each block shows the unconditional spatial factor map (top row) and two cell-type conditional posteriors below; the leftmost column of each row marks which cells belong to that group. Reference factors and cell-type rows are picked from the VNNGP/KNN side (left block): the top two factors by max-over-groups L1
+
+specificity ratio, with each factor’s argmax-enriched cell type as its row (Oligodendrocytes, Astrocytes). The corresponding columns of the LCGP/probabilistic block are not the same numerical factor indices but are the best Pearson matches on the per-factor gene-loading vectors, so that the same biological gene program is being compared across methods. Driving selection from the VNNGP side is the conservative framing: the baseline picks the factors and cell-type rows where it shows the strongest signal, so the LCGP block’s differences (more anatomically structured conditional maps on the same rows) cannot be attributed to LCGP-favorable factor selection. June 12, 2026 39/39
