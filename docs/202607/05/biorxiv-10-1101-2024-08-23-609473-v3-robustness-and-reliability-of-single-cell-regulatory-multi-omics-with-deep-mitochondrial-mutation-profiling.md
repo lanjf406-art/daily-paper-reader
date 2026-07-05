@@ -1,0 +1,23 @@
+---
+title: Robustness and reliability of single-cell regulatory multi-omics with deep mitochondrial mutation profiling
+title_zh: 使用深度线粒体突变分析的单细胞调控多组学的稳健性与可靠性
+authors: "Weng, C., Weissman, J. S., Sankaran, V. G."
+date: 2026-07-02
+pdf: "https://www.biorxiv.org/content/10.1101/2024.08.23.609473v3.full.pdf"
+tags: ["query:neo-resist"]
+score: 6.0
+evidence: 可应用于耐药机制研究的单细胞多组学谱系追踪方法
+tldr: 单细胞线粒体DNA突变检测可大规模定义克隆关系，但传统方法局限于高异质性突变，数量少且受选择影响。为解决此问题，开发了ReDeeM框架，整合实验与计算，通过共识纠错和filter2过滤实现高保真突变检测。慢病毒条形码实验验证表明，ReDeeM能准确恢复真实克隆结构，包括低异质性突变显著改善谱系推断，滤除单分子支持突变会丢失真实信号。进一步推出MitoDrift框架，提供可解释的不确定性估计，强化了基于mtDNA的谱系追踪。
+source: biorxiv
+selection_source: fresh_fetch
+motivation: 现有单细胞mtDNA谱系分析面临变异检测保真度和系统发育推断可靠性两大挑战，高异质性突变信息有限。
+method: 开发ReDeeM方法，采用共识纠错和filter2过滤策略，并通过慢病毒条形码实验构建真实克隆结构进行验证。
+result: ReDeeM的filter1和filter2均高精度高召回率恢复真实克隆，低异质性突变增强谱系推断，优于先前方法。
+conclusion: ReDeeM与MitoDrift显著提升mtDNA谱系追踪准确性和不确定性量化。
+---
+
+## 摘要
+检测单细胞中的线粒体DNA突变具有大规模定义克隆关系以及结合人类细胞状态信息的巨大潜力。以往的方法侧重于较高异质性的突变，这些突变虽然信息丰富，但数量较少，且可能受功能选择影响，提供的谱系信息有限，并可能引入追踪偏差。尽管检测更具挑战性，中低异质性的mtDNA突变因其高多样性、丰富性和较低的选择倾向而具有重要价值。为增强mtDNA突变检测并促进精细尺度谱系追踪，我们开发了单细胞调控多组学结合深度线粒体突变分析（ReDeeM）方法，这是一个集成的实验与计算框架。在此，我们特别解决基于单细胞mtDNA的谱系分析中的两个核心分析挑战：变异检测工作流程的保真度以及系统发育推断的可靠性。我们证明，通过基于共识的错误校正，ReDeeM的mtDNA突变检测实现了高保真度，即使对于每个细胞仅由单个分子支持的突变，也与真实的突变特征一致。我们还开发了一种改进的共识后过滤方法，称为“filter2”，能够系统性地识别并过滤残留的边缘富集伪影，尽管这些伪影仅影响少数突变检测。为系统验证ReDeeM，我们近期在人类造血干细胞中进行了一次慢病毒条形码标记实验，在扩增和分化前对每个细胞进行独特标记，为评估谱系追踪准确性提供真实基准。此类验证表明，原始的ReDeeM分析方法（filter1）能够在高分辨率和召回率下稳健恢复真实克隆结构。纳入中低异质性变异（每个细胞<10%）显著改善谱系推断，而排除每个细胞仅由单个分子支持的突变则会移除真实克隆信号并降低真实克隆的恢复效果。filter1和filter2均能准确恢复真实克隆，并在真实基准的精确度和召回率上优于以往的基于mtDNA的谱系追踪方法，其中filter2在性能上还提供了额外提升。最后，尽管ReDeeM通过高分辨率恢复真实克隆推进了基于mtDNA的谱系追踪，但量化来自线粒体遗传的系统发育不确定性仍未解决。为此，我们近期开发并验证了MitoDrift，作为一个新一代的、考虑漂移的mtDNA谱系追踪框架，进一步增强了系统发育推断并提供了可解释的不确定性估计。
+
+## Abstract
+The detection of mitochondrial DNA (mtDNA) mutations in single cells holds considerable potential to define clonal relationships at scale, coupled with information on cell state in humans. Previous methods focused on higher heteroplasmy mutations, which, while informative, are few in number and may be shaped by functional selection, providing limited lineage information and potentially introducing biases for tracing. Although more challenging to detect, intermediate- to low-heteroplasmy mtDNA mutations are valuable due to their high diversity, abundance, and lower propensity to selection. To enhance mtDNA mutation detection and facilitate fine-scale lineage tracing, we developed the single-cell Regulatory multi-omics with Deep Mitochondrial mutation profiling (ReDeeM) approach, an integrated experimental and computational framework. Here, we specifically address two analytical challenges central to single-cell mtDNA-based lineage analysis: the fidelity of variant-calling workflows and the reliability of phylogenetic inference. We demonstrate that, by leveraging consensus-based error correction, ReDeeMs mtDNA mutation calls achieve high fidelity, aligning with bona fide mutational signatures even for mutations supported by a single molecule per cell. We also developed an improved post-consensus filtering approach, termed "filter2" that systematically identifies and filters residual edge-enriched artifacts, even though these affect only a minority of mutation calls. To systematically validate ReDeeM, we recently conducted a lentiviral barcoding experiment in human HSCs, uniquely labeling each cell prior to expansion and differentiation to provide a ground truth for assessing lineage tracing accuracy1. Such validation demonstrate that the original ReDeeM analytic approach (filter1)2 robustly recovers true clonal structure at high resolution and recall. Including intermediate to low-heteroplasmy variants (<10% per cell) strongly improves lineage inference, whereas excluding mutations supported by a single molecule per cell removes true clonal signal and degrades recovery of true clones. Both filter1 and filter2 accurately recover true clones and outperform prior mtDNA-based lineage tracing approaches in ground-truth precision and recall, with filter2 providing additional gains in performance. Finally, while ReDeeM advances mtDNA-based lineage tracing by recovering true clones at high resolution, yet quantifying the phylogenetic uncertainty from mitochondrial inheritance remains unmet. To address this, we recently developed and validated MitoDrift1 as a next-generation, drift-aware framework for mtDNA lineage tracing that further strengthens phylogenetic inference and provides interpretable uncertainty estimates.

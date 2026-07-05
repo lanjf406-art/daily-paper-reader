@@ -1,0 +1,2610 @@
+Title: B cell-intrinsic IRF8 transcriptionally reprograms antigen presentation to sustain CD8⁺ T cell antitumor immunity
+
+URL Source: https://www.biorxiv.org/content/10.64898/2026.06.28.735129v1.full.pdf
+
+Published Time: Sun, 05 Jul 2026 22:27:37 GMT
+
+Number of Pages: 50
+
+Markdown Content:
+1
+
+B cell -intrinsic IRF8 transcriptionally reprograms antigen presentation to sustain CD8⁺ T 
+
+cell anti tumor immunity 
+
+Zainab Tiamiyu 1,2 *, Dakota B. Poschel 1,2 *, Richa Rashmi 3, Sergei Bombin 3, Kendra Fick 1,2 , Patrick 
+
+Czabala 1,2 , Dafeng Yang 1,2 , Huidong Shi 1,3 , Keita Saeki 4, Keiko Ozato 4, and Kebin Liu 1,2, 3*, 
+
+> 1
+
+Department of Biochemistry and Molecular Biology, Medical College of Georgia, Augusta 
+
+University, Augusta, GA. 2VA Augusta Health Care System , Augusta, GA. 3Georgia Cancer 
+
+Center, Medical College of Georgia, Augusta University, Augusta, GA. 4Division of 
+
+Developmental Biology, National Institute of Child Health and Human Development, National 
+
+Institutes of Health, Bethesda, MD, USA .
+
+* Equal contribution 
+
+Running title: B cell -intrinsic IRF8 sustains T cell anti -tumor immunity 
+
+Conflict of interest: The authors declare no potential conflicts of interest 
+
+Correspondence: Kebin Liu, email:  Kliu@augusta.edu . 1410 Laney Walker Blvd, Augusta, GA 
+
+30912. USA. Tel: 706 -394 -5477 
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.28.735129 doi: bioRxiv preprint
+
+2
+
+Abstract 
+
+Interferon regulatory factor 8 (IRF8) is a master transcription factor of myeloid 
+
+differentiation, but whether IRF8 intrinsically controls B cell function in tumors remains 
+
+unknown. Using paired single -cell transcriptomic and chromatin accessibility profil ing of tumors 
+
+from wild -type and Irf8 -deficient mice, we identify a B cell -intrinsic IRF8 axis regulating 
+
+antigen presentation and sustaining anti -tumor CD8⁺ T cell immunity. IRF8 establishes 
+
+conserved chromatin accessibility programs across myeloid cells and plasmablasts centered on 
+
+antigen processing and MHC class I presentation, but engages distinct motifs by lineage: 
+
+myeloid cells preferentially utilize ISRE and ETS -composite elements, whereas plasmablasts are 
+
+selectively enriched for EICE elements, re flecting B lineage -specific IRF8 -IRF4 cooperation. 
+
+Loss of IRF8 disrupts these programs, skews B cells toward plasmablast differentiation and 
+
+reduces antigen presentation machinery. B cell depletion accelerated tumor growth, while CD40 
+
+agonism activat ed B cells, expanded T cells, and enhanced anti -tumor immunity. B cell -specific 
+
+IRF8 deletion alone accelerated tumor growth, establishing a cell -intrinsic requirement 
+
+independent of myeloid IRF8 function. The IRF8 -regulated B cell signature was enriched i n PD -
+
+1 blockade cancer patient responders, and plasmablast abundance correlated with response in 
+
+pembrolizumab -treated cancer patients. These findings establish IRF8 as a lineage -adapted 
+
+regulator of antigen presentation and define the IRF8 -B cell axis as a determinant of anti -tumor 
+
+immunity .
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.28.735129 doi: bioRxiv preprint
+
+3
+
+Highlights 
+
+IRF8 establishes a conserved chromatin accessibility across tumor -infiltrating myeloid and B 
+
+cells 
+
+Myeloid cells engage ISRE motifs, whereas plasmablasts rely on EICE motifs as IRF8 
+
+lineage -specific cis -regulat ion 
+
+IRF8 regulates an antigen presentation in B cells to sustain anti -tumor T cell immunity 
+
+B cell -intrinsic IRF8 transcription signature predicts patient response to PD -1 blockade 
+
+immunotherapy 
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.28.735129 doi: bioRxiv preprint
+
+4
+
+INTRODUCTION 
+
+Interferon regulatory factor 8 (IRF8) is a member of the IRF transcription factor family that 
+
+directs bipotential myeloid progenitors toward macrophage and dendritic cell (DC) fates while 
+
+restraining granulocytic differentiation 1-3. In both mice and humans, IRF8 deficiency causes 
+
+profound defects in conventional type 1 dendritic cell (cDC1) and plasmacytoid DC (pDC) 
+
+development, underscoring its conserved role in antigen -presenting cell (APC) specification 4,5 .
+
+IRF8 maintains cDC1 identity through preservation of lineage -specific chromatin accessibility 
+
+and enhancer programs; conditional deletion in committed cDC1s drives transcriptional 
+
+reprogramming toward cDC2 -like states 6-9. IRF8 also governs type I interferon production and 
+
+antigen presentation in pDCs, and IRF8 -containing transcriptional circuits drive specialized anti -
+
+tumor DC subsets that promote durable T cell immunity 10 -12 . IRF8 -dependent programs in 
+
+tumor -associated macrophages and DCs likewise regulate antigen cross -presentation, CD8⁺ T 
+
+cell priming, and anti -tumor immune memory, positioning IRF8 as a central regulator of myeloid 
+
+cell -mediated tumor immunity 13 .
+
+IRF8 executes its regulatory functions through combinatorial interactions with lineage -
+
+defining transcription factors including PU.1, BATF3, SPIB, IRF1, IRF4, and AP -1/ETS family 
+
+members 14,15 . These partnerships enable context -dependent binding to distinct cis -regulatory 
+
+motifs, canonical ISREs, ETS -IRF composite elements (EICEs), and AP1 -IRF composite 
+
+elements (AICEs) 16 -18 . In cDC1s, high IRF8 levels selectively engage AICE -containing 
+
+enhancers to establish DC identity and antigen presentation programs 7,19 . In microglia and 
+
+pDCs, IRF8 -dependent chromatin accessibility precedes transcriptional activation, demonstrating 
+
+that IRF8 functions as an upstream chromatin organizer that licenses immune -responsive gene 
+
+programs 20 .
+
+IRF8 is expressed throughout B cell development and participates in transcriptional networks 
+
+with PU.1, IKAROS, E2A, EBF1, and PAX5 to govern B cell lineage specification and 
+
+commitment 21,22 . IRF8 directly regulates Sfpi1 and Ebf1, influencing early lineage 
+
+differentiation 21 . IRF8 also controls germinal center formation, marginal zone versus follicular 
+
+fate decisions, immunoglobulin light chain rearrangement, and plasma cell differentiation 23,24 .
+
+Cooperatively with PU.1, IRF8 represses BLIMP1 -dependent plasma cell programs, and 
+
+CRISPR -mediated IRF8 deletion promotes premature plasmablast formation and dysregulated 
+
+plasma cell gene expression 24 . Beyond normal B cell development, IRF8 dysregulation also 
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.28.735129 doi: bioRxiv preprint
+
+5
+
+shapes antigen presentation in malignant B cells 25 . IRF8 mutations in diffuse large B cell 
+
+lymphoma disrupt CD74 and HLA -DM expression, impairing MHC class II -restricted antigen 
+
+processing and remodeling the tumor immune microenvironment toward immune evasion 25 ,
+
+underscoring that IRF8 is a B cell -intrinsic determinant of antigen -presenting competence even 
+
+outside the myeloid compartment 25 . Despite these extensive studies, whether IRF8 governs 
+
+functional activation programs of tumor -associated B cells remains unknown. B cells are now 
+
+recognized as critical regulators of anti -tumor immunity 26 -29 . Tumor -infiltrating B cells and 
+
+plasma cells are associated with improved responses to immune checkpoint blockade and 
+
+favorable prognosis across multiple cancer types 30 -32 . Beyond antibody production, B cells 
+
+function as professional APCs that activate CD4⁺ and CD8⁺ T cells through MHC -mediated 
+
+antigen presentation, costimulatory molecule expression, and cytokine secretion 33,34 . Notably, 
+
+blocking plasma cell differentiation enhances antigen presentation by tumor -associated B cells 
+
+and improves anti -tumor immunity, highlighting the critical importance of B cell differentiation 
+
+state in regulating T cell activation within the TME 28 .
+
+Despite th ese advances , whether IRF8 establishes chromatin accessibility and antigen 
+
+presentation programs in tumor -infiltrating B cells, the cis -regulatory motifs governing these 
+
+states, and whether IRF8 acts cell -intrinsically rather than through myeloid functions remain 
+
+unre solved. Here, using single -cell multiomics and B cell -specific deletion, we show IRF8 
+
+establishes a conserved chromatin program across myeloid cells and plasmablasts, governed by 
+
+EICE rather than ISRE motifs in B cells, and requ ired for antigen presentation and tumor growth 
+
+control. This program is enriched in melanoma and breast cancer immunotherapy patient 
+
+responders, establishing the IRF8 -B cell axis as a clinically relevant regulator of anti -tumor 
+
+immunity. 
+
+RESULTS 
+
+IRF8 deficiency accelerates tumor growth and reshapes the immune landscap e
+
+Loss of IRF8 impairs myeloid cell differentiation and promotes tumor growth 1,35,36 . To 
+
+elucidate the molecular mechanism underlying IRF8 function in anti -tumor immunity, we 
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.28.735129 doi: bioRxiv preprint
+
+6
+
+inoculated wild -type (WT) and Irf8 -deficient (IRF8 KO) mice with B16 -F10 tumor cells. Tumors 
+
+developed in all I RF8 KO mice, whereas only 3 out of 5 WT mice formed measurable tumors 
+
+(Fig. 1A & B) . Tumor growth was significantly accelerated in I RF8 KO mice compared to WT 
+
+mice (Fig. 1C & D ). Within the CD45⁺ cell compartment, the frequencies of major lymphoid 
+
+populations , including CD3⁺ T cells, CD19⁺ B cells, NK cells, and innate lymphoid cells (ILCs; 
+
+CD90.2⁺) , were all significantly decreased in IRF8 KO mice (Fig. 1 E & F). These findings 
+
+validate a broad impairment in lymphoid cell infiltration within I RF8 KO tumors. Systemically, 
+
+tumor -bearing I RF8 KO mice developed splenomegaly (Fig. S1A ), with significantly increased 
+
+spleen size and total splenocyte numbers compared to WT mice (Fig. S1B ). Despite this 
+
+expansion, the relative frequencies of CD3⁺ T cells, CD19⁺ B cells, NK1.1⁺ NK cells, and 
+
+CD90.2⁺ ILCs were significantly reduced in the spleens of I RF8 KO mice (Fig. S1C -D).
+
+Together, these results demonstrate that IRF8 deficiency profoundly reshapes both local and 
+
+systemic immune landscapes, resulting in impaired lymphoid representation and defective anti -
+
+tumor immunity, consistent with IRF8 function in regulating myeloid and lymphoid immune 
+
+homeostasis under pathological conditions 13,37,38 .
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.28.735129 doi: bioRxiv preprint
+
+7
+
+Figure 1. Single -cell transcriptomic profiling reveals IRF8 -dependent remodeling of the 
+
+tumor immune microenvironment. 
+
+A. Images of B16 -F10 tumors from WT and Irf8 KO mice. 
+
+B. Tumor incidence in WT and I RF 8 KO mice following subcutaneous B16 -F10 implantation .
+
+C. Tumor growth kinetics in WT and I RF 8 KO mice. 
+
+D. Tumor weights at experimental endpoint. 
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.28.735129 doi: bioRxiv preprint
+
+8
+
+E. Representative flow cytometry gating strategy for tumor -infiltrating immune populations in 
+
+WT and I RF8 KO B16 -F10 tumors .
+
+F. Quantification of tumor -infiltrating immune cell populations shown in panel E .
+
+G. UMAP visualization of integrated scRNA -seq datasets showing cell populations identified in 
+
+WT and I RF 8 KO tumors .
+
+H. Bar plot quantification of relative cell composition in WT and I RF 8 KO tumors. 
+
+Single -cell transcriptomics reveals preserved lineage diversity but altered immune 
+
+composition in the tumor microenvironment in IRF8 KO mice 
+
+Th e above findings prompted us to define immune cell heterogeneity and lineage distribution 
+
+at single -cell resolution. Because IRF8 is a transcription factor, w e isolated immune cells from 
+
+tumor s of WT and IRF8 KO mice and performed single -cell multiomics to couple transcription 
+
+and chromatin remodeling in the same cell . Unsupervised clustering and UMAP visualization 
+
+identified multiple immune populations, including effector T cells, memory T cells, dendritic 
+
+cells (DCs), macrophages, myeloid -derived suppressor cells ( IMC s), B cells, plasmablasts, NK 
+
+cells, neutrophils, endothelial cells, and fibroblasts (Fig. 1G & H ). Overall cellular identities 
+
+were preserved between WT and I RF8 tumors, indicatin g that IRF8 loss does not eliminate major 
+
+immune lineages but instead reshapes their relative abundance and perhaps functional states 
+
+within the tumor microenvironment. Comparative analysis revealed marked compositional 
+
+changes in I RF8 KO tumors. Most notably, IMC s were substantially expanded in IRF8 KO 
+
+tumors, consistent with the established role of IRF8 in restraining immature myeloid cell 
+
+accumulation 35,36 . In contrast, DCs , plasmablasts, and effector T cells were markedly reduced in 
+
+IRF8 KO tumors (Fig. 1G & H ). Interestingly, although total T cell populations were decreased ,
+
+IRF8 loss resulted in a relative enrichment of memory -like T cells accompanied by a reduction in 
+
+cytotoxic effector T cells, suggesting impaired effector differentiation rather than T cell 
+
+exclusion. 
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.28.735129 doi: bioRxiv preprint
+
+9
+
+Figure 2. IRF8 regulates a shared antigen presentation transcriptional program across 
+
+plasmablasts, DC s, and IMC s. 
+
+A-C. Heatmaps showing differentially expressed genes between WT and I RF8 KO cells in 
+
+plasmablasts (A), DCs (B), and IMC s (C). Genes associated with antigen processing and 
+
+presentation are highlighted with red boxes. 
+
+D-F. Volcano plots of differential gene expression analyses comparing WT and I RF8 KO 
+
+plasmablasts (D), DCs (E), and IMC s (F). Significantly upregulated and downregulated genes 
+
+are highlighted. 
+
+G-I. UMAP feature plots showing expression of representative antigen presentation and 
+
+interferon -response genes in WT and IRF8 KO plasmablasts (G), DCs (H), and IMC s, (I). 
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.28.735129 doi: bioRxiv preprint
+
+10 
+
+J. Venn diagram showing overlap of differentially expressed genes among plasmablasts, DCs, 
+
+and IMC s.
+
+A conserved IRF8 -dependent antigen presentation signature spans myeloid and B cell 
+
+lineages 
+
+Our above analysis revealed substantial alterations in plasmablasts, DC, and IMC in I RF 8 KO 
+
+tumors compared to WT controls . While IRF8 is well established as a master regulator of 
+
+myeloid lineage differentiation and antigen -presenting cell function 16,39 -42 , its role in B cell 
+
+functional programming within tumors remains poorly understood. To determine whether IRF8 
+
+regulates B cell function in a manner analogous to its canonical role in myeloid cells, we used 
+
+DCs and IMC s as reference antigen -presenting populations 43,44 and performed comparative 
+
+differential gene expression analyses across DCs, IMC s, and plasmablasts isolated from WT and 
+
+IRF8 KO tumors (Fig. 2A-F). Across all three immune populations, differential expression 
+
+analyses identified a strikingly conserved IRF8 -dependent transcriptional program centered on 
+
+antigen processing and presentation pathways (Fig. S2) . Genes involved in MHC class I and 
+
+antigen presentation machinery, including Cd74, H2 -D1, H2 -K1, B2m, Tap1, and Psmb8, were 
+
+consistently reduced in I RF8 KO cells (Fig. 2A-I). In parallel, interferon -response regulators 
+
+such as Stat1, Bst2, and Iigp1 were coordinately suppressed, indicating impaired IFN -associated 
+
+immune activation programs in the absence of IRF8 (Fig. 2G-I). These shared transcriptional 
+
+alterations across DCs, IMCs, and plasmablasts, together with overlapping differentially 
+
+expressed genes (Fig. 2J) suggest that IRF8 functions as a conserved regulator of antigen 
+
+presentation across both myeloid and B lineage compartments. 
+
+In addition to antigen presentation defects, I RF8 KO cells also exhibited transcriptional 
+
+signatures consistent with metabolic and stress adaptation. Differentially expressed 
+
+mitochondrial and oxidative phosphorylation genes, including mt -Nd, Cox, Atp5, and Uqcrb, 
+
+suggested metabolic rewiring across myeloid and plasmab last populations, whereas stress - and 
+
+hypoxia -associated genes such as Ddit4, Hilpda, and Slc2a1 were increased in Irf8 -deficient cells 
+
+(Fig. 2D-F). IMC s additionally displayed enrichmen t of proliferation -associated genes including 
+
+Mki67, Ect2, Smc2, and Rrm1, consistent with accumulation of immature myeloid populations 
+
+in IRF8 KO tumors. 
+
+Distinct IRF8 -dependent motif architectures define chromatin accessibility programs 
+
+across tumor -infiltrating myeloid cells and plasmablasts 
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.28.735129 doi: bioRxiv preprint
+
+11 
+
+A panel of 38 IRF8 -like motifs, spanning IRF, ISRE, EICE/AICE composite, PU.1/ETS 
+
+families, was curated and interrogated in tumor -infiltrating DCs, IMC s, and plasmablasts from 
+
+WT and IRF8 KO mice (Table S1). Motif enrichment analysis of IRF8 -associated chromatin 
+
+accessibility peaks across these three cell types reveals both shared and lineage -specific 
+
+regulatory architectures that are differentially sensitive to IRF8 loss (Fig. S3) . In WT DCs, 
+
+standalone ISRE and IRF motifs are depleted at accessible IRF8 -like peaks, while ETS -family 
+
+and composite ETS:RUNX motifs predominate, suggesting that DCs preferentially exploit 
+
+composite regulatory elements rather than canonical ISRE half -sit es (Table S2). Notably, AP -
+
+1/bZIP motifs are also strongly depleted in WT DC accessible peaks, indicating that IRF8 
+
+operates in DCs through an AP -1-independent, ETS -composite mode. In WT IMC s, the 
+
+chromatin accessible at IRF8 -like loci is saturated with ca nonical IRF/ISRE motifs, including 
+
+ISRE, T1ISRE, IRF1, IRF2, bZIP:IRF (AICE), and JASPAR IRF8 matrices, alongside a 
+
+strikingly strong AP -1/bZIP co -enrichment signature, reflecting an active, broad -spectrum IRF8 -
+
+centered transcriptional program tightly integrated with AP -1 coregulators. Notably, WT 
+
+plasmablasts occupy a distinct regulatory niche: the dominant motif enrichment signature 
+
+involves ETS/PU.1 -family elements together with specific EICE composite motifs (PU.1 -IRF 
+
+and MA1484.1), with AP -1/bZIP acces sibility strongly depleted (Table S4), indicating that IRF8 
+
+operates primarily in a PU.1 -cooperative, EICE -dependent mode in B lineage cells rather than 
+
+through the standalone ISRE program dominant in myeloid cells 20 . Consistent with this, ISRE 
+
+enrichment does not reach significance in WT plasmablasts, further distinguishing the B cell 
+
+IRF8 regulatory program from the canonical myeloid ISRE -dominated architecture. 
+
+Upon IRF8 deletion, the motif landscapes shift in cell population -specific ways. In DCs, the 
+
+residual IRF/ISRE accessibility is further eroded and canonical IRF8 (MA0652.1) (Fig. S3) is 
+
+significantly lost, while ETS -family enrichment is maintained or amplified (Table S5). In IMC s, 
+
+the overall IRF motif enrichment is broadly preserved despite IRF8 loss (Table S6), a finding 
+
+consistent with the massive expansion of IMCs in the IRF8 KO mice 13,35 . Most strikingly, in 
+
+IRF8 KO plasmablasts, the IRF component of the accessible chromatin landscape is essentially 
+
+abolished: ISRE, T1ISRE, IRF1, IRF2, IRF4, PU.1 -IRF, and bZIP:IRF motifs all lose 
+
+significance, while the ETS scaffold persists (Table S7). I mportantly, MA1484.1, an EICE 
+
+composite element containing both ETS and IRF half -sites, remains significantly enriched in 
+
+IRF8 KO plasmablasts at levels comparable to WT. This persistence likely reflects continued 
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.28.735129 doi: bioRxiv preprint
+
+12 
+
+occupancy of the ETS half -site by PU.1 in the absence of IRF8, rather than intact EICE binding, 
+
+since the canonical PU.1 -IRF composite motif is lost in the KO. Taken together, these findings 
+
+indicate that IRF8 loss selectively ablates the IRF component of EICE -dependent chromatin 
+
+accessibility in plasmablasts, while PU.1 -anchored ETS occupancy persists independently of 
+
+IRF8. These data reveal that IRF8 is the critical determinant of the IRF/EICE regulatory program 
+
+at accessible chromatin in plasmablasts, th at it contributes to, though is not solely responsible 
+
+for, IRF/ISRE chromatin accessibility in DCs, and that in IMC s, the IRF8 -like chromatin 
+
+program reflects a population -level phenomenon partially maintained by the expanded immature 
+
+myeloid compartment in the absence of IRF8. 
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.28.735129 doi: bioRxiv preprint
+
+13 
+
+was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.28.735129 doi: bioRxiv preprint 14 
+
+Figure 3. IRF8 -mediated chromatin accessibility regulate s antigen presentation pathways 
+
+across myeloid and plasmablast cells 
+
+A. Genomic annotation of accessible IRF8 -like peaks in DCs, IMC s, and plasmablasts from WT 
+
+and IRF8 KO tumors. Peaks harboring at least one match to any of the IRF8 -like PWMs were 
+
+annotated with ChIPseeker (TxDb.Mmusculus.UCSC.mm10.knownGene; TSS window ±3 
+
+kb). Bars show the absolute number of IRF8 -like peaks falling within promoter, 5′UTR, exon, 
+
+intron, 3′UTR, downstream, and distal intergenic categories per cel l type and genotype. 
+
+B. Stacked bar chart of the fractional genomic distribution of IRF8 -like peaks across all cell type 
+
+and genotype groups .
+
+C. Bar graphs quantifying the total number of DA chromatin peaks gained (KO>WT, log₂FC> 1, 
+
+FDR<0.01) and lost (WT >KO, log₂FC<−1, FDR< 0.01) in IRF8 KO cells relative to WT 
+
+controls . DA was computed using a binomial test on binarized peak accessibility matrices 
+
+within per -cell -type ArchR subprojects. 
+
+D.  Grouped Bar plots show the number of IRF8 -like motif -containing DA peaks annotated to 
+
+each genomic region category in DC, Plasmablast, and IMC cells. Red bars indicate peaks 
+
+with significantly increased accessibility in IRF8 KO relative to WT (gained in KO; 
+
+log₂FC>1, FDR<0.01); blue bars indicate peaks with significantly reduced accessibility (lost 
+
+in KO; log₂FC< -1, FDR<0.01). Genomic annotations were assigned using ChIPseeker with a 
+
+±3 kb TSS window. 
+
+E. Stacked bar chart of the genomic annotation distribution of significantly DA IRF8 -like peaks 
+
+across all three cell types. 
+
+F. Density plots of log₁₀ -transformed distances between consecutive neighboring IRF8 -like 
+
+peaks in WT, IRF8 KO, and combined cells for DCs, plasmablasts, and IMC s. 
+
+G. MA plots and volcano plots of DA analyses for DCs, IMC s, and plasmablasts. Gray points 
+
+represent all tested peaks. Colored points indicate IRF8 -like peaks passing significance 
+
+thresholds (FDR<0.01, log₂FC≥1: red =gained accessibility in KO (log₂FC >1); blue =lost 
+
+accessibility in KO (log₂F < -1). Peak counts for each category are indicated within each panel. 
+
+H. Heatmap of IRF8 -like motif enrichment within DA peak sets across cell types and DA 
+
+direction . Motif annotations are shown alongside published ChIP -seq identifiers where 
+
+available. 
+
+I. Dot plot summarizing IRF8 -like motif enrichment patterns associated with gained and lost 
+
+IRF8 -dependent DA peaks in DCs, plasmablasts, and IMC s. 
+
+IRF8 establishes lineage -spanning chromatin accessibility programs in myeloid and B cells. 
+
+To map chromatin accessibility landscapes in WT and IRF8 KO immune cells, we next 
+
+integrated single -cell ATAC -seq and RNA -seq data from DCs, IMC s, and plasmablasts .
+
+Dimensionality reduction and UMAP embedding resolved the major immune populations and 
+
+demonstrated genotype -dependent chromatin remodeling within each lineage (Fig. S4A). 
+
+Genome -wide annotation of accessible peaks containing IRF8 -like motifs revealed that the 
+
+majority localized to intronic and distal intergenic regions rather than promoter -proxi mal 
+
+elements, consistent with enhancer -mediated regulation and conserved across all three lineages 
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.28.735129 doi: bioRxiv preprint
+
+15 
+
+(Fig. S4B). DA analysis identified significantly remodeled peaks per lineage (Fig. S4C-K). In 
+
+DCs, 1,024 peaks showed increased and 2,270 peaks showed decreased accessibility in I RF8 KO 
+
+relative to WT cells (Fig. S4C-E). Comparable changes were observed in IMC s (958 increased, 
+
+1,270 decreased; Fig. S4F-H) and plasmablasts (1,097 increased, 1,825 decreased; Fig. S4I-K). 
+
+Peaks harboring IRF8 -like motifs were significantly enriched among differentially accessible 
+
+loci in all three cell types (Fig. S4D, G, J). Notably, plasmablasts displayed extensive IRF8 -
+
+dependent chromatin remodeling comparable in scale to that seen in canonical myeloid antigen -
+
+presenting cells (Fig S 4I-K) , supporting a direct role for IRF8 in B cell functional programming 
+
+within the tumor microenvironment. 
+
+IRF8 regulates conserved enhancer and motif architectures across myeloid and B lineage 
+
+cells. 
+
+Genome -wide annotation of accessible IRF8 -like peaks revealed that a large portion of IRF8 -
+
+associated chromatin regions localized to intronic and distal intergenic regions rather than 
+
+promoter -proximal elements (Fig. 3A & B), consistent with enhancer -mediated transcriptional 
+
+regulation 45,46 . This enhancer -biased genomic distribution was observed across DCs, IMC s, and 
+
+plasmablasts in both WT and IRF8 KO tumors, indicating that IRF8 regulates both distal cis -
+
+regulatory elements and core promoters regardless of lineage context. Differential accessibility 
+
+analyses revealed widespread chromatin remodeling in IRF8 KO immune cells, with more 
+
+accessibility peaks gained than lost in IRF8 KO DCs, IMC s, and plasmablasts relative to WT 
+
+controls (Fig. 3C & D , Fig. S3A -F). Analysis of DA peak distribution relative to TSSs 
+
+demonstrated enrichment of accessibility changes within enhancer -associated distal genomic 
+
+regions across all three populations (Fig. 3E), further supporting the concept that IRF8 regulates 
+
+both enhancer and promoter -restricted accessibility landscapes. Density plots of inter -peak 
+
+distances showed comparable chromatin compaction patterns in WT and IRF8 KO for all three 
+
+cell types (Fig. 3F), suggesting that the gross spatial organization of IRF8 -associated regulatory 
+
+elements is preserved even as individual sites gain or lose accessibility. MA and volcano plots of 
+
+DA results, with IRF8 -like motif -containing peaks highlighted as gained or lost, confirmed 
+
+substantial bidirectional remodeling (Fig. 3G). Notably, plasmablasts exhibited IRF8 -dependent 
+
+chromatin remodeling of comparable magnitude to that observed in canonical antigen -presenting 
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.28.735129 doi: bioRxiv preprint
+
+16 
+
+myeloid populations, providing additional evidence that IRF8 directly regulates B cell 
+
+transcriptional programming within the tumor microenvironment. 
+
+Having established that each immune population deploys a distinct IRF8 regulatory element 
+
+with ISRE -dominant in IMC s, ETS -composite in DCs, and EICE -dependent in plasmablasts , we 
+
+next asked whether these lineage -specific programs converge on a shared structural feature at the 
+
+level of motif architecture. A heatmap of enrichment significance across IRF8 -like motif variants 
+
+and all cell -type and DA -direction combinations (Fig. 3H, Fig. S5 ) and a complementary dot plot 
+
+of enrichment statistics (Fig. 3I) r evealed that ETS/PU.1 -family elements represent the most 
+
+broadly shared component of IRF8 -dependent chromatin accessibility across all three 
+
+populations, with the EICE being the only motif class achieving significant enrichment in DCs, 
+
+IMC s, and plasmablasts alike. Together, these data indicate that a PU.1 -anchored ETS scaffold 
+
+constitutes the conserved structural core of IRF8 -dependent regulatory elements across immune 
+
+lineages, onto which lineage -specific IRF co -factor interactions , ISRE -class in myeloid cells, 
+
+EICE -class in B lineage cells , are superimposed to generate population -adapted chromatin 
+
+accessibility program .
+
+Integrated ATAC -RNA analyses identify coordinated IRF8 -dependent transcriptional 
+
+programs in antigen -presenting immune cells 
+
+To determine whether IRF8 -dependent chromatin accessibility remodeling correlates with 
+
+transcriptional changes , we performed integrated ATAC -RNA analyses linking IRF8 -like DA 
+
+peaks with their nearest DE genes across DCs, plasmablasts, and IMC s. IRF8 -like DA peaks 
+
+were first identified by binomial differential accessibility testing (FDR<0.01, log₂FC≥1) within 
+
+each cell type, then cross -referenced against RNA DE results (Wilcoxon FD ≤0.01, log₂FC 
+
+≥0.58) to retain only peak -gene pairs in which the nearest gene was independently regulated at 
+
+the transcriptional level. This dual -stringency filtering yielded 209 peak -gene pairs in DC , 171 in 
+
+plasmabla sts, and 163 in IMC (Fig. 4A -C) . Heatmap analys is centered on IRF8 -like DA peaks 
+
+(±1 kb windows, 10 -bp bins) demonstrated coordinated genotype -dependent changes in 
+
+chromatin accessibility and gene expression across all three immune populations (Fig. 4A-C). 
+
+Within each cell type, DA peaks were partitioned into up and down clusters; rows within each 
+
+cluster were ordered by the magnitude of the KO -WT RNA expression difference of the nearest 
+
+DE gene, enabling visual alignment of chromatin and transcriptional ch anges. Regions exhibiting 
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.28.735129 doi: bioRxiv preprint
+
+17 
+
+reduced chromatin accessibility in IRF8 KO cells , the predominant class across all three 
+
+populations , were associated with concomitant decreases in expression of nearby genes, 
+
+consistent with IRF8 -dependent enhancer accessibility contributing to the maintenance of 
+
+transcriptional activation programs across myeloid and B lineage compartments. The aggregated 
+
+enrichment profiles above the heatmaps confirmed a clear shift from symmetric accessibility 
+
+peaks in WT to attenuated or absent signals in IRF8 KO cells at down -cluster loci, while up-
+
+cluster loci showed the reciprocal pattern of newly acquired accessibility in the IRF8 KO context 
+
+(Fig. 4A -C) .
+
+These chromatin accessibility alterations were tightly linked to reduced expression of nearby 
+
+genes involved in antigen processing, interferon signaling, and immune activation pathways, 
+
+including members of the MHC class I presentation machinery (e.g., H2 -D1, B2m, Tap1). The 
+
+RNA expression heatmaps (Fig. 4A-C, right panels) and their accompanying boxplots confirm 
+
+the directional concordance between ATAC and RNA changes . T he top -ranked rows within the 
+
+down cluster, sorted by largest KO -WT RNA difference, consistently displayed both the most 
+
+prominent loss of chromatin accessibility and the greatest transcriptional suppression. 
+
+While plasmablasts share the functional output of IRF8 -dependent chromatin remodeling 
+
+with DCs and IMC s, including coordinated loss of accessibility and transcriptional suppression 
+
+at antigen presentation -associated loci , the underlying regulatory architecture is distinct. 
+
+plasmablasts deploy an EICE -dependent regulatory program rather than the ISRE -dominant 
+
+architecture of IMC s or the ETS -composite program of DCs (Table S2 -7, Fig. 3) . The 
+
+convergence on a shared functional consequence , suppression of antigen processing and MHC 
+
+class I presentation machinery , through population -adapted chromatin mechanisms provides 
+
+strong evidence that IRF8 licenses antigen -presenting competence across immune lineages 
+
+through lineage -specific epigenetic programs rather than a single uniform regulatory circuit (Fig. 
+
+3, Fig. S4) .
+
+To globally assess the relationship between chromatin accessibility and gene expression, we 
+
+integrated ATAC accessibility fold changes with RNA expression fold changes across all three 
+
+cell types using Peak2Gene -linked pairs (Peak2Gene correlation≥0.45, FDR≤0.05; Fig. 4D). 
+
+Scatter plot analyses demonstrated a positive correlation between reduced chromatin 
+
+accessibility and decreased transcriptional output in IRF8 KO cells, consistent across DCs, 
+
+plasmablasts, and IMC s (Fig. 4D) . IRF8 -like peaks cluster ed more tightly along the diagonal 
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.28.735129 doi: bioRxiv preprint
+
+18 
+
+than non -IRF8 -associated DA regions, and the Peak2Gene correlation coefficients were 
+
+systematically higher for IRF8 -like loci (Fig. 4D) . This indicates that IRF8 -centered regulatory 
+
+elements are primary contributors to immune transcriptional programs in the tumor 
+
+microenvironment rather than incidental bystanders to broader chromatin remodeling, and that 
+
+the strength of the ATAC -RNA coupling is itself a distinguishing feature of IRF8 -bound 
+
+regulatory elements. 
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.28.735129 doi: bioRxiv preprint
+
+19 
+
+Figure 4. Integrated ATAC -RNA analyses reveal coordinated IRF8 -dependent chromatin 
+
+accessibility and transcriptional regulation across myeloid and B lineage cells. 
+
+was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.28.735129 doi: bioRxiv preprint 20 
+
+A-C. Heatmaps showing integrated differential chromatin accessibility and transcriptional 
+
+analyses centered on IRF8 -like DA peaks and their nearest DE genes in DCs (A; n =209 
+
+peak -gene pairs), plasmablasts (B; n =171 peak -gene pairs), and IMC s (C; n =163 peak -gene 
+
+pairs) from WT and IRF8 KO tumors. DA peaks were defined by binomial testing . Peaks are 
+
+split into "Up" (gained accessibility in IRF8 KO; red) and "Down" (lost accessibility in IRF8 
+
+KO; blue) clusters; within each cluster, rows are ordered by the magnit ude of the KO -WT 
+
+RNA expression difference of the nearest DE gene . Left: DA group partition annotation 
+
+(red =Up, blue =Down). Middle: ATAC accessibility enrichment heatmaps showing WT and 
+
+IRF8 KO signal across ±1 kb windows centered on IRF8 -like DA peak summits (bin size =10 
+
+bp), with aggregate enrichment profiles displayed above. Right: RNA expression heatmaps 
+
+of the nearest DE gene associated with each IRF8 -like DA peak in WT and IRF8 KO cells; 
+
+boxplots above show the distribution of average log -normalized e xpression values. 
+
+D. Integrated ATAC -RNA scatter plot showing relationships between chromatin accessibility 
+
+changes and transcriptional changes across DCs, plasmablasts, and IMC s. Each point 
+
+represents a Peak2Gene -linked IRF8 -like DA peak -DE gene pair; bubble size reflects the 
+
+Peak2Gene correlation coefficient. IRF8 -like DA peaks are shown as filled circles; non -
+
+IRF8 -associated DA peaks are shown as open circles. Positive correlations between ATAC 
+
+and RNA fold changes indicate coordinated r egulation; the tighter clustering o f IRF8 -like 
+
+peaks along the diagonal relative to non -IRF8 peaks reflects the specificity of IRF8 -centered 
+
+regulatory elements in driving transcriptional output. 
+
+IRF8 -associated chromatin accessibility programs directly regulate antigen presentation 
+
+gene expression across myeloid and plasmablast populations 
+
+To define the functional consequences of IRF8 -dependent chromatin accessibility 
+
+remodeling, we integrated DA peaks with Peak2Gene linkages and transcriptional analyses 
+
+across DCs, plasmablasts, and IMC s. GO enrichment analyses of DE genes associated with 
+
+IRF8 -like DA peaks revealed significant enrichment of antigen processing and presentation, 
+
+interferon signaling, immune activation, and inflammatory response pathways across all three 
+
+immune populations (Fig. 5A). In DCs and plasmablasts, antigen proc essing and presentation 
+
+emerged as the top -ranked enriched biological pathway, consistent with the categorical loss of 
+
+IRF -family motif accessibility observed in these populations upon IRF8 deletion. In IMC s, 
+
+antigen presentation -associated GO terms were also enriched among IRF8 -linked DE genes, 
+
+though with comparatively smaller gene counts than in DCs or plasmablasts, reflecting partial 
+
+rather than complete attenuation of the IRF program in this population. 
+
+To characterize the spatial relationship between IRF8 -dependent regulatory elements and 
+
+their transcriptional targets, we analyzed peak -to -TSS distance distributions stratified by DE 
+
+gene RNA level . Dot -matrix analyses demonstrated that IRF8 -like DA peak -gene pairs cluster 
+
+preferentially near the most highly differentially expressed immune regulatory genes (Fig. 5B,
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.28.735129 doi: bioRxiv preprint
+
+21 
+
+left panel ), particularly within proximal distance bins. By contrast, non -IRF8 DA peaks 
+
+distributed more broadly across DE genes spanning a wider range of fold -change magnitudes 
+
+(Fig. 5B, right panels), with no preferential enrichment at the most strongly regulated genes. This 
+
+spatial selectivity indicates that IRF8 -centered cis -regulatory elements are specifically associated 
+
+with the genes most severely affected by IRF8 loss, rather tha n contributing uniformly across the 
+
+full DE gene landscape. 
+
+Integrated peak -to -gene annotation plots revealed coordinated relationships between 
+
+chromatin accessibility and transcriptional output at individual gene loci (Fig. 5C). Multiple 
+
+antigen presentation and interferon -response genes exhibited simultaneous reductions in RNA 
+
+expression together with loss of accessibility at linked IRF8 -like peaks in IRF8 KO cells, while 
+
+non -IRF8 -associated linked peaks showed comparatively modest or inconsistent accessibility 
+
+changes at the same loci (Fig. 5C) . This pattern was observed equivalently in plasmablasts, DCs, 
+
+and IMC s, providing direct evidence that IRF8 regulates B cell antigen presentation programs 
+
+through enhancer -associated c hromatin accessibility. The number of IRF8 -like DA peaks linked 
+
+per gene further indicates that several antigen presentation loci are regulated by multiple 
+
+convergent IRF8 -dependent enhancer elements, suggesting that IRF8 coordinates regulatory hub 
+
+archite cture rather than single -enhancer control at these immunostimulatory genes. 
+
+Scatter plot analyses integrating chromatin differential accessibility with RNA differential 
+
+expression confirmed a positive correlation between ATAC and RNA fold changes across DCs, 
+
+plasmablasts, and IMC s (Fig. 5D). IRF8 -like peaks displayed substantially tighter ATAC -RNA 
+
+coupling compared to non -IRF8 peaks, indicating that IRF8 -associated regulatory regions are 
+
+primary determinants of immune gene expression programs in tumors. Together, these findings 
+
+demonstrate that IRF8 -dependent chromatin accessi bility programs directly drive antigen 
+
+presentation and immune activation gene expression across both myeloid and B lineage 
+
+compartments, and that IRF8 -centered enhancer elements represent the dominant functional 
+
+drivers of this coordinated transcriptional regulation. 
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.28.735129 doi: bioRxiv preprint
+
+22 
+
+Figure 5. IRF8 -dependent chromatin accessibility regulates antigen presentation gene 
+
+expression programs across myeloid and B lineage cells 
+
+A. Dot plots of Gene Ontology (GO) Biological Process enrichment analyses of DE genes 
+
+linked to IRF8 -like DA peaks via Peak2Gene associations in DCs (left), plasmablasts 
+
+(middle), and IMC s (right). The top 10 enriched terms per cell type are shown, ranked by 
+
+gene count. 
+
+B. Dot -matrix plots showing the distribution of IRF8 -like DA peaks (left panels, orange) and 
+
+non -IRF8 DA peaks (right panels, gray) linked to DE genes via Peak2Gene associations in 
+
+DCs, plasmablasts, and IMC s. The y -axis represents DE genes ranked by RNA log₂ fold 
+
+change ( IRF8 KO vs WT), and the x -axis indicates peak -to -TSS distance bins (< -100 kb, -
+
+100 to -10 kb, -10 kb to 0, 0 to +10 kb, +10 to +100 kb, > +100 kb). 
+
+C. Integrated peak -to -gene annotation plots of RNA DE genes linked to DA chromatin peaks in 
+
+DCs, plasmablasts, and IMC s, showing the top DE genes ranked by RNA log₂F C. Left bar 
+
+panels: RNA expression log₂FC ( IRF8 KO v WT) for each DE gene; red bars indicate 
+
+upregulation and blue bars indicate downregulation in IRF8 KO. Middle strip panels: ATAC 
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.28.735129 doi: bioRxiv preprint
+
+23 
+
+accessibility log₂FC of all DA peaks linked to each gene via Peak2Gene associations; IRF8 -
+
+like peaks are shown in orange and non -IRF8 -associated peaks in gray. Right bar panels: 
+
+total number of DA peaks (IRF8 -like and non -IRF8) linked to each DE gene, indi cating the 
+
+regulatory complexity at individual loci. Genes associated with antigen presentation and 
+
+MHC class I machinery are highlighted across all three cell types. 
+
+D. Scatter plots comparing ATAC differential accessibility log₂FC (x -axis; IRF8 KO vs WT, DA 
+
+peak) and RNA differential expression log₂FC (y -axis; IRF8 KO vs WT, linked DE gene) for 
+
+all Peak2Gene -linked DA peak -DE gene pairs in DCs (left), plasmablasts (middle), and IMC s
+
+(right). IRF8 -like peaks are highlighted in orange; non -IRF8 DA peaks are shown in gray. 
+
+Bubble size reflects the Peak2Gene correlation coefficient. 
+
+B cell intrinsic IRF8 function sustains T cell activation and anti -tumor immunity in vivo 
+
+The above findings indicate that IRF8 intrinsically programs B cell antigen -presenting 
+
+function within the tumor microenvironment, raising the question of whether tumor -associated B 
+
+cells can directly activate T cells. To test this, we evaluated the abilit y of B cells to support T cell 
+
+activation ex vivo. Splenic B cells and T cells isolated from tumor -bearing mice were co -
+
+cultured ex vivo. Flow cytometric analysis demonstrated that B cells induced T cell proliferation 
+
+in a B cell:T cell ratio -dependen t manner (Fig. 6A), directly supporting the capacity of tumor -
+
+bearing host B cells to function as antigen -presenting and T cell -activating populations. 
+
+To determine whether B cells contribute to tumor control in vivo, we performed antibody -
+
+mediated B cell depletion using an anti -B220 monoclonal antibody in tumor -bearing mice. In the 
+
+B16 -F10 melanoma model, mice were treated with anti -B220 antibody or control IgG following 
+
+tumor implantation. Flow cytometric analyses confirmed effective depletion of splenic B220 ⁺
+
+and CD19 ⁺ B cells in anti -B220 -treated mice relative to controls (Fig. 6B). B cell depletion 
+
+significantly increased tumor weight compared to IgG -treated controls (Fig. 6C). Consistent with 
+
+the ex vivo evidence that B cells directly support T cell activation (Fig. 6A), B cell depletion 
+
+significantly reduced tumor -infiltrating T cells in tumor -bearing mice (Fig. 6D), suggesting that 
+
+the pro -tumo rigenic effect of B cell depletion is mediated, at least in part, through impaired 
+
+intratumoral T cell priming. To determine whether this phenotype was tumor model -dependent, 
+
+we evaluated the effects of B cell depletion in the CT26 colon tumor model. Simil ar to the B16 -
+
+F10 melanoma model, anti -B220 treatment significantly enhanced CT26 tumor growth and 
+
+increased tumor mass relative to control -treated mice (Fig. S6A & B), establishing a non -
+
+redundant role for B cells in restraining tumor progression across d istinct cancer types. To 
+
+directly establish the B cell -intrinsic contribution of IRF8 to anti -tumor immunity, we implanted 
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.28.735129 doi: bioRxiv preprint
+
+24 
+
+tumor cells into WT mice and mice harboring B cell -specific deletion of Irf8 . Loss of IRF8 
+
+selectively in B cells was sufficient to significantly accelerate tumor growth (Fig. 6E), 
+
+demonstrating that B cell -intrinsic IRF8 is required for effective tumor immune control. 
+
+Figure 6. Irf8 deletion in B cell s impairs anti -tumor immunity and promotes tumor growth. 
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.28.735129 doi: bioRxiv preprint
+
+25 
+
+A. Splenic B cells and T cells were isolated from tumor -bearing mice. T cells were labeled with 
+
+CFSE and co -cultured with B cells at the indicated ratios for 3 days. T cell proliferation was 
+
+analyzed by flow cytometry following gating on CD3⁺ T cells .
+
+B. B16 -F10 tumor cells were injected subcutaneously into mice followed by treatment with 
+
+control IgG or B220 -neutralizing monoclonal antibody every 3 days for a total of four 
+
+treatments. Flow cytometry analysis of splenocytes showing depletion efficiency ba sed on 
+
+B220 and CD19 expression. 
+
+C. Tumors from IgG - and B220 -treated mice ( left ) and quantification of tumor weights at 
+
+endpoint ( right ). 
+
+D. Flow cytometry analysis of CD4 + and CD8 + T cells in spleens of IgG - and anti -B220 -treated 
+
+mice. Shown are gating (left) and quantification (right) 
+
+E. B16 -F10 tumor cells were injected subcutaneously into WT mice (n=7) and mice with IRF8 
+
+deletion only in B cells (IRF8 BKO, n=7), followed by treatment with control IgG or B220 -
+
+neutralizing monoclonal antibody every 3 days for a total of four treatments. Shown are tumor 
+
+images at the endpoint (left) and tumor weight quantification. 
+
+Pharmacologic activation of B cells restores anti -tumor immunity. 
+
+Our above findings determined that l oss of IRF8 was associated with impaired antigen 
+
+presentation signatures, reduced plasmablast abundance, and defective immunostimulatory 
+
+transcriptional programs in B lineage cells, suggesting that IRF8 is required for optimal B cell 
+
+functional maturation. Because CD40 signaling is a central pathway regulating B cell activation 
+
+and function 47,48 , we hypothesized that pharmacologic activation of B cells using an agonistic 
+
+anti -CD40 antibody could restore anti -tumor immune function in the setting of impaired IRF8 -
+
+dependent B cell activation (Fig. S7A). To determine the translational relevance of this pathway 
+
+in human tumors, we first analyzed publicly available human tumor scRNA -seq datasets. In 
+
+human melanoma, CD40 expression was highly enriched in B cells, hypoxia -associated 
+
+monocytes, monocyte/macroph age populations, and reactive microglia (Fig. S7B). Notably, 
+
+clusters exhibiting high IRF8 expression also displayed elevated CD40 expression, suggesting 
+
+coordinated regulation of immune activation programs (Fig. S7C). Similarly, scRNA -seq 
+
+analyses of human colon tumors demonstrated strong CD40 expres sion in B cells, DCs, 
+
+macrophages, monocytes, and plasma cells, with lower expression detected in subsets of T cells 
+
+(Fig. S7D). Again, immune populations with high IRF8 expression showed correspondingly 
+
+elevated CD40 expression (Fig. S7 E), supporting the hypothesis that IRF8 -associated immune 
+
+activation states are linked to CD40 signaling pathways across human tumors. 
+
+We next tested whether pharmacologic CD40 activation could induce anti -tumor immune 
+
+responses in vivo using an orthotopic CT26 colon tumor model (Fig. S7 F). Tumor -bearing mice 
+
+treated with agonistic anti -CD40 antibody developed marked splenomegaly relative to isotype -
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.28.735129 doi: bioRxiv preprint
+
+26 
+
+treated controls, consistent with systemic immune activation (Fig. S7 G). Flow cytometric 
+
+analyses revealed significant expansion of splenic CD8⁺ and CD4⁺ T cell populations following 
+
+anti -CD40 treatment, whereas total CD19⁺ B cell numbers were not significantly altered (Fig. 
+
+S7 H-I). Importantly, anti -CD40 treatment also significantly increased tumor -infiltrating CD8⁺ T 
+
+cells within colon tumors (Fig. S7 J-K), indicating enhanced local anti -tumor immune activation. 
+
+Consistent with these immunologic changes, a nti -CD40 therapy significantly reduced tumor 
+
+burden compared to control -treated mice (Fig. S7 L). Taken t ogether, these findings demonstrate 
+
+that pharmacologic activation of B cell s is sufficient to suppress tumor progression and further 
+
+establish B cells as critical contributors to anti -tumor T cell immunity in the tumor 
+
+microenvironment. 
+
+Taken together, these above results provide functional evidence that B cells contribute 
+
+directly to T cell activation and anti -tumor immunity through their antigen -presenting function, 
+
+and that this activity is governed intrinsically by IRF8. Combined with our transcriptomic and 
+
+chromatin accessibility analyses, these findings support a model in which IRF8 establishes the 
+
+immunostimulatory transcriptional and chromatin programs in B cells that are required for 
+
+effective T cell activation and tumor immu ne control. 
+
+IRF8 -regulated B cell transcriptional programs are associated with response to PD -1
+
+blockade immunotherapy in human cancer 
+
+To determine the human cancer relevance of the tumor -infiltrating B cell -intrinsic IRF8 -
+
+regulated transcriptional program identified in our mouse tumor models , we first analyzed a 
+
+published pre -treatment single -cell RNA -Seq dataset from breast cancer patients treated with 
+
+neoadjuvant pembrolizumab (GSE160246) 49 , in which patients were classified as T cell 
+
+clonotype expanders (E) or non -expanders (NE) based on complementary scTCR -seq 
+
+annotations. Re -clustering of B cells identified seven subclusters, including memory B cells, 
+
+plasmablasts, naive B cells, transiti onal B cells, plasma cells, Ig -high B cells, and proliferating B 
+
+cells, which were distributed across both expander and non -expander samples (Fig. 7A). 
+
+Quantitative analysis revealed that plasmablast proportions were significantly enriched in 
+
+expanders rel ative to non -expanders, both as a fraction of total B cells and as a fraction of all 
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.28.735129 doi: bioRxiv preprint
+
+27 
+
+immune cells (Fig. 7B), supporting a specific association between plasmablast abundance and 
+
+effective anti -tumor immune responses. 
+
+We next analyzed a published single -cell RNA -seq dataset from melanoma patients treated 
+
+with PD -1 blockade immunotherapy (GSE120575) 50 . UMAP visualization of integrated 
+
+responder and non -responder samples revealed preserved major immune cell populations but 
+
+distinct differences in immune composition and activation states between clinical response 
+
+groups (Fig. 7C). Quantitative analysis of immune cell composition further demonstrated 
+
+enrichment of B cell -associated populations including plasma cells and plasmablasts in 
+
+responders relative to non -responders (Fig. 7D), supporting a potential role for B cell 
+
+immunostimulatory programs in medi ating effective checkpoint blockade responses. We then 
+
+converted the IRF8 -regulated genes identified in mouse plasmablasts to their human orthologs. 
+
+The IRF8 -regulated B cell gene signature was significantly enriched in responders compared 
+
+with non -responders in the melanoma cohort (Fig. 7E), suggestin g that IRF8 -dependent B cell 
+
+programs are associated with favorable immunotherapy responses in human cancer. Consistent 
+
+with the heatmap analysis, violin plot analyses demonstrated significantly changed expres sion of 
+
+representative B cell -intrinsic IRF8 -regulated genes, including IRF8, CD74, HLA -A, HLA -B, 
+
+B2M , and GNG5, in responders relative to non -responders (Fig. 7F). These results support the 
+
+human cancer relevance of our mouse findings and identify IRF8 -associated B cell 
+
+transcriptional programs as potential correlates of effective anti -tumor immunity and response to 
+
+PD -1 blockade in human breast and melanoma. 
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.28.735129 doi: bioRxiv preprint
+
+28 
+
+was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.28.735129 doi: bioRxiv preprint 29 
+
+Figure 7. IRF8 -regulated B cell transcriptional programs are associated with response to 
+
+immunotherapy in human cancer. 
+
+A. UMAP visualization of B cell subclusters identified in clonotype expanders (E) and non -
+
+expanders (NE) from pre -treatment scRNA -seq data of breast cancer patients treated with 
+
+neoadjuvant pembrolizumab. scRNA -seq datasets were extracted from the GEO databa se 
+
+(accession #GSE160246). 
+
+B. Quantification of plasmablast proportions in expanders (E) versus non -expanders (NE), 
+
+shown as percentage of total B cells. 
+
+C. UMAP visualization of integrated scRNA -seq datasets showing immune cell populations 
+
+identified in responders (R) and non -responders (NR) to PD -1 blockade immunotherapy in 
+
+patients with melanoma. scRNA -Seq data were extracted from the GEO database (accession 
+
+#GSE120575). 
+
+D. Bar plot of cell type proportion as shown in C.
+
+E. Heatmap showing the expression of human orthologs of tumor -infiltrating mouse B cell -
+
+intrinsic IRF8 -regulated genes in responders and non -responders to PD -1 blockade 
+
+immunotherapy melanoma patients as shown in C .
+
+F. Violin plots (left) and UMAP feature plots (right) showing the expression levels of 
+
+representative IRF8 -regulated genes as indicated in non -responders (red) versus responders 
+
+(blue) as shown in C. 
+
+DISCUSSION 
+
+IRF8 has been established as a master regulator of myeloid cell differentiation and function, 
+
+controlling dendritic cell development, restraining IMC accumulation, and regulating antigen 
+
+cross -presentation and CD8⁺ T cell priming within tumors 1,8,9,12,40,51,52 . IRF8 is also expressed 
+
+throughout B cell development, where it governs germinal center formation, marginal zone 
+
+versus follicular fate decisions, and plasma cell differentiation 21,24,25,28,29,51,53 . We demonstrated 
+
+in this study that IRF8 operates a B cell -intrinsic transcriptional program controlling antigen 
+
+processing and presentation function to promote CD8⁺ T cell activation and tumor growth 
+
+control. Critically, B cell -specific deletion of IRF8 was sufficient to significantly accelerate 
+
+tumor growth, establishing a direct, cell -intrinsic requirement for IRF8 in B cell -mediated anti -
+
+tumor immunity independent of its broader myeloid functions. scRNA -seq differential 
+
+expression analysis revealed tha t IRF8 -deficient plasmablasts consistently downregulate MHC 
+
+class I antigen presentation machinery genes, as well as interferon -response genes . Strikingly, 
+
+the same antigen presentation gene module was coordinately suppressed in IRF8 -deficient DCs 
+
+and IMCs, with substantial overlap among the differentially expressed genes across all three 
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.28.735129 doi: bioRxiv preprint
+
+30 
+
+populations. This cross -lineage conservation of an IRF8 -dependent antigen presentation 
+
+signature suggests that IRF8 orchestrates a conserved immunostimulatory module that extends 
+
+well beyond canonical DC function to include B lineage cells. Integrated ATAC -RNA analyses 
+
+demonstrated a strong positive correlation between IRF8 -like peak accessibility loss and 
+
+transcriptional downregulation of linked genes across all three populations. GO enrichment of 
+
+genes linked to IRF8 -like DA peaks identified antigen proce ssing and presentation as the top 
+
+enriched biological pathway in DCs, plasmablasts, and IMCs alike, directly connecting IRF8 
+
+enhancer accessibility to B cell antigen presentation function. 
+
+Prior work established that IRF8 establishes lineage -specific enhancer accessibility at AICE -
+
+containing distal elements in DCs and that IRF8 -dependent chromatin opening precedes 
+
+transcriptional activation in pDCs and microglia 6,19,20,54 . We demonstrated here that plasmablasts 
+
+in the TME exhibit an equally broad scope of IRF8 -dependent chromatin accessibility regulation 
+
+as in DCs and IMCs, with approximately 70% of differentially accessible peaks located in 
+
+intronic and distal intergenic regions that constitute putative enhancers, a genomic distribution 
+
+indistinguishable from that of DCs and IMCs. Motif enrichment analysis within differentially 
+
+accessible regions identified 38 IRF8 -like motifs spanning canonical ISRE, EICE, AICE, and 
+
+PU.1/ ETS composite elements across these myeloid and B cell lineages. However, lineage -
+
+specific motif preferences are distinct . ISRE motifs predominate in IMCs, a broad ETS/ISRE 
+
+landscape characterizes DCs, whereas EICE composite elements are selectively enriched in 
+
+plasmablasts, reflecting IRF8 cooperation with IRF4 and PU.1 in a B lineage -specific regulatory 
+
+mode 14 . These findings suggest that IRF8 engages distinct co -factor partners in each cell type to 
+
+regulate overlapping but context -adapted antigen presentation programs. Notably, the functional 
+
+consequences of IRF8 activity appear to be lineage - and context -dependent rather than uniformly 
+
+immunostimulatory . I n exhausted CD8 + T cells, IRF8 drive exhaustion -associated gene 
+
+programs, such that IRF8 deficiency impairs exhausted T cell differentiation and restrains 
+
+antitumor function 38,55 . This contrasts with the antigen presentation -promoting, 
+
+immunostimulatory role of IRF8 we observe in tumor -infiltrating B cells and the IRF8 -DC axis 
+
+in anti -cancer CD8 + T cell responses 56 , suggesting that IRF8 does not have a fixed valence in 
+
+anti -tumor immunity but instead executes distinct transcriptional programs depending on the 
+
+chromatin and co -factor context of the cell in which it acts 52,57 .
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.28.735129 doi: bioRxiv preprint
+
+31 
+
+The functional importance of B cell -intrinsic antigen presentation is directly demonstrated by 
+
+our in vivo depletion, activation, and B cell -specific IRF8 deletion experiments. Antibody -
+
+mediated B cell depletion significantly accelerated tumor growth , hence e stablishing a non -
+
+redundant role for B cells in restraining tumor growth . Ex vivo co -culture experiments confirmed 
+
+that B cells from tumor -bearing mice drive T cell proliferation in a ratio -dependent manner, 
+
+directly demonstrating the T cell stimul atory capacity of B cells in tumor -bearing hosts. These 
+
+findings are consistent with the established function of B cells as professional APCs that activate 
+
+T cells through MHC -mediated antigen presentation and costimulatory molecule expression 
+
+> 33,34,58,59
+
+, and with the recent demonstration that blocking plasma cell differentiation enhances B 
+
+cell antigen -presenting activity and anti -tumor immunity 28 . Collectively, our findings establish 
+
+that IRF8 preferentially engages EICE composite motifs at antigen presentation gene loci to act 
+
+as a conserved epigenetic regulator of B cell antigen -presenting competence in the tumor 
+
+microenvironment. Importantly, t he heterogeneous roles ascribed to tumor -associated B cells in 
+
+cancer, ranging from pro - to anti -tumorigenic, may reflect, in part, differences in B cell IRF8 
+
+activity and downstream antigen presentation competence 29,60 . Lineage -specific loss or gain of 
+
+IRF8 -dependent transcriptional programs may thus serve as a molecular checkpoint controlling 
+
+whether B cells adopt immunostimulatory or immunosuppressive functional states in the tumor 
+
+microenvironment .
+
+Analysis of published human cancer scRNA -seq datasets provides translational relevance for 
+
+our mouse findings. In breast cancer scRNA -seq data from patients treated with neoadjuvant 
+
+pembrolizumab, plasmablast proportions were significantly enriched in clonotype expanders 
+
+relative to non -expanders, suggesting that IRF8 -driven plasmablast ide ntity correlates with 
+
+productive anti -tumor immune responses. In melanoma patients treated with PD -1 blockade, 
+
+human orthologs of the mouse IRF8 -regulated B cell ant igen presentation gene signature were 
+
+significantly enriched in responders versus non -responders, including genes encoding MHC class 
+
+I machinery components and interferon -response regulators. These results align with multiple 
+
+clinical studies demonstrating that intratumoral B cells, plasma cells, and tertiary lymphoid 
+
+structures associate with improved responses to immune checkpoint blockade across melanoma 
+
+and other human cancers 31,32,61,62 , and position IRF8 as a transcription factor that licenses these 
+
+clinically relevant B cell immune states. 
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.28.735129 doi: bioRxiv preprint
+
+32 
+
+Beyond its established role in myeloid cells, our finding that IRF8 governs a conserved 
+
+antigen -presentation program in tumor -infiltrating B cells suggests that therapeutic strategies 
+
+currently designed to harness IRF8 in dendritic cells could be exte nded to the B lineage 27,29,42 .
+
+LNP -encapsulated IRF8 mRNA has recently been shown to reprogram myeloid cells toward a 
+
+cross -presenting, cDC1 -like phenotype after both intratumoral and systemic delivery, generating 
+
+durable antitumor immunity and synergizing with anti -PD -1 blockade in m ultiple syngeneic 
+
+models 42 . Given that B cells engage an analogous IRF8 -dependent transcriptional module, 
+
+favoring EICE -driven antigen -presentation gene expression over plasma cell differentiation, 
+
+LNP -based delivery of IRF8 to tumor -infiltrating or tumor -draining B cells, potentia lly 
+
+combined with strategies that restrain Blimp -1-driven plasma cell commitment, may represent a 
+
+complementary route to expand the pool of antigen -presenting, costimulatory B cells competent 
+
+to prime CD8 ⁺ T cells. This is particularly relevant for human t ranslation since a constitutive 
+
+interferon -high immunophenotype, marked by antigen -presentation gene induction (including 
+
+CD74) in macrophages and tumor cells at sites of T cell infiltration has been shown to predict 
+
+checkpoint inhibitor response in colore ctal cancer independently of tumor mutational burden or 
+
+mismatch -repair status 63,64 . Because B cells contribute to the same interferon -driven, antigen -
+
+presentation -competent tumor microenvironment, mRNA -LNP delivery of IRF8, engineered for 
+
+lymphoid -organ tropism rather than hepatic uptake, could in principle convert CD74 -low, 
+
+immunothera py -resistant tumors into CD74 -high, ICI -responsive ones by simultaneously 
+
+licensing antigen presentation in myeloid and B cell compartments 63,65 , offering a tractable 
+
+strategy to overcome resistance to immune checkpoint blockade 28 .
+
+In summary, our findings extend IRF8 function beyond its canonical myeloid and DC roles, 
+
+establish the tumor -infiltrating B cell as a critical IRF8 -responsive antigen -presenting cell, and 
+
+define B cell -intrinsic IRF8 expression as a transcriptional determinant of B ce ll 
+
+immunostimulatory competence. The B cell -specific IRF8 deletion data directly demonstrate that 
+
+this is a cell -autonomous function rather than a consequence of altered myeloid composition. 
+
+Mechanistically, these results provide a framework fo r understanding how IRF8 -dependent B 
+
+cell differentiation state regulates the quality of anti -tumor T cell responses, and for identifying 
+
+patients whose tumors harbor IRF8 -competent B cell programs and who may therefore be more 
+
+likely to benefit from B cel l-activating immunotherapy strategies. Targeting IRF8 -dependent 
+
+pathways in B cells, including through CD40 agonism , restoring IRF8 expression 66 or 
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.28.735129 doi: bioRxiv preprint
+
+33 
+
+approaches that preserve B cell antigen -presenting identity over plasma cell fate 28 , may 
+
+represent novel strategies to enhance anti -tumor immunity and improve outcomes to checkpoint 
+
+blockade immunotherapy 47,48,67 .
+
+METHODS 
+
+Cell lines . CT26 and B16F10 were obtained from American Type Culture Collection (ATCC) .
+
+Cell lines were treated with plas mocin (Invivogen, San Diego, CA) prior to animal studies and 
+
+tested bi -monthly for mycoplasma . Cells were mycoplasma -free at time of experiments. 
+
+Mice . BALB/c and C57BL6 mice were obtained from Charles River Laboratories at NCI 
+
+Frederic (Frederick, MD). IRF8 knock out ( IRF8 KO ) mice were generated as previously 
+
+described 1. Mice with t he loxp -flanked Irf8 gene [B6(Cg) -Irf8 tm1.1Hm /J] were generated as 
+
+previously described 68 . Both male and female animals were used. Animals were age matched. 
+
+Use of animal studies were approved by Augusta University (Protocol #2008 –0162) and Charlie 
+
+Norwood VA Medical Center Institutional Animal Care and Use Committees (Protocol 
+
+#1314554 –16). 
+
+Tumors for Multiomics . B16 -F10 cells (2.5x10 5 cells/mouse in 100 l PBS) were injected 
+
+subcutaneously into WT or IRF8KO mice, one male and one female each for each mouse line. 
+
+The tumors were dissected, processed with collagenase/hyaluronidase, filtered with 100 micron 
+
+filter. Tumor infiltrating immune cells were isolated using a MojoSort CD45 selection kit (Cat# 
+
+480118 , Biolegend ) according to the manufacturer’s instructions. 
+
+Tumor cell transplant . Tumor cells were culture d in RPMI+10%FBS for 24 hours, then 
+
+harvested with trypsin and washed 3 times in PBS to remove media. Tumor cells were counted, 
+
+viability assessed, and then resuspended in PBS for injection into R flank of mouse or into tip of 
+
+cecum. 
+
+In vivo B cell activation . Treatment began on days 3 -10. Mice received 200ug of anti -CD40 or 
+
+isotype control IgG in 100uL PBS intraperitoneal, every 3 days. 
+
+Flow cytometry . Cells were resuspended as single cell suspension in cold PBS or FACS buffer. 
+
+Antibodies were added at appropriate dilutions, and then stained for 30 -60 minutes 4C, then 
+
+washed with PBS+2% BSA. Cells were then fixed in 2% paraformaldehyde. Zombie UV 
+
+Viabili ty staining: Cells were resuspended as above. Zombie UV (1:1000) was added, and 
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.28.735129 doi: bioRxiv preprint
+
+34 
+
+incubated for 10 minutes at room temperature, in the dark. Antibodies were then added at 
+
+appropriate dilutions, incubated, washed, and fixed as above. 
+
+Single -cell multiomics . Multiomics sequencing libraries including scRNA -seq and ATAC -seq 
+
+libraries were generated using Chromium Next GEM Single Cell Multiome ATAC + 3’ Gene 
+
+Expression Reagent Bundle, 4 rxns PN -1000285 (10x Genomics). Individual libraries were 
+
+prepared for two i ndependent biologic replicates containing WT and IRF8 KO mice with 
+
+approximately 12,000 muclei on average per sample (total 24,000 cells each group). Cells were 
+
+captured using the Chromium X (10x Genomics). The scRNAseq libraries were sequenced using 
+
+Illu mina Novaseq -6000 two SP runs, with a high output kit under the following sequencing 
+
+protocol: 28 bp (Read 1), 10 bp, 10 bp (dual indexing Runs), and 90 bp (RNA Read 2) having 
+
+Q30 bases in RNA read greater than 86% to collect approximately 16 K mean pre -normalization 
+
+high -quality read pairs per cell, at the range of 1,700 -3,900 median genes per cell, the ATAC -seq 
+
+were sequenced using Illumina Novaseq -6000 one SP and one S2 runs with a high output kit 
+
+under the following sequencing protocol: 50 bp (Read 1), 8 bp, 24 bp (dual indexing Runs), and 
+
+49 bp (RNA Read 2) having Q30 bases greater than 91% to collect approximately 72 K mean 
+
+pre -normalization high -quality read pairs per cell, with the enrichment scores above 8.1. The 
+
+raw reads in fastq format were pr ocessed using 10x Genomics Cell Ranger (7.0.0) analysis 
+
+pipeline via STAR v2.5.0 alignment against murine mm10 reference genome. The Cell Ranger 
+
+outputs containing gene -by -cell differential expression data, read counts, and normalized mapped 
+
+reads aggregat ed among samples were imported into Loupe Browser (10x Genomics) for the cell 
+
+marker annotations to further analyze cell populations in clusters of UMAP and TSNE plots. 
+
+Single -Cell ATAC -seq data Processing and Chromatin Accessibility Analysis . Single -cell 
+
+ATAC -seq data were processed using ArchR (v1.0.2) with the mm10 (GRCm38) reference 
+
+genome. Arrow files were generated from fragment files for four samples [two IRF 8 KO and two 
+
+wild -type (WT) replicates ]. An ArchRProject was constructed and cell barcodes were matched to 
+
+a pre -processed Seurat multiome object containing dendritic cells (DCs), plasmablasts, and IMCs 
+
+by extracting core barcode sequences (stripping sample pref ixes and suffixes). Cell type and 
+
+genotype metadata were transferred from the Seurat object to the ArchR project. Dimensionality 
+
+reduction was performed using iterative latent semantic indexing (IterativeLSI) on the 500 -bp 
+
+tile matrix (25,000 variable feat ures, 30 LSI dimensions, 2 iterations). Cells were clustered using 
+
+the Seurat graph -based algorithm (resolution = 0.8) and visualized using UMAP (30 neighbors, 
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.28.735129 doi: bioRxiv preprint
+
+35 
+
+minimum distance = 0.4). Pseudo -bulk ATAC -seq coverage tracks were computed per cell -type -
+
+condition group (ct_cond), and a reproducible peak set was called using MACS2 (v2.2.7) with 
+
+default parameters. A peak -by -cell accessibility matrix (PeakMatrix) was s ubsequently added to 
+
+the ArchR project. 
+
+Differential Chromatin Accessibility Analysis . Differential accessibility (DA) analysis was 
+
+performed independently for each cell type (DC, plasmablast, IMCs using per -cell -type ArchR 
+
+sub -projects. For each cell type, chromatin accessibility was compared between irf8KO and WT 
+
+cells using a binomial test on binarized peak accessibility values (getMarkerFeatures, testMethod 
+
+= "binomial", binarize = TRUE). DA pea ks were defined by a false discovery rate (FDR) < 0.01 
+
+and log₂ fold change (log₂FC) ≥1. Peaks with log₂FC>1 were designated as "gained" (increased 
+
+accessibility in irf8KO), and peaks with log₂FC < -1 were designated as "lost" (decreased 
+
+accessibility in irf8KO). Results were visualized as MA plots and volcano plots, in which the x -
+
+axis represents log₁₀(mean accessibility + 1) or log₂FC, respectively, and the y -axis represents 
+
+log₂FC or -log₁₀(FDR). 
+
+Identification of IRF8 -like Motif -Containing Peaks . A curated repository of 38 IRF8 -like 
+
+position frequency matrices was loaded as a PFMatrixList object (TFBSTools). PFMs were 
+
+converted to position weight matrices (PWMs) using toPWM() and added to the ArchR project 
+
+as a custom motif annotation (addMotifAnn otations, cutOff = 1e -4). In parallel, motif scanning 
+
+across all called peaks was performed using matchMotifs() from the motifmatchr package 
+
+against the mm10 genome sequence (BSgenome.Mmusculus.UCSC.mm10) . A peak was 
+
+designated as "IRF8 -like" if it contained at least one match to any of the 38 IRF8 -like PWMs. 
+
+Per -peak IRF8 -like flags were saved as a reference table and subsequently merged with DA 
+
+results by coordinate -based peak identifiers (chr:start -end) .
+
+Genomic Annotation and Distribution Analysis . Genomic annotation of peak sets was 
+
+performed using ChIPseeker (v1.36) with the mm10 gene annotation database 
+
+(TxDb.Mmusculus.UCSC.mm10.knownGene). Promoter regions were defined as ±3 kb from the 
+
+transcription start site (TSS). Annotation categories (e.g., promoter, intron, exon, intergenic, 
+
+downstream) were simplified by removing sub -category parenthetical descriptors. For each cell -
+
+type -condition group, the fraction and count of IRF8 -like peaks falling within each genomic 
+
+category were tabulated and visualized as stacked bar charts and faceted bar plots. The genomic 
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.28.735129 doi: bioRxiv preprint
+
+36 
+
+distribution of IRF8 -like DA peaks (gained and lost in irf8KO) was similarly annotated and 
+
+summarized across cell types. 
+
+IRF8 -like Motif Enrichment Analysis in Gained and Lost DA Peaks . For each cell type and 
+
+DA direction (gained or lost in irf8KO), enrichment of individual IRF8 -like motifs within the 
+
+DA peak subset relative to a background comprising all accessible IRF8 -like peaks from that cell 
+
+type was assessed by two -sided Fisher's ex act tests. For each motif m and peak subset T, a 2×2 
+
+contingency table was constructed from the counts of motif -positive and motif -negative peaks in 
+
+T versus the background. P -values were cor rected for multiple testing using the Benjamini -
+
+Hochberg procedure. Motifs were considered significantly enriched at FDR < 0.05 and odds 
+
+ratio > 1. Enrichment results were visualized as a combined heatmap (ComplexHeatmap) in 
+
+which rows represent the 38 IRF 8-like motif variants, columns represent cell -type -DA -direction 
+
+groups, and color encodes −log₁₀(FDR), masked to zero for motifs with odds ratio ≤ 1. Motif 
+
+sequence logos were rendered in information -content -scaled bit representation using the 
+
+universalmot if package (view_motifs, use.type =ICM). 
+
+Inter -peak Distance Analysis . To assess spatial clustering of IRF8 -like peaks across the 
+
+genome, inter -peak distances were computed for each cell -type -condition group. IRF8 -like peaks 
+
+assigned to each group (based on the MACS2 peak group label) were sorted by chromosomal 
+
+coordinate, an d the gap distance between the end of each peak and the start of the immediately 
+
+downstream peak on the same chromosome was calculated. Distance distributions were 
+
+compared between WT and irf8KO conditions for each cell type u sing kernel density estimation 
+
+and visualized on a log₁₀ scale. 
+
+Integration of Differential Chromatin Accessibility and Differential Gene Expression .
+
+Differential gene expression (DE) analysis between IRF 8 KO and WT cells was performed for 
+
+each cell type using Seurat's FindMarkers function (Wilcoxon rank -sum test, minimum cell 
+
+fraction = 0.1) on log -normalized RNA counts. DE genes were defined as FDR≤0.01 and 
+
+log₂FC≥0.58 (~1.5 -fold). Peak -to -gene linkages we re computed within each cell -type ArchR 
+
+sub -project using addPeak2GeneLinks(IterativeLSI reduced dimensions, GeneS coreMatrix, 
+
+maximum distance =100 kb) and filtered at Pearson correlation ≥ 0.45 and FDR ≤ 0.05. DA 
+
+peaks were linked to genes using these peak -to -gene links, and the resulting gene sets were 
+
+intersected with DE genes to identify concordantly altered loci. IRF8 -like DA peaks were further 
+
+restricted to those whose nearest annotated gene (TxDb.Mmusculus.UCSC.mm10.knownGene, 
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.28.735129 doi: bioRxiv preprint
+
+37 
+
+via nearest()) was among the DE genes. Heatmaps displaying ATAC -seq accessibility profiles 
+
+centered on IRF8 -like DA peak summits (±1 kb, 10 -bp bins) were generated using 
+
+EnrichedHeatmap, with peaks split into "Up" and "Down" groups and ranked within each g roup 
+
+by the magnitude of paired RNA expression difference (KO − WT average log -normalized 
+
+counts) of the nearest DE gene. 
+
+Gene Ontology Enrichment Analysis . For genes linked to IRF8 -like DA peaks through either 
+
+nearest -gene assignment or peak -to -gene linkage, Gene Ontology (GO) Biological Process 
+
+enrichment analysis was performed using clusterProfiler (v4.8) with the enrichGO function 
+
+(organism annotation: org .Mm.eg.db; gene ID type: Entrez; correction method: Benjamini -
+
+Hochberg; P -value cutoff: 0.05; Q -value cutoff: 0.20). Gene symbols were converted to Entrez 
+
+identifiers using bitr(). The top 10 enriched GO terms per cell type were selected by adjusted P -
+
+valu e and visualized as dot plots and bar plots. 
+
+Genome Browser Track Visualization . Genome browser -style coverage tracks for selected 
+
+IRF8 -like DA peaks and their nearest DE genes were generated using Signac's CoveragePlot 
+
+function applied to the multiome Seurat/Signac object, displaying pseudo -bulk ATAC -seq 
+
+accessibility stratified by ge notype (WT vs. irf8KO) over a ±25 -kb window centered on each DA 
+
+peak summit. Paired RNA expression levels of the nearest DE gene were overlaid as violin plots 
+
+using VlnPlot. Regions lacking called peaks in the ATAC assay were excluded from 
+
+visualization. 
+
+Software and Statistical Analysis . All analyses were conducted in R (v4.3). Key packages used 
+
+include ArchR (v1.0.2), Seurat (v5), Signac, motifmatchr, TFBSTools, universalmotif, 
+
+ChIPseeker, clusterProfiler, EnrichedHeatmap, and ComplexHeatmap. Multiple testing 
+
+correction was applied using the Benjamini -Hochberg method throughout. Figures were 
+
+generated using ggplot2, with classic theme formatting applied globally. 
+
+Generation of an IRF8 -like motif atlas and integration of chromatin accessibility with 
+
+single -cell transcriptomics . To define a reference set of IRF8 -like motifs for downstream IRF8 
+
+peak annotation and motif enrichment analyses, we generated a curated IRF8 motif repository. 
+
+Position frequency matrices (PFMs) were retrieved from the JASPAR 2022 database using 
+
+TFBSTools, and additional IRF -related motifs from HOMER were incorporated when available. 
+
+From the combined motif repository, we extracted an IRF -like subset based on motif IDs and 
+
+names using a permissive literature -guided pattern that included canonical IRF8 and related 
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.28.735129 doi: bioRxiv preprint
+
+38 
+
+IRF/ETS composite motifs, including IRF8, IRF, ISRE, EICE, IECS, AICE, SPI1/PU.1, and ETS 
+
+family elements (references). This strategy was designed to capture canonical IRF8 -binding 
+
+motifs (e.g., MA0652.1), ISRE -like motifs, and composite IRF -ETS regulatory elements known 
+
+to mediate IRF8 -dependent transcriptional programs. The resulting curated IRF8 -like motif set 
+
+was subsequently used for all downstream analyses, including IRF8 -like peak definition, motif 
+
+scanning, motif enrichment, and sequence logo genera tion. Using this approach, we identified a 
+
+total of 38 enriched IRF8 -like motifs across the analyzed immune populations. To integrate 
+
+chromatin accessibility with transcriptomic profiles, we matched cells between ArchR and Seurat 
+
+by extracting shared core cellular barcodes and intersecting overlapping cell identities between 
+
+datasets. The ArchRProject was then subset to mat ched cells and annotated using integrated 
+
+metadata labels corresponding to cell type and genotype. This unified multiomic object served as 
+
+the foundation for all subsequent chromatin accessibility and peak -to -gene linkage analyses. 
+
+ArchR cell clustering validates immune cell identity and genotype separation . Iterative 
+
+Latent Semantic Indexing (IterativeLSI) was performed on the TileMatrix of the ArchR project 
+
+subset using 25,000 variable features and dimensions 1 -30 to cluster cells in LSI space at a 
+
+resolution of 0.8. Cells were subsequently embedded into two -dimensional space using UMAP 
+
+based on LSI coordinates. The resulting clustering analysis resolved the major immune 
+
+populations, including DCs, IMC s, and plasmablasts, confirming concordance between 
+
+chromatin accessibility -based clustering and transcriptomic cell annotations. In addition, WT and 
+
+Irf8 -deficient cells exhibited distinct yet partially overlapping chromatin accessibility landscapes 
+
+within each immune lineage, consiste nt with genotype -dependent epigenetic remodeling while 
+
+preserving overall cell identity (Fig. 4A -B). 
+
+Group coverage generation, peak calling, peak matrix construction, peak -to -gene linkage, 
+
+and differential accessibility analysis . To characterize chromatin accessibility landscapes 
+
+across immune populations and genotypes, scATAC -seq analyses were performed using the 
+
+ArchR framework on the integrated multiomic dataset. Cells were grouped according to 
+
+combined cell type and genotype an notations (ct_cond) to enable parallel analysis across 
+
+immune lineages and experimental conditions. Group -level pseudo -bulk ch romatin accessibility 
+
+tracks were first generated using the addGroupCoverages() function in ArchR. These pseudo -
+
+bulk profiles were subsequently used for reproducible peak calling using 
+
+addReproduciblePeakSet() with MACS2, generating a unified and reproduci ble consensus peak 
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.28.735129 doi: bioRxiv preprint
+
+39 
+
+set across all cell type × genotype groups. This approach minimizes sparsity inherent to single -
+
+cell chromatin accessibility datasets while enabling robust identification of accessible regulatory 
+
+regions shared across biologically relevant populations. Fol lowing peak calling, a peak -by -cell 
+
+accessibility matrix (PeakMatrix) was constructed using addPeakMatrix(), producing a 
+
+quantitative accessibility matrix for all cells across the unified peak set. The resulting 
+
+PeakMatrix served as the foundation for down stream differential accessibility, motif enrichment, 
+
+and peak -to -gene linkage analyses. 
+
+To associate distal regulatory elements with putative target genes, peak -to -gene linkage 
+
+analysis was performed on the integrated ArchRProject_subset using addPeak2GeneLinks() with 
+
+the GeneScoreMatrix and a maximum genomic linkage distance of 100 kb. T his analysis 
+
+identifies correlated chromatin accessibility and gene activity relationships between accessible 
+
+peaks and nearby genes. Peak -to -gene associations were subsequently filtered and intersected 
+
+with IRF8 -like motif -containing peaks to identify can didate IRF8 -regulated enhancer/promoter -
+
+gene interactions. For cell type -specific differential accessibility (DA) analyses, the integrated 
+
+ArchR project was subset independently into DC, plasmablast, and IMC populations. Within 
+
+each cell type -specific project, DA analysis between WT and Irf8 KO cells was performed on the 
+
+PeakMatrix using a binomial test on binarized peak accessibility values implemented in ArchR. 
+
+Bidirectional comparisons were conducted, including KO versus WT (peaks gained in KO) and 
+
+WT ve rsus KO (peaks lost in KO). Differentially accessible peaks were defined using thresholds 
+
+of false discovery rate (FDR) ≤ 0.01 and absolute log2 fold -change≥1. 
+
+DA peak tables were exported for downstream analyses and visualization. MA plots and 
+
+volcano plots were generated to visualize global genotype -dependent chromatin accessibility 
+
+changes within each immune population. Genomic annotation analyses were pe rformed to 
+
+determine the distribution of DA peaks across promoter, intronic, exonic, and distal intergenic 
+
+regions. In addition, bar plots comparing the number of peaks gained versus lost in Irf8 -deficient 
+
+cells were generated for each cell type. To infer biological pathways associated with IRF8 -
+
+dependent chromatin remodeling, Gene Ontology (GO) enrichment analyses were performed on 
+
+genes linked to DA peaks using peak -to -gene associations. 
+
+Definition and genome -wide characterization of IRF8 -like peaks . To identify and annotate 
+
+IRF8 -like regulatory elements genome -wide, we utilized a curated collection of 38 IRF8 -like 
+
+position frequency matrices (PFMs) representing canonical IRF8 motifs and related IRF/ETS 
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.28.735129 doi: bioRxiv preprint
+
+40 
+
+composite motifs. PFMs were converted to position weight matrices (PWMs) and incorporated 
+
+as a custom motif annotation set within the ArchR peak set using motif matching with a 
+
+significance threshold of 1 × 10⁻⁴. Motif scanning generated, for each accessib le peak, a binary 
+
+motif match matrix indicating the presence or absence of each of the 38 IRF8 -like motifs. An 
+
+“IRF8 -like peak” was defined as any chromatin accessibility peak containing at least one IRF8 -
+
+like motif match. To focus on biologically relevant regulatory elements, analyses were restricted 
+
+to IRF8 -like peaks that were accessible within the corresponding cell type and genotype group 
+
+based on the PeakMatrix. This filtering strategy enabled identification of active IRF8 -associated 
+
+regulatory region s utilized in each immune population under WT and Irf8 -deficient conditions. 
+
+Genome -wide annotation of accessible IRF8 -like peaks was performed using the annotatePeak 
+
+function with the TxDb.Mmusculus.UCSC.mm10.knownGene transcript database and a 
+
+transcript ion start site (TSS) annotation window of ±3 kb. Peaks were classified into genomic 
+
+categories including promoter, 5′ untranslated region (UTR), exon, intron, downstream, and 
+
+distal intergenic regions. For each cell type and genotype, the fraction and tota l number of IRF8 -
+
+like peaks within each genomic category were quantified. Data visualization included stacked 
+
+bar plots showing proportional genomic distributions, faceted bar plots displaying peak counts 
+
+by genomic annotation, and side -by -side WT versus I rf8 KO comparison plots to assess 
+
+genotype -dependent shifts in IRF8 -associated chromatin accessibility landscapes. 
+
+Human cancer patient scRNA -seq dataset analysis . To assess the clinical relevance of IRF8 -
+
+dependent plasmablast differentiation, we analyzed pre -treatment scRNA -seq data from 29 breast 
+
+cancer patients treated with neoadjuvant pembrolizumab (Cohort 1 : GSE160246). Patients were 
+
+classified as clonotype expanders (E, n=9) or non -expanders (NE, n=20) based on 
+
+complementary scTCR -seq annotations. B cells were re -clustered in Seurat (resolution 0.3) and 
+
+subclusters were annotated by marker gene expression. P lasmablasts were identified by the 
+
+expression of PRDM1, IGHG4, and immunoglobulin light chain genes; contaminating T cell and 
+
+epithelial clusters were excluded. Plasmablast proportions relative to total immune cells were 
+
+compared between E and NE patients by Wilcoxon rank -sum test. 
+
+Data analysis . Statistical analysis was done using Graphpad Prism V10.0 and o ne way ANOVA 
+
+with Tukey’s multiple comparisons and paired Student’s t -test to determine statistical 
+
+significance. A p<0.05 is considered as significant in difference .
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.28.735129 doi: bioRxiv preprint
+
+41 
+
+Acknowledgements 
+
+We acknowledge the support and contribution of the Integrated Genomics Core Shared 
+
+Resources at the Georgia Cancer Center at Augusta University (RRID: SCR_026483). 
+
+Author Contributions : Conceptualization (ZT, DBP, HS, KS, KO, and KL ), Methodology: (ZT, 
+
+DBP , RR, SB, KF, PC, DY) , Funding acquisition: (KL), Project administration (KL), 
+
+Bioinformatics ( RR, SB, HS ), Writing: original draft (ZT, DBP , KL), Writing: review & editing: 
+
+(ZT, DBP , KL) 
+
+Conflict of interest : None. 
+
+Funding . Grant support from the US Department of Veterans Affairs I01CX001364 (to K.L). 
+
+National Cancer Institute R01CA278852 (to K.L.), and R43CA287611 (to P.S.R.). 
+
+Data availability : The single -cell multiomics datasets are deposited in GEO with accession 
+
+#GSE334958. 
+
+REFERENCES 
+
+1. Holtschke, T., Lohler, J., Kanno, Y., Fehr, T., Giese, N., Rosenbauer, F., Lou, J., 
+
+Knobeloch, K.P., Gabriele, L., Waring, J.F., et al. (1996). Immunodeficiency and chronic 
+
+myelogenous leukemia -like syndrome in mice with a targeted mutation of the ICSBP 
+
+gene. Cell 87 , 307 -317. 
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.28.735129 doi: bioRxiv preprint
+
+42 
+
+2. Tamura, T., Nagamura -Inoue, T., Shmeltzer, Z., Kuwata, T., and Ozato, K. (2000). ICSBP 
+
+directs bipotential myeloid progenitor cells to differentiate into mature macrophages. 
+
+Immunity 13 , 155 -165. 10.1016/s1074 -7613(00)00016 -9. 
+
+3. Yanez, A., Ng, M.Y., Hassanzadeh -Kiabi, N., and Goodridge, H.S. (2015). IRF8 acts in 
+
+lineage -committed rather than oligopotent progenitors to control neutrophil vs monocyte 
+
+production. Blood 125 , 1452 -1459. 10.1182/blood -2014 -09 -600833. 
+
+4. Schiavoni, G., Mattei, F., Sestili, P., Borghi, P., Venditti, M., Morse, H.C., 3rd, Belardelli, 
+
+F., and Gabriele, L. (2002). ICSBP is essential for the development of mouse type I 
+
+interferon -producing cells and for the generation and activation of CD8alph a(+) dendritic 
+
+cells. J Exp Med 196 , 1415 -1425. 10.1084/jem.20021263. 
+
+5. Hambleton, S., Salem, S., Bustamante, J., Bigley, V., Boisson -Dupuis, S., Azevedo, J., 
+
+Fortin, A., Haniffa, M., Ceron -Gutierrez, L., Bacon, C.M., et al. (2011). IRF8 mutations 
+
+and human dendritic -cell immunodeficiency. N Engl J Med 365 , 127 -138. 
+
+10.1056/NEJMoa1100066. 
+
+6. Kurotaki, D., Yamamoto, M., Nishiyama, A., Uno, K., Ban, T., Ichino, M., Sasaki, H., 
+
+Matsunaga, S., Yoshinari, M., Ryo, A., et al. (2014). IRF8 inhibits C/EBPalpha activity to 
+
+restrain mononuclear phagocyte progenitors from differentiating into neutrophil s. Nat 
+
+Commun 5, 4978. 10.1038/ncomms5978ncomms5978 [pii]. 
+
+7. Grajales -Reyes, G.E., Iwata, A., Albring, J., Wu, X., Tussiwand, R., Kc, W., Kretzer, 
+
+N.M., Briseno, C.G., Durai, V., Bagadia, P., et al. (2015). Batf3 maintains autoactivation 
+
+of Irf8 for commitment of a CD8alpha(+) conventional DC clonogenic progenitor. Nat 
+
+Immunol 16 , 708 -717. 10.1038/ni.3197. 
+
+8. Lanca, T., Ungerback, J., Da Silva, C., Joeris, T., Ahmadi, F., Vandamme, J., Svensson -
+
+Frej, M., Mowat, A.M., Kotarsky, K., Sigvardsson, M., and Agace, W.W. (2022). IRF8 
+
+deficiency induces the transcriptional, functional, and epigenetic reprogramming of c DC1 
+
+into the cDC2 lineage. Immunity 55 , 1431 -1447 e1411. 10.1016/j.immuni.2022.06.006. 
+
+9. Cytlak, U., Resteu, A., Pagan, S., Green, K., Milne, P., Maisuria, S., McDonald, D., 
+
+Hulme, G., Filby, A., Carpenter, B., et al. (2020). Differential IRF8 Transcription Factor 
+
+Requirement Defines Two Pathways of Dendritic Cell Development in Humans. Immun ity 
+
+53 , 353 -370 e358. 10.1016/j.immuni.2020.07.003. 
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.28.735129 doi: bioRxiv preprint
+
+43 
+
+10. Tsujimura, H., Tamura, T., Gongora, C., Aliberti, J., Reis e Sousa, C., Sher, A., and Ozato, 
+
+K. (2003). ICSBP/IRF -8 retrovirus transduction rescues dendritic cell development in 
+
+vitro. Blood 101 , 961 -969. 10.1182/blood -2002 -05 -1327. 
+
+11. Tailor, P., Tamura, T., Kong, H.J., Kubota, T., Kubota, M., Borghi, P., Gabriele, L., and 
+
+Ozato, K. (2007). The feedback phase of type I interferon induction in dendritic cells 
+
+requires interferon regulatory factor 8. Immunity 27 , 228 -239. 
+
+10.1016/j.immuni.2007.06.009. 
+
+12. Adams, N.M., Galitsyna, A., Tiniakou, I., Esteva, E., Ra, A.C., Ullrich, S., Yeung, S.T., 
+
+Tan, Y., Pucella, J.N., Dolgalev, I., et al. (2026). Chromatin -mediated anticipatory control 
+
+of type I interferon production in plasmacytoid dendritic cells. Immunit y 59 , 270 -287 
+
+e211. 10.1016/j.immuni.2025.12.005. 
+
+13. Klement, J.D., Paschall, A.V., Redd, P.S., Ibrahim, M.L., Lu, C., Yang, D., Celis, E., 
+
+Abrams, S.I., Ozato, K., and Liu, K. (2018). An osteopontin/CD44 immune checkpoint 
+
+controls CD8+ T cell activation and tumor immune evasion. J Clin Invest 128 , 5549 -5560. 
+
+10.1172/JCI123360. 
+
+14. Glasmacher, E., Agrawal, S., Chang, A.B., Murphy, T.L., Zeng, W., Vander Lugt, B., 
+
+Khan, A.A., Ciofani, M., Spooner, C.J., Rutz, S., et al. (2012). A genomic regulatory 
+
+element that directs assembly and function of immune -specific AP -1-IRF complexes. 
+
+Scien ce 338 , 975 -980. 10.1126/science.1228309. 
+
+15. Murakami, K., Sasaki, H., Nishiyama, A., Kurotaki, D., Kawase, W., Ban, T., 
+
+Nakabayashi, J., Kanzaki, S., Sekita, Y., Nakajima, H., et al. (2021). A RUNX -CBFbeta -
+
+driven enhancer directs the Irf8 dose -dependent lineage choice between DCs and 
+
+monocytes. Nat Immunol 22 , 301 -311. 10.1038/s41590 -021 -00871 -y. 
+
+16. Kim, S., Bagadia, P., Anderson, D.A., 3rd, Liu, T.T., Huang, X., Theisen, D.J., O'Connor, 
+
+K.W., Ohara, R.A., Iwata, A., Murphy, T.L., and Murphy, K.M. (2020). High Amount of 
+
+Transcription Factor IRF8 Engages AP1 -IRF Composite Elements in Enhancers to Dire ct 
+
+Type 1 Conventional Dendritic Cell Identity. Immunity 53 , 759 -774 e759. 
+
+10.1016/j.immuni.2020.07.018. 
+
+17. Moorman, H.R., Reategui, Y., Poschel, D.B., and Liu, K. (2022). IRF8: Mechanism of 
+
+Action and Health Implications. Cells 11 . 10.3390/cells11172630. 
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.28.735129 doi: bioRxiv preprint
+
+44 
+
+18. Schleussner, N., Cauchy, P., Franke, V., Giefing, M., Fornes, O., Vankadari, N., Assi, S.A., 
+
+Costanza, M., Weniger, M.A., Akalin, A., et al. (2023). Transcriptional reprogramming by 
+
+mutated IRF4 in lymphoma. Nat Commun 14 , 6947. 10.1038/s41467 -023 -41954 -8. 
+
+19. Yamasaki, A., Imanishi, I., Tanaka, K., Ohkawa, Y., Tsuda, M., and Masuda, T. (2024). 
+
+IRF8 and MAFB drive distinct transcriptional machineries in different resident 
+
+macrophages of the central nervous system. Commun Biol 7, 896. 10.1038/s42003 -024 -
+
+06607 -6. 
+
+20. Saeki, K., Pan, R., Lee, E., Kurotaki, D., and Ozato, K. (2024). IRF8 defines the 
+
+epigenetic landscape in postnatal microglia, thereby directing their transcriptome 
+
+programs. Nat Immunol 25 , 1928 -1942. 10.1038/s41590 -024 -01962 -2. 
+
+21. Wang, H., Jain, S., Li, P., Lin, J.X., Oh, J., Qi, C., Gao, Y., Sun, J., Sakai, T., Naghashfar, 
+
+Z., et al. (2019). Transcription factors IRF8 and PU.1 are required for follicular B cell 
+
+development and BCL6 -driven germinal center responses. Proc Natl Acad Sci U S A 116 ,
+
+9511 -9520. 10.1073/pnas.1901258116. 
+
+22. Fedl, A.S., Tagoh, H., Gruenbacher, S., Sun, Q., Schenk, R.L., Froussios, K., Jaritz, M., 
+
+Busslinger, M., and Schwickert, T.A. (2024). Transcriptional function of E2A, Ebf1, Pax5, 
+
+Ikaros and Aiolos analyzed by in vivo acute protein degradation in early B cell 
+
+development. Nat Immunol 25 , 1663 -1677. 10.1038/s41590 -024 -01933 -7. 
+
+23. Lee, C.H., Melchers, M., Wang, H., Torrey, T.A., Slota, R., Qi, C.F., Kim, J.Y., Lugar, P., 
+
+Kong, H.J., Farrington, L., et al. (2006). Regulation of the germinal center gene program 
+
+by interferon (IFN) regulatory factor 8/IFN consensus sequence -binding pr otein. J Exp 
+
+Med 203 , 63 -72. 10.1084/jem.20051450. 
+
+24. Carotta, S., Willis, S.N., Hasbold, J., Inouye, M., Pang, S.H., Emslie, D., Light, A., 
+
+Chopin, M., Shi, W., Wang, H., et al. (2014). The transcription factors IRF8 and PU.1 
+
+negatively regulate plasma cell differentiation. J Exp Med 211 , 2169 -2181. 
+
+10.1084/jem.20140425. 
+
+25. Qiu, Z., Khalife, J., Ethiraj, P., Jaafar, C., Lin, A.P., Holder, K.N., Ritter, J.P., Chiou, L., 
+
+Huelgas -Morales, G., Aslam, S., et al. (2024). IRF8 -mutant B cell lymphoma evades 
+
+immunity through a CD74 -dependent deregulation of antigen processing and pre sentation 
+
+in MHCII complexes. Sci Adv 10 , eadk2091. 10.1126/sciadv.adk2091. 
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.28.735129 doi: bioRxiv preprint
+
+45 
+
+26. Xu, Y., Wei, Z., Feng, M., Zhu, D., Mei, S., Wu, Z., Feng, Q., Chang, W., Ji, M., Liu, C., et 
+
+al. (2022). Tumor -infiltrated activated B cells suppress liver metastasis of colorectal 
+
+cancers. Cell Rep 40 , 111295. 10.1016/j.celrep.2022.111295. 
+
+27. Laumont, C.M., and Nelson, B.H. (2023). B cells in the tumor microenvironment: Multi -
+
+faceted organizers, regulators, and effectors of anti -tumor immunity. Cancer Cell 41 , 466 -
+
+489. 10.1016/j.ccell.2023.02.017. 
+
+28. Li, Y., Bhargava, R., Tran, J.T., Blane, T.R., Peng, L., Luan, F., Huang, Z., Zhang, Z., Sun, 
+
+Y., Xiao, C., and Nemazee, D. (2025). Blocking plasma cell fate enhances antigen -specific 
+
+presentation by B cells to boost anti -tumor immunity. Nat Commun 16 , 4454. 
+
+10.1038/s41467 -025 -59622 -4. 
+
+29. Bod, L., Kye, Y.C., Shi, J., Torlai Triglia, E., Schnell, A., Fessler, J., Ostrowski, S.M., Von -
+
+Franque, M.Y., Kuchroo, J.R., Barilla, R.M., et al. (2023). B -cell -specific checkpoint 
+
+molecules that regulate anti -tumour immunity. Nature 619 , 348 -356. 10.1038/s41586 -023 -
+
+06231 -0. 
+
+30. Laumont, C.M., Banville, A.C., Gilardi, M., Hollern, D.P., and Nelson, B.H. (2022). 
+
+Tumour -infiltrating B cells: immunological mechanisms, clinical impact and therapeutic 
+
+opportunities. Nat Rev Cancer 22 , 414 -430. 10.1038/s41568 -022 -00466 -1. 
+
+31. Helmink, B.A., Reddy, S.M., Gao, J., Zhang, S., Basar, R., Thakur, R., Yizhak, K., Sade -
+
+Feldman, M., Blando, J., Han, G., et al. (2020). B cells and tertiary lymphoid structures 
+
+promote immunotherapy response. Nature 577 , 549 -555. 10.1038/s41586 -019 -1922 -8. 
+
+32. Griss, J., Bauer, W., Wagner, C., Simon, M., Chen, M., Grabmeier -Pfistershammer, K., 
+
+Maurer -Granofszky, M., Roka, F., Penz, T., Bock, C., et al. (2019). B cells sustain 
+
+inflammation and predict response to immune checkpoint blockade in human melanoma. 
+
+Nat Commun 10 , 4186. 10.1038/s41467 -019 -12160 -2. 
+
+33. Wennhold, K., Thelen, M., Lehmann, J., Schran, S., Preugszat, E., Garcia -Marquez, M., 
+
+Lechner, A., Shimabukuro -Vornhagen, A., Ercanoglu, M.S., Klein, F., et al. (2021). 
+
+CD86(+) Antigen -Presenting B Cells Are Increased in Cancer, Localize in Tertiary 
+
+Lymph oid Structures, and Induce Specific T -cell Responses. Cancer Immunol Res 9,
+
+1098 -1108. 10.1158/2326 -6066.CIR -20 -0949. 
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.28.735129 doi: bioRxiv preprint
+
+46 
+
+34. Rastogi, I., Jeon, D., Moseman, J.E., Muralidhar, A., Potluri, H.K., and McNeel, D.G. 
+
+(2022). Role of B cells as antigen presenting cells. Front Immunol 13 , 954936. 
+
+10.3389/fimmu.2022.954936. 
+
+35. Waight, J.D., Netherby, C., Hensen, M.L., Miller, A., Hu, Q., Liu, S., Bogner, P.N., Farren, 
+
+M.R., Lee, K.P., Liu, K., and Abrams, S.I. (2013). Myeloid -derived suppressor cell 
+
+development is regulated by a STAT/IRF -8 axis. J Clin Invest 123 , 4464 -4478. 
+
+10.1172/JCI68189. 
+
+36. Hu, X., Bardhan, K., Paschall, A.V., Yang, D., Waller, J.L., Park, M.A., Nayak -Kapoor, A., 
+
+Samuel, T.A., Abrams, S.I., and Liu, K. (2013). Deregulation of apoptotic factors Bcl -xL 
+
+and Bax confers apoptotic resistance to myeloid -derived suppressor cells an d contributes 
+
+to their persistence in cancer. J Biol Chem 288 , 19103 -19115. 10.1074/jbc.M112.434530. 
+
+37. Tzetzo, S.L., Kramer, E.D., Mohammadpour, H., Kim, M., Rosario, S.R., Yu, H., Dolan, 
+
+M.R., Oturkar, C.C., Morreale, B.G., Bogner, P.N., et al. (2024). Downregulation of IRF8 
+
+in alveolar macrophages by G -CSF promotes metastatic tumor progression. iScience 27 ,
+
+109187. 10.1016/j.isci.2024.109187. 
+
+38. Li, R., Wei, K., Sun, Q., Xie, B., Wei, P., Xie, T., Guo, X., Chen, Y., Pan, B., Zhao, Z., et 
+
+al. (2025). Analysis of the three -dimensional genome of exhausted CD8(+) T cells reveals 
+
+a critical role of IRF8 in their differentiation and functions in cancer . Nat Immunol 26 ,
+
+2280 -2295. 10.1038/s41590 -025 -02330 -4. 
+
+39. Adams, N.M., Galitsyna, A., Tiniakou, I., Esteva, E., Ra, A.C., Martinez -Krams, D., Lau, 
+
+C.M., Reyes, J., Abdennur, N., Shkolikov, A., et al. (2026). Cohesin -mediated chromatin 
+
+organization controls the differentiation and function of dendritic cells. Sci Immunol 11 ,
+
+eadx4622. 10.1126/sciimmunol.adx4622. 
+
+40. Henriques -Oliveira, L., Altman, A.R., Kurochkin, I., Ascic, E., Halitzki, E., Matei, A.M., 
+
+Pertiga -Cabral, D., Ulmert, I., Holst, S., Nair, M.S., et al. (2025). Anchored screening 
+
+identifies transcription factor blueprints underlying dendritic cell divers ity and subset -
+
+specific anti -tumor immunity. Immunity 58 , 2419 -2438 e2413. 
+
+10.1016/j.immuni.2025.08.001. 
+
+41. Chen, J., Liu, T.T., Ou, F., Ohara, R.A., Jo, S., Postoak, J.L., Egawa, T., Day, R.B., 
+
+Murphy, T.L., Murphy, K.M., and Kim, S. (2025). C/EBPalpha activates Irf8 expression in 
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.28.735129 doi: bioRxiv preprint
+
+47 
+
+myeloid progenitors at the +56 -kb enhancer to initiate cDC1 development. Sci Immunol 
+
+10 , eadt5899. 10.1126/sciimmunol.adt5899. 
+
+42. Gupta, A., Das, R., Reed, K., Jeon, T., Nguyen, Q.T.C., Rudra, A., Ge, X., Trongjit, S., 
+
+Vanrobaeys, Y.S., Langer, R., et al. (2026). Immune -remodeling mRNAs expressing IRF8 
+
+or NIK generate durable antitumor immunity in multiple cancer models. Nat Biotech nol. 
+
+10.1038/s41587 -026 -03115 -2. 
+
+43. Li, Q., Pan, P.Y., Gu, P., Xu, D., and Chen, S.H. (2004). Role of immature myeloid Gr -1+ 
+
+cells in the development of antitumor immunity. Cancer Res 64 , 1130 -1139. 
+
+10.1158/0008 -5472.can -03 -1715. 
+
+44. Sharma, M.D., Rodriguez, P.C., Koehn, B.H., Baban, B., Cui, Y., Guo, G., Shimoda, M., 
+
+Pacholczyk, R., Shi, H., Lee, E.J., et al. (2018). Activation of p53 in Immature Myeloid 
+
+Precursor Cells Controls Differentiation into Ly6c(+)CD103(+) Monocytic Antigen -
+
+Presenting Cells in Tumors. Immunity 48 , 91 -106 e106. 10.1016/j.immuni.2017.12.014. 
+
+45. Liu, T.T., Ou, F., Belk, J.A., Bagadia, P., Anderson, D.A., 3rd, Durai, V., Yao, W., Satpathy, 
+
+A.T., Murphy, T.L., and Murphy, K.M. (2023). Cis interactions in the Irf8 locus regulate 
+
+stage -dependent enhancer activation. Genes Dev 37 , 291 -302. 10.1101/gad.350339.122. 
+
+46. Kurotaki, D., Nakabayashi, J., Nishiyama, A., Sasaki, H., Kawase, W., Kaneko, N., 
+
+Ochiai, K., Igarashi, K., Ozato, K., Suzuki, Y., and Tamura, T. (2018). Transcription Factor 
+
+IRF8 Governs Enhancer Landscape Dynamics in Mononuclear Phagocyte Progenitors. 
+
+Cell Rep 22 , 2628 -2641. 10.1016/j.celrep.2018.02.048. 
+
+47. Osorio, J.C., Knorr, D.A., Weitzenfeld, P., Blanchard, L., Yao, N., Baez, M., Sevilla, C., 
+
+DiLillo, M., Rahman, J., Sharma, V.P., et al. (2025). Fc -optimized CD40 agonistic 
+
+antibody elicits tertiary lymphoid structure formation and systemic antitumor immu nity in 
+
+metastatic cancer. Cancer Cell 43 , 1902 -1916 e1909. 10.1016/j.ccell.2025.07.013. 
+
+48. Rossetti, R.A.M., Tordesillas, L., Beatty, M.S., Cianne, J., Martinez Planes, E., Du, D., 
+
+Snedal, S., Wang, C., Perez, B.A., Berglund, A., et al. (2025). CD40L stimulates tumor -
+
+infiltrating B -cells and improves ex vivo TIL expansion. J Immunother Cancer 13 .
+
+10.1136/jitc -2024 -011066. 
+
+49. Bassez, A., Vos, H., Van Dyck, L., Floris, G., Arijs, I., Desmedt, C., Boeckx, B., Vanden 
+
+Bempt, M., Nevelsteen, I., Lambein, K., et al. (2021). A single -cell map of intratumoral 
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.28.735129 doi: bioRxiv preprint
+
+48 
+
+changes during anti -PD1 treatment of patients with breast cancer. Nat Med 27 , 820 -832. 
+
+10.1038/s41591 -021 -01323 -8. 
+
+50. Sade -Feldman, M., Yizhak, K., Bjorgaard, S.L., Ray, J.P., de Boer, C.G., Jenkins, R.W., 
+
+Lieb, D.J., Chen, J.H., Frederick, D.T., Barzily -Rokni, M., et al. (2018). Defining T Cell 
+
+States Associated with Response to Checkpoint Immunotherapy in Melanoma. Cel l 175 ,
+
+998 -1013 e1020. 10.1016/j.cell.2018.10.038. 
+
+51. Sichien, D., Scott, C.L., Martens, L., Vanderkerken, M., Van Gassen, S., Plantinga, M., 
+
+Joeris, T., De Prijck, S., Vanhoutte, L., Vanheerswynghels, M., et al. (2016). IRF8 
+
+Transcription Factor Controls Survival and Function of Terminally Differentiated 
+
+Co nventional and Plasmacytoid Dendritic Cells, Respectively. Immunity 45 , 626 -640. 
+
+10.1016/j.immuni.2016.08.013. 
+
+52. Nixon, B.G., Kuo, F., Ji, L., Liu, M., Capistrano, K., Do, M., Franklin, R.A., Wu, X., 
+
+Kansler, E.R., Srivastava, R.M., et al. (2022). Tumor -associated macrophages expressing 
+
+the transcription factor IRF8 promote T cell exhaustion in cancer. Immunity 55 , 2044 -
+
+2058 e2045. 10.1016/j.immuni.2022.10.002. 
+
+53. Wang, H., Yan, M., Sun, J., Jain, S., Yoshimi, R., Abolfath, S.M., Ozato, K., Coleman, 
+
+W.G., Jr., Ng, A.P., Metcalf, D., et al. (2014). A Reporter Mouse Reveals Lineage -Specific 
+
+and Heterogeneous Expression of IRF8 during Lymphoid and Myeloid Cell 
+
+Differe ntiation. J Immunol. 1301939 [pii]jimmunol.1301939 
+
+[pii]10.4049/jimmunol.1301939. 
+
+54. Yamasaki, T., Nishiyama, A., Kurogi, N., Nishimura, K., Nishida, S., Kurotaki, D., Ban, 
+
+T., Ramilowski, J.A., Ozato, K., Toyoda, A., and Tamura, T. (2024). Physical and 
+
+functional interaction among Irf8 enhancers during dendritic cell differentiation. Cel l Rep 
+
+43 , 114107. 10.1016/j.celrep.2024.114107. 
+
+55. Ongaro, M., Thouenon, R., Crespo, I., Dumez, A., Charmoy, M., Roman Camacho, E., 
+
+Morel, V.J., Cropp, D., Desponds, E., Zanette, G., et al. (2026). The transcription factor 
+
+IRF8 drives tumor -specific exhaustion in CD8+ T cells. J Exp Med 223 .
+
+10.1084/jem.20252115. 
+
+56. Bayerl, F., Meiser, P., Donakonda, S., Hirschberger, A., Lacher, S.B., Pedde, A.M., 
+
+Hermann, C.D., Elewaut, A., Knolle, M., Ramsauer, L., et al. (2023). Tumor -derived 
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.28.735129 doi: bioRxiv preprint
+
+49 
+
+prostaglandin E2 programs cDC1 dysfunction to impair intratumoral orchestration of anti -
+
+cancer T cell responses. Immunity 56 , 1341 -1358 e1311. 10.1016/j.immuni.2023.05.011. 
+
+57. Luda, K.M., Joeris, T., Persson, E.K., Rivollier, A., Demiri, M., Sitnik, K.M., Pool, L., 
+
+Holm, J.B., Melo -Gonzalez, F., Richter, L., et al. (2016). IRF8 Transcription -Factor -
+
+Dependent Classical Dendritic Cells Are Essential for Intestinal T Cell Homeosta sis. 
+
+Immunity 44 , 860 -874. 10.1016/j.immuni.2016.02.008. 
+
+58. Chen, X., and Jensen, P.E. (2008). The role of B lymphocytes as antigen -presenting cells. 
+
+Arch Immunol Ther Exp (Warsz) 56 , 77 -83. 10.1007/s00005 -008 -0014 -5. 
+
+59. Boucher, A., Anderson, C., Hinman, R., Kindschuh, M., Fung, J., Wang, T., Klooster, I., 
+
+Kim, E., Roth, C., Vander Oever, M., et al. (2025). Engineered human B cells targeting 
+
+tumor -associated antigens exhibit antigen presentation and antibody -mediated fun ctions. 
+
+Front Immunol 16 , 1621222. 10.3389/fimmu.2025.1621222. 
+
+60. Wu, X., Zhang, M., Moon, J.S., Song, E.K., Abrams, J.C., van Dam, L.S., Sharpe, O., 
+
+Feser, M., Moss, L., Ho, P.P., et al. (2025). Senescent Activated Naive B Cells Promote 
+
+Anti -Citrullinated Antigen T Cell Responses and the Transition to Clinical Rheumato id 
+
+Arthritis. bioRxiv. 10.1101/2025.10.14.682430. 
+
+61. Cabrita, R., Lauss, M., Sanna, A., Donia, M., Skaarup Larsen, M., Mitra, S., Johansson, I., 
+
+Phung, B., Harbst, K., Vallon -Christersson, J., et al. (2020). Tertiary lymphoid structures 
+
+improve immunotherapy and survival in melanoma. Nature 577 , 561 -565. 
+
+10.1038/s41586 -019 -1914 -8. 
+
+62. Varn, F.S., Wang, Y., and Cheng, C. (2019). A B cell -derived gene expression signature 
+
+associates with an immunologically active tumor microenvironment and response to 
+
+immune checkpoint blockade therapy. Oncoimmunology 8, e1513440. 
+
+10.1080/2162402X.2018.1513440. 
+
+63. Acha -Sagredo, A., Andrei, P., Clayton, K., Taggart, E., Antoniotti, C., Woodman, C.A., 
+
+Afrache, H., Fourny, C., Armero, M., Moinudeen, H.K., et al. (2025). A constitutive 
+
+interferon -high immunophenotype defines response to immunotherapy in colorectal 
+
+canc er. Cancer Cell 43 , 292 -307 e297. 10.1016/j.ccell.2024.12.008. 
+
+64. Grasso, C.S., Tsoi, J., Onyshchenko, M., Abril -Rodriguez, G., Ross -Macdonald, P., Wind -
+
+Rotolo, M., Champhekar, A., Medina, E., Torrejon, D.Y., Shin, D.S., et al. (2020). 
+
+Conserved Interferon -gamma Signaling Drives Clinical Response to Immune Checkpoint 
+
+> was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.28.735129 doi: bioRxiv preprint
+
+50 
+
+Blockade Therapy in Melanoma. Cancer Cell 38 , 500 -515 e503. 
+
+10.1016/j.ccell.2020.08.005. 
+
+65. David, K., Friedlander, G., Pellegrino, B., Radomir, L., Lewinsky, H., Leng, L., Bucala, 
+
+R., Becker -Herman, S., and Shachar, I. (2022). CD74 as a regulator of transcription in 
+
+normal B cells. Cell Rep 41 , 111572. 10.1016/j.celrep.2022.111572. 
+
+66. Poschel, D.B., Kehinde -Ige, M., Klement, J.D., Yang, D., Merting, A.D., Savage, N.M., 
+
+Shi, H., and Liu, K. (2023). IRF8 Regulates Intrinsic Ferroptosis through Repressing p53 
+
+Expression to Maintain Tumor Cell Sensitivity to Cytotoxic T Lymphocytes. Cells 12 .
+
+10.3390/cells12020310. 
+
+67. McVey, J.C., and Beatty, G.L. (2025). Facts and Hopes of CD40 Agonists in Cancer 
+
+Immunotherapy. Clin Cancer Res 31 , 2079 -2087. 10.1158/1078 -0432.CCR -24 -1660. 
+
+68. Feng, J., Wang, H., Shin, D.M., Masiuk, M., Qi, C.F., and Morse, H.C., 3rd (2011). IFN 
+
+regulatory factor 8 restricts the size of the marginal zone and follicular B cell pools. J 
+
+Immunol 186 , 1458 -1466.

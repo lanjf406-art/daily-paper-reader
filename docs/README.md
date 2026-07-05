@@ -6,46 +6,43 @@
 </div>
 
 ## 每次日报
-- 最新运行日期：2026-07-04
-- 运行时间：2026-07-04 22:41:57 UTC
+- 最新运行日期：2026-07-05
+- 运行时间：2026-07-05 22:28:05 UTC
 - 运行状态：成功
-- 本次总论文数：8
+- 本次总论文数：7
 - 精读区：2
-- 速读区：6
+- 速读区：5
 
 ### 今日简报（AI）
-1) 今日8篇论文聚焦AI在结核病耐药预测与单细胞扰动预测，精读两篇高分研究。  
-2) 最值得关注的是基于全基因组测序的AI耐药预测和跨条件单细胞表型预测，均获8分以上评价。  
-3) 建议优先精读这两篇，并留意空间多组学统一框架对整合分析的启发。
-- 详情：[/202607/04/README](/202607/04/README)
+1) 今日7篇文献聚焦肿瘤免疫与空间组学，精读两篇分别揭示微生物诱导MHC-II克服肠癌免疫治疗耐药及SPICE框架鉴定空间转录组拷贝数变异。  
+2) 最值得关注：微生物调控MHC-II表达可逆转肠癌免疫治疗耐药并限制转移；B细胞内在IRF8重编程抗原呈递以维持CD8⁺T细胞抗肿瘤免疫。  
+3) 建议优先精读微生物诱导MHC-II的肠癌机制，并尝试用SPICE工具分析自身空间组学数据的拷贝数变异。
+- 详情：[/202607/05/README](/202607/05/README)
 
 ### 精读区论文标签
-1. [Benchmarking the translational potential of AI-based drug-resistance prediction from Mycobacterium tuberculosis whole-genome sequencing data](/202607/04/biorxiv-10-64898-2026-07-03-736369-v1-benchmarking-the-translational-potential-of-ai-based-drug-resistance-prediction-from-mycobacterium-tuberculosis-whole-genome-sequencing-data)  
+1. [Microbial induction of MHC-II expression in colon cancer cells overcomes immunotherapy resistance and limits metastasis](/202607/05/biorxiv-10-64898-2026-06-30-735621-v1-microbial-induction-of-mhc-ii-expression-in-colon-cancer-cells-overcomes-immunotherapy-resistance-and-limits-metastasis)  
    标签：评分：9.0/10、query:neo-resist
-   evidence：基于全基因组测序数据的AI耐药预测基准测试，直接针对机器学习耐药预测
-2. [MORPH Predicts the Single-Cell Outcome of Genetic Perturbations Across Conditions and Data Modalities](/202607/04/biorxiv-10-1101-2025-06-27-661992-v2-morph-predicts-the-single-cell-outcome-of-genetic-perturbations-across-conditions-and-data-modalities)  
+   evidence：微生物诱导克服结肠癌免疫治疗耐药
+2. [SPICE: A Robust Computational Framework for Identifying Copy Number Variations in Spatial Transcriptomics](/202607/05/biorxiv-10-64898-2026-06-30-735508-v1-spice-a-robust-computational-framework-for-identifying-copy-number-variations-in-spatial-transcriptomics)  
    标签：评分：8.0/10、query:neo-resist
-   evidence：机器学习模型预测单细胞扰动结果，可应用于药物耐药预测
+   evidence：空间转录组学识别驱动瘤内异质性和耐药的CNVs
 
 ### 速读区论文标签
-1. [SpatialFuser: a unified framework for integrative analysis of unpaired spatial multi-omics data](/202607/04/biorxiv-10-1101-2025-09-14-676067-v3-spatialfuser-a-unified-framework-for-integrative-analysis-of-unpaired-spatial-multi-omics-data)  
+1. [Novel 4D tensor decomposition-based approach integrating tri-omics profiling data can identify functionally relevant gene clusters](/202607/05/biorxiv-10-64898-2026-03-19-712900-v3-novel-4d-tensor-decomposition-based-approach-integrating-tri-omics-profiling-data-can-identify-functionally-relevant-gene-clusters)  
+   标签：评分：7.0/10、query:neo-resist
+   evidence：使用张量分解的多组学整合方法
+2. [B cell-intrinsic IRF8 transcriptionally reprograms antigen presentation to sustain CD8⁺ T cell antitumor immunity](/202607/05/biorxiv-10-64898-2026-06-28-735129-v1-b-cell-intrinsic-irf8-transcriptionally-reprograms-antigen-presentation-to-sustain-cd8-t-cell-antitumor-immunity)  
+   标签：评分：7.0/10、query:neo-resist
+   evidence：B细胞内在IRF8重编程肿瘤微环境抗原呈递，维持CD8 T细胞免疫
+3. [Colorectal cancers with distinct metastatic potential trigger divergent early T cell responses](/202607/05/biorxiv-10-64898-2026-06-30-735606-v1-colorectal-cancers-with-distinct-metastatic-potential-trigger-divergent-early-t-cell-responses)  
+   标签：评分：7.0/10、query:neo-resist
+   evidence：结直肠癌中T细胞应答与免疫治疗耐药相关
+4. [Accessible spatial host-microbe profiling in tumour tissues](/202607/05/biorxiv-10-64898-2026-07-02-735997-v1-accessible-spatial-host-microbe-profiling-in-tumour-tissues)  
+   标签：评分：7.0/10、query:neo-resist
+   evidence：肿瘤组织空间宿主-微生物图谱
+5. [Robustness and reliability of single-cell regulatory multi-omics with deep mitochondrial mutation profiling](/202607/05/biorxiv-10-1101-2024-08-23-609473-v3-robustness-and-reliability-of-single-cell-regulatory-multi-omics-with-deep-mitochondrial-mutation-profiling)  
    标签：评分：6.0/10、query:neo-resist
-   evidence：空间多组学整合分析肿瘤微环境
-2. [Genetically informed single-cell and spatial mapping of metabolic programs in human health and disease](/202607/04/biorxiv-10-64898-2026-06-25-734643-v2-genetically-informed-single-cell-and-spatial-mapping-of-metabolic-programs-in-human-health-and-disease)  
-   标签：评分：6.0/10、query:neo-resist
-   evidence：单细胞和空间代谢图谱方法，可应用于肿瘤耐药机制研究
-3. [Phenotypic inference from sparse tumor genomes informs an explainable deep-learning model for cancer prognosis](/202607/04/biorxiv-10-64898-2026-06-26-734894-v1-phenotypic-inference-from-sparse-tumor-genomes-informs-an-explainable-deep-learning-model-for-cancer-prognosis)  
-   标签：评分：6.0/10、query:neo-resist
-   evidence：基于肿瘤基因组的机器学习表型推断框架，可应用于耐药预测
-4. [Mapping the immune landscape in small cell lung cancer unveils a distinct tumor-reactive CD8+ T cell molecular signature](/202607/04/biorxiv-10-64898-2026-06-29-735200-v1-mapping-the-immune-landscape-in-small-cell-lung-cancer-unveils-a-distinct-tumor-reactive-cd8-t-cell-molecular-signature)  
-   标签：评分：6.0/10、query:neo-resist
-   evidence：小细胞肺癌免疫微环境的单细胞转录组图谱，为耐药机制研究奠定基础
-5. [Scalable multi-group nonnegative spatial factorization for spatial genomics data with cell-type heterogeneity](/202607/04/biorxiv-10-64898-2026-06-29-735224-v1-scalable-multi-group-nonnegative-spatial-factorization-for-spatial-genomics-data-with-cell-type-heterogeneity)  
-   标签：评分：6.0/10、query:neo-resist
-   evidence：空间转录组学方法可用于肿瘤微环境耐药研究
-6. [AART enables fast and accurate cross-platform proteomic translation](/202607/04/biorxiv-10-64898-2026-06-29-735313-v1-aart-enables-fast-and-accurate-cross-platform-proteomic-translation)  
-   标签：评分：6.0/10、query:neo-resist
-   evidence：跨平台蛋白质组翻译方法，可用于耐药生物标志物整合
+   evidence：可应用于耐药机制研究的单细胞多组学谱系追踪方法
 
 
 <div class="dpr-home-promo-card">
