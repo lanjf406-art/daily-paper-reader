@@ -1,0 +1,1790 @@
+Title: Uncertainty-aware quantitative analysis of the structure and dynamics of T cell receptor repertoires
+
+URL Source: https://www.biorxiv.org/content/10.64898/2026.06.28.735097v1.full.pdf
+
+Published Time: Mon, 06 Jul 2026 22:51:07 GMT
+
+Number of Pages: 23
+
+Markdown Content:
+# Uncertainty-aware quantitative 1
+
+# analysis of the structure and 2
+
+# dynamics of T cell receptor 3
+
+# repertoires 4
+
+Simo Kitanovski 1* , Kai Wollek 1, Daniel Hoffmann 1,6,7 5
+
+*For correspondence: 
+
+simo.kitanovski@uni-due.de (SK) 1Bioinformatics and Computational Biophysics, Faculty of Biology and Centre for 6
+
+Medical Biotechnology (ZMB), University of Duisburg-Essen, Essen, 45141, Germany; 7
+
+6Center for Medical Biotechnology, University of Duisburg-Essen, Essen, Germany.; 8
+
+7Center for Computational Sciences and Simulation, University of Duisburg-Essen, 9
+
+Essen, Germany. 10 11 
+
+Abstract Diversity and dynamics of immune cell receptor repertoires (IRRs) are two factors at 12 
+
+the functional heart of adaptive immunity that together make IRRs difficult to grasp. Moreover, 13 
+
+measurements are compounded by various sources of experimental noise. Here we propose a 14 
+
+computational framework ( ClustIRR ) for uncertainty-aware quantitative analysis of IRR structure 15 
+
+and dynamics. ClustIRR maps multiple IRRs across replicates, time points, or conditions onto a 16 
+
+joint graph induced by immune receptor sequence similarity. It then detects communities on the 17 
+
+joint graph (CJs). Based on CJs as reference structures across IRRs, ClustIRR then performs 18 
+
+quantitative Bayesian analyses of differential CJ occupancy. Additionally, ClustIRR integrates 19 
+
+single-cell gene expression data to link community expansion with transcriptional activation 20 
+
+signatures. We demonstrate the capabilities of ClustIRR with the joint analysis of multiple T cell 21 
+
+receptor repertoires in several example applications: (1) quantitative changes due to antigen 22 
+
+challenge, (2) longitudinal dynamics during cancer immunotherapy, (3) V(D)J recombination 23 
+
+biases in human vs murine repertoires that pre-adapt IRRs for pathogen responses. ClustIRR is 24 
+
+freely available as open source software from the bioconductor repository. 25 26 
+
+## Introduction 27 
+
+Adaptive immunity relies on highly diverse immune receptor repertoires (IRRs) to recognize patho-28 
+
+gens and malignant cells. Here we focus on T cell receptor (TCR) repertoires. TCR diversity arises 29 
+
+through V(D)J recombination, generating an estimated 10 14 possible receptor variants ( Murugan 30 
+
+et al., 2012 ). Within individuals, TCR repertoires are organized into clonotypes–subpopulations of 31 
+
+cells sharing identical TCR sequences generated through antigen-driven clonal expansion. While 32 
+
+clonally expanded T cells recognize identical antigens, accumulating evidence indicates that TCRs 33 
+
+with non-identical but similar CDR3 sequences often recognize the same epitopes ( Glanville et al., 34 
+
+2017 ; Dash et al., 2017 ). Such cross-reactivity has a number of consequences: for instance, even 35 
+
+if clonotypes are not shared between individuals or samples, the respective repertoires may still 36 
+
+recognize the same antigens. Conversely, the same TCR may recognize multiple antigens. In both 37 
+
+directions cross-reactivity makes data interpretation more difficult. 38 
+
+High-throughput sequencing (HTS) of TCR repertoires ( Woodsworth et al., 2013 ; Heather et al., 39 
+
+1 of 23 
+
+.CC-BY 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.28.735097 doi: bioRxiv preprint 2018 ; Pai and Satpathy, 2021 ), and more recently single-cell TCR sequencing ( Han et al., 2014 ;40 
+
+Redmond et al., 2016 ), enables precise clonotype enumeration at cellular resolution. To address 41 
+
+sequence degeneracy, similarity-based clustering approaches group clonotypes into communities 42 
+
+with putatively shared antigen specificity ( Glanville et al., 2017 ; Dash et al., 2017 ; Mayer-Blackwell 43 
+
+et al., 2021 ; Zhang et al., 2020 ; Valkiers et al., 2021 ; Pogorelyy et al., 2019 ). The architecture of 44 
+
+TCR repertoires—defined by community composition and abundance—encodes critical functional 45 
+
+information. For instance, successful cancer immunotherapy is associated with the expansion of 46 
+
+tumor-antigen-specific communities, while viral exposure elicits cognate TCR communities. Con-47 
+
+sequently, the functional interpretation of TCR repertoires hinges on the ability to quantitatively 48 
+
+track community occupancy dynamics across repertoires, rather than relying on static community 49 
+
+identification within isolated samples. 50 
+
+However, achieving robust quantitative tracking requires to overcome significant hurdles rooted 51 
+
+in the biological and technical nature of TCR repertoire data. First, quantifying changes at the clono-52 
+
+type level is confounded by vast diversity and limited sampling depth. Stochastic V(D)J recombina-53 
+
+tion and experimental noise mean that identical clonotypes are rarely shared across repertoires, 54 
+
+preventing direct detection of the same clone across conditions. Second, while coarse-graining 55 
+
+by partitioning into communities mitigates clonotype sparsity, it introduces a structural challenge: 56 
+
+communities must be defined consistently across samples to be comparable. Existing clustering 57 
+
+tools typically operate on single repertoires in isolation, producing incompatible community labels 58 
+
+that preclude longitudinal or cross-condition quantitative comparison. 59 
+
+Third, IRR sequencing data are inherently count-compositional, sparse, and noisy. These prop-60 
+
+erties extend to community occupancy estimates. Standard differential abundance tests for TCR 61 
+
+repertoires often focus on clonotypes and rely on qualitative comparisons based on point esti-62 
+
+mates ( Rudqvist et al., 2018 ) or simple univariate approaches, such as beta-binomial counts re-63 
+
+gression ( Rytlewski et al., 2019 ; Mayer-Blackwell et al., 2021 ) or Fisher’s exact test ( Balachandran 64 
+
+et al., 2017 ). Such approaches can mis-characterize uncertainty by overlooking key variance com-65 
+
+ponents, failing to distinguish biological expansion from stochastic fluctuation. 66 
+
+Bayesian hierarchical models offer a rigorous alternative, but these models have been rarely de-67 
+
+veloped for differential abundance analysis in TCR repertoires. Existing Bayesian methods primar-68 
+
+ily focus on inferring latent clonotype frequencies from bulk sequencing read counts ( Puelma Touzel 69 
+
+et al., 2020 ; Koraichi et al., 2022 ). While these methods represent important advancements, they 70 
+
+typically require biological replicates at each time point to quantify natural variability—a condi-71 
+
+tion often unmet in clinical or longitudinal studies. Tools like scCODA (Buettner et al., 2021 ) or 72 
+
+tascCODA (Ostner et al., 2021 ) address compositional bias in single-cell data but are designed for 73 
+
+annotated cell types rather than sequence-defined TCR communities. They are also ideally suited 74 
+
+for moderate dimensionality (typically < 100 categories), whereas TCR communities can number in 75 
+
+the thousands. Consequently, there is currently no unified method that combines joint community 76 
+
+definition across samples with probabilistic quantification for high-dimensional IRR data. 77 
+
+Here we introduce ClustIRR , a computational framework that addresses these interconnected 78 
+
+challenges through model-based quantification of community occupancy in IRRs. While we focus 79 
+
+on TCR repertoires, ClustIRR is equally applicable to B cell receptor (BCR) repertoires. Recognizing 80 
+
+that robust quantification is contingent upon consistent community definitions, ClustIRR first con-81 
+
+structs a joint graph integrating multiple repertoires across replicates, time points, or biological 82 
+
+conditions. In this graph, nodes correspond to clonotypes, and edges reflect CDR3 sequence simi-83 
+
+larity based on pairwise alignment scores. ClustIRR employs community detection algorithms (e.g., 84 
+
+Leiden ( Traag et al., 2019 ), Louvain ( Blondel et al., 2008 )) to identify densely interconnected TCR 85 
+
+groups suggesting shared antigen recognition. This process defines Communities on the Joint graph 86 
+
+(CJs) that persist across repertoires. 87 
+
+To quantify dynamics, ClustIRR models cell counts per CJ across repertoires using a hierarchical 88 
+
+Bayesian Dirichlet-Multinomial framework. By explicitly accounting for the count-compositional 89 
+
+nature of the data, this approach quantifies both relative CJ occupancy and differential occupancy 90 
+
+> 2 of 23
+> .CC-BY 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.28.735097 doi: bioRxiv preprint
+
+between repertoires, generating posterior distributions with 95% credible intervals (CIs). This en-91 
+
+ables researchers to distinguish true biological expansion from stochastic fluctuations. Addition-92 
+
+ally, ClustIRR integrates single-cell RNA sequencing (scRNA-seq) data, linking TCR CJ expansion with 93 
+
+transcriptional states such as activation, exhaustion, and cell cycle progression. Finally, ClustIRR 94 
+
+annotates CJs with antigen specificity through integration with public databases (VDJdb, TCR3d, 95 
+
+McPAS) ( Shugay et al., 2018 ; Gowthaman and Pierce, 2019 ; Tickotsky et al., 2017 ). 96 
+
+We demonstrate the capabilities of ClustIRR with three applications: (i) cross-condition reper-97 
+
+toire comparison identifying antigen-specific CJs; (ii) longitudinal therapy monitoring revealing pre-98 
+
+dictive biomarkers in cancer immunotherapy; and (iii) multi-replicate cohort analysis uncovering 99 
+
+intrinsic V(D)J recombination biases between humans and mice. We further showcase scRNA-seq 100 
+
+integration linking expansion of CJs with T cell activation signatures. Together, these applications 101 
+
+demonstrate how ClustIRR enables quantitative, biologically meaningful assessment of TCR reper-102 
+
+toire dynamics with rigorous uncertainty quantification. ClustIRR is available as an open-source R 103 
+
+package from the Bioconductor repository. 104 
+
+## Results 105 
+
+Detection of EBV- and MART1-antigen reactive T-cell communities from single cell 106 
+
+datasets 107 
+
+To validate ClustIRR , we applied it to five single-cell TCR repertoires (Dataset 1, Methods), including 108 
+
+three from healthy donors (C1, C2, C3) and two antigen-stimulated repertoires: Epstein-Barr virus 109 
+
+(EBV; repertoire E) and MART1 (repertoire M). ClustIRR should show expansion of EBV and MART1 110 
+
+specific CJs, respectively, in the stimulated repertoires compared to repertoires from healthy donors. 111 
+
+ClustIRR constructed a joint graph comprising 89,710 nodes (T-cell clonotypes) connected by 112 
+
+approximately 13 million edges, where edge weights reflected the average CDR3 𝛼𝛽 sequence simi-113 
+
+larity scores between clonotype pairs (Methods). Application of the Leiden algorithm (Potts model, 114 
+
+resolution parameter 𝑟 = 1 ) identified 10,301 CJs. Among these, 3,038 were singletons, while the 115 
+
+largest CJ contained 1,339 clonotypes representing 29,491 cells, 99.5% of which originated from 116 
+
+the EBV-stimulated repertoire (E). Among non-singleton CJs, the maximum unweighted distance 117 
+
+between any two nodes (i.e., the CJ diameter) was 2 (Supplementary Figure S1B). This indicates 118 
+
+that the CJs are compact and well-connected, reflecting conserved CDR3 sequences. Importantly, 119 
+
+connectivity within most CJs was driven by high similarity in either CDR3 𝛼 or CDR3 𝛽 sequences, but 120 
+
+rarely both simultaneously (Supplementary Figure S1C). This pattern suggests that antigen speci-121 
+
+ficity is primarily encoded by a single chain, permitting flexible pairing with diverse partner chains. 122 
+
+Furthermore, this observation aligns with the principle that TCR chain pairing is nearly indepen-123 
+
+dent, which makes the convergent generation of identical 𝛼𝛽 pairs highly improbable ( Dupic et al., 124 
+
+2019 ). 125 
+
+To quantify repertoire overlap, ClustIRR computed pairwise cosine similarities (CS) using CJ oc-126 
+
+cupancy vectors (cell counts per CJ) for each repertoire pair (Fig. 1A). Unstimulated controls had 127 
+
+elevated inter-repertoire similarity from CS ≈ 0.5 between C3 and either of C1 and C2 to CS ≈ 0.9 128 
+
+between C1 and C2. In contrast, antigen-stimulated repertoires overlapped much less with con-129 
+
+trols (CS: 0.03–0.09 for E; 0.18–0.3 for M) and with each other (E vs. M: CS = 0.01). 130 
+
+We quantified repertoire-specific CJ expansion using ClustIRR ’s Bayesian model, which expresses 131 
+
+the effect of repertoire 𝑥 on CJ 𝑖 occupancy by the coefficient 𝛽 𝑖𝑥 . The sign and magnitude of 𝛽 𝑖𝑥 132 
+
+values indicate expansion ( 𝛽 𝑖𝑥 > 0) or contraction ( 𝛽 𝑖𝑥 < 0) in repertoire 𝑥 (Methods). Given that 133 
+
+adaptive immunity responds to antigenic challenge through clonal expansion, we hypothesized 134 
+
+that expanded CJs in repertoires E and M would be enriched for EBV- and MART1-specific clono-135 
+
+types, respectively. Consistent with this, 𝛽 𝑖𝑥 distributions for E and M had heavy tails with large 136 
+
+positive values beyond 5, in contrast to healthy controls (Fig. 1B-C) with 𝛽 coefficients below 5. 137 
+
+Leveraging known CDR3-antigen associations from VDJdb, we identified 218 and 86 CJs in E and 138 
+
+M contained at least one EBV- or MART1-specific T cell clonotype, respectively. Notably, several 139 
+
+> 3 of 23
+> .CC-BY 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.28.735097 doi: bioRxiv preprint
+
+such clonotypes had expanded dramatically to thousands of T cells (large blue (EBV) and purple 140 
+
+(MART1) dots in Fig. 1B-C). CJs in repertoires E and M with large 𝛽 coefficients were enriched in T 141 
+
+cells with known specificity for EBV or MART1 antigens compared to random expectation based 142 
+
+on CJ sizes (Fig. 1D). In contrast, control repertoires were depleted of T cells specific for these 143 
+
+antigens. The prevalence of T cells specific for unrelated antigens (e.g., human cytomegalovirus, 144 
+
+CMV) matched random expectations (Supplementary Figure S2). 145 
+
+We inspected the five CJs (e1 to e5; blue dots with labels in Fig. 1B) with the highest 𝛽 coef-146 
+
+ficients in repertoire E. These CJs contained between 4,266 and 29,491 T cells distributed across 147 
+
+156 to 1,339 clonotypes (Supplementary Figure S4B). The majority of T cells (>99%) and clonotypes 148 
+
+(>69%) originated from repertoire E. Four CJs (e1, e2, e3, and e5) contained many T cell clonotypes 149 
+
+with CDR3 sequences specific for EBV antigens according to VDJdb, with the most expanded clono-150 
+
+types recognizing the epitope GLCTLVAML (EBV protein BMLF1 280-288 ) restricted by HLA-A*02 (Sup-151 
+
+plementary Figure S4A). This epitope matched the antigen used to stimulate repertoire E from the 152 
+
+donor carrying HLA-A*02. These clonotypes also matched VDJdb-annotated variable and joining 153 
+
+gene segments. CJ e4 was expanded in EBV and contained conserved CDR3 𝛽 sequences; however, 154 
+
+their specificity was not determined, which does not preclude EBV-antigen specificity. Notably, 155 
+
+these CJs (e1–e5) were among the most compact CJs in our repertoires (Supplementary Figure S1B). 156 
+
+Similarly, we inspected five CJs (m1 to m5; purple dots with labels in Fig. 1C) with the highest 157 
+
+𝛽 coefficients in repertoire M and had at least one MART1-specific clonotype. These contained 158 
+
+between 110 and 4,332 T cells distributed across 10 to 523 clonotypes. The majority of T cells 159 
+
+(>95%) and clonotypes (>70%) originated from repertoire M (Supplementary Figure S4B). The most 160 
+
+expanded clonotypes recognized the HLA-A*02-restricted epitope ELAGIGILTV (MART1 26-35 ; Supple-161 
+
+mentary Figure S4A), matching the antigen used to stimulate repertoire M. These clonotypes also 162 
+
+matched VDJdb-annotated variable and joining gene segments. Additional CJs in M with large 𝛽 co-163 
+
+efficients lacked VDJdb annotated MART1 specificity (orange dots in Fig. 1C), likely due to database 164 
+
+incompleteness. These CJs are prime candidates for de novo identification of MART1 specific TCRs. 165 
+
+As with the EBV-specific CJs (e1–e5), these CJs were among the most compact in our data (Sup-166 
+
+plementary Figure S1B), perhaps with the exception of m2 and m5. The reduced compactness of 167 
+
+the latter two reflected heterogeneous CDR3 sequences containing known MART1 recognition mo-168 
+
+tifs with variable core residues (m2 and m5 sequence logos in Supplementary Figure S4A), which 169 
+
+demonstrates ClustIRR ’s ability to detect biologically meaningful TCR groups with variable sequence 170 
+
+heterogeneity. 171 
+
+Integration with scRNA-seq data reveals signatures of T-cell activation signatures 172 
+
+in expanded CJs 173 
+
+The combination of single-cell gene expression (GEX) profiles with the TCR data allows for the iden-174 
+
+tification of correlations between GEX and TCR space. Here, we compared the GEX profiles of CJs 175 
+
+with their expansion scores ( 𝛽 ) across repertoires C1, C2, C3, E, and M. 176 
+
+Clustering of GEX profiles with scBubbletree (Kitanovski et al., 2024 ) identified four robust, tran-177 
+
+scriptionally distinct cell clusters, visualized as bubbles at the tips of a dendrogram (Fig. 2A). Over 178 
+
+99% of cells from unstimulated samples (C1, C2, C3) were assigned to bubble 0 (Fig. 2B), which 179 
+
+represented the largest cluster in the dataset (76,000 cells; 36.3% of total cells). This homogeneity 180 
+
+underscores the transcriptional similarity of unstimulated cells. Notably, C1, C2, and C3 collectively 181 
+
+contributed 99% of cells in bubble 0 (each sample accounting for 33% of the cluster), while sam-182 
+
+ples E and M contributed only 0.2% and 0.1%, respectively (Fig. 2C). In contrast, stimulated samples 183 
+
+E and M populated different clusters: 66% of cells from sample E and 88% from sample M went 184 
+
+to bubbles 1 and 2, respectively, and the remaining cells from E and M co-clustered in bubble 3, 185 
+
+with sample E contributing >85% of cells in this cluster (Fig. 2C). Hence, bubble 3 provides a unique 186 
+
+opportunity to investigate cells with converging transcriptional profiles in response to stimulation 187 
+
+by different antigens. The relative occupancy of expanded CJs e1–e5 and m1–m5 across bubbles 188 
+
+mirrored overall E/M distributions, indicating no bubble specific enrichment. 189 
+
+> 4 of 23
+> .CC-BY 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.28.735097 doi: bioRxiv preprint
+
+Figure 1. ClustIRR analysis of five TCR repertoires from Dataset 1. (A) Pairwise cosine similarity (CS) matrix between TCR repertoire’s CJ occupancy vectors (cell counts per CJ). Tile color intensity and labels indicate similarity values. (B) Mean 𝛽 coefficients (y-axis) for 7,505 CJs (dots) across repertoires (x-axis). CJs categorized as EBV specific (+, blue) or non-EBV specific (–, orange). (C) Mean 𝛽 coefficients (y-axis) for 7,505 CJs (dots) across repertoires (x-axis). CJs categorized as MART1 specific (+, purple) or non-MART1 specific (–, orange). Dot sizes indicate numbers of antigen specific T cells. Horizontal jitter width scales with point density. (D) Cumulative probability (y-axis) for all T cells (black) and T cells specific for EBV (blue) or MART1 (purple) across CJs ranked by 𝛽 coefficients (x-axis) in each TCR repertoire (panels). 5 of 23 
+
+.CC-BY 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.28.735097 doi: bioRxiv preprint Differential gene expression analysis revealed marked differences between stimulated (bub-190 
+
+bles 1, 2, 3) and unstimulated (bubble 0) cells. Stimulated clusters showed upregulation of genes 191 
+
+associated with T-cell activation (GO:0042110, Fig. 2D) and chemotaxis (GO:0010818). Importantly, 192 
+
+on average we observed higher level of T cell activation in bubble 3 compared to bubbles 1 and 2. 193 
+
+Meanwhile, bubble 0 showed upregulation of canonical naive T cell markers, including CCR7 , TCF7 ,194 
+
+and IL7R (Supplementary Figure S5). 195 
+
+Bubbles were differentially enriched in cell cycle phases: bubbles 1 and 2 were predominantly 196 
+
+in G1 phase (80% and 90% of cells, respectively), with the remainder in S or G2M phase (Fig. 2E). A 197 
+
+cluster dominated by G1 suggests these T cells are quiescent, minimally activated, or resting T cells. 198 
+
+On the other hand, bubble 3 was enriched in cells in G2M (70%) and S (30%) phases, characteristic 199 
+
+of recently activated effector T cells undergoing clonal expansion (Fig. 2E), and consistent with 200 
+
+the high T cell activation of cells from the stimulated repertoires (Fig. 2C-D). Bubble 0 cells were 201 
+
+predominantly in G1 phase (71% of cells), with the remainder in S or G2M phase (Fig. 2E). 202 
+
+Notably, EBV stimulated CJs with high expansion (e.g., 𝛽 > 3), including e1–e5, showed signifi-203 
+
+cantly elevated T cell activation scores compared to CJs with 𝛽 ≤ 3 (Fig. 2F–G). Differential expres-204 
+
+sion analysis confirmed the upregulation of many canonical activation and exhaustion markers 205 
+
+(e.g., NKG7 , CCL5 , GNLY , LAG3 , TIGIT , IL2RA , CD70 , CD2 ) in 𝛽 ≥ 3 CJs (Supplementary Figure S5). Con-206 
+
+versely, while the MART1-stimulated repertoire M had elevated T cell activation levels relative to 207 
+
+controls, the scores of its CJs increased only modestly with increasing 𝛽 . In repertoire C3 activation 208 
+
+increased with 𝛽 ; however, compared to repertoire E there were substantially fewer differentially 209 
+
+expressed genes (DEGs) associated with T cell activation, with roughly balanced numbers of up-210 
+
+regulated and downregulated markers between 𝛽 > 3 and 𝛽 ≤ 3 CJs (Supplementary Figures S6 211 
+
+and S7). This contrasts sharply with repertoire E, where 𝛽 > 3 CJs showed pronounced upregula-212 
+
+tion of activation markers. Finally, repertoires C1 and C2 contained negligible numbers of 𝛽 > 3 CJs 213 
+
+(zero in C1, one in C2); however, in these repertoires, we still observed increased signatures of T 214 
+
+cell activation associated with CJs having large 𝛽 values. 215 
+
+Tracking the dynamics of TCR CJs in lung cancer patients treated with CTLA-4 block-216 
+
+ade and radiotherapy 217 
+
+To test whether ClustIRR can identify biologically meaningful expansion or contraction of TCR CJs 218 
+
+in longitudinal TCR 𝛽 repertoire data, we analyzed data from peripheral blood of 20 lung cancer pa-219 
+
+tients treated with cytotoxic T lymphocyte antigen-4 (CTLA-4) checkpoint blockade and radiother-220 
+
+apy (RT) ( Formenti et al., 2018 ). Between day 0 (before treatment) and day 22 (on treatment), Clu-221 
+
+stIRR identified a significantly greater fraction of expanding CJs ( 𝛽 day22 > 𝛽 day0 with non-overlapping 222 
+
+95% HDIs) in patients with complete or partial response (CR/PR) relative to those with stable or 223 
+
+progressive disease (SD/PD) (overall difference = 0.075%, 95% HDI = [0.021, 0.146] (Fig. 3A, Supple-224 
+
+mentary Figure S9 and S10). These results suggest that early dynamic shifts in TCR CJs, particularly 225 
+
+expansions, may serve as predictive biomarkers of treatment response in patients receiving CTLA-226 
+
+4 blockade and RT ( Formenti et al., 2018 ; Rudqvist et al., 2018 ). Leave-one-out cross-validation 227 
+
+(LOOCV) confirmed the robustness of this finding to the exclusion of individual samples (Supple-228 
+
+mentary Figure S11). 229 
+
+ClustIRR further enables longitudinal tracking of TCR CJ expansion dynamics through timepoint-230 
+
+resolved estimates of the CJ intensity parameter 𝛽 , quantified by posterior means and 95% HDIs 231 
+
+(points and vertical error bars in Fig 3B). In dataset 2, TCR 𝛽 repertoires for 15 patients were sampled 232 
+
+only at day 0 and day 22, while the remaining 5 patients had additional timepoints (Supplementary 233 
+
+Figure S8). For example, in patient Pt4 (a treatment responder), TCR 𝛽 repertoires were profiled 234 
+
+at five timepoints: days 0, 22, 43, 65, and 203. By investigating the dynamics of expanding and 235 
+
+contracting Differentially occupant CJs (DCJs), we identified two key patterns (Supplementary Fig-236 
+
+ure S12). First, between days 0 and 22, DCJs occupancy changed markedly, with drastic shifts in 237 
+
+𝛽 means and no overlap in their 95% HDIs. Second, between days 43 and 203, DCJs occupancies 238 
+
+reverted to baseline (pre-treatment) levels in both expanding and contracting CJs (Fig. 3B, Supple-239 
+
+> 6 of 23
+> .CC-BY 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.28.735097 doi: bioRxiv preprint
+
+Figure 2. Integration of gene expression and TCR repertoires. (A) Annotated bubbletree (tree structure) of dataset 1. The bubbletree has five bubbles (white circles) as leaves. Bubble radii scale linearly with the number of cells in the bubbles. Bubble indices, absolute and relative cell frequencies are shown as labels between bubbletree and heatmap. Gray branch labels indicate perfect support of branches in 1,000 bootstrap iterations. (B) Heatmap columns are relative frequencies of cells from different samples, integrating to 100%. (C) Heatmap rows are within-bubble relative frequencies of different cell lines, integrating to 100%. (D) Distribution of normalized expression sum of all marker genes associated with T cell activation (x-axis) in cells from each bubble (y-axis). (E) Heatmap rows are within-bubble relative frequencies of cell cycle phases, integrating to 100%. (F) Mean T cell activation score (y-axis) versus 𝛽 coefficient (x-axis) for Communities on the Joint graph (CJs) (dots) across five repertoires (panels). Orange contours show 2D density of CJs. (G) Mean T cell activation score (y-axis) for T cells in CJs grouped by 𝛽 coefficients (x-axis; sliding window: midpoints 𝛽 = −1 to 6 in 0.5 increments, window size 2). Error bars: 95% HDIs from 1,000 bootstraps. Colors: TCR repertoires. 
+
+mentary Figure S12). 240 
+
+TCR 𝛽 repertoires from two pre-treatment brain metastases in Pt4 enabled classification of pe-241 
+
+ripheral blood TCRs as tumor-infiltrating (T+) if identical CDR3 𝛽 sequences appeared in both com-242 
+
+partments, or non-infiltrating (T-) when restricted to blood. Expanding or contracting DCJs contain-243 
+
+ing T+ TCRs were subsequently categorized as T+ DCJs, while those lacking T+ TCRs were designated 244 
+
+T- DCJs (dots connected by solid and dashed lines, respectively, in Fig. 3B). Notably, during days 0-22, 245 
+
+7 of 14 contracting DCJs were T+, potentially representing depletion of pre-existing tumor-antigen 246 
+
+associated TCRs, while 1 of 41 expanding DCJs were T+, suggesting therapy-driven expansion of 247 
+
+TCRs (Fig. 3C). These patterns are visually evident in network representations where T+ clonotypes 248 
+
+localize to contracting CJs (Fig. 3C), though experimental validation of antigen specificity is needed 249 
+
+for confirmation. 250 
+
+These results align with qualitative trends described in the original study ( Formenti et al., 2018 ), 251 
+
+but ClustIRR extends these findings by (i) quantifying uncertainty in longitudinal DCJ dynamics 252 
+
+through Bayesian posterior estimates and (ii) broadening the analysis from individual TCR clono-253 
+
+types to CJs of TCRs sharing similar CDR3 𝛽 sequences, thereby capturing robust clonal dynamics. 254 
+
+Quantifying TCR repertoire similarity and diversity across biological groups 255 
+
+Human and murine IRRs are dominated by private clonotypes but they should still be more simi-256 
+
+lar within each species than between species. We hypothesized that ClustIRR with its community-257 
+
+7 of 23 
+
+.CC-BY 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.28.735097 doi: bioRxiv preprint 0.001 0.01 0.1 Figure 3. Analysis of longitudinal TCR data in lung cancer patients treated with CTLA-4 checkpoint inhibitors. (A) Changes of Differentially occupant CJs (DCJs) between day 0 and day 22. Percentage of expanding (Ex, blue dots) and contracting (Co, orange dots) CJs in responders (CR/PR) and non-responders (SD/PD), including the overall mean percentages (large black dot) and 95% HDIs (black error bars) in each group. (B/C) Mean CJ intensity ( 𝛽 , y-axis) and 95% HDI intervals (vertical error bars) for expanding (B) and contracting (C) DCJs in patient Pt4 across five timepoints (x-axis). Dashed and solid lines show CJs with (+) and without (-) tumor TCRs, respectively. (D) Network visualization of 41 expanding and 14 contracting DCJs in Pt4. Nodes represent clonotypes (colored by timepoint; sized by relative clonal expansion on logarithmic scale). Squares: tumor-infiltrating TCRs (T+); circles: non-tumor-infiltrating TCRs (T-). Red labels: CDR3 𝛽 sequences of T+ clonotypes. The largest clonotype in each CJ is labeled with its CDR3 𝛽 sequence. Edges connect clonotypes with similar CDR3 𝛽 s. 
+
+centric approach should reflect this similarity hierarchy better than a purely clonotype-centric ap-258 
+
+proach. 259 
+
+To test this hypothesis, we generated synthetic CDR3 𝛼𝛽 sequence pairs using OLGA ( Sethna 260 
+
+et al., 2019 ) and V(D)J generative models ( Marcou et al., 2018 ) in humans and mice. This produced 261 
+
+five human (H1-H5) and five mouse (M1-M5) TCR repertoires, each containing 10,000 clonotypes, 262 
+
+with the five repertoires per species serving as biological replicates. We selected this multi-species 263 
+
+strategy because systematic differences are known to exist between human and murine immune 264 
+
+repertoires ( Madi et al., 2017 ), owing to differential evolutionary challenges and the distinct sets 265 
+
+of germline gene segments for V(D)J recombination. 266 
+
+The synthetic repertoires were very diverse, as expected from V(D)J recombination, with gener-267 
+
+ation probabilities spanning tens of orders of magnitude ( Sethna et al., 2019 ). No two clonotypes 268 
+
+shared both CDR3 𝛼 and CDR3 𝛽 sequences, resulting in pairwise cosine similarity (CS) values of 0 269 
+
+(Figure 4A). While some clonotypes had identical CDR3 𝛼 or CDR3 𝛽 sequences, none shared both, 270 
+
+highlighting the challenges faced by clonotype-centric approaches in analyzing multi-IRR data co-271 
+
+herently. This problem is exacerbated by low sequencing depth in single-cell TCR sequencing. 272 
+
+8 of 23 
+
+.CC-BY 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.28.735097 doi: bioRxiv preprint With its community-centric design, ClustIRR should cope better with this data. ClustIRR first con-273 
+
+structed a joint graph of 100,000 nodes (clonotypes) connected by ≈10 million edges, with weights 274 
+
+representing CDR3 𝛼𝛽 sequence similarity (Methods). Leiden clustering (Potts model; resolution 275 
+
+𝑟 = 1 ) identified 14,160 CJs. CJ distribution analysis revealed 5,742 ( ≈40%) private CJs exclusive to 276 
+
+individual repertoires and 3,663 CJs ( ≈26%) shared between two repertoires. As expected, 991 CJs 277 
+
+(≈7%) were shared across all five human repertoires, and 906 CJs ( ≈6.5%) were shared across all 278 
+
+five mouse repertoires. However, only 47 CJs ( ≈0.3%) were shared across all ten repertoires from 279 
+
+both species, underscoring the rarity of cross-species convergence. 280 
+
+To quantify repertoire similarity, we calculated pairwise CS between all ten TCR repertoires 281 
+
+based on their CJ distributions. The results revealed stark differences between intra- and inter-282 
+
+species similarity. Human repertoires showed high intra-species similarity, with CS values ranging 283 
+
+from 0.83 to 0.85 (Figure 4B), while mouse repertoires were even more similar to each other (CS: 284 
+
+0.94–0.95). In contrast, inter-species similarities were very low with CS values of 0.06–0.07. These 285 
+
+findings are consistent with known evolutionary and immunological differences between human 286 
+
+and murine IRRs, and they validate the biological relevance of ClustIRR ’s community-centric ap-287 
+
+proach. 288 
+
+We further assessed TCR repertoire diversity using normalized rank abundance distributions 289 
+
+(NRADs) ( Saeedghalati et al., 2017 ), which capture both the dominance structure (whether a few CJs 290 
+
+overwhelmingly dominate the repertoire) and the overall diversity (how evenly CJs are distributed 291 
+
+across the population). Mouse repertoires had a “top-heavy” distribution, with the top 100 CJs 292 
+
+accounting for disproportionately high normalized abundance, while human repertoires showed 293 
+
+flatter NRADs, indicating greater diversity (Figure 4C). Within each species, NRADs were almost 294 
+
+identical between biological replicates. 295 
+
+Thus, the community-centric framework of ClustIRR makes similarities between different but 296 
+
+comparable repertoires accessible, even if all observed clonotypes are private, be it because of 297 
+
+biological combinatorics or because of limited sequencing depth. 298 Species A B C
+
+Figure 4. Analysis of TCR repertoires from humans and mice. (A) Heatmap with clonotype-centric cosine similarity (CS) between pairs of TCR repertoires. (B) Heatmap with community-centric CS between pairs of TCR repertoires. Color-coded tiles represent CS values. (C) Log-log plot of normalized rank abundance distributions (NRADs) of TCR repertoires from humans (H, purple) and mouse (M, orange) repertoires. Each line represents an individual repertoire. 
+
+Convergent repertoire differences between species 299 
+
+To identify convergent repertoire differences between humans and mice, we applied ClustIRR ’s hi-300 
+
+erarchical Bayesian model for differential CJ occupancy (Methods: model 𝑀 ℎ). Building on the 301 
+
+repertoire-specific effects on CJ occupancy described by parameters 𝛽 𝑖 , this hierarchical frame-302 
+
+work additionally estimates overall species-specific CJ occupancy parameters ( 𝜇 𝑗 ; dots in Figure 5A), 303 
+
+where 𝑗 indexes biological conditions (human or mouse). By modeling abundance at both the in-304 
+
+9 of 23 
+
+.CC-BY 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.28.735097 doi: bioRxiv preprint dividual and group levels, this approach distinguishes conserved species-level trends from individ-305 
+
+ual repertoire variability, enabling the robust detection of systematic shifts in CJ representation 306 
+
+between species. 307 
+
+The distribution of 𝜇 𝑗 revealed pronounced shoulders toward large values in both species, in-308 
+
+dicating the presence of large, highly occupant CJs enriched in clonotypes from each species. To 309 
+
+investigate whether these CJs are functionally relevant, we binned CJs into seven groups based 310 
+
+on their 𝜇 𝑗 means (horizontal bins in Figure 5A). For each bin, we computed the probability that 311 
+
+clonotypes within the CJ recognize antigens from ten pathogenic species with abundant annota-312 
+
+tions in VDJdb (Figure 5B). We observed a clear enrichment pattern: CJs with higher 𝜇 𝑗 values in 313 
+
+humans were increasingly enriched for clonotypes targeting human-specific pathogens, including 314 
+
+CMV, EBV, Influenza A, and SARS-CoV-2. Similarly, in mice, high-𝜇 𝑗 CJs were enriched for clonotypes 315 
+
+recognizing mouse-specific pathogens such as FLU, MCMV, and Trypanosoma cruzi .316 
+
+Because these repertoires are synthetic—generated using models trained on non-selected TCRs 317 
+
+to capture intrinsic V(D)J recombination biases—this enrichment cannot be attributed to immune 318 
+
+selection or antigenic pressure. Instead, it reflects the convergent generation of functionally rele-319 
+
+vant CDR3 motifs driven by intrinsic biases in V(D)J recombination. To quantify this, we investigated 320 
+
+the relationship between CJ size and the mean probability of generation ( 𝑃 gen ) of their constituent 321 
+
+clonotypes, computed by OLGA ( Sethna et al., 2019 ). As expected, we observed a positive cor-322 
+
+relation: large CJs had high average 𝑃 gen (Supplementary Figure S13A). This indicates that CDR3 323 
+
+sequences with high 𝑃 gen are statistically more likely to be generated, leading to the convergence 324 
+
+of similar sequences into “public” CJs. 325 
+
+To validate that this generation bias underpins the observed antigen enrichment, we compared 326 
+
+the 𝑃 gen distributions of CDR3 sequences specific for common pathogens against non-specific CDR3s 327 
+
+(according to VDJdb annotations). In both humans and mice, CDR3 𝛼 sequences specific for com-328 
+
+mon antigens had significantly higher average 𝑃 gen compared to non-specific CDR3 𝛼 s (Supplemen-329 
+
+tary Figure S14). In contrast, this pattern was not observed for CDR3 𝛽 ; antigen-specific and -330 
+
+unspecific CDR3 𝛽 s showed overlapping 𝑃 gen distributions, with significantly lower values overall 331 
+
+compared to CDR3 𝛼 , consistent with the greater diversity of the 𝛽 chain (Supplementary Figure S14). 332 
+
+These results suggest that intrinsic generation biases in the 𝛼 chain are a primary driver of the high-333 
+
+occupancy, antigen-enriched CJs. 334 
+
+We further analyzed the network structure and sequence features of the two most occupant CJs 335 
+
+in humans (a, b) and mice (c, d) (Figure 5C). While these CJs were shared within species, they were 336 
+
+largely non-overlapping across species. Sequence logos (Figure 5D) emphasized conserved CDR3 𝛼 337 
+
+motifs, particularly at the 3’ end where joining (J) gene segments are incorporated, whereas CDR3 𝛽 338 
+
+regions were more variable. Gene usage analysis (Figure 5E) confirmed this structural asymmetry: 339 
+
+while each CJ used a mixture of TRBV, TRBJ, or TRAV genes was observed, it used only one TRAJ gene 340 
+
+segment. This suggests that the conserved germline-encoded core of CDR3 𝛼 sequences, dictated 341 
+
+by TRAJ selection, is a key determinant of CJ identity. 342 
+
+This pattern generalized to all CJs within the highest 𝜇 𝑗 bins (131 CJs in humans with 𝜇 𝑗 ≥ 2343 
+
+and 35 CJs in mice with 𝜇 𝑗 ≥ 4; Supplementary Figure S15). Importantly, we observed completely 344 
+
+disjoint posteriors for 𝜇 𝑗 =human versus 𝜇 𝑗 =mouse for most of these CJs, indicating clear differential 345 
+
+CJ occupancy. Specifically, mean 𝜇 𝑗 =human > 𝜇 𝑗 =mouse in 113 out of 131 CJs (enriched in humans 346 
+
+relative to mice) and 𝜇 𝑗 =mouse > 𝜇 𝑗 =human in all 35 CJs (enriched in mice relative to humans). Nearly 347 
+
+all of these CJs had conserved CDR3 𝛼 motifs paired with diverse CDR3 𝛽 s. Crucially, although the 348 
+
+CJs used different TRAJ gene segments, all were enriched for multiple human-specific or murine-349 
+
+specific pathogens, respectively. 350 
+
+We next asked whether this germline-driven convergence extends to the 𝛽 chain across the 351 
+
+broader set of DCJs. Among 1,000 CJs with completely disjoint posteriors for 𝜇 𝑗 =human versus 𝜇 𝑗 =mouse 352 
+
+(including 114 enriched in humans and 886 in mice), conserved CDR3 𝛽 motifs were rare. Only 353 
+
+173 CJs (all except for one having higher occupancy in mice) had conserved CDR3 𝛽 motifs with 354 
+
+𝜇 𝑗 =mouse ∈ [1 .7, 4.3] . This scarcity of convergent 𝛽 CJs likely arises from the generally lower gen-355 
+
+10 of 23 
+
+.CC-BY 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.28.735097 doi: bioRxiv preprint eration probabilities ( 𝑃 𝑔𝑒𝑛 ) of CDR3 𝛽 sequences in both humans and mice. Importantly, in these 356 
+
+CJs we observed the same pattern: conserved TRBJ gene segments were key determinants of CJ 357 
+
+identity (Supplementary Figure S16). However, even in these rare 𝛽 -driven CJs, we did not observe 358 
+
+significant enrichment for murine-specific pathogens, consistent with the overlapping 𝑃 𝑔𝑒𝑛 distribu-359 
+
+tions for antigen-specific and unannotated CDR3 𝛽 sequences (Supplementary Figure S14). Thus, 360 
+
+while the 𝛼 chain drives functional convergence through germline bias, the 𝛽 chain remains highly 361 
+
+diverse and less functionally constrained in the absence of selection. 362 
+
+Together, these findings reveal a fundamental asymmetry where germline biases preferen-363 
+
+tially converge antigen-specific CDR3 𝛼 sequences while maintaining CDR3 𝛽 diversity, which ClustIRR 364 
+
+quantitatively identified through specific CJ examples, enabling mechanistic interpretation. With 365 
+
+its hierarchical model that distinguishes individual variability from group-level trends with proba-366 
+
+bilistic quantification of CJ occupancy and their uncertainty, ClustIRR provides a robust framework 367 
+
+for uncovering such systematic biases in diverse case studies beyond species comparisons (e.g., 368 
+
+treated vs. untreated individuals, disease vs. healthy cohorts). 369 
+
+Benchmarking 370 
+
+To evaluate the computational scalability and parameter sensitivity of ClustIRR , we performed bench-371 
+
+marking analyses varying the repertoire depth and the global minimum identity (GMI) threshold 372 
+
+using paired TCR 𝛼𝛽 CDR3 sequences. GMI specifies the minimum pairwise amino acid sequence 373 
+
+identity required between two CDR3 sequences to retain an edge in the similarity graph. We mea-374 
+
+sured the CPU time for the primary processing function ( clustirr , dominated by similarity search) 375 
+
+and the CJ detection function ( detect_communities ), peak random access memory (RAM) usage, 376 
+
+and the resulting number of detected CJs. 377 
+
+First, we assessed the impact of repertoire depth using subsampled datasets ranging from 378 
+
+1,000 to 100,000 paired clonotypes, fixed at a GMI threshold of 0.8 (Supplementary Figure S15A– 379 
+
+B). As expected, computational time scaled super-linearly with input size, reflecting the pairwise 380 
+
+nature of sequence similarity calculations. The primary processing time increased from approxi-381 
+
+mately 17 seconds for 1,000 clonotypes to 2.4 hours for 100,000 clonotypes (Supplementary Fig-382 
+
+ure S15A). CJ detection time also increased with depth, from 1.7 seconds to 11 minutes, but re-383 
+
+mained a minor fraction of the total runtime. Peak memory usage scaled similarly, with clustirr 384 
+
+requiring approximately 0.1 GB for 1,000 clonotypes and 13 GB for 100,000 clonotypes, while 385 
+
+detect_communities required 0.03 GB and 7 GB, respectively (Supplementary Figure S15B). No-386 
+
+tably, the number of detected CJs grew linearly with clonotypes on the log-log scale in both CPU and 387 
+
+RAM panels, indicative of power-law scaling. This suggests that CJ discovery increases predictably 388 
+
+with sampling effort rather than saturating, reflecting the underlying hierarchical structure of the 389 
+
+repertoire where new CJs continue to emerge at higher sequencing depths. 390 
+
+Second, we evaluated the effect of the GMI threshold (0.6 to 0.95) on a fixed repertoire of 391 
+
+5,000 paired clonotypes (Supplementary Figure S15C). The primary processing time remained sta-392 
+
+ble across GMI values ( 170 seconds), confirming that the computational bottleneck lies in the ini-393 
+
+tial similarity search, which precedes threshold filtering. In contrast, CJ detection time decreased 394 
+
+markedly with increasing GMI, dropping from 18 seconds at GMI=0.6 to 0.7 seconds at GMI=0.95. 395 
+
+This reduction corresponds to a sparser similarity graph at stricter identity thresholds. Concur-396 
+
+rently, the number of detected CJs increased eight-fold (from ≈590 to ≈4,950) as the GMI threshold 397 
+
+rose, reflecting increased fragmentation of the graph into smaller, tighter sequence groups. These 398 
+
+results demonstrate that while repertoire depth dictates overall runtime and memory, the GMI 399 
+
+parameter allows users to tune CJ resolution and downstream clustering speed without affecting 400 
+
+initial processing costs. 401 
+
+## Discussion 402 
+
+We have shown above that ClustIRR is a capable computational framework for uncertainty-aware 403 
+
+quantitative analysis of TCR CJ occupancy. It provides a unique approach to IRR analysis by com-404 
+
+> 11 of 23
+> .CC-BY 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.28.735097 doi: bioRxiv preprint
+
+bining graph-based community detection with hierarchical Bayesian modeling, ClustIRR addresses 405 
+
+fundamental challenges in repertoire analysis: clonotype sparsity, biological noise, and the need 406 
+
+for rigorous uncertainty-aware quantification. Our results demonstrate that ClustIRR successfully 407 
+
+identifies antigen-specific TCR CJs, links clonal expansion to transcriptional activation states, tracks 408 
+
+longitudinal dynamics in cancer immunotherapy, and reveals intrinsic evolutionary biases in TCR 409 
+
+generation that pre-adapt repertoires for pathogen recognition. 410 
+
+Traditional clonotype-centric approaches struggle with the extreme diversity of TCR repertoires, 411 
+
+where identical sequences are rarely shared across samples. By aggregating clonotypes into sequence-412 
+
+similarity CJs, ClustIRR enables meaningful comparisons even if no clonotypes are shared between 413 
+
+samples. Our synthetic repertoire analysis demonstrated this clearly: while clonotype-level simi-414 
+
+larity between human and mouse repertoires was zero, community-level similarity revealed sub-415 
+
+stantial intra-species conservation and distinct inter-species architecture. This community-centric 416 
+
+approach aligns with evidence that TCRs with similar sequences often recognize the same epi-417 
+
+topes ( Glanville et al., 2017 ; Dash et al., 2017 ), an insight that ClustIRR exploits to provide a robust 418 
+
+framework for detecting convergent immune responses. 419 
+
+Furthermore, ClustIRR ’s hierarchical Bayesian Dirichlet-Multinomial model explicitly accounts 420 
+
+for overdispersion, generating posterior distributions rather than point estimates. This enables 421 
+
+researchers to distinguish true biological expansion from stochastic fluctuations–critical for inter-422 
+
+preting repertoire dynamics in settings with limited sampling depth, as shown in our longitudinal 423 
+
+cancer immunotherapy analysis where early CJ expansions predicted treatment response. 424 
+
+In practical applications, ClustIRR proved effective across diverse biological contexts. In single-425 
+
+cell datasets, we identified antigen-specific CJs expanded upon stimulation, and we could link these 426 
+
+expansions to transcriptional activation signatures. This integration of transcriptomes and TCRs 427 
+
+is a key advantage that enables functional interpretation of expanding CJs by characterizing the 428 
+
+activation state of the underlying cells. 429 
+
+In longitudinal bulk sequencing data, ClustIRR detected early dynamic shifts in CJ occupancy that 430 
+
+could serve as predictive biomarkers of treatment response. 431 
+
+In the third application, we used ClustIRR to analyze simulated repertoires from human and 432 
+
+mouse, and we could demonstrate the framework’s ability to detect inter-species shifts in TCR 433 
+
+repertoires, namely species-specific CJ structures enriched for pathogen-specific motifs even with-434 
+
+out antigenic selection in individual organisms. As a likely mechanism behind these shifts could 435 
+
+be species-intrinsic V(D)J recombination biases. This finding suggests that generation probabili-436 
+
+ties ( 𝑝 gen ) from models like OLGA could serve as informative priors in Bayesian repertoire analysis, 437 
+
+particularly for 𝛼 -chains where germline encoding is strongest. 438 
+
+Importantly, the framework’s utility extends to complex clinical cohorts beyond the benchmark 439 
+
+applications presented here. In a companion study ( Kitanovski et al., 2026 ), we used ClustIRR to 440 
+
+analyze paired primary melanoma tumors and sentinel lymph nodes from 24 treatment-naive 441 
+
+patients. This investigation revealed profound spatial compartmentalization of TCR repertoires, 442 
+
+where primary tumors exhibited reduced diversity and pronounced clonal dominance compared to 443 
+
+matched lymph nodes. Despite the high degree of clonotype privacy between compartments and 444 
+
+individuals, ClustIRR ’s community-centric approach successfully identified recurrent TCR communi-445 
+
+ties enriched for shared melanoma antigens (e.g., MART-1) as well as patient-specific neoantigen 446 
+
+signatures. This real-world application demonstrates ClustIRR ’s robustness in extracting biologically 447 
+
+meaningful signals from sparse, high-dimensional clinical data where traditional clonotype-centric 448 
+
+methods often fail to resolve shared immune architectures. 449 
+
+While ClustIRR offers a ready-to-use pipeline for sequence clustering and statistical analysis, its 450 
+
+modular design enables interoperability with other established tools. Users can import CJ defini-451 
+
+tions from methods such as TCRdist3/TCRdist ( Dash et al., 2017 ; Mayer-Blackwell et al., 2021 ), GI-452 
+
+ANA ( Zhang et al., 2021 ), GLIPH/GLIPH2 ( Glanville et al., 2017 ; Huang et al., 2020 ), iSMART ( Zhang 453 
+
+et al., 2020 ), TCRclust ( Valkiers et al., 2021 ), or deepTCR ( Sidhom et al., 2021 ) for downstream 454 
+
+Bayesian modeling within ClustIRR , facilitating method comparison and leveraging specialized clus-455 
+
+> 12 of 23
+> .CC-BY 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.28.735097 doi: bioRxiv preprint
+
+tering algorithms. This flexibility is particularly valuable given several implementation considera-456 
+
+tions. 457 
+
+First, while building a joint graph across different repertoires and conditions is a key advantage 458 
+
+of ClustIRR and can be performed efficiently with our BLAST-based similarity strategy, computa-459 
+
+tional challenges arise when analyzing hundreds of repertoires with hundreds of thousands of 460 
+
+clonotypes each (e.g., the Emerson dataset ( Emerson et al., 2017 )). In such scenarios, the pairwise 461 
+
+similarity calculations and graph construction become computationally demanding. This limitation 462 
+
+can be mitigated by applying multicore execution, which is already implemented in ClustIRR , or 463 
+
+by utilizing the aforementioned modular design to integrate more efficient clustering approaches 464 
+
+such as GIANA ( Zhang et al., 2021 ) or ClustTCR ( Mayer-Blackwell et al., 2021 ) for the initial CJ de-465 
+
+tection step. 466 
+
+Second, our hierarchical Bayesian model is parameter-rich, which ensures flexibility but comes 467 
+
+at a computational cost. When analyzing many CJs, repertoires, and biological conditions simulta-468 
+
+neously, substantial RAM and CPU time are required. For the datasets presented here, runtime 469 
+
+ranged from hours to one day. However, we can envision scenarios with larger cohort sizes or 470 
+
+deeper sequencing where computational demands could become prohibitive. Fortunately, emerg-471 
+
+ing techniques such as amortized Bayesian inference ( Li et al., 2024 ) and variational inference ( Blei 472 
+
+et al., 2017 ) could in the future substantially reduce computational burden while maintaining un-473 
+
+certainty quantification. 474 
+
+Third, ClustIRR ’s built-in CJ detection depends on similarity thresholds that may require tuning 475 
+
+for specific applications. Finally, while we demonstrated ClustIRR on TCR repertoires, application 476 
+
+to BCR repertoires requires validation given differences due to somatic hypermutation. 477 
+
+In conclusion, ClustIRR provides a rigorous, uncertainty-aware framework for quantitative TCR 478 
+
+repertoire analysis. By moving beyond clonotype-centric approaches to community-level inference, 479 
+
+ClustIRR enables detection of convergent immune responses, integration with functional genomics 480 
+
+data, and discovery of fundamental principles of repertoire architecture. Its modular design en-481 
+
+sures compatibility with existing workflows, allowing researchers to combine specialized cluster-482 
+
+ing solutions with robust statistical modeling. As TCR sequencing becomes increasingly routine in 483 
+
+clinical and research settings, tools like ClustIRR will be essential for translating repertoire data into 484 
+
+biological insight and therapeutic opportunity. ClustIRR is available as an open-source R package 485 
+
+via Bioconductor. 486 
+
+## Methods and Materials 487 
+
+We present a computational framework that integrates high-throughput TCR sequencing data with 488 
+
+Bayesian probabilistic modeling to quantify differences in the structure and dynamics of TCR reper-489 
+
+toires under uncertainty. This section is organized to first describe the datasets and then detail the 490 
+
+ClustIRR framework, which combines graph-based community detection with hierarchical Bayesian 491 
+
+modeling. The overall analytical workflow is summarized in Figure 6. 492 
+
+Datasets 493 
+
+In this work, ClustIRR was evaluated with three datasets. 494 
+
+Dataset 1: single cell TCR 𝛼𝛽 repertories of antigen-reactive human T cells 495 
+
+Dataset 1 contains single cell TCR 𝛼𝛽 (scTCR) repertories obtained from Parse Biosciences ( https:// 496 
+
+www.parsebiosciences.com/datasets/tcr-sequencing-of-1-million-antigen-reactive-human-t-cells-in-a-single-experimen 497 
+
+accessed on 17.10.2024). A detailed description of the data generation and processing protocol is 498 
+
+provided by Parse Biosciences, and a summary is given in the following. The dataset contains TCR 499 
+
+sequences of up to 1 million T cells isolated from 15 human donors’ PBMCs. The T cells were pur-500 
+
+chased from a vendor ( https://www.criver.com/products-services/cell-sourcing/human-peripheral-blood/ 501 
+
+antigen-specific-t-cells?region=3601 ), and were stimulated with tumor, viral, and autoantigens. In 502 
+
+> 13 of 23
+> .CC-BY 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.28.735097 doi: bioRxiv preprint
+
+addition, the dataset contains three TCR repertoires from unstimulated, healthy donors as con-503 
+
+trols. The samples were analyzed in a single experiment with the Evercode TCR Mega kit, and TCR 504 
+
+specific libraries were sequenced on Illumina Novaseq X, followed by data processing with Parse 505 
+
+Biosciences Analysis Pipeline v1.3.0. 506 
+
+The scTCR dataset contained data from 1,307,803 cells from 15 TCR repertoires (Supplementary 507 
+
+Table 1). First, we removed 98,329 cells classified as multiplets. Furthermore, we removed 217,285 508 
+
+cells with missing TRAV or TRBV gene annotation, and 17 cells with non-productive TCRs. Each of 509 
+
+the 992,170 remaining T cells had paired TCR 𝛼 and TCR 𝛽 chains, including their CDR3 𝛼 and CDR3 𝛽 510 
+
+amino acid sequences, and TRAV/TRAJ and TRBV/TRBJ genes. These cells were distributed across 511 
+
+100,980 clonotypes. For our analysis, we selected the 5 largest TCR repertoires in terms of T cell 512 
+
+clonotypes, including: 3 unstimulated controls (C1, C2, and C3), and two repertoires stimulated 513 
+
+with Epstein-Barr virus (EBV) and Melanoma Antigen Recognized by T cells 1 (MART1) antigens (TCR 514 
+
+repertoires E and M, respectively). 515 
+
+Alongside the single cell TCRs, RNA-seq data was available, which was processed with the R-516 
+
+package Seurat (version 5.2.1). Quality control involved removal of cells with high relative frequency 517 
+
+(>15%) of mitochondrial RNA, and more than 20,000 detected RNA transcripts or more than 5,000 518 
+
+detected genes per cell. Data processing involved normalization (function LogNormalization with 519 
+
+scale.factor = 10,000), identification of 3,000 variable features (function FindVariableFeatures with 520 
+
+selection.method = vst), data scaling while regressing out mitochondrial RNA content (function 521 
+
+ScaleData ), principal component analysis (PCA, with function RunPCA ) and cell cycle phase predic-522 
+
+tion (function CellCycleScoring ). 523 
+
+Dataset 2: TCR 𝛽 repertoires from lung cancer patient PBMCs 524 
+
+Dataset 2 contains bulk TCR 𝛽 repertoires from 20 lung cancer patients treated with CTLA-4 block-525 
+
+ade (anti-CTLA-4 antibody, ipilimumab) and radiotherapy (RT) ( Formenti et al., 2018 ). Treatment 526 
+
+response was observed in each patient: two with complete response (CR), 5 with partial response 527 
+
+(PR), 5 with stable disease (SD), and 8 with progressive disease (PD) (Supplementary Figure 5). TCR 𝛽 528 
+
+sequencing was performed on the peripheral blood samples before treatment (day 0) and at one 529 
+
+or multiple timepoints during treatment (Supplementary Figure 5). For patients Pt4, Pt32, Pt36 and 530 
+
+Pt38, TCR 𝛽 sequencing was performed on pretreatment (archival) tumor tissue. A detailed descrip-531 
+
+tion of the data generation and processing protocol is provided in the original publication ( For-532 
+
+menti et al., 2018 ), and a summary is provided in the following. DNA was isolated from PBMCs, 533 
+
+and sequencing of TCR 𝛽 CDR3 regions was performed using the ImmunoSEQ platform from Adap-534 
+
+tive Biotechnologies, which measures the absolute cellular abundance of T cell clonotypes in each 535 
+
+repertoire. The TCR sequence data were obtained from the ImmuneACCESS project repository of 536 
+
+the Adaptive Biotechnology database ( https://doi.org/10.21417/B7BW6X ; downloaded in December 537 
+
+2024) 538 
+
+Dataset 3: simulated single cell TCR 𝛼𝛽 repertories from humans and mice 539 
+
+Dataset 3 comprises ten TCR 𝛼𝛽 repertoires from: (i) five simulated human repertoires (H1-H5), and 540 
+
+(ii) five simulated mouse repertoires (M1-M5). The repertoires were generated using the OLGA al-541 
+
+gorithm (v1.2.4, function olga-generate_sequences ) ( Sethna et al., 2019 ). OLGA implements models 542 
+
+of V(D)J recombination in healthy humans and mice, enabling simulation of TCR repertoires with 543 
+
+CDR3 𝛼 or CDR3 𝛽 sequences. We created five TCR repertoires of humans (H1-H5) and five TCR 544 
+
+repertoires of mice (M1-M5) by simulating 10,000 CDR3 𝛼 and 10,000 CDR3 𝛽 amino acid sequences 545 
+
+in each repertoire. As recent analyses suggests that TCR chain pairing is nearly independent ( Dupic 546 
+
+et al., 2019 ), we joined the individual CDR3 𝛼 and CDR3 𝛽 sequences to generate CDR3 𝛼𝛽 pairs. The 547 
+
+five TCR repertoires per species were treated as biological replicates. Finally, we used OLGA’s func-548 
+
+tion olga-compute_pgen to compute the generation probability ( 𝑝 𝑔𝑒𝑛 ) of each simulated CDR3 se-549 
+
+quence, restricted to the corresponding V and J genes, according to the same generative V(D)J 550 
+
+models used to generate the data. 551 
+
+> 14 of 23
+> .CC-BY 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.28.735097 doi: bioRxiv preprint
+
+Analysis of TCR repertoires with ClustIRR 552 
+
+TCR repertoire analysis was performed with ClustIRR (R-package, version 1.9.38). The main input to 553 
+
+ClustIRR is a table with TCR clonotypes from a TCR repertoire, where each clonotype contains three 554 
+
+elements: CDR3 𝛼 and CDR3 𝛽 amino acid sequences and cell count (clonotype size). ClustIRR can 555 
+
+also process inputs containing clonotypes with only CDR3 𝛼 or CDR3 𝛽 sequences and their clonal 556 
+
+sizes to facilitate analysis of TCR repertoires generated by bulk TCR sequencing (e.g., Dataset 2). 557 
+
+ClustIRR performs the following steps: 558 
+
+1. Compute similarities between T cell clonotypes 559 
+
+2. Construct a joint similarity graph ( 𝐽 )560 
+
+3. Detect Communities on the Joint graph (CJs) 561 
+
+4. Analyze Differential CJ Occupancy 562 
+
+(a) Between individual TCR repertoires with model 𝑀 563 
+
+(b) Between groups of TCR repertoires from biological conditions with model 𝑀 ℎ564 
+
+5. Inspect communities of interest 565 
+
+Computing similarities between TCR clonotypes 566 
+
+ClustIRR aims to quantify the similarity between pairs of T cell clonotypes based on their CDR3 se-567 
+
+quences. Given a TCR repertoire with 𝑛 clonotypes, we have to perform 𝑛 2 pairwise comparisons 568 
+
+of CDR3 𝛼 and CDR3 𝛽 sequences. HT-seq technology allows us to profile TCR repertoires with over 569 
+
+a million clonotypes ( 𝑛 > 10 6) in a single study. Thus, pairwise CDR3 sequence comparisons us-570 
+
+ing algorithms such as the Needleman-Wunsch global sequence alignment algorithm may require 571 
+
+prohibitive computational resources. 572 
+
+To address this, ClustIRR employs Basic Local-Alignment Search Tool (BLAST, Altschul et al. 573 
+
+(1990 )). Briefly, a protein database is constructed (method makeblastdb ) from all CDR3 sequences, 574 
+
+and each CDR3 sequence is used as a query (method blastp ). This enables fast sequence similarity 575 
+
+searches. By default, only CDR3 sequences matches with ≥ 80% sequence identity to the query 576 
+
+are retained. This step reduces the computational and memory requirements, without impacting 577 
+
+downstream CJ analyses, as CDR3 sequences with lower typically yield low similarity scores. 578 
+
+For matched CDR3 pair, an alignment score ( 𝜔 ∈ ℤ) is computed using BLOSUM62 substitution 579 
+
+scores ( Henikoff and Henikoff, 1992 ) with gap opening penalty of -12 and gap extension penalty of 580 
+
+-2. Identical or highly similar CDR3 sequence pairs receive large positive 𝜔 scores, while dissimilar 581 
+
+pairs receive low or negative 𝜔 .582 
+
+To normalize 𝜔 for alignment length, ClustIRR computes ̄𝜔 = 𝜔 ∕𝑙 , where 𝑙 is the alignment length 583 
+
+yielding normalized alignment score ̄𝜔 ∈ ℝ. This normalization, also used in iSMART ( Zhang et al., 584 
+
+2020 ), ensures comparability across CDR3 pairs of varying lengths. 585 
+
+ClustIRR also computes alignment scores for the CDR3 core regions ( 𝜔 𝑐 and ̄𝜔 𝑐 ). The CDR3 core, 586 
+
+representing the central loop region with high antigen-contact probability ( Glanville et al., 2017 ), is 587 
+
+generated by trimming three residues from each end of the CDR3 sequence. Comparing ̄𝜔 𝑐 and ̄𝜔 588 
+
+allows assessment of whether sequence similarity is concentrated in the core or flanking regions. 589 
+
+Constructing a joint similarity graph ( 𝐽 )590 
+
+ClustIRR uses the R-package igraph (version 2.1.1) to create graphs for each TCR repertoires. T591 
+
+cell clonotypes are represented as graph nodes with undirected edges connecting pairs of nodes 592 
+
+based on CDR3 𝛼 and CDR3 𝛽 similarity scores ( ̄𝜔 or ̄𝜔 𝑐 ). Additionally, ClustIRR computes similarities 593 
+
+between CDR3 sequences of clonotypes from different repertoires (as in Section “Computing sim-594 
+
+ilarities between TCR clonotypes”), creating new edges between nodes from different graphs with 595 ̄𝜔 and ̄𝜔 𝑐 as edge attributes. The joint graph 𝐽 is structured as an igraph object. 596 
+
+To prioritize memory efficiency while also improving computational time with large datasets, 597 
+
+ClustIRR includes an optional 𝑘 -nearest neighbor graph ( 𝑘 -NNG) algorithm. When enabled, con-598 
+
+nections are restricted to a maximum of 𝑘 highest-scoring neighbors per chain (CDR3 𝛼 or CDR3 𝛽 )599 
+
+> 15 of 23
+
+.CC-BY 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.28.735097 doi: bioRxiv preprint based on similarity metrics ( ̄𝜔 or ̄𝜔 𝑐 ), reducing edge count and memory usage. In this mode, when 600 
+
+integrating a new repertoire into 𝐽 , existing nodes may form edges to up to 2𝑘 new neighbors ( 𝑘 for 601 
+
+𝛼 and 𝑘 for 𝛽 chains), preserving high-similarity connections both within and between repertoires 602 
+
+while maintaining scalability. Using the default setting ( 𝑘 = 50 ), this approach yields downstream 603 
+
+results comparable to the full graph but reduces computational resources, as benchmarked on 604 
+
+repertoires of 5,000–100,000 clonotypes (Supplementary Figure X). For larger repertoires, we rec-605 
+
+ommend increasing 𝑘 to ensure concordance with the full graph. Accordingly, we employed a full 606 
+
+graph analysis for Datasets 1 and 2, and the 𝑘 -NNG approach ( 𝑘 = 50 ) for Dataset 3. 607 
+
+Graph-based CJ detection 608 
+
+ClustIRR identifies CJs in 𝐽 using graph-based community detection (GCD) algorithms such as Lei-609 
+
+den ( Traag et al., 2019 ), Louvain ( Blondel et al., 2008 ) or Infomax ( Rosvall and Bergstrom, 2008 ). 610 
+
+First, the similarity score between T cell clonotypes 𝑖 and 𝑗 is defined as the average CDR3 𝛼 and 611 
+
+CDR3 𝛽 alignment scores: 612 
+
+𝜔 (𝑖, 𝑗 ) = ̄ 𝜔 𝛼 +̄𝜔 𝛽 
+
+2 , (1) where ̄ 𝜔 𝛼 and ̄ 𝜔 𝛽 are the alignment scores for the CDR3 𝛼 and CDR3 𝛽 , respectively. If a chain is 613 
+
+missing, its alignment score is set to 0. 614 
+
+For Datasets 1-3, Leiden clustering was applied on the weighted graph as implemented in the 615 
+
+R-package igraph (version 2.1.1), with a Constant Potts Model (CPM) quality function ( Traag et al., 616 
+
+2011 ), resolution parameter set to 1, and 1,000 optimization iterations, generating a CJ occupancy 617 
+
+matrix 𝑦 𝑘 ×𝑟 with entries representing the number of T cells in 𝑘 (for 𝑘 = 1 , … , 𝐾 ) and repertoire 618 
+
+𝑟 (for 𝑟 = 1 , … , 𝑅 ). In designs with multiple repertoires per biological condition (e.g., Dataset 3), 619 
+
+repertoires are grouped by condition 𝑏 (for 𝑏 = 1 , … , 𝐵 ). 620 
+
+Differential CJ occupancy between TCR repertoires 621 
+
+From the CJ occupancy matrix, 𝑦 𝑘 ×𝑟 that represents a the number of T cells in each CJ and repertoire, 622 
+
+ClustIRR quantifies the relative abundance of cells in each CJ of TCR repertoires, which is also re-623 
+
+ferred to as the CJ occupancy . Therefore, we designed a likelihood model 𝑀 for Bayesian inference, 624 
+
+which describes the 𝐾 -dimensional CJ occupancy vector 𝑦 𝑖 for TCR repertoire 𝑖 , as a multinomial 625 
+
+model: 626 
+
+𝑝 (𝑦 𝑖 |𝑀 ) = Multinomial( 𝜃 𝑖 ), (2) where 𝜃 𝑖 is a standard 𝐾 -dimensional simplex CJ occupancy probabilities. Empirically we know 627 
+
+that probabilities in 𝜃 𝑖 are highly variable between TCR repertoires. To account for this source 628 
+
+of variation, the model treats the corresponding coefficients 𝜃 𝑖 as random samples drawn from 629 
+
+a Dirichlet distribution with parameter vector 𝜙 𝑖 ∈ ℝ>0, where 𝜙 𝑖 is parametrized as the product 630 
+
+of the parameter vector 𝜈 𝑖 , which describes the expected relative frequency of cells for each CJ of 631 
+
+TCR repertoire 𝑖 , and the occupancy parameter, 𝜅 , which describes the variation in the observed 632 
+
+cell counts among the samples (larger values of 𝜅 induce less between-sample variation from the 633 
+
+Dirichlet expectations 𝜈 ). This hierarchical modeling framework results in a Dirichlet-multinomial 634 
+
+distribution over observed cell counts, which accounts for overdispersion, where the observed vari-635 
+
+ability in cell counts exceeds the level expected under a multinomial model with fixed proportions 636 
+
+(𝜃 𝑖 ): 637 
+
+𝜃 𝑖 ∼ Dirichlet( 𝜙 𝑖 ) (3) 
+
+𝜙 𝑖 = 𝜈 𝑖 ⋅ 𝜅 (4) We defined 𝜈 𝑖 as the softmax function of a vector defined by the linear combination of the intercept 638 
+
+parameters, 𝛼 = [ 𝛼 1, 𝛼 2, … , 𝛼 𝑘 ], which describe the average (or baseline) cell occupancy in each CJ; 639 
+
+and the slope parameter vector, 𝛽 𝑖 = [ 𝛽 𝑖 1, 𝛽 𝑖 2, … , 𝛽 𝑖𝑘 ], which describes the effect on CJ occupancy of 640 
+
+changing from baseline to TCR repertoire 𝑖 for each of the 𝑘 CJs: 641 
+
+𝜈 𝑖 = sof tmax( 𝛼 + 𝛽 𝑖 ) (5) 
+
+16 of 23 
+
+.CC-BY 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.28.735097 doi: bioRxiv preprint where the softmax function maps 𝑥 ∈ ℝ𝑘 to the 𝐾 -dimensional simplex by: 642 
+
+sof tmax( 𝑥 ) = exp( 𝑥 )
+
+∑𝑘 𝑖 =1 exp( 𝑥 𝑖 ) (6) The weakly informative priors assigned to 𝛼 , 𝛽 and 𝜅 are defined by 643 
+
+𝛼 ∼ Normal(0 , 1) (7) 
+
+𝛽 ∼ Normal(0 , 1) (8) 
+
+𝜅 ∼ Exponential(0 .01) (9) The priors were assessed by prior predictive checks (data not shown). 𝑀 was implemented in Stan 644 
+
+(Carpenter et al., 2017 ). Inference of the parameters of 𝑀 was executed with rstan (R-package, 645 
+
+version 2.32.6) using the No-U-Turn sampler by running a Markov chain Monte Carlo (MCMC) sim-646 
+
+ulation with four chains of 1,750 iterations each, including 750 warm-ups. To test the validity of 647 
+
+our model, we performed posterior predictive checks. Furthermore, we inspected the potential 648 
+
+scale reduction factor ( ̂ 𝑅 ), the effective number of samples in the bulk and tails of the posteriors 649 
+
+(ESS-bulk and ESS-tail) and information about divergences during the MCMC sampling to check for 650 
+
+convergence. ClustIRR outputs the posterior means, medians and the 95% highest density intervals 651 
+
+(95% HDIs) of each parameter. 652 
+
+Differential CJ occupancy is analyzed using two related approaches. First, differential CJ occu-653 
+
+pancy was quantified as 654 
+
+𝛿 𝑖𝑗 = 𝛽 𝑖 − 𝛽 𝑗 (10) where the parameter vector 𝛿 𝑖𝑗 = [ 𝛿 𝑖𝑗  
+
+> 1
+
+, 𝛿 𝑖𝑗  
+
+> 2
+
+, … , 𝛿 𝑖𝑗 𝑘 ] describes the differential CJ occupancy effect size 655 
+
+in each CJ. For CJs where 𝛿 𝑖𝑗 < 0 and the 95% HDIs of 𝛿 𝑖𝑗 lie mostly or completely below 0 (0 = 656 
+
+null effect), we have strong evidence of contracting CJ occupancy in TCR repertoire 𝑖 compared 657 
+
+to 𝑗 . On the other hand, for CJs where 𝛿 𝑖𝑗 > 0 and the 95% HDI of 𝛿 𝑖𝑗 lie mostly or completely 658 
+
+above 0, we have strong evidence of expanding CJ occupancy in TCR repertoire 𝑖 compared to 𝑗 .659 
+
+Distributions with the 95% HDIs more or less centered around 0 indicate that there is no evidence 660 
+
+for differential CJ occupancy between the two TCR repertoires. Note that unclear evidence is not 661 
+
+equivalent to no change of occupancy, because for a CJ with 𝛿 𝑖𝑗 ≈ 0 we may also have a wide 95% 662 
+
+HDI, including possibilities for positive or negative differential CJ occupancy. Second, differential CJ 663 
+
+occupancy was assessed through 95% HDI overlap of 𝛽 coefficients: Non-overlapping HDIs with 𝛽 𝑖 664 
+
+> 𝛽 𝑗 indicated strong evidence for contracting occupancy in repertoire j vs. i, while 𝛽 𝑖 < 𝛽 𝑗 indicated 665 
+
+expansion. All cases with overlapping HDIs provided weak evidence for differential CJ occupancy. 666 
+
+Quantifying Differentially occupant CJs (DCJs) between biological conditions with multiple 667 
+
+biological replicates 668 
+
+ClustIRR employs a multilevel model, 𝑀 ℎ, to quantify convergent differential CJ occupancy between 669 
+
+groups of TCR repertoires from 𝐵 biological conditions (vector 𝑏 = {1 , 2, … , 𝐵 }). This model extends 670 
+
+the repertoire-specific framework (Equation 5) by introducing a group-level hierarchy: 671 
+
+𝛽 𝑖 ∼ Normal( 𝜇 𝑏 [𝑖 ], 𝜎 𝑏 [𝑖 ]) (11) Here, 𝛽 𝑖 is a 𝐾 -dimensional vector of parameters describing the effects of TCR repertoire 𝑖 on CJ oc-672 
+
+cupancy, where 𝑏 [𝑖 ] denotes the biological condition assignment for repertoire 𝑖 . These repertoire-673 
+
+specific coefficients are treated as draws from 𝐾 normal distributions with mean 𝜇 𝑏 [𝑖 ] and standard 674 
+
+deviation 𝜎 𝑏 [𝑖 ]. The parameter 𝜇 𝑏 [𝑖 ] describes the average effect of biological condition 𝑏 [𝑖 ] on CJ oc-675 
+
+cupancy across all repertoires in that condition. 676 
+
+This hierarchical structure enables partial pooling of information between TCR repertoires within 677 
+
+the same biological condition, leading to improved estimates for each repertoire. The proper-678 
+
+ties of the different populations of parameters are estimated as well, automatically controlling 679 
+
+17 of 23 
+
+.CC-BY 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.28.735097 doi: bioRxiv preprint the amount of pooling applied to the TCR repertoire-specific parameters ( Gelman et al., 2012 ), 680 
+
+with parameters having greater uncertainty pulled more strongly towards population means. The 681 
+
+condition-specific means (for condition 𝑗 , where 𝑗 ∈ {1 , … , 𝐵 }) are modeled with a weakly informa-682 
+
+tive prior: 683 
+
+𝜇 𝑗 ∼ Normal(0 , 1) (12) In designs with multiple biological replicates per condition, condition-specific overdispersion pa-684 
+
+rameters 𝜅 𝑗 are also inferred, allowing different biological conditions to have distinct levels of vari-685 
+
+ability in CJ occupancy. The weakly informative priors assigned to 𝜎 𝑗 and 𝜅 𝑗 are defined by: 686 
+
+𝜎 𝑗 ∼ Cauchy +(0 , 1) (13) 
+
+𝜅 𝑗 ∼ Exponential(0 .01) (14) To quantify the differential CJ occupancy between two biological conditions, 𝑥 and 𝑦 , ClustIRR com-687 
+
+putes an absolute difference between the corresponding 𝜇 coefficients as described in Equation 10. 688 
+
+Annotation of T cell clonotype specificity using VDJdb and McPAS-TCR 689 
+
+To annotate T cell clonotypes from our datasets with their putative antigen specificity, we down-690 
+
+loaded human and mouse CDR3 𝛼 and CDR3 𝛽 sequences with associated antigen specificity anno-691 
+
+tations from two public databases: VDJdb ( Shugay et al., 2018 ) ( https://vdjdb.cdr3.net ; accessed June 692 
+
+2024) and McPAS-TCR ( Tickotsky et al., 2017 ) ( https://friedmanlab.weizmann.ac.il/McPAS-TCR/ ; ac-693 
+
+cessed January 2025). For annotation, we compared the CDR3 𝛼 and CDR3 𝛽 sequences of TCR clono-694 
+
+types in our datasets against those in VDJdb and McPAS-TCR. Only identical matches between query 695 
+
+(dataset) and reference (database) sequences were retained, and in such cases, the corresponding 696 
+
+antigen specificity annotations from the databases were assigned to the query sequences. 697 
+
+Quantifying TCR repertoire diversity 698 
+
+To quantify the clonotype diversity of TCR repertoires we treated TCR repertoires as generalized 699 
+
+communities, in which diversity reflects both richness and evenness, and characterized the TCR 700 
+
+clonotype diversity using Normalized Rank Abundance Distributions (NRADs) ( Saeedghalati et al., 701 
+
+2017 ). Normalization of the rank-abundance-distribution (RAD) of T cell clonality was done by 702 
+
+MaxRank normalization as implemented in R-package RADanalysis (version 0.5.5). Here, the MaxRank 703 
+
+was set to the minimum dimension of rank abundance vectors for all tested TCR repertoires in a 704 
+
+given dataset. Normalized RADs (NRADs) were computed by 1,000-fold averaging, and were visu-705 
+
+alized with R-package ggplot2 (version 3.5.1). 706 
+
+Comparison of relative frequency of DCJs 707 
+
+To analyze the proportion of DCJs in a given T cell receptor (TCR) repertoire from Dataset 2, we 708 
+
+employed a hierarchical binomial regression model implemented in Stan. The model accounts for 709 
+
+variation in DCJ proportions across four conditions: (1) contracting DCJs in responders; (2) con-710 
+
+tracting DCJs in non-responders; (3) expanding DCJs in responders; and (4) expanding DCJs in non-711 
+
+responders. 712 
+
+Each observation consists the number of DCJs ( 𝑦 ) detected within the total number of CJs ( 𝑛 )713 
+
+for a given patient. We specified a Bayesian likelihood model to describe these observations for 714 
+
+patient 𝑖 ∈ {1 , 2, … , 20} , where 𝑦 𝑖 follows a binomial distribution: 715 
+
+𝑦 𝑖 ∼ Binomial (𝑛 𝑖 , 𝑝 𝑖 ) (15) where the probability 𝑝 𝑖 of DCJs is modeled using the inverse logit transformation of a linear pre-716 
+
+dictor that includes an intercept ( 𝛼 ) and a patient-specific effect ( 𝛽 𝑖 ): 717 
+
+𝑝 𝑖 = logit −1 (𝛼 + 𝛽 𝑖 ) (16) 
+
+> 18 of 23
+
+.CC-BY 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.28.735097 doi: bioRxiv preprint The parameter 𝛼 represents the overall baseline DCJ probability on the inverse logit scale, while 718 
+
+𝛽 𝑖 captures patient-specific effects. To model variation within groups, we assume a hierarchical 719 
+
+structure: 720 
+
+𝛽 𝑖 ∼ Normal( 𝜇 𝑔 [𝑖 ], 𝜎 𝑔 [𝑖 ]) (17) with 𝜇 𝑔 [𝑖 ] represents the group-level mean effect for condition (group) 𝑔 [𝑖 ] ∈ {1 , 2, 3, 4} ; and 𝜎 𝑔 [𝑖 ] as 721 
+
+the within-group standard deviation. We assign weakly informative priors on all parameters: 722 
+
+𝛼 ∼ Normal(0 , 1) , 𝜇 𝑔 ∼ Normal(0 , 1) , 𝜎 𝑔 ∼ Cauchy +(0 , 1) (18) To quantify differences in DCJ proportions between responders and non-responders in contracting 723 
+
+(𝑐 ) and expanding ( 𝑒 ) conditions we estimated the parameters 𝛿 𝑐 and 𝛿 𝑒 :724 
+
+𝛿 𝑐 = logit −1 (𝛼 + 𝜇 1) − logit −1 (𝛼 + 𝜇 2) (19) 
+
+𝛿 𝑒 = logit −1 (𝛼 + 𝜇 3) − logit −1 (𝛼 + 𝜇 4) (20) The model was implemented in Stan ( Carpenter et al., 2017 ). Inference was performed with rstan 725 
+
+(R-package, version 2.32.6) using the No-U-Turn sampler by running a Markov chain Monte Carlo 726 
+
+(MCMC) simulation with 4 chains of 2,000 iterations each, including 1,000 warm-ups. To test the 727 
+
+validity of our model, we performed posterior predictive checks (data not shown), and inspected 728 
+
+the potential scale reduction factor ( ̂ 𝑅 ), the effective number of samples in the bulk and tails of the 729 
+
+posteriors (ESS-bulk and ESS-tail). For each parameter, we report the mean and the 95% highest 730 
+
+density interval (95% HDI). 731 
+
+Software availability 732 
+
+ClustIRR (version 1.9.38) is implemented as an R-package, which is freely available as part of the 733 
+
+Bioconductor repository. 734 
+
+Software used to illustrate figures 735 
+
+All figures were generated with ggplot2 (Wickham, 2016 ) and assembled with patchwork (Pedersen, 736 
+
+2025 ). 737 
+
+## Acknowledgments 738 
+
+This work was supported by Deutsche Forschungsgemeinschaft (DFG, German Research Founda-739 
+
+tion) GRK2762 - project number 450917483 (subprojects M1) to Daniel Hoffmann. We acknowledge 740 
+
+support from the Open Access Publication Fund of the University of Duisburg-Essen. We are grate-741 
+
+ful to Parse Biosciences and Formenti et al. (2018 ) for making their datasets publicly available. 742 
+
+## References 743 
+
+Altschul SF , Gish W, Miller W, Myers EW, Lipman DJ. Basic local alignment search tool. J Mol Biol. 1990 Oct; 744 
+
+215(3):403–10. doi: 10.1016/S0022-2836(05)80360-2. 745 
+
+Balachandran VP , Łuksza M, Zhao JN, Makarov V, Moral JA, Remark R, Herbst B, Askan G, Bhanot U, Sen-746 
+
+babaoglu Y, et al. Identification of unique neoantigen qualities in long-term survivors of pancreatic cancer. 747 
+
+Nature. 2017; 551(7681):512–516. 748 
+
+Blei DM , Kucukelbir A, McAuliffe JD. Variational inference: A review for statisticians. Journal of the American 749 
+
+statistical Association. 2017; 112(518):859–877. 750 
+
+Blondel VD , Guillaume JL, Lambiotte R, Lefebvre E. Fast unfolding of communities in large networks. Journal 751 
+
+of statistical mechanics: theory and experiment. 2008; 2008(10):P10008. 752 
+
+Buettner M , Ostner J, Mueller CL, Theis FJ, Schubert B. scCODA is a Bayesian model for compositional single-cell 753 
+
+data analysis. Nature communications. 2021; 12(1):6876. 754 
+
+Carpenter B , Gelman A, Hoffman MD, Lee D, Goodrich B, Betancourt M, Brubaker MA, Guo J, Li P, Riddell A. 755 
+
+Stan: A probabilistic programming language. Journal of statistical software. 2017; 76. 756 
+
+19 of 23 
+
+.CC-BY 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.28.735097 doi: bioRxiv preprint Dash P , Fiore-Gartland AJ, Hertz T, Wang GC, Sharma S, Souquette A, Crawford JC, Clemens EB, Nguyen TH, 757 
+
+Kedzierska K, et al. Quantifiable predictive features define epitope-specific T cell receptor repertoires. Nature. 758 
+
+2017; 547(7661):89–93. 759 
+
+Dupic T , Marcou Q, Walczak AM, Mora T. Genesis of the 𝛼𝛽 T-cell receptor. PLoS computational biology. 2019; 760 
+
+15(3):e1006874. 761 
+
+Emerson RO , DeWitt WS, Vignali M, Gravley J, Hu JK, Osborne EJ, Desmarais C, Klinger M, Carlson CS, Hansen 762 
+
+JA, et al. Immunosequencing identifies signatures of cytomegalovirus exposure history and HLA-mediated 763 
+
+effects on the T cell repertoire. Nature genetics. 2017; 49(5):659–665. 764 
+
+Formenti SC , Rudqvist NP, Golden E, Cooper B, Wennerberg E, Lhuillier C, Vanpouille-Box C, Friedman K, Fer-765 
+
+rari de Andrade L, Wucherpfennig KW, et al. Radiotherapy induces responses of lung cancer to CTLA-4 block-766 
+
+ade. Nature medicine. 2018; 24(12):1845–1851. 767 
+
+Gelman A , Hill J, Yajima M. Why we (usually) don’t have to worry about multiple comparisons. Journal of 768 
+
+research on educational effectiveness. 2012; 5(2):189–211. 769 
+
+Glanville J , Huang H, Nau A, Hatton O, Wagar LE, Rubelt F, Ji X, Han A, Krams SM, Pettus C, et al. Identifying 770 
+
+specificity groups in the T cell receptor repertoire. Nature. 2017; 547(7661):94–98. 771 
+
+Gowthaman R , Pierce BG. TCR3d: The T cell receptor structural repertoire database. Bioinformatics. 2019; 772 
+
+35(24):5323–5325. 773 
+
+Han A , Glanville J, Hansmann L, Davis MM. Linking T-cell receptor sequence to functional phenotype at the 774 
+
+single-cell level. Nature biotechnology. 2014; 32(7):684–692. 775 
+
+Heather JM , Ismail M, Oakes T, Chain B. High-throughput sequencing of the T-cell receptor repertoire: pitfalls 776 
+
+and opportunities. Briefings in bioinformatics. 2018; 19(4):554–565. 777 
+
+Henikoff S , Henikoff JG. Amino acid substitution matrices from protein blocks. Proc Natl Acad Sci U S A. 1992 778 
+
+Nov; 89(22):10915–9. 779 
+
+Huang H , Wang C, Rubelt F, Scriba TJ, Davis MM. Analyzing the Mycobacterium tuberculosis immune response 780 
+
+by T-cell receptor clustering with GLIPH2 and genome-wide antigen screening. Nature biotechnology. 2020; 781 
+
+38(10):1194–1202. 782 
+
+Kitanovski S , Cao Y, Ttoouli D, Farahpour F, Wang J, Hoffmann D. scBubbletree: computational approach for 783 
+
+visualization of single cell RNA-seq data. BMC bioinformatics. 2024; 25(1):302. 784 
+
+Kitanovski S , Srinivas N, Schrama D, Hoffmann D, Becker J. Spatial Compartmentalization of TCR Repertoires 785 
+
+Between Primary Melanomas and Sentinel Lymph Nodes Reveals Distinct Clonal Architectures and Shared 786 
+
+Antigen Recognition. bioRxiv. 2026; p. 2026–06. 787 
+
+Koraichi MB , Touzel MP, Mazzolini A, Mora T, Walczak AM. NoisET: noise learning and expansion detection of 788 
+
+T-cell receptors. The Journal of Physical Chemistry A. 2022; 126(40):7407–7414. 789 
+
+Li C , Vehtari A, Bürkner PC, Radev ST, Acerbi L, Schmitt M. Amortized bayesian workflow. arXiv preprint 790 
+
+arXiv:240904332. 2024; . 791 
+
+Madi A , Poran A, Shifrut E, Reich-Zeliger S, Greenstein E, Zaretsky I, Arnon T, Laethem FV, Singer A, Lu J, et al. T 792 
+
+cell receptor repertoires of mice and humans are clustered in similarity networks around conserved public 793 
+
+CDR3 sequences. Elife. 2017; 6:e22057. 794 
+
+Marcou Q , Mora T, Walczak AM. High-throughput immune repertoire analysis with IGoR. Nature communica-795 
+
+tions. 2018; 9(1):561. 796 
+
+Mayer-Blackwell K , Schattgen S, Cohen-Lavi L, Crawford JC, Souquette A, Gaevert JA, Hertz T, Thomas PG, 797 
+
+Bradley P, Fiore-Gartland A. TCR meta-clonotypes for biomarker discovery with tcrdist3 enabled identifica-798 
+
+tion of public, HLA-restricted clusters of SARS-CoV-2 TCRs. Elife. 2021; 10:e68605. 799 
+
+Murugan A , Mora T, Walczak AM, Callan Jr CG. Statistical inference of the generation probability of T-cell re-800 
+
+ceptors from sequence repertoires. Proceedings of the National Academy of Sciences. 2012; 109(40):16161– 801 
+
+16166. 802 
+
+Ostner J , Carcy S, Müller CL. tascCODA: Bayesian tree-aggregated analysis of compositional amplicon and 803 
+
+single-cell data. Frontiers in genetics. 2021; 12:766405. 804 
+
+20 of 23 
+
+.CC-BY 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.28.735097 doi: bioRxiv preprint Pai JA , Satpathy AT. High-throughput and single-cell T cell receptor sequencing technologies. Nature methods. 805 
+
+2021; 18(8):881–892. 806 
+
+Pedersen TL . patchwork: The Composer of Plots; 2025, https://patchwork.data-imaginist.com , R package version 807 
+
+1.3.0.9000, https://github.com/thomasp85/patchwork. 808 
+
+Pogorelyy MV , Minervina AA, Shugay M, Chudakov DM, Lebedev YB, Mora T, Walczak AM. Detecting T cell recep-809 
+
+tors involved in immune responses from single repertoire snapshots. PLoS Biology. 2019; 17(6):e3000314. 810 
+
+Puelma Touzel M , Walczak AM, Mora T. Inferring the immune response from repertoire sequencing. PLOS 811 
+
+Computational Biology. 2020; 16(4):e1007873. 812 
+
+Redmond D , Poran A, Elemento O. Single-cell TCRseq: paired recovery of entire T-cell alpha and beta chain 813 
+
+transcripts in T-cell receptors from single-cell RNAseq. Genome medicine. 2016; 8(1):80. 814 
+
+Rosvall M , Bergstrom CT. Maps of random walks on complex networks reveal community structure. Proceed-815 
+
+ings of the national academy of sciences. 2008; 105(4):1118–1123. 816 
+
+Rudqvist NP , Pilones KA, Lhuillier C, Wennerberg E, Sidhom JW, Emerson RO, Robins HS, Schneck J, Formenti SC, 817 
+
+Demaria S. Radiotherapy and CTLA-4 blockade shape the TCR repertoire of tumor-infiltrating T cells. Cancer 818 
+
+immunology research. 2018; 6(2):139–150. 819 
+
+Rytlewski J , Deng S, Xie T, Davis C, Robins H, Yusko E, Bienkowska J. Model to improve specificity for identifica-820 
+
+tion of clinically-relevant expanded T cells in peripheral blood. PLoS One. 2019; 14(3):e0213684. 821 
+
+Saeedghalati M , Farahpour F, Budeus B, Lange A, Westendorf AM, Seifert M, Küppers R, Hoffmann D. Quanti-822 
+
+tative comparison of abundance structures of generalized communities: from B-cell receptor repertoires to 823 
+
+microbiomes. PLoS computational biology. 2017; 13(1):e1005362. 824 
+
+Sethna Z , Elhanati Y, Callan Jr CG, Walczak AM, Mora T. OLGA: fast computation of generation probabilities of 825 
+
+B-and T-cell receptor amino acid sequences and motifs. Bioinformatics. 2019; 35(17):2974–2981. 826 
+
+Shugay M , Bagaev DV, Zvyagin IV, Vroomans RM, Crawford JC, Dolton G, Komech EA, Sycheva AL, Koneva AE, 827 
+
+Egorov ES, et al. VDJdb: a curated database of T-cell receptor sequences with known antigen specificity. 828 
+
+Nucleic acids research. 2018; 46(D1):D419–D427. 829 
+
+Sidhom JW , Larman HB, Pardoll DM, Baras AS. DeepTCR is a deep learning framework for revealing sequence 830 
+
+concepts within T-cell repertoires. Nature communications. 2021; 12(1):1605. 831 
+
+Tickotsky N , Sagiv T, Prilusky J, Shifrut E, Friedman N. McPAS-TCR: a manually curated catalogue of pathology-832 
+
+associated T cell receptor sequences. Bioinformatics. 2017; 33(18):2924–2929. 833 
+
+Traag VA , Van Dooren P, Nesterov Y. Narrow scope for resolution-limit-free community detection. Physical 834 
+
+Review E—Statistical, Nonlinear, and Soft Matter Physics. 2011; 84(1):016114. 835 
+
+Traag VA , Waltman L, Van Eck NJ. From Louvain to Leiden: guaranteeing well-connected communities. Scientific 836 
+
+reports. 2019; 9(1):1–12. 837 
+
+Valkiers S , Van Houcke M, Laukens K, Meysman P. ClusTCR: a python interface for rapid clustering of large 838 
+
+sets of CDR3 sequences with unknown antigen specificity. Bioinformatics. 2021; 37(24):4865–4867. 839 
+
+Wickham H . ggplot2: Elegant Graphics for Data Analysis. Springer-Verlag New York; 2016. https://ggplot2. 840 
+
+tidyverse.org .841 
+
+Woodsworth DJ , Castellarin M, Holt RA. Sequence analysis of T-cell repertoires in health and disease. Genome 842 
+
+medicine. 2013; 5:1–13. 843 
+
+Zhang H , Liu L, Zhang J, Chen J, Ye J, Shukla S, Qiao J, Zhan X, Chen H, Wu CJ, et al. Investigation of antigen-specific 844 
+
+T-cell receptor clusters in human cancers. Clinical Cancer Research. 2020; 26(6):1359–1371. 845 
+
+Zhang H , Zhan X, Li B. GIANA allows computationally-efficient TCR clustering and multi-disease repertoire 846 
+
+classification by isometric transformation. Nature communications. 2021; 12(1):4699. 847 
+
+.CC-BY 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.28.735097 doi: bioRxiv preprint Figure 5. Differentially occupant CJs (DCJs) between humans and mice. (A) Relative occupancy of CJs (dots) in humans and mice, represented by the mean of 𝜇 (y-axis). Horizontal dashed lines split the CJs into six groups used in panel B. Two most expanded in humans and mice are labeled (a–d). (B) Mean percentage of clonotypes recognizing specific antigens (color-coded) within CJ groups (x-axis) and the corresponding 95% HDIs (vertical error bars). The groups are ordered by increasing 𝜇 . Groups with no antigen-specific clonotypes were omitted. (C) Network of four DCJs, shared across all repertoires of one species (a–b in humans, c–d in mice) but not the other. Nodes represent TCR clonotypes from humans (reds) and mice (blues). Gray edges connect clonotypes sharing similar CDR3 sequences. Antigen-specific clonotypes are shown as nodes with black borders and labeled with the names of the antigen species. (D) Sequence logos of more conserved CDR3 𝛼 motifs and more divergent CDR3 𝛽 s within each CJ (rows: CJs a–d) (E) Relative usage (y-axis) of TRBV/TRBJ/TRAV/TRAJ gene segments (panels) in each CJ (x-axis). The most frequently used gene segments are labeled. 
+
+.CC-BY 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.28.735097 doi: bioRxiv preprint (4) Detect Communities on the Joint graph (CJs) (3) Construct Joint graph 
+
+> CJ occupancy ( )
+
+## (5) Probabilistic modeling of CJ occupancy Figure 6. ClustIRR workflow. (1) TCR sequencing (TCRseq) data are collected from multiple repertoires across longitudinal time points or biological conditions. 2) The main ClustIRR input is a table of TCR clonotypes for each repertoire, defined by CDR3 𝛼 and CDR3 𝛽 amino acid sequences and clonal sizes (cell counts). (3) 
+
+ClustIRR constructs a joint similarity graph where nodes represent clonotypes and weighted edges connect clonotypes based on pairwise CDR3 𝛼 and CDR3 𝛽 sequence similarity. This graph integrates clonotypes from all repertoires into a single structure. (4) Graph-based clustering algorithms (e.g., Leiden or Louvain) identify densely connected groups of clonotypes, defined as Communities on the Joint graph (CJs). The number of cells in each CJ is quantified to form a CJ occupancy matrix 𝑌 𝑘 ×𝑟 , where 𝑘 indexes CJs and 𝑟 indexes repertoires. This matrix is used to fit a hierarchical Bayesian Dirichlet-Multinomial model. The model estimates posterior distributions for relative CJ occupancies ( 𝛽 coefficients), providing mean estimates along with 95% credible intervals (CIs). 
+
+.CC-BY 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 1, 2026. ;https://doi.org/10.64898/2026.06.28.735097 doi: bioRxiv preprint

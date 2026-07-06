@@ -1,0 +1,232 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-07-06T23:22:14.375199+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 1,
+    "deep_cap": 6,
+    "deep_selected": 1,
+    "quick_candidates": 4,
+    "quick_skim_target": 11,
+    "quick_selected": 4
+  },
+  "deep_dive": [
+    {
+      "id": "biorxiv-10-64898-2026-07-01-735754-v1",
+      "source": "biorxiv",
+      "title": "Deciphering the Tumor Microenvironment: An Integrated Single-Cell RNA-Seq and AI Framework for Novel Biomarker and Therapeutic Target Discovery in Melanoma",
+      "abstract": "Background: Melanoma represents a highly immunogenic and therapeutically challenging malignancy. The complex cellular ecosystem of the tumor microenvironment (TME) acts as a critical driver of immune evasion, patient prognosis, and treatment resistance. Traditional bulk sequencing often fails to resolve these high-resolution intercellular dynamics. This investigation presents an end-to-end explainable machine learning and network biology framework designed to deconstruct TME single-cell heterogeneity, discover novel candidate biomarkers, and map actionable cell-cell communication networks. Methodology: High-quality single-cell RNA sequencing (scRNA-seq) expression data from melanoma lesions (GSE115978) were processed using a multi-phase computational workflow. Following cellular filtration, library size normalisation, and highly variable gene (HVG) selection, cells were partitioned using unsupervised Leiden clustering and annotated via signature gene scoring matrix methods (Wolf et al., 2018; Traag et al., 2019). An optimal gradient-boosted tree ensemble classifier (XGBoost) was constructed for cross-compartment biomarker screening (Chen & Guestrin, 2016), interpreted using SHAP (SHapley Additive exPlanations) values (Lundberg & Lee, 2017), and augmented with a PyTorch deep autoencoder. Downstream systems analyses included biological pathway enrichment via gseapy (Kuleshov et al., 2016), ligand-receptor communication mapping via LIANA (Efremova et al., 2020; Dimitrov et al., 2022), and Pearson co-expression network profiling. Cross-cohort validation was conducted on an independent melanoma cohort (GSE72056) (Tirosh et al., 2016b), and prognostic utility was clinically validated using empirical patient survival data from the TCGA-SKCM cohort (TCGA Research Network, 2015; Davidson-Pilon, 2019). Results: Unsupervised Leiden clustering partitioned the cellular atlas into seven major structural and immunological compartments: Melanoma/Tumor, T-Cells, B-Cells, Macrophages, NK Cells, Endothelial cells, and Cancer-Associated Fibroblasts (CAFs). The trained XGBoost model prioritized CD79A, MLANA, LYZ, MFAP4, and CDH5 as top candidate biomarkers across distinct microenvironmental niches. SHAP explainability analysis confirmed MLANA and S100B as key positive predictors of tumor cell identity, while highlighting a bidirectional distribution for B2M linked to antigen presentation downregulation. Functional enrichment mapped Coagulation and Epithelial-Mesenchymal Transition (EMT) as highly dysregulated pathways driving the malignant state. Cell-cell communication profiling inferred highly significant SERPINE1 signalling axes to LRP1 and PLAUR receptors. SPARC was identified as the central co-expression hub regulator. Cross-cohort screening in GSE72056 confirmed biomarker stability across independent patient profiles. Empirical clinical survival validation within the TCGA-SKCM cohort (n=314) demonstrated that heightened expression of CD79A correlates with a statistically significant survival advantage (Log-Rank p = 4.4202 * 10-3), extending median overall survival from 26.7 months to 44.8 months. Conclusion: This computational pipeline systematically resolves TME heterogeneity, revealing a robust biomarker signature centred on CD79A and MLANA, alongside SERPINE1-driven immune-stromal crosstalk. The discovery of the protective prognostic role of CD79A links single-cell immune networks directly to clinical patient outcomes, providing a reproducible roadmap for anti-tumour immune engagement and immunotherapeutic stratification. Keywords: Melanoma, Tumor Microenvironment, Single-Cell RNA-Seq, scRNA-seq, XGBoost, SHAP, LIANA, TCGA-SKCM, CD79A, SPARC, SERPINE1, Biomarker Discovery, Leiden Clustering",
+      "authors": [
+        "Ostwal, R.",
+        "Natarajan, E."
+      ],
+      "primary_category": "bioinformatics",
+      "categories": [
+        "bioinformatics"
+      ],
+      "published": "2026-07-05T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.07.01.735754v1.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "single-cell TME AI framework for melanoma treatment resistance",
+      "llm_evidence_cn": "单细胞肿瘤微环境AI框架研究治疗抵抗",
+      "llm_evidence": "单细胞肿瘤微环境AI框架研究治疗抵抗",
+      "canonical_evidence": "单细胞肿瘤微环境AI框架研究治疗抵抗",
+      "llm_tldr_en": "An integrated single-cell RNA-seq and explainable ML framework deconvolves TME heterogeneity in melanoma, discovering novel biomarkers and therapeutic targets linked to immune evasion and treatment resistance.",
+      "llm_tldr_cn": "该研究针对黑色素瘤肿瘤微环境的高度异质性和治疗抵抗问题，提出了一个整合单细胞RNA测序与可解释机器学习的端到端框架。通过解构微环境单细胞图谱、发现候选生物标志物并绘制细胞间通信网络，揭示了驱动免疫逃逸和治疗抵抗的关键机制，为靶向治疗提供新策略。",
+      "llm_tldr": "该研究针对黑色素瘤肿瘤微环境的高度异质性和治疗抵抗问题，提出了一个整合单细胞RNA测序与可解释机器学习的端到端框架。通过解构微环境单细胞图谱、发现候选生物标志物并绘制细胞间通信网络，揭示了驱动免疫逃逸和治疗抵抗的关键机制，为靶向治疗提供新策略。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "tumor microenvironment neoadjuvant resistance",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "biorxiv-10-1101-2025-02-06-636961-v2",
+      "source": "biorxiv",
+      "title": "Cell signaling pathways discovery from multi-modal data",
+      "abstract": "Deciphering cell signaling pathways is key to understanding biology, disease mechanisms, and developing new therapies. Although advances in multi-omics technologies provide richer insight into signaling, the data remain high-dimensional, heterogeneous, and difficult to interpret, and current computational tools for inferring signaling pathways are limited. To address this, we developed Incytr, a method for efficient discovery of cell signaling pathways through integration of diverse data modalities, including transcriptomics, ATAC-seq, proteomics, phosphoproteomics, and kinomics. We demonstrate its application in COVID-19, Alzheimer's disease, and cancer, where it successfully recovers known pathways and generates novel, cell-type-specific hypotheses supported by multiple data types. We further show how integrating Incytr-derived pathways with biomarker and drug databases can support target and drug discovery. Finally, we show that using Incytr-derived signaling pathways as training data for simple natural language processing models can deepen our understanding of cell-cell communication and immune cell dynamics, while helping identify new therapeutic targets.",
+      "authors": [
+        "He, C.",
+        "Simpson, C.",
+        "Cossentino, I.",
+        "Zhang, B.",
+        "Tkachev, S.",
+        "Eddins, D. J.",
+        "Kosters, A.",
+        "Yang, J.",
+        "Sheth, S.",
+        "Levy, T.",
+        "Possemato, A.",
+        "Huang, L.",
+        "Tabatsky, E.",
+        "Lee, S. H.",
+        "Ghosh, D.",
+        "George, A.",
+        "Gregoretti, I.",
+        "Ariss, M.",
+        "Dandekar, D.",
+        "Ausekar, A.",
+        "Roan, N. R.",
+        "Ghosn, E. E. B.",
+        "Colonna, M.",
+        "Rikova, K.",
+        "Nie, Q.",
+        "Orlova, D."
+      ],
+      "primary_category": "bioinformatics",
+      "categories": [
+        "bioinformatics"
+      ],
+      "published": "2026-07-06T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.1101/2025.02.06.636961v2.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "multi-modal data integration for signaling pathway discovery, applicable to resistance mechanism studies",
+      "llm_evidence_cn": "多模态数据整合发现信号通路，可应用于耐药机制研究",
+      "llm_evidence": "多模态数据整合发现信号通路，可应用于耐药机制研究",
+      "canonical_evidence": "多模态数据整合发现信号通路，可应用于耐药机制研究",
+      "llm_tldr_en": "Develops Incytr, a method integrating transcriptomics, ATAC-seq, proteomics, phosphoproteomics, and kinomics to discover cell signaling pathways, demonstrated in COVID-19, Alzheimer's, and cancer.",
+      "llm_tldr_cn": "针对多组学数据整合推断信号通路工具的不足，该研究开发了Incytr方法，整合转录组、ATAC-seq、蛋白质组、磷酸化蛋白质组和激酶组数据，高效发现细胞信号通路。在新冠、阿尔茨海默病和癌症中成功恢复已知通路并生成新假说，为解析肿瘤耐药相关信号通路提供了强大工具。",
+      "llm_tldr": "针对多组学数据整合推断信号通路工具的不足，该研究开发了Incytr方法，整合转录组、ATAC-seq、蛋白质组、磷酸化蛋白质组和激酶组数据，高效发现细胞信号通路。在新冠、阿尔茨海默病和癌症中成功恢复已知通路并生成新假说，为解析肿瘤耐药相关信号通路提供了强大工具。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "multi omics characterization of tumor resistance",
+      "matched_requirement_id": "req-10",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-06-28-735097-v1",
+      "source": "biorxiv",
+      "title": "Uncertainty-aware quantitative analysis of the structure and dynamics of T cell receptor repertoires",
+      "abstract": "Diversity and dynamics of immune cell receptor repertoires (IRRs) are two factors at the functional heart of adaptive immunity that together make IRRs difficult to grasp. Moreover, measurements are compounded by various sources of experimental noise. Here we propose a computational framework (ClustIRR) for uncertainty-aware quantitative analysis of IRR structure and dynamics. ClustIRR maps multiple IRRs across replicates, time points, or conditions onto a joint graph induced by immune receptor sequence similarity. It then detects communities on the joint graph (CJs). Based on CJs as reference structures across IRRs, ClustIRR then performs quantitative Bayesian analyses of differential CJ occupancy. Additionally, ClustIRR integrates single-cell gene expression data to link community expansion with transcriptional activation signatures. We demonstrate the capabilities of ClustIRR with the joint analysis of multiple T cell receptor repertoires in several example applications: (1) quantitative changes due to antigen challenge, (2) longitudinal dynamics during cancer immunotherapy, (3) V(D)J recombination biases in human vs murine repertoires that pre-adapt IRRs for pathogen responses. ClustIRR is freely available as open source software from the bioconductor repository.",
+      "authors": [
+        "Kitanovski, S.",
+        "Wollek, K.",
+        "Hoffmann, D."
+      ],
+      "primary_category": "immunology",
+      "categories": [
+        "immunology"
+      ],
+      "published": "2026-07-01T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.06.28.735097v1.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "T cell receptor repertoire analysis for immune response, relevant to immunotherapy resistance",
+      "llm_evidence_cn": "T细胞受体库分析用于免疫应答，与免疫治疗耐药相关",
+      "llm_evidence": "T细胞受体库分析用于免疫应答，与免疫治疗耐药相关",
+      "canonical_evidence": "T细胞受体库分析用于免疫应答，与免疫治疗耐药相关",
+      "llm_tldr_en": "ClustIRR provides uncertainty-aware quantification of T cell receptor repertoire dynamics, enabling deeper understanding of immune responses in immunotherapy resistance.",
+      "llm_tldr_cn": "免疫受体库的多样性和动态难以量化，且包含噪声。该论文开发ClustIRR框架，基于序列相似性构建联合图并检测社区，利用贝叶斯分析定量不同条件下的差异。该方法支持重复和时间点比较，为评估免疫治疗中T细胞克隆变化和耐药性相关免疫学特征提供了新工具。",
+      "llm_tldr": "免疫受体库的多样性和动态难以量化，且包含噪声。该论文开发ClustIRR框架，基于序列相似性构建联合图并检测社区，利用贝叶斯分析定量不同条件下的差异。该方法支持重复和时间点比较，为评估免疫治疗中T细胞克隆变化和耐药性相关免疫学特征提供了新工具。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "resistance to neoadjuvant immunotherapy",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-06-30-735606-v1",
+      "source": "biorxiv",
+      "title": "Colorectal cancers with distinct metastatic potential trigger divergent early T cell responses",
+      "abstract": "Colorectal cancer (CRC) remains a leading cause of cancer mortality, with most cases refractory to immunotherapy. Distinguishing tumor-induced from steady-state mucosal T cell responses has been a critical barrier to understanding antitumor immunity in CRC. Using orthotopic transplantation of CRC organoids with and without metastatic potential, combined with temporal T cell fate-mapping, we show that non-metastatic tumors elicit early recruitment of CD8{beta}+ and CD4+ T cells that acquired cytotoxic and Th1-like programs, whereas pro-metastatic tumors induce a naive-like, hypoactivated state. Tumor-infiltrating CD4+ T cells underwent clonal expansion, including clones recognizing microbial and dietary antigens. T cells in physical contact with tumor cells, identified by uLIPSTIC, were enriched for expanded and cytotoxic clones. Fate-mapped T cells from non-metastatic tumors suppressed tumor growth in an IFN-{gamma}-dependent manner, whereas pro-metastatic tumor-derived T cells failed to do so. Mechanistically, pro-metastatic tumors downregulated MHCII, and Ciita targeting in non-metastatic organoids reduced CD4+ clonal expansion and led to tumor progression. Together, these findings define divergent early T cell trajectories associated with CRC metastatic potential, indicating that ineffective local immune engagement precedes metastatic dissemination.",
+      "authors": [
+        "Saad, M.",
+        "Thoms, A.",
+        "Yin, Y. S.",
+        "Mamede, I.",
+        "Rahman, A.",
+        "Chen, R.",
+        "Carrasco, S. E.",
+        "Darcy, P. W.",
+        "Goto, N.",
+        "Tavazoie, S. F.",
+        "Bilate, A. M.",
+        "Mucida, D."
+      ],
+      "primary_category": "immunology",
+      "categories": [
+        "immunology"
+      ],
+      "published": "2026-07-04T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.06.30.735606v1.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "T cell responses in CRC related to tumor microenvironment and immunotherapy resistance",
+      "llm_evidence_cn": "结直肠癌中T细胞反应与肿瘤微环境和免疫治疗耐药相关",
+      "llm_evidence": "结直肠癌中T细胞反应与肿瘤微环境和免疫治疗耐药相关",
+      "canonical_evidence": "结直肠癌中T细胞反应与肿瘤微环境和免疫治疗耐药相关",
+      "llm_tldr_en": "Colorectal cancers with metastatic potential induce naive-like hypoactivated T cell state, providing insight into immunotherapy resistance mechanisms.",
+      "llm_tldr_cn": "针对结直肠癌免疫治疗耐药问题，利用原位移植类器官结合T细胞命运图谱，发现非转移性肿瘤招募CD8+和CD4+ T细胞并获得细胞毒性/Th1样程序，而促转移肿瘤诱导幼稚样低活化状态，为T细胞耗竭机制提供新见解。",
+      "llm_tldr": "针对结直肠癌免疫治疗耐药问题，利用原位移植类器官结合T细胞命运图谱，发现非转移性肿瘤招募CD8+和CD4+ T细胞并获得细胞毒性/Th1样程序，而促转移肿瘤诱导幼稚样低活化状态，为T细胞耗竭机制提供新见解。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "tumor microenvironment neoadjuvant resistance",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-06-30-735682-v1",
+      "source": "biorxiv",
+      "title": "CellTFusion: a transcriptional regulatory network framework for the identification of functional multicellular states from bulk RNA-seq data",
+      "abstract": "Bulk RNA-seq remains the most accessible transcriptomic platform for tumor microenvironment (TME) characterization, yet existing computational approaches treat cell type abundance, pathway activity, and transcription factor (TF) activity as independent sources of information, missing the coordinated regulatory programs that define functional multicellular states. Here we introduce CellTFusion, a framework that integrates cell type deconvolution with transcriptional regulatory network analysis from bulk RNA-seq data to identify functional multicellular groups. CellTFusion produces a mixture representation of the TME in which each patient is described as a weighted combination of states, each capturing a distinct coordinated hallmark program. Applied to melanoma and bladder cancer cohorts, CellTFusion identified recurrent TME programs with opposing associations with immunotherapy responses that only emerged through joint multivariate modeling, and demonstrated superior cross-cohort transferability compared to established TME characterization tools.",
+      "authors": [
+        "Hurtado, M.",
+        "Pancaldi, V."
+      ],
+      "primary_category": "bioinformatics",
+      "categories": [
+        "bioinformatics"
+      ],
+      "published": "2026-07-05T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.06.30.735682v1.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "tumor microenvironment characterization via transcriptional regulatory network from bulk RNA-seq",
+      "llm_evidence_cn": "通过bulk RNA-seq转录调控网络解析肿瘤微环境",
+      "llm_evidence": "通过bulk RNA-seq转录调控网络解析肿瘤微环境",
+      "canonical_evidence": "通过bulk RNA-seq转录调控网络解析肿瘤微环境",
+      "llm_tldr_en": "CellTFusion integrates cell type deconvolution with transcriptional regulatory network analysis from bulk RNA-seq to identify functional multicellular states in the tumor microenvironment, directly relevant to TME resistance studies.",
+      "llm_tldr_cn": "现有bulk RNA-seq计算方法将细胞丰度、通路活性和转录因子活性独立分析，忽略了定义功能性多细胞状态的协同调控程序。CellTFusion通过整合细胞类型反卷积和转录调控网络分析，从bulk RNA-seq数据中识别功能性多细胞群，将每个患者表示为状态的加权组合。该方法直接适用于研究肿瘤微环境在耐药中的角色。",
+      "llm_tldr": "现有bulk RNA-seq计算方法将细胞丰度、通路活性和转录因子活性独立分析，忽略了定义功能性多细胞状态的协同调控程序。CellTFusion通过整合细胞类型反卷积和转录调控网络分析，从bulk RNA-seq数据中识别功能性多细胞群，将每个患者表示为状态的加权组合。该方法直接适用于研究肿瘤微环境在耐药中的角色。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "role of tumor microenvironment in neoadjuvant therapy resistance",
+      "matched_requirement_id": "req-8",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}
