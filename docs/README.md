@@ -6,37 +6,29 @@
 </div>
 
 ## 每次日报
-- 最新运行日期：2026-07-06
-- 运行时间：2026-07-06 23:23:15 UTC
+- 最新运行日期：2026-07-07
+- 运行时间：2026-07-07 23:35:22 UTC
 - 运行状态：成功
-- 本次总论文数：5
+- 本次总论文数：3
 - 精读区：1
-- 速读区：4
+- 速读区：2
 
 ### 今日简报（AI）
-今日精读一篇黑色素瘤肿瘤微环境单细胞RNA-seq与AI框架研究（9分），速读细胞信号通路发现、T细胞受体库不确定性分析及结直肠癌早期T细胞反应等三篇。  
-最值得关注的是精读中提出的集成单细胞RNA-seq与AI框架，为黑色素瘤发现新型生物标志物和治疗靶点提供了系统方法。  
-建议普通读者重点吸收该框架的设计思路，后续可留意其是否拓展至其他癌症类型。
-- 详情：[/202607/06/README](/202607/06/README)
+今日精选3篇肿瘤免疫与代谢研究，精读揭示靶向叶酸依赖的嘌呤合成可通过抑制糖酵解增强黑色素瘤免疫攻击。核心方向：嘌呤代谢-糖酵解轴提升免疫杀伤力，以及RAS-PI3K信号调控CAF身份影响免疫微环境。建议关注代谢与免疫治疗联合策略，以及基质成纤维细胞重塑对疗效的影响。
+- 详情：[/202607/07/README](/202607/07/README)
 
 ### 精读区论文标签
-1. [Deciphering the Tumor Microenvironment: An Integrated Single-Cell RNA-Seq and AI Framework for Novel Biomarker and Therapeutic Target Discovery in Melanoma](/202607/06/biorxiv-10-64898-2026-07-01-735754-v1-deciphering-the-tumor-microenvironment-an-integrated-single-cell-rna-seq-and-ai-framework-for-novel-biomarker-and-therapeutic-target-discovery-in-melanoma)  
-   标签：评分：9.0/10、query:neo-resist
-   evidence：单细胞肿瘤微环境AI框架研究治疗抵抗
+1. [Targeting folate-dependent purine synthesis sensitizes melanoma cells to immune attack through suppressing glycolysis](/202607/07/biorxiv-10-64898-2026-07-06-736685-v1-targeting-folate-dependent-purine-synthesis-sensitizes-melanoma-cells-to-immune-attack-through-suppressing-glycolysis)  
+   标签：评分：8.0/10、query:neo-resist
+   evidence：通过靶向代谢增敏黑色素瘤对免疫攻击的敏感性
 
 ### 速读区论文标签
-1. [Cell signaling pathways discovery from multi-modal data](/202607/06/biorxiv-10-1101-2025-02-06-636961-v2-cell-signaling-pathways-discovery-from-multi-modal-data)  
+1. [RAS-PI3K signaling promotes myofibroblastic CAF identity and restrains an immunomodulatory stromal program](/202607/07/biorxiv-10-1101-2025-01-20-633776-v3-ras-pi3k-signaling-promotes-myofibroblastic-caf-identity-and-restrains-an-immunomodulatory-stromal-program)  
    标签：评分：7.0/10、query:neo-resist
-   evidence：多模态数据整合发现信号通路，可应用于耐药机制研究
-2. [Uncertainty-aware quantitative analysis of the structure and dynamics of T cell receptor repertoires](/202607/06/biorxiv-10-64898-2026-06-28-735097-v1-uncertainty-aware-quantitative-analysis-of-the-structure-and-dynamics-of-t-cell-receptor-repertoires)  
+   evidence：识别RAS-PI3K信号作为肺癌肿瘤微环境中CAF身份的关键调节因子，与耐药相关
+2. [Targeting DNMT1 augments anti-tumor CD8⁺ T cell function](/202607/07/biorxiv-10-64898-2026-07-03-736412-v1-targeting-dnmt1-augments-anti-tumor-cd8-t-cell-function)  
    标签：评分：6.0/10、query:neo-resist
-   evidence：T细胞受体库分析用于免疫应答，与免疫治疗耐药相关
-3. [Colorectal cancers with distinct metastatic potential trigger divergent early T cell responses](/202607/06/biorxiv-10-64898-2026-06-30-735606-v1-colorectal-cancers-with-distinct-metastatic-potential-trigger-divergent-early-t-cell-responses)  
-   标签：评分：6.0/10、query:neo-resist
-   evidence：结直肠癌中T细胞反应与肿瘤微环境和免疫治疗耐药相关
-4. [CellTFusion: a transcriptional regulatory network framework for the identification of functional multicellular states from bulk RNA-seq data](/202607/06/biorxiv-10-64898-2026-06-30-735682-v1-celltfusion-a-transcriptional-regulatory-network-framework-for-the-identification-of-functional-multicellular-states-from-bulk-rna-seq-data)  
-   标签：评分：6.0/10、query:neo-resist
-   evidence：通过bulk RNA-seq转录调控网络解析肿瘤微环境
+   evidence：靶向DNMT1克服CD8 T细胞耗竭并与免疫检查点抑制协同
 
 
 <div class="dpr-home-promo-card">
