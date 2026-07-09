@@ -1,0 +1,2920 @@
+Title: Modeling the MRD state reveals the insomnia of chemotherapy-tolerant persister clones
+
+URL Source: https://www.biorxiv.org/content/10.64898/2026.06.14.732194v1.full.pdf
+
+Number of Pages: 25
+
+Markdown Content:
+Modeling the MRD state reveals the insomnia of chemotherapy-tolerant persister 1
+
+clones 2
+
+3
+
+Kenta Hata 1,2,6 , Taku Sato 3,6, *, Yuki Fukawa 4, Hiroki Yotsumata 1, Yumi Mizuguchi 5, Naozumi 4
+
+Ishimaru 4, Hiroyuki Harada 2, & Toshiaki Ohteki 1,7, *5
+
+6
+
+Affiliations 7
+
+> 1
+
+Department of Biodefense Research, Medical Research Laboratory, Institute of Integrated Research, Institute of 8
+
+Science Tokyo (formerly Medical Research Institute, Tokyo Medical and Dental University (TMDU)), Tokyo 113-9
+
+8510, Japan 10 
+
+> 2
+
+Department of Oral and Maxillofacial Surgical Oncology, Division of Oral Health Sciences, Graduate School of 11 
+
+Medical and Dental Sciences, Institute of Science Tokyo, Tokyo 113-8510, Japan 12 
+
+> 3
+
+Department of Biochemistry and Molecular Biology, Nippon Medical School Graduate School of Medicine, Tokyo 13 
+
+113-8603, Japan 14 
+
+> 4
+
+Department of Oral Pathology, Division of Oral Health Sciences, Graduate School of Medical and Dental Sciences, 15 
+
+Institute of Science Tokyo, Tokyo 113-8510, Japan 16 
+
+> 5
+
+Division of Surgical Pathology, Institute of Science Tokyo Hospital, Tokyo 113-8510, Japan 17 
+
+> 6
+
+These authors contributed equally. 18 
+
+> 7
+
+Lead contact 19 
+
+*Correspondence: taku-sato@nms.ac.jp, ohteki.bre@mri.tmd.ac.jp 20 
+
+21 
+
+Abstract 22 
+
+Regardless of the success of clinical surgery, disseminated tumor cells (DTCs) can persist in distant 23 
+
+organs, with a fraction surviving chemotherapy, which can result in minimal residual disease (MRD), 24 
+
+a relevant reservoir for metastatic relapse. Yet, the cellular states that enable the survival and outgrowth 25 
+
+of MRD remain poorly defined. Here, using a patient-derived tongue cancer organoid (TCO) model, 26 
+
+we recapitulated the key features of chemotherapy-tolerant DTCs by culturing TCOs under growth-27 
+
+factor deprivation and chemotherapeutic stress conditions that mimic the metastatic tissue environment. 28 
+
+Clonal-level analyses revealed a distinct subset of cells that retained proliferative capacity without 29 
+
+entering a therapy-induced cytostatic state (hereafter referred to as cycling persisters, CPs). CPs 30 
+
+exhibited coordinated activation of the IFN signaling pathway, Xenobiotic metabolism, and 31 
+
+inflammatory signaling pathways, defining a transcriptional and metabolic program that enables 32 
+
+sustained proliferation of CPs under the poor conditions. Consistently, a cell population with similar 33 
+
+features was identified in metastatic tissues from patients. Longitudinal clonal tracking demonstrated 34 
+
+that early metastatic recurrence is more likely driven by CPs, suggesting a novel mechanism that differs 35 
+
+from the prevailing view that relapse arises from reactivation of dormant non-CPs. Our findings 36 
+
+highlight a critical therapeutic oversight in relapse prevention. 37 
+
+38 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted June 18, 2026. ;https://doi.org/10.64898/2026.06.14.732194 doi: bioRxiv preprint
+
+39 
+
+Introduction 40 
+
+Despite significant advances in multimodal cancer therapies, recurrence remains a major clinical 41 
+
+challenge. Even after seemingly successful treatments, distant relapses can occur in a significant 42 
+
+number of patients. This is primarily due to disseminated tumor cells (DTCs), which evade 43 
+
+conventional detection methods 1-3 . It is widely considered that a fraction of DTCs survive 44 
+
+chemotherapy by entering a dormant, growth-restricted state 4-9 , and metastatic relapse has been 45 
+
+attributed to the reawakening of those cells 10-12 . However, direct evidence for such abrupt reactivation 46 
+
+in patients remains limited, and it is unclear whether dormant DTCs represent a uniform population 47 
+
+with equal relapse-initiating capacities. Rather, DTC populations are likely heterogeneous 9,13,14 ,48 
+
+although the specific cellular states that ultimately give rise to clinically manifest metastases remain 49 
+
+poorly understood. In this context, DNA damage and mutational processes can occur in non-dividing 50 
+
+cells, while the emergence of relapse-initiating clones generally requires subsequent proliferative 51 
+
+expansion. How such clones arise from largely growth-restricted populations of DTCs remains an open 52 
+
+question, raising fundamental issues about the cellular states and evolutionary dynamics that underlie 53 
+
+metastatic recurrence. Thus, defining the cellular state that confers a relapse-initiating capacity on a 54 
+
+subset of DTCs is critical for understanding the biological basis of metastatic recurrence and for 55 
+
+developing effective prevention strategies. 56 
+
+Using patient-derived tumor organoids (PDTOs), previous studies, including studies from our 57 
+
+group, demonstrated that certain PDTO lines exhibit robust drug tolerance not through stable resistant 58 
+
+clones but through transient, mutation-independent persister states 15-17 . Here, we established an in vitro 59 
+
+PDTO platform with AI-based clonal tracking to examine how tumor cells survive and maintain 60 
+
+proliferation under minimal-niche conditions after chemotherapy that mimic those in metastatic sites. 61 
+
+Our findings show that cell fate is determined early on. Some cells maintain proliferation as cycling 62 
+
+persisters (CPs), while others enter growth arrest as non-CPs or die in a stochastic manner. This study 63 
+
+proposes an “insomnia” model, distinct from the conventional “long-term dormancy and awakening ”64 
+
+model, thereby defining a novel chemotherapy-induced DTC phenotype that contributes to metastatic 65 
+
+relapse. 66 
+
+67 
+
+68 
+
+Results 69 
+
+A small subset of DTC clones retains proliferative capacity after chemotherapy 70 
+
+To evaluate the proliferative status of DTCs after chemotherapy, we examined cervical lymph nodes, 71 
+
+typical organs to which head and neck tumors often metastasize, resected from patients with oral cancer 72 
+
+who had received neoadjuvant chemotherapy (NAC) consisting of paclitaxel, carboplatin, and 73 
+
+cetuximab (PCE), followed by primary tumor resection and neck dissection (Fig. 1A, B). All 74 
+
+identifiable lymph nodes were isolated from the dissected tissues of each of seven patients and the 75 
+
+presence of metastatic carcinomas was evaluated by hematoxylin-eosin (HE) staining (Fig. 1A). 76 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted June 18, 2026. ;https://doi.org/10.64898/2026.06.14.732194 doi: bioRxiv preprint
+
+Surgery was performed 4–53 days (median 21 days) after completing NAC (Fig. 1C). Metastatic 77 
+
+lesions were detected in three patients, with 34–100 lymph nodes examined per patient (median, 61): 78 
+
+Pt. 2 (3/100 nodes), Pt. 5 (5/61 nodes), and Pt. 7 (6/89 nodes) (Fig. 1C). 79 
+
+Most tumor areas in all metastatic lesions exhibited necrosis consistent with chemotherapy-80 
+
+induced cytotoxicity (Fig. 1D, HE). However, Ki67-positive and pan-cytokeratin marker (AE1/AE3)-81 
+
+positive tumor cells were present at the peripheral regions of the tumor nests (Fig. 1D, AE1/AE3 Ki67). 82 
+
+Those cells accounted for 8.1%-62.3% (median 23.3%) of viable metastatic carcinoma cells (Fig. 1E). 83 
+
+In contrast, only a few mitotically active (pHH3-positive) cells were detected in 10 high-power fields 84 
+
+(HPFs) of the tumor tissues in patients 5 and 7, and none were detected in patient 2 (Fig. 1D, pHH3). 85 
+
+Notably, one lymph node (#81) from patient 7 contained a higher fraction of pHH3-positive cells (Fig. 86 
+
+1E). 87 
+
+Together, these data suggest that even after systemic chemotherapy, a small subset of metastatic 88 
+
+tumor cell clones retains the ability to proliferate in lymph nodes, which could lead to metastatic 89 
+
+recurrence. 90 
+
+91 
+
+In vitro modeling of DTCs using patient-derived organoids 92 
+
+Adult epithelial stem cells are maintained within highly specialized, spatially restricted niches that 93 
+
+provide growth cues, such as Wnt ligands, epidermal growth factor (EGF) family members, Notch 94 
+
+ligands, and bone morphogenetic protein (BMP) modulators, in a concentrated, localized manner 18,19 .95 
+
+Those signals are supplied by defined cellular sources, including specialized epithelial cells and niche-96 
+
+associated stromal components, in a tissue-dependent manner, and are confined to precise 97 
+
+microanatomical locations rather than being uniformly distributed throughout the tissue. Consistent 98 
+
+with this principle, the normal tongue epithelium proliferated and formed organoids (hereafter referred 99 
+
+to as TNOs) in culture medium supplemented with niche factors (NFs), including Noggin, EGF, and 100 
+
+R-spondin 1 (hereafter referred to as NF-sufficient medium). Further addition of several factors to the 101 
+
+medium, including FGF2, forskolin, Prostaglandin E2, A83-01, nicotinamide, and CHIR99021 102 
+
+(hereafter referred to as TNO-optimal medium), improved the growth of TNOs. In contrast, when NFs 103 
+
+were removed (niche-deprived medium), organoids failed to form and did not recover even after 104 
+
+exposure to the TNO-optimal medium several days later (Supplementary Fig. 1A–D). These findings 105 
+
+were also replicated in normal esophageal squamous epithelial cells (ENOs; Supplementary Fig. 1E, 106 
+
+F). 107 
+
+On the other hand, DTCs that extravasate into secondary organs are unlikely to encounter a 108 
+
+pre-formed niche. Instead, they lodge in regions with poor niche conditions. Consistent with this, 109 
+
+clinical observations and experimental models show that DTCs commonly enter a dormant, non-110 
+
+proliferative, low-metabolic state 6,7,9,20,21 .111 
+
+Supporting this concept, despite their malignant nature, cancer cells remain dependent on 112 
+
+defined niche-derived signals for optimal survival and proliferation. This dependence is exemplified 113 
+
+by the requirement for exogenous NFs, such as Wnt ligands, EGF, and other epithelial stem cell-114 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted June 18, 2026. ;https://doi.org/10.64898/2026.06.14.732194 doi: bioRxiv preprint
+
+associated signals, for the long-term propagation of PDTOs across multiple epithelial cancer 115 
+
+types 15,16,22-26 . Similarly, the withdrawal of niche factors from optimized culture media significantly 116 
+
+reduced organoid growth in our TCO models and, in some contexts, induced cell death (Fig. 2A, B). 117 
+
+Together, these findings suggest that metastatic tissues do not naturally provide sufficient NFs 118 
+
+necessary for robust cancer cell proliferation. Therefore, they are initially unfavorable for early 119 
+
+metastatic outgrowth unless supportive components of the niche are subsequently established or 120 
+
+remodeled. 121 
+
+Notably, while most TCO lines exhibited reduced growth under NF-deprived conditions, some 122 
+
+cells appeared to survive. Those cells resumed proliferation when re-exposed to an NF-sufficient 123 
+
+medium (Fig. 2C, D). Thus, the capacity of a surviving fraction of cells to withstand NF deprivation 124 
+
+without permanently losing their proliferative potential distinguishes tongue cancer cells from their 125 
+
+normal epithelial counterparts (Supplementary Fig. 1A–D). Furthermore, TCO organoid lines 126 
+
+established from metastatic lymph nodes (hereafter referred to as TLOs) frequently exhibited 127 
+
+comparable survival under both NF-deprived and NF-sufficient conditions (Fig. 2B). Similar results 128 
+
+were observed when comparing paired TCO and TLO lines derived from the same patient (Fig. 2E, F), 129 
+
+demonstrating a substantially reduced dependence of TLOs on exogenous NFs. Consistently, NF-130 
+
+independence increased over the long term in some TCO lines cultured under NF-deprived conditions 131 
+
+(Fig. 2G, H). Considering that metastatic lesions are sustained by cancer cell clones derived from 132 
+
+primary tumors that have acquired the ability to adapt to microenvironments with poor niches, such as 133 
+
+those encountered in lymph nodes, it is plausible that cancer cell clones that survive prolonged culture 134 
+
+of primary TCOs under NF-deprived conditions exhibit key functional features of DTCs. 135 
+
+Contrary to the prevailing belief that DTCs remain dormant 4-9 , analysis of post-treatment 136 
+
+metastatic specimens revealed that a subset of tumor cells retains proliferative capacity even after 137 
+
+chemotherapy (Fig. 1D, E). We therefore modeled this clinically relevant state in vitro by culturing 138 
+
+tumor cells under NF–deprived and chemotherapeutic conditions that mimic at least in part the niche-139 
+
+poor, treatment-exposed metastatic microenvironment. First, we examined the impact of NF-deprived 140 
+
+conditions on the response to cisplatin (CDDP), a standard chemotherapeutic agent for oral cancer. 141 
+
+IC50 values were calculated from the dose-response curves for each TCO after 10 days of culture in 142 
+
+NF-sufficient medium or in NF-deprived medium, and CDDP was administered from day 4 to day 7. 143 
+
+Notably, all TCOs showed a marked increase in IC50 when cultured in NF-deprived medium compared 144 
+
+to NF-sufficient medium (Supplementary Fig. 2A), which suggests that DTCs residing in an NF-145 
+
+deprived environment display enhanced resistance to chemotherapy. A similar increase in 146 
+
+chemotherapeutic resistance under these culture conditions was also observed in an esophageal 147 
+
+squamous cell carcinoma (ESCC) model (Supplementary Fig. 2B). 148 
+
+To monitor dynamic changes in individual surviving cancer cell clones, conventional viability 149 
+
+assays based on bulk ATP measurements, such as CellTiter-Glo, have a couple of limitations. Since the 150 
+
+assay requires reagent-induced cell lysis, continuous long-term tracking of the same well is not feasible. 151 
+
+In addition, these assays provide only bulk measurements of cell viability and therefore do not permit 152 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted June 18, 2026. ;https://doi.org/10.64898/2026.06.14.732194 doi: bioRxiv preprint
+
+assessment at the single-clone level. To address those issues, we developed an image-based analytical 153 
+
+framework employing time-resolved, high-resolution imaging of 3D organoid cultures. Within that 154 
+
+framework, we identified and quantitatively assessed viable cell clusters based on their projected areas. 155 
+
+We employed a deep learning–based artificial intelligence (AI) approach for cell viability classification. 156 
+
+Specifically, we used paired datasets consisting of brightfield images and corresponding propidium 157 
+
+iodide (PI) stained images from the same fields for iterative model training. Through this process, we 158 
+
+developed a model that can accurately identify dead cells using brightfield images alone 159 
+
+(Supplementary Fig. 3). Dead cells identified by PI staining were used as ground truth (Supplementary 160 
+
+Fig. 3A, B), and deep learning models were iteratively trained for the precise detection of dead cells 161 
+
+(Supplementary Fig. 3C, D). Consequently, the identification of dead clones achieved more than 95% 162 
+
+accuracy, with the area sum and clone number as key metrics (Supplementary Fig. 3E, F). In this 163 
+
+method, excluding dead-cell regions enabled us to define viable cells. The number of viable cells 164 
+
+estimated by this method was highly correlated with measurements obtained by CellTiter-Glo 165 
+
+(Supplementary Fig. 3G). Taken together, these observations indicate that our image-based analytical 166 
+
+framework is well-suited for longitudinal tracking of individual clones within the same well over 167 
+
+extended culture periods. 168 
+
+Using this method, organoids were monitored for up to 1 month in NF-deprived medium. 169 
+
+CDDP was administered from day 4 to day 7 of the culture at a concentration corresponding to the 170 
+
+maximum plasma concentration (C max ) observed in patients. Specific organoid lines, such as TCO8, 171 
+
+TCO21, TCO32, and TCO42, were found to contain a relatively higher proportion of cancer cell clones 172 
+
+that continued to proliferate without entering a cytostatic state (Fig. 2I-M, Supplementary Fig. 4A, B), 173 
+
+implying the presence of proliferative cancer cell clones under poor-niche and chemotherapeutic 174 
+
+conditions in patients as a potential source of tumor recurrence. These clones are referred to as CPs. 175 
+
+In contrast, proliferating cancer cell clones were only rarely observed in organoid lines such as TCO3, 176 
+
+TCO12, and TCO18 under the same culture conditions (Fig. 2I–M, Supplementary Fig. 4A, B). 177 
+
+Furthermore, following the extended culture under NF-deprived conditions combined with 178 
+
+chemotherapy exposure, subsequent restoration of NF-sufficient conditions failed to induce re-179 
+
+expansion of previously non-proliferative clones (Supplementary Fig. 4C, D). A similar inter-organoid 180 
+
+line heterogeneity was also observed in ESCCOs (Supplementary Fig. 4E, F). The frequency of CPs 181 
+
+was highly reproducible across independent experiments, indicating that the underlying determinants 182 
+
+of this phenotype are likely driven by stable genomic and/or epigenomic alterations maintained during 183 
+
+serial passaging. 184 
+
+185 
+
+Clonal-level analysis of 3D cultures defines the heterogeneity of chemotherapy 186 
+
+responses 187 
+
+Although a fraction of cells at metastatic sites retain the ability to proliferate even after systemic 188 
+
+chemotherapy (Fig. 1D, E), snapshot analyses of pathological specimens cannot determine the 189 
+
+subsequent fate of these cells. To directly interrogate the long-term fate of CPs versus non-CPs 190 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted June 18, 2026. ;https://doi.org/10.64898/2026.06.14.732194 doi: bioRxiv preprint
+
+following exposure to chemotherapeutic drugs, we developed a novel in vitro clonal-tracking system 191 
+
+that enables the precise monitoring of individual tumor clones. This system allows us to study their 192 
+
+distinct proliferative behaviors and contributions to relapse. In this system, after AI-assisted 193 
+
+segmentation (Supplementary Fig. 3A-D), individual clonal aggregates were labeled, and their 194 
+
+centroids were computationally registered across serial images. This alignment procedure reliably 195 
+
+tracked the same clones throughout the entire observation period (see Methods). Representative 196 
+
+outputs are shown in Fig. 3A, demonstrating accurate and stable clonal identification over time. 197 
+
+Using this system, we monitored thousands of individual clones immediately after exposure to 198 
+
+chemotherapeutic agents across multiple TCO lines, including TCO3, TCO8, TCO12, TCO18, TCO21, 199 
+
+TCO32, and TCO42. Changes in two-dimensional clonal areas were quantified based on microscopic 200 
+
+images from day 4 (treatment initiation) to day 13 (Fig. 3B, Supplementary Fig. 5A,B). Clones whose 201 
+
+area increased by more than twofold from day 7 to day 13 were defined as CPs and are highlighted in 202 
+
+red. In contrast, clones exhibiting less than a twofold increase were classified as non-CPs or dead 203 
+
+(gray). The frequency of CP formation varied markedly between TCO lines: TCO8, TCO21, TCO32, 204 
+
+and TCO42 generated relatively abundant CPs (hereafter referred to as CP-rich TCOs), whereas TCO 205 
+
+lines TCO3, TCO12, and TCO18 hardly produced CPs (hereafter referred to as CP-poor TCOs) (Fig. 206 
+
+3C). 207 
+
+Next, we tracked the long-term fate of CPs in CP-rich TCO lines from day 13 to day 31. Notably, 208 
+
+clonal behaviors became increasingly polarized over time. By day 31, the surviving clones were 209 
+
+primarily composed of cells that had either expanded minimally or grown more than tenfold compared 210 
+
+to their size on day 7. These results imply that the proliferative capacity of CPs that emerge after 211 
+
+chemotherapy exposure is heterogeneous. Not all CP clones maintain continuous growth, and only a 212 
+
+subset of them can evade growth arrest, retaining the ability to proliferate and form large aggregates 213 
+
+over time (Fig. 3D, E, Supplementary Fig. 6, 8A, B). In addition, we observed that non-CP clones in 214 
+
+CP-rich TCOs began to proliferate slowly from day 13 onward under NF-deprived conditions, a 215 
+
+phenomenon we defined as “slow-awakening”, characterized by a greater than twofold increase in area 216 
+
+relative to day 7. “Slow-awakening” clones were only rarely observed in CP-rich TCOs (Fig. 3F, G, 217 
+
+Supplementary Fig. 8C, D) and were negligible in CP-poor TCOs (Supplementary Fig. 7A-C). Finally, 218 
+
+we classified clones as "disappearing" or "surviving" at day 31 and quantified the extent of expansion 219 
+
+among surviving clones between day 13 and day 31. Notably, among clones that expanded by more 220 
+
+than tenfold, the vast majority had already increased in size by at least twofold between day 7 and day 221 
+
+13 (Fig. 3H). This trend was consistently observed across other CP-rich TCOs (Supplementary Fig. 6). 222 
+
+Together, our data suggest that CPs arise from pre-existing clones whose molecular state 223 
+
+enables their survival without entering a cytostatic, dormant program. Those clones maintain the 224 
+
+capacity to proliferate under cytotoxic stress, challenging the conventional “long-term dormancy and 225 
+
+awakening” model by demonstrating that persistent proliferation, rather than dormancy, underlies 226 
+
+long-term survival (Fig. 3I). 227 
+
+228 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted June 18, 2026. ;https://doi.org/10.64898/2026.06.14.732194 doi: bioRxiv preprint
+
+CPs exhibit MRD features of chemotherapy-treated patients 229 
+
+To elucidate the molecular basis of the emergence of chemo-resistant CPs under NF-deprived 230 
+
+conditions, cancer cells derived from CP-rich or CP-poor TCO lines were either exposed to 231 
+
+chemotherapeutic agents under NF-deprived conditions or were maintained under drug-free, NF-232 
+
+sufficient conditions, and interline differences in gene expression profiles were analyzed. 233 
+
+Unsupervised principal component analysis (PCA) revealed that samples clustered primarily by 234 
+
+organoid line rather than separating into distinct groups based on CP-rich versus CP-poor status and 235 
+
+culture conditions, including NF-sufficient versus NF-deprived with chemotherapeutic treatment (Fig. 236 
+
+4A). 237 
+
+Next, we compared the gene expression profiles of cancer cells derived from CP-rich or from 238 
+
+CP-poor lines under NF-deprived conditions in the presence of chemotherapeutic agents. Gene set 239 
+
+enrichment analysis (GSEA) revealed that the most significantly upregulated pathways in CP-rich lines, 240 
+
+compared to CP-poor lines, included the INTERFERON_ALPHA_RESPONSE and 241 
+
+INTERFERON_GAMMA_RESPONSE pathways. In addition, the E2F_TARGETS pathway, which 242 
+
+reflects proliferative activity, was activated, whereas genes associated with the P53_PATHWAY, which 243 
+
+is implicated in growth arrest and cell death following chemotherapy, were suppressed. These findings 244 
+
+indicate that CPs retain their proliferative capacity even under highly stringent culture conditions. 245 
+
+Consistently, the activation of genes related to cell cycle checkpoints (G2M_CHECKPOINT) was also 246 
+
+observed. Moreover, multiple metabolic pathways, including the 247 
+
+REACTIVE_OXYGEN_SPECIES_PATHWAY, XENOBIOTIC_METABOLISM, GLYCOLYSIS, 248 
+
+and ADIPOGENESIS, were upregulated, which suggests that transcriptional metabolic adaptation is a 249 
+
+key feature underlying CP emergence across different lines (Fig. 4B). We also compared the gene 250 
+
+expression profiles of CP-rich and CP-poor lines before and after CDDP exposure. Several pathways, 251 
+
+including the IFN SIGNAL PATHWAYS, XENOBIOTIC_METABOLISM, GLYCOLYSIS, 252 
+
+FATTY_ACID_METABOLISM, and INFLAMMATORY_RESPONSE, remained consistently active 253 
+
+in CP-rich lines regardless of CDDP treatment. In addition, compared to CP-poor lines, the following 254 
+
+pathways were relatively weak before treatment but were more strongly induced after drug exposure 255 
+
+in CP-rich lines: cell proliferation (E2F_TARGET, G2M_CHECKPOINTS, MITOTIC_SPINDLE), 256 
+
+inflammatory signaling (COAGULATION, TNFA_SIGNALING_VIA_NFKB, COMPLEMENT), 257 
+
+and epithelial–mesenchymal transition (EPITHELIAL_MESENCHYMAL_TRANSITION, 258 
+
+TGFB_SIGNALING). The activation of these pathways suggests their involvement in establishing a 259 
+
+cellular state permissive for CP emergence (Fig. 4C). Previous studies have reported that cancer cell 260 
+
+clones surviving chemotherapy adopt a diapause-like metabolically dormant state 27-30 . In contrast, CPs 261 
+
+observed in our model exhibited active transcriptional metabolic adaptation, indicating that they do 262 
+
+not conform to the previously proposed model in which low metabolic activity enables evasion of 263 
+
+chemotherapeutic effects. Furthermore, our findings suggest that pre-existing transcriptional states 264 
+
+facilitate the rapid induction of adaptive responses required for CP emergence. 265 
+
+Minimal residual disease (MRD) is inherently difficult to detect in patients by conventional 266 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted June 18, 2026. ;https://doi.org/10.64898/2026.06.14.732194 doi: bioRxiv preprint
+
+clinical evaluation 1-3 . However, detailed analysis of metastatic lymph nodes resected after NAC 267 
+
+revealed viable cancer cells, a subset of which clearly retained proliferative capacity (Fig. 1D, E). 268 
+
+Those cells correspond to CPs and suggest that similar populations may persist across multiple organs 269 
+
+in patients. Within the heterogeneous MRD compartment, such cells could represent a subpopulation 270 
+
+with the potential to drive disease recurrence. 271 
+
+To determine whether in vitro -induced CPs recapitulate the MRD state in vivo , we next 272 
+
+performed marker-based validation. Among the IFN signaling–related genes markedly upregulated in 273 
+
+CP-rich lines (Fig. 4B, C), we selected IFITM3 as a representative marker (Fig. 4D, Supplementary 274 
+
+Fig. 9, red arrowheads) and examined its expression in cancer cells that had metastasized to lymph 275 
+
+nodes in Pt. 5. Ki-67 + proliferative tumor cells were predominantly localized to the basal compartment 276 
+
+of the tumor nests, whereas differentiated tumor cells in the supra-basal keratinizing layers exhibited 277 
+
+little to no proliferative activity (Fig. 4E, F, Supplementary Fig. 10A, B). Of note, RNA-scope analysis 278 
+
+demonstrated that IFITM3 mRNA was strongly expressed in Ki-67 + proliferative, but not in Ki-67 -
+
+279 
+
+non-proliferative, tumor cells within basal regions (Fig. 4G, H, Supplementary Fig. 10C, D), 280 
+
+suggesting that IFITM3 is a novel marker for detecting CPs in metastatic lymph nodes. Collectively, 281 
+
+our in vitro MRD model recapitulated MRD features observed in patient metastatic tissues, which were 282 
+
+concentrated in CPs, a relevant source of recurrence. 283 
+
+We further evaluated the validity of our in vitro MRD model using previously reported mouse 284 
+
+metastasis models. Aouad et al. characterized the heterogeneity of DTCs in a mouse breast cancer 285 
+
+metastasis model and identified two distinct populations based on proliferative status: active and 286 
+
+inactive DTCs 21 . Active DTCs were characterized by activation of cell cycle–related pathways, 287 
+
+including E2F_TARGET and G2M_CHECKPOINT, whereas inactive DTCs exhibited reduced 288 
+
+activity of those pathways and a low-proliferative state. Just as with the characteristics of CPs in our 289 
+
+MRD model, active DTCs were enriched for multiple biological pathways, including GLYCOLYSIS, 290 
+
+REACTIVE_OXYGEN_SPECIES_PATHWAY, XENOBIOTIC_METABOLISM, 291 
+
+INTERFERON_GAMMA_RESPONSE, ADIPOGENESIS, and COAGULATION (Supplementary 292 
+
+Fig. 11A). Zhang et al. demonstrated that DTCs residing in the lungs exist in a dormant state, whereas 293 
+
+bleomycin treatment triggers their awakening and acquisition of proliferative capacity 31 . We re-294 
+
+analyzed the published dataset, which revealed significant enrichment of multiple pathways, including 295 
+
+INTERFERON_GAMMA_RESPONSE, INTERFERON_ALPHA_RESPONSE, 296 
+
+INFLAMMATORY_RESPONSE, TNFA_SIGNALING, IL2–STAT5_SIGNALING, 297 
+
+XENOBIOTIC_METABOLISM, and ADIPOGENESIS. Again, these transcriptional features closely 298 
+
+mirror those observed in our CP population (Supplementary Fig. 11B). 299 
+
+In summary, our “insomnia” model demonstrates that CPs that emerge from the beginning of 300 
+
+culture conditions mimicking the harsh microenvironment of metastatic tissues reproduce the key 301 
+
+characteristics of metastatic CPs found in the MRD of the patients. In addition, the “insomniac” DTCs 302 
+
+(CPs) share a transcriptional program with late-awakening DTCs in the conventional “long-term 303 
+
+dormancy and awakening ” model, highlighting the validity and utility of our model for identifying 304 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted June 18, 2026. ;https://doi.org/10.64898/2026.06.14.732194 doi: bioRxiv preprint
+
+therapeutic strategies targeting early versus late relapse-initiating cell populations. 305 
+
+306 
+
+307 
+
+Discussion 308 
+
+In this study, we established culture conditions that recapitulate the metastatic tumor 309 
+
+microenvironment and applied them to a diverse panel of TCO lines. Under these conditions, we 310 
+
+identified a population of CPs that survive chemotherapy while retaining their proliferative capacity. 311 
+
+We further characterized these CPs based on their gene expression profiles. In addition, we identified 312 
+
+CP-associated gene markers and examined their spatial expression patterns in patient-derived 313 
+
+metastatic tissues, demonstrating the presence of a similar cell population in metastases from 314 
+
+chemotherapy-treated patients. These cells are likely to represent a population capable of contributing 315 
+
+to early disease recurrence. Collectively, our model provides a valuable platform for investigating the 316 
+
+molecular basis of cancer recurrence. 317 
+
+Our findings are not readily reconciled with a simple long-term dormancy-and-awakening 318 
+
+model, in which DTCs persist in a deeply quiescent state and subsequently re-enter the cell cycle to 319 
+
+drive metastatic outgrowth 10-12,32 . Instead, our results suggest that the proliferative potential of 320 
+
+individual clones is largely determined prior to chemotherapy exposure, and that treatment-induced 321 
+
+damage dictates whether clones with proliferative potential accelerate their expansion (insomnia) or 322 
+
+clones lacking the potential enter a durable, non-expanding state. Following extended culture (1 323 
+
+month) under NF-deprived conditions combined with chemotherapy exposure, subsequent restoration 324 
+
+of NF-sufficient conditions failed to induce robust re-expansion of previously non-proliferative clones 325 
+
+(Supplementary Fig. 4C, D). These observations underscore the importance of the “insomnia” model 326 
+
+in the post-treatment dynamics of tumor cells and suggest that, at least under these conditions, the 327 
+
+conventional “long-term dormancy and awakening” model is rare. 328 
+
+At the same time, several limitations of our study should be considered. Organoid culture 329 
+
+systems are inherently constrained in duration and do not fully recapitulate the long-term persistence 330 
+
+of DTCs in patients. It therefore remains possible that prolonged survival within native 331 
+
+microenvironments could induce additional cellular adaptations that enable delayed reawakening, as 332 
+
+proposed in the long-term dormancy model. 333 
+
+Despite the success of clinical surgery and chemoradiotherapy, DTCs persist as MRD in tissues 334 
+
+distant from the primary tumor site. The suppression of recurrence could be achieved by keeping MRD 335 
+
+in a sleeping state. Given that this represents a key concept for future cancer control strategies, our 336 
+
+model will serve as a vital tool for elucidating the mechanisms underlying CPs and for developing 337 
+
+control methods based on those mechanisms, thereby helping prevent recurrence. 338 
+
+339 
+
+340 
+
+Methods 341 
+
+Human tissue samples 342 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted June 18, 2026. ;https://doi.org/10.64898/2026.06.14.732194 doi: bioRxiv preprint
+
+The pathological specimens used to detect DTCs were obtained from samples collected at the Institute 343 
+
+of Science Tokyo Hospital. Samples were restricted to cases in which oral cancer patients underwent 344 
+
+surgery after receiving PCE neoadjuvant therapy and had a pathologically confirmed diagnosis of 345 
+
+squamous cell carcinoma (SCC). 346 
+
+Patient samples used to establish organoids were obtained from the Institute of Science Tokyo 347 
+
+Hospital, and the Jichi Medical University Hospital. None of the patients had received NAC. Normal, 348 
+
+lymph node, and tumor tissues were obtained from surgically resected specimens. Tumor tissues were 349 
+
+collected from non-necrotic regions. Lymph node samples were obtained from clinically apparent 350 
+
+metastatic lymph nodes, including submandibular, submental, and deep cervical (superior and middle) 351 
+
+nodes. Subsequent histopathological examination confirmed SCC in the primary tumor and metastasis 352 
+
+to the lymph nodes. The study was approved by the institutional ethical committees of both institutes. 353 
+
+Written informed consent was obtained from all patients, and tissues were used solely for research 354 
+
+purposes. A previously established library of normal epithelium and cancer organoids generated in our 355 
+
+laboratory was also used. 356 
+
+357 
+
+Organoid establishment 358 
+
+Tissues were cut into small pieces and digested with 0.125% or 0.025% trypsin for 30 min at 37 ℃ 359 
+
+with vigorous pipetting every 10 min. The reaction was quenched by adding PBS lacking Ca 2+ and 360 
+
+Mg 2+ supplemented with 10% FCS (hereafter, 10% FCS/PBS), and the suspension was passed through 361 
+
+a 100 μm cell strainer (Corning). Cells were then centrifuged at 400 × g for 5 min, and the pellets were 362 
+
+resuspended in 1 mL Advanced DMEM/F-12 medium (Thermo Fisher Scientific) containing Primocin 363 
+
+(Invivogen), 1 mM HEPES (Nacalai), and L-alanyl-L-glutamine (Nacalai) (hereafter, AdDF+++). 364 
+
+After centrifugation, the pellets were resuspended in Matrigel (Corning) and dispensed into culture 365 
+
+plates. The plates were incubated at 37 °C for 20 min to allow the Matrigel to solidify, after which 366 
+
+culture medium was added to each well. For culturing cancer organoids, AdDF+++ medium 367 
+
+supplemented with 1×B27 (Invitrogen), 1.25 mM N-acetylcysteine (Sigma-Aldrich), 10% RspoI-368 
+
+culture supernatant of the 293T-HA-RspoI-Fc cell line (provided by Calvin Kuo of Stanford 369 
+
+University), 100 ng/mL Noggin (Miltenyi), 50 ng/mL EGF (Peprotech), and 10 μM Y-27632 (Nacalai), 370 
+
+which is collectively referred to as NF-sufficient medium, was added to each well. In addition to these 371 
+
+components, the medium for normal organoids was supplemented with 5 ng/mL FGF2 (PeproTech), 1 372 
+
+μM forskolin (Tocris), 1 μM Prostaglandin E2 (Tocris), 5 nM A83-01 (Nacalai), 10 mM nicotinamide 373 
+
+(Sigma), and 0.3 μM CHIR99021 (Chemscene), which is collectively referred to as TNO-optimal 374 
+
+medium. Cells were cultured at 37 ℃ with 5% CO 2, and the medium was changed every 3-4 days. For 375 
+
+passaging, organoids were collected, treated with TrypLE Express (Thermo Fisher Scientific) at 37 ℃ 376 
+
+for 15 min, and mechanically dissociated by pipetting. The cells were then washed with 10% FCS/PBS 377 
+
+and centrifuged at 440 × g for 5 min. The cell pellets were resuspended in AdDF+++ and centrifuged 378 
+
+again at 440 × g for 5 min, then subsequently resuspended in Matrigel. Organoids were passaged every 379 
+
+7-14 days. 380 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted June 18, 2026. ;https://doi.org/10.64898/2026.06.14.732194 doi: bioRxiv preprint
+
+381 
+
+Histology and immunostaining 382 
+
+Human tissues were fixed with 10% phosphate-buffered formalin (pH 7.4, Fujifilm Wako Chemicals) 383 
+
+and were prepared for histological examination. Formalin-fixed, paraffin-embedded (FFPE) tissue 384 
+
+blocks were cut into 3 μm-thick sections for HE staining. Only lymph nodes with histologically 385 
+
+confirmed SCC metastases following PCE neoadjuvant therapy were selected for the 386 
+
+immunohistochemical analysis. FFPE tissue blocks were cut into 3 μm-thick sections for 387 
+
+immunohistochemical analysis. Both double staining for Ki-67 and AE1/AE3, and single staining for 388 
+
+phosphor-histone H3 (pHH3) were performed. 389 
+
+Double immunohistochemical staining for Ki-67 and AE1/AE3 was performed using the 390 
+
+BOND-III system (Leica Biosystems). Antigen retrieval for both markers utilized BOND Epitope 391 
+
+Retrieval Solution 2 at 100°C for 20 min. Sequential staining was performed starting with anti-Ki-67 392 
+
+(clone MIB-1, 1:200; Agilent Technologies) detected via the BOND Polymer Refine Detection (DAB) 393 
+
+system, followed by anti-AE1/AE3 (1:4; Agilent Technologies) detected utilizing the BOND Polymer 394 
+
+Refine Red Detection (Alkaline Phosphatase) system. For pHH3 single staining, a manual staining 395 
+
+protocol was performed. Antigen retrieval was conducted using a microwave at 97°C for 40 min in 396 
+
+Histofine pH 9 buffer (Nichirei Biosciences). Sections were incubated with an anti-pHH3 primary 397 
+
+antibody (1:500 dilution; Cell Marque), followed by detection using the Dako EnVision+ System-HRP 398 
+
+Labeled Polymer Anti-Rabbit (Agilent Technologies). pHH3 positivity was evaluated by a pathologist 399 
+
+based on previously published criteria 33 .400 
+
+401 
+
+Cell viability assay 402 
+
+For testing NF dependency, organoids derived from primary tumors, metastatic lymph nodes, or 403 
+
+normal epithelium were dissociated into single cells, embedded in Matrigel at 2000 cells/10 μL, and 404 
+
+seeded into 96-well plates. After Matrigel solidification, NF-sufficient medium (AdDF+++ 405 
+
+supplemented with B27, N-acetylcysteine, 10% RspoI-culture supernatant of the 293T-HA-RspoI-Fc 406 
+
+cell line, Noggin, and EGF) or NF-deprived medium (AdDF+++ supplemented only with B27 and N-407 
+
+acetylcysteine) was added. Y-27632 was included immediately after passaging and was removed at the 408 
+
+next medium change. Cell viability was quantified on day 6 using CellTiter-Glo (Promega). In some 409 
+
+experiments, NF-deprived medium was replaced with NF-sufficient medium on day 6, and cells were 410 
+
+cultured for an additional 7 days to assess survival after NF-deprivation. CellTiter-Glo was performed 411 
+
+on day 13. 412 
+
+For CDDP dose–response curve analysis, dissociated tumor cells were embedded in Matrigel 413 
+
+at 2000 cells/10 μL and seeded into 96-well plates (10 μL per well). Cells were treated with various 414 
+
+concentrations of CDDP (Fujifilm Wako Chemicals) from day 4 to day 7 after seeding. Cell viability 415 
+
+was measured on day 10 using CellTiter-Glo (Promega). 416 
+
+For long-term NF-deprived cultures, dissociated tumor cells were embedded in Matrigel and 417 
+
+then cultured in NF-deprived medium as described above. CDDP was added from day 4 to day 7, and 418 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted June 18, 2026. ;https://doi.org/10.64898/2026.06.14.732194 doi: bioRxiv preprint
+
+Y-27632 was included immediately after passaging. Cultures were maintained until day 31 with 419 
+
+medium changes every 3 days. 420 
+
+421 
+
+Microscopic imaging and deep-learning 422 
+
+Microscopic images were acquired using Cell3iMager NX (SCREEN). To enable longitudinal 423 
+
+quantification of viable organoid clone areas (defined as areas of cell clusters detected in microscopic 424 
+
+images) without sacrificing the wells, a deep-learning-based image analysis approach was employed. 425 
+
+Organoid clones were first annotated in bright-field images by manual labeling. These annotations 426 
+
+were then used to train a deep learning model to extract organoid clones irrespective of their viability 427 
+
+status, and a trained model was generated for subsequent analysis. Next, based on the model file, PI 428 
+
+staining was used to annotate dead (PI-positive) and viable (PI-negative) cells. The annotated dataset 429 
+
+was then used to train a deep learning model to discriminate between viable and dead cells solely from 430 
+
+bright-field images. In the initial output, the AI classified the clones into four groups based on their 431 
+
+positive/negative status for PI staining and the results of AI initial predictions. Type I: clones labeled 432 
+
+as “alive” with PI fluorescence intensity values < 20, Type II: clones labeled as “dead” with PI 433 
+
+fluorescence intensity values ≥ 10, Type III: clones labeled as “dead” despite PI fluorescence intensity 434 
+
+values < 10, Type IV: clones labeled as “alive” despite PI fluorescence intensity values ≥ 20. Types I 435 
+
+and II were excluded from additional training. In contrast, Type III clones were retrained as “alive” for 436 
+
+additional training. In particular, considering that expanding organoids naturally incorporate internal 437 
+
+dead cells even within viable clusters 34,35 , clones labeled as Type IV were generally categorized as 438 
+
+“alive”, while morphologically obvious dead cells and debris were manually re-annotated. These deep-439 
+
+learning models were run repeatedly until significant correlations were observed between PI-positive 440 
+
+clones predicted as “Dead” (Type II) and all clones predicted as “Dead” (Types II and III) both for area 441 
+
+and for clone count. In addition, we verified that the average accuracy for area and clone count reached 442 
+
+to over 95%. To minimize noise, debris and objects smaller than 100 μm 2 were excluded from the 443 
+
+clone recognition. To detect MRD clones, sequential clone imaging was performed every 3 days from 444 
+
+day 1 to day 31 after seeding. 445 
+
+446 
+
+Clone tracking 447 
+
+Image stacks (serial 2D fields or time series) were aligned using the manual landmark-based alignment 448 
+
+function of the TrakEM2 36 plugin in Fiji 37,38 with a rigid transformation model. For each pair of 449 
+
+consecutive frames, three stationary debris particles within the field of view were manually annotated 450 
+
+as fiducial landmarks to guide the alignment. Organoid foreground was segmented using the Color 451 
+
+Threshold tool in HSB space, with empirically tuned thresholds (Red channel). Resulting masks were 452 
+
+converted to 8-bit binary images. Spurious foreground was removed in Fiji, and organoid-sized objects 453 
+
+were extracted using size- and shape-based filtering (Analyze Particles), and manual correlations were 454 
+
+applied when needed. Binary mask images were converted into labeled images using Connected 455 
+
+Components Labeling with MorphoLibJ 39 . These labeled objects were then tracked with 456 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted June 18, 2026. ;https://doi.org/10.64898/2026.06.14.732194 doi: bioRxiv preprint
+
+TrackMate 40,41 using the Label Image Detector and the LAP tracker (frame-to-frame linking max 457 
+
+distance: 30 px; track segment gap-closing max distance: 50 px; max frame gap: 2; track segment 458 
+
+splitting: 30 px; track segment merging: 20 px). Spot data for each cell cluster were curated, and the 459 
+
+resulting table included TrackID (which is a unique ID associated to each individual clone for tracking 460 
+
+purposes), Time, and Area (px 2). Rare fusion (≤ 1.6%) or splitting (≤ 2.0%) events (Supplementary 461 
+
+Fig. 5B) were corrected by aggregating the areas of all TrackIDs involved. This aggregated area was 462 
+
+treated as a single clone and used consistently for area quantification at the time points immediately 463 
+
+preceding and following the event. 464 
+
+All data processing and statistical analyses were performed in Python (v3.13). Graphical 465 
+
+outputs were generated using matplotlib. 466 
+
+467 
+
+Bulk RNA sequencing and data analysis 468 
+
+RNA-seq library preparation, sequencing, mapping, and gene expression analyses were performed by 469 
+
+CyberomiX Inc.. Double-stranded cDNA was synthesized directly from 1000 cells according to the 470 
+
+manufacturer's instructions using a SMART-Seq v4 Ultra Low Input RNA Kit (Takara Bio). Generated 471 
+
+cDNAs were converted to an Illumina Sequencing compatible RNA library using a Nextera XT DNA 472 
+
+Library Preparation Kit (Illumina). Library concentration and quality were assessed using the Qubit 473 
+
+1X dsDNA HS Assay kit (Thermo Fisher Scientific) and the 4200 TapeStation with High Sensitivity 474 
+
+D5000 ScreenTape Assay (Agilent Technologies). RNA libraries underwent partial lane sequencing on 475 
+
+an Illumina Novaseq X platform (Illumina), with a sequence depth of 6 G and a read length of 2 x 150 476 
+
+bp. Sequencing was performed by Novogene AIT Genomics. 477 
+
+Raw sequencing read quality was assessed using FastQC (v0.12.1). Adapter removal and 478 
+
+quality trimming were performed with fastp (v0.23.4) using --trim_poly_g, --trim_poly_x, -q 20, and 479 
+
+-l 20. Trimmed reads were aligned to the human reference genome (hg38) using HISAT2 (v2.2.1). 480 
+
+Gene-level read counts were quantified using Subread/featureCounts (v2.0.6) with the Ensembl 481 
+
+GRCh38 release 114 annotation to generate a gene-by-sample count matrix. Ensembl gene IDs were 482 
+
+converted to gene symbols using biomaRt (v2.58.0), and gene symbols were appended to the count 483 
+
+matrix. TPM values were subsequently calculated from the raw counts. 484 
+
+For PCA, genes with low expression (total counts ≤ 10) were removed, and a variance 485 
+
+stabilizing transformation (VST) was applied using DESeq2. PCA was performed on the transformed 486 
+
+data using the prcomp function in R, and the first two principal components were visualized using 487 
+
+ggplot2. 488 
+
+Differential expression analysis was performed using the voom–limma pipeline implemented 489 
+
+in the limma and edgeR packages. Briefly, count data were normalized, transformed using voom, and 490 
+
+fitted to a linear model. Correlation between replicate samples was accounted for using 491 
+
+duplicateCorrelation. Differentially expressed genes were identified using empirical Bayes moderation, 492 
+
+and p-values were adjusted using the Benjamini–Hochberg method. 493 
+
+For GSEA, genes were ranked based on the moderated t-statistics from the differential 494 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted June 18, 2026. ;https://doi.org/10.64898/2026.06.14.732194 doi: bioRxiv preprint
+
+expression analysis. Hallmark gene sets (H) were obtained from the MSigDB using the msigdbr 495 
+
+package. Enrichment analysis was performed using the clusterProfiler package with the fgsea 496 
+
+algorithm. Gene sets with adjusted p-values < 0.05 were considered significantly enriched. 497 
+
+To compare pathway enrichment profiles, gene set enrichment results obtained in this study 498 
+
+were compared with publicly available datasets, including active DTCs reported by Aouad et al. 21 and 499 
+
+reawakened DTCs from GSE289726 31 . For each dataset, enrichment results were matched based on 500 
+
+common Hallmark gene sets. In comparison with the Aouad et al. dataset 21 , normalized enrichment 501 
+
+scores (NES) from this study were compared with reported T-statistics for pathway activation. In the 502 
+
+comparison with GSE289726, NES values derived from reanalysis of the dataset were directly 503 
+
+compared with those obtained in this study. Significantly enriched pathways were defined using an 504 
+
+adjusted p-value threshold of 0.05. Overlap between enriched pathways was assessed by classifying 505 
+
+pathways based on significance and directionality, and the statistical significance of overlap was 506 
+
+evaluated using Fisher’s exact test. Scatter plots were generated to visualize the relationship between 507 
+
+enrichment scores across datasets, with point size reflecting statistical significance. 508 
+
+All analyses were performed in R (version 4.4.0). 509 
+
+510 
+
+GSEA (desktop version) 511 
+
+GSEA was performed using GSEA v4.4.0 software (Broad Institute, 512 
+
+http://www.broadinstitute.org/gsea/msigdb/index.jsp). For the desktop-based analysis, the number of 513 
+
+permutations was set to 1000. Low-expressed genes, rRNAs, and mtRNAs were excluded from the 514 
+
+input gene lists prior to analysis. 515 
+
+516 
+
+RNAscope 517 
+
+RNAscope in situ hybridization (ISH) of FFPE samples was performed using the RNAscope 2.5 HD 518 
+
+Reagent Kit-Brown (DAB-HRP) from Advanced Cell Diagnostics (ACD). Sample pretreatment and 519 
+
+RNAscope were performed according to the manufacturer’s instructions (ACD). RNAscope probes, 520 
+
+Hs-IFITM3-O1-C1 (Cat. No.1062531-C1) were purchased from ACD. Microscopic images were 521 
+
+obtained using a NanoZoomer S210 digital slide scanner (Hamamatsu Photonics K.K.) 522 
+
+523 
+
+524 
+
+Data availability 525 
+
+The RNA-seq datasets have been deposited in the Gene Expression Omnibus (RRID: SCR_005012) 526 
+
+with the accession number GSEXXXXXX. 527 
+
+528 
+
+529 
+
+References 530 
+
+1. Moding, E. J. et al. Detecting liquid remnants of solid tumors: circulating tumor DNA minimal 531 
+
+residual disease. Cancer Discov. 11 , 2968–2986 (2021). 532 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted June 18, 2026. ;https://doi.org/10.64898/2026.06.14.732194 doi: bioRxiv preprint
+
+2. Luskin, M. R. et al. Targeting minimal residual disease: a path to cure? Nat. Rev. Cancer 18 , 255– 533 
+
+263 (2018). 534 
+
+3. Pantel, K. & Alix-Panabières, C. Minimal residual disease as a target for liquid biopsy in 535 
+
+patients with solid tumours. Nat. Rev. Clin. Oncol. 22 , 65–77 (2025). 536 
+
+4. Hadfield, G. The dormant cancer cell. Br. Med. J. 2, 607–610 (1954). 537 
+
+5. Phan, T. G. & Croucher, P. I. The dormant cancer cell life cycle. Nat. Rev. Cancer 20 , 398–411 538 
+
+(2020). 539 
+
+6. Braun, S. et al. Cytokeratin-positive cells in the bone marrow and survival of patients with stage 540 
+
+I, II, or III breast cancer. N. Engl. J. Med. 342 , 525–533 (2000). 541 
+
+7. Todenhöfer, T. et al. Significance of apoptotic and non-apoptotic disseminated tumor cells in the 542 
+
+bone marrow of patients with clinically localized prostate cancer. Prostate 75 , 637–645 (2015). 543 
+
+8. Barnieh, F. M., Morton, J., Olanrewaju, O. & El-Khamisy, S. F. Decoding the adaptive survival 544 
+
+mechanisms of breast cancer dormancy. Oncogene 44 , 3759–3773 (2025). 545 
+
+9. Borgen, E. et al. NR2F1 stratifies dormant disseminated tumor cells in breast cancer patients. 546 
+
+Breast Cancer Res. 20 , 120 (2018). 547 
+
+10. Santos-de-Frutos, K. & Djouder, N. When dormancy fuels tumour relapse. Commun. Biol. 4, 747 548 
+
+(2021). 549 
+
+11. Sosa, M. S., Bragado, P. & Aguirre-Ghiso, J. A. Mechanisms of disseminated cancer cell 550 
+
+dormancy: an awakening field. Nat. Rev. Cancer 14 , 611–622 (2014). 551 
+
+12. Sánchez-Danés, A. et al. A slow-cycling LGR5 tumour population mediates basal cell carcinoma 552 
+
+relapse after therapy. Nature 562 , 434–438 (2018). 553 
+
+13. König, T. et al. Multi-parameter analysis of disseminated tumor cells (DTCs) in early breast cancer 554 
+
+patients with hormone-receptor-positive tumors. Cancers 15 , 568 (2023). 555 
+
+14. Hochheuser, C. et al. Metastatic tumor cells in bone marrow differ from paired neuroblastoma 556 
+
+tumor and contain subsets with therapy-resistant characteristics. bioRxiv 557 
+
+https://doi.org/10.1101/2024.09.13.612231 (2024). 558 
+
+15. Sase, M. et al. Comparative analysis of tongue cancer organoids among patients identifies the 559 
+
+heritable nature of minimal residual disease. Dev. Cell 60 , 396–413.e6 (2025). 560 
+
+16. Nakagawa, S. et al. An organoid library of human esophageal squamous cell carcinomas (ESCCs) 561 
+
+uncovers the chemotherapy-resistant ESCC features. Commun. Biol. 8, 507 (2025). 562 
+
+17. Sharma, S. V. et al. A chromatin-mediated reversible drug-tolerant state in cancer cell 563 
+
+subpopulations. Cell 141 , 69–80 (2010). 564 
+
+18. Sato, T. et al. Single Lgr5 stem cells build crypt-villus structures in vitro without a mesenchymal 565 
+
+niche. Nature 459 , 262–265 (2009). 566 
+
+19. Nanki, K. et al. Divergent routes toward Wnt and R-spondin niche independency during human 567 
+
+gastric carcinogenesis. Cell 174 , 856–869.e17 (2018). 568 
+
+20. Weigelt, B., Peterse, J. L. & van 't Veer, L. J. Breast cancer metastasis: markers and models. Nat. 569 
+
+Rev. Cancer 5, 591–602 (2005). 570 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted June 18, 2026. ;https://doi.org/10.64898/2026.06.14.732194 doi: bioRxiv preprint
+
+21. Aouad, P. et al. Epithelial-mesenchymal plasticity determines estrogen receptor positive breast 571 
+
+cancer dormancy and epithelial reconversion drives recurrence. Nat. Commun. 13 , 4975 (2022). 572 
+
+22. van de Wetering, M. et al. Prospective derivation of a living organoid biobank of colorectal cancer 573 
+
+patients. Cell 161 , 933–945 (2015). 574 
+
+23. Broutier, L. et al. Human primary liver cancer-derived organoid cultures for disease modeling and 575 
+
+drug screening. Nat. Med. 23 , 1424–1435 (2017). 576 
+
+24. Seino, T. et al. Human pancreatic tumor organoids reveal loss of stem cell niche factor dependence 577 
+
+during disease progression. Cell Stem Cell 22 , 454–467.e6 (2018). 578 
+
+25. Sachs, N. et al. A living biobank of breast cancer organoids captures disease heterogeneity. Cell 579 
+
+172 , 373–386.e10 (2018). 580 
+
+26. Gao, D. et al. Organoid cultures derived from patients with advanced prostate cancer. Cell 159 ,581 
+
+176–187 (2014). 582 
+
+27. Dhimolea, E. et al. An embryonic diapause-like adaptation with suppressed Myc activity enables 583 
+
+tumor treatment persistence. Cancer Cell 39 , 240–256.e11 (2021). 584 
+
+28. Rehman, S. K. et al. Colorectal cancer cells enter a diapause-like DTP state to survive 585 
+
+chemotherapy. Cell 184 , 226–242.e21 (2021). 586 
+
+29. El Laithy, Y. et al. Chemotherapy-treated breast cancer cells activate the WNT signaling pathway 587 
+
+to enter a diapause-like early persister state. Cancer Res. 86 , 310–330 (2026). 588 
+
+30. Sun, X. et al. The diapause-like colorectal cancer cells induced by SMC4 attenuation are 589 
+
+characterized by low proliferation and chemotherapy insensitivity. Cell Metab. 35 , 1563–1579.e8 590 
+
+(2023). 591 
+
+31. Zhang, J. et al. Inflammation awakens dormant cancer cells by modulating the epithelial-592 
+
+mesenchymal phenotypic state. Proc. Natl. Acad. Sci. U. S. A. 122 , e2515009122 (2025). 593 
+
+32. Park, S. Y. & Nam, J. S. The force awakens: metastatic dormant cancer cells. Exp. Mol. Med. 52 ,594 
+
+569–581 (2020). 595 
+
+33. Chow, K. L. et al. The mitosis-specific marker phosphohistone-H3 (PHH3) is an independent 596 
+
+prognosticator in uterine smooth muscle tumours: an outcome-based study. Histopathology 70 ,597 
+
+746–755 (2017). 598 
+
+34. Lancaster, M. A. et al. Cerebral organoids model human brain development and microcephaly. 599 
+
+Nature 501 , 373–379 (2013). 600 
+
+35. Moss, S. P., Bakirci, E. & Feinberg, A. W. Engineering the 3D structure of organoids. Stem Cell 601 
+
+Rep. 20 , 102379 (2025). 602 
+
+36. Cardona, A. et al. TrakEM2 software for neural circuit reconstruction. PLoS One 7, e38011 (2012). 603 
+
+37. Schindelin, J. et al. Fiji: an open-source platform for biological-image analysis. Nat. Methods 9,604 
+
+676–682 (2012). 605 
+
+38. Rueden, C. T. et al. ImageJ2: ImageJ for the next generation of scientific image data. BMC 606 
+
+Bioinform. 18 , 529 (2017). 607 
+
+39. Legland, D., Arganda-Carreras, I. & Andrey, P. MorphoLibJ: integrated library and plugins for 608 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted June 18, 2026. ;https://doi.org/10.64898/2026.06.14.732194 doi: bioRxiv preprint
+
+mathematical morphology with ImageJ. Bioinformatics 32 , 3532–3534 (2016). 609 
+
+40. Tinevez, J.-Y. et al. TrackMate: an open and extensible platform for single-particle tracking. 610 
+
+Methods 115 , 80–90 (2017). 611 
+
+41. Ershov, D. et al. TrackMate 7: integrating state-of-the-art segmentation algorithms into tracking 612 
+
+pipelines. Nat. Methods 19 , 829–832 (2022). 613 
+
+614 
+
+615 
+
+Acknowledgements 616 
+
+We thank H. Kamioka for secretarial support. This work was supported by a JSPS Grant-in-Aid for 617 
+
+Challenging Research (Pioneering) under Grant Number JP21K18259 (T.S.), a Takeda Science 618 
+
+Foundation Research (T.S.), Project Mirai Cancer Research Grants (T.S.), the G-7 Scholarship 619 
+
+Foundation (T.S.), Research Grant of the Princess Takamatsu Cancer Research Fund (T.S.), The Naito 620 
+
+Foundation (T.S.), and Multilayered Stress Diseases (T.O.), and Medical Research Center Initiative for 621 
+
+High Depth Omics (T.O.). 622 
+
+623 
+
+624 
+
+Author information 625 
+
+Contributions 626 
+
+K.H. and T.S. contributed equally to this work. T.S. conceived the study, K.H., T.S., Y.F., Y.M and H.Y. 627 
+
+performed experiments and analyzed data. K.H., T.S. and T.O. wrote the manuscript. K.H. and T.S. 628 
+
+performed bioinformatic analyses. N.I. provided experimental advice and discussion. H.H. provided 629 
+
+cancer samples, advice and discussion. T.O. supervised the overall project. 630 
+
+631 
+
+Corresponding author 632 
+
+Correspondence to Drs. Taku Sato (e-mail: taku-sato@nms.ac.jp) and Toshiaki Ohteki (e-mail: 633 
+
+ohteki.bre@mri.tmd.ac.jp). 634 
+
+635 
+
+636 
+
+Ethics declarations 637 
+
+Competing interest 638 
+
+The authors declare no competing interests. 639 
+
+640 
+
+641 
+
+FIGURE LEGENDS 642 
+
+Figure 1. Identification of proliferative tumor clones in metastatic tissues after 643 
+
+chemotherapy 644 
+
+A, Overview of specimen sampling to assess the status of DTCs. Samples were restricted to cases in 645 
+
+which oral cancers were pathologically confirmed as squamous cell carcinomas (SCCs) following 646 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted June 18, 2026. ;https://doi.org/10.64898/2026.06.14.732194 doi: bioRxiv preprint
+
+neoadjuvant therapy and surgery. The specimens included both primary tumors and lymph nodes. After 647 
+
+neck dissection, each lymph node was separated and submitted individually for histopathological 648 
+
+examination. Images were created using BioRender.com. B, Workflow for the detection and analysis 649 
+
+of DTCs. NAC: neoadjuvant chemotherapy, LNs: Lymph nodes. C, Summary of clinical samples from 650 
+
+patients treated with PCE therapy. PCE: paclitaxel, carboplatin, and cetuximab. D, Representative HE 651 
+
+staining, double immunostaining for Ki67 and AE1/AE3, and single immunostaining for pHH3 in 652 
+
+metastatic lymph nodes after PCE therapy. The dashed lines in pHH3 staining mark the metastatic 653 
+
+tumor-stroma boundaries. nec: necrotic area. E, Summary of Ki67 labeling index of tumor cells 654 
+
+(AE1/AE3 Ki67 double positive cells/total AE1/AE3 positive cells) or the number of pHH3 + tumor 655 
+
+cells. * Due to extensive necrotic areas, cell counts for these samples were performed only in 1 HPF 656 
+
+instead of 10 HPFs. Results of HE staining and immunostaining were reviewed and confirmed by a 657 
+
+pathologist. HPF: high power field. 658 
+
+659 
+
+Figure 2. In vitro modeling of MRD-like tumor cells using patient-derived organoids 660 
+
+A, Schedule for assessing niche factor (NF) dependency in TCOs and TLOs, with representative 661 
+
+bright-field images of each culture at day 6. NF: niche factor. Scale bar, 200 μm. B, NF dependency in 662 
+
+TCOs and TLOs. Relative viability was calculated as the ratio of NF-deprived to NF-sufficient cultures. 663 
+
+Data are presented as means ± SD from four independent experiments. C, D , Schedule of the transition 664 
+
+from NF-deprived to NF-sufficient conditions, with representative bright-field images at day 6 and day 665 
+
+13 (7 days after restoration to NF-sufficient medium) ( C). Relative viability was calculated for each 666 
+
+sample as the ratio of day 13 to day 6 ( D). Scale bar, 200 μm. E, F , Representative bright-field images 667 
+
+of paired TCO and TLO derived from the same patient at day 6 ( E), and NF dependency is shown ( F). 668 
+
+Data are presented as means ± SD of 12 independent experiments. Statistical significance was 669 
+
+determined by a two-sided Mann-Whitney U test. Scale bar, 200 μm. G, H , Schedule of the long-term 670 
+
+culture of primary tumor-derived organoids under NF-deprived conditions. NF dependency was 671 
+
+assessed at each passage ( G). Relative viability was calculated at each time point as the ratio of NF-672 
+
+deprived to NF-sufficient conditions ( H). Data are presented as means ± SD of four independent 673 
+
+experiments. Statistical significance was determined by one-way ANOVA followed by Dunnett’s 674 
+
+multiple comparisons test. I, Schedule of the culture protocol under NF-deprived conditions with 675 
+
+concurrent chemotherapy exposure, with representative bright-field images at days 1, 7, 13, 19, 25, 676 
+
+and 31. Scale bar, 200 μm. J, Time-course analysis of total clonal area and clone number. Clonal area 677 
+
+was quantified from bright-field images and normalized to day 4. The shaded region indicates the 678 
+
+period of CDDP treatment. K, L , Total clonal area ( K) and clone number ( L) at day 31 normalized to 679 
+
+day 4. Data are presented as means ± SD from four independent experiments, with individual values 680 
+
+shown as symbols. M, Box-and-whisker plot showing the distribution of clone areas at day 31. The 681 
+
+number of analyzed clones is also indicated. 682 
+
+683 
+
+Figure 3. Clonal behavior analysis of tumor cells reveals heterogeneity in 684 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted June 18, 2026. ;https://doi.org/10.64898/2026.06.14.732194 doi: bioRxiv preprint
+
+chemotherapy response in 3D in vitro cultures 685 
+
+A, Representative AI-annotated images of clone tracking in TCO21. Clonal areas from day 4 (start 686 
+
+point) to day 31 (end point) are shown with their trajectories. Scale bar, 100 μm. B, Changes in clonal 687 
+
+areas of individual clones from day 4 to day 13, quantified from bright-field images. Red lines indicate 688 
+
+CP clones (≥ 2-fold expansion in area between day 7 to day 13), whereas gray colored lines indicate 689 
+
+non-CP or dead clones (< 2-fold change). The shaded regions indicate the period of CDDP treatment. 690 
+
+C, Stacked bar graph showing the proportions of CP and non-CP/dead clones. Percentages were 691 
+
+calculated relative to the total number of clones at day 4. D, 100% stacked bar graph showing the 692 
+
+distribution of fold changes in clonal area for CP clones of TCO21 at each time point (days 13-31). 693 
+
+Fold changes were calculated for each clone at each time point relative to day 7 and were categorized 694 
+
+into discrete ranges, with increasing values shown as progressively darker shades of red (≥ 10-fold as 695 
+
+the darkest), 1-2-fold in light gray, and 0-1-fold in dark gray, and disappeared clones in black. Notably, 696 
+
+only clones exhibiting ≥ 10-fold expansion relative to day 7 progressively become dominant over time, 697 
+
+suggesting that a limited subset of clones possesses sustained proliferative capacity and may ultimately 698 
+
+contribute to tumor outgrowth. E, Left, changes in clonal area of individual CP clones from day 13 to 699 
+
+day 31 (left). The color of each line corresponds to the categories shown in Fig. 3D . Right, 700 
+
+representative bright-field images of an expanding CP clone (upper right) and a dormant or dying CP 701 
+
+clone (lower right) are shown. Scale bar, 50 μm. F, 100% stacked bar graph showing the distribution 702 
+
+of fold changes in clonal areas for non-CP or dead clones of TCO21 at each time point (days 13-31). 703 
+
+Fold changes were calculated for each clone at each time point relative to day 7 and were categorized 704 
+
+into discrete ranges, with increasing values shown as progressively darker shades of red (≥ 10-fold as 705 
+
+the darkest), 1-2-fold in light gray, and 0-1-fold in dark gray, and disappeared clones in black. Notably, 706 
+
+few non-CP clones at day 13 become expanding clones over time. G, Left, changes in clonal areas of 707 
+
+individual non-CP or dead clones from day 13 to day 31 (left). The color of each line corresponds to 708 
+
+the categories shown in Fig. 3F . Representative bright-field images of an expanding non-CP clone 709 
+
+(upper right) and a dormant or dying non-CP clone (lower right) are shown. The arrowheads indicate 710 
+
+the tracked clones. Scale bar, 50 μm. H, Tracked clones were first categorized as disappearing or 711 
+
+surviving by day 31 (left). From another perspective, surviving clones were further stratified based on 712 
+
+changes in clonal area at day 31 relative to day 7 (right). Stacked bar graphs show changes in clonal 713 
+
+areas of individual clones at day 13 relative to day 7. The color of each segment corresponds to the 714 
+
+categories shown in Fig. 3D, F . Notably, the most prominently expanding clones also exhibited rapid 715 
+
+expansion between day 7 and day 13, indicating that clonal fate is largely determined during 716 
+
+chemotherapy exposure rather than during the subsequent dormant survival phase. I, Based on clonal 717 
+
+tracking, chemotherapy-exposed disseminated tumor clones in distant organs can be classified into 718 
+
+four fate types. In NF-deprived metastatic niches, clones may die, may survive but remain sensitive to 719 
+
+additional chemotherapy-induced death, may survive chemotherapy but subsequently undergo long-720 
+
+term dormancy or death under prolonged NF deprivation, or may survive chemotherapy and maintain 721 
+
+sustained proliferative capacity. In contrast, the reawakening of deeply dormant clones into expanding 722 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted June 18, 2026. ;https://doi.org/10.64898/2026.06.14.732194 doi: bioRxiv preprint
+
+clones was rarely observed. Images were created using BioRender.com. 723 
+
+724 
+
+Figure 4. CP phenotype recapitulates MRD-like features in chemotherapy-treated 725 
+
+metastatic lesions 726 
+
+A, PCA plots showing gene expression variations among CP-rich (TCO8, TCO21, TCO32, TCO42) 727 
+
+and CP-poor (TCO3, TCO12, TCO18) lines. Cultures under NF-sufficient conditions are represented 728 
+
+by circles, whereas those under NF-deprived conditions with CDDP exposure are represented by 729 
+
+triangles. Cells under NF-sufficient conditions were harvested on day 7. Cells under NF-deprived 730 
+
+conditions were treated with CDDP from day 4 to day 7 and were harvested on day 7. B, GSEA 731 
+
+comparing transcriptional profiles between CP-rich and CP-poor lines under NF-deprived conditions 732 
+
+with CDDP treatment, using the same culture conditions as described in A. The top 10 HALLMARK 733 
+
+gene sets (MSigDB) significantly enriched in either CP-rich (red) or CP-poor (blue) lines (NOM p-734 
+
+value < 0.05) are shown. C, GSEA was performed for CP-rich and CP-poor lines under NF-sufficient 735 
+
+or NF-deprived conditions with concurrent CDDP exposure. Differentially enriched pathways between 736 
+
+the two groups were identified for each condition and plotted, and their changes across conditions were 737 
+
+assessed. Pathways consistently enriched in CP-rich lines (left) and those specifically enriched under 738 
+
+NF-deprived conditions with concurrent CDDP exposure (right) are shown. D, Comparison of IFITM3 739 
+
+mRNA expression between CP-rich (red bars) and CP-poor TCO lines (grey bars). TPM values are 740 
+
+shown. Statistical significance was determined using a two-sided Mann–Whitney test. E-H ,741 
+
+Representative double immunostaining for Ki67 and AE1/AE3 ( E), and RNAscope-based detection of 742 
+
+IFITM3 mRNA ( G) in serial pathological sections from Patient 5 shown in Fig. 1C . Corresponding 743 
+
+cells positive for both markers in serial sections are indicated by arrows. The frequencies of Ki67- and 744 
+
+AE1/AE3-double positive proliferating tumor cells ( F), as well as IFITM3 -expressing cells ( H), were 745 
+
+evaluated in the basal and supra-basal layers of the lymph node tumor nests. Results of immunostaining 746 
+
+and RNAscope were reviewed and confirmed by a pathologist. Statistical significance was determined 747 
+
+by two-sided Wilcoxon test. Scale bars, 100 μm (left panels of E and G), 50 μm (right panels of E and 748 
+
+G). 749 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted June 18, 2026. ;https://doi.org/10.64898/2026.06.14.732194 doi: bioRxiv preprint
+
+Figure 1. Hata et al. 
+
+# A
+
+# C E
+
+Patient 
+
+Oral cancer, NAC, 
+
+neck dissection 
+
+n = 7 
+
+Lymph node 
+
+harvest 
+
+(all nodes 
+
+dissected) 
+
+Tumor 
+
+positive 
+
+LNs 
+
+Histo -
+
+pathology 
+
+(max 
+
+cross -sec)  Tumor 
+
+negative 
+
+LNs 
+
+Immunohisto -
+
+chemistry 
+
+- CK/Ki67 
+
+- pHH3 
+
+# B
+
+Tongue / Gingiva  Lymph nodes Oral cancer patient 
+
+Neck dissection           
+
+> 123456
+> 100 99 98 97 96 95
+> 78910 11 12
+
+・ ・ ・ ・
+
+Tumor resection 1 56 M Maxillary 
+
+gingiva PCE 21 49 0
+
+2 51 F Tongue PCE 4 100 3
+
+3 37 F Tongue PCE 41 47 0
+
+4 55 F Tongue PCE 18 69 0
+
+5 58 F Tongue PCE 18 61 5
+
+6 76 F Tongue PCE 53 34 0
+
+7 52 M Mandibular 
+
+gingiva PCE 24 89 6
+
+Number of LNs analyzed Number of metastatic LNs Patient Age Sex Primary tumor site Chemo-therapy 
+
+Interval between chemo and surgery (days) 
+
+nec. 
+
+nec. 
+
+nec. 
+
+nec. 
+
+nec. 
+
+# DPatient2 
+
+> #49
+
+HE  HE  AE1/AE3 Ki67 
+
+nec. 
+
+pHH3 
+
+> Patient5
+> #26
+> Patient7
+> #81
+
+nec. 
+
+100μm 
+
+100μm 
+
+100μm 
+
+100μm 
+
+100μm 
+
+100μm 
+
+1mm 
+
+500μm 
+
+500μm 
+
+50μm  50μm 
+
+50μm  50μm 
+
+50μm  50μm #49 *16.4% (9/55) *0cell /1 HPF 
+
+#58 * - * -
+
+#69 * - * -
+
+#14 42.5% (230/541) 7#19 55.7% (287/515) 2#24 24.5% (126/514) 2#26 35.3% (174/493) 4#55 36.2% (175/483) 8#42 23.2% (113/487) 2#49 12.4% (58/467) 2#50 17.0% (84/495) 2#51 8.1% (40/495) 3#52 23.4% (114/488) 2#81 62.3% (319/512) 50 257
+
+Patient Lymph node Ki67 labeling index pHH3 +
+
+(cells/10 HPFs) A
+
+Figure 2. Hata et al. 
+
+# B
+
+# C
+
+6Day 0 
+
+NF -deprived 
+
+13 
+
+NF -sufficient 
+
+NF -sufficient 
+
+TCOs 
+
+# DTCO32 
+
+Day 6 Day 13 recovery 
+
+200 μm 
+
+TCO61  TLO61 
+
+200μm 
+
+# E F
+
+# I J
+
+6Day 0 
+
+NF -sufficient 
+
+NF -deprived 
+
+TCOs 
+
+TLOs 
+
+TCO21 
+
+NF -sufficient  NF -deprived 
+
+TCO3 
+
+NF -sufficient  NF -deprived 
+
+200 μm 
+
+TLO52 
+
+NF -sufficient  NF -deprived 
+
+TCO3 
+
+TCO8 
+
+TCO21 
+
+Day 7  Day 13  Day 19  Day 25 Day 1  Day 31 
+
+4 7
+
+CDDP 
+
+NF -deprived 
+
+Day 0 31 
+
+200 μm 
+
+# G H TCO32 naive
+
+> NF-1st
+> NF-2nd
+> NF-3rd
+> NF-4th
+
+0.0 
+
+0.1 
+
+0.2 
+
+0.3 
+
+0.4 
+
+0.5 
+
+> Relative viability
+
+TCO32 
+
+_NF-cultivation     
+
+> P= 0.0153
+> P= 0.0014
+> P< 0.0001
+> P= 0.0001
+
+TCO42 naive
+
+> NF-1st
+> NF-2nd
+> NF-3rd
+> NF-4th
+
+0.0 
+
+0.5 
+
+1.0 
+
+1.5 
+
+> Relative viability
+
+TCO42 
+
+_NF-cultivation      
+
+> ns
+> ns
+> P< 0.0001
+> P< 0.0001
+> TCO3 TCO8 TCO21 010 20 30
+> 0.0
+> 0.5
+> 1.0
+> 1.5
+> 0.0
+> 0.5
+> 1.0
+> 1.5
+> day
+> Normalised Area Sum
+
+TCO3    
+
+> Normalised Clone number Normalized Area Sum
+> Normalized Clone
+> Number 010 20 30
+> 0.0
+> 0.5
+> 1.0
+> 1.5
+> 2.0
+> 0.0
+> 0.5
+> 1.0
+> 1.5
+> 2.0
+> 2.5
+> day
+> Normalised Area Sum
+
+TCO8    
+
+> Normalised Clone number
+> Normalized Area Sum
+> Normalized Clone
+> Number 010 20 30
+> 0.0
+> 1.0
+> 2.0
+> 3.0
+> 4.0
+> 5.0
+> 0.0
+> 0.5
+> 1.0
+> 1.5
+> day
+> Normalised Area Sum
+
+TCO21 
+
+> Normalised Clone number
+> Normalized Area Sum
+> Normalized Clone
+> Number
+
+Day 
+
+TCO21 naive
+
+> NF-1st
+> NF-2nd
+> NF-3rd
+> NF-4th
+
+0
+
+1
+
+2
+
+3
+
+> Relative viability
+
+TCO21 
+
+_NF-cultivation   
+
+> P< 0.0001
+> P< 0.0001
+> ns
+> ns
+> Relative viability
+> TCO61
+> TLO61 TCO61
+> TLO61
+
+0.0 
+
+0.5 
+
+1.0 
+
+1.5 
+
+> Relative viability
+
+Niche factor test (d6)-
+
+P < 0.0001 
+
+> Relative viability
+
+38 Day 0 
+
+NF -deprived 
+
+58 
+
+TCOs 
+
+NF -deprived 
+
+NF -deprived 
+
+NF -deprived 
+
+79  99    
+
+> (1 st -passage) (2 nd -passage) (3 rd -passage) (4 th -passage)
+
+NF -
+
+dependency 
+
+test TCO3-1
+
+> TCO3-2
+> TCO3-3
+> TCO8-1
+> TCO8-2
+> TCO8-3
+> TCO12-1
+> TCO12-2
+> TCO12-3
+> TCO18-1
+> TCO18-2
+> TCO18-3
+> TCO21-1
+> TCO21-2
+> TCO21-3
+> TCO32-1
+> TCO32-2
+> TCO32-3
+> TCO42-1
+> TCO42-2
+> TCO42-3
+> TLO52-1
+> TLO52-2
+> TLO52-3
+> TLO57-1
+> TLO57-2
+> TLO57-3
+> TLO57-4
+> TLO61-1
+> TLO61-2
+
+0.0 
+
+0.5 
+
+1.0 
+
+1.5 
+
+2.0 
+
+> Relative viability
+
+Niche factor test (d6)-CTG 
+
+0.0 
+
+0.5 
+
+1.0 
+
+1.5 
+
+2.0                             
+
+> 123123123123123123123123412123
+> TCO3
+> TCO8
+> TCO12
+> TCO18
+> TCO21
+> TCO32
+> TCO42
+> TLO52
+> TLO57
+> TLO61
+> Relative viability TCO3
+> TCO8
+> TCO12
+> TCO18
+> TCO21
+> TCO25
+> TCO32
+> TCO42
+> TCO51
+
+0
+
+5
+
+10 
+
+> Relative viability
+
+NF+(d6) vs NF- → NF+(d13) 
+
+Day6 
+
+Day13 TCO3
+
+> TCO8
+> TCO12
+> TCO18
+> TCO21
+> TCO25
+> TCO32
+> TCO42
+> TCO51
+
+0
+
+5
+
+10 
+
+> Relative viability
+
+NF+(d6) vs NF- → NF+(d13) 
+
+Day6 
+
+Day13 
+
+> TCO3
+> TCO8
+> TCO12
+> TCO18
+> TCO21
+> TCO32
+> TCO42
+
+Day 13 
+
+Day 6
+
+> Relative viability TCO3
+> TCO8
+> TCO12
+> TCO18
+> TCO21
+> TCO32
+> TCO42
+
+0
+
+5
+
+10 
+
+15 
+
+> Relative viability
+
+NF-(d6) → NF+(d13) 
+
+0
+
+5
+
+10 
+
+15 
+
+0
+
+1
+
+2
+
+3
+
+0.0 
+
+0.1 
+
+0.2 
+
+0.3 
+
+0.4 
+
+0.5 
+
+0.0 
+
+0.5 
+
+1.0 
+
+1.5 
+
+> naive
+> NF -1st
+> NF -2nd
+> NF -3rd
+> NF -4th
+> naive
+> NF -1st
+> NF -2nd
+> NF -3rd
+> NF -4th
+> naive
+> NF -1st
+> NF -2nd
+> NF -3rd
+> NF -4th
+
+Figure 2.(Continued) Hata et al. 
+
+# K L M
+
+> TCO3
+> TCO8
+> TCO12
+> TCO18
+> TCO21
+> TCO32
+> TCO42
+> Area (μm 2)
+
+0
+
+2000 
+
+4000 
+
+6000 
+
+> n = 64
+> n = 789
+> n = 142
+> n = 105
+> n = 2707
+> n = 1759
+> n = 395 TCO3
+> TCO8
+> TCO12
+> TCO18
+> TCO21
+> TCO32
+> TCO42
+
+0
+
+1
+
+2
+
+3
+
+4
+
+> Normalised Area Sum
+
+Area Sum 
+
+> Normalized Area Sum
+> TCO3
+> TCO8
+> TCO12
+> TCO18
+> TCO21
+> TCO32
+> TCO42
+
+0
+
+1
+
+2
+
+3
+
+4
+
+> Normalized Clone
+> Number
+
+0.2 
+
+0.4 
+
+0.6 
+
+0.8 
+
+0.0 
+
+> TCO3
+> TCO8
+> TCO12
+> TCO18
+> TCO21
+> TCO32
+> TCO42 TCO3
+> TCO8
+> TCO12
+> TCO18
+> TCO21
+> TCO32
+> TCO42
+
+0.0 
+
+0.2 
+
+0.4 
+
+0.6 
+
+0.8 
+
+1.0 
+
+> Normalised Clone number
+
+Clone number 
+
+1.0 Figure 3. Hata et al. 
+
+# A
+
+# C
+
+# D E
+
+# F G
+
+# H I
+
+150 
+
+> disappearing
+> surviving
+
+0
+
+400 
+
+800 
+
+1200 
+
+1400 
+
+> Clone Count
+
+TCO21 Day 31 
+
+> 0-1×
+> 1-2×
+> 2-3×
+> 3-4×
+> 4-5×
+> 5-6×
+> 6-7×
+> 7-8×
+> 8-9×
+> 9-10 ×
+> ≧10 ×
+
+0
+
+100 
+
+200 
+
+300 
+
+50 
+
+250 
+
+1000 
+
+600 
+
+200 
+
+CP clone 
+
+TCO21 
+
+13  16  19  22  25  28  31 
+
+> Proportion
+
+0.0 
+
+0.2 
+
+0.4 
+
+0.6 
+
+0.8 
+
+1.0 
+
+Day 
+
+non -CP or dead clone 
+
+TCO21 
+
+13  16  19  22  25  28  31 
+
+0.0 
+
+0.2 
+
+0.4 
+
+0.6 
+
+0.8 
+
+1.0 
+
+> Proportion
+
+Day 
+
+Day 4  Day 7  Day 13  Day 19  Day 25  Day 31 
+
+> TCO21
+
+100μm 
+
+Chemo -therapy 
+
+Death 
+
+Death 
+
+Dormant 
+
+/ Death 
+
+Expand 
+
+NF –
+
+NF –
+
+NF –
+
+NF –
+
+Rare events 
+
+Single tumor 
+
+clones 
+
+Distant organ 
+
+(death) 
+
+Day 4  7 13  19  31 
+
+Day 4  7 13  19  31 
+
+CDDP 
+
+> dormant/death  expand
+
+50μm 
+
+CDDP 
+
+Day 4  7 13  19  31 
+
+(death) 
+
+Day 4  7 13  19  31 
+
+> expand dormant/death
+
+50μm 
+
+> TCO3
+> TCO8
+> TCO12
+> TCO18
+> TCO21
+> TCO32
+> TCO42
+> 2000
+> 1500
+> 1000
+> 500
+> 0
+> Clone Number
+> 2500
+> 25000
+> 20000
+> 15000
+> 10000
+> 5000
+> 0
+
+TCO3 
+
+4 7 10  13 
+
+> Area  (μm 2)
+
+Day 
+
+> 25000
+> 20000
+> 15000
+> 10000
+> 5000
+> 0
+
+TCO21 
+
+4 7 10  13 
+
+Day 
+
+> 25000
+> 20000
+> 15000
+> 10000
+> 5000
+> 0
+
+TCO32 
+
+4 7 10  13 
+
+Day 
+
+CP clone 
+
+TCO21 
+
+> 250000
+> 200000
+> 150000
+> 100000
+> 50000
+> 0
+> Area (μm 2)
+
+Day 
+
+13  16  19  22  25  28  31 
+
+13  16  19  22  25  28  31 
+
+TCO21 
+
+> 250000
+> 200000
+> 150000
+> 100000
+> 50000
+> 0
+> Area (μm 2)
+
+Day 
+
+non -CP or dead clone 
+
+# BFigure 4. Hata et al. 
+
+# A
+
+# D IFITM3 0 100 200 300 400 
+
+TCO42_2 
+
+TCO42_1 
+
+TCO32_2 
+
+TCO32_1 
+
+TCO21_2 
+
+TCO21_1 
+
+TCO8_2 
+
+TCO8_1 
+
+TCO18_2 
+
+TCO18_1 
+
+TCO12_2 
+
+TCO12_1 
+
+TCO3_2 
+
+TCO3_1 
+
+tpm 
+
+IFITM3 
+
+(NF -dep.+CDDP )
+
+TCO3_rep1 
+
+TCO3_rep2 
+
+TCO12_rep1 
+
+TCO12_rep2 
+
+TCO18_rep1 
+
+TCO18_rep2 
+
+TCO8_rep1 
+
+TCO8_rep2 
+
+TCO21_rep1 
+
+TCO21_rep2 
+
+TCO32_rep1 
+
+TCO32_rep2 
+
+TCO42_rep1 
+
+TCO42_rep2 
+
+100  200  300  400 0
+
+tpm 
+
+> P = 0.007
+
+# F
+
+# H
+
+# E
+
+# GIFITM3 
+
+100μm 
+
+100μm 
+
+> AE1/AE3  Ki67
+
+50μm 
+
+50μm 
+
+> AE1/AE3 + Ki67 + (%)
+> basal
+> supra -
+> basal
+
+100 
+
+80 
+
+60 
+
+40 
+
+20 
+
+0
+
+P < 0.001 basal cells
+
+> suprabasal cells
+
+0
+
+20 
+
+40 
+
+60 
+
+80 
+
+100 
+
+> %
+
+Ki67_#55 sal cells
+
+> sal cells
+
+0
+
+20 
+
+40 
+
+60 
+
+80 
+
+100 
+
+> %
+
+IFITM3_#55 
+
+> IFITM3 + (%)
+> basal
+> supra -
+> basal
+
+100 
+
+80 
+
+60 
+
+40 
+
+20 
+
+0
+
+P < 0.001 
+
+TCO12_rep1 
+
+TCO3_rep1 
+
+TCO3_rep1 
+
+TCO8_rep1 
+
+TCO32_rep1 
+
+TCO3_rep2 
+
+TCO3_rep2 
+
+TCO8_rep2 
+
+TCO8_rep1 
+
+TCO8_rep2 
+
+TCO12_rep2 
+
+TCO12_rep2 
+
+TCO12_rep1 
+
+TCO18_rep1 
+
+TCO18_rep2 
+
+TCO18_rep2 
+
+TCO18_rep1 
+
+TCO21_rep1 
+
+TCO32_rep2 
+
+TCO32_rep1 
+
+TCO32_rep2 
+
+TCO21_rep2 
+
+TCO21_rep1 
+
+TCO21_rep2 
+
+TCO42_rep2 
+
+TCO42_rep1 
+
+TCO42_rep1 
+
+TCO42_rep2 
+
+CP -rich 
+
+CP -poor 
+
+CP -rich 
+
+CP -poor 
+
+NF -sufficient 
+
+NF -dep.+CDDP 
+
+-150  -100  -50  0 50  100 
+
+PC1 
+
+-100 
+
+-50 
+
+0
+
+50 
+
+100 
+
+> PC2
+
+# C HALLMARK Pathway (Basically activated) 
+
+CP -rich vs CP -poor 
+
+NF -sufficient  NF -dep. 
+
++CDDP 
+
+1.0 
+
+1.5 
+
+3.0 
+
+2.5 
+
+2.0 
+
+> NES
+
+INTERFERON_ALPHA_RESPONSE 
+
+INTERFERON_GAMMA_RESPONSE 
+
+XENOBIOTIC_METABOLISM 
+
+FATTY_ACID_METABOLISM 
+
+ANDROGEN_RESPONSE 
+
+INFLAMMATORY_RESPONSE 
+
+IL2_STAT5_SIGNALING 
+
+GLYCOLYSIS 
+
+HALLMARK Pathway (Inducible) 
+
+CP -rich vs CP -poor 
+
+NF -sufficient  NF -dep. 
+
++CDDP 
+
+-2.0 
+
+2.0 
+
+0
+
+> NES
+
+G2M_CHECKPOINTS 
+
+E2F_TARGETS 
+
+TNFA_SIGNALING_VIA_NFKB 
+
+REACTIVE_OXYGEN_SPECIES 
+
+_PATHWAY 
+
+EPITHELIAL_MESENCHIMAL 
+
+_TRANSITION 
+
+ANGIOGENESIS 
+
+MITOTIC_SPINDLE 
+
+ADIPOGENESIS 
+
+UV_RESPONSE_UP 
+
+COAGULATION 
+
+PI3K_AKT_MTOR_SIGNALING 
+
+COMPLEMENT 
+
+TGF_BETA_SIGNALING 
+
+HYPOXIA 
+
+Direction 
+
+Down 
+
+Not significant 
+
+Up 
+
+0.5  1.5  2.5 
+
+3.0 2.0 1.0 
+
+-log10( padj )
+
+-1 0 1 2
+
+# B
+
+ANGIOGENESIS 
+
+NF -dep.+CDDP , CP -rich vs CP -poor 
+
+HALLMARK PATHWAY 
+
+INTERFERON_ALPHA_RESPONSE 
+
+INTERFERON_GAMMA_RESPONSE 
+
+E2F_TARGETS 
+
+G2M_CHECKPOINT 
+
+REACTIVE_OXYGEN_SPECIES_PATHWAY 
+
+XENOBIOTIC_METABOLISM 
+
+MITOTIC_SPINDLE 
+
+GLYCOLYSIS 
+
+ADIPOGENESIS 
+
+ESTROGEN_RESPONSE_EARLY 
+
+BILE_ACID_METABOLISM 
+
+UV_RESPONSE_DN 
+
+ESTROGEN_RESPONSE_LATE 
+
+KRAS_SIGNALING_UP 
+
+HEME_METABOLISM 
+
+OXIDATIVE_PHOSPHORYLATION 
+
+KRAS_SIGNALING_DN 
+
+PANCREAS_BETA_CELLS 
+
+P53_PATHWAY 
+
+> 1.5  2.0 1.0 -log10( padj )
+> Down
+> Up
+
+NES

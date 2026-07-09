@@ -1,0 +1,1661 @@
+Title: 87110798
+
+URL Source: https://www.biorxiv.org/content/10.64898/2026.06.24.734314v1.full.pdf
+
+Number of Pages: 50
+
+Markdown Content:
+Title :1
+
+Defining biologically directed therapy target signatures in urothelial carcinoma: A transcriptomic 2
+
+framework for precision therapy 3
+
+Authors: 4
+
+Edwin Lin 1, Bing -Jian Feng 1, Kaniz Fatema 1, Z eynep Irem Ozay 1, Georges Gebrael 1, Varun 5
+
+Nandakumar 1, Ethan Murdock 1, Haoran Li 2, G. Daniel Grass 3, Eric Singer 4, Laura Graham 5,6
+
+Qiang Li 6, Bodour Salhia 7, Saum Ghodoussipour 8, Jennifer King 9, Ken Nepple 10 , Zin Myint 11 ,7
+
+Paul Viscuse 12 , Michelle Churchman 13 , David Lum 1, Umang Swami 1, Neeraj Agarwal 1, Sumati 8
+
+Gupta 1
+
+9
+
+Affiliations: 10 
+
+> 1
+
+Huntsman Cancer Institute, University of Utah, Salt Lake City, UT, USA 11 
+
+> 2
+
+University of Kansas Cancer Center, Westwood, KS 12 
+
+> 3
+
+H. Lee Moffitt Cancer Center and Research Institute, Tampa, FL 13 
+
+> 4
+
+Rutgers Cancer Institute of New Jersey, New Brunswick, OH 14 
+
+> 5
+
+University of Colorado Cancer Center, Anschutz Medical Campus, Aurora, CO 15 
+
+> 6
+
+Roswell Park Comprehensive Cancer Center, Buffalo, NY 16 
+
+> 7
+
+Norris Comprehensive Cancer Center, Keck School of Medicine, University of Southern 17 
+
+California, Los Angeles, CA 18 
+
+> 8
+
+Section of Urologic Oncology, Rutgers Cancer Institute and Rutgers Robert Wood Johnson 19 
+
+Medical School, New Brunswick, NJ 20 
+
+> 9
+
+Trustees of Indiana University, Indianapolis, IN 21 
+
+> 10
+
+University of Iowa and Clinic Holden Cancer Center, Iowa City, IA 22 
+
+> 11
+
+University of Kentucky, Lexington, KY 23 
+
+> 12
+
+Emily Couric Clinical Cancer Center, University of Virginia Health, Charlottesville, VA 24 
+
+> 13
+
+Aster Insights 25 
+
+26 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 25, 2026. ;https://doi.org/10.64898/2026.06.24.734314 doi: bioRxiv preprint
+
+Declarations 27 
+
+Ethics approval and consent to participate : Th e research presented in this study was approved by 28 
+
+the University of Utah IRB .29 
+
+Consent for publication : All authors have consented to publication 30 
+
+Availability of data and material : The data from TCGA used in this study are accessible under 31 
+
+project ID TCGA -BLCA and are available at:  https://gdc.cancer.gov . The data from the ORIEN 32 
+
+consortium that support the findings of this study are not openly available due to reasons of 33 
+
+sensitivity and are available from the corresponding author upon reasonable request. 34 
+
+Competing interests : None 35 
+
+Funding :36 
+
+Research reported in this article was partly supported by the U.S. Department of Veterans Affairs 37 
+
+Merit Review Award #1T01 BX005765 (to SG). The contents do not represent the views of the 38 
+
+U.S. Department of Veterans Affairs or the United States Government. The research reported here 39 
+
+utilized the Total Cancer Care protocol, High -Throughput Genomics & Cancer Bioinformatics 40 
+
+Shared Resource, at Huntsman Cancer Institute at the University of Utah. This work was supported 41 
+
+by the National Cancer Institute of the National Institutes of Health under Award Number 42 
+
+P30CA042014. The content is solely the responsibility of the authors and does not necessarily 43 
+
+represent the official views of the NIH. 44 
+
+45 
+
+Authors’ contributions 46 
+
+Conceptualization: EL SG, NA, US 47 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 25, 2026. ;https://doi.org/10.64898/2026.06.24.734314 doi: bioRxiv preprint
+
+Methodology: EL, BJF, SG , KF48 
+
+Software: EL, BJF 49 
+
+Validation: EL, BJF 50 
+
+Formal analysis: EL, BJF 51 
+
+Data Curation: EL, BJF , KF52 
+
+Review & Editing: All authors contributed 53 
+
+Visualization: EL, BJF 54 
+
+Funding: SG 55 
+
+56 
+
+Acknowledgements: 57 
+
+We acknowledge support from the Biorepository and Molecular Pathology Shared Resource and 58 
+
+HCI's National Cancer Institute Cancer Center Support Grant P30CA042014 59 
+
+60 
+
+Keywords: bladder -cancer, antibody -drug -conjugates, transcriptomic, expression, RNA -seq 61 
+
+62 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 25, 2026. ;https://doi.org/10.64898/2026.06.24.734314 doi: bioRxiv preprint
+
+Abstract: 63 
+
+Introduction: 64 
+
+Nectin -4 targeting antibody -drug conjugate (ADC) enfortumab vedotin (EV), in combination with 65 
+
+pembrolizumab, is the first -line treatment for patients with locally advanced or metastatic 66 
+
+urothelial carcinoma (UC). Optimal treatment strategies for patients who are non -responders or 67 
+
+progress on EV with pembrolizumab remain an unmet clinical need. We sought to characterize 68 
+
+ADC and immunotherapy (IO) -associated target expression profiles to identify candidate 69 
+
+therapeutic vul nerabilities beyond EV. 70 
+
+Methods: 71 
+
+We conducted a literature review to identify ADC and IO targets with approved or investigation al 72 
+
+relevance in UC . Unsupervised hierarchical clustering was used to identify clusters of target gene 73 
+
+expression in RNA -seq data . Transcriptomic clustering analyses wer e performed in 434 patients 74 
+
+from The Cancer Genome Atlas Bladder Urothelial Carcinoma cohort (TCGA -BLCA) and 75 
+
+validat ed in a n independent cohort of 478 patients from the Oncology Research Information 76 
+
+Exchange Network (ORIEN) consortium . Proteomic interrogation of these targets was performed 77 
+
+using mass spectrometry data from additional cohort of 116 patients. Differential gene expression 78 
+
+analys es evaluated associations between target expression patterns, histologic variants, and 79 
+
+consensus molecular subtypes of muscle -invasive bladder cancer (CMIBC). 80 
+
+Results: 81 
+
+We identified 13 ADC and 10 IO -asso ciated targets with translational relevance in UC .82 
+
+Transcriptomic analys es revealed t hree reproducible clusters of overexpressed target gene s across 83 
+
+independent cohorts: 1) a luminal/epithelial -associated cluster enriched for VTCN1, SLITRK6, 84 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 25, 2026. ;https://doi.org/10.64898/2026.06.24.734314 doi: bioRxiv preprint
+
+FGFR3, NECTIN4, TACSTD2, ERBB2, and ERBB3; 2) an immune target predominant cluster 85 
+
+enriched for BTLA, LAG3, PDCD1, TIGIT, CTLA4, TNFRSF9, TNFRSF18, TNFRSF4 ; and 3) a86 
+
+basal/neuroendocrine -associated cluster characterized by CD274, F3, NT5E, EGFR, MET and 87 
+
+DLL3. Similar clusters were largely conserved at the proteomic level. Adenocarcinomas 88 
+
+overexpressed ERBB3 compared to neuroendocrine and squamous cell carcinomas . Pure 89 
+
+squamous cell carcinomas overexpressed TACSTD2 compared to adenocarcinomas . In CMIBC 90 
+
+subtypes, basal/squamous tumors expressed higher levels of CD274, EGFR , F3 , LAG3 , NT5E , and 91 
+
+TNFRSF18 , whereas luminal tumors demonstrated higher ERBB2 and ERBB3 expression. 92 
+
+Neuroendocrine -like tumors showed higher DLL3 expression compared to all other subtypes. 93 
+
+Tumors with low expression of NECTIN4 , TACSTD 2, and FGFR3 were enriched for alternative 94 
+
+targets including DLL3, CD274, and CD276. Our finding s provide a framework for hypothesis -95 
+
+driven therapeutic prioritization in advanced UC .96 
+
+97 
+
+Conclusions: 98 
+
+UC is characterized by reproducible , biologically distinct patterns of ADC and IO target 99 
+
+expressions. The degree of expression of NECTIN4 was positively associated with TACSTD2 ,100 
+
+FGFR3 and inversely associated with DLL3 , CD276 , and CD274 , supporting alternative 101 
+
+biologically informed treatment strategies besides EV . . Histologic variants and molecular subtype s102 
+
+of UC also display distinct patterns of target expression . This study provides the first integrated 103 
+
+transcriptomic framework linking ADC and IO target co -expression patterns for hypothesis -driven 104 
+
+therapeutic prioritization . These findings provide a basis for rational ADC and immunotherapy 105 
+
+development in advanced UC and support prospective proteomic validation in treatment stratified 106 
+
+cohorts. 107 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 25, 2026. ;https://doi.org/10.64898/2026.06.24.734314 doi: bioRxiv preprint
+
+Statement of Translational Relevance :108 
+
+Enfortumab vedotin plus pembrolizumab has redefined first -line therapy for advanced urothelial 109 
+
+carcinoma, yet treatment selection following resistance or progression remains undefined. In this 110 
+
+study, we integrate transcriptomic and proteomic analyses across independent cohorts to define 111 
+
+reproducible patterns of antibody –drug conjugate (ADC) and immunotherapy target co -expression 112 
+
+in urothelial carcinoma. We identify biologically distinct target -expression patterns that are 113 
+
+associated with histologic and molecular subtypes and demonstrate coordinated and, in some 114 
+
+cases, mutually exclusive relationships among therapeutically actionable targets. 115 
+
+These findings have direct translational implications. First, they provide biologic rationale for 116 
+
+rational sequencing and combination strategies based on co -expressed targets in NECTIN4 -117 
+
+enriched tumors. Second, they identify alternative therapeutic vulnerabilities, including DLL3 - and 118 
+
+CD274 -associated pathways, in tumors with low NECTIN4 expression, a population potentially 119 
+
+enriched for resistance to EV -based therapy. Finally, this framework establishes a foundation for 120 
+
+biomarker -driven clinical trials in urothelial carcinoma and supports the development of precision 121 
+
+therapeutic approaches beyond current standards. 122 
+
+123 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 25, 2026. ;https://doi.org/10.64898/2026.06.24.734314 doi: bioRxiv preprint
+
+Introduction 124 
+
+For decades , first line therapy for locally advanced or metastatic (referred to as advanced hereafter) 125 
+
+urothelial carcinoma (UC) comprised platinum -based chemotherapy but associated with limited 126 
+
+survival benefit and significant adverse effects. Recent studies have demonstrated superior 127 
+
+outcomes with antibody -drug conjugates (ADCs), which selectively deliver cytotoxic payloads to 128 
+
+tumor -associated antigens 1. Together with immune therapies , ADCs have fundamentally 129 
+
+transformed the therapeutic landscape across multiple malignancies by improv ing response rates 130 
+
+and in some cases achieving durable clinical benefit compared with conventional chemotherapy 2,3 .131 
+
+132 
+
+In advanced UC, Nectin -4 targeting ADC , enfortumab vedotin (EV) combined with 133 
+
+pembrolizumab has demonstrated superior overall survival (OS) , achieving a median OS of 31.5 134 
+
+months compared to 16.1 months with chemotherapy 4. This combination (henceforth abbreviated 135 
+
+as EV plus pembrolizumab ) is now the standard first -line treatment for advanced UC 4. Despite 136 
+
+remarkable outcomes , approximately one -third of patients fail to respond to this treatment .137 
+
+Therefore , there is a vital clinical need for treatment strategies for patients who are non -responders 138 
+
+or experience disease progression on EV plus pembrolizumab . ADCs against other molecular 139 
+
+targets are under active investigation for UC as well as other solid tumors and may offer viable 140 
+
+treatment strategies for these patients . Similarly, immunotherapy targets are also advancing to 141 
+
+multiple immune checkpoints and novel bispecific antibodies and may be harnessed for durable 142 
+
+responses. However, the expression landscape and co -occurrence patterns of actionable ADC and 143 
+
+IO targets in relation to Nectin -4 expression remains poorly characterized (or incompletely 144 
+
+defined) in UC .145 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 25, 2026. ;https://doi.org/10.64898/2026.06.24.734314 doi: bioRxiv preprint
+
+146 
+
+To address these question s, we utilized transcriptomic profiling to characterize reproducible ADC 147 
+
+and IO target expression patterns in UC across independent patient cohorts . Our study defin es 148 
+
+transcriptionally distinct therapeutic target -expression states in UC and provides a framework for 149 
+
+biomarker -guided therapeutic development beyond EV plus pembrolizumab. 150 
+
+151 
+
+Methods 152 
+
+Literature Search 153 
+
+Identification of ADC and IO targets relevant to our study was performed using the following 154 
+
+literature search methodology : Search terms include “bladder cancer ”, “urothelial carcinoma ”,155 
+
+“antibody -drug conjugate ”, “ADC ”, “solid tumor”, and “immunotherapy ”. Molecular targets were 156 
+
+included for downstream analysis based on whether there were therapeutics targeting these 157 
+
+compounds with ongoing clinical trials or had achieved FDA . Targets were not restricted to 158 
+
+urothelial carcinoma but included ADC and IO targets with clinical or investigational relevance 159 
+
+across solid tumors. Molecular targets for hematologic malignancies were excluded. 160 
+
+161 
+
+Patient Cohorts 162 
+
+Discovery of ADC and IO target signatures in UC was performed within The Cancer Genome 163 
+
+Atlas (TCGA) cohort . TCGA cohort clinical characteristics and methodologies are described in 164 
+
+detail in a previous publication 5. Briefly, this cohort comprised 406 patients with 412 tumors and 165 
+
+19 matched normal bladder urothelium samples. Validation of ADC and IO patterns in UC was 166 
+
+performed using a separate, independent cohort of patients in the Oncology Research Information 167 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 25, 2026. ;https://doi.org/10.64898/2026.06.24.734314 doi: bioRxiv preprint
+
+Exchange Network (ORIEN) cohort. The ORIEN cohort clinical characteristics are described in a 168 
+
+previous publication 6. The ORIEN cohort comprised tumors from 478 patients, and RNA -seq of 169 
+
+matched normal bladder urothelium samples was not performed within this cohort. Proteomic 170 
+
+comparison of ADC and IO targets was examined in a previous study by Xu et al 7. This dataset 171 
+
+comprised a cohort of 116 patients with 157 tumors and paired 76 normal bladder urothelium who 172 
+
+underwent proteomic profiling by high -performance liquid chromatography followed by label -free 173 
+
+mass spectrometry. 174 
+
+175 
+
+Bioinformatics 176 
+
+Differential gene expression analysis was performed using DESeq2. Unwanted technical variation 177 
+
+was estimated using the RUVSeq package (RUVg, k = 6) with a set of 150 empirically defined 178 
+
+stable genes, and the resulting W factors were incorporated as covariates. RUV -normalized counts 179 
+
+were variance -stabilized using the DESeq2 (v1.48.2) variance stabilizing transformation (VST) 180 
+
+for downstream analyses. RNA -seq differential expression analysis was performed using DESeq2 181 
+
+with a generalized linear model that included CMIBC subtype and covariates (sex, age at specimen 182 
+
+collection, stage, sample type, library preparation method (TruSeq vs. Tagmentation), and W 183 
+
+factors for unwanted variation). Pairwise contrasts between CMIBC subtypes were computed 184 
+
+using Wald tests with adaptive shrinkage of log2 fold changes (ashr), and false discovery rate 185 
+
+(FDR) correction was applied across ADC target genes using the Benjamini –Hochberg method. 186 
+
+Criteria used to determine significance included false discovery rate -adjusted p value less than 187 
+
+0.01 and Log2 fold change with magnitude greater than 1. 188 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 25, 2026. ;https://doi.org/10.64898/2026.06.24.734314 doi: bioRxiv preprint
+
+Downstream bioinformatic analyses were performed using Python 3.13.5. Fisher’s exact test was 189 
+
+used to compare categorical clinical features between the two clusters. Survival analysis was 190 
+
+performed using the Log -Rank test. Hierarchical clustering was performed with scipy 1.15. 3 using 191 
+
+the Ward metho d on log -scaled TPM . Pearson c orrelatio n coefficients for ADC target gene 192 
+
+expression was calculated using scipy 1.15.3 . Dendrograms and heatmaps were plotted using 193 
+
+seaborn 0.13.2. 194 
+
+195 
+
+Multiplex Immunohistochemistry 196 
+
+Multiplex immunohistochemistry (mIHC) and immunofluorescence analyses were performed on 197 
+
+selected malignant ascites clinical specimens to evaluate target co -expression patterns. Detailed 198 
+
+experimental procedures, antibody conditions, and image analysis workflows are described in the 199 
+
+Supplementary Methods. 200 
+
+201 
+
+Results 202 
+
+Identification of therapeutically relevant ADC and immunotherapy targets 203 
+
+A systematic literature review identif ied 23 therapeutically relevant targets under active 204 
+
+investigation or with FDA approval for solid tumors , including 13 ADC and 10 IO -associated 205 
+
+targets (Table 1).206 
+
+207 
+
+Reproducible transcriptomic target -expression states across independent cohorts 208 
+
+Unsupervised Hierarchical clustering of tra nscriptomic data from the TCGA -BLCA discovery 209 
+
+cohort identified t hree major clustering patterns of target co -expression (Figure 1A). Cluster 1 210 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 25, 2026. ;https://doi.org/10.64898/2026.06.24.734314 doi: bioRxiv preprint
+
+included VTCN1, SLITRK6, FGFR3, NECTIN4, TACSTD2, ERBB2, and ERBB3. Cluster 2 211 
+
+included BTLA, LAG3, PDCD1, TIGIT, CTLA4, TNFRSF9, TNFRSF18, TNFRSF4 . Cluster 3 212 
+
+included CD274, F3, NT5E, EGFR, MET, DLL3. 213 
+
+These findings were validate d in the ORIEN cohort , which demonstrated highly concordant 214 
+
+clustering patterns (Figure 1B ). Minor differences in cluster composition were observed 215 
+
+(including CD276 and CEACAM5 ), but overall architecture was preserved . Minor differences in 216 
+
+cluster composition were observed (including CD276 and CEACAM5 ), but overall architecture 217 
+
+was preserved. 218 
+
+Given the central role of N ecctin -4 as a therapeutic target, we examined the relationship of 219 
+
+NECTIN4 expression with other ADC and immunotherapy -associated genes (Figure 1C, 1D ). .220 
+
+NECTIN4 expression demonstrated positive correlations with luminal ADC -associated targets, 221 
+
+including FGFR3 , ERBB2 , and TACSTD2 and inverse associations with basal/neuroendocrine and 222 
+
+immune -associated targets, including EGFR, MET, and CD274 223 
+
+These findings define biologically distinct and potentially divergent target -expression states in UC. 224 
+
+225 
+
+Partial proteomic concordance supports biological relevance of target -expression states 226 
+
+To evaluate concordance of the clusters at a protein level, we analyzed mass spectrometry data 227 
+
+within a previous study comprising 116 patients who underwent label -free mass spectrometry 228 
+
+profiling (Supplementary Figure 1). A total of 13 out of 23 targets were quantifiable 229 
+
+proteomically , and hierarchical clustering of this subset yielded similar clusters consistent with 230 
+
+transcriptomic analyses .231 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 25, 2026. ;https://doi.org/10.64898/2026.06.24.734314 doi: bioRxiv preprint
+
+232 
+
+Limited association of target -expression states with clinical outcomes 233 
+
+Tumor -expression clusters were not significantly associated with any disease stage ( Table 2 ,234 
+
+Fisher’s Exact p=0.145 ), or overall survival ( Supplementary Figure 2 ). Similarly, e xpression of 235 
+
+individual ADC and IO targets did not show significant associations with overall survival that 236 
+
+could be replicable across both cohorts (Supplementary Figure 3, 4 ). These analyses are therefore 237 
+
+considered exploratory and not used for downstream inference. 238 
+
+239 
+
+Histologic subtypes exhibit distinct target -expression patterns 240 
+
+Histologic variants of urothelial cancer may have differing alterations and treatment response to 241 
+
+treatment 10 . Hence, we evaluated histolog y-specific patterns in ADC and IO target expression in 242 
+
+the ORIEN cohort , which revealed differential expression of ADC and immunotherapy targets 243 
+
+across histologic variants (Figure 2, Supplementary Table 1). Key observations included: 244 
+
+• Conventional urothelial carcinomas demonstrated higher expression of NECTIN4, FGFR3, 245 
+
+ERBB2, and TACSTD2 relative to neuroendocrine and adenocarcinoma subtypes 246 
+
+• Squamous cell carcinomas were enriched for EGFR, F3, NECTIN4, and TACSTD2 247 
+
+• Adenocarcinomas demonstrated increased ERBB3 expression 248 
+
+• Neuroendocrine tumors showed increased DLL3 expression, although this did not reach 249 
+
+statistical significance, likely due to limited sample size 250 
+
+These findings highlight heterogeneity in target expression across histologic subtypes. 251 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 25, 2026. ;https://doi.org/10.64898/2026.06.24.734314 doi: bioRxiv preprint
+
+UC with squamous or glandular differentiation are often inconsistently described in pathology 252 
+
+reports 11 , but known to be significantly more common than pure adenocarcinoma or squamous cell 253 
+
+carcinoma of the bladder. Our manual curation of pathology reports in both TCGA and ORIEN 254 
+
+cohorts was not only reflective of this but was also notable for UC with varying degrees of small 255 
+
+cell differentiation . We were unable to achieve granularity in the relative composition of histologic 256 
+
+vari ants in these retrospective datasets .257 
+
+258 
+
+Target -expression states align with molecular subtypes of urothelial carcinoma 259 
+
+We next evaluated associations between ADC and IO target expression molecular subtyp es of 260 
+
+urothelial carcinoma according to CMIBC transcriptomic classification 12 (Figure 3,261 
+
+Supplementary Table 2). 262 
+
+• Basal/squamous tumors demonstrated increased expression of CD274, EGFR, F3, LAG3, 263 
+
+and NT5E 264 
+
+• Luminal tumors were enriched for ERBB2 and ERBB3 265 
+
+• Neuroendocrine -like tumors exhibited increased DLL3 expression 266 
+
+These findings demonstrate concordance between transcriptomic target -expression states and 267 
+
+established molecular classification frameworks. 268 
+
+269 
+
+Clinical exemplars illustrate biologically informed target prioritization 270 
+
+To illustrate the potential translational relevance of these findings, we present representative 271 
+
+clinical cases. 272 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 25, 2026. ;https://doi.org/10.64898/2026.06.24.734314 doi: bioRxiv preprint
+
+A patient with metastatic neuroendocrine carcinoma demonstrated a durable response to DLL3 -273 
+
+targeted therapy following progression on platinum -based chemotherapy and immunotherapy 274 
+
+(Figure 4A –B). This observation is consistent with enrichment of DLL3 expression within the 275 
+
+neuroendocrine -associated target -expression state identified in cohort analyses. 276 
+
+In a second case, a patient with metastatic urothelial carcinoma progressing after multiple lines of 277 
+
+therapy, including enfortumab vedotin and sacituzumab govitecan, underwent multiplex 278 
+
+immunohistochemistry of malignant ascites. This demonstrated persistent co -expression of 279 
+
+NECTIN4, FGFR3, HER2, and TROP2, despite prior exposure to ADCs targeting these antigens. 280 
+
+These findings mirror the luminal ADC -associated co -expression patterns observed in 281 
+
+transcriptomic analyses (Figure 5B–C; Supplementary Figure 5). 282 
+
+These cases are illustrative and hypothesis -generating, supporting the biological plausibility of 283 
+
+target -expression –guided therapeutic strategies but not establishing clinical efficacy. These 284 
+
+findings establish a conceptual framework for biologically informed therapeutic prioritization in 285 
+
+UC, particularly in the setting of resistance to EV -based therapy. These observations are 286 
+
+hypothesis -generating and require prospective validation. 287 
+
+288 
+
+Integrated framework defines biologically distinct therapeutic target -expression states 289 
+
+The schematic in Figure 6 illustrates a biologically informed therapeutic framework derived from 290 
+
+integrated transcriptomic and proteomic analyses across independent urothelial carcinoma (UC) 291 
+
+cohorts. Three reproducible patterns of target co -expression were identified: (1) a292 
+
+luminal/epithelial -associated ADC cluster enriched for NECTIN4, FGFR3, ERBB2, ERBB3, and 293 
+
+TACSTD2 ; (2) an immune checkpoint –enriched cluster characterized by expression of PDCD1, 294 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 25, 2026. ;https://doi.org/10.64898/2026.06.24.734314 doi: bioRxiv preprint
+
+CTLA4, LAG3, and TIGIT ; and (3) a basal/neuroendocrine -associated cluster enriched for EGFR, 295 
+
+MET, CD274, and DLL3 .296 
+
+The framework highlights both co -occurring and mutually exclusive target expression 297 
+
+relationships, with NECTIN4 expression positively correlated with luminal ADC -associated 298 
+
+targets and inversely associated with several immune and basal/neuroendocrine targets, including 299 
+
+CD274, EGFR, MET, and DLL3 .300 
+
+These patterns define clinically relevant therapeutic strategies across distinct biological contexts: 301 
+
+• NECTIN4 -high tumors may benefit from combination ADC strategies targeting co -302 
+
+expressed luminal markers (e.g., FGFR3 , HER2 , TROP -2). 303 
+
+• NECTIN4 -low tumors demonstrate enrichment of alternative targets, including DLL3 ,304 
+
+MET , EGFR , CD274 , and CD276 , supporting therapeutic prioritization beyond enfortumab 305 
+
+vedotin. 306 
+
+• Neuroendocrine -like tumors exhibit preferential DLL3 expression, providing a rationale 307 
+
+for DLL3 -directed therapies. 308 
+
+• Immune -enriched tumors demonstrate upregulation of multiple immune checkpoints 309 
+
+beyond PD -1/PD -L1, suggesting potential responsiveness to combinatorial 310 
+
+immunotherapy approaches. 311 
+
+Together, this framework provides a conceptual model for precision therapeutic selection based on 312 
+
+tumor -specific target expression states, particularly in patients with primary resistance or 313 
+
+progression following enfortumab vedotin plus pembrolizumab. These findings are hypothesis -314 
+
+generating and support prospective validation in treatment -annotated cohort s.315 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 25, 2026. ;https://doi.org/10.64898/2026.06.24.734314 doi: bioRxiv preprint
+
+316 
+
+Discussion 317 
+
+In this study, we define a reproducible and biologically coherent landscape of ADC and 318 
+
+immunotherapy target expression in urothelial carcinoma, identifying three principal patterns of 319 
+
+co -expression that are conserved across independent transcriptomic cohorts and supported by 320 
+
+orthogonal proteomic data. These findings move beyond single -target analyses to establish 321 
+
+coordinated target -expression states , providing a conceptual framework for therapeutic 322 
+
+prioritization in UC. 323 
+
+The clinical relevance of this work is underscored by the evolving treatment paradigm in advanced 324 
+
+UC. Although EV plus pembrolizumab has significantly improved outcomes, a substantial 325 
+
+proportion of patients experience primary resistance or disease progression. In this setting, 326 
+
+treatment selection is not currently guided by tumor biology. Our findings address this gap by 327 
+
+defining distinct target -expression states that may inform rational therapeutic strategies following 328 
+
+EV -based therapy. 329 
+
+A key observation from our analysis is that NECTIN4 expression , central to EV activity , is not 330 
+
+uniformly distributed across tumors and is embedded within a broader network of co -expressed 331 
+
+ADC -associated targets, including FGFR3 , ERBB2 , and TACSTD2 . These findings provide 332 
+
+biologic rationale for combinatorial or sequential ADC approaches targeting co -expressed antigens 333 
+
+in N ectin -4-high tumors . EV plus pembrolizumab has become the first line therapy for patients 334 
+
+with advanced UC and was recently incorporated into treatment paradigms for patients with 335 
+
+cisplatin -ineligible, muscle invasive UC 13 . Given the possibility of achieving a complete response 336 
+
+by adding therapies based on co expression patterns may inform future strategies aimed at 337 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 25, 2026. ;https://doi.org/10.64898/2026.06.24.734314 doi: bioRxiv preprint
+
+improving organ preservation . Early -phase clinical studies combining FGFR3 - and Nectin -4-338 
+
+directed therapies have demonstrated promising activity with a remarkable 93.3% overall response 339 
+
+rate 14 , suggesting synergy with regards to targeting multiple positively -associated targets in UC. 340 
+
+the potential relevance of these co -expression patterns. 341 
+
+Conversely, we identify inverse relationships between the expression of NECTIN4 and a subset of 342 
+
+non -luminal targets EGFR , MET, and DLL3. This suggests that tumors with low NECTIN4 343 
+
+expression may preferentially rely on alternative biologic programs, potentially explaining 344 
+
+mechanisms of resistance to EV -based therapy. These observations generate the hypothesis that 345 
+
+therapeutic strategies targeting inversely associated pathways may represent rational approaches 346 
+
+in EV -refractory disease. 347 
+
+Our study also identifies inverse associations between NECTIN4 expression with IO targets 348 
+
+including CD274 (PD -L1). Previous meta -analyses have demonstrated ORR of 68% with EV plus 349 
+
+pembrolizumab compared to ORR of 43% with EV monotherapy for metastatic urothelial 350 
+
+carcinoma 15 . Interestingly, the proportions of tumors with higher express ion of NECTIN4 and 351 
+
+immune checkpoint targets in our cohorts were comparable. 352 
+
+Beyond global clustering, we demonstrate that these target -expression patterns are closely linked 353 
+
+to histologic and molecular subtypes of UC. More specifically pertaining to histopathology, the 354 
+
+current reporting standard for urothelial carcinoma based on the latest College of American 355 
+
+Pathologist synoptic categorizes urothelial carcinoma based on whether portions of the tumor 356 
+
+demonstrate other histologic subtypes including squamous cell, adenocarcinoma, neuroendocrine, 357 
+
+and sarcomatoid differentiation 16 . Basal/squamous and neuroendocrine -like tumors exhibit 358 
+
+enrichment of distinct targets, including EGFR , CD274 , and DLL3 , whereas luminal tumors are 359 
+
+characterized by higher expression of ERBB2 and ERBB3 . These findings are particularly relevant 360 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 25, 2026. ;https://doi.org/10.64898/2026.06.24.734314 doi: bioRxiv preprint
+
+given the known heterogeneity of UC and the limitations of current pathology reporting, which 361 
+
+often incompletely captures variant histology. Molecularly defined target states may therefore 362 
+
+provide a complementary approach to histologic classification for therapeutic decision -making. 363 
+
+The translational relevance of this framework is illustrated through representative clinical cases 364 
+
+demonstrating biologically guided target selection. While anecdotal, these examples serve as 365 
+
+proof -of -concept that alignment between tumor biology and therapeutic targeting may yield 366 
+
+clinically meaningful responses, particularly in rare or treatment -refractory disease contexts. 367 
+
+Several limitations of this study warrant consideration. First, our analyses are primarily based on 368 
+
+transcriptomic data, with limited but supportive proteomic validation. Second, both TCGA and 369 
+
+ORIEN cohorts predate the widespread use of EV plus pembrolizumab, precluding direct 370 
+
+assessment of predictive biomarker utility in the contemporary treatment landscape. Third, 371 
+
+survival analyses did not yield consistent associations across datasets, likely reflecting 372 
+
+heterogeneity in cohort composition and treatment exposure. Finally, the clinical examples 373 
+
+presented are illustrative and do not establish efficacy. 374 
+
+Accordingly, our findings require prospective validation in treatment -annotated cohorts. Future 375 
+
+studies incorporating longitudinal sampling and integration of genomic, transcriptomic, and 376 
+
+proteomic data will be essential to define predictive biomarkers and optimize sequencing 377 
+
+strategies. 378 
+
+In conclusion, we define a reproducible transcriptomic framework of ADC and immunotherapy 379 
+
+target co -expression in UC, identifying biologically distinct target -expression states that are 380 
+
+associated with histologic and molecular subtypes. These data provide a foundation for biomarker -381 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 25, 2026. ;https://doi.org/10.64898/2026.06.24.734314 doi: bioRxiv preprint
+
+driven clinical investigation and rational therapeutic development beyond EV plus 382 
+
+pembrolizumab, particularly in the setting of treatment resistance 383 
+
+384 
+
+References 385 
+
+1. Zhang F, Li S. Antibody -drug conjugates as game changers in bladder cancer: current progress 386 
+
+and future directions. Front Immunol . 2025;16:1591191. doi:10.3389/fimmu.2025.1591191 387 
+
+2. Cheng L, Chen L, Shi Y, et al. Efficacy and safety of bispecific antibodies vs. immune 388 
+
+checkpoint blockade combination therapy in cancer: a real -world comparison. Mol Cancer .389 
+
+2024;23(1):77. doi:10.1186/s12943 -024 -01956 -6390 
+
+3. Wang R, Hu B, Pan Z, et al. Antibody –Drug Conjugates (ADCs): current and future 391 
+
+biopharmaceuticals. J Hematol OncolJ Hematol Oncol . 2025;18(1):51. doi:10.1186/s13045 -392 
+
+025 -01704 -3393 
+
+4. Powles T, Valderrama BP, Gupta S, et al. Enfortumab Vedotin and Pembrolizumab in 394 
+
+Untreated Advanced Urothelial Cancer. N Engl J Med . 2024;390(10):875 -888. 395 
+
+doi:10.1056/NEJMoa2312117 396 
+
+5. Robertson AG, Kim J, Al -Ahmadie H, et al. Comprehensive Molecular Characterization of 397 
+
+Muscle -Invasive Bladder Cancer. Cell . 2017;171(3):540 -556.e25. 398 
+
+doi:10.1016/j.cell.2017.09.007 399 
+
+6. Kohlmann W, Nix DA, Pauley K, et al. Inherited Germline Variants in Urinary Tract Cancer: 400 
+
+A Multicenter Whole -Exome Sequencing Analysis and Correlation With Clinical Features and 401 
+
+Tumor Genomics. JCO Precis Oncol . 2024;(8):e2300697. doi:10.1200/PO.23.00697 402 
+
+7. Xu N, Yao Z, Shang G, et al. Integrated proteogenomic characterization of urothelial 403 
+
+carcinoma of the bladder. J Hematol OncolJ Hematol Oncol . 2022;15(1):76. 404 
+
+doi:10.1186/s13045 -022 -01291 -7405 
+
+8. Bankhead P, Loughrey MB, Fernández JA, et al. QuPath: Open source software for digital 406 
+
+pathology image analysis. Sci Rep . 2017;7(1):16878. doi:10.1038/s41598 -017 -17204 -5407 
+
+9. Schmidt U, Weigert M, Broaddus C, Myers G. Cell Detection with Star -Convex Polygons. In: 408 
+
+Frangi AF, Schnabel JA, Davatzikos C, Alberola -López C, Fichtinger G, eds. Medical Image 409 
+
+Computing and Computer Assisted Intervention – MICCAI 2018 . Vol 11071. Lecture Notes in 410 
+
+Computer Science. Springer International Publishing; 2018:265 -273. doi:10.1007/978 -3-030 -411 
+
+00934 -2_30 412 
+
+10. Chu CE, Chen Z, Whiting K, et al. Clinical Outcomes, Genomic Heterogeneity, and 413 
+
+Therapeutic Considerations Across Histologic Subtypes of Urothelial Carcinoma. Eur Urol .414 
+
+2025;88(5):472 -481. doi:10.1016/j.eururo.2025.04.008 415 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 25, 2026. ;https://doi.org/10.64898/2026.06.24.734314 doi: bioRxiv preprint
+
+11. Amin MB. Histological variants of urothelial carcinoma: diagnostic, therapeutic and 416 
+
+prognostic implications. Mod Pathol . 2009;22:S96 -S118. doi:10.1038/modpathol.2009.26 417 
+
+12. Kamoun A, De Reyniès A, Allory Y, et al. A Consensus Molecular Classification of 418 
+
+Muscle -invasive Bladder Cancer. Eur Urol . 2020;77(4):420 -433. 419 
+
+doi:10.1016/j.eururo.2019.09.006 420 
+
+13. Vulsteke C, Adra N, Danchaivijitr P, et al. Perioperative Enfortumab Vedotin and 421 
+
+Pembrolizumab in Bladder Cancer. N Engl J Med . 2026;394(13):1257 -1269. 422 
+
+doi:10.1056/NEJMoa2511674 423 
+
+14. Jain RK, Yang YA, Graham L, et al. ETCTN 10483: Phase Ib trial of erdafitinib (E) 424 
+
+combined with enfortumab vedotin (EV) following prior therapies for metastatic urothelial 425 
+
+carcinoma (mUC) with FGFR3/2 genetic alterations (GAs). J Clin Oncol .426 
+
+2026;44(7_suppl):770 -770. doi:10.1200/JCO.2026.44.7_suppl.770 427 
+
+15. Yajima S, Hirose K, Masuda H. Enfortumab Vedotin With or Without Pembrolizumab in 428 
+
+Metastatic Urothelial Carcinoma: A Systematic Review and Meta -Analysis. JAMA Netw 429 
+
+Open . 2025;8(3):e250250. doi:10.1001/jamanetworkopen.2025.0250 430 
+
+16. Mahlow J, Gupta S. Pathology focused review of morphologic subtypes and molecular 431 
+
+variants of urothelial carcinoma with an emphasis on clinical/treatment relevance. Urol Oncol 432 
+
+Semin Orig Investig . 2024;42(7):193 -202. doi:10.1016/j.urolonc.2024.01.016 433 
+
+17. Ding C, Zhang Y, Xia T, et al. Perioperative the BTLA inhibitor (tifcemalimab) combined 434 
+
+with toripalimab and chemotherapy for resectable locally advanced thoracic esophageal 435 
+
+squamous cell carcinoma trial (BT -NICE trial): a prospective, single -arm, exploratory study. 436 
+
+Front Immunol . 2025;16:1542877. doi:10.3389/fimmu.2025.1542877 437 
+
+18. Cheng Y, Wang J, Yu Y, et al. Phase I/II Study of Tifcemalimab, an Anti –B- and T -438 
+
+lymphocyte Attenuator Antibody, in Combination with Toripalimab in Previously Treated 439 
+
+Advanced Lung Cancer. Clin Cancer Res . 2025;31(14):2926 -2934. doi:10.1158/1078 -440 
+
+0432.CCR -25 -0022 441 
+
+19. Bamias A, Davis ID, Galsky MD, et al. Atezolizumab monotherapy versus chemotherapy 442 
+
+in untreated locally advanced or metastatic urothelial carcinoma (IMvigor130): final overall 443 
+
+survival analysis from a randomised, controlled, phase 3 study. Lancet Oncol . 2024;25(1):46 -444 
+
+61. doi:10.1016/S1470 -2045(23)00539 -9445 
+
+20. Galsky MD, Witjes JA, Gschwend JE, et al. Adjuvant Nivolumab in High -Risk Muscle -446 
+
+Invasive Urothelial Carcinoma: Expanded Efficacy From CheckMate 274. J Clin Oncol .447 
+
+2025;43(1):15 -21. doi:10.1200/JCO.24.00340 448 
+
+21. Powles T, Catto JWF, Galsky MD, et al. Perioperative Durvalumab with Neoadjuvant 449 
+
+Chemotherapy in Operable Bladder Cancer. N Engl J Med . 2024;391(19):1773 -1786. 450 
+
+doi:10.1056/NEJMoa2408154 451 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 25, 2026. ;https://doi.org/10.64898/2026.06.24.734314 doi: bioRxiv preprint
+
+22. Duan J, Sun Y, Wang Q, et al. HS -20093, a B7 -H3 -targeted antibody -drug conjugate in 452 
+
+lung cancer: Results from the ARTEMIS -001 phase 1a/b trial. Cancer Cell . Published online 453 
+
+March 2026:S1535610826001042. doi:10.1016/j.ccell.2026.02.006 454 
+
+23. Besse B, Lo Russo G, Lena H, et al. OA08.05 Tusamitamab Ravtansine vs Docetaxel in 455 
+
+Previously Treated Advanced Nonsquamous NSCLC: Results from Phase 3 CARMEN -LC03 456 
+
+Trial. J Thorac Oncol . 2024;19(10):S25 -S26. doi:10.1016/j.jtho.2024.09.050 457 
+
+24. Kopetz S, Boni V, Kato K, et al. Precemtabart tocentecan, an anti -CEACAM5 antibody –458 
+
+drug conjugate, in metastatic colorectal cancer: a phase 1 trial. Nat Med . 2025;31(10):3504 -459 
+
+3513. doi:10.1038/s41591 -025 -03843 -z460 
+
+25. Wainberg ZA, Besse B, Pallis A, Habermehl C, Kato K. Abstract CT117: PROCEADE 461 
+
+PanTumor: A Phase 1b/2, multicenter study of precemtabart tocentecan (M9140), an anti -462 
+
+CEACAM5 antibody -drug conjugate (ADC) with exatecan payload, in patients with advanced 463 
+
+solid tumors. Cancer Res . 2025;85(8_Supplement_2):CT117 -CT117. doi:10.1158/1538 -464 
+
+7445.AM2025 -CT117 465 
+
+26. Cheng Y, Meng X, Zhang Y, et al. OA06.01 A First -In -Human Phase 1 Study of SHR -466 
+
+4849 (IDE849), a DLL3 -Directed Antibody -Drug Conjugate, in Relapsed SCLC. J Thorac 467 
+
+Oncol . 2025;20(10):S21. doi:10.1016/j.jtho.2025.09.046 468 
+
+27. Lassman AB, Pugh SL, Wang TJC, et al. Depatuxizumab mafodotin in EGFR -amplified 469 
+
+newly diagnosed glioblastoma: A phase III randomized clinical trial. Neuro -Oncol .470 
+
+2023;25(2):339 -350. doi:10.1093/neuonc/noac173 471 
+
+28. Han F, Lv X, Zhou YJ, et al. Becotatug vedotin, MRG003, in previously treated recurrent 472 
+
+or metastatic nasopharyngeal carcinoma: A multicenter, single -arm, phase IIa trial. Med .473 
+
+Published online February 2026:101029. doi:10.1016/j.medj.2026.101029 474 
+
+29. Shitara K, Van Cutsem E, Gümüş M, et al. Trastuzumab Deruxtecan or Ramucirumab 475 
+
+plus Paclitaxel in Gastric Cancer. N Engl J Med . 2025;393(4):336 -348. 476 
+
+doi:10.1056/NEJMoa2503119 477 
+
+30. Smit EF, Felip E, Uprety D, et al. Trastuzumab deruxtecan in patients with metastatic 478 
+
+non -small -cell lung cancer (DESTINY -Lung01): primary results of the HER2 -overexpressing 479 
+
+cohorts from a single -arm, phase 2 trial. Lancet Oncol . 2024;25(4):439 -454. 480 
+
+doi:10.1016/S1470 -2045(24)00064 -0481 
+
+31. Meric -Bernstam F, Makker V, Oaknin A, et al. Efficacy and Safety of Trastuzumab 482 
+
+Deruxtecan in Patients With HER2 -Expressing Solid Tumors: Primary Results From the 483 
+
+DESTINY -PanTumor02 Phase II Trial. J Clin Oncol . 2024;42(1):47 -58. 484 
+
+doi:10.1200/JCO.23.02005 485 
+
+32. Sheng X, Zeng G, Zhang C, et al. Disitamab Vedotin plus Toripalimab in HER2 -486 
+
+Expressing Advanced Urothelial Cancer. N Engl J Med . 2025;393(23):2324 -2337. 487 
+
+doi:10.1056/NEJMoa2511648 488 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 25, 2026. ;https://doi.org/10.64898/2026.06.24.734314 doi: bioRxiv preprint
+
+33. Pistilli B, Mosele F, Corcos N, et al. Patritumab deruxtecan in HR+HER2 - advanced 489 
+
+breast cancer: a phase 2 trial. Nat Med . 2025;31(10):3492 -3503. doi:10.1038/s41591 -025 -490 
+
+03885 -3491 
+
+34. Mok T, Jänne PA, Nishio M, et al. HERTHENA -Lung02: phase III study of patritumab 492 
+
+deruxtecan in advanced EGFR -mutated NSCLC after a third -generation EGFR TKI. Future 493 
+
+Oncol . 2024;20(15):969 -980. doi:10.2217/fon -2023 -0602 494 
+
+35. Vergote I, González -Martín A, Fujiwara K, et al. Tisotumab Vedotin as Second - or Third -495 
+
+Line Therapy for Recurrent Cervical Cancer. N Engl J Med . 2024;391(1):44 -55. 496 
+
+doi:10.1056/NEJMoa2313811 497 
+
+36. Fan G, Luo X, Li K, et al. Development and preclinical evaluation of a novel FGFR3 -498 
+
+targeted antibody -drug conjugate in bladder cancer. Asian J Pharm Sci . 2025;20(6):101095. 499 
+
+doi:10.1016/j.ajps.2025.101095 500 
+
+37. Tawbi HA, Schadendorf D, Lipson EJ, et al. Relatlimab and Nivolumab versus 501 
+
+Nivolumab in Untreated Advanced Melanoma. N Engl J Med . 2022;386(1):24 -34. 502 
+
+doi:10.1056/NEJMoa2109970 503 
+
+38. Camidge DR, Bar J, Horinouchi H, et al. Telisotuzumab Vedotin Monotherapy in Patients 504 
+
+With Previously Treated c -Met Protein –Overexpressing Advanced Nonsquamous EGFR -505 
+
+Wildtype Non –Small Cell Lung Cancer in the Phase II LUMINOSITY Trial. J Clin Oncol .506 
+
+2024;42(25):3000 -3011. doi:10.1200/JCO.24.00720 507 
+
+39. Bi C, Patel JS, Liang SH. Development of CD73 Inhibitors in Tumor Immunotherapy and 508 
+
+Opportunities in Imaging and Combination Therapy. J Med Chem . 2025;68(7):6860 -6869. 509 
+
+doi:10.1021/acs.jmedchem.4c02151 510 
+
+40. Petrylak DP, Eigl BJ, George S, et al. Phase I Dose -Escalation Study of the Safety and 511 
+
+Pharmacokinetics of AGS15E Monotherapy in Patients with Metastatic Urothelial Carcinoma. 512 
+
+Clin Cancer Res . 2024;30(1):63 -73. doi:10.1158/1078 -0432.CCR -22 -3627 513 
+
+41. Zhu Y, Jiang S, Shi Y, et al. Sacituzumab tirumotecan in participants with advanced or 514 
+
+metastatic urothelial carcinoma and disease progression after chemotherapy and immune 515 
+
+checkpoint inhibitors. Ann Oncol . 2026;37(3):378 -387. doi:10.1016/j.annonc.2025.11.013 516 
+
+42. Naing A, McKean M, Tolcher A, et al. TIGIT inhibitor M6223 as monotherapy or in 517 
+
+combination with bintrafusp alfa in patients with advanced solid tumors: a first -in -human, 518 
+
+phase 1, dose -escalation trial. J Immunother Cancer . 2025;13(2):e010584. doi:10.1136/jitc -519 
+
+2024 -010584 520 
+
+43. Yuan Z, Pan Y, Yuan H, Gong A. OX40/OX40L: a new target for tumor immunotherapy 521 
+
+and its clinical research progress. Front Oncol . 2026;15:1730620. 522 
+
+doi:10.3389/fonc.2025.1730620 523 
+
+44. Schwartz R, Vajrala K, Falchook GS. 4 -1BB Antibodies in Oncology Clinical Trials: A 524 
+
+Review. J Immunother Precis Oncol . 2025;8(2):121 -131. doi:10.36401/JIPO -24 -30 525 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 25, 2026. ;https://doi.org/10.64898/2026.06.24.734314 doi: bioRxiv preprint
+
+45. Phipps M, Falchook GS. B7 Homolog 4 (B7 -H4) -Directed Agents in Oncology Clinical 526 
+
+Trials: A Review. J Immunother Precis Oncol . 2025;8(2):153 -160. doi:10.36401/JIPO -24 -34 527 
+
+528 
+
+.CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 25, 2026. ;https://doi.org/10.64898/2026.06.24.734314 doi: bioRxiv preprint Figures 529 
+
+(See associated PPT file )530 
+
+531 
+
+532 
+
+.CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 25, 2026. ;https://doi.org/10.64898/2026.06.24.734314 doi: bioRxiv preprint Table 1 533 
+
+Target 
+
+Gene 
+
+Protein ID  Tumor type  Investigational status 
+
+BTLA  BTLA  ESCC 17 
+
+NSCLC/SCLC 18 
+
+IND 
+
+CD274  PD -L1  UC 4,19 –21  FDA approved 
+
+CD276  B7 -H3  NSCLC/SCLC 22  Clinical Trial 
+
+CEACAM5  CEACAM5  NSCLC 23 
+
+CRC 24 
+
+Pan -Tumor 25 
+
+Clinical Trial 
+
+CTLA4  CTLA -4 UC 20  Clinical Trial 
+
+DLL3  DLL3  SCLC 26  Clinical Trial 
+
+EGFR  EGFR  GBM 27 
+
+NPC 28 
+
+Clinical Trial 
+
+ERBB2  HER2  Breast 
+
+Gastric 29 
+
+NSCLC 30 
+
+Solid tumors 31 
+
+UC 32 
+
+FDA approved 
+
+ERBB3  HER3  Breast 33 
+
+NSCLC 34 
+
+Clinical Trial 
+
+F3  TF  Cervical 35  FDA approved 
+
+FGFR3  FGFR3  UC 36  Pre -Clinical 
+
+LAG3  LAG3  Melanoma 37  Clinical Trial 
+
+MET  MET  NSCLC 38  FDA approved 
+
+NECTIN4  NECTIN4  UC 4 FDA approved 
+
+NT5E  CD73  Solid Tumors 39  Clinical Trial 
+
+PDCD1  PD -1 UC 4,19 –21 
+
+SLITRK6  SLITRK6  UC 40  Clinical Trial 
+
+TACSTD2  TROP2  UC 41  Clinical Trial 
+
+TIGIT  TIGIT  NSCLC, SCLC, Cervical 
+
+cancer 
+
+Pan -Tumor 42 
+
+Clinical Trial 
+
+TNFRSF18  GITR  Pan -Tumor  Clinical Trial 
+
+TNFRSF4  OX40L  Solid Tumors 43  Clinical Trial 
+
+TNFRSF9  4-1BB  Solid Tumors 44  Clinical Trial 
+
+VTCN1  B7 -H4  Solid Tumor 45  Clinical Trial 
+
+534 
+
+535 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 25, 2026. ;https://doi.org/10.64898/2026.06.24.734314 doi: bioRxiv preprint
+
+Table 2: 536 
+
+Stage  Cluster 1  Cluster 2 
+
+Stage IV  86  35 
+
+Stage III  78  50 
+
+Stage II  77  29 
+
+N/A  53  19 
+
+Stage I  4 0
+
+537 
+
+.CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 25, 2026. ;https://doi.org/10.64898/2026.06.24.734314 doi: bioRxiv preprint 538 Figure 1. Transcriptomic profiles of target expression in UC . A)
+
+Discovery cohort (TCGA ). B) Validation cohort (ORIEN ). Heatmaps were 
+
+plotted with log -transformed Z-score of transcripts per million for each gene .
+
+Row dendrograms represent gene clusters and column dendrograms 
+
+represent tumor subsets . Pearson s correlation between ADC and IO targets in 
+
+UC are plotted in a heatmap based on log -transformed Z-score of transcripts per 
+
+million for C) TCGA and D) ORIEN cohorts .
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 25, 2026. ;https://doi.org/10.64898/2026.06.24.734314 doi: bioRxiv preprint
+
+539 Figure 2. Differentially expressed ADC and IO target genes by bladder 
+
+carcinoma histologic type . Variance stabilized counts were plotted according to 
+
+histologic subtype . Genes that were significantly differentially expressed between at 
+
+least one comparison were included . Brackets denote significant differential 
+
+expression between two cohorts , as defined by Log 2(Fold Change ) 1 and false 
+
+discovery rate adjusted P-value 0.01 .
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 25, 2026. ;https://doi.org/10.64898/2026.06.24.734314 doi: bioRxiv preprint
+
+540 Figure 3. Differentially expressed ADC and IO target genes by molecular subtype of 
+
+bladder carcinoma . Variance stabilized counts were plotted according 
+
+to CMIBC subtype . Genes that were significantly differentially expressed between at 
+
+least one comparison were included . Brackets denote significant differential expression 
+
+between two cohorts , as defined by Log 2(Fold Change ) 1 and false discovery rate 
+
+adjusted P -value 0.01 .
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 25, 2026. ;https://doi.org/10.64898/2026.06.24.734314 doi: bioRxiv preprint
+
+541 Figure 4. PET -CT for a UC patient A) At the time of disease progression after partial 
+
+response to carboplatin /etoposide with atezolizumab . B) PET -CT after treatment 
+
+with tarlatamab -dlle 
+
+.CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 25, 2026. ;https://doi.org/10.64898/2026.06.24.734314 doi: bioRxiv preprint 542 Figure 5. Multiplex immunohistochemistry of malignant ascites for a UC patient after 
+
+treatment progression with enfortumab vedotin and sacituzumab govetecan . DAPI is 
+
+represented in blue . DLL 3 is represented in red . Given the similar pattern of cytoplasmic 
+
+and membranous staining with A) FGFR 3, B) HER 2, C) Nectin -4, and D) Trop -2 these 
+
+are represented in green and shown in separate figures .
+
+.CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 25, 2026. ;https://doi.org/10.64898/2026.06.24.734314 doi: bioRxiv preprint 543 Figure 6. Transcriptomic framework for biologically guided selection of antibody -drug conjugate 
+
+(ADC ) and immunotherapy targets in urothelial carcinoma .
+
+.CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 25, 2026. ;https://doi.org/10.64898/2026.06.24.734314 doi: bioRxiv preprint Supplementa ry Methods 544 
+
+Multiplex Immunohistochemistry 545 
+
+CD45 -positive cells were depleted from patient ascites samples with EasySep ™ Human CD45 546 
+
+Depletion Kit II (STEMCELL Technologies, # 17898) and EasySep ™ Magnet (STEMCELL 547 
+
+Technologies, # 18000) according to the manufacture protocol. CD45 depleted ascites cells 548 
+
+were fixed with 10% Neutral Buffered Formalin (NBF) at room temperature for 2 hours. The 549 
+
+fixed samples were collected by low -speed centrifugation at 100 x g for 1 minute, and the NBF 550 
+
+solution was discarded. The fixed sample pellet was resuspended in 200uL of Epredia HistoGel ™551 
+
+Specimen Processing Gel (Fisher Scientific, #22 -110 -678) and allow to solidify into disc shape. 552 
+
+The histogel disc was then placed into a cassette for formalin fixation and paraffin embedding. 553 
+
+Formalin -fixed, paraffin -embedded (FFPE) samples were then cut into 5 -μm tissue sections. 554 
+
+The sections were processed using Leica BOND automated stainer. Prior to experimental runs, 555 
+
+antibody optimization was conducted on control tissues to determine optimal antigen retrieval 556 
+
+conditions, primary antibody concentrations, incubation times, and detection chemistries, 557 
+
+aiming to preserve archival material and avoid waste. Optimization protocols included single -558 
+
+plex trials, titration series, and signal -to -background evaluations utilizing matched negative 559 
+
+controls (isotype and primary -antibody omission).For both immunohistochemistry (IHC) and 560 
+
+immunofluorescence (IF) workflows, slides underwent automated on -board deparaffinization, 561 
+
+endogenous peroxidase blocking, and heat -induced antigen retrieval using Bond Epitope 562 
+
+Retrieval solutions (ER1, citrate -based, pH ~6; or ER2, EDTA -based, pH ~9) based on antibody 563 
+
+requirements. For IHC, primary antibodies were incubated on the instrument, followed by 564 
+
+polymer -HRP detection, 3,3' -Diaminobenzidine (DAB) chromogen development, and 565 
+
+hematoxylin counterstaining. For multiplex IF, primary antibodies were also incubated on the 566 
+
+instrument, with the difference that all antibodies and polymer -HRP detection reagents were 567 
+
+applied sequentially, followed by Opal fluorophore development (Akoya Biosciences) and DAPI 568 
+
+counterstaining as the last step. Appropriate positive and matched negative tissue controls were 569 
+
+included in every run to ensure assay reliability. Detailed antibody specifications, including 570 
+
+incubation parameters, retrieval conditions, and assigned Opal dyes, are summarized in the 571 
+
+Table (below) .572 
+
+Antibody  Vendor  Product#  Clone  Retrival  Dilution  Incubation 
+
+time 
+
+Opal 
+
+DLL3  Abcam  AB229902  EPR22592 -
+
+18 
+
+ER2 (pH 9.0), 
+
+30 min 
+
+1:100  15 min  480 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 25, 2026. ;https://doi.org/10.64898/2026.06.24.734314 doi: bioRxiv preprint
+
+FGFR3  Abcam  AB10651  Polyclonal  ER2 (pH 9.0), 
+
+30 min 
+
+1:100  20 min  520 
+
+TROP2  Abcam  AB214488  EPR20043  ER2 (pH 9.0), 
+
+30 min 
+
+1:6000  15 min  540 
+
+Nectin -4 Abcam  AB192033  EPR15613 -
+
+68 
+
+ER1 (pH 6.0), 
+
+30 min 
+
+1:600  30 min  570 
+
+HER2  Abcam  AB134182  EP1045Y  ER2 (pH 9.0), 
+
+30 min 
+
+1:3000  15 min  620 
+
+Cytokeratin  Agilent 
+
+Dako 
+
+M3515  AE1/AE3  ER1 (pH 6.0), 
+
+30 min 
+
+1:500  60 min  650 
+
+573 
+
+Multiplexed immunofluorescence (mIF) images were analyzed in QuPath (version 0.6.0) 8.574 
+
+Nucleus segmentation was performed by initially selecting 10 regions of interest for manual 575 
+
+annotation followed by nucleus segmentation using the STARDIST algorithm 9 at ×20 576 
+
+magnification. STARDIST parameters for this analysis are available at 577 
+
+(https://github.com/MarkZaidi/Universal -StarDist -for -578 
+
+QuPath/blob/main/Multimodal%20StarDist%20Segmentation.groovy ). Cell borders were 579 
+
+obtained by expanding the nuclear outlines by 5 pixels. Single cell data including staining 580 
+
+intensity for each channel were exported for further analysis. Thresholds were visually 581 
+
+determined by an experienced expert for each marker and further applied to each image for 582 
+
+cellular positivity computation 583 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 25, 2026. ;https://doi.org/10.64898/2026.06.24.734314 doi: bioRxiv preprint
+
+584 Supplementary Figure 1. Proteomic clustering of ADC and IO targets in UC .
+
+Hierarchical clustering of label -free mass spectrometry data from Xu et 
+
+al . Rows dendrograms identify clusters of protein expression and column 
+
+dendrograms represent tumor subsets according to protein expression .
+
+.CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 25, 2026. ;https://doi.org/10.64898/2026.06.24.734314 doi: bioRxiv preprint 585 Supplementary Figure 2. Kaplan -Meier curves of UC in tumor subsets defined 
+
+by ADC and IO target expression profiles in A ) TCGA and B ) ORIEN cohorts .
+
+.CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 25, 2026. ;https://doi.org/10.64898/2026.06.24.734314 doi: bioRxiv preprint 586 Supplementary Figure 3. Kaplan -Meier curves of UC according to individual target 
+
+expression in the ORIEN cohort .
+
+.CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 25, 2026. ;https://doi.org/10.64898/2026.06.24.734314 doi: bioRxiv preprint 587 Supplementary Figure 4. Kaplan -Meier curves of UC according to individual target 
+
+expression in TCGA cohort .
+
+.CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 25, 2026. ;https://doi.org/10.64898/2026.06.24.734314 doi: bioRxiv preprint 588 Supplementary Figure 5. ADC target protein by multiplex immunohistochemistry in a UC 
+
+patient after progression on enfortumab vedotin and trastuzumab deruxtecan . A) Each 
+
+scatterplot represents pairwise protein expression denoted on the X and Y axis . Points in 
+
+each scatterplot represents quantitative intensity of a pair of targets single cells . B)
+
+Pearson correlation for each pair of proteins .            
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 25, 2026. ;https://doi.org/10.64898/2026.06.24.734314 doi: bioRxiv preprint Heatmap -TCGA Heatmap -ORIEN
+> Correlogram -TCGA Correlogram -ORIEN
+> A) B)
+> C) D)
+
+Figure 1. Transcriptomic profiles of target expression in UC . A) 
+
+Discovery cohort (TCGA) . B) Validation cohort (ORIEN) . Heatmaps were 
+
+plotted with log -transformed Z-score of transcripts per million for each gene .
+
+Row dendrograms represent gene clusters and column dendrograms 
+
+represent tumor subsets . Pearson’s correlation between ADC and IO targets in 
+
+UC are plotted in a heatmap based on log -transformed Z-score of transcripts per 
+
+million for C) TCGA and D) ORIEN cohorts .DLL3  EGFR  ERBB2           
+
+> ERBB3 F3 FGFR3
+> NECTIN4 NT5E TACSTD2
+> A) B) C)
+> D) E) F)
+> G) H) I)
+
+Figure 2. Differentially expressed ADC and IO target genes by bladder 
+
+carcinoma histologic type . Variance stabilized counts were plotted according to 
+
+histologic subtype . Genes that were significantly differentially expressed between at 
+
+least one comparison were included . Brackets denote significant differential 
+
+expression between two cohorts, as defined by |Log 2(Fold Change)| > 1 and false 
+
+discovery rate adjusted P-value < 0.01 .BTLA  CD274  CTLA4  DLL3              
+
+> EGFR ERBB2 ERBB3 F3
+> FGFR3
+> A) B) C) D)
+> E) F) G) H)
+> I)
+> LAG3 NECTIN4 NT5E
+> J) K) L)
+> TACSTD2
+> M)
+> TNFRSF18
+> N)
+
+Figure 3. Differentially expressed ADC and IO target genes by molecular subtype of 
+
+bladder carcinoma. Variance stabilized counts were plotted according 
+
+to CMIBC subtype. Genes that were significantly differentially expressed between at 
+
+least one comparison were included. Brackets denote significant differential expression 
+
+between two cohorts, as defined by |Log2(Fold Change)| > 1 and false discovery rate 
+
+adjusted P -value < 0.01. A)  B) 
+
+Figure 4. PET -CT for a UC patient A) At the time of disease progression after partial 
+
+response to carboplatin/etoposide with atezolizumab . B) PET -CT after treatment 
+
+with tarlatamab -dlle DAPI + DLL3 + FGFR3             
+
+> DAPI +DLL3 +NECTIN4
+> DAPI +DLL3 +HER2
+> DAPI +DLL3 +TROP2
+
+A B
+
+Figure 5. Multiplex immunohistochemistry of malignant ascites for a UC patient after 
+
+treatment progression with enfortumab vedotin and sacituzumab govetecan . DAPI is 
+
+represented in blue . DLL 3 is represented in red . Given the similar pattern of cytoplasmic 
+
+and membranous staining with A) FGFR 3, B) HER 2, C) Nectin -4, and D) Trop -2 these 
+
+are represented in green and shown in separate figures .
+
+C D
+
+E F  
+
+> DAPI DAPI +DLL3
+
+Advanced UC 
+
+EV + Pembrolizumab 
+
+Primary 
+
+Resistance 
+
+Initial 
+
+Response 
+
+Progression 
+
+on treatment 
+
+/ Prohibitive 
+
+Toxicity 
+
+Luminal / ADC 
+
+NECTIN4 FGFR3 HER2 TROP2 
+
+Immune Cluster 
+
+PD1 CTLA4 LAG3 TIGIT 
+
+Basal / Neuroendocrine 
+
+EGFR MET DLL3 CD274 
+
+Case 1: 
+
+NE tumor → DLL3 therapy 
+
+(durable response) 
+
+Case 2: 
+
+EV progression with persistent 
+
+NECTIN4 /TROP2 and HER2 
+
+expression 
+
+Precision Strategy: 
+
+Co -expression → combination 
+
+therapy 
+
+Inverse expression → alternative 
+
+targeting 
+
+Clinical scenario  Tissue Targets  Potential translation 
+
+Figure 6. Transcriptomic framework for biologically guided selection of antibody -drug conjugate 
+
+(ADC) and immunotherapy targets in urothelial carcinoma. Supplementary Figure 1. Proteomic clustering of ADC and IO targets in UC .
+
+Hierarchical clustering of label -free mass spectrometry data from Xu et 
+
+al . Rows dendrograms identify clusters of protein expression and column 
+
+dendrograms represent tumor subsets according to protein expression .A)  B) 
+
+Supplementary Figure 2. Kaplan -Meier curves of UC in tumor subsets defined 
+
+by ADC and IO target expression profiles in A) TCGA and B) ORIEN cohorts. Supplementary Figure 3. Kaplan -Meier curves of UC according to individual target 
+
+expression in the ORIEN cohort .Supplementary Figure 4. Kaplan -Meier curves of UC according to individual target 
+
+expression in TCGA cohort .Supplementary Figure 5. ADC target protein by multiplex immunohistochemistry in a UC 
+
+patient after progression on enfortumab vedotin and trastuzumab deruxtecan . A) Each 
+
+scatterplot represents pairwise protein expression denoted on the X and Y axis . Points in 
+
+each scatterplot represents quantitative intensity of a pair of targets single cells . B) 
+
+Pearson correlation for each pair of proteins .
+
+A) 
+
+B)

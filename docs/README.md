@@ -6,57 +6,71 @@
 </div>
 
 ## 每次日报
-- 最新运行日期：2026-07-08
-- 运行时间：2026-07-08 22:39:03 UTC
+- 最新运行日期：2026-07-09
+- 运行时间：2026-07-09 23:37:39 UTC
 - 运行状态：成功
-- 本次总论文数：11
-- 精读区：3
-- 速读区：8
+- 本次总论文数：17
+- 精读区：6
+- 速读区：11
 
 ### 今日简报（AI）
-今日推荐11篇论文，其中2篇精读聚焦转移性乳腺癌免疫抑制与AML转录组动态。
-
-最值得关注精读：S100A9依赖的中性粒细胞可导致转移性TNBC免疫检查点治疗抵抗；AML治疗后转录组去同步化机制。
-
-建议普通读者优先关注免疫微环境调控与治疗耐药性的跨癌种共性，后续可深入速读中抗GD2免疫疗法联合CD47阻断及PSGL-1阻断策略。
-- 详情：[/202607/08/README](/202607/08/README)
+今日完成17篇文献分析，精读6篇，重点关注伊马替尼耐药GIST的非癌基因依赖机制与免疫治疗黑色素瘤中肿瘤免疫原性休眠驱动残留病变。最值得关注的方向是GIST耐药靶点新发现及免疫治疗后肿瘤休眠机制，建议深入探索耐药微环境调控与免疫逃逸的新干预策略。
+- 详情：[/202607/09/README](/202607/09/README)
 
 ### 精读区论文标签
-1. [S100A9-Dependent CXCR2hi Neutrophils Mediate Systemic Immune Suppression and Checkpoint Resistance in Metastatic TNBC](/202607/08/biorxiv-10-64898-2026-06-09-731132-v1-s100a9-dependent-cxcr2hi-neutrophils-mediate-systemic-immune-suppression-and-checkpoint-resistance-in-metastatic-tnbc)  
+1. [Systematic elucidation and pharmacologic targeting of non-oncogene dependencies in imatinib-resistant gastrointestinal stromal tumor](/202607/09/biorxiv-10-1101-2025-10-12-681609-v2-systematic-elucidation-and-pharmacologic-targeting-of-non-oncogene-dependencies-in-imatinib-resistant-gastrointestinal-stromal-tumor)  
    标签：评分：9.0/10、query:neo-resist
-   evidence：单细胞测序揭示免疫抑制和检查点耐药机制
-2. [Multiomic State-Transitions Reveal Post-Treatment Transcriptome Desynchronization in Acute Myeloid Leukemia](/202607/08/biorxiv-10-64898-2026-05-20-726707-v2-multiomic-state-transitions-reveal-post-treatment-transcriptome-desynchronization-in-acute-myeloid-leukemia)  
+   evidence：通过网络方法和单细胞分析阐明GIST伊马替尼耐药机制
+2. [Immunogenic tumor mass dormancy as a driver of persistent residual lesions in immunotherapy-treated melanoma](/202607/09/biorxiv-10-64898-2025-12-11-692633-v2-immunogenic-tumor-mass-dormancy-as-a-driver-of-persistent-residual-lesions-in-immunotherapy-treated-melanoma)  
+   标签：评分：9.0/10、query:neo-resist
+   evidence：免疫原性肿瘤质量休眠驱动免疫治疗黑色素瘤残留病灶，直接针对新辅助免疫治疗耐药
+3. [Driver-associated transcriptional rewiring reveals conditional genetic vulnerabilities in cancer](/202607/09/biorxiv-10-1101-2024-11-20-624509-v2-driver-associated-transcriptional-rewiring-reveals-conditional-genetic-vulnerabilities-in-cancer)  
    标签：评分：8.0/10、query:neo-resist
-   evidence：转录组肿瘤耐药：多组学状态转换揭示AML治疗后转录组不同步现象
-3. [CSGDA: A Cell State-Guided Graph Domain Adaptation Network for Single-Cell Drug Response Prediction](/202607/08/biorxiv-10-64898-2026-07-02-735966-v1-csgda-a-cell-state-guided-graph-domain-adaptation-network-for-single-cell-drug-response-prediction)  
+   evidence：整合计算框架解析癌症驱动突变导致的转录重编程
+4. [A Single-Cell and Spatial Atlas of MVP-PAN Evolution Reveals a Desmoplastic Dependency to Overcome Glioblastoma Resistance](/202607/09/biorxiv-10-64898-2025-12-25-696471-v3-a-single-cell-and-spatial-atlas-of-mvp-pan-evolution-reveals-a-desmoplastic-dependency-to-overcome-glioblastoma-resistance)  
    标签：评分：8.0/10、query:neo-resist
-   evidence：单细胞药物反应预测结合域自适应推断耐药性
+   evidence：单细胞与空间转录组学揭示胶质母细胞瘤耐药空间三联体
+5. [Site-Dependent Decoupling of Drug-Biomarker Associations in Clear Cell Renal Cell Carcinoma Revealed by Functional Profiling of Patient-Derived Cell Models](/202607/09/biorxiv-10-64898-2026-04-23-720088-v2-site-dependent-decoupling-of-drug-biomarker-associations-in-clear-cell-renal-cell-carcinoma-revealed-by-functional-profiling-of-patient-derived-cell-models)  
+   标签：评分：8.0/10、query:neo-resist
+   evidence：ccRCC的多组学和功能谱分析揭示药物-生物标志物解耦，直接相关于肿瘤耐药的多组学表征
+6. [Defining biologically directed therapy target signatures in urothelial carcinoma: A transcriptomic framework for precision therapy](/202607/09/biorxiv-10-64898-2026-06-24-734314-v1-defining-biologically-directed-therapy-target-signatures-in-urothelial-carcinoma-a-transcriptomic-framework-for-precision-therapy)  
+   标签：评分：8.0/10、query:neo-resist
+   evidence：尿路上皮癌免疫治疗和ADC耐药的转录组学表征
 
 ### 速读区论文标签
-1. [Targeting the translation initiation complex in therapy-resistant and metastatic melanoma](/202607/08/biorxiv-10-1101-2024-11-20-624566-v3-targeting-the-translation-initiation-complex-in-therapy-resistant-and-metastatic-melanoma)  
+1. [Residual Multi-Modal Learning for Pan-Breast-Cancer Drug Response Prediction](/202607/09/biorxiv-10-64898-2026-07-03-736239-v1-residual-multi-modal-learning-for-pan-breast-cancer-drug-response-prediction)  
+   标签：评分：8.0/10、query:neo-resist
+   evidence：深度学习预测乳腺癌药物反应
+2. [Quantifying target antigen-dependent CAR T-cell performance against AML](/202607/09/biorxiv-10-1101-2024-12-16-628628-v2-quantifying-target-antigen-dependent-car-t-cell-performance-against-aml)  
    标签：评分：7.0/10、query:neo-resist
-   evidence：药物耐药的生物信息学：使用CRISPR筛选和计算机建模靶向治疗耐药黑色素瘤
-2. [CD47 blockade augments anti-GD2 driven phagocytosis in vitro but fails to improve in vivo efficacy in immune competent, chemoresistant neuroblastoma preclinical models](/202607/08/biorxiv-10-64898-2026-07-02-736004-v1-cd47-blockade-augments-anti-gd2-driven-phagocytosis-in-vitro-but-fails-to-improve-in-vivo-efficacy-in-immune-competent-chemoresistant-neuroblastoma-preclinical-models)  
+   evidence：数学建模分析急性髓系白血病中CAR T细胞耐药机制
+3. [Multidimensional Single-Cell Transcriptomic Profiling of Uterine Leiomyosarcomas Reveals Distinct Tumor States with Inferred Therapeutic Vulnerabilities](/202607/09/biorxiv-10-1101-2025-11-17-688894-v2-multidimensional-single-cell-transcriptomic-profiling-of-uterine-leiomyosarcomas-reveals-distinct-tumor-states-with-inferred-therapeutic-vulnerabilities)  
    标签：评分：7.0/10、query:neo-resist
-   evidence：在化疗耐药神经母细胞瘤模型中研究CD47阻断，直接探讨药物耐药和免疫逃逸机制
-3. [PSGL-1 blockade delays relapse to BRAF/MEK inhibition in cutaneous melanoma](/202607/08/biorxiv-10-64898-2026-07-02-736105-v1-psgl-1-blockade-delays-relapse-to-brafmek-inhibition-in-cutaneous-melanoma)  
+   evidence：单细胞和空间转录组揭示肿瘤状态及治疗弱点
+4. [Identifying cancer cell-state transitions from multimodal single-cell data](/202607/09/biorxiv-10-64898-2026-03-02-708945-v2-identifying-cancer-cell-state-transitions-from-multimodal-single-cell-data)  
    标签：评分：7.0/10、query:neo-resist
-   evidence：通过转录组学分析黑色素瘤靶向治疗获得性耐药
-4. [Azacitidine Response in Myelodysplastic Syndromes is Marked by NK-like CD8 T-Cell Expansion and CXCL12+ Reticular Cell Remodeling](/202607/08/biorxiv-10-64898-2026-07-07-736922-v1-azacitidine-response-in-myelodysplastic-syndromes-is-marked-by-nk-like-cd8-t-cell-expansion-and-cxcl12-reticular-cell-remodeling)  
+   evidence：捕获表型可塑性的单细胞框架与治疗逃逸
+5. [Hypoxia-activated prodrug and chemotherapy disrupt resistance-associated metabolism in osteosarcoma](/202607/09/biorxiv-10-64898-2026-06-16-732534-v1-hypoxia-activated-prodrug-and-chemotherapy-disrupt-resistance-associated-metabolism-in-osteosarcoma)  
    标签：评分：7.0/10、query:neo-resist
-   evidence：单细胞多组学分析MDS对阿扎胞苷的反应，揭示免疫微环境重塑
-5. [Stromal cell subsets modulate T-cell infiltration in early breast cancer](/202607/08/biorxiv-10-1101-2025-10-20-683407-v2-stromal-cell-subsets-modulate-t-cell-infiltration-in-early-breast-cancer)  
+   evidence：多模态空间代谢组学、蛋白质组学和金属组学分析骨肉瘤耐药相关代谢
+6. [The Boolean Breast-Cancer Network (BBCN): structural controllability of cell-fate signalling and a bistable resistance-apoptosis switch](/202607/09/biorxiv-10-64898-2026-06-18-733086-v1-the-boolean-breast-cancer-network-bbcn-structural-controllability-of-cell-fate-signalling-and-a-bistable-resistance-apoptosis-switch)  
+   标签：评分：7.0/10、query:neo-resist
+   evidence：布尔网络建模乳腺癌信号通路研究耐药与可控性
+7. [Disrupting Pregnane X Receptor Signaling Overcomes Temozolomide Resistance in Glioblastoma via Succisa pratensis-Derived Metabolites](/202607/09/biorxiv-10-64898-2026-06-22-733681-v1-disrupting-pregnane-x-receptor-signaling-overcomes-temozolomide-resistance-in-glioblastoma-via-succisa-pratensis-derived-metabolites)  
+   标签：评分：7.0/10、query:neo-resist
+   evidence：多组学分析胶质母细胞瘤替莫唑胺耐药
+8. [Relapse-founding cancer persister cells in follicular lymphoma](/202607/09/biorxiv-10-64898-2026-06-23-734001-v1-relapse-founding-cancer-persister-cells-in-follicular-lymphoma)  
+   标签：评分：7.0/10、query:neo-resist
+   evidence：滤泡性淋巴瘤治疗后的复发起始持续细胞
+9. [Spatial statistics for identifying and scoring immune clusters in high-plex profiles of primary prostate cancer](/202607/09/biorxiv-10-1101-2025-09-21-677465-v2-spatial-statistics-for-identifying-and-scoring-immune-clusters-in-high-plex-profiles-of-primary-prostate-cancer)  
    标签：评分：6.0/10、query:neo-resist
-   evidence：肿瘤微环境基质细胞亚群与T细胞浸润，与新辅助治疗耐药相关
-6. [A systematic analysis of machine learning pipelines for robust antimicrobial resistance prediction](/202607/08/biorxiv-10-64898-2026-06-28-734076-v1-a-systematic-analysis-of-machine-learning-pipelines-for-robust-antimicrobial-resistance-prediction)  
+   evidence：肿瘤微环境中免疫簇的空间统计方法
+10. [Stability Transitions in Discrete Tumor-Immune Dynamics under Immune Suppression](/202607/09/biorxiv-10-64898-2026-01-14-699451-v2-stability-transitions-in-discrete-tumor-immune-dynamics-under-immune-suppression)  
    标签：评分：6.0/10、query:neo-resist
-   evidence：机器学习管道用于药物耐药预测，可转移到肿瘤耐药场景
-7. [Systematic benchmarking of low-input whole exome sequencing workflows for longitudinal ctDNA profiling in pancreatic ductal adenocarcinoma](/202607/08/biorxiv-10-64898-2026-06-29-734743-v1-systematic-benchmarking-of-low-input-whole-exome-sequencing-workflows-for-longitudinal-ctdna-profiling-in-pancreatic-ductal-adenocarcinoma)  
+   evidence：肿瘤-免疫动力学数学模型分析免疫逃逸
+11. [Modeling the MRD state reveals the insomnia of chemotherapy-tolerant persister clones](/202607/09/biorxiv-10-64898-2026-06-14-732194-v1-modeling-the-mrd-state-reveals-the-insomnia-of-chemotherapy-tolerant-persister-clones)  
    标签：评分：6.0/10、query:neo-resist
-   evidence：药物耐药的生物信息学：基准测试低投入全外显子测序流程用于ctDNA分析以监测治疗反应和耐药
-8. [Engineering CAR T Cells for Hepatocellular Carcinoma Recurrence after Liver Transplantation](/202607/08/biorxiv-10-64898-2026-06-30-735569-v1-engineering-car-t-cells-for-hepatocellular-carcinoma-recurrence-after-liver-transplantation)  
-   标签：评分：6.0/10、query:neo-resist
-   evidence：工程化CAR T细胞抵抗免疫抑制，应对肝癌复发，涉及免疫治疗耐药
+   evidence：化疗耐受持留克隆在微小残留病中的机制
 
 
 <div class="dpr-home-promo-card">

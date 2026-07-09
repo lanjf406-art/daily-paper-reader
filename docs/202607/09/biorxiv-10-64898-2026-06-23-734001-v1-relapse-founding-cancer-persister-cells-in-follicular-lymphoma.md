@@ -1,0 +1,25 @@
+---
+title: Relapse-founding cancer persister cells in follicular lymphoma
+title_zh: 滤泡性淋巴瘤中引发复发的癌症持久细胞
+authors: "Atkins, O., Hung, M. S., Song, O.-R., Chen, B., Maybury, B., Edmondson, C., Tesson, B., Huet, S., Salles, G., Howell, M., Reinhardt, H. C., Fitzgibbon, J., Okosun, J., Zhang, L., Calado, D. P."
+date: 2026-07-08
+pdf: "https://www.biorxiv.org/content/10.64898/2026.06.23.734001v1.full.pdf"
+tags: ["query:neo-resist"]
+score: 7.0
+evidence: 滤泡性淋巴瘤治疗后的复发起始持续细胞
+tldr: 滤泡性淋巴瘤复发难以治愈，归因于治疗持久细胞（CPC），但直接研究困难。利用小鼠模型在R-CHOP治疗后立即分离CPC，定义为IgM记忆样B细胞，具有高生发中心再进入能力。该CPC转录程序在诊断时即可检测，预示不良预后。体外平台发现HDAC抑制剂（罗米地辛、帕比司他）能杀伤CPC样细胞，并在体内和类器官中减少持久细胞，为持久控制提供新策略。
+source: biorxiv
+selection_source: fresh_fetch
+figures_json: "[{\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-06-23-734001-v1/fig-001.webp\", \"caption\": \"\", \"page\": 0, \"index\": 1, \"width\": 1572, \"height\": 2398, \"label\": \"Figure\"}, {\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-06-23-734001-v1/fig-002.webp\", \"caption\": \"\", \"page\": 0, \"index\": 2, \"width\": 1626, \"height\": 1342, \"label\": \"Figure\"}, {\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-06-23-734001-v1/fig-003.webp\", \"caption\": \"\", \"page\": 0, \"index\": 3, \"width\": 1641, \"height\": 1011, \"label\": \"Figure\"}, {\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-06-23-734001-v1/fig-004.webp\", \"caption\": \"\", \"page\": 0, \"index\": 4, \"width\": 1593, \"height\": 1673, \"label\": \"Figure\"}, {\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-06-23-734001-v1/fig-005.webp\", \"caption\": \"\", \"page\": 0, \"index\": 5, \"width\": 1643, \"height\": 933, \"label\": \"Figure\"}, {\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-06-23-734001-v1/fig-006.webp\", \"caption\": \"\", \"page\": 0, \"index\": 6, \"width\": 1595, \"height\": 1285, \"label\": \"Figure\"}, {\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-06-23-734001-v1/fig-007.webp\", \"caption\": \"\", \"page\": 0, \"index\": 7, \"width\": 1598, \"height\": 460, \"label\": \"Figure\"}]"
+tables_json: "[{\"url\": \"assets/tables/biorxiv/biorxiv-10-64898-2026-06-23-734001-v1/table-001.webp\", \"caption\": \"\", \"page\": 0, \"index\": 1, \"width\": 1763, \"height\": 358, \"label\": \"Table\"}]"
+motivation: 探明滤泡性淋巴瘤复发根源的持久细胞特性及其治疗靶点。
+method: 利用基因小鼠模型和体外平台，结合临床数据集，鉴定和验证癌症持久细胞（CPC）状态。
+result: 发现CPC为IgM记忆样B细胞，其转录程序与不良预后相关，且HDAC抑制剂可有效清除。
+conclusion: 定义了一种可靶向的CPC状态，为滤泡性淋巴瘤持久控制提供新策略。
+---
+
+## 摘要
+滤泡性淋巴瘤（FL）是一种不可治愈的典型复发-缓解型癌症，提示存在治疗持久细胞，这些细胞能在一线治疗后存活并导致疾病复发1-3。然而，由于在伦理和实践上难以在治疗后立即对患者进行采样，这些持久细胞的研究仍面临挑战。我们利用基因定义的小鼠模型，该模型允许在一线R-CHOP治疗后立即采样持久细胞，前瞻性地分离并功能性定义了引发复发的癌症持久细胞（CPC）。CPC是一种具有IgM记忆样B细胞表型的细胞，具有高生发中心再进入能力。这一状态代表了异质性残留细胞池中的一个离散组分，表明残留病变是多克隆的，复发潜力可能取决于存活的细胞类型，而非仅残留肿瘤负荷。通过将小鼠CPC与人类FL数据集整合，我们显示在诊断时可检测到类似的转录程序，并且在独立队列中，该程序在临床结局较差的患者中富集4,5。这些发现支持复发风险与治疗前存在的保守的、基因型无关的CPC程序相关。为探索治疗脆弱性，我们开发了一个可扩展的体外平台来模拟CPC样状态，并利用该平台识别对组蛋白去乙酰化酶抑制的敏感性。罗米地辛和帕比司他在体外杀死CPC样细胞，并在体内和患者来源类器官中减少R-CHOP治疗后的治疗持久细胞。总之，这些数据定义了FL中一个可处理的CPC状态，具有经过验证的临床读数和一个可立即检验的治疗切入点，为持久控制FL开辟了CPC导向策略。
+
+## Abstract
+Follicular lymphoma (FL) is an incurable, prototypical relapse-remitting cancer, implying the existence of therapy-persistent cells that survive frontline treatment and seed disease recurrence1-3. However, these persister cells remain difficult to study directly in patients because immediate post-treatment sampling is ethically and practically challenging. Using a genetically defined mouse model that allows sampling of persistent cells immediately after frontline R-CHOP therapy, we prospectively isolate and functionally define relapse-founding cancer persister cells (CPC). The CPC is an IgM memory-like B-cell with high germinal center re-entry capacity. This state represents a discrete component of a heterogeneous residual pool indicating that residual disease is polytypic and that relapse potential may depend on which cells persist rather than on residual tumour burden alone. By integrating mouse CPC with human FL datasets, we show that an analogous transcriptional programme is detectable at diagnosis and is enriched in patients with inferior clinical outcome across independent cohorts4,5. These findings support the concept that relapse risk is linked to a conserved, genotype-agnostic CPC programme present before therapy. To explore therapeutic vulnerabilities, we developed a scalable in-vitro platform that models the CPC-like state and used it to identify sensitivity to histone deacetylase inhibition. Romidepsin and panobinostat killed CPC-like cells in-vitro, and decreased therapy-persistent cells after R-CHOP treatment in-vivo and in patient-derived organoids. Together, these data define a tractable CPC state in FL, with a validated clinical readout and an immediately testable therapeutic entry point, opening CPC-directed strategies for durable FL control.

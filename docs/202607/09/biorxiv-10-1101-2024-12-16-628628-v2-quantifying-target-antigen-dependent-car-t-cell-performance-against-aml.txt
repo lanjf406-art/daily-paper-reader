@@ -1,0 +1,611 @@
+Title: Quantifying target antigen-dependent CAR T-cell performance against AML
+
+URL Source: https://www.biorxiv.org/content/10.1101/2024.12.16.628628v2.full.pdf
+
+Number of Pages: 23
+
+Markdown Content:
+1
+
+# Quantifying target antigen-dependent CAR T-cell performance against AML 
+
+Saumil Shah 1*, Jan Mueller 2,3, *, Emanuel Vogel 3, Michael Raatz 1,Steffen Boettcher 2, Arne Traulsen 1, Markus G. Manz 2, Philipp M. Altrock 1,4,5 
+
+Short title : Quantifying CAR T-cell performance against AML 
+
+Affiliations :1: Department of Theoretical Biology Max Planck Institute for Evolutionary Biology Plön, Germany 2: Department of Medical Oncology and Hematology University of Zurich and University Hospital Zurich Zurich, Switzerland 3: Department of Internal Medicine V, Hematology & Oncology Medical University of Innsbruck Innsbruck, Austria 4: Department of Hematology and Oncology Kiel University and University Hospital Schleswig-Holstein Kiel, Germany 5: Clinical Research Unit CATCH ALL (KFO 5010) * Equal contribution We declare no conflict of interest. 
+
+Correspondence to: Prof. Dr. Philipp Altrock Department of Hematology and Oncology Kiel University and University Hospital Schleswig-Holstein Arnold-Heller Str. 3 24105 Kiel, Germany altrock@med2.uni-kiel.de 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 9, 2026. ;https://doi.org/10.1101/2024.12.16.628628 doi: bioRxiv preprint
+
+2
+
+## Abstract 
+
+Chimeric Antigen Receptor (CAR) T-cell therapy has transformed cancer immunotherapy by genetically engineering T-cells to target tumor antigens. Acute myeloid leukemia (AML) presents unique challenges due to resistance mechanisms, especially in patients with TP53 loss mutations. The complex dynamics of CAR T-cell expansion remain poorly understood. The field lacks validated quantitative frameworks to systematically evaluate different CAR T-cell target constructs, such as CD33, CD123, and CD371, against resistant AML variants. We address this gap by combining mathematical modeling with in vitro assay data and Bayesian inference. We select, train, and validate a two-compartment deterministic mathematical model that describes the nonlinear dynamics of target AML and CAR T cells, accounting for expansion, killing, and exhaustion. Using Bayesian inference, we train and select the best-performing functional form for CAR T expansion and then validate it on unseen data. Our framework selects a CAR T-cell expansion model that accounts for handling time and T-cell self-interference, highlighting that expansion is a dynamic process in which target-cell handling time and T-cell crowding negatively affect T-cell expansion. Analysis of posterior parameter distributions reveals target-antigen-specific responses against TP53-deficient AML. For instance, CD33-targeting CARs have reduced attack rates against TP53-deficient cells, while CD123- and CD371-targeting CARs show moderately increased attack rates; however, the former exhibit higher death rates, and the latter have increased handling times, impeding efficacy. This target-dependent form of resistance challenges the assumption of uniform performance and reveals a unifying nonlinear expansion model for integrated, yet antigen-specific, preclinical predictions of efficacy. 
+
+Keywords : CAR T-cell therapy, Acute Myeloid Leukemia, TP53 loss, Mathematical Oncology, Dynamical Systems of Cancer Cell Populations 
+
+## Short Summary 
+
+We identified the target antigen-specific expansion properties and the efficacy of CAR T cells against TP53 wild-type and deficient AML by integrating experimental data from cytolytic assays, mechanistic mathematical modeling, and Bayesian inference. 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 9, 2026. ;https://doi.org/10.1101/2024.12.16.628628 doi: bioRxiv preprint
+
+3
+
+## Introduction 
+
+Chimeric antigen receptor (CAR) T-cell therapy, a type of adoptive T-cell therapy, has significantly advanced personalized cancer immunotherapy for many hematologic malignancies 1. Patients’ T-cells genetically modified to express a synthetic receptor with an extracellular antibody-derived fragment that binds to tumor antigens in an MHC-independent way 2. These CAR T-cells are then usually expanded ex vivo and infused back, where they recognize their target, expand, and attack target cells. The recent successes against B-cell acute lymphoblastic leukemia (B-ALL), B-cell non-Hodgkin lymphoma (B-NHL) have not yet been replicated in myeloid cancers or many solid tumors 3.Myeloid malignancies, chiefly acute myeloid leukemia (AML) and myelodysplastic syndrome (MDS), are neoplastic diseases of early myeloid progenitors 4. The observation that allogeneic stem cell transplants are effective in AML via graft-versus-leukemia effects suggests that AML blast cells are susceptible to T-cell predation, providing a rationale for CAR T-cell therapy 5. Unfortunately, AML has been less amenable to CAR T-cell therapy, primarily due to a lack of suitable target antigens 6,7 .Multiple distinct myeloid surface antigens are typically expressed by leukemic blast cells and have been targeted by CAR T-cells in preclinical and clinical studies, including CD33, CD117, CD371, and CD123 8-10 . Despite these extensive efforts, a suitable target antigen for CAR T-cells in AML/MDS has not been described 6. The choice of target antigen for an engineered T-cell therapy can profoundly impact the expansion of CAR T-cells 11 .
+
+TP53 is a well-studied tumor suppressor gene that acts as a transcription factor in response to cellular stress. TP53 loss in AML and MDS is associated with therapy resistance and dismal prognosis 12,13 . TP53 mutations affect the microenvironment, inhibit cancer cell apoptosis, promote immune evasion of cancer cells 14 , and have been shown to confer resistance to CAR T-cell cytotoxicity 8. Patients suffering from AML/MDS, especially the aggressive and largely incurable 
+
+TP53 -deficient variant, represent an unmet clinical need for CAR T-cell therapy 15 .Insufficient dose and expansion negatively correlate with treatment efficiency and clinical response rates 16 . Prolonged expansion of cytotoxic CAR T-cells is also associated with T-cell exhaustion and poor treatment outcomes 17 . Thus, understanding the non-monotonic behavior of T-cell expansion is critical for the development and design of novel CAR T-cell therapies and treatment protocol 18 .Further, the importance of achieving favorable E:T ratios has been observed in different clinical contexts 19 . An integrated quantitative understanding of T-cell expansion, cytotoxicity, and exhaustion across E:T ratios is key to preclinical and translational studies of novel CAR T-cell therapy approaches. These investigations benefit from mathematical models that relate mechanistic cell population dynamics to outcome 20 . A challenge is associating realistic assumptions with parameter estimates 21 , particularly CAR T expansion, killing, and contraction 22,23 . Functional response is a classical concept that describes these processes 24-29 .
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 9, 2026. ;https://doi.org/10.1101/2024.12.16.628628 doi: bioRxiv preprint
+
+4
+
+Here, we use functional response modeling to investigate the dynamics of T or CAR T-cells engaging acute myeloid leukemia blasts. We examine a pool of candidate models combining in vitro 
+
+cytotoxic assays, mathematical modeling, and Bayesian inference 30 . We provide a framework for obtaining parameter distributions and CAR T-leukemia interaction models with nested or competing assumptions from longitudinal data, elucidating how TP53 status affects the functional response of the proportion of killed target leukemia cells as a function of T-cell density. While the methods presented here cannot reflect clinical diversity in its entirety. Our primary goal is to use rigorous Bayesian inference to train, select, and validate the best-performing CAR T expansion function in the context of novel killing assays and, as such, to demonstrate that this approach is a feasible strategy for establishing preclinical knowledge. Our approach and results demonstrate a viable method for quantitative systems modeling of the performance of novel CAR T-cell constructs, powered by state-of-the-art statistical inference. 
+
+## Methods 
+
+We aimed to quantify the dynamic performance of T-cells against acute myeloid leukemia cells observed in vitro (leveraging four unique experimental settings, Figure 1A ) using a mathematical model ( Figure 1B ). The overall workflow of how cell population growth was assed longitudinally is shown in Figure 1C . The applied suite of Ordinary Differential Equations (ODE) models differ in the assumed T or CAR T-cell expansion rate function ( Figure 1D ). For all resulting submodels, we performed identifiability analyses, implemented Bayesian inference integrating pre-existing knowledge (priors of parameter value distributions), obtained posterior parameter distributions, and performed model selection and validation ( Figure 1E ). 
+
+Cell-culture experiments 
+
+Using a CRISPR/Cas9-based gene editing approach, the TP53 gene was knocked out from acute myeloid leukemia (MOLM13) tumor cell line 31 . Lentiviral transduction of green fluorescent protein (GFP) and luciferase followed by fluorescence-activated cell sorting yielded TP53 -wildtype (MOLM13-TP53 !/! $%&! '()! ), and TP53 -knockout (MOLM13-TP53 */* $%&! '()! ) tumor cell populations. The target cells were cultured in Roswell-Park-Memorial-Institute (RPMI) medium supplemented with 100 U 𝑚𝑙 ⁄ penicillin, 100 𝜇𝑔 𝑚𝑙 ⁄ streptomycin, and 10 % fetal bovine serum (FBS) at 37 °C, 5% CO +. Human effector cells were isolated from healthy donor buffy coats and transduced with lentiviral vectors produced in HEK-293 cells to obtain second-generation CAR T-cells. Published sequences of single-chain variable-fragment (scFv) targeting CD33 (clone SGN-33, Lintuzumab 32 ), CD117 (clone D79 33 ), CD123 strong (CD123s, clone H9 34 ), CD123 weak (CD123w, clone CSL362 35 ), and CD371 (clone M26 36 ) were used for the transduction together with a CD8 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 9, 2026. ;https://doi.org/10.1101/2024.12.16.628628 doi: bioRxiv preprint
+
+5
+
+stalk and transmembrane domain and a 4-1BB intracellular activating domain. After transduction, CAR T-cells were purified by magnetic-activated cell sorting (MACS) and expanded in the presence of IL-2. After two weeks of expansion, aliquots of 10 7 pure CAR T-cells were frozen in liquid nitrogen (LN2) until use in experiments. The target and effector cells were co-cultured in variable ratios, seeded with 60,000 total cells for the cytotoxic assay, repeated twice to obtain two technical replicates per measurement. The reagents and antibodies in Supplementary Table 1 were used for flow cytometry-based analysis of co-incubation assays. Data were acquired on an LSRFortessa™ 4L equipped with a high-throughput sampler (HTS) (Becton Dickinson, Franklin Lakes, NJ, USA) and analyzed with the FlowJo® v9x software (Becton Dickinson, Franklin Lakes, NJ, USA). The total target and effector cells were measured using the described flow-based approach on days 1, 3, 6, and 10 for one experimental model setting (LT15) and on days 1, 3, 6, 10, and 16 for another (smaller) experimental model setting (termed LT6). We verified that the MOLM-13 TP53-wildtype and TP53-knockout lines proliferate comparably over the timescale of the cytotoxic co-culture assays. In the absence of effector cells, the two genotypes showed overlapping cumulative fold expansion from day 7 through day 19 ( Supplementary Figure 3), spanning the full duration of both the training (LT15, day 10) and validation (LT6, day 16) datasets. A modest divergence between WT and KO emerged only at longer culture times, beyond the experimental window of this study. Consistent with the within-window equivalence, the posterior distributions of the target growth rate inferred from the uT-vs-WT and uT-vs-KO co-culture conditions overlapped substantially across all five construct experiments ( Supplementary Figure 9). Together, these observations rule out intrinsic differences in target-cell growth as a driver of the target-antigen-dependent CAR T kinetic signatures reported below. 
+
+Data integration 
+
+The dataset contained two types of target cells, TP53 -wildtype and TP53 -knockout, and two effector cell types: untransduced T-cells and transduced CAR T effector cells. This resulted in 4 treatment combinations: untransduced T vs. TP53 -wildtype tumor, untransduced T vs. TP53 -knockout tumor, chimeric antigen receptor T vs. TP53 -wildtype tumor, and chimeric antigen receptor T vs. TP53 -knockout tumor. Aliquots from the cytotoxic assay were analyzed using fluorescence-activated cell sorting for tumor marker CD33+ and T-cell marker CD3+ counts. The counts were then multiplied by the dilution factor of the aliquot to approximate the total number of cells in the co-culture. Each chimeric antigen receptor target single-chain variable fragment (scFv) had a unique set of four initial E:T ratios shown in Table 1 . The data frame is presented in Table 2 . To avoid differences-in-magnitude numerical problems across E:T ratios, we divided the cellular abundance data of the entire data frame by 10 5 for data fitting, bringing all cell counts to order 1. 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 9, 2026. ;https://doi.org/10.1101/2024.12.16.628628 doi: bioRxiv preprint
+
+6
+
+Figure 1: Identifiability and Bayesian inference workflow, candidate expansion functions, and structural identifiability of parameters. A ) The cytolytic assay employed four experimental scenarios. B) We used a two-compartment mathematical model to study the performance of the CAR T-cell expansion function f(x,y). We use the abbreviation 𝑑𝑥 𝑑𝑡 ⁄ = 𝑥 ̇ (x: target cell abundance, y: T-cell abundance). C) In the four scenarios, longitudinal data of matching untransduced T- and CAR T-cells were compared with one of the two AML variants at various E:T ratios (see Methods); we show a cartoon of one such co-culture experiment comparing untransduced T-cells and wt AML cells over time. D) CAR T expansion can depend on x and y. We studied the performance of multiple candidate expansion functions, each with a unique biological meaning. E) Statistical and modeling workflow illustration. The goodness of fit was evaluated using the negative log-likelihood, Akaike, and Bayesian information criteria (AIC, BIC). Validation was performed on previously unseen assay data using a correlation function (Methods). Predictions were made by implementing the model, inferring parameter posteriors, and using realistic conditions. 
+
+A) Cytolytic assays, four scenarios B) Mechanistic mathematical model of (CAR) T-cell—target cell interactions <latexit sha1_base64="f97nQJtAvgXJ+TLXYqcOmBDzENY=">AAAC5HicbVJNi9RAEO3ErzV+jXr00jiszEJ2SERWEYRd9uJBYZWd3YXpceh0KtlmOp3Q3dGEkLMXD4p49Ud587d4sTMTZdyxIPC66vWrV9WJCsG1CYKfjnvp8pWr17auezdu3rp9Z3D33onOS8VgwnKRq7OIahBcwsRwI+CsUECzSMBptDjs6qfvQWmey2NTFzDLaCp5whk1NjUf/CIGKtPEtaQZZxrnCTZUpWDwwetXmIEQ+nlLfOI/InFucEX8F/aUW8lIUQaNIn7VvmtWKqnKP5jztt1dI1BLIH79l7PgwnpN25YQb9vb7D46PHi7g493N1rXq9aljP9IJ6PKr3c68XkvDlVBZTdr52GNGa+TYqCdSULmg2EwDpaBN0HYgyHq42g++GGdsDIDaZigWk/DoDCzhirDmYDWI6WGgrIFTWFqoR0K9KxZPlKLt20mxkmu7CcNXmbXbzQ007rOIsvMrEF9sdYl/1ebliZ5Nmu4LEoDkq0aJaXAJsfdi+OYK2BG1BZQprj1itk5tXsx9r/w7BLCiyNvgpPH43BvvPfmyXB/1K9jCz1AD9EIhegp2kcv0RGaIOZQ56Pz2fniJu4n96v7bUV1nf7OffRPuN9/A8TD7CY=</latexit> 
+
+dynamics of target AML cells: ˙ x =
+
+> growth
+
+︷︸︸︷ 
+
+r x →
+
+> killing
+
+︷ ︸︸ ︷
+
+a x y 
+
+dynamics of (CAR) T-cells: ˙ y = f (x, y ) y
+
+︸ ︷︷ ︸
+
+> expansion
+
+→ d y 
+
+︸︷︷︸ 
+
+> death
+
+target leukemia cells x
+
+effector (CAR) T-cells y
+
+growth state-dependent T-cell expansion factor: f(x,y)killing death normal T-cell wt AML normal T-cell TP53 ko AML CAR T-cell TP53 ko AML CAR T-cell wt AML AML variant (target) T-cell variant scenario 1: scenario 2: scenario 3: scenario 4: 
+
+E) Dynamical systems modeling, Bayesian inference & validation workflow 
+
+D) Functional forms of the state-dependent T-cell expansion factor f(x,y)
+
+Mathematical models of cell population dynamics Experimental models of cell population dynamics Bayesian inference Validation and prediciton 
+
+mechanistic T cell expansion models structural identifiability (mathematical model only) practical identifiability (model & data) cytolytic assays posterior parameter distributions prior parameter distributions model selection: best-performing model of T cell expansion model validation on unseen data model predictions <latexit sha1_base64="6h1sDX1wB7WVGTk9FAbKqpb3lzw=">AAAB8HicbVBNS8NAEJ3Ur1q/qh69rFahgpREpIqnghePFeyHtKFstpt26WYTdjdiCP0VXjwo4tWf481/47bNQVsfDDzem2FmnhdxprRtf1u5peWV1bX8emFjc2t7p7i711RhLAltkJCHsu1hRTkTtKGZ5rQdSYoDj9OWN7qZ+K1HKhULxb1OIuoGeCCYzwjWRnrwy09nyWn38LpXLNkVewq0SJyMlCBDvVf86vZDEgdUaMKxUh3HjrSbYqkZ4XRc6MaKRpiM8IB2DBU4oMpNpweP0YlR+sgPpSmh0VT9PZHiQKkk8ExngPVQzXsT8T+vE2v/yk2ZiGJNBZkt8mOOdIgm36M+k5RonhiCiWTmVkSGWGKiTUYFE4Iz//IiaZ5XnGqlendRqh1nceThAI6gDA5cQg1uoQ4NIBDAM7zCmyWtF+vd+pi15qxsZh/+wPr8AThgj0w=</latexit> 
+
+f (x, y ) :  <latexit sha1_base64="ka0c8/vqDe9pBBSt4BurOErhV8s=">AAACBHicbZDLSsNAFIZPvNZ6i7rsJlgFoaUkItVlwY3LCvYCTSiT6aQdOpmEmYkYQhdufBU3LhRx60O4822ctllo6w8DH/85hzPn92NGpbLtb2NldW19Y7OwVdze2d3bNw8O2zJKBCYtHLFIdH0kCaOctBRVjHRjQVDoM9Lxx9fTeueeCEkjfqfSmHghGnIaUIyUtvpmyQ0EwpnvVh8mmVNBbnWksYLdajrpm2W7Zs9kLYOTQxlyNfvmlzuIcBISrjBDUvYcO1ZehoSimJFJ0U0kiREeoyHpaeQoJNLLZkdMrFPtDKwgEvpxZc3c3xMZCqVMQ193hkiN5GJtav5X6yUquPIyyuNEEY7ni4KEWSqypolYAyoIVizVgLCg+q8WHiGditK5FXUIzuLJy9A+rzn1Wv32otw4yeMoQAmO4QwcuIQG3EATWoDhEZ7hFd6MJ+PFeDc+5q0rRj5zBH9kfP4AVb2XLA==</latexit> 
+
+> uncoupled (constant) negative impact of target density negative impact of effector density Beddington-DeAngelis (target & effector) ratio-dependent (target & effector)
+
+b x 
+
+1 + a h x + c y <latexit sha1_base64="RxIFMJgAbtuqBldoEs+lJzSlUfw=">AAAB+XicbVDLSsNAFL2pr1pfUZduBqsgKCURqS4LblxWsA9oQplMJ+3QyYOZSWkI+RM3LhRx65+482+ctllo64ELh3Pu5d57vJgzqSzr2yitrW9sbpW3Kzu7e/sH5uFRW0aJILRFIh6Jrocl5SykLcUUp91YUBx4nHa88f3M70yokCwKn1QaUzfAw5D5jGClpb5pOr7AJPOcq2meTS/TvG9WrZo1B1oldkGqUKDZN7+cQUSSgIaKcCxlz7Zi5WZYKEY4zStOImmMyRgPaU/TEAdUutn88hyda2WA/EjoChWaq78nMhxImQae7gywGsllbyb+5/US5d+5GQvjRNGQLBb5CUcqQrMY0IAJShRPNcFEMH0rIiOso1A6rIoOwV5+eZW0r2t2vVZ/vKk2zoo4ynACp3ABNtxCAx6gCS0gMIFneIU3IzNejHfjY9FaMoqZY/gD4/MHr3qTng==</latexit> 
+
+b x x + y <latexit sha1_base64="DVkuXvpyr4ioLiCyvYJTDU1nYDo=">AAAB/HicbVBNS8NAEJ34WetXtEcvwSoIlpKIVI8FLx4r2A9oQtlsN+3SzSbsbsQQ4l/x4kERr/4Qb/4bt20O2vpg4PHeDDPz/JhRqWz721hZXVvf2Cxtlbd3dvf2zYPDjowSgUkbRywSPR9JwignbUUVI71YEBT6jHT9yc3U7z4QIWnE71UaEy9EI04DipHS0sCsuIFAOPPd2mOeOefYraX5wKzadXsGa5k4BalCgdbA/HKHEU5CwhVmSMq+Y8fKy5BQFDOSl91EkhjhCRqRvqYchUR62ez43DrVytAKIqGLK2um/p7IUChlGvq6M0RqLBe9qfif109UcO1llMeJIhzPFwUJs1RkTZOwhlQQrFiqCcKC6lstPEY6DaXzKusQnMWXl0nnou406o27y2rzpIijBEdwDGfgwBU04RZa0AYMKTzDK7wZT8aL8W58zFtXjGKmAn9gfP4AKS+UYA==</latexit> 
+
+b x 
+
+1 + c y <latexit sha1_base64="mi2zc1yBLfT62WvCAJeYWL5C5T0=">AAAB/3icbZDLSsNAFIZP6q3WW1Rw4yZYBcFSEpHqsuDGZQV7gSaUyXTSDp1MwsxELLELX8WNC0Xc+hrufBsnbRba+sPAx3/O4Zz5/ZhRqWz72ygsLa+srhXXSxubW9s75u5eS0aJwKSJIxaJjo8kYZSTpqKKkU4sCAp9Rtr+6Dqrt++JkDTid2ocEy9EA04DipHSVs88cAOBcOq7lYdJ6pwhtzLMsGeW7ao9lbUITg5lyNXomV9uP8JJSLjCDEnZdexYeSkSimJGJiU3kSRGeIQGpKuRo5BIL53eP7FOtNO3gkjox5U1dX9PpCiUchz6ujNEaijna5n5X62bqODKSymPE0U4ni0KEmapyMrCsPpUEKzYWAPCgupbLTxEOhClIyvpEJz5Ly9C67zq1Kq124ty/TiPowiHcASn4MAl1OEGGtAEDI/wDK/wZjwZL8a78TFrLRj5zD78kfH5AxU1lWs=</latexit> 
+
+b x 
+
+1 + a h x <latexit sha1_base64="oZ4c/yrZGh8df6ctxk4dzzyZcWk=">AAAB73icbVBNSwMxEJ2tX7V+VT16CVbBg5Rdkeqx4MVjBfsB3aVk02wbmmTXJCuWpX/CiwdFvPp3vPlvTNs9aOuDgcd7M8zMCxPOtHHdb6ewsrq2vlHcLG1t7+zulfcPWjpOFaFNEvNYdUKsKWeSNg0znHYSRbEIOW2Ho5up336kSrNY3ptxQgOBB5JFjGBjpY6fCBT650+9csWtujOgZeLlpAI5Gr3yl9+PSSqoNIRjrbuem5ggw8owwumk5KeaJpiM8IB2LZVYUB1ks3sn6NQqfRTFypY0aKb+nsiw0HosQtspsBnqRW8q/ud1UxNdBxmTSWqoJPNFUcqRidH0edRnihLDx5Zgopi9FZEhVpgYG1HJhuAtvrxMWhdVr1at3V1W6id5HEU4gmM4Aw+uoA630IAmEODwDK/w5jw4L8678zFvLTj5zCH8gfP5A1rRj3I=</latexit> 
+
+±b x <latexit sha1_base64="jRjGqfGsXSzu0ZYHzi0gEAlyFls=">AAAB7HicbVBNSwMxEJ34WetX1aOXYBU8lV2R6rHgxWMFty20S8mm2TY0yS5JVihLf4MXD4p49Qd589+YtnvQ1gcDj/dmmJkXpYIb63nfaG19Y3Nru7RT3t3bPzisHB23TJJpygKaiER3ImKY4IoFllvBOqlmREaCtaPx3cxvPzFteKIe7SRloSRDxWNOiXVS0EsljvqVqlfz5sCrxC9IFQo0+5Wv3iChmWTKUkGM6fpeasOcaMupYNNyLzMsJXRMhqzrqCKSmTCfHzvFF04Z4DjRrpTFc/X3RE6kMRMZuU5J7MgsezPxP6+b2fg2zLlKM8sUXSyKM4Ftgmef4wHXjFoxcYRQzd2tmI6IJtS6fMouBH/55VXSuqr59Vr94braOC/iKMEpnMEl+HADDbiHJgRAgcMzvMIbUugFvaOPResaKmZO4A/Q5w9h1I5U</latexit> 
+
+±b  <latexit sha1_base64="jByGD2UT73rcpMutHNj6AIu1Wxc=">AAAB7XicbVDLSgNBEOyNrxhfUY9eBqMQQcKuSPQY8OIxgnlAsoTZyWwyZnZmmZkVlyX/4MWDIl79H2/+jZPHQRMLGoqqbrq7gpgzbVz328mtrK6tb+Q3C1vbO7t7xf2DppaJIrRBJJeqHWBNORO0YZjhtB0riqOA01Ywupn4rUeqNJPi3qQx9SM8ECxkBBsrNcPy03l61iuW3Io7BVom3pyUYI56r/jV7UuSRFQYwrHWHc+NjZ9hZRjhdFzoJprGmIzwgHYsFTii2s+m147RqVX6KJTKljBoqv6eyHCkdRoFtjPCZqgXvYn4n9dJTHjtZ0zEiaGCzBaFCUdGosnrqM8UJYanlmCimL0VkSFWmBgbUMGG4C2+vEyaFxWvWqneXZZqJ/M48nAEx1AGD66gBrdQhwYQeIBneIU3RzovzrvzMWvNOfOZQ/gD5/MHrcGOdw==</latexit> 
+
+> effecor cell abundance  y
+> target cell abundance x
+
+f (x, y ) 
+
+> no interaction linear interaction, one-directional hanling-time-related discounting T-cell crowding asymmetric: hanling-time, crowding symmetric, frequency-dependent biological meaning linear (predator-prey-like)
+> rescaled expansion factor  f(x,y)0half max. max. (e.g., b)
+
+C) Graphical sketch of the populations compared in this work (see also Tables 1 and 2) T-cell target AML cell time 
+
+e.g. 
+
+scenarios 1 and 2: untransduced T-cells vs. wt AML TP53 ko AML scenarios 3 and 4: CAR CD33 CAR CD117 CAR CD123 CAR CD371 vs. wt AML TP53 ko AML co-cultures with multiple replicates, initial conditions, time points cell count (not to scale) t1 t2 t3 t4 time cancer cell count measurement T-cell count measurement 
+
+.CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 9, 2026. ;https://doi.org/10.1101/2024.12.16.628628 doi: bioRxiv preprint 7
+
+Mathematical modeling of T-cell expansion and killing 
+
+We compared the performance of distinct chimeric antigen receptor effector constructs against 
+
+TP53 -wildtype and TP53 -knockout leukemia target cells. To model the dynamics of (target) tumor cells, x, and the cytotoxic (effector) T lymphocytes, y, we described cancer growth, target cell killing, effector cell expansion, exhaustion, and death. The net rate of change in a cell population's abundance or density is determined by the target growth function minus the target killing function, resulting in a system of ODEs, 
+
+𝑑𝑥 
+
+𝑑𝑡 = 𝑟 𝑥 − 𝑎 𝑥 𝑦 (1) 
+
+𝑑𝑦 
+
+𝑑𝑡 = 𝑓( 𝑥 , 𝑦 ) 𝑦 − 𝑑 𝑦 (2) 
+
+The parameter 𝑟 models the target cell population's constant per capita growth rate. A mass-action kinetics term describes target cell killing, 𝑎 𝑥 𝑦 , and effector T-cell death (exhaustion) occurs at a constant rate 𝑑 . Effector T-cell expansion is encoded in the function 𝑓 (𝑥, 𝑦) . Equations (1) and (2) were solved numerically in Julia 1.9 using DiffEqBayes.jl or in Wolfram Mathematica 14 ( NDSolve ). 
+
+Candidate functional responses for T-cell expansion 
+
+We assumed that target cells followed exponential growth and investigated the functional form of effector expansion 𝑓 (𝑥, 𝑦) . We also assumed that the target-killing function is unrestricted by any other process, following mass-action kinetics. Effector cells expand in the presence of the target cells and possibly interact, encoded in the function of effector cell expansion 𝑓 (𝑥 , 𝑦 ), Figure 1B,D .These expansion laws can be uncoupled, of Lotka-Volterra type 37,38 , Holling type 2 24,25 , ratio-dependent 29 , or of a more complicated fractional form 28 , e.g., the Beddington-De Angelis model 26,27 .All model parameters are described and summarized in Table 3 .
+
+Parameter identifiability, Bayesian inference, and model selection 
+
+The first step of parameter inference is assessing whether the parameters can, in principle, be inferred and whether the data is informative for the question at hand. We analyzed a priori structural identifiability and a posteriori practical identifiability for our candidate models. Structural identifiability is data-independent. We used the input-output equation method based on the minimal differential polynomial related to the differential equation model 39 . We used the Julia package StructuralIdentifiability.jl to evaluate the a priori identifiability of candidate models. 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 9, 2026. ;https://doi.org/10.1101/2024.12.16.628628 doi: bioRxiv preprint
+
+8
+
+Practical identifiability can only be evaluated in the context of data. Instead of the profile likelihood approach 40 , we used pairwise joint posterior distribution analysis 30 . When the negative log-likelihood or the pairwise joint Bayesian posterior has a peak and forms closed contours in parameter space, the respective parameter combination is uncorrelated and identifiable. When the highest peak region extends infinitely along a particular dimension in parameter space, the parameter cannot be reliably inferred from the data (practical non-identifiability). Bayesian parameter estimation (see Supplementary Material ) updates the likelihood of a parameter value by considering prior beliefs and evidence via Bayes’ rule. Based on other experiments, dimensional analysis, and physical constraints, we decided on lower and upper bounds for the parameter values and converted them into Log-Normal priors for each parameter. We assumed a multiplicative measurement error 𝜎 to derive the corresponding likelihood. We used the Julia package DiffEqBayes.jl to estimate the parameters of ordinary differential equation models using Bayesian inference 41 , which provides an interface for Turing.jl , a framework for Bayesian inference. We used the No-U-Turn-Sampling variant of the Hamiltonian Monte Carlo algorithm with acceptance probability δ=0.65 for inference 42 . Each inference was repeated 5 times, yielding 5 independent chains with 10,000 samples each. We assessed within-chain and across-chain convergence, discarding chains that did not meet the appropriate convergence criteria. The loss from the negative log-likelihood function quantifies a model's error on the data. We calculated the negative log-likelihood of all the posterior samples to obtain the Akaike Information Criterion and the Bayesian Information Criterion for model selection. 
+
+## Results and Discussion 
+
+We hypothesized that cell population interactions are key to CAR T expansion 20,22 , and that T-cell activity against resistant AML can be antigen-specific. We were able to select the most appropriate candidate model based on information criteria that account for fitting errors and penalize the number of parameters. Finally, we investigated the performance of CAR T-cells with different constructs and against wildtype or TP53 knockout leukemia cells by examining the best-performing model's parameter distributions and time-forward simulations. 
+
+Identifiability, model training, and model selection 
+
+We assessed all candidate models for parameter identifiability prior to Bayesian parameter inference (see Methods ). We found that all parameters in each candidate model are globally identifiable. Note that in candidate models with functional response, the attack rate appears in Equations (1) and (2), which renders the killing process's handling time identifiable. 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 9, 2026. ;https://doi.org/10.1101/2024.12.16.628628 doi: bioRxiv preprint
+
+9
+
+We trained the candidate models using an in vitro data set (LT15) that measured T or CAR T (always using one of the five constructs) vs. TP53 -wildtype or TP53 -knockouT-cell dynamics up to day 10, to obtain parameter posterior distributions. Model fitting results are shown in 
+
+Supplementary Figures 4-9 . We inferred parameter distributions for each CAR construct, effector, target, and initial E:T ratios ( Table 2 ), individually pooling over time and experimental replicates. We repeated this inference scheme for all candidate models. To rank candidate models, we summed the negative log-likelihoods over the data frame ( Table 4 ). The model selection across candidate models ( Table 4 ) preferred the Beddington-DeAngelis model of T and CAR T-cell expansion. To obtain best-fit equivalents, as exemplified in Figure 2A-C and detailed in the Supplementary Material , we considered the numerical solution with maximal distance correlation (solid lines). For 95%-confidence prediction intervals (shaded areas), we numerically solved the best-performing model using 250 initial abundances and parameter values randomly sampled from the posterior for each experimental condition, calculated the standard deviation, and multiplied it by the standard factor of 1.96. Specifically, to evaluate trained model performance, we employed a distance correlation statistic between the model and data for target and effector abundances 𝑥 and 𝑦 , 𝜌 , and 𝜌 -, respectively (see Supplementary Material ). Notably, uT-cells typically performed worse, while the CAR T-cells continued to expand. Meanwhile, KO leukemia cells typically reached higher abundances, indicating decreased cancer control. Each untransduced or target-antigen setting yielded its own combination of posterior parameter distributions, as every scenario within each CAR T-AML setting contributed independently to model assessment and selection. E.g., CD33 and CD123w, showed different posterior parameter distributions when co-cultured with different AML cells. These distributions were also different compared to untransduced T cell scenarios, as shown in Figure 2D, E, F . Thus, a combination of factors works in a complex way to explain the longitudinal co-culture experiments for various target antigens. Untransduced T cells showed remarkably robust behavior in low attack rates and high death rates across AML subtypes, but differences in the self-inhibitory dynamics (parameter c) are already present. In contrast, CD33, which should not be effective against leukemia, showed lower attack rates and elevated death rates. Overall, they did expand better than untransduced cells. Furthermore, CD123w CAR T-cells showed comparable attack and death rates (and handling times) but a lower crowding parameter, which would negatively impact expansion, thus potentially indicating greater efficacy. Taken together, these observations show that our modeling identifies (dynamic) differences in CAR T-cell expansion, lifespan, and attack between constructs. 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 9, 2026. ;https://doi.org/10.1101/2024.12.16.628628 doi: bioRxiv preprint
+
+10 
+
+Figure 2: Example Beddington-DeAngelis time series fits and example posterior parameter distributions. A) -C) 
+
+Example model training results for the best-performing (Beddington-DeAngelis CAR T expansion) model, each comparing the performance of untransduced or CAR T cells in co-culture with either WT or KO AML cells. The the goodness of fit was assessed using custom correlation functions (see Supplement ) in each modeling compartment, ρx and ρy, which are also shown in each panel. D) Specific posterior parameter distributions of uT-cells vs. WT and KO AML cells. E) and F) Same posterior parameter distributions for two target antigen CARs (CD33 and CD123w). WT: TP53 -wildtype target, KO: TP53 -knockout target, uT: untransduced T-cell, CART: chimeric antigen receptor T-cell. 
+
+10 -1 10 0attack rate a (1/day )
+
+> uT vs KO
+
+D) posterior parameter distributions of untransduced T cells vs WT and KO leukemia cells 
+
+10 -6 10 -3 10 0 10 3handling time h (days )
+
+10 010 -110 -210 -3expansion reduction parameter c
+
+10 -6 10 -4 10 -2 10 0T cell death rate d (1/day ) 
+
+> uT vs WT uT vs WT uT vs KO
+
+10 -6 10 -3 10 0 10 3handling time h (days )
+
+10 0 10 110 1T cell death rate d (1/day )
+
+E) posterior parameter distributions of CAR (CD33-targeting) T cells vs WT and KO leukemia cells 
+
+10 -4 10 -2 10 0attack rate a (1/day )
+
+> CAR T vs KO CAR T vs WT
+
+10 110 010 -1expansion reduction parameter c
+
+> CAR T vs WT CAR T vs KO
+
+10 010 -1expansion reduction parameter c
+
+10 -6 10 -3 10 0 10 3handling time h (days )
+
+F) posterior parameter distributions of CAR (CD123w-targeting) T cells vs WT and KO leukemia cells 
+
+> CAR T vs WT CAR T vs KO CAR T vs WT CAR T vs KO
+
+10 0 10 1 10 2T cell death rate d (1/day )                                                                                 
+
+> ●●●●●●●●
+> 13610 10 -410 -310 -210 -110 010 110 2time (days )
+> Abundance  (cells /10  5)(ρx,ρy) = ( 1., 0.96 )
+> ●●●●●●●●
+> 13610 10 -410 -310 -210 -110 010 110 2time (days )
+> Abundance  (cells /10  5)(ρx,ρy) = ( 0.99, 0.97 )
+> ●●●●●●●●
+> 13610 10 -410 -310 -210 -110 010 110 2time (days )
+> Abundance  (cells /10  5)(ρx,ρy) = ( 0.99, 0.98 )
+> ●●●●●●●●
+> 13610 10 -410 -310 -210 -110 010 110 2time (days )
+> Abundance  (cells /10  5)(ρx,ρy) = ( 1., 1. )
+> ●●●●●●●●
+> 13610 10 -410 -310 -210 -110 010 110 2time (days )
+> Abundance  (cells /10  5)(ρx,ρy) = ( 1., 0.93 )
+> ●●●●●●●●
+> 13610 10 -410 -310 -210 -110 010 110 2time (days )
+> Abundance  (cells /10  5)(ρx,ρy) = ( 0.99, 0.94 )
+
+A) untransduced T cells (initial E:T=1:2) 
+
+vs WT and KO leukemia cells B) CD33-CAR T cells (initial E:T=1:2) 
+
+vs WT and KO leukemia cells C) CD123w-CAR T cells (initial E:T=1:2) 
+
+vs WT and KO leukemia cells 
+
+> CD33 CAR uT WT AML CD123w CAR uT CD33 CAR WT AML KO AML KO AML WT AML CD123w CAR KO AML
+
+.CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 9, 2026. ;https://doi.org/10.1101/2024.12.16.628628 doi: bioRxiv preprint 11 
+
+CAR T efficacy against wildtype and TP53 -knockout leukemia 
+
+Although variable across target antigen and TP53 -status conditions ( Supplementary Figures 9 ), untransduced T (uT) cells showed little difference when facing wild-type (WT) or TP53 -knockout (KO) leukemia cells ( Figure 2D ). In contrast, CAR T-cells had an increased attack rate but also an increased death rate ( Figure 2E,F ). CD33 CAR T-cells showed a more favorable attack rate, a reduced handling time, and less T-cell crowding (parameter c), but had a markedly increased death rate ( Figure 2E ). CD123w CAR Ts showed less increase in attack rate, unchanged handling time, slight change in death rate, but more T-cell crowding (parameter c, Figure 2F ). These differences highlight target antigen-specific mechanisms of CAR T evasion in TP53 -knockout leukemia. These findings indicate how the target antigen shapes the complex pharmacokinetics against leukemia. 
+
+Dynamic features of CAR T expansion 
+
+The Beddington-DeAngelis model assumes that T-cell expansion depends on both target cell and effector abundance; all else equal, expansion decreases with the number of target cells due to the fraction of T-cells engaged in the killing (handling time) and with the number of other T-cells due to possible crowding and respective saturation. Interestingly, the ratio-dependent T-cell expansion model also has this property, but with less nuance; it performed second best ( Table 4 ). A common feature of both models is that effector expansion depends on both target and effector abundances, increasing with target abundance but decreasing with effector abundance. It is important to note that corrected AIC and BIC both penalize for the number of parameters. Yet the Beddington-DeAngelis expansion, the model with the highest number of parameters, delivered the best scores across all conditions. 
+
+Model validation 
+
+To validate the best-performing model, we used a separate set of longitudinal data of the same cell combinations, different initial E:T ratios, and compared model trajectories generated from 250 random samples of the parameter posteriors to the data. This second data set (LT6) went up to day 16 and was not used for model training or selection. To evaluate model performance on this unseen data, we again calculated the distance correlations 𝜌 , and 𝜌 -. Distance correlations above 0.6 are considered decent, and above 0.9 indicate excellent statistical agreement between two samples (e.g., between predictions from trained parameter values and validation data). A schematic of our true out-of-sample validation test, using a previously unseen data set that followed the cell populations for a longer period, is shown in Figure 3A . The shaded bands in Figure 3B and C are 95% posterior predictive intervals obtained by propagating 250 joint draws of parameters from the trained model, reflecting the combined uncertainty in initial conditions, kinetic parameters, and 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 9, 2026. ;https://doi.org/10.1101/2024.12.16.628628 doi: bioRxiv preprint
+
+12 
+
+multiplicative measurement error. Figure 3D shows the distance correlation values across multiple experimental scenarios. We sometimes observed a drastic widening of the 95% prediction interval (Figures 3B,C) . Yet, all model-data correlation values were above 0.6, suggesting that the Beddington-DeAngelis expansion model can be used to predict CAR T-leukemia kinetics. 
+
+Figure 3: Validation of the best-performing model using initial conditions of previously unseen data. A) Schematic of the validation approach using two different assay experiments (dataset 1, dataset 2, see Methods). B) ,C) . Example plots in which the model was parameterized using the posteriors from model training. The bands indicate the 95% posterior predictive interval, calculated from 1.96 times the standard deviation of 250 trajectories generated with randomly sampled parameter values from the posterior distributions. D) For goodness-of-fit of the validation, we calculated the distance correlations (see Supplementary Material ) between prediction and validation, which were typically higher for the leukemia compartment x than for the (CAR) T-cell compartment y. E)-I) Median CAR T-cell expansion rates, f(x,y), over time, for the different constructs, sampled over 5000 values from the posterior parameter distributions of the best-performing validated expansion model. WT: TP53 -wildtype target, KO: TP53 -knockout target, uT: untransduced T-cell, CART: chimeric antigen receptor T-cell. 
+
+An effector-target interaction model reliably captures T-cell performance 
+
+The posterior parameter distributions were varied across experimental conditions. Supplementary Figures 9 (A-E) shows the target antigen-specific posterior parameter distributions for the same four key parameters, comparing the performance of the differently constructed CAR T-cells with WT 
+
+ρx
+
+ρy
+
+> Correlation  ρi
+
+C) Example validation: CD33 CAR T vs. AML                        
+
+> ●●●●●●●●●●◇◇◇◇
+> 013610 16 10 -410 -310 -210 -110 010 110 2time (days )
+> Abundance  (cells /10  5)(ρx, ρy) = ( 0.95, 0.75 )
+> ●●●●●●●●●●◇◇◇◇
+> 013610 16 10 -410 -310 -210 -110 010 110 2time (days )
+> Abundance  (cells /10  5)(ρx, ρy) = ( 0.97, 0.71 )
+> WT AML KO AML CD33 CAR CD33 CAR
+
+0 10 20 30 40 50 10 110 -110 -310 -510 -7time (days )
+
+> Expansion per T cell  (1/day )
+
+0 10 20 30 40 50 10 110 -110 -310 -510 -7time (days )
+
+> Expansion per T cell  (1/day )
+
+0 10 20 30 40 50 10 110 -110 -310 -510 -7time (days )
+
+> Expansion per T cell  (1/day )
+
+0 10 20 30 40 50 10 110 -110 -310 -510 -7time (days )
+
+> Expansion per T cell  (1/day )
+
+E) CD117-CAR F) CD33-CAR G) CD123s-CAR H) CD123w-CAR I) CD371-CAR 
+
+> CAR T vs. WT, median CAR T vs. KO, median
+
+0 10 20 30 40 50 10 110 -110 -310 -510 -7time (days )       
+
+> Expansion per T cell  (1/day )
+> D1: main experimental assay used for model training and selection. D 2: second experimental assay used for validation only. P1(θ): posterior parameter distribution from training. θ: set of model parameters.
+> ρx,ρy: correlations between model prediction and previously unseen validation data .
+
+Bayesian model training 
+
+and selection using dataset 1 (D 1 )
+
+Model forecasting ,using P 1 (θ) and initial cond. from dataset 2 (D 2 )
+
+Inference 
+
+of posterior parameter distributions P1 (θ)
+
+Summary stats :standard dev. and correlation functions ρx, ρy
+
+Correlation functions ρi
+
+are calculated comparing forecast and D 2
+
+A) From Model training and seleciton to validation B) Example validation: uT vs. AML                          
+
+> ●●●●●●●●●●◇◇◇◇
+> 013610 16 10 -410 -310 -210 -110 010 110 2time (days )
+> Abundance  (cells /10  5)(ρx, ρy) = ( 0.99, 0.75 )
+> ●●●●●●●●●●◇◇◇◇
+> 013610 16 10 -410 -310 -210 -110 010 110 2time (days )
+> Abundance  (cells /10  5)(ρx, ρy) = ( 0.99, 0.71 )
+> uT KO AML uT WT AML
+
+D) Trained model vs. validation data 
+
+.CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 9, 2026. ;https://doi.org/10.1101/2024.12.16.628628 doi: bioRxiv preprint 13 
+
+and KO leukemia cells. E:T ratios of ≈ 1 show prominent target killing with rapidly decreasing target abundance at first, followed by recovery, while the effector abundance constantly decreases. For E:T ratios ≈ 0.1, we observed little to no target killing, leading to target growth. Notably, CD123w-targeting chimeric antigen receptor T-cells exhibited more killing against TP53 wildtype target cells than against the TP53 knockout target while maintaining their handling time (see also Figure 2E,F ). For target antigens CD117 and CD123s, the growth rate of the T-cells decreased with a decreasing initial E:T ratio. For CD33 and CD371, this trend was not apparent. While the Bayesian inference scheme selected the best model of CAR T-cell expansion, unresolved variation indicates underlying heterogeneity in both CAR T and target cell phenotypes. 
+
+TP53 -deficiency confers resistance, but in a target antigen-dependent manner 
+
+The preferred model of T- and CAR T-cell expansion implies a time dependence. Depending on the initial E:T ratios, the expansion rate is dynamic, as it depends on cell population feedback through the mechanisms of handling time required for killing (parameters a and h) and crowding due to T-cell competition (parameter c). To assess this complex process, we evaluated the Beddington-DeAngelis over time using 5000 parameter combinations drawn from the posterior distributions across the five target antigens and solving the coupled dynamical system; Figure 3 , panels E-I 
+
+show the expansion rate function f(x,y) in equation (2), per cell (medians taken over 5000 simulations of the system dynamics with random sampling from the posterior parameter distributions). Stark differences arise in how CAR T-cells expand vs. WT or TP53 KO AML cells. All constructs except CD117 exhibit lower overall dynamic expansion rates per CAR T cell. For CD117 CARs, overall expansion is very low, as expected 8. For CD33 and CD371, the expansion rate stabilized over the long term. These differences suggest that TP53 knockout evasion occurs in a multifaceted, target-antigen-dependent fashion. 
+
+Target-antigen-specific CAR T properties 
+
+The in vitro CAR T-cell response is typically short-lived compared to in vivo and potential clinical responses. The best-performing candidate model ( Figure 4A,B ) captures the duration of CAR T-target cell conjugation (handling time) and CAR T-cell crowding as possible detriments to expansion. The candidate models do not capture expansion through differentiation, e.g., by adding compartments of stem, naïve, or memory T-cells 22 as we found no evidence that this added complexity contributed to the in vitro cytotoxicity assays. We analyzed the system's two possible fixed points using linear stability analysis ( Supplementary Material ). In the case of tumor control, the stable target (leukemia) population is given by 
+
+𝑑 𝑎 ⁄ × (𝑎 + 𝑐𝑟) (𝑏 − 𝑎 𝑑 ℎ) ⁄ , and the steady-state of the effector population is 𝑟 𝑎 ⁄ . This state is 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 9, 2026. ;https://doi.org/10.1101/2024.12.16.628628 doi: bioRxiv preprint
+
+14 
+
+unstable if the attack rate meets the condition 𝑎 > 𝑏 (𝑑 ℎ) ⁄ . Tumors could escape therapy pressure for long handling times, h, or high effector death rate, d. This calculation exemplifies the complex impact of the best-performing model’s parameters. Interestingly, a very high attack rate, unbalanced by a low handling time, can lead to tumor escape and possible progression because CAR T cells that constantly attack and form CAR T-target cell conjugates cannot contribute to expansion. We hypothesized that CAR T antigen-targets behave differently when challenged with TP53-knockout cells. To this end, we analyzed the posterior parameter distributions of the best-performing model. Our primary interest was comparing the CAR vs. WT and CAR vs. KO scenarios, as these could indicate specific differences in how a particular CAR T construct handles the TP53 KO challenge. In Figure 4C-G , we compare the posterior median values of the CAR vs. WT and CAR vs. KO scenarios (full distributions shown in Supplementary Figure 10 ), focusing on the parameters important for killing (attack rate) and expansion (baseline expansion, handling time, crowding, T-cell death rate), as well as the derived quantity of maximal CAR expansion within the first 55 days. CD33 showed a lower attack rate and baseline expansion rate, as well as a lower CAR T death rate (Figure 4C ). CD117 showed relatively conserved parameter values, with a low overall attack rate (Figure 4D ). CD123s, CD123w, and CD371 all showed increased attack rates against the KO cells, at the cost of reduced baseline expansion (CD123s) or increased handling time (CD371) ( Figure 4E,F,G ). Together, these observations underscore how our best-performing nonlinear model of CAR T cell expansion can capture a multifaceted, target-antigen-dependent spectrum of changes in kinetic parameters that determine efficacy. The modeled dynamics of WT and KO AML, based on equations (1) and (2) and the median posterior parameter values, confirmed these observations ( Figure 4H ). CD117 was ineffective against the cancer cell population. CD33 had a moderate effect, while CD123s likely suppressed both WT and KO AML for extended times. In comparison, both CD123w and CD371 eventually lost their efficacy against the KO AML population. These comparisons of parameter distributions and their impact on the target AML dynamics highlight how different sets of parameter values can produce similar overall kinetics. The underlying functional mechanisms of CAR T evasion can be quite different, such as a reduced attack rate or increased handling time, leading to lower killing efficacy or decreased CAR T cell expansion. In all but one target (CD33), the CAR T cells sought to attack more, but this effect was mainly muted by either an increased handling time (time spent killing rather than expanding) or decreased CAR T survival. CD123s’ relative success against both WT and KO AML may stem from their shorter handling time, thereby mitigating the negative effect of the target-killing process on CAR expansion. 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 9, 2026. ;https://doi.org/10.1101/2024.12.16.628628 doi: bioRxiv preprint
+
+15 
+
+Figure 4: Target antigen-specific CAR T kinetics . A) Graphical summary of the main approach and results. B) Summary of the variables and parameters that determine the multi-parametric nonlinear functional form of CAR T expansion. In addition to the static parameters that affect the expansion function f(x,y), we also determined the maximum expansion over time by simulating the model using 5000 randomly sampled parameter combinations drawn from the validation model's posteriors. C) -G) Parameter distributions (medians and interquartile range, IQR) of the five target antigens, comparing CAR T vs. WT (gray) and CAR T vs. KO (yellow). H) We used the median posterior parameter values to simulate the dynamical system x(t), y(t), and compare each CAR’s performance against WT (black) and KO AML (red). Only the CD123s targeting CAR T-cells are predicted to suppress KO AML. Chosen initial effector-to-target ratio=1. WT: TP53 -wildtype target, KO: 
+
+TP53 -knockout target. 
+
+B) Model parametrs C) Parameter distributions, CD33 <latexit sha1_base64="8I3VnOSUpxP4HaHmgw1ShPGjgRA=">AAADTHicbVJNb9NAEF2nUEr4aApHLisiqlQNqY1QQZWQinrhWFDTVoqjaLxex6uu19buGBxZ/oFcOHDjV3DhAEJIrJM0TdPO6e28N587QSaFQdf94TTW7txdv7dxv/ng4aPHm62tJ6cmzTXjfZbKVJ8HYLgUivdRoOTnmeaQBJKfBRdHNX/2mWsjUnWCk4wPExgrEQkGaF2jLSfYLjq4c+B3feQFlpgnqaYdBD3muEMZl5KyNFdY+X5ze7IsPXr/iZ68XFEsUZQXGai68kHld2nUKbqTnXeB3y32Ot4u+N3Ywl3mW28dCYvEgAjsgmpAPs0ZLJjLSa9SX6nYQnXZlE6/hEKNaQQMUz0VxQtRDCqUNYsimSUIb5ss5IDxHi9iyA1eqxeNypk6gaKqFrH2tdrdqNV2e+7U6E3gzUGbzO141PruhynLE66QSTBm4LkZDkvQKJjkVdPPDc/simDMBxYqSLgZltNjqOgL6wlpZH8xShXSqXc5ooTEmEkSWGViZzOrXO28jRvkGL0dlkJlOXLFZoWiXFJMaX1ZNBSaM5QTC4BpYXulLAZtl2/vr2mX4K2OfBOcvup5+739j6/bh+58HRvkGXlOOsQjb8gh+UCOSZ8w56vz0/nt/Gl8a/xq/G38m0kbzjzmKblma+v/AQ1dDYQ=</latexit> 
+
+x(t) : tumor (target) cell count 
+
+y(t) : CAR T-cell count CAR T expansion: f (x, y ) = b x/ (1 + a h x + c y )
+
+a : attack rate 
+
+b : baseline expansion rate 
+
+c : T-cell crowding factor 
+
+h : handling time 
+
+d : CAR T-cell death/exhaustion rate 
+
+fmax : max expansion rate 
+
+H) Predicted WT AML, TP53 KO AML dynamics 
+
+A) CAR T expansion impacted by handling time and crowding killing assay data    <latexit sha1_base64="ka0c8/vqDe9pBBSt4BurOErhV8s=">AAACBHicbZDLSsNAFIZPvNZ6i7rsJlgFoaUkItVlwY3LCvYCTSiT6aQdOpmEmYkYQhdufBU3LhRx60O4822ctllo6w8DH/85hzPn92NGpbLtb2NldW19Y7OwVdze2d3bNw8O2zJKBCYtHLFIdH0kCaOctBRVjHRjQVDoM9Lxx9fTeueeCEkjfqfSmHghGnIaUIyUtvpmyQ0EwpnvVh8mmVNBbnWksYLdajrpm2W7Zs9kLYOTQxlyNfvmlzuIcBISrjBDUvYcO1ZehoSimJFJ0U0kiREeoyHpaeQoJNLLZkdMrFPtDKwgEvpxZc3c3xMZCqVMQ193hkiN5GJtav5X6yUquPIyyuNEEY7ni4KEWSqypolYAyoIVizVgLCg+q8WHiGditK5FXUIzuLJy9A+rzn1Wv32otw4yeMoQAmO4QwcuIQG3EATWoDhEZ7hFd6MJ+PFeDc+5q0rRj5zBH9kfP4AVb2XLA==</latexit>     
+
+> mathematical model
+> Bayesian modeling: training, seleciton, validation of CAR T expansion
+> effecor cells  y
+> target cells x
+> b x
+> 1 + a h x +c y
+> ~b/c
+> ~a~1/ h
+> leukemia cell CAR T-cell dead cell
+
+0 10 20 10 -910 -610 -310 010 3
+
+0 10 20 10 -910 -610 -310 010 3
+
+0 10 20 10 -910 -610 -310 010 3
+
+0 10 20 10 -910 -610 -310 010 3
+
+0 10 20 10 -910 -610 -310 010 3
+
+time (days) Relative cell count KO AML WT AML CD33 CAR T CD117 CAR T CD123s CAR T CD123w CAR T CD371 CAR T 
+
+a b d h c fmax 10 010 -310 -210 210 -110 1Median and IQR 
+
+D) Parameter distributions, CD117 
+
+a b d h c fmax 10 010 -310 -210 210 -110 1Median and IQR 
+
+E) Parameter distributions, CD123s 
+
+a b d h c fmax 10 010 -310 -210 210 -110 1Median and IQR 
+
+F) Parameter distributions, CD123w 
+
+a b d h c fmax 10 010 -310 -210 210 -110 1Median and IQR 
+
+G) Parameter distributions, CD371 
+
+a b d h c fmax 10 010 -310 -210 210 -110 1Median and IQR 
+
+> CAR vs WT median and IQR CAR vs KO median and IQR
+
+.CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 9, 2026. ;https://doi.org/10.1101/2024.12.16.628628 doi: bioRxiv preprint 16 
+
+## Conclusions 
+
+Computational and mathematical models can complement experimental approaches to explore mechanisms driving tumor-immune interactions, particularly CAR T-target cell kinetics. We quantified and compared the performance of untransduced T-cells and CAR T-cells expressing five different antigens against two leukemia genotypes. We inferred individual system-specific parameter distributions using a novel Bayesian estimation workflow. As a result, we inferred the functional relationship between cellular densities and CAR T-cell expansion. We evaluated how dynamic expansion, increased attack rate, and decreased CAR T-cell lifespan interact, highlighting target-antigen-specific complications in treating TP53 -deficient leukemia cells. This analysis enabled the quantification of the dose dependence and the long-term effects on effector T-cell performance. By tuning CAR T performance parameters and dosing strategies, it is possible to optimize treatment outcomes based on theoretical considerations. Expansion, rather than killing, may be the ‘rate-limiting’ step in optimizing CAR T-cell therapy. We used a Bayesian approach for practical identifiability analysis and model selection. Other model selection procedures based on practical identifiability use the profile likelihood. These methods rely on context-adapted optimization algorithms and are vulnerable to local optima. Bayesian inference replaces this optimization with parameter sampling via a Hamiltonian Monte Carlo approach. We estimated posterior parameter distributions in this way and quantified uncertainty using credibility intervals. While many other statistical methods require large sample sizes, the minimum sample size for Bayesian inference is one (given perfect priors): the Bayesian approach requires prior knowledge. We used knowledge of tumor growth rates from independent cancer growth experiments to eliminate regions of parameter space that are a priori unlikely. Experimental insights into the timescale of the relevant biological processes can similarly be incorporated. Our study has several limitations. First, the experimental setting cannot account for clinical heterogeneity among patients and antigen diversity. Second, we do not present an analysis of antigen mixtures, antigen density, or the evolution of selection of TP53-depleted leukemia variants. These aspects might be crucial ingredients for future studies. Third, we did not account for antigen and CAR abundance per cell, as well as the potentially varying affinities of different CAR constructs. These variabilities are reflected in differences in posterior parameter estimates across constructs, particularly in baseline expansion and attack rate. Of note, observed differences in these dynamics may not be driven primarily by differential antigen availability on the target cell 8, and we were only able to use previously unseen in vitro data of the same AML cell line for validation. Fourth, a fully mechanistic receptor-ligand description is beyond the scope of the current study, but could be the next step for specifically valuable CAR T constructs. Density-dependent antigen modulation was not measured in the current study, but antigen expression profiles were previously characterized 8.Specific investigations that combine antigen density with mathematical system characterizations of 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 9, 2026. ;https://doi.org/10.1101/2024.12.16.628628 doi: bioRxiv preprint
+
+17 
+
+CAR T expansions are valuable avenues for future work; antigen density should be explicitly modeled as a state variable rather than implicitly influencing the inferred parameter distributions. As reported in several clinical studies, cancer-T-cell dynamics and CAR T therapy outcomes depend on the achieved E:T ratio 45-48 . In particular, the CD123- and CD371-targeting CARs exhibited strong cytotoxicity, even against mutant AML. Elevated effector death rates often accompanied these high attack rate estimates, suggesting higher CAR T exhaustion and cell turnover. These findings imply that attack rate and effector turnover may be essential for eliminating the target leukemia, as CAR T expansion is limited by the time spent attacking (handling time) and by self-interference. Due to the handling time, the attack rate has a positive effect from immediate cancer killing and an adverse impact because the killing process binds CAR T cells. As recently shown and discussed, the pharmacodynamic process of CAR T-target cell conjugation can delay expansion 49 and may impede efficacy 50 . Short handling times could lead to sustained CAR T-cell abundance, a form of cancer persistence. Our results suggest that sustained effector expansion with reduced handling time could be a crucial CAR T-cell characteristic that translates into durable responses, but that different target antigens offer specific kinetic benefits. Future studies should leverage these complementary properties against AML and, if feasible, combine multiple target-antigen CAR T constructs into a single dose or exploit them for subsequent dosing. 
+
+## Data availability 
+
+The data and code of this project are publicly available through a zenodo repository 10.5281/zenodo.12823159. 
+
+## Ethics approval 
+
+Ethics approval was not required, as this study does not use data from human or animal subjects. 
+
+## Supplementary Material 
+
+The Supplementary Material can be found on 10.5281/zenodo.12823159. 
+
+## Acknowledgments 
+
+SaSh, MR, AT, and PMA acknowledge generous funding from the Max Planck Society. SaSh, MR, and AT acknowledge funding by Deutsche Forschungsgemeinschaft through the Research Training 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 9, 2026. ;https://doi.org/10.1101/2024.12.16.628628 doi: bioRxiv preprint
+
+18 
+
+Group "Translational Evolutionary Research" (TransEvo, project number 400993799). MGM was supported by the Clinical Research Priority Program “ImmunoCure” of the University of Zurich. SB was supported by the Promedica Foundation Chur, the Swiss Cancer League (KFS-4885-08-2019), the Fondation Peter Anton & Anna Katharina Miescher pour la Recherche en Hématologie, and the Swiss Society of Hematology. JM was supported by the KRAK—Physician Scientist Fellowship. PMA is supported by the DFG Heisenberg Program (project number 525136051) and the DFG Clinical Research Unit 5010 CATCH ALL (project number 444949889). 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 9, 2026. ;https://doi.org/10.1101/2024.12.16.628628 doi: bioRxiv preprint
+
+19 
+
+## Tables and table legends 
+
+CAR scFv target E:T 1 E:T 2 E:T 3 E:T 4 
+
+CD33 1:16 1:24 1:30 1:40 CD117 2:1 1:1 1:2 1:8 CD123 (weak) 1:1 1:8 1:16 1:30 CD123 (strong) 2:1 1:1 1:2 1:8 CD371 1:4 1:16 1:40 1:60 
+
+Table 1: Initial E:T ratio for each chimeric antigen receptor construct cytotoxic assay. Each experiment was seeded with 60000 cells and the four listed E:T ratios. For example, the cytotoxic assay using CD123-targeting (weak) CAR T-cells (first initial condition) was seeded with 40000 effector and 20000 target cells. 
+
+Name Values 
+
+Antigen [“CD33”, “CD117”, “CD123s”, “CD123w”, “CD371”] Effector [“uT”, “CART”] Target [“WT”, “KO”] Ratio [1, 2, 3, 4] Sample [1, 2] Time Points [1, 3, 6, 10] 
+
+Table 2: Structure of the experimental data. The first level consists of the five constructs, and the level elements are the names of the target receptors. The second and third levels are the type of effector and target cells, in order, in the co-culture cytotoxic assay. “uT” and “CART” refer to the untransduced and chimeric antigen receptor T-cells. “WT” and “KO” refer to the TP53 -wildtype and -knockout tumor genotypes. The fourth level specifies the index of initial conditions of experiments (Table 1). The fifth level indicates the index of the biological replication of the co-cultures. The sixth level consists of the time, reported in days, of the cell abundance measurements. The dataset, thus, consists of 5 × 2 × 2 × 4 × 2 × 4 = 640 measured data points. 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 9, 2026. ;https://doi.org/10.1101/2024.12.16.628628 doi: bioRxiv preprint
+
+20 
+
+Variables Interpretation Unit 
+
+𝑥 Target cell abundance cells 
+
+𝑥 effector cell abundance cells 
+
+𝑥 ̇ Target cell abundance rate of change cells time −1
+
+𝑦 ̇ effector cell abundance rate of change cells time −1
+
+Parameters Interpretation Unit 
+
+r target growth rate time −1
+
+a attack rate cells −1 time −1
+
+b effector expansion rate time −1, cells −1 time −1
+
+d effector death rate time −1
+
+h target handling time time 
+
+c effector cell interference parameter cells −1
+
+σ measurement error cells 
+
+function Interpretation Unit 
+
+f(x,y ) effector expansion functional response time −1
+
+Table 3: Symbols used in the study with their interpretations and units. We use the shorthand notation   
+
+> 𝑥 ̇= 𝑑𝑥 𝑑𝑡 ⁄
+
+for the derivative in time. The measurement error, σ, is a non-mechanistic hyperparameter of the Bayesian parameter inference approach (see Supplementary material ). 
+
+Candidate model Number of parameters ∆AICc ∆BIC 
+
+uncoupled, T growth (5) x0, y 0, r, b, σ 5.65 × 10 4 5.65 × 10 4
+
+uncoupled, T death (5) x0, y 0, r, d, σ 7.54 × 10 18 7.54 × 10 18 
+
+Lotka-Volterra expansion (7) x0, y 0, r, a, b, d, σ 3.08 × 10 2 3.22 × 10 2
+
+Lotka-Volterra exhaustion (7) x0, y 0, r, a, b, d, σ 6.24 × 10 14 6.24 × 10 14 
+
+Holling type 2 (8) x0, y 0, r, a, d, h , c, σ 2.35 × 10 2 2.44 × 10 2
+
+Ratio-dependent expansion (7) x0, y 0, r, a, d, b, σ 1.21 × 10 2 1.35 × 10 2
+
+Bazykin-Harrison (8) x0, y 0, r, a, d , b, c, σ 6.74 × 10 5 6.74 × 10 5
+
+Beddington-DeAngelis (9) x0, y 0, r, a, d, b, c, h, σ 0.0 0.0
+
+Table 4: Differences in corrected Akaike and Bayesian information criteria across candidate models. The independent cytotoxicity assays over five chimeric antigen receptor constructs, four effector-target combinations, and four E:T ratios. Therefore, the parameter log-likelihoods were added. A lower corrected Akaike and Bayesian information criteria score indicates a better model performance. The differences from the lowest criterion value are reported for the candidate models. The Beddington-DeAngelis expansion performs the best, i.e., has the lowest information criterion, amongst candidate models overall, i.e., ignoring CAR constructs, effector-target combination, and the E:T ratio. AICc: corrected 
+
+Akaike information criterion, BIC: Bayesian information criterion. The Δ indicates that values are shown relative to the best-performing candidate model. The measurement error, σ, is a non-mechanistic hyperparameter of the Bayesian parameter inference approach. 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 9, 2026. ;https://doi.org/10.1101/2024.12.16.628628 doi: bioRxiv preprint
+
+21 
+
+## References 
+
+1 Feins, S., Kong, W., Williams, E. F., Milone, M. C. & Fraietta, J. A. An introduction to chimeric antigen receptor (CAR) T-cell immunotherapy for human cancer. Am J Hematol 94 , S3–S9, doi:10.1002/ajh.25418 (2019). 2 Labanieh, L. & Mackall, C. L. CAR immune cells: design principles, resistance and the next generation. Nature 
+
+614 , 635–648, doi:10.1038/s41586-023-05707-3 (2023). 3 Albelda, S. M. CAR T cell therapy for patients with solid tumours: key lessons to learn and unlearn. Nature Reviews Clinical Oncology 21 , 47–66, doi:10.1038/s41571-023-00832-4 (2024). 4 Dohner, H., Weisdorf, D. J. & Bloomfield, C. D. Acute Myeloid Leukemia. N Engl J Med 373 , 1136–1152, doi:10.1056/NEJMra1406184 (2015). 5 Dickinson, A. M. et al. Graft-versus-Leukemia Effect Following Hematopoietic Stem Cell Transplantation for Leukemia. Front Immunol 8, 496, doi:10.3389/fimmu.2017.00496 (2017). 6 Mardiana, S. & Gill, S. CAR T Cells for Acute Myeloid Leukemia: State of the Art and Future Directions. Front Oncol 10 , 697, doi:10.3389/fonc.2020.00697 (2020). 7 Haubner, S. et al. Coexpression profile of leukemic stem cell markers for combinatorial targeted therapy in AML. 
+
+Leukemia 33 , 64–74, doi:10.1038/s41375-018-0180-3 (2019). 8 Mueller, J. et al. Targeting the mevalonate or Wnt pathways to overcome CAR T-cell resistance in TP53-mutant AML cells. EMBO Mol Med 16 , 445–474, doi:10.1038/s44321-024-00024-2 (2024). 9 Tambaro, F. P. et al. Autologous CD33-CAR-T cells for treatment of relapsed/refractory acute myelogenous leukemia. Leukemia 35 , 3282–3286, doi:10.1038/s41375-021-01232-2 (2021). 10 Wang, J. et al. CAR-T cells targeting CLL-1 as an approach to treat acute myeloid leukemia. J Hematol Oncol 11 ,7, doi:10.1186/s13045-017-0553-5 (2018). 11 Ghorashian, S. et al. Enhanced CAR T cell expansion and prolonged persistence in pediatric patients with ALL treated with a low-affinity CD19 CAR. Nature Medicine 25 , 1408–1414, doi:10.1038/s41591-019-0549-5 (2019). 12 Bernard, E. et al. Implications of TP53 allelic state for genome stability, clinical presentation and outcomes in myelodysplastic syndromes. Nat Med 26 , 1549–1556, doi:10.1038/s41591-020-1008-z (2020). 13 Levine, A. J. & Oren, M. The first 30 years of p53: growing ever more complex. Nature Reviews Cancer 9, 749– 758, doi:10.1038/nrc2723 (2009). 14 Sallman, D. A. et al. TP53 mutations in myelodysplastic syndromes and secondary AML confer an immunosuppressive phenotype. Blood , doi:10.1182/blood.2020006158 (2020). 15 Rucker, F. G. et al. TP53 alterations in acute myeloid leukemia with complex karyotype correlate with specific copy number alterations, monosomal karyotype, and dismal outcome. Blood 119 , 2114–2121, doi:10.1182/blood-2011-08-375758 (2012). 16 Faude, S. et al. Absolute lymphocyte count proliferation kinetics after CAR T-cell infusion impact response and relapse. Blood Adv 5, 2128–2136, doi:10.1182/bloodadvances.2020004038 (2021). 17 Chow, A., Perica, K., Klebanoff, C. A. & Wolchok, J. D. Clinical implications of T cell exhaustion for cancer immunotherapy. Nature Reviews Clinical Oncology 19 , 775–790, doi:10.1038/s41571-022-00689-z (2022). 18 Dasyam, N., George, P. & Weinkove, R. Chimeric antigen receptor T-cell therapies: Optimising the dose. Br J Clin Pharmacol 86 , 1678–1689, doi:10.1111/bcp.14281 (2020). 19 Turtle, C. J. et al. Immunotherapy of non-Hodgkin's lymphoma with a defined ratio of CD8+ and CD4+ CD19-specific chimeric antigen receptor-modified T cells. Sci Transl Med 8, 355ra116, doi:10.1126/scitranslmed.aaf8621 (2016). 20 Kirouac, D. C., Zmurchok, C. & Morris, D. Making drugs from T cells: The quantitative pharmacology of engineered T cell therapeutics. NPJ Syst Biol Appl 10 , 31, doi:10.1038/s41540-024-00355-3 (2024). 21 Simpson, M. J., Browning, A. P., Warne, D. J., Maclaren, O. J. & Baker, R. E. Parameter identifiability and model 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 9, 2026. ;https://doi.org/10.1101/2024.12.16.628628 doi: bioRxiv preprint
+
+22 
+
+selection for sigmoid population growth models. Journal of Theoretical Biology 535 , 110998, doi:10.1016/j.jtbi.2021.110998 (2022). 22 Chaudhury, A. et al. Chimeric Antigen Receptor T Cell Therapies: A Review of Cellular Kinetic-Pharmacodynamic Modeling Approaches. J Clin Pharmacol 60 Suppl 1 , S147–S159, doi:10.1002/jcph.1691 (2020). 23 Kimmel, G. J., Locke, F. L. & Altrock, P. M. The roles of T cell competition and stochastic extinction events in chimeric antigen receptor T cell therapy. Proceedings of the Royal Society B 288 (2021). 24 Rosenzweig, M. L. & MacArthur, R. H. Graphical Representation and Stability Conditions of Predator-Prey Interactions. The American Naturalist 97 , 209–223, doi:10.1086/282272 (1963). 25 Holling, C. S. The Functional Response of Predators to Prey Density and its Role in Mimicry and Population Regulation. Memoirs of the Entomological Society of Canada 97 , 5–60, doi:10.4039/entm9745fv (1965). 26 Beddington, J. R. Mutual Interference Between Parasites or Predators and its Effect on Searching Efficiency. The Journal of Animal Ecology 44 , 331, doi:10.2307/3866 (1975). 27 DeAngelis, D. L., Goldstein, R. A. & O'Neill, R. V. A Model for Tropic Interaction. Ecology 56 , 881–892, doi:10.2307/1936298 (1975). 28 Bazykin, A. D., Berezovskaya, F. S., Denisov, G. A. & Kuznetzov, Y. A. The influence of predator saturation effect and competition among predators on predator-prey system dynamics. Ecological Modelling 14 , 39–57, doi:10.1016/0304-3800(81)90013-2 (1981). 29 Arditi, R. & Ginzburg, L. R. Coupling in predator-prey dynamics: Ratio-Dependence. Journal of Theoretical Biology 
+
+139 , 311–326, doi:10.1016/s0022-5193(89)80211-5 (1989). 30 Liepe, J. et al. A framework for parameter estimation and model selection from experimental data in systems biology using approximate Bayesian computation. Nat Protoc 9, 439–456, doi:10.1038/nprot.2014.025 (2014). 31 Boettcher, S. et al. A dominant-negative effect drives selection of TP53 missense mutations in myeloid malignancies. Science 365 , 599–604, doi:10.1126/science.aax3649 (2019). 32 Feldman, E. J. et al. Phase III randomized multicenter study of a humanized anti-CD33 monoclonal antibody, lintuzumab, in combination with chemotherapy, versus chemotherapy alone in patients with refractory or first-relapsed acute myeloid leukemia. J Clin Oncol 23 , 4110–4116, doi:10.1200/jco.2005.09.133 (2005). 33 Myburgh, R. et al. Anti-human CD117 CAR T-cells efficiently eliminate healthy and malignant CD117-expressing hematopoietic cells. Leukemia , doi:10.1038/s41375-020-0818-9 (2020). 34 Hutmacher, C. et al. Development of a novel fully-human anti-CD123 antibody to target acute myeloid leukemia. 
+
+Leuk Res 84 , 106178, doi:10.1016/j.leukres.2019.106178 (2019). 35 Lee, E. M. et al. Efficacy of an Fc-modified anti-CD123 antibody (CSL362) combined with chemotherapy in xenograft models of acute myelogenous leukemia in immunodeficient mice. Haematologica 100 , 914–926, doi:10.3324/haematol.2014.113092 (2015). 36 Lin, G., Zhang, Y., Yu, L. & Wu, D. Cytotoxic effect of CLL -1 CAR -T cell immunotherapy with PD -1 silencing on relapsed/refractory acute myeloid leukemia. Mol Med Rep 23 , doi:10.3892/mmr.2021.11847 (2021). 37 Volterra, V. Fluctuations in the Abundance of a Species considered Mathematically1. Nature 118 , 558–560, doi:10.1038/118558a0 (1926). 38 Lotka, A. J. Elements of Physical Biology . (Williams & Wilkins, 1925). 39 Miao, H., Xia, X., Perelson, A. S. & Wu, H. Own identifiability of nonlinear ODE models and applications in viral dynamics. SIAM Rev Soc Ind Appl Math 53 , 3–39, doi:10.1137/090757009 (2011). 40 Raue, A. et al. Structural and practical identifiability analysis of partially observed dynamical models by exploiting the profile likelihood. Bioinformatics 25 , 1923–1929, doi:10.1093/bioinformatics/btp358 (2009). 41 Dong, R., Goodbrake, C., Harrington, H. A. & Pogudin, G. Differential Elimination for Dynamical Models via Projections with Applications to Structural Identifiability. SIAM Journal on Applied Algebra and Geometry 7, 194– 235, doi:10.1137/22m1469067 (2023). 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 9, 2026. ;https://doi.org/10.1101/2024.12.16.628628 doi: bioRxiv preprint
+
+23 
+
+42 Hoffman, M. D. & Gelman, A. The No-U-Turn Sampler: Adaptively Setting Path Lengths in Hamiltonian Monte Carlo. Journal of Machine Learning Research 15 , 1593–1623 (2014). 43 Hespanhol, L., Vallio, C. S., Costa, L. M. & Saragiotto, B. T. Understanding and interpreting confidence and credible intervals around effect estimates. Braz J Phys Ther 23 , 290–301, doi:10.1016/j.bjpt.2018.12.006 (2019). 44 McElreath, R. Statistical Rethinking: A Bayesian Course with Examples in R and Stan . (CRC Press, Boca Raton, FL, USA, 2020). 45 Roddie, C. et al. Obecabtagene Autoleucel in Adults with B-Cell Acute Lymphoblastic Leukemia. N Engl J Med ,doi:10.1056/NEJMoa2406526 (2024). 46 Enblad, G. et al. A Phase I/IIa Trial Using CD19-Targeted Third-Generation CAR T Cells for Lymphoma and Leukemia. Clin Cancer Res 24 , 6185–6194, doi:10.1158/1078-0432.Ccr-18-0426 (2018). 47 Raje, N. et al. Anti-BCMA CAR T-Cell Therapy bb2121 in Relapsed or Refractory Multiple Myeloma. N Engl J Med 
+
+380 , 1726–1737, doi:10.1056/NEJMoa1817226 (2019). 48 Locke, F. L. et al. Tumor burden, inflammation, and product attributes determine outcomes of axicabtagene ciloleucel in large B-cell lymphoma. Blood Adv 4, 4898–4911, doi:10.1182/bloodadvances.2020002394 (2020). 49 Yang, Q., Traulsen, A. & Altrock, P. M. Integration of Immune Cell-Target Cell Conjugate Dynamics Changes the Time Scale of Immune Control of Cancer. Bull Math Biol 87 , 24, doi:10.1007/s11538-024-01400-2 (2025). 50 Pomeroy, A. E. et al. A pharmacokinetic/pharmacodynamic model predicts tumor debulking improves CAR T-cell efficacy in Large B-Cell Lymphoma. Blood Cancer Discovery 6 (2025).
