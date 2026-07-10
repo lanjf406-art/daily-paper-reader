@@ -1,0 +1,2614 @@
+Title: LeafRank: A phylodynamic framework for inferring relative fitness from single-cell phylogenies in chromosomally unstable tumors
+
+URL Source: https://www.biorxiv.org/content/10.64898/2026.07.06.736651v1.full.pdf
+
+Number of Pages: 36
+
+Markdown Content:
+# LeafRank: A phylodynamic framework for inferring relative fitness from 1
+
+# single-cell phylogenies in chromosomally unstable tumors 2
+
+Chenyu Wu 1,2 , Kevin Leder 3, Zicheng Wang 4* , and Ruping Sun 1,2* 3
+
+> 1
+
+Department of Laboratory Medicine and Pathology, University of Minnesota, Minneapolis, MN, USA 4
+
+> 2
+
+Masonic Cancer Center, University of Minnesota, Minneapolis, MN, USA 5
+
+> 3
+
+Department of Industrial and Systems Engineering, University of Minnesota, Minneapolis, MN, USA 6
+
+> 4
+
+School of Data Science, The Chinese University of Hong Kong (CUHK-Shenzhen), Shenzhen, China 7
+
+> *
+
+Correspondence: ruping@umn.edu and wangzicheng@cuhk.edu.cn 89
+
+SUMMARY 10 
+
+Tumors contain cancer cells with diverse growth potentials that shape evolutionary trajecto-11 
+
+ries, yet this fitness diversity remains difficult to quantify in cases of whole-genome dupli-12 
+
+cation (WGD) and chromosomal instability. We present LeafRank, a mathematical frame-13 
+
+work that leverages single-cell DNA-seq phylogenies to infer the relative fitness of individ-14 
+
+ual cells. Using a multi-type branching process model, LeafRank integrates full tree topol-15 
+
+ogy, including branch lengths and bifurcation patterns, to estimate marginal fitness probabil-16 
+
+ities under punctuated evolutionary regimes driven by rare driver events. To account for el-17 
+
+evated aberration rates following WGD, we introduce a tree-rescaling strategy that adjusts 18 
+
+for lineage-specific genomic instability. Unlike methods focused on predefined subclones, 19 
+
+LeafRank ranks all sampled cells, enabling flexible assessment of growth heterogeneity. Sim-20 
+
+ulations demonstrate high accuracy across spatial and non-spatial virtual tumors. Applied 21 
+
+to ovarian cancer, LeafRank reveals directional and parallel selection in WGD tumors and 22 
+
+identifies recurrent copy number events enriched in high-fitness lineages. WGD lineages do 23 
+
+not show immediate growth advantages but acquire fitness through subsequent alterations. 24 
+
+1
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 9, 2026. ;https://doi.org/10.64898/2026.07.06.736651 doi: bioRxiv preprint
+
+# INTRODUCTION 25 
+
+Cancer evolution is the process by which cancer cells, expanding from a single founder cell, 26 
+
+diverge by accumulating somatic aberrations, including single nucleotide variants ( SSNV )1,2 27 
+
+and copy number alterations ( SCNA )3,4 , that can drive disease progression and resistance to 28 
+
+treatment. The concept of somatic evolution, first articulated in Nowell’s seminal model of can-29 
+
+cer evolution 5, posits that subpopulations, or subclones, defined by distinct somatic aberrations 30 
+
+within an established tumor can exhibit different survival and proliferation rates 6, corresponding 31 
+
+to differences in cellular fitness under a given microenvironment. 32 
+
+Fitness diversity among single cells within a patient tumor at the time of sampling reflects 33 
+
+both cell-intrinsic growth potential driven by somatic variants and selective pressures imposed 34 
+
+by the tumor microenvironment. Rapidly proliferating lineages indicate adaptive success at 35 
+
+the time of sampling 7, whereas slowly cycling cells may exhibit cancer stem-like properties 8–10 36 
+
+or retain the potential to fuel treatment resistance 8,10,11 . Therefore, characterizing this fitness 37 
+
+diversity is critical for addressing fundamental questions in cancer biology, including measur-38 
+
+ing selection pressures within the native tumor environment 12,13 , identifying somatic variants 39 
+
+associated with fitness differences 14 , and predicting future adaptive potential 15 . However, in 40 
+
+tumors with chromosomal instability ( CIN ), fitness diversity remains poorly characterized, and 41 
+
+the fitness effects of SCNAs, including whole-genome duplication ( WGD ), remain elusive in 42 
+
+patient tumor contexts. 43 
+
+Theoretically, subclonal fitness can be quantified by tracking the growth dynamics of cancer 44 
+
+cell populations, ideally through longitudinal sampling during tumor evolution 16 . However, cur-45 
+
+rent technological constraints largely restrict such measurements to in vitro systems, mouse 46 
+
+models 16,17 , or liquid tumors 18 . Consequently, despite the recognized importance of fitness 47 
+
+diversity within solid tumors, methodologies that can infer subclonal fitness from patient tumor 48 
+
+samples while preserving the native tumor context remain limited. 49 
+
+The relative fitness of a cell carrying an acquired somatic variant is commonly assumed to 50 
+
+be reflected in the population size of the subclone harboring that variant, conditional on the time 51 
+
+at which the variant arises 19 . Variant allele frequencies ( VAF ) of SSNVs measured from bulk 52 
+
+sequencing have therefore been used as a surrogate for subclone size, providing evidence 53 
+
+for detectable positive selection during subclonal evolution 12,20,21 . However, such analyses 54 
+
+have been largely restricted to diploid genomic regions because SCNAs can confound VAF 55 
+
+measurements, thereby excluding tumors with CIN phenotypes. 56 
+
+Notably, advances in single-cell DNA sequencing (scDNA-seq) have substantially improved 57 
+
+the resolution of cell-to-cell genomic variation 22 , enabling the reconstruction of phylogenetic 58 
+
+trees of detectable somatic variants in individual cells. Within such trees, subclone size can be 59 
+
+estimated from the number of cells assigned to a given clade, while the birth time of a subclone 60 
+
+can be approximated from branch lengths, or from the number of variants accumulated along 61 
+
+the corresponding lineage, under appropriate molecular-clock assumptions. Both SSNVs and 62 
+
+SCNAs have been used for phylogenetic reconstruction. For SSNVs, tree-sampling strategies 63 
+
+have been developed 23,24 to mitigate the impact of allelic dropout (ADO) in scDNA-seq data. 64 
+
+In contrast, SCNAs can be robustly detected by leveraging read counts across large genomic 65 
+
+regions, and the introduction of amplification-free scDNA-seq protocols 25,26 has improved res-66 
+
+olution of SCNAs to the megabase level. Despite the violation of infinite-sites assumption in 67 
+
+SCNA evolution 27 , several methods use probabilistic frameworks to reconstruct SCNA histo-68 
+
+2
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 9, 2026. ;https://doi.org/10.64898/2026.07.06.736651 doi: bioRxiv preprint
+
+ries. For example, MEDICC2 infers phylogenies by minimizing event distances between SCNA 69 
+
+profiles and explicitly models WGD 28 , while SCICoNE 29 and CONET 30 jointly optimize tree con-70 
+
+struction and SCNA detection. 71 
+
+With phylogenetic trees derived from scDNA-seq data, mathematical modeling has begun 72 
+
+to link information embedded in tree topology, including subclone sizes and branch lengths, to 73 
+
+the population dynamics of cancer cells, enabling phylodynamic inference of subclonal fitness 74 
+
+landscapes. SCIFIL infers fitness by modeling subclone sizes using a deterministic ordinary 75 
+
+differential equation formulation of a branching process 31 . FiTree approximates subclone size 76 
+
+distributions with a multi-type branching process under assumptions of large time and small 77 
+
+mutation rates, and infers the fitness of specific genomic variants within a Bayesian frame-78 
+
+work that requires phylogenetic trees from multiple patients 32 . In contrast, cloneRate infers 79 
+
+fitness by modeling subclone birth times or branch lengths using coalescent theory derived 80 
+
+from a supercritical branching process 33 . SCPhyloX uses the Poisson distribution 34 to model 81 
+
+the expected branch length, including leaf-to-root and leaf-to-progenitor distances, to detect 82 
+
+subclones under positive selection and estimate associated selection coefficients under as-83 
+
+sumptions of structured population growth 35 . Collectively, these methods rely on approxima-84 
+
+tions of branching process models, and focus on predefined subclones and typically assume 85 
+
+uniform fitness within each subclone. Additional parameters, such as mutation rates, are also 86 
+
+known to influence fitness inference 36,37 . Although joint estimation of multiple parameters has 87 
+
+been proposed 38 , inferring absolute subclonal fitness levels remains challenging. 88 
+
+Rather than focusing on the absolute fitness values of specific subclones, we ask whether 89 
+
+the relative fitness ranking of sampled single cells can be inferred from a phylogenetic tree 90 
+
+reconstructed from genomic aberrations in a patient tumor. Leveraging a multi-type branch-91 
+
+ing process model, we developed LeafRank , a probabilistic algorithm that analyzes the full 92 
+
+topology of phylogenetic trees derived from scDNA-seq data. Our approach incorporates es-93 
+
+tablished features of phylogenetic trees, including branch lengths and subclone sizes, while 94 
+
+simultaneously accounting for additional unobserved factors that shape tree structure. 95 
+
+We designed LeafRank to accommodate the high CIN rates associated with WGD. LeafRank 96 
+
+assumes branch lengths (aberration counts) are proportional to time. However, because base-97 
+
+line copy number ( CN ) dictates the substrate for subsequent alterations, ongoing CIN can al-98 
+
+ter aberration rates between lineages and violate this molecular clock assumption. Subclonal 99 
+
+WGD is an extreme case that can significantly raise the baseline aberration rate 39–41 . To ad-100 
+
+dress this, we implemented a tree-rescaling approach that converts the input phylogeny into 101 
+
+an ultrametric tree, allowing us to evaluate and correct for this molecular-clock violation. 102 
+
+This work is inspired by the non-cancer framework proposed by Neher et. al. which lever-103 
+
+ages influenza virus phylogenies to infer the relative fitness of viral strains under the assump-104 
+
+tion of small mutational fitness effects in a constant-sized population 19,42 . In contrast, we model 105 
+
+cancer growth as an expanding population in which fitness differences between cell types can 106 
+
+be large. Moreover, LeafRank does not assume the homogeneity of fitness within a subclone, 107 
+
+and allows users to adjust the input parameters for the multi-type branching process model, 108 
+
+thereby improving the flexibility in the evaluation of fitness diversity within the patient tumor. 109 
+
+Using both non-spatial and spatial simulations 43 , we demonstrate that the inferred fitness rank-110 
+
+ings are generally robust to the choice of input parameters, with sensitivity arising only under 111 
+
+specific parameter regimes. Applying LeafRank to copy number event trees from ovarian can-112 
+
+cer patient tumors undergoing WGD 44 , we provide support for fitness jumps between cell types, 113 
+
+3
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 9, 2026. ;https://doi.org/10.64898/2026.07.06.736651 doi: bioRxiv preprint
+
+uncover evidence that post-WGD SCNAs reshape the fitness landscape, and examine the po-114 
+
+tential fitness consequences of WGD in patient tumors. For clarity, a guide to the terminology 115 
+
+used throughout this paper is listed in Table S1. 116 
+
+# RESULTS 117 
+
+LeafRank: A phylodynamic framework for inferring relative fitness from single 118 
+
+cell trees 119 
+
+We developed LeafRank , a probabilistic framework for single cell phylogeny, inferring the rela-120 
+
+tive fitness of sampled tumor cells. LeafRank takes as input a phylogenetic tree reconstructed 121 
+
+from somatic aberrations, including SCNAs detected via scDNA-seq, alongside parameter con-122 
+
+figurations defined by a multi-type branching process model 45 (Figure 1A). The framework out-123 
+
+puts the marginal probability of fitness types for leaf cells, conditioned on the observed tree 124 
+
+topology and model configuration. 125 
+
+Internally, LeafRank utilizes a multi-type branching process model that accommodates tran-126 
+
+sitions among discrete fitness states within an expanding population. This framework explicitly 127 
+
+defines the probability density that an ancestral cell (an internal node), possessing a specific 128 
+
+fitness type, generates the observed descending subtree (Figure 1B). Specifically, LeafRank 129 
+
+decomposes this probability calculation into branch and bifurcation propagator functions. This 130 
+
+formulation distinguishes our work from previous non-cancer frameworks 42 , which rely on con-131 
+
+tinuous diffusion approximations of small fitness effects. Crucially, this exact decomposition 132 
+
+provides the foundation necessary to implement a message-passing algorithm, accelerating 133 
+
+the computation of marginal fitness state distributions for each sampled cell (Figure S1). No-134 
+
+tably, the marginal fitness distribution of sampled cells takes into account the full information 135 
+
+embedded in the tree topology, while the multi-type branching process framework naturally ac-136 
+
+counts for the stochastic nature of the clonal expansion dynamics. Detailed implementation of 137 
+
+the LeafRank algorithm is provided in the Methods and Supplemental Text. 138 
+
+Topological signatures of clonal expansion inform fitness ranking predictions 139 
+
+To verify LeafRank’s performance on ideal data, we first tested it on the ground-truth phylo-140 
+
+genetic trees and parameter configurations derived from virtual tumors whose growth satisfies 141 
+
+our underlying assumptions (See Methods). Because LeafRank assumes branch lengths rep-142 
+
+resent elapsed evolutionary time, the input tree should be approximately ultrametric; that is, 143 
+
+it should exhibit relatively consistent leaf-to-root distances when the samples originate from a 144 
+
+single time point. We simulated virtual tumors using the multi-type branching process model, 145 
+
+and randomly sampled single cells once the tumor reached a million cells. By recording the 146 
+
+birth and death times of each cell during the simulation, we are able to reconstruct an accurate 147 
+
+input tree, termed as a true time ultrametric tree or TT tree, as demonstrated in Figure 2. The 148 
+
+simulation setting is detailed in Methods. 149 
+
+LeafRank recovered fitness rankings in virtual tumors with high fidelity. Predicted fitness 150 
+
+values were highly correlated with the ground truth, where 35 of 50 tumors exhibited a rank 151 
+
+correlation exceeding 0.7 (Figure 2A). This result indicates that LeafRank accurately translates 152 
+
+tree topology into cellular level fitness diversity, effectively distinguishing high-fitness lineages 153 
+
+4
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 9, 2026. ;https://doi.org/10.64898/2026.07.06.736651 doi: bioRxiv preprint
+
+CD   
+
+> WGD WGD
+> Truncal WGD
+> HGSOC single cell CNA tree
+> Subclonal WGD n=10 n=3
+> 3D Spatial Simulation Non-spatial Simulation
+> WGD+ WGD-Predicted fitness Ground truth Robustness
+> Predicted fitness Accuracy Fitness diversity in WGD tumors Fitness of WGD itself Predicted fitness
+> Single-cell phylogenetic tree Model con fi guration
+> Internal node Immediate daughter of internal node
+
+Input AOutput Marginal leaf fi tness  
+
+> ∅∅
+> Bifurcation
+> ... ... ... ... ... ...
+> Up-message (Rootward)
+> ... ... ... ... ... ...
+> ... ... ... ... ... ...
+> Down-message (Leafward)
+
+B
+
+> ... ... ... ... ... ...
+> Branch
+
+Figure 1. Study design and LeafRank framework (A) The input for LeafRank consists of (1) a recon-structed single cell phylogenetic tree (binary bifurcation) derived from somatic aberrations (e.g., point mutations or copy number alterations) and (2) a multi-type branching process model parameter config-uration. Cancer cell expansion is governed by birth ( b) and death ( d) rates corresponding to one of V discrete fitness types. During division, daughter cells accumulate passenger aberrations at rate μ and may transition to higher fitness states at a driver aberration rate ν. In addition to the parameters govern-ing the branching process, the model incorporates a time-scale normalizing parameter τ and a single cell sampling probability ρ. The tree shape T integrates both branch lengths and bifurcation patterns, where 
+
+VL and VN represent the fitness types of leaves and internal nodes, respectively. (B) Message pass-ing algorithm in LeafRank. To derive the marginal distribution of fitness types for sampled cells (leaves), LeafRank decomposes the probability calculation into the branch and bifurcation propagators. As shown in the row panels, the “up-message” (rootward) recursively collects the conditional probabilities of the subtree descending from each node. Conversely, the “down-message” (leafward) updates each node the marginal probability of its fitness types, conditioned on the observed phylogeny “above” the node, including all ancestral and sibling lineages. This bi-directional message passing facilitates the efficient computation of the marginal fitness distribution of all leaf cells. (C) Benchmarking via non-spatial and spatial simulations. Both non-spatial and spatial tumor growth models were employed to evaluate the accuracy and robustness of LeafRank, particularly in the presence of WGD. (D) Clinical application to HGSOC patient data. LeafRank was applied to HGSOC patient data to assess the fitness diversity of cells in tumors characterized by truncal WGD (Left) or subclonal WGD (Right). 
+
+5
+
+.CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 9, 2026. ;https://doi.org/10.64898/2026.07.06.736651 doi: bioRxiv preprint True ranking TT ranking ( rs: 0.87) TT ranking ( rs : -0.01) High Low Fitness 
+
+True ranking Spearman  rs   
+
+> 0.75 0.5 0.25 0
+> 010 20 30 0(None) 0.2 (weak+) 0.4 (moderate+) 0.6 (strong+) 0.8 (very strong+) 1(perfect+)
+> Frequency Spearman rs
+> 0.0000 0.0005 0.0010 0.0015 0.25 0.75
+> Subsampling variance Original inference accuracy ( rs )
+> 00.5
+
+A B DEC 
+
+> p= 2.4e-16 Pearson = -0.87
+
+Figure 2. Phylogenetic tree topology enables robust inference of cellular fitness (A) LeafRank performance across 50 simulated tumors, quantified by Spearman correlation between true and inferred fitness rankings derived from true-time (TT) phylogenies. (B) Representative example with high con-cordance (r s = 0.87). Inferred rankings (outer ring) closely match the ground truth, accurately iden-tifying high-fitness lineages (circles). (C) Representative low-concordance case (r s ≈ 0), illustrating reduced agreement between inferred and true rankings. (D) Ranking stability to subsampling, mea-sured as Spearman correlation between rankings inferred from subsampled TT trees and the original full-tree ranking for the two virtual tumors in panels B and C, respectively. Histogram colors match the points in panel A. (E) Inference accuracy is inversely associated with subsampling variability (Pearson correlation). Variability is defined as the variance in Spearman correlations across subsampled trees. Highlighted points correspond to the two virtual tumors in panels B and C. 
+
+from slower-growing lineages (circles, Figure 2B). Topologically, these high-fitness lineages 154 
+
+are identifiable by a “late but rapid” branching pattern, which arise later in time but showing 155 
+
+significant expansion relative to the total sampled population. 156 
+
+We observe that LeafRank’s sensitivity in identifying high-fitness lineages is tied to the real-157 
+
+ized size of the corresponding lineage. In cases where driver aberrations occur extremely late, 158 
+
+the resulting sublineages may lack sufficient time to expand or reach the detection threshold 159 
+
+for sampling. Consequently, LeafRank failed to identify these isolated, high-fitness cells when 160 
+
+their topological signal was not yet reflected in the sampled tree. This is exemplified by the case 161 
+
+where LeafRank predicted a uniform fitness landscape, reflecting a sampled population domi-162 
+
+nated by fitness-homogeneous cells (Figure 2C). Here, emerging high-fitness lineages had not 163 
+
+achieved sufficient size to be distinguished from the background. Consequently, the absence 164 
+
+of a measurable topological signal led to a low correlation with the ground-truth rankings. 165 
+
+In contrast, cell lineages that failed to achieve sufficient clonal expansion were ranked as 166 
+
+low-fitness, regardless of their early emergence. While these clones may branch early in the 167 
+
+phylogeny, their limited sampled clone size indicates a lack of competitive advantage in growth, 168 
+
+allowing LeafRank to correctly distinguish them from high-fitness expansions. In all the virtual 169 
+
+tumor samples, LeafRank correctly located the lower fitness cells. 170 
+
+Because true fitness is not observable in practice, we asked whether the accuracy of LeafRank 171 
+
+predictions could be assessed through the stability of rankings obtained from trees built on ran-172 
+
+domly subsampled cells. We found that, although fitness estimates for subsampled cells are 173 
+
+generally well correlated with rankings from the full tree, the strength of this correlation varies 174 
+
+across virtual tumors. For example, in the fitness-homogeneous virtual tumor, where LeafRank 175 
+
+6
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 9, 2026. ;https://doi.org/10.64898/2026.07.06.736651 doi: bioRxiv preprint
+
+failed to pinpoint late selective lineages (red in Figure 2D), ranking stability under subsampling 176 
+
+was substantially lower than in cases where LeafRank achieved high accuracy (blue in Fig-177 
+
+ure 2D). Across virtual tumors, the variance in Spearman correlations between subsampled-178 
+
+tree rankings and full-tree rankings was inversely associated with prediction accuracy (Fig-179 
+
+ure 2E). Together, these results suggest that ranking stability under subsampling can serve as 180 
+
+a proxy for inference accuracy. 181 
+
+Robustness of LeafRank to parameter uncertainty and evolutionary model spec-182 
+
+ification 183 
+
+After establishing LeafRank’s performance under ideal conditions (with TT tree and accurate 184 
+
+input parameters), we next assessed its resilience to parameter uncertainty. In practice, these 185 
+
+parameters often vary by biological context and are characterized by significant estimation 186 
+
+uncertainty. We therefore examined how LeafRank responds to variations in these inputs to 187 
+
+ensure the robust translation of tree topology into fitness rankings. By perturbing each param-188 
+
+eter across a biologically plausible range, we found that while individual fitness values were 189 
+
+affected in diverse ways, the overall ranking inferred by LeafRank remained largely consistent. 190 
+
+Furthermore, by characterizing the effect of input parameter tuning on the probability distri-191 
+
+bution of predicted fitness values, we provide guidelines for achieving an informative ranking 192 
+
+through the evaluation of fitness distribution. 193 
+
+ID Parameters Baseline Value ( C) Perturbed Value 
+
+ρ1 ρ: Single cell sampling probability 0.00025 0.001 
+
+ρ2 0.00005 
+
+τ 1 τ : Time scale normalizing parameter 1 6d1 di: Type i cell death rates 0.18 0.15 b1 bi: Type i cell division rates {0.2 · 1.2 i}i=0, ··· ,7 {0.2 · 1.53 i}i=0, ··· ,3 
+
+b2 {0.2 + 0.17 · i} i=0, ··· ,3 
+
+ν1 ν: Driver aberration rates 0.0001 0.001 
+
+∆1 ∆t: ODE integration accuracy 0.01 0.1 
+
+Table 1. Input parameter configurations for the univariate sensitivity analysis. Baseline values ( C) correspond to the configuration used in Figure 2. 
+
+We performed a univariate sensitivity analysis by perturbing the input parameters, includ-194 
+
+ing sampling probability, overall time scale, number of fitness states, birth and death rates, 195 
+
+and driver aberration rate, often by an order of magnitude above or below the baseline values 196 
+
+(Table 1). Despite these significant deviations, the fitness rankings re-inferred across the 50 197 
+
+virtual tumors (introduced in Figure 2) maintained accuracy comparable to that achieved using 198 
+
+the ground-truth parameters (Figure 3A). These results highlight the robustness of LeafRank 199 
+
+to parameter uncertainty and its ability to preserve the relative fitness hierarchy even across 200 
+
+substantial input variation. 201 
+
+However, we observed that certain parameter configurations can result in uninformative fit-202 
+
+ness rankings that correlate poorly with the ground truth (Figure 3A). For instance, significantly 203 
+
+reducing the number of fitness states (the b1 and b2 experiments) leads to a noticeable de-204 
+
+cline in accuracy. The b1 configuration performs better because it places greater resolution 205 
+
+on lower-fitness phenotypes, consistent with the simulated distribution in which most samples 206 
+
+have low fitness. By contrast, the b2 configuration assumes uniformly spaced fitness states 207 
+
+7
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 9, 2026. ;https://doi.org/10.64898/2026.07.06.736651 doi: bioRxiv preprint
+
+Boundary saturation Unstable ranking solution: 
+
+Ground truth 
+
+> Spearman Correlation -0.2  0.0  0.4 0.2  0.6  0.8  1.0
+
+## ABC
+
+Boundary saturation (r s =0.44) Informative ranking (r s =0.73) Ground truth 
+
+> Fitness High Low
+> Prob. ¹
+> ⁰⁰.⁵
+
+Figure 3. Perturbation analyses reveal robust rankings and guide stable input parameter calibra-tion (A) Robustness of LeafRank across eight input parameter perturbations, measured by Spearman correlation with the true fitness ranking (see Table 1). Boxplots summarize 50 simulated tumors per condition. (B) Example of reduced ranking resolution due to boundary saturation. Under the baseline parameter set ( C), inferred rankings are well resolved, whereas increasing the time scale ( τ = 8) com-presses rankings toward the boundaries. Corresponding Spearman correlations (r s) are indicated. (C) 
+
+Fitness-distribution heatmaps illustrating diagnostic patterns for tuning input parameter configuration to improve fitness inference. Rows correspond to individual cells and columns to fitness states. Two rep-resentative patterns are shown: unstable ranking and boundary saturation, each with two examples. Circled cases (b1) display both behaviors. Recommended parameter adjustments for each pattern are indicated below the corresponding heatmaps. 
+
+8
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 9, 2026. ;https://doi.org/10.64898/2026.07.06.736651 doi: bioRxiv preprint
+
+across a predefined range, which does not capture this skew. Further details are provided in 208 
+
+the Supplemental Text and Figure S2. These results suggest that while LeafRank is resilient 209 
+
+to the scale of input parameters, it requires a sufficiently expressive model architecture to ac-210 
+
+curately resolve the fitness information. In light of these results we suggest using a V value of 211 
+
+at least 7. 212 
+
+To provide practical guidelines for parameter optimization, we characterized how input set-213 
+
+tings shape the resulting fitness landscape, reconstructed from the inferred distributions across 214 
+
+all sampled cells (Figure 3C). We observed two distribution patterns that emerge under spe-215 
+
+cific parameter regimes, revealing the conditions under which rankings become uninformative. 216 
+
+These observations provide a framework for tuning LeafRank parameters to maximize the res-217 
+
+olution and accuracy of the inferred fitness rankings. 218 
+
+The first pattern is ranking instability, characterized by closely related cells, such as those 219 
+
+in sibling lineages, exhibiting sharply contrasting inferred fitness values. This pattern suggests 220 
+
+that, under the current parameter regimes, LeafRank may be overly sensitive to stochastic 221 
+
+noise embedded in the tree, leading to unstable predictions. For lineages with such erratic 222 
+
+inferred fitness distributions, this excessive sensitivity to stochastic noise can distort fitness 223 
+
+estimates at the individual leaf level, rendering the internal fitness structure biologically implau-224 
+
+sible. This instability typically arises when the cell sampling parameter ρ is set too small, the 225 
+
+driver aberration rate ν is set too large, or the number of fitness types V is too small to resolve 226 
+
+the underlying fitness structure. 227 
+
+The second pattern is boundary saturation, where a substantial fraction of lineages are in-228 
+
+ferred to have fitness at or near the preset minimum or maximum. This saturation reduces 229 
+
+the resolution of the inference, obscuring the identification of high-fitness clones when most 230 
+
+lineages are pushed to the maximum, or low-fitness clones when they are compressed at the 231 
+
+minimum. This pattern suggests that the chosen parameters systematically deviate from the 232 
+
+ground truth, forcing the inference to assign extreme values to reconcile the observed phyloge-233 
+
+netic tree. Specifically, this arises when the time-scaling factor is either too small or too large, 234 
+
+or when the birth/death rates are incongruent with the tree topology, such that tumor evolution 235 
+
+along the given tree would require cells to have implausibly extreme fitness values. 236 
+
+Although each pattern may yield non-ideal fitness distributions, their individual effects on 237 
+
+ranking accuracy, as measured by Spearman correlation, are minimal (Figure 3A). Empirically, 238 
+
+boundary saturation reduced ranking accuracy more substantially than ranking instability as it 239 
+
+flattens the tails of the distribution, obscuring differences between lineages with exceptionally 240 
+
+high or low fitness. The most substantial deterioration in accuracy is observed primarily when 241 
+
+both patterns occur simultaneously (Figure 3C, circled), highlighting the inherent robustness of 242 
+
+LeafRank under unknown parameter settings. This robustness provides significant flexibility. 243 
+
+For instance, if a user wants to focus on low-fitness lineages, they can increase the time scale 244 
+
+τ to drive most lineages toward the maximum fitness state, thereby accentuating the contrast 245 
+
+with the lowest-fitness lineage. Because the ranking remains stable, the lowest-fitness lineage 246 
+
+can be consistently identified even when most lineages are concentrated at the highest fitness 247 
+
+due to the chosen parameter configuration. 248 
+
+LeafRank provides curated parameter presets that users can adapt to achieve informative 249 
+
+rankings (see Methods). Throughout the analyses in the manuscript, including applications to 250 
+
+patient data, we implemented a distribution based quality control workflow to ensure that the 251 
+
+resulting fitness distributions remained free of the two diagnostic patterns mentioned above. 252 
+
+9
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 9, 2026. ;https://doi.org/10.64898/2026.07.06.736651 doi: bioRxiv preprint
+
+Robust fitness ranking in the presence of whole genome duplication and spatial 253 
+
+sampling bias 254 
+
+To evaluate LeafRank under more realistic conditions, we tested its performance on trees con-255 
+
+taining noise and distortions typical of single-cell DNA sequencing data from tumor samples. 256 
+
+While our numerical studies in previous sections used true time (TT) tree, empirical phyloge-257 
+
+nies are generally distance-matrix (DM) based, with branch lengths representing genomic di-258 
+
+vergence accumulated through events such as SSNVs and SCNAs. This discrepancy is often 259 
+
+manageable under a constant molecular clock assumption 46,47 , whereby genomic divergence 260 
+
+serves as a proxy for evolutionary time. However, in tumors exhibiting CIN, whole genome 261 
+
+duplication (WGD) frequently occurs and violates this assumption. By doubling the DNA sub-262 
+
+strate, WGD accelerates the rate of subsequent genomic aberrations, thereby distorting branch 263 
+
+lengths 39–41 . Therefore, genomic divergence in trees involving both WGD – and WGD + popu-264 
+
+lations is no longer an appropriate proxy for evolutionary time. To account for aberration rate 265 
+
+heterogeneity following WGD, we developed a modified chronos 46 algorithm to recalibrate DM 266 
+
+trees under a state-dependent molecular clock model that assigns distinct aberration rates 267 
+
+to WGD – and WGD + branches (see Methods and Supplemental Text). The resulting WGD-268 
+
+adjusted ultrametric trees closely approximated the underlying TT trees. 269 
+
+When evaluating noisy reconstructed trees, WGD-adjusted trees substantially outperformed 270 
+
+unadjusted DM trees in both non-spatial and spatial simulations (Figure 4F,G). Across all sim-271 
+
+ulations, TT trees yielded the highest Spearman correlations with the true fitness ranking, pro-272 
+
+viding an idealized upper-bound reference for inference accuracy. The WGD adjustment re-273 
+
+covered rankings that closely matched this TT-tree benchmark. More specifically, the WGD 274 
+
+adjustment corrected the spurious fitness inflation observed in WGD – lineages. As shown in 275 
+
+two representative virtual tumors (Figure 4B,C), DM trees systematically distorted the inferred 276 
+
+fitness landscape. In these cases, the model misinterpreted the relatively shorter branches of 277 
+
+WGD – lineages as evidence of rapid expansion. By recalibrating branch lengths, the WGD-278 
+
+adjusted trees reduced this bias and restored correlations close to those obtained from the TT 279 
+
+trees. 280 
+
+The branch length recalibration assumes that aberration counts follow a Poisson distribu-281 
+
+tion. To evaluate this assumption, we used the temporal information from the WGD-adjusted 282 
+
+ultrametric trees to calculate the expected Poisson-based branch length distribution, which rep-283 
+
+resent the expected number of events per branch. We then compared it against the observed 284 
+
+distribution from the unadjusted DM trees (see Methods and Supplemental Text for details). As 285 
+
+shown in Figure 4D,E, the observed branch length distribution aligns closely with the distribution 286 
+
+implied by the chronological time in the WGD-adjusted tree. 287 
+
+To evaluate LeafRank’s robustness against spatial structure-induced topological variations, 288 
+
+we tested the framework on 3D virtual tumors 43 . Spatially structured populations result in sam-289 
+
+pling biases as cells from the same subclone tend to cluster in close proximity, which is com-290 
+
+monly observed in solid tumors 48 . Indeed, this heightened complexity significantly degraded 291 
+
+the performance of uncorrected DM-trees in the spatial simulation (Figure 4F,G). However, de-292 
+
+spite these multiple sources of noise, the WGD-adjusted tree significantly improved ranking 293 
+
+accuracy. Notably, over 75% of these spatial virtual tumors achieved a Spearman correlation 294 
+
+greater than 0.5, demonstrating the robustness of LeafRank in realistic evolutionary scenarios. 295 
+
+By successfully restoring the expected relationship between branching density and evolution-296 
+
+10 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 9, 2026. ;https://doi.org/10.64898/2026.07.06.736651 doi: bioRxiv preprint
+
+A   
+
+> 3D Spatial Simulation Non-spatial Simulation True tree (TT) Dist. matrix (DM) tree WGD tree Ultrametric conversion BL rep. mutational div. BL rep. true time BL rep. time estimates
+
+B True ranking Non-Spatial Simulation Analysis 
+
+C True ranking Spatial Simulation Analysis 
+
+F G H  
+
+> Correlation (Non-spatial Simulation Analysis) 00.2 0.4 0.6 0.8 1n.s. ***
+> (Spatial Simulation Analysis) Correlation
+
+D E                                
+
+> Fitness Low High WGD -WGD +
+> TT WGD DM -0.2 00.2 0.4 0.6 0.8 1*** ** ***
+> TT WGD DM
+> 3e-06 1e-05 3e-05 1e-04 3e-04
+> 0.5 0.6 0.7 0.8 0.9
+> Prediction Accuracy (Spearman) Subsampling Variance
+> p= 0.26 p= 0.22 p= 0.13 p= 0.42
+> TT ranking (r s: 0.7909) DM ranking (r s: 0.3226) WGD ranking (r s: 0.7655) TT ranking (r s: 0.8946) DM ranking (r s: 0.6465) WGD ranking (r s: 0.8598)
+> Pearson = -0.57
+> p= 1.4e-05
+
+Figure 4. Benchmarking LeafRank in WGD-associated tumors using non-spatial and 3D spatial simulations (A) In silico virtual tumor simulations generated under non-spatial and 3D spatial frame-works, each virtual tumor yields three phylogenies: a true-time (TT) tree, in which branch lengths rep-resent evolutionary time; a distance-matrix (DM) tree reconstructed by neighbor joining, with branch lengths reflecting genomic divergence; and a WGD-adjusted ultrametric tree obtained by rescaling branch lengths as described in Methods. (B,C) Representative fitness inference from non-spatial (B) and spatial (C) simulations. True fitness rankings (outer ring, TT tree) are compared with rankings inferred from each tree type. Branch-level WGD status is color-coded according to the WGD status of sampled cells. (D,E) Hanging rootograms assess agreement between empirical branch-length distributions in DM trees and the expected frequencies predicted from WGD-adjusted trees. P-values were computed using a runs test of randomness on the positive and negative residuals along the branch lengths. (F,G) 
+
+Inference accuracy across 50 virtual tumors per tree setting for non-spatial (F) and spatial (G) simu-lations, measured by Spearman correlation. Significance was assessed by Wilcoxon signed-rank test (n.s.: p ≥ 0.05, *: p < 0.05, **: p < 0.01, ***: p < 0.001). (H) Inference accuracy is inversely correlated with subsampling variability (Pearson correlation) in spatial simulations. Subsampling variability is mea-sured similarly as in Figure 2E. 11 
+
+.CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 9, 2026. ;https://doi.org/10.64898/2026.07.06.736651 doi: bioRxiv preprint ary time, LeafRank is well-positioned for reliable fitness inference in solid tumors with CIN 297 
+
+phenotypes. 298 
+
+Similar to the ranking stability test under subsampling shown in Figure 2E, we further exam-299 
+
+ine the relationship between ranking instability and accuracy in 3D virtual tumors (Figure 4H). 300 
+
+Our analysis revealed that the negative correlation between the ranking accuracy and insta-301 
+
+bility is preserved. This inverse relationship further suggests that subsampling-based ranking 302 
+
+stability can serve as a valuable indicator of ranking accuracy in more realistic spatial simulated 303 
+
+tumors, particularly relevant in patient tumors when the ground truth is unknown. 304 
+
+Lineage fitness landscapes of ovarian cancer reveal ongoing selection following 305 
+
+truncal WGD 306 
+
+We applied LeafRank to an scDNA-seq dataset of high-grade serous ovarian cancer (HGSOC) 307 
+
+comprising treatment-naive samples collected from both primary and metastatic sites 44 (see 308 
+
+Methods). This cohort exhibits highly recurrent WGD characterized by both truncal and sub-309 
+
+clonal events, including cases of independent, parallel WGD alterations within a single patient’s 310 
+
+tumor lineage. The recurrent yet variable distribution of WGD provided an ideal framework to in-311 
+
+vestigate the fitness landscape of genome doubled cells and the specific selective advantages 312 
+
+conferred by WGD. 313 
+
+We first investigated whether WGD, occurring as a truncal event, acts as a dominant driver 314 
+
+to produce a uniform fitness landscape across the resulting population, or if subsequent out-315 
+
+growth involves strong selective events occur post-WGD. To this end, we analyzed ten patients 316 
+
+with truncal WGD 44 whose samples were collected from the same anatomical site (including 317 
+
+nine metastatic lesions, Figure S3 and Figure S4), minimizing sampling biases caused by spa-318 
+
+tial divergence. In these tumors, because WGD is a truncal event, we hypothesized that lin-319 
+
+eages arising after WGD evolve at a similar SCNA rate. Consequently, we converted DM trees 320 
+
+reconstructed using MEDICC2 28 into ultrametric trees using the constant rate chronos method 321 
+
+(see Methods). LeafRank produced robust ranking inferences from both the original DM trees 322 
+
+and the transformed ultrametric trees, while the rootogram test indicated that the constant rate 323 
+
+model adequately captured SCNA accumulation in the majority of truncal WGD tumors (Fig-324 
+
+ure S3 and Figure S4). For consistency, we present results based on the ultrametric trees. 325 
+
+Details about the analysis are provided in the Supplemental Text. 326 
+
+LeafRank uncovered substantial fitness jumps during the tumor growth in over half of these 327 
+
+patient tumors. In metastatic tumor OV-105 (sampled from omentum), for example, we defined 328 
+
+16 potential fitness types (0-15) with birth rates increasing by a multiplicative coefficient of 1.1. 329 
+
+LeafRank revealed three major fitness groups, identified as types 6, 9 and 10, emerging through 330 
+
+successive fitness changes toward the upper portion of the phylogenetic tree (Figure 5). This 331 
+
+pattern resembles directional selection 49 , in which fitness rises as cells approach a specific 332 
+
+aneuploidy state. Notably, these transitions varied in magnitudes. A major leapfrog occurred 333 
+
+from the ancestral type 0 to type 6, followed by another significant jump to type 9, and a final 334 
+
+incremental step to type 10. These results suggest that post-WGD evolution is characterized 335 
+
+by ongoing selection rather than neutral expansion. The discrete fitness changes imply the 336 
+
+presence of specific driver events coincident with lineage branching (Figure 5A). Furthermore, 337 
+
+the heterogeneity in selective advantage confirms that a multi-type branching process is more 338 
+
+appropriate than a continuous weak fitness-gain model 42 for capturing inter-clonal disparities. 339 
+
+12 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 9, 2026. ;https://doi.org/10.64898/2026.07.06.736651 doi: bioRxiv preprint
+
+In patient OV-105, the population sizes of the three major fitness groups were comparable, 340 
+
+indicating that high-fitness cells have not yet dominated the population at the time of sampling. 341 
+
+This observation highlights that sampled tumor cells represent a snapshot of an evolving pop-342 
+
+ulation, where lineage fitness is not reflected by the current abundance. Specifically, of two 343 
+
+lineages with identical sample sizes, a younger lineage possesses significantly higher fitness 344 
+
+than an older one. By jointly accounting for both the relative size of a population and the age of 345 
+
+the lineage, LeafRank distinguishes between lineages that are large simply because they had 346 
+
+more time to grow and those expanding rapidly due to a true selective advantage. 347 
+
+To evaluate the reliability of LeafRank in these patient tumors where the ground truth is 348 
+
+lacking, we utilized subsampling variability as an indicator of accuracy through a leave-m-out 349 
+
+sub-sampling strategy. After estimating relative fitness values for all sampled cells in the orig-350 
+
+inal phylogenetic tree, we randomly subsampled 80% of the leaves and re-inferred fitness for 351 
+
+each subsampled tree. This procedure was repeated 50 times, generating a distribution of 352 
+
+inferred fitness rankings across replicates. As shown in Figure 5B, the subsampled trees con-353 
+
+sistently preserved high correlations (r s ≈ 0.9) with the original rankings across all ten patients. 354 
+
+These results demonstrate that LeafRank provides robust and consistent fitness inference un-355 
+
+der sub-sampling. The small subsampling variability observed in these patient tumors suggests 356 
+
+high accuracy of LeafRank, consistent with the stability-accuracy relationship revealed in our 357 
+
+simulation studies. 358 
+
+In addition to the directional selection observed in OV-105, we also identified a pattern of 359 
+
+parallel selection, whereby multiple lineages with distinct CN profiles independently acquire 360 
+
+fitness advantages (Figure S4). For example, in OV-105, the fitness progression from low to 361 
+
+medium to high (L-M-H) follows a unidirectional trajectory in the CN landscape, as reflected 362 
+
+by the principal component analysis (PCA) of single cell CN profiles (Figure 5C). In contrast, 363 
+
+OV-118 exhibits two parallel trajectories in the CN space (Figure 5D). Here, a low fitness group 364 
+
+diverges into two independent high fitness lineages (H1 and H2), each characterized by distinct 365 
+
+CN profiles. Notably, the second principal component values of H1 and H2 are similar, sug-366 
+
+gesting that shared aneuploidies may underlie the observed fitness jumps despite their overall 367 
+
+divergent evolutionary path in the CN space. 368 
+
+Differential aneuploidy landscapes distinguish high- and low-fitness WGD pop-369 
+
+ulations 370 
+
+As certain chromosomal copy number alterations have been reported to confer fitness effects in 371 
+
+cancer 50 , we investigated whether LeafRank’s predictions could facilitate integrative genomic 372 
+
+analysis to identify specific SCNAs underlying the observed fitness jumps. We reason that if a 373 
+
+specific SCNA enhanced cellular fitness, it would be enriched, or recurrently observed within 374 
+
+high fitness groups as compared to their low fitness counterparts. 375 
+
+To this end, we identified SCNAs associated with the fitness differences between the cells 376 
+
+predicted with high fitness and those with low fitness across the ten truncal WGD HGSOC tu-377 
+
+mors (see Methods). In metastatic tumor OV-087 (omentum), for example, the fitness grouping 378 
+
+closely correspond to the SCNA lineage structure revealed by the phylogenetic tree (Figure 6). 379 
+
+The highest-fitness group exhibits specific SCNAs relative to the rest of sampled cells, including 380 
+
+arm-level aneuplodies such as loss of Chromosome 10q (Chr10q) and gain of entire Chr18, as 381 
+
+well as segmental gain in Chr9p and partial loss of Chr8q. Notably, Chr10q shows the strongest 382 
+
+13 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 9, 2026. ;https://doi.org/10.64898/2026.07.06.736651 doi: bioRxiv preprint
+
+OV-105 0.4 0.6 0.8 1.0 OV-003 OV-008 OV-014 OV-049 OV-068 OV-082 OV-087 OV-105 OV-118 OV-129 OV-003 OV-008 OV-014 OV-049 OV-068 OV-082 OV-087 OV-105 OV-118 OV-129 
+
+A
+
+> 10Prob. 1.1 1.95 2.59 2.85
+> 4.59
+
+Fitness-distribution Fitness  
+
+> LH
+
+Ultrametric Tree CD      
+
+> PC1(24%) PC2(5%) 025 -25 -50 -75 -60 -30 030 60 0-50 50 100 0-30 30 60 PC1(11%) PC2(7%)
+
+B  
+
+> Branch Length 020 40 04
+> √Frequency
+
+Rootogram OV-105 CN OV-118 CN Case Case Correlation  
+
+> LMHFitness
+> LMH1 H2 Fitness
+> p= 0.05
+> (Omentum)
+
+Figure 5. Detection of selection in HGSOC patient tumors with truncal WGD (A) Representative patient tumor OV-105 showing directional selection in the single-cell phylogeny. Three subpanels are shown for OV-105 from left to right: (1) the Ultrametric Tree subpanel displays the rescaled tree de-rived from the copy-number (CN) event–based phylogenetic tree generated by MEDICC2, along with a rootogram visualizing the agreement between the empirical branch-length distribution in the MEDICC2 tree and the expected frequencies predicted from the rescaled tree. Three purple triangles mark parental nodes at which driver events are presumed to have occurred based on fitness predictions of sampled cells. (2) The Fitness subpanel reports the mean inferred fitness for each cell, as predicted by LeafRank. (3) The Fitness-distribution subpanel illustrates the probability distribution that each cell belongs to pre-defined cell types, with each cell type corresponding to a distinct fitness value. (B) Stability of fitness ranking assessed using leave-m-out subsampling across 10 truncal WGD HGSOC tumors. Violin plots show the distribution of Spearman correlations between fitness rankings inferred from the full tree and those obtained from 50 subsampled trees. (C,D) Patterns of directional and parallel selection reflected in CN evolution. Principal component analysis of genome-wide CN profiles is shown for patient tumors OV-105 (C) and OV-118 (D) . High-dimensional CN profiles from single cells are projected onto the first two principal components (PC1 and PC2), with the proportion of variance explained by each component indicated. Cells are color-coded by inferred fitness: low (L), medium (M), and high (H). Arrows indicate evolutionary trajectories in CN space underlying fitness changes. Fitness increases in OV-105 along a unidirectional trajectory (directional selection), whereas OV-118 exhibits two parallel trajectories (parallel selection). 
+
+14 
+
+.CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 9, 2026. ;https://doi.org/10.64898/2026.07.06.736651 doi: bioRxiv preprint significance, harboring the canonical tumor suppressor gene PTEN .383 
+
+Most fitness associated SCNAs are patient specific, rarely recurring in more than three pa-384 
+
+tients. Moreover, we observed that while a specific chromosomal region may present fitness 385 
+
+associated gains in one patient, it can show fitness-associated losses in another (Figure S5). 386 
+
+This suggests that the fitness effect of SCNAs are highly context-dependent and influenced by 387 
+
+patient-specific fitness landscapes 51 . However, reduced CN for Chr10 (p11.1 - q24.2), which 388 
+
+contains PTEN , was recurrently associated with fitness increases (p < 0.05) in six patients 389 
+
+(Figure 6). This recurrence suggests the consistent fitness effect conferred by SCNAs affect-390 
+
+ing this region during post-WGD evolution in HGSOC, distinguishing it from the more context 391 
+
+dependent aneuploidies. 392 
+
+We also identified additional chromosomal regions exhibiting recurrent fitness associated 393 
+
+SCNAs across patients (Figure S5). In particular, we identified gains involving Chr12 (p13.31 394 
+
+- p11.23), which contains KRAS , consistent with recurrent amplifications reported in large co-395 
+
+hort studies 52–54 . Moreover, fitness associated losses on Chr6 (q15 - q16.3) have been previ-396 
+
+ously linked to chemoresistance 54 , suggesting that this alteration may contribute to preexisting 397 
+
+treatment resistance by conferring a selective advantage in HGSOC. These findings suggest 398 
+
+that the heterogeneous SCNA landscape in HGSOC often obscures consistent CNA signals. 399 
+
+The high-resolution relative fitness inference provided by LeafRank therefore offers a powerful 400 
+
+framework for uncovering these aneuploidy-driven fitness pattern that might otherwise remain 401 
+
+hidden in standard genomic analysis. 402 
+
+Fitness ranking reveals equally competitive WGD – lineages in Subclonal WGD 403 
+
+Tumors 404 
+
+To investigate the fitness effect of WGD itself, we analyzed three subclonal-WGD HGSOC pa-405 
+
+tient tumors where WGD + and WGD – cells coexist. In these phylogenetic trees, constructed 406 
+
+from SCNA events by MEDICC2 28 , WGD + lineages consistently exhibit longer branch lengths 407 
+
+than WGD – populations, mirroring the pattern observed in our simulated WGD tumors. This ob-408 
+
+servation is consistent with prior findings that WGD increases the SCNA rate 39–41 . To account 409 
+
+for this effect, we recalibrated branch lengths using our modified chronos algorithm (Methods) 410 
+
+to generate WGD-adjusted ultrametric trees (Figure 7A). Because the ultrametric reconstruc-411 
+
+tion may depend on assumptions regarding WGD branch classification and rate modeling, we 412 
+
+first assessed how well the proposed WGD-state dependent molecular clock model fit to the 413 
+
+observed branch length. Additionally, we examined the robustness of downstream inferences 414 
+
+under alternative calibrations schemes (Supplemental Text). 415 
+
+To assess whether the Poisson-based branch length model underlying our modified chronos 416 
+
+algorithm remains applicable to patient tumors, we compared the expected branch length distri-417 
+
+bution under the Poisson assumption, derived from the timing information in the WGD-adjusted 418 
+
+ultrametric tree, with the observed branch lengths from the original MEDICC2 tree (see Sup-419 
+
+plemental Text). Although SCNA events are not strictly independent, as each event alters the 420 
+
+available DNA substrate for subsequent alterations, the Poisson model provides a good over-421 
+
+all approximation of the observed branch length distribution (Figure 7B). Differences between 422 
+
+expected and observed frequencies are generally small and centered around zero across most 423 
+
+branch lengths, with deviations primarily observed among shorter branch lengths (< 15 SCNA 424 
+
+events). Specifically, the model overestimates the frequency of branches with no or few SCNA 425 
+
+15 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 9, 2026. ;https://doi.org/10.64898/2026.07.06.736651 doi: bioRxiv preprint LHSig. CN
+
+# BA Fitness CN+ CN-log(p) OV-087 1 3 5 7 9 11 13 15 17 19 21 XFitness Group LH0510 15 CN  
+
+> PTEN
+> 020 40
+> OV-0 03 (0.71) +1 -1 2.2 +1 -1 2.3 +1 -1 3.8 +1 -1 2.7 +1 -1 2.1 +1 -1 4.1 OV-008 (0.95) OV-087 (0.49) OV-105 (0.76) OV-118 (0.57) OV-129 (0.15) 10: 38 Mb 10: 99.5 Mb
+> PTEN
+
+Figure 6. Detecting SCNAs associated with fitness differences (A) In OV-087, copy number pro-files of sampled cells (right, color-coded heatmap) are shown alongside an ultrametric tree (left) rescaled based on CN events. A dichotomous grouping of single cells according to inferred fitness is displayed between the tree and the CN profiles. (B) The panel below the CN heatmap shows the log-transformed p-values from Wilcoxon tests assessing each genomic bin for differences in copy number states be-tween high-fitness (H) and low-fitness (L) cells. The left panel highlights a recurrent CN region on Chr10 (p11.1–q24.2) that exhibits a significant and consistent CN reduction in high-fitness cells across six HG-SOC tumors, harboring the PTEN locus. Details regarding the identification of this region are provided in the Methods. For each patient, the average CN of genomic bins within this region for low-fitness cells is plotted as a green baseline. Blue dots represent the CN difference between the high- and low-fitness cell groups for each individual genomic bin. The fraction of high-fitness cells is indicated in parenthe-ses. Additional recurrent, fitness-associated CN regions are presented in the Supplemental Text and Figure S5B. 
+
+16 
+
+.CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 9, 2026. ;https://doi.org/10.64898/2026.07.06.736651 doi: bioRxiv preprint events, whereas the MEDICC2 tree shows an enrichment of intermediate branch lengths corre-426 
+
+sponding to approximately five events. This discrepancy may reflect punctuated SCNA acquisi-427 
+
+tion in WGD + lineage, as previously proposed in WGD tumors 55 , or limitations in the sensitivity 428 
+
+and accuracy of SCNA detection from scDNA-seq data 30 .429 
+
+Using the WGD-adjusted ultrametric trees, LeafRank revealed that WGD + cells do not ex-430 
+
+hibit a uniform fitness advantage over their WGD – counterparts at the time of sampling. This 431 
+
+finding was consistent across multiple subclonal WGD tumors and remained robust to alter-432 
+
+native calibration assumptions for branch classification and rate modeling (see Supplemental 433 
+
+Text and Figure S7). In primary tumor OV-075 (left adnexa), two lineages diverged from the 434 
+
+founder: one giving rise to WGD + descendants (branch1, Figure 7), and the other initially re-435 
+
+maining WGD – (branch2) before acquiring a subsequent WGD event in a sublineage (branch4). 436 
+
+Notably, although branch2 is shorter than branch1 in the original MEDICC2 tree, it becomes 437 
+
+substantially longer in the WGD-adjusted ultrametric tree. This reflects the lower SCNA rates 438 
+
+in the WGD – lineage, which requires more elapsed time to accumulate a comparable number 439 
+
+of SCNAs events. Correspondingly, the terminal branches descending from branch2 are rela-440 
+
+tively short, indicating that this lineage expanded to a detectable population size over a shorter 441 
+
+evolutionary time interval. This “late but rapid” branching results in a higher predicted fitness. 442 
+
+Within this lineage, the newly emerged WGD + subclone (branch4) constitutes a smaller popula-443 
+
+tion yet displays a branch length comparable to its WGD – sibling lineage (branch3), suggesting 444 
+
+no relative fitness advantage associated with WGD at this bifurcation. In contrast, the WGD +445 
+
+lineage derived from branch1 occupies a large fraction of the tumor sample but displays sub-446 
+
+stantial internal fitness heterogeneity, characterized by both low-fitness populations arising at 447 
+
+earlier stages and higher-fitness populations that emerged from the continuously expanding 448 
+
+WGD + lineage. This is consistent with observations in the truncal WGD tumors. 449 
+
+These results demonstrate that while WGD is a landmark recurrent event in HGSOC, its 450 
+
+occurrence does not necessarily confer a strong fitness benefit. Instead, its prevalence in HG-451 
+
+SOC can be explained by enhanced long-term evolvability, such as an increased rate of driver 452 
+
+aberrations or a greater robustness to microenvironmental perturbations. These findings are 453 
+
+consistent with prior studies in cancer 56 and microorganisms 57 . Importantly, LeafRank allows 454 
+
+for the direct assessment of fitness of this event in patient tumors, highlighting its potential to 455 
+
+address unresolved questions in cancer genomics. 456 
+
+# DISCUSSION 457 
+
+Cancer cells can exhibit substantial intratumor heterogeneity in fitness, and single-cell phylo-458 
+
+genetic trees reconstructed from SSNVs and SCNAs can encode structural patterns that reflect 459 
+
+this diversity. In this study, we introduce LeafRank , a probabilistic framework for ranking cellu-460 
+
+lar fitness from single-cell phylogenetic trees. Unlike existing fitness-estimation approaches in 461 
+
+cancer 32,33,38 , which often focus on the absolute fitness effects of specific genomic alterations 462 
+
+or predefined subclones, LeafRank estimates the relative fitness ranking of sampled cells at 463 
+
+the leaves of the tree. By combining a multitype branching-process model with a message-464 
+
+passing algorithm, LeafRank integrates information encoded in the single-cell phylogeny, in-465 
+
+cluding branch lengths and bifurcation patterns, to produce robust cell-level fitness estimates. 466 
+
+Our results show that, during cancer clonal expansion with discrete levels of selective ad-467 
+
+17 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 9, 2026. ;https://doi.org/10.64898/2026.07.06.736651 doi: bioRxiv preprint
+
+Ultrametric tree OV-075 WGD+  
+
+> 1234
+> 1234
+
+Fitness 1.4 1.6 1.8 WGD-
+
+# A CNA tree B         
+
+> Hanging rootogram Branch length
+> 020 40 60 80 0 4 8-2 WGD+ branches
+> Branch length 0510 15 0 2 3-1  1WGD- branches
+> p= 0.04
+> p= 0.95
+> √Frequency √Frequency (Left Adnexa)
+
+Figure 7. Subclonal WGD cells do not consistently exhibit higher fitness than their diploid coun-terparts (A) The CN-event phylogenetic tree (left) derived from MEDICC2 and the rescaled ultrametric tree (right) for patient tumor OV-075 are shown, which include both subclonal WGD + and WGD – cells. The lower panel provides a zoomed in view of the ultrametric tree, highlighting the contrast in inferred fitness between WGD + and WGD – cells. (B) Hanging rootogram illustrating the performance of ultra-metric tree conversion for both WGD + and WGD – branches. The black solid line denotes the expected frequency distribution of branch lengths calculated from the rescaled ultrametric tree using inferred pa-rameters under a Poisson model (See the Methods and Supplemental Text), whereas the color-coded hanging bars represent the observed frequency distribution from the MEDICC2 tree. Frequencies are square-root scaled. 
+
+18 
+
+.CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 9, 2026. ;https://doi.org/10.64898/2026.07.06.736651 doi: bioRxiv preprint vantage, tree structure contains critical information about the relative fitness of sampled cells. 468 
+
+This fitness signal is captured by the branch lengths and bifurcation patterns of the phylogeny. 469 
+
+Importantly, we found that the resulting fitness rankings are largely robust to the specific choice 470 
+
+of input parameters in the underlying branching-process model. This observation is consis-471 
+
+tent with previous findings in asexual populations of constant size with clonal interference 19,42 ,472 
+
+where reliable fitness rankings were obtained across a broad range of parameter values. How-473 
+
+ever, phylogenetic patterns reflecting selection in expanding cancer populations may differ sub-474 
+
+stantially from those in fixed-size populations. Despite these differences, the observed consis-475 
+
+tency suggests that tree structure can encode robust relative-fitness information across distinct 476 
+
+evolutionary regimes, enabling fitness inference even when precise parameter values are not 477 
+
+fully characterized. 478 
+
+LeafRank provides a generalizable framework for fitness inference from single-cell phylo-479 
+
+genies. First, it does not assume uniform fitness within a subclone, allowing selection within 480 
+
+a given lineage to be resolved. Second, the message-passing algorithm provides an efficient 481 
+
+framework for propagating information along the tree and can flexibly incorporate prior knowl-482 
+
+edge or model assumptions. Third, because LeafRank provides fitness estimates for every 483 
+
+sampled cell, it enables high-resolution comparisons of populations grouped not only by ge-484 
+
+nomic alterations but also by other functional features, such as gene-expression profiles or 485 
+
+epigenetic states, when multiomic data are available. This flexibility facilitates the study of the 486 
+
+determinants of growth-rate variation in cancer. For example, by overlaying transcriptional sig-487 
+
+natures onto fitness rankings, one can identify pathways associated with the clonal expansion 488 
+
+of high-fitness lineages, thereby linking genomic architecture to cancer phenotype. 489 
+
+A key challenge when inferring fitness in clinical samples is the reliance on an evolutionary 490 
+
+molecular clock. In patient tumors with CIN, lineages can exhibit accelerated rates of SCNAs 491 
+
+and SSNVs, severely violating linear temporal assumptions 39–41 . To resolve this, LeafRank 492 
+
+incorporates a tree-rescaling strategy capable of navigating the piecewise linear tempos intro-493 
+
+duced by macro-evolutionary events. By decoupling the aberration rates of WGD + and WGD –494 
+
+lineages and optimizing a joint likelihood function, the framework effectively charts indepen-495 
+
+dent rate heterogeneity onto a common temporal scale. This normalization allows LeafRank to 496 
+
+robustly analyze phylogenies that would otherwise confound standard molecular-clock models. 497 
+
+By analyzing recently published single-cell WGS data from HGSOC patients 44 , LeafRank 498 
+
+identified cell populations with distinct selective advantages within tumors characterized by 499 
+
+truncal WGD. While these tumors were predominantly sampled from metastatic sites, signs 500 
+
+of selection were also evident in a primary tumor (OV-118) as well as in the subclonal WGD+ 501 
+
+lineages of two additional primary cases. This indicates that the inferred selective advantages 502 
+
+may reflect ongoing evolutionary pressures operating both early in tumor development and 503 
+
+post-dissemination, potentially facilitated by WGD-associated CIN. This detectable selection 504 
+
+underlying HGSOC expansion contrasts with previous bulk-sequencing studies of colorectal 505 
+
+cancer that proposed an ‘effective-neutral’ model for some patients 12,58 . This divergence likely 506 
+
+highlights the enhanced resolution of scDNA-seq, which unmasks subclonal fitness differences 507 
+
+that are otherwise obscured by bulk averaging. Furthermore, while early bulk studies focused 508 
+
+primarily on SSNVs in diploid regions, our framework leverages SCNA-based phylogenies to 509 
+
+capture growth dynamics. We note, however, that when bulk sequencing is extended to multi-510 
+
+region sampling, subclonal selection has indeed been detected in colorectal cancers with CIN 13 .511 
+
+The high-resolution fitness mapping provided by LeafRank enabled the identification of spe-512 
+
+19 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 9, 2026. ;https://doi.org/10.64898/2026.07.06.736651 doi: bioRxiv preprint
+
+cific post-WGD SCNAs associated with increased inferred fitness. Notably, five patients ex-513 
+
+hibited recurrent Chr10q loss encompassing the tumor suppressor PTEN . This suggests that 514 
+
+PTEN haploinsufficiency may drive subclonal expansion after WGD in HGSOC. Our observa-515 
+
+tion is consistent with the “dosage-sensitivity” model of tumor suppressors, in which partial re-516 
+
+duction of PTEN dosage through large-scale chromosomal deletion may disrupt the dosage bal-517 
+
+ance of the PI3K/AKT signaling pathway, potentially conferring a selective advantage. Beyond 518 
+
+Chr10q loss, several other SCNAs were recurrently associated with high-fitness subclones, in-519 
+
+cluding Chr12p amplification and Chr6q deletion. Chr12p was reported to be recurrently ampli-520 
+
+fied in ovarian cancer 52,53 and Chr6q loss has been linked to chemo-resistance 54 , highlighting 521 
+
+the biological relevance and clinical utility of the fitness rankings inferred by LeafRank. 522 
+
+Although WGD may buffer against deleterious aberrations 59 , our results suggest that its 523 
+
+prevalence in HGSOC cannot be explained by an immediate fitness advantage. In tumors 524 
+
+containing both WGD + and WGD – lineages, WGD + cells do not universally outcompete diploid 525 
+
+cells. These results were derived from rescaled trees under the assumption that WGD status 526 
+
+is maintained from the start of the branch containing the inferred WGD event. We note that 527 
+
+the precise temporal placement of WGD within this branch remains challenging. However, 528 
+
+even when we conservatively assign the initial branch as WGD –, effectively modeling WGD as 529 
+
+arising at the subsequent bifurcation, the inferred fitness of early WGD + cells consistently re-530 
+
+mained lower than that of WGD – lineages (Figure S7). Taken together, LeafRank’s predictions 531 
+
+in HGSOC tumors are consistent with existing hypotheses and empirical findings in cancer and 532 
+
+other biological contexts 56,57 , suggesting that WGD primarily confers long-term evolutionary 533 
+
+advantages rather than immediate fitness gains. 534 
+
+In summary, by integrating information encoded in single-cell phylogenies, LeafRank cap-535 
+
+tures fine-scale evolutionary dynamics during cancer growth. It provides a generalizable tool 536 
+
+for translating tree structure into relative fitness rankings of single cells, offering a powerful 537 
+
+framework for identifying the aberrations that drive cancer clonal expansion. 538 
+
+Limitations 539 
+
+LeafRank has several limitations. First, it is most informative in evolutionary regimes in which 540 
+
+subclonal selection drives heterogeneous fitness levels across sampled cells. In such settings, 541 
+
+the tree structure deviates from expectations under neutral evolution and contains a detectable 542 
+
+signal of differential growth. By contrast, LeafRank is less informative for tumors evolving under 543 
+
+strict neutrality, or for tumors that appear effectively neutral after a recent selective sweep, 544 
+
+because sampled cells may show little residual tree-structural evidence of fitness differences. 545 
+
+In these cases, LeafRank may return nearly uniform or weakly resolved fitness rankings rather 546 
+
+than identifying distinct high-fitness lineages 12 .547 
+
+Despite the utility of our tree rescaling framework, LeafRank’s performance remains bound 548 
+
+to the quality of the input ultrametric tree. While using accumulated somatic aberrations serves 549 
+
+as a pragmatic molecular-clock proxy, the underlying mutational processes can fluctuate wildly 550 
+
+across lineages and over time. Consequently, in tumors with intricate subclonal WGD histo-551 
+
+ries, our modified chronos implementation may only partially mitigate severe rate distortions, 552 
+
+potentially reducing the reliability of downstream fitness rankings. Resolving these topologi-553 
+
+cal ambiguities in highly rearranged genomes remains an open challenge. Ultimately, over-554 
+
+coming this limitation will likely depend on integrating emerging multi-omic profiling 60 or CpG 555 
+
+20 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 9, 2026. ;https://doi.org/10.64898/2026.07.06.736651 doi: bioRxiv preprint
+
+methylation-based lineage-tracing methods 61 , which promise to decouple physical time from 556 
+
+mutational density and yield more robust input phylogenies. 557 
+
+Lastly, LeafRank assumes a tumor population that is still expanding in size at the time of 558 
+
+sampling. Our spatial simulations indicate that LeafRank tolerates spatial structure and local 559 
+
+crowding during this expansion phase, recovering accurate rankings even when the perfectly 560 
+
+mixed assumption is violated (Figure 4G). However, once net population growth ceases, be-561 
+
+cause the tumor has approached carrying capacity, stabilized, or entered a prolonged regime 562 
+
+of population stasis, the genealogy increasingly resembles that of a constant-size population 563 
+
+and loses the expansion signal LeafRank relies on, reducing the informativeness of the inferred 564 
+
+rankings. Capturing this saturated regime will require alternative generative assumptions, such 565 
+
+as logistic or otherwise density-dependent branching processes. 566 
+
+# METHODS 567 
+
+LeafRank: model setup 568 
+
+A binary phylogenetic tree, denoted by F, records the evolutionary history from a common 569 
+
+ancestor cell to all N–1 internal nodes and N leaf nodes. Such a tree can be reconstructed using 570 
+
+algorithms such as neighbor-joining 62 or MEDICC2 28 based on single-cell genomic profiles. As 571 
+
+illustrated in Figure 1, we denote the tree topology as T , which includes the branch topology 572 
+
+(the topological information describes the sibling relationships among cells) and the branch 573 
+
+length information (the evolutionary distance, measured by the number of SSNVs or SCNAs, 574 
+
+between ancestor and descendant cells). Note that under an assumed genomic aberration 575 
+
+rate, the branch length information can be converted into estimates of the evolutionary time 576 
+
+elapsed along each branch. 577 
+
+Temporal calibration of branch lengths often relies on the molecular clock assumption 63 ,578 
+
+under which genomic aberrations are assumed to accumulate at a relatively constant rate over 579 
+
+time. Under this assumption, we denote the constant neutral aberration rate by μ. While this 580 
+
+assumption is widely adopted in the context of SSNVs, it may not necessarily hold for SC-581 
+
+NAs. For example, SSNV and SCNA rates can increase substantially following WGD 39–41 . In 582 
+
+a later subsection and in the Supplemental Text, we further discuss our approach to this issue, 583 
+
+particularly with respect to WGD events, and provide corresponding validation analyses. 584 
+
+To model the underlying cellular evolutionary dynamics, we employ a multitype branching 585 
+
+process model 45 . Under this model, we assume that there are V cell types, each characterized 586 
+
+by distinct birth rates (b i) and death rates (d i), where i ∈ {1, · · · , V}. The cell types are ordered 587 
+
+by increasing fitness such that b i+1 > b i. For simplicity, we assume the death rate d i is constant 588 
+
+across all cell types. We use a backward-time convention for the phylogenetic tree, with the 589 
+
+sampled cells observed at time t = 0 and the root located at time t = T. Thus, T denotes 590 
+
+the elapsed time between the common ancestor and the sampled population. The biological 591 
+
+process starts from a single type-1 cell at the root and evolves toward the sampled population. 592 
+
+To model driver events, we further assume that a type i cell can divide into one type i and 593 
+
+one fitness-advantaged type i + 1 cell at rate ν, which we refer to as the driver aberration 594 
+
+rate. Notably, this rate ν is assumed to be much smaller than the neutral aberration rates 595 
+
+μ, reflecting the rarity of driver events in cancer evolution. At the sampling time, we assume 596 
+
+a uniform sampling scheme in which each living cell has an equal chance ρ ≪ 1 of being 597 
+
+21 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 9, 2026. ;https://doi.org/10.64898/2026.07.06.736651 doi: bioRxiv preprint
+
+sampled. In practice, this value can be approximated as the ratio of sampled cell counts to the 598 
+
+total population size when the population is sufficiently large. In the following in silico study, we 599 
+
+sample 250 cells from a population of one million cells, resulting in an approximate sampling 600 
+
+probability of 0.00025. 601 
+
+To model the cellular fitness states across the tree, we denote the identities of the leaf and 602 
+
+internal nodes as random variables vX = {v x1 , · · · , v xN } and vY = {v y1 , · · · , v yN–1 } respectively, 603 
+
+each taking values in the state space {1, · · · , V}. These quantities are not directly observable. 604 
+
+Instead, LeafRank is designed to infer the probability distribution of v x for each leaf given the 605 
+
+tree structure and the model configuration. Specifically, we compute the probability density of 606 
+
+the phylogenetic tree F:607 
+
+P (F | C) = P (T , vX, vY | b, d, μ, ν, ρ, τ ) ,where b, d are vectors for birth and death rate for each type, respectively, and τ denotes the 608 
+
+scaling factor for time elapse. 609 
+
+Computing marginal fitness distribution of sampled cells 610 
+
+The goal of LeafRank is to rank sampled cells at the leaves according to their distributions over 611 
+
+fitness types, conditioned on the observed phylogenetic tree topology T and model configura-612 
+
+tion C. For a sampled cell x ∈ X , this marginal distribution is 613 
+
+P (vx = i | T , C) , i = 1, . . . , V. Equivalently, it can be obtained from the joint distribution over all leaf and internal-node type 614 
+
+assignments by summing over all latent configurations consistent with v x = i: 615 
+
+P (vx = i | T , C) = ∑
+
+> vX: v x=i
+
+∑
+
+> vY
+
+P (vX, vY | T , C) .Direct evaluation of this expression is computationally inefficient, because the number of possi-616 
+
+ble assignments of latent fitness types increases exponentially with both the number of fitness 617 
+
+states and the size of the tree. 618 
+
+To compute the marginal fitness distribution of each sampled cell efficiently, we use mes-619 
+
+sage passing , also known as belief propagation in statistical physics and information theory 64 .620 
+
+Message-passing methods have previously been applied in evolutionary settings, including 621 
+
+analyses of seasonal influenza A/H3N2 42 . In our setting, however, the application is not imme-622 
+
+diate: the local quantities required for message passing are not available as simple discrete 623 
+
+factors on the tree, but instead must be derived from the continuous-time multitype branching 624 
+
+process that defines the phylogenetic density. 625 
+
+Specifically, we exploit the tree structure and express the distribution of the type at node n 626 
+
+as the product of two complementary terms: an upward message from the descendant subtree 627 
+
+Tn– and a downward message from the remainder of the tree Tn+ ,628 
+
+P (vn = i | T , C) ∝ P (Tn– | v n = i, C) P (vn = i | Tn+ , C) .This factorization avoids explicit enumeration of all latent fitness-type assignments on the phy-629 
+
+22 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 9, 2026. ;https://doi.org/10.64898/2026.07.06.736651 doi: bioRxiv preprint
+
+logeny. The upward pass summarizes information contributed by descendants of node n, 630 
+
+whereas the downward pass propagates information from the root together with information 631 
+
+from the sibling side of the tree (Figure S1 and Figure 1). 632 
+
+Importantly, this message-passing formulation cannot be applied directly in our model. We 633 
+
+therefore first decompose the phylogenetic density into two elementary building blocks: branch 634 
+
+propagators, which transport type-dependent densities along individual branches, and bifur-635 
+
+cation propagators, which combine the two daughter subtrees at each internal node. This 636 
+
+decomposition is the key step that converts the global phylogenetic density into a collection of 637 
+
+local recursive operations that can be assembled by message passing. 638 
+
+For the branch propagator, we adopt the BiSSE model 65 to compute the type-dependent 639 
+
+densities along each branch. Specifically, we track a probability D n,v (t) defined as the probability 640 
+
+that a lineage starting at time t in state v evolves into the sampled clade subtended by node 641 
+
+n. For each state i ∈ {1, · · · , V}, the quantity D n,i (t) is propagated backward in time along the 642 
+
+branch, from the time of the immediate descendant node t = t d to that of the ancestor node 643 
+
+t = t a. Within an infinitesimal time interval, at most one cellular event occurs, such as a division 644 
+
+event in which a type i cell produces two type i cells, denoted by i → {i, i}. Under this framework, 645 
+
+Dn,v (t) can be computed by solving: 646 
+
+ddt Dn,i (t) = – (b i + ν + d i)D n,i (t) (nothing happens) + 2b iEi(t)D n,i (t) (i → {i, i}; clade from one of i) + νEi+1 (t)D n,i (t) (i → {i, i + 1}; clade from i) + νEi(t)D n,i+1 (t), (i → {i, i + 1}; clade from i + 1) where E i(t) is defined as the probability that an individual type i cell has no sampled descendants 647 
+
+after time t. Note that when i = V, driver aberration terms will disappear. A crucial observation is 648 
+
+that, these differential equations governing the branch densities form a time-varying linear sys-649 
+
+tem. This linearity allows each branch to be solved independently under basis initial conditions, 650 
+
+and the solution for arbitrary inputs can then be reconstructed by superposition. As a result, 651 
+
+the overall computation separates into independent branch-level and bifurcation-level compo-652 
+
+nents that can be evaluated efficiently and then combined through the upward and downward 653 
+
+recursions. In this way, we obtain the marginal fitness distribution at every leaf without enu-654 
+
+merating all internal-node state configurations. For a detailed derivation and formal definition 655 
+
+of the bifurcation propagator, we refer the reader to the Supplemental Text. 656 
+
+Benchmarking LeafRank using simulated data 657 
+
+To validate LeafRank through in silico experiments, we simulated both non-spatial and spa-658 
+
+tial virtual tumors 43 . In this subsection, we document the detailed simulation settings and the 659 
+
+corresponding inference configurations for LeafRank, organized according to each experiment 660 
+
+conducted. 661 
+
+23 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 9, 2026. ;https://doi.org/10.64898/2026.07.06.736651 doi: bioRxiv preprint
+
+Non-spatial simulation 662 
+
+In the non-spatial simulation, cellular evolutionary dynamics are modeled using a multi-type 663 
+
+branching process. Stochastic branching events are simulated using the classical Gillespie al-664 
+
+gorithm 66 , assuming exponentially distributed waiting times determined by the corresponding 665 
+
+event rates. Each rate represents the instantaneous probability per unit time that a given event 666 
+
+occurs. Specifically, we consider five classes of stochastic events: cell birth (b i), cell death (d), 667 
+
+driver aberration ( ν), passenger aberration ( μ), and WGD ( ω). For simplicity, we assume the 668 
+
+existence of eight discrete fitness states. These states share a common death rate d = 0.18 669 
+
+but differ in their respective birth rates, defined as b i = 0.2 × 1.2 i–1 . This parameterization mod-670 
+
+els birth rates that scale multiplicatively by a factor of 1.2 across successive phenotypic levels. 671 
+
+Driver aberrations occur at rate ν = 0.0001 and induce irreversible transitions from lower- to 672 
+
+higher-fitness types. To construct DM-based phylogenetic trees, we additionally incorporate 673 
+
+passenger aberrations at a substantially higher rate μ = 0.18 to record pairwise cellular diver-674 
+
+gence. Upon acquisition of a WGD event at rate ω = 0.0001, both parameters ν and μ are 675 
+
+doubled. The resulting distance matrix is subsequently used as input for phylogenetic recon-676 
+
+struction via neighbor joining 62 .677 
+
+Using these parameter settings, we simulated 50 diploid tumors ( ω = 0) and 50 WGD-aware 678 
+
+tumors ( ω = 0.0001). Each simulation was terminated when the number of viable tumor cells 679 
+
+reached one million, after which point 250 cells were randomly sampled from the surviving 680 
+
+population for downstream analyses. Due to the stochastic nature of the branching process, 681 
+
+tumor extinction can occur during simulation. In such cases, the simulation was restarted from 682 
+
+a single type-1 cell. All simulations and sampling procedures were implemented in MATLAB 683 
+
+using the PriorityQueue data structure 67 .684 
+
+Spatial simulation 685 
+
+We extend our existing single-cell-based spatial tumor growth model, Comet 43 , to simulate the 686 
+
+virtual tumors with ongoing WGD. In the spatial model, tumor expansion starts with a single 687 
+
+founder cell located in the center of a three dimensional lattice with the Moore neighborhood. 688 
+
+Cells divide at rate b and die at rate d per unit time. The waiting time between two consecutive 689 
+
+division events is assumed to be exponentially distributed with mean 1/b. We set the b for 690 
+
+the founder cell at 0.25 by assuming that the average cell cycle is four days. The death rate is 691 
+
+chosen at 0.2475 to achieve a death-to-birth ratio at 0.99, mimicking the slow growth of primary 692 
+
+tumor. When a cell divides, one of its daughter cells stays at the original position on the grid, 693 
+
+whereas the other fills one of the neighboring empty sites uniformly at random. When a cell 694 
+
+dies, it is removed from the lattice. To consider spatial constraints in solid tumors, the actual 695 
+
+birth rate of a cell is adjusted by the proportion of empty neighboring sites. 696 
+
+To model genome evolution, Comet assigns aberrations to abstract genomic coordinates. 697 
+
+Passenger aberrations arise at rate μ = 0.15 per cell division, while driver aberrations arise at 698 
+
+rate ν = 0.0001. WGD occurs at a rate 0.0005. Upon WGD, both μ and ν are doubled. To allow 699 
+
+aberrations, particularly SCNAs, to overlap, the coordinate space is restricted to a finite pool: 700 
+
+5 × 10 7 for passengers and 2 × 10 5 for drivers. As in the non-spatial model, each driver confers 701 
+
+a baseline selection coefficient of 0.2, but with additional variability introduced by Gaussian 702 
+
+noise with a standard deviation of 0.1. For this study, once the population reached one million 703 
+
+24 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 9, 2026. ;https://doi.org/10.64898/2026.07.06.736651 doi: bioRxiv preprint
+
+cells, we randomly sampled 250 cells from the virtual tumor. The TT was obtained by tracing 704 
+
+the specific lineage and birth time of each cell. Phylogenetic trees were then reconstructed 705 
+
+using the aberration profiles from these sampled cells. 706 
+
+Ranking stability under subsampling 707 
+
+To evaluate the relationship between LeafRank’s ranking stability and its estimation accuracy, 708 
+
+we performed systematic downsampling experiments (Figure 2D and Figure 4H). For each vir-709 
+
+tual tumor, we randomly subsampled 80% of the original sampled dataset 50 times. We then 710 
+
+inferred relative fitness values for each independent subsample and computed the correlation 711 
+
+between the resulting rankings and the corresponding ground-truth rankings. Inference accu-712 
+
+racy was evaluated by computing the mean correlation coefficient of the subsampled rankings 713 
+
+against the ground truth. Concurrently, ranking instability was quantified by calculating the vari-714 
+
+ance of the correlation coefficients between the subsampled rankings and the baseline ranking 715 
+
+obtained from the complete, non-subsampled population. 716 
+
+Ovarian cancer patient data overview 717 
+
+The single-cell high-grade serous ovarian cancer (HGSOC) patient data reported in McPherson 718 
+
+et al. 44 contains 70 HGSOC samples derived from 41 patients. The samples are collected pre-719 
+
+treatment from primary (left or right adnexa) or metastatic sites (e.g., omentum, peritoneum, 720 
+
+bowell). The scWGS are generated using direct library preparation (DLP+) platform 26 , which 721 
+
+constructs single cell sequencing libraries without pre-amplification. By improving coverage uni-722 
+
+formity and minimizing amplification bias, this platform enables reliable detection of SCNAs at 723 
+
+single-cell resolution. To reconstruct WGD-aware phylogenetic trees, the processed haplotype-724 
+
+specific single-cell CN profiles were previously analyzed using MEDICC2 28 . MEDICC2 infers 725 
+
+evolutionary trees based on a minimum-event distance metric that accounts for genomic con-726 
+
+tiguity by allowing overlapping CN event rather than treating adjacent loci as independent. For 727 
+
+the present study, we obtained and analyzed these pre-computed MEDICC2 trees directly from 728 
+
+the original publication 44 . The R package ape (Version 5.8.1) is used to store and analyze the 729 
+
+phylogenetic tree. 730 
+
+Among 41 patients, the authors categorized the patient samples into 4 groups: 1. Truncal 731 
+
+WGD (21 patients), 2. Parallel WGD (2 patients), 3. Subclonal WGD (5 patients), 4. Un-732 
+
+expanded WGD (11 patients). We mainly focused on a subset of ten patients classified as 733 
+
+Truncal WGD (Figure S3 and Figure S4) and three patients as Subclonal WGD (Figure 7 and 734 
+
+Figure S6), where cells were sampled from the same anatomical site. Tumors exhibiting Truncal 735 
+
+WGD display leaf-to-root branch lengths that remain relatively uniform across sampled cells, 736 
+
+thereby satisfying the baseline assumption of a constant SCNA accumulation rate. In con-737 
+
+trast, for tumors showing Subclonal WGD, the WGD + subpopulations typically present more 738 
+
+protracted developmental histories, which are explicitly modeled and accounted for using a 739 
+
+Poisson framework (see next section). Cases of Parallel WGD were excluded from further 740 
+
+analysis as none met the identical anatomical site requirement. Cases of Unexpanded WGD 741 
+
+were excluded because the WGD + cells has not reach sufficient population size. 742 
+
+25 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 9, 2026. ;https://doi.org/10.64898/2026.07.06.736651 doi: bioRxiv preprint
+
+Using LeafRank to analyze distance-matrix based phylogenetic tree 743 
+
+Our proposed algorithm, LeafRank, assumes a reconstructed phylogenetic tree whose branch 744 
+
+lengths reflect the elapsed time between ancestral and descendant nodes. For samples col-745 
+
+lected at a single time point, an ultrametric tree therefore provides the ideal input. In practice, 746 
+
+however, phylogenetic trees are more commonly reconstructed using DM-based methods, such 747 
+
+as neighbor-joining or MEDICC2 28 , because aberration distances can be directly inferred from 748 
+
+genomic data. Under a traditional molecular clock assumption, where aberrations accumulate 749 
+
+at a constant rate, genomic divergence is directly proportional to elapsed time. This alignment 750 
+
+allows distance-based trees to be interpreted within a temporal framework and utilized directly 751 
+
+by LeafRank. However, this assumption is frequently violated by macro-evolutionary events 752 
+
+such as WGD, which can induce CIN and trigger heterogeneous aberration rates across dis-753 
+
+tinct lineages. To address this limitation, we developed a procedure to recover ultrametric trees 754 
+
+under a state-dependent molecular clock model, accompanied by goodness-of-fit diagnostics 755 
+
+and a parameter configuration framework for the transformed trees. 756 
+
+Converting a DM tree into an ultrametric tree 757 
+
+To estimate an ultrametric tree, we adopt the chronos function 46 in R. The chronos function 758 
+
+constructs an ultrametric phylogenetic tree from DM tree under a molecular clock assumption 759 
+
+coupled with a Poisson model. Specifically, it assumes the number of aberrations follow the 760 
+
+Poisson distribution with mean proportional to the product of evolutionary time and a constant 761 
+
+aberration rate. Using maximum likelihood scheme, it jointly infers a constant aberration rate 762 
+
+and branch-specific evolutionary time to maximize the likelihood of observing aberration dis-763 
+
+tances along each branch (see Supplemental Text). 764 
+
+To capture the potential heterogeneity in aberration rates between WGD + and WGD – pop-765 
+
+ulations, we propose a state-dependent molecular clock model. In this model, we classify tree 766 
+
+branches as WGD – and WGD + branches according to the WGD status of its descendant node. 767 
+
+In other words, we make the following assumption: 768 
+
+Assumption (Anc. ). For each WGD + clade, the WGD event is assigned to the ancestral end of 769 
+
+the branch leading to the earliest node inferred to be WGD +. Consequently, the branch leading 770 
+
+to this earliest WGD + node is labeled as WGD +, together with all branches descending from 771 
+
+this node. 772 
+
+For an internal node, if both daughter lineages are WGD +, then the parent node is inferred to be 773 
+
+WGD +, under the assumption that WGD status is irreversible. This irreversibility assumption is 774 
+
+consistent with the minimum-event framework used by MEDICC2 28 : a return from a genome-775 
+
+doubled state to a diploid-like state would require many copy-number losses and is therefore 776 
+
+not favored under a parsimonious copy-number-event reconstruction. 777 
+
+We then modified the ultrametric tree-inference framework using the following state-dependent 778 
+
+Poisson model: 779 
+
+Assumption (Poi. ). The WGD + population accumulates SCNAs according to the same Pois-780 
+
+son process as the WGD – population, but with an approximately twofold higher aberration rate. 781 
+
+This assumption does not impose an exact twofold relationship between the alteration rates of 782 
+
+WGD + and WGD – branches. Instead, the two rates are estimated from the data. 783 
+
+26 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 9, 2026. ;https://doi.org/10.64898/2026.07.06.736651 doi: bioRxiv preprint
+
+Under these assumptions, we formulated and solved a modified maximum likelihood esti-784 
+
+mation problem (see Supplemental Text) to jointly estimate two aberration rates and the corre-785 
+
+sponding adjusted branch lengths of the ultrametric tree. The optimization problem was solved 786 
+
+in MATLAB (Version R2025b) using Optimization Toolbox function fmincon 68 .787 
+
+Using rootograms to evaluate the reconstructed ultrametric tree 788 
+
+To evaluate the goodness of fit of the rescaled ultrametric tree, we employed rootograms 69 ,789 
+
+which visually expose discrepancies between observed and expected count distributions. Specif-790 
+
+ically, we utilized hanging rootograms to compare the empirical distribution of DM-tree branch-791 
+
+lengths against the theoretical distribution expected under the fitted Poisson model. In a hang-792 
+
+ing rootogram, the bars are suspended from the fitted frequencies, such that deviations from 793 
+
+the zero-reference line highlight systematic discrepancies. Beyond visual inspection, we ex-794 
+
+amined the sign pattern of the residuals across branch-length intervals to assess whether un-795 
+
+explained structural dependencies remained. This analysis was performed using a runs test, 796 
+
+implemented with runs.test . Under a well-fitting model, positive and negative residuals are ex-797 
+
+pected to alternate without systematic structure, whereas extended runs of residuals with the 798 
+
+same sign may indicate model misspecification. We note that this diagnostic relies solely on 799 
+
+residual signs rather than magnitudes. It may also be affected by dependence among branch-800 
+
+level observations. Therefore, the runs test should be interpreted as an informative heuristic of 801 
+
+model adequacy rather than a definitive, formal goodness-of-fit test. 802 
+
+Preset input parameter configuration 803 
+
+Once an ultrametric tree is reconstructed, we provide a set of input parameter configurations, 804 
+
+accompanied by justifications derived from the underlying branching-process model. As de-805 
+
+tailed in the Results section, these model parameters are highly interdependent and jointly 806 
+
+determine the informativeness of the inferred fitness distribution. Rather than prescribing a 807 
+
+universal parameter configuration, we present a principled framework for selecting individual 808 
+
+parameters while conditioning on the remaining ones. We illustrate this procedure using the 809 
+
+time-scale parameter τ .810 
+
+Consider a ultrametric tree whose root-to-leaf distance is scaled to 1. Under the convention 811 
+
+that the internal model time is obtained by dividing normalized branch lengths by τ , the time-812 
+
+scale parameter can be interpreted as τ = 1T , where T denotes the expected elapsed time from 813 
+
+the MRCA to the sampled leaves. We estimate T under a given parameter configuration as 814 
+
+follows. Suppose the tree contains m sampled leaves and the sampling probability ρ is known. 815 
+
+The total population size can then be approximated by M ≈ m 
+
+> ρ
+
+.816 
+
+Given the birth rates b i, death rates d i, and driver-event rate ν, we construct the mean 817 
+
+matrix A for the multitype branching process. Under the driver-birth model used by LeafRank, 818 
+
+and using a row-vector convention, this matrix has entries 819 
+
+Aii = b i – d i, Ai,i+1 = ν for i = 1, . . . , V – 1, with all other entries equal to zero. Under this model, the expected total population size at 820 
+
+elapsed time T satisfies 821 
+
+M = M0 exp( AT) 1,27 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 9, 2026. ;https://doi.org/10.64898/2026.07.06.736651 doi: bioRxiv preprint
+
+where M0 is the initial population vector and 1 is the all-ones column vector, which sums over 822 
+
+all fitness phenotypes at time T. Assuming that the MRCA consists of a single type-1 cell, the 823 
+
+initial condition is 824 
+
+M0 = e⊺
+
+> 1
+
+, e⊺ 
+
+> 1
+
+= [1, 0, . . . , 0]. Solving the equation above yields the estimate of the expected elapsed time T from the MRCA 825 
+
+to the sampled leaves, and therefore determines the corresponding time-scale parameter τ .826 
+
+A similar strategy can be used to estimate other parameters when the time scale is fixed. In 827 
+
+the analysis of HGSOC patient data, we adopted this approach to determine the time-scale pa-828 
+
+rameter under a fixed sampling probability and a specified fitness-phenotype configuration. As 829 
+
+shown in Figure S3 and Figure S4, the resulting parameter configurations produced informative 830 
+
+inferred fitness distributions across all analyzed tumors. 831 
+
+LeafRank reveals fitness-advantageous aneuploidy pattern 832 
+
+Genomic coordinates and chromosome binning scheme 833 
+
+To identify the genomic coordinates of PTEN and other target genes, we utilize the hg19 refer-834 
+
+ence genome build. The genome is segmented across 23 chromosomes into 6,087 contiguous 835 
+
+bins, with a uniform bin size of 500 kb. Consequently, both the continuous copy number read-836 
+
+depth matrix and the discrete copy number state table possess dimensions of N bins × Ncells ,837 
+
+where rows correspond to genomic bins and columns represent individual sampled cells. The 838 
+
+copy number state table is utilized for downstream SCNA pattern analysis. To isolate a specific 839 
+
+genomic locus, we select the bin segments spanning the cytoband of interest; precisely, the 840 
+
+physical start and end positions of the cytoband are mapped to their corresponding boundary 841 
+
+bins. 842 
+
+Copy number comparison between high- and low-fitness cell groups 843 
+
+The high- and low-fitness cell groups were identified using the base R kmeans function (version 844 
+
+4.4.0) applied to the inferred relative cellular fitness values, with the number of cluster centers 845 
+
+set differently for different patients to capture the highest fitness group (Figure S3 and Fig-846 
+
+ure S4). We then used the non-parametric Wilcoxon rank-sum test (base R function wilcox.test )847 
+
+to compare copy number values at each 500kb bin between the two cell groups. The resulting 848 
+
+p-values across all 6087 bins were adjusted for multiple testing using Benjamini-Hochberg pro-849 
+
+cedure (base R function p.adjust ). The direction of the copy number difference was determined 850 
+
+by the sign of the mean difference between groups. We further verified that this direction was 851 
+
+consistent with that obtained using the median difference; discrepancies were observed only 852 
+
+in bins without significant copy number divergence between groups. 853 
+
+Identification of recurrent fitness-associated CN regions 854 
+
+The CN landscape of fitness-associated alterations is characterized by significant inter-patient 855 
+
+heterogeneity. Within a single tumor, adjacent genomic bins can exhibit discordant directions 856 
+
+of CN change between high- and low-fitness cells. Across patients, a specific region may show 857 
+
+28 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 9, 2026. ;https://doi.org/10.64898/2026.07.06.736651 doi: bioRxiv preprint
+
+significant increased CNs in high-fitness cells in some individuals, but display reduced CNs in 858 
+
+others. 859 
+
+To isolate convergent evolutionary signals, we developed a filtering approach to identify 860 
+
+recurrent chromosomal regions. The objective of this method is to identify large, contiguous 861 
+
+genomic intervals that demonstrate a uniform, statistically significant direction of CN divergence 862 
+
+across multiple independent patient tumors. By requiring geonmic contiguity, cross-patient con-863 
+
+sistency and recurrence, this analysis prioritizes robust signals over patient-specific or localized 864 
+
+CN patterns. These regions were identified according to the following criteria: 865 
+
+• Consistency: The region shows a uniform direction of statistically significant (p < 0.01) 866 
+
+CN divergence between high- versus low-fitness cells across at least 30 consecutive ge-867 
+
+nomic bins (500 kb each). Regions exhibiting heterogeneous directions across patients, 868 
+
+demonstrating both increased and decreased CN in high-fitness cells, are filtered out. 869 
+
+• Recurrence: The region passes the significance threshold (p < 0.01) in at least three 870 
+
+independent patients. 871 
+
+Data and Code Availability 872 
+
+All patient datasets analyzed in this study were obtained from a previously published study 44 873 
+
+and accessed through Synapse (access number: syn66366718). The MEDICC2 tree outputs 874 
+
+are available on Synapse (access number: syn66481693). The LeafRank package and tutorial 875 
+
+are available at GitHub: https://github.com/SunPathLab/LeafRank. 876 
+
+Acknowledgements 877 
+
+Research in the Sun Lab is supported by NIH grant R01CA276666. This work was supported 878 
+
+in part by NSF under Grant No. 2526511. This study uses the computing resources in Min-879 
+
+nesota Supercomputing Institute. Zicheng Wang is supported in part by the Key Program of 880 
+
+the National Natural Science Foundation of China (NSFC) under Grant No. 72495131 and the 881 
+
+Guangdong (China) Provincial Key Laboratory of Mathematical Foundations for Artificial Intel-882 
+
+ligence [2023B1212010001]. We thank Dr. Anna Selmecki and Xuanming Zhang for helpful 883 
+
+discussions. 884 
+
+Author Contributions 885 
+
+Z.W., C.W., and R.S. designed the study. Z.W., C.W., and R.S. developed the algorithms. Z.W. 886 
+
+and C.W. constructed mathematical models. C.W., Z.W., and R.S. performed simulation stud-887 
+
+ies. C.W. and R.S. performed the analysis of single-cell data and visualized the results. C.W., 888 
+
+Z.W., K.L., and R.S. interpreted the results and wrote the manuscript. All authors reviewed and 889 
+
+provided feedback on the manuscript. 890 
+
+29 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 9, 2026. ;https://doi.org/10.64898/2026.07.06.736651 doi: bioRxiv preprint
+
+# References 891 
+
+1. Cibulskis, K., Lawrence, M. S., Carter, S. L., Sivachenko, A., Jaffe, D., Sougnez, C., 892 
+
+Gabriel, S., Meyerson, M., Lander, E. S., and Getz, G. (2013). Sensitive detection of so-893 
+
+matic point mutations in impure and heterogeneous cancer samples. Nature Biotechnol-894 
+
+ogy 31 . arXiv: NIHMS150003 ISBN: 1546-1696 (Electronic)\n1087-0156 (Linking), 213– 895 
+
+219. https://doi.org/10.1038/nbt.2514. 896 
+
+2. Matthew Bailey, A. H., Tokheim, C., Porta-Pardo, E., Mills, G. B., Karchin, R., Ding, L., 897 
+
+Bailey, M. H., Sengupta, S., Bertrand, D., Weerasinghe, A., et al. (2018). Comprehensive 898 
+
+Characterization of Cancer Driver Genes and Mutations Article Comprehensive Charac-899 
+
+terization of Cancer Driver Genes and Mutations. Cell 173 , 371–385. https://doi.org/10. 900 
+
+1016/j.cell.2018.02.060. 901 
+
+3. Ha, G., Roth, A., Khattra, J., Ho, J., Yap, D., Prentice, L. M., Melnyk, N., McPherson, A., 902 
+
+Bashashati, A., Laks, E., et al. (2014). TITAN: Inference of copy number architectures in 903 
+
+clonal cell populations from tumor whole-genome sequence data. Genome Research 24 .904 
+
+ISBN: 1549-5469 (Electronic) 1088-9051 (Linking), 1881–1893. https://doi.org/10.1101/ 905 
+
+gr.180281.114. 906 
+
+4. Zaccaria, S. and Raphael, B. J. (2020). Accurate quantification of copy-number aberra-907 
+
+tions and whole-genome duplications in multi-sample tumor sequencing data. en. Nature 908 
+
+Communications 11 , 4301. https://doi.org/10.1038/s41467-020-17967-y. 909 
+
+5. Nowell, P. C. (1976). The Clonal Evolution of Tumor Cell Populations: Acquired genetic 910 
+
+lability permits stepwise selection of variant sublines and underlies tumor progression. en. 911 
+
+Science 194 , 23–28. https://doi.org/10.1126/science.959840. 912 
+
+6. Tomelleri, C., Milotti, E., Dalla Pellegrina, C., Perbellini, O., Del Fabbro, A., Scupoli, M. T., 913 
+
+and Chignola, R. (2008). A quantitative study of growth variability of tumour cell clones 914 
+
+in vitro. eng. Cell Proliferation 41 , 177–191. https://doi.org/10.1111/j.1365-2184.2007. 915 
+
+00501.x. 916 
+
+7. Tang, Y. J., Huang, J., Tsushima, H., Ban, G. I., Zhang, H., Oristian, K. M., Puviindran, V., 917 
+
+Williams, N., Ding, X., Ou, J., et al. (2019). Tracing Tumor Evolution in Sarcoma Reveals 918 
+
+Clonal Origin of Advanced Metastasis. Cell reports 28 , 2837–2850.e5. https://doi.org/10. 919 
+
+1016/j.celrep.2019.08.029. 920 
+
+8. Fallahi-Sichani, M., Becker, V., Izar, B., Baker, G. J., Lin, J.-R., Boswell, S. A., Shah, P., 921 
+
+Rotem, A., Garraway, L. A., and Sorger, P. K. (2017). Adaptive resistance of melanoma 922 
+
+cells to RAF inhibition via reversible induction of a slowly dividing de￿differentiated state. 923 
+
+en. Molecular Systems Biology 13 , MSB166796. https://doi.org/10.15252/msb.20166796. 924 
+
+9. Cheung, T. H. and Rando, T. A. (2013). Molecular regulation of stem cell quiescence. en. 925 
+
+Nature Reviews Molecular Cell Biology 14 , 329–340. https://doi.org/10.1038/nrm3591. 926 
+
+10. Batlle, E. and Clevers, H. (2017). Cancer stem cells revisited. en. Nature Medicine 23 , 1124– 927 
+
+1134. https://doi.org/10.1038/nm.4409. 928 
+
+30 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 9, 2026. ;https://doi.org/10.64898/2026.07.06.736651 doi: bioRxiv preprint
+
+11. George, J., Maas, L., Abedpour, N., Cartolano, M., Kaiser, L., Fischer, R. N., Scheel, A. H., 929 
+
+Weber, J. P., Hellmich, M., Bosco, G., et al. (2024). Evolutionary trajectories of small cell 930 
+
+lung cancer under therapy. Nature 627 . https://doi.org/10.1038/s41586-024-07177-7. 931 
+
+12. Williams, M. J., Werner, B., Heide, T., Curtis, C., Barnes, C. P., Sottoriva, A., and Graham, 932 
+
+T. A. (2018). Quantification of subclonal selection in cancer from bulk sequencing data. 933 
+
+en. Nature Genetics 50 , 895–903. https://doi.org/10.1038/s41588-018-0128-6. 934 
+
+13. Sun, R., Hu, Z., Sottoriva, A., Graham, T. A., Harpak, A., Ma, Z., Fischer, J. M., Shibata, D., 935 
+
+and Curtis, C. (2017). Between-region genetic divergence reflects the mode and tempo 936 
+
+of tumor evolution. Nature Genetics 49 , 1015–1024. https://doi.org/10.1038/ng.3891. 937 
+
+14. Wang, F., Wang, Q., Mohanty, V., Liang, S., Dou, J., Han, J., Minussi, D. C., Gao, R., Ding, 938 
+
+L., Navin, N., et al. (2021). MEDALT: single-cell copy number lineage tracing enabling 939 
+
+gene discovery. Genome Biology 22 , 70. https://doi.org/10.1186/s13059-021-02291-5. 940 
+
+15. Lipinski, K. A., Barber, L. J., Davies, M. N., Ashenden, M., Sottoriva, A., and Gerlinger, M. 941 
+
+(2016). Cancer Evolution and the Limits of Predictability in Precision Cancer Medicine. 942 
+
+Trends in Cancer 2, 49–63. https://doi.org/10.1016/j.trecan.2015.11.003. 943 
+
+16. Salehi, S., Kabeer, F., Ceglia, N., Andronescu, M., Williams, M. J., Campbell, K. R., Masud, 944 
+
+T., Wang, B., Biele, J., Brimhall, J., et al. (2021). Clonal fitness inferred from time-series 945 
+
+modelling of single-cell cancer genomes. en. Nature 595 , 585–590. https://doi.org/10. 946 
+
+1038/s41586-021-03648-3. 947 
+
+17. Yang, D., Jones, M. G., Naranjo, S., Rideout, W. M., Min, K. H. (, Ho, R., Wu, W., Replogle, 948 
+
+J. M., Page, J. L., Quinn, J. J., et al. (2022). Lineage tracing reveals the phylodynamics, 949 
+
+plasticity, and paths of tumor evolution. en. Cell 185 , 1905–1923.e25. https://doi.org/10. 950 
+
+1016/j.cell.2022.04.015. 951 
+
+18. Lee, N. D. and Bozic, I. (2022). Inferring parameters of cancer evolution in chronic lym-952 
+
+phocytic leukemia. en. PLOS Computational Biology 18 . Ed. by J. Foo, e1010677. https: 953 
+
+//doi.org/10.1371/journal.pcbi.1010677. 954 
+
+19. Dayarian, A. and Shraiman, B. I. (2014). How to Infer Relative Fitness from a Sample of 955 
+
+Genomic Sequences. en. Genetics 197 , 913–923. https://doi.org/10.1534/genetics.113. 956 
+
+160986. 957 
+
+20. Salichos, L., Meyerson, W., Warrell, J., and Gerstein, M. (2020). Estimating growth pat-958 
+
+terns and driver effects in tumor evolution from individual samples. en. Nature Communi-959 
+
+cations 11 , 732. https://doi.org/10.1038/s41467-020-14407-9. 960 
+
+21. Ouellette, T. W. and Awadalla, P. (2022). Inferring ongoing cancer evolution from single 961 
+
+tumour biopsies using synthetic supervised learning. en. PLOS Computational Biology 962 
+
+18 . Ed. by N. Beerenwinkel, e1010007. https://doi.org/10.1371/journal.pcbi.1010007. 963 
+
+22. Funnell, T., O’Flanagan, C. H., Williams, M. J., McPherson, A., McKinney, S., Kabeer, F., 964 
+
+Lee, H., Salehi, S., Vázquez-García, I., Shi, H., et al. (2022). Single-cell genomic variation 965 
+
+induced by mutational processes in cancer. en. Nature 612 , 106–115. https://doi.org/10. 966 
+
+1038/s41586-022-05249-0. 967 
+
+31 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 9, 2026. ;https://doi.org/10.64898/2026.07.06.736651 doi: bioRxiv preprint
+
+23. Jahn, K., Kuipers, J., and Beerenwinkel, N. (2016). Tree inference for single-cell data. en. 968 
+
+Genome Biology 17 , 86. https://doi.org/10.1186/s13059-016-0936-x. 969 
+
+24. Kozlov, A., Alves, J. M., Stamatakis, A., and Posada, D. (2022). CellPhy: accurate and 970 
+
+fast probabilistic inference of single-cell phylogenies from scDNA-seq data. en. Genome 971 
+
+Biology 23 , 37. https://doi.org/10.1186/s13059-021-02583-w. 972 
+
+25. Zahn, H., Steif, A., Laks, E., Eirew, P., VanInsberghe, M., Shah, S. P., Aparicio, S., 973 
+
+and Hansen, C. L. (2017). Scalable whole-genome single-cell library preparation without 974 
+
+preamplification. en. Nature Methods 14 , 167–173. https://doi.org/10.1038/nmeth.4140. 975 
+
+26. Laks, E., McPherson, A., Zahn, H., Lai, D., Steif, A., Brimhall, J., Biele, J., Wang, B., Ma-976 
+
+sud, T., Ting, J., et al. (2019). Clonal Decomposition and DNA Replication States Defined 977 
+
+by Scaled Single-Cell Genome Sequencing. Cell 179 , 1207–1221.e22. https://doi.org/10. 978 
+
+1016/j.cell.2019.10.026. 979 
+
+27. Zafar, H., Tzen, A., Navin, N., Chen, K., and Nakhleh, L. (2017). SiFit: inferring tumor trees 980 
+
+from single-cell sequencing data under finite-sites models. en. Genome Biology 18 , 178. 981 
+
+https://doi.org/10.1186/s13059-017-1311-2. 982 
+
+28. Kaufmann, T. L., Petkovic, M., Watkins, T. B. K., Colliver, E. C., Laskina, S., Thapa, N., 983 
+
+Minussi, D. C., Navin, N., Swanton, C., Van Loo, P., et al. (2022). MEDICC2: whole-984 
+
+genome doubling aware copy-number phylogenies for cancer evolution. en. Genome Bi-985 
+
+ology 23 , 241. https://doi.org/10.1186/s13059-022-02794-9. 986 
+
+29. Kuipers, J., Tuncel, M. A., Ferreira, P. F., Jahn, K., and Beerenwinkel, N. (2025). Single-cell 987 
+
+copy number calling and event history reconstruction. Bioinformatics 41 , btaf072. https: 988 
+
+//doi.org/10.1093/bioinformatics/btaf072. 989 
+
+30. Markowska, M., Cąkała, T., Miasojedow, B., Aybey, B., Juraeva, D., Mazur, J., Ross, E., 990 
+
+Staub, E., and Szczurek, E. (2022). CONET: copy number event tree model of evolution-991 
+
+ary tumor history for single-cell data. en. Genome Biology 23 , 128. https://doi.org/10. 992 
+
+1186/s13059-022-02693-z. 993 
+
+31. Skums, P., Tsyvina, V., and Zelikovsky, A. (2019). Inference of clonal selection in cancer 994 
+
+populations using single-cell sequencing data. en. Bioinformatics 35 , i398–i407. https : 995 
+
+//doi.org/10.1093/bioinformatics/btz392. 996 
+
+32. Luo, X. G., Kuipers, J., Rupp, K., Takahashi, K., and Beerenwinkel, N. (2025). Bayesian 997 
+
+inference of fitness landscapes via tree-structured branching processes. Bioinformatics 998 
+
+41 , i160–i169. https://doi.org/10.1093/bioinformatics/btaf193. 999 
+
+33. Johnson, B., Shuai, Y., Schweinsberg, J., and Curtius, K. (2023). cloneRate: fast estima-1000 
+
+tion of single-cell clonal dynamics using coalescent theory. en. Bioinformatics 39 . Ed. by 1001 
+
+R. Schwartz, btad561. https://doi.org/10.1093/bioinformatics/btad561. 1002 
+
+34. Werner, B., Case, J., Williams, M. J., Chkhaidze, K., Temko, D., Fernández-Mateos, J., 1003 
+
+Cresswell, G. D., Nichol, D., Cross, W., Spiteri, I., et al. (2020). Measuring single cell di-1004 
+
+visions in human tissues from multi-region sequencing data. en. Nature Communications 1005 
+
+11 , 1035. https://doi.org/10.1038/s41467-020-14844-6. 1006 
+
+32 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 9, 2026. ;https://doi.org/10.64898/2026.07.06.736651 doi: bioRxiv preprint
+
+35. Wang, K., Lu, Z., Yao, Z., He, X., Hu, Z., and Zhou, D. (2025). Single-cell phylodynamic 1007 
+
+inference of stem cell differentiation and tumor evolution. English. Cell Systems 16 . https: 1008 
+
+//doi.org/10.1016/j.cels.2025.101244. 1009 
+
+36. Tsyvina, V., Zelikovsky, A., Snir, S., and Skums, P. (2020). Inference of mutability land-1010 
+
+scapes of tumors from single cell sequencing data. en. PLOS Computational Biology 16 .1011 
+
+Ed. by T. M. Przytycka, e1008454. https://doi.org/10.1371/journal.pcbi.1008454. 1012 
+
+37. Dieselhorst, T. and Berg, J. (2024). Phylodynamics of Somatic Evolution: A Likelihood-1013 
+
+Based Approach for Cellular Reproduction . en. https : / / doi . org / 10 . 1101 / 2024 . 12 . 05 . 1014 
+
+627005. 1015 
+
+38. Aragon, A., Lambert, A., Mora, T., and Walczak, A. M. (2025). Learning evolutionary pa-1016 
+
+rameters from genealogies using allelic trees . en. https://doi.org/10.1101/2025.03.03. 1017 
+
+641273. 1018 
+
+39. Wang, Z., Xia, Y., Mills, L., Nikolakopoulos, A. N., Maeser, N., Dehm, S. M., Sheltzer, J. M., 1019 
+
+and Sun, R. (2024). Evolving copy number gains promote tumor expansion and bolster 1020 
+
+mutational diversification. en. Nature Communications 15 , 2025. https://doi.org/10.1038/ 1021 
+
+s41467-024-46414-5. 1022 
+
+40. Baker, T. M., Lai, S., Lynch, A. R., Lesluyes, T., Yan, H., Ogilvie, H. A., Verfaillie, A., 1023 
+
+Dentro, S., Bowes, A. L., Pillay, N., et al. (2024). The History of Chromosomal Instability 1024 
+
+in Genome-Doubled Tumors. en. Cancer Discovery 14 , 1810–1822. https://doi.org/10. 1025 
+
+1158/2159-8290.cd-23-1249. 1026 
+
+41. Martinez, P., Mallo, D., Paulson, T. G., Li, X., Sanchez, C. A., Reid, B. J., Graham, T. A., 1027 
+
+Kuhner, M. K., and Maley, C. C. (2018). Evolution of Barrett’s esophagus through space 1028 
+
+and time at single-crypt and whole-biopsy levels. Nature Communications 9, 794. https: 1029 
+
+//doi.org/10.1038/s41467-017-02621-x. 1030 
+
+42. Neher, R. A., Russell, C. A., and Shraiman, B. I. (2014). Predicting evolution from the 1031 
+
+shape of genealogical trees. en. eLife 3, e03568. https://doi.org/10.7554/eLife.03568. 1032 
+
+43. Sun, R. and Nikolakopoulos, A. N. (2021). Elements and evolutionary determinants of 1033 
+
+genomic divergence between paired primary and metastatic tumors. PLOS Computational 1034 
+
+Biology 17 . Ed. by M. M. Tanaka, e1008838. https://doi.org/10.1371/journal.pcbi.1008838. 1035 
+
+44. McPherson, A., Vázquez-García, I., Myers, M. A., Al-Rawi, D. H., Zatzman, M., Weiner, 1036 
+
+A. C., Freeman, S., Mohibullah, N., Satas, G., Williams, M. J., et al. (2025). Ongoing 1037 
+
+genome doubling shapes evolvability and immunity in ovarian cancer. en. Nature. https: 1038 
+
+//doi.org/10.1038/s41586-025-09240-3. 1039 
+
+45. Durrett, R. (2015). Branching process models of cancer . eng. Mathematical Biosciences 1040 
+
+Institute lecture series. Stochastics in biological systems. Cham [Columbus, Ohio]: Springer 1041 
+
+Mathematical Biosciences Institute at the Ohio State University. ISBN: 978-3-319-16065-1042 
+
+8. 1043 
+
+46. Paradis, E. (2013). Molecular dating of phylogenies by likelihood methods: A comparison 1044 
+
+of models and a new information criterion. en. Molecular Phylogenetics and Evolution 1045 
+
+67 , 436–444. https://doi.org/10.1016/j.ympev.2013.02.008. 1046 
+
+33 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 9, 2026. ;https://doi.org/10.64898/2026.07.06.736651 doi: bioRxiv preprint
+
+47. Drummond, A. J., Ho, S. Y. W., Phillips, M. J., and Rambaut, A. (2006). Relaxed Phylo-1047 
+
+genetics and Dating with Confidence. en. PLoS Biology 4. Ed. by D. Penny, e88. https: 1048 
+
+//doi.org/10.1371/journal.pbio.0040088. 1049 
+
+48. Uchi, R., Takahashi, Y., Niida, A., Shimamura, T., Hirata, H., Sugimachi, K., Sawada, 1050 
+
+G., Iwaya, T., Kurashige, J., Shinden, Y., et al. (2016). Integrated Multiregional Analysis 1051 
+
+Proposing a New Model of Colorectal Cancer Evolution. PLoS Genetics 12 , e1005778. 1052 
+
+https://doi.org/10.1371/journal.pgen.1005778. 1053 
+
+49. Rieseberg, L. H., Widmer, A., Arntz, A. M., and Burke, J. M. (2002). Directional selection 1054 
+
+is the primary cause of phenotypic diversification. Proceedings of the National Academy 1055 
+
+of Sciences of the United States of America 99 , 12242–12245. https://doi.org/10.1073/ 1056 
+
+pnas.192360899. 1057 
+
+50. Shih, J., Sarmashghi, S., Zhakula-Kostadinova, N., Zhang, S., Georgis, Y., Hoyt, S. H., 1058 
+
+Cuoco, M. S., Gao, G. F., Spurr, L. F., Berger, A. C., et al. (2023). Cancer aneuploidies are 1059 
+
+shaped primarily by effects on tumour fitness. Nature 619 . https://doi.org/10.1038/s41586-1060 
+
+023-06266-3. 1061 
+
+51. Klockner, T. C. and Campbell, C. S. (2024). Selection forces underlying aneuploidy pat-1062 
+
+terns in cancer. Molecular and Cellular Oncology 11 . https://doi.org/10.1080/23723556. 1063 
+
+2024.2369388. 1064 
+
+52. The Cancer Genome Atlas Research Network (2011). Integrated genomic analyses of 1065 
+
+ovarian carcinoma. en. Nature 474 , 609–615. https://doi.org/10.1038/nature10166. 1066 
+
+53. Adamson, A. W., Ding, Y. C., Steele, L., Leong, L. A., Morgan, R., Wakabayashi, M. T., 1067 
+
+Han, E. S., Dellinger, T. H., Lin, P. S., Hakim, A. A., et al. (2023). Genomic analyses 1068 
+
+of germline and somatic variation in high-grade serous ovarian cancer. en. Journal of 1069 
+
+Ovarian Research 16 , 141. https://doi.org/10.1186/s13048-023-01234-x. 1070 
+
+54. Bosquet, J. G., Marchion, D. C., Chon, H., Lancaster, J. M., and Chanock, S. (2014). 1071 
+
+Analysis of Chemotherapeutic Response in Ovarian Cancers Using Publicly Available 1072 
+
+High-Throughput Data. en. Cancer Research 74 , 3902–3912. https://doi.org/10.1158/ 1073 
+
+0008-5472.CAN-14-0186. 1074 
+
+55. Ganem, N. J., Storchova, Z., and Pellman, D. (2007). Tetraploidy, aneuploidy and cancer. 1075 
+
+Current Opinion in Genetics & Development. Chromosomes and expression mechanisms 1076 
+
+17 , 157–162. https://doi.org/10.1016/j.gde.2007.02.011. 1077 
+
+56. Bielski, C. M., Zehir, A., Penson, A. V., Donoghue, M. T. A., Chatila, W., Armenia, J., 1078 
+
+Chang, M. T., Schram, A. M., Jonsson, P., Bandlamudi, C., et al. (2018). Genome doubling 1079 
+
+shapes the evolution and prognosis of advanced cancers. en. Nature Genetics 50 , 1189– 1080 
+
+1195. https://doi.org/10.1038/s41588-018-0165-1. 1081 
+
+57. Selmecki, A. M., Maruvka, Y. E., Richmond, P. A., Guillet, M., Shoresh, N., Sorenson, 1082 
+
+A. L., De, S., Kishony, R., Michor, F., Dowell, R., et al. (2015). Polyploidy can drive rapid 1083 
+
+adaptation in yeast. eng. Nature 519 , 349–352. https://doi.org/10.1038/nature14187. 1084 
+
+34 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 9, 2026. ;https://doi.org/10.64898/2026.07.06.736651 doi: bioRxiv preprint
+
+58. Williams, M. J., Werner, B., Barnes, C. P., Graham, T. A., and Sottoriva, A. (2016). Identi-1085 
+
+fication of neutral tumor evolution across cancer types. Nature Genetics 48 . ISBN: 1546-1086 
+
+1718 (Electronic)\r1061-4036 (Linking), 238–244. https://doi.org/10.1038/ng.3489. 1087 
+
+59. López, S., Lim, E. L., Horswell, S., Haase, K., Huebner, A., Dietzen, M., Mourikis, T. P., 1088 
+
+Watkins, T. B. K., Rowan, A., Dewhurst, S. M., et al. (2020). Interplay between whole-1089 
+
+genome doubling and the accumulation of deleterious alterations in cancer evolution. en. 1090 
+
+Nature Genetics 52 , 283–293. https://doi.org/10.1038/s41588-020-0584-7. 1091 
+
+60. Nadalin, F., Marzi, M. J., Pirra Piscazzi, M., Fuentes-Bravo, P., Procaccia, S., Climent, M., 1092 
+
+Bonetti, P., Rubolino, C., Giuliani, B., Papatheodorou, I., et al. (2024). Multi-omic lineage 1093 
+
+tracing predicts the transcriptional, epigenetic and genetic determinants of cancer evolu-1094 
+
+tion. en. Nature Communications 15 , 7609. https://doi.org/10.1038/s41467-024-51424-4. 1095 
+
+61. Hackett, S. F., Boniface, C. T., Fonseca, A. V. A., Ramos-Yamasaki, A. D., Bazin, H. M. L., 1096 
+
+Tan, A., Yu, H. L., Hanssen, L. L. P., Dev, H., Apostolidou, S., et al. (n.d.). In vivo lineage 1097 
+
+tracing across human tissues using methylation barcodes in the protocadherin gene clus-1098 
+
+ter. en (). 1099 
+
+62. The neighbor-joining method (1987). The neighbor-joining method: a new method for re-1100 
+
+constructing phylogenetic trees. en. Molecular Biology and Evolution. https://doi.org/10. 1101 
+
+1093/oxfordjournals.molbev.a040454. 1102 
+
+63. Borgsmüller, N., Valecha, M., Kuipers, J., Beerenwinkel, N., and Posada, D. (2023). Single-1103 
+
+cell phylogenies reveal changes in the evolutionary rate within cancer and healthy tissues. 1104 
+
+Cell Genomics 3, 100380. https://doi.org/10.1016/j.xgen.2023.100380. 1105 
+
+64. Mézard, M. and Montanari, A. (2009). Information, physics, and computation . eng. Oxford 1106 
+
+graduate texts. Oxford: Oxford university press. ISBN: 978-0-19-857083-7. 1107 
+
+65. Maddison, W. P., Midford, P. E., and Otto, S. P. (2007). Estimating a Binary Character’s 1108 
+
+Effect on Speciation and Extinction. Systematic Biology 56 , 701–710. https://doi.org/10. 1109 
+
+1080/10635150701607033. 1110 
+
+66. Gillespie, D. T. (1976). A general method for numerically simulating the stochastic time 1111 
+
+evolution of coupled chemical reactions. en. Journal of Computational Physics 22 , 403– 1112 
+
+434. https://doi.org/10.1016/0021-9991(76)90041-3. 1113 
+
+67. Woodward, A. (2018). Priority Queue . https : / / www . mathworks . com / matlabcentral / 1114 
+
+fileexchange/69142-priority-queue/. MATLAB Central File Exchange, accessed May 10, 1115 
+
+2026. 1116 
+
+68. MATLAB Optimization Toolbox (2025). Version R2025b. The MathWorks, Natick, MA, 1117 
+
+USA. 1118 
+
+69. Kleiber, C. and Zeileis, A. (2016). Visualizing Count Data Regressions Using Rootograms. 1119 
+
+en. The American Statistician 70 . arXiv:1605.01311 [stat], 296–303. https://doi.org/10. 1120 
+
+1080/00031305.2016.1173590. 1121 
+
+35 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 9, 2026. ;https://doi.org/10.64898/2026.07.06.736651 doi: bioRxiv preprint
+
+70. Felsenstein, J. (1981). Evolutionary trees from DNA sequences: A maximum likelihood 1122 
+
+approach. en. Journal of Molecular Evolution 17 , 368–376. https : / / doi . org / 10 . 1007 / 1123 
+
+BF01734359. 1124 
+
+71. Davis, A., Gao, R., and Navin, N. (2017). Tumor evolution: Linear, branching, neutral or 1125 
+
+punctuated? en. Biochimica et Biophysica Acta (BBA) - Reviews on Cancer 1867 , 151– 1126 
+
+161. https://doi.org/10.1016/j.bbcan.2017.01.003. 1127 
+
+72. Marusyk, A., Tabassum, D. P., Altrock, P. M., Almendro, V., Michor, F., and Polyak, K. 1128 
+
+(2014). Non-cell-autonomous driving of tumour growth supports sub-clonal heterogeneity. 1129 
+
+en. Nature 514 , 54–58. https://doi.org/10.1038/nature13556. 1130 
+
+73. Cleary, A. S., Leonard, T. L., Gestl, S. A., and Gunther, E. J. (2014). Tumour cell het-1131 
+
+erogeneity maintained by cooperating subclones in Wnt-driven mammary cancers. en. 1132 
+
+Nature 508 , 113–117. https://doi.org/10.1038/nature13187. 1133 
+
+74. El Gammal, A. T., Brüchmann, M., Zustin, J., Isbarn, H., Hellwinkel, O. J., Köllermann, J., 1134 
+
+Sauter, G., Simon, R., Wilczak, W., Schwarz, J., et al. (2010). Chromosome 8p Deletions 1135 
+
+and 8q Gains are Associated with Tumor Progression and Poor Prognosis in Prostate 1136 
+
+Cancer. en. Clinical Cancer Research 16 , 56–64. https://doi.org/10.1158/1078- 0432. 1137 
+
+CCR-09-1423. 1138 
+
+75. The Cancer Genome Atlas Research Network (2012). Comprehensive genomic charac-1139 
+
+terization of squamous cell lung cancers. en. Nature 489 , 519–525. https://doi.org/10. 1140 
+
+1038/nature11404. 1141 
+
+36

@@ -6,71 +6,71 @@
 </div>
 
 ## 每次日报
-- 最新运行日期：2026-07-09
-- 运行时间：2026-07-09 23:37:39 UTC
+- 最新运行日期：2026-07-10
+- 运行时间：2026-07-10 22:40:31 UTC
 - 运行状态：成功
 - 本次总论文数：17
 - 精读区：6
 - 速读区：11
 
 ### 今日简报（AI）
-今日完成17篇文献分析，精读6篇，重点关注伊马替尼耐药GIST的非癌基因依赖机制与免疫治疗黑色素瘤中肿瘤免疫原性休眠驱动残留病变。最值得关注的方向是GIST耐药靶点新发现及免疫治疗后肿瘤休眠机制，建议深入探索耐药微环境调控与免疫逃逸的新干预策略。
-- 详情：[/202607/09/README](/202607/09/README)
+今日共筛选17篇论文，精读6篇、速读11篇，聚焦单细胞多组学、PARP抑制剂耐药及肿瘤免疫微环境等前沿方向。最值得关注的是单细胞多组学揭示中性粒细胞状态在免疫治疗中的异质性与可塑性，以及STN1通过复制叉保护促进BRCA2缺陷癌细胞对PARP抑制剂耐药的机制。建议后续探索STN1作为联合免疫治疗靶点的潜力，并尝试利用单细胞系统发育分析追踪染色体不稳定肿瘤的演化。
+- 详情：[/202607/10/README](/202607/10/README)
 
 ### 精读区论文标签
-1. [Systematic elucidation and pharmacologic targeting of non-oncogene dependencies in imatinib-resistant gastrointestinal stromal tumor](/202607/09/biorxiv-10-1101-2025-10-12-681609-v2-systematic-elucidation-and-pharmacologic-targeting-of-non-oncogene-dependencies-in-imatinib-resistant-gastrointestinal-stromal-tumor)  
+1. [Single-cell multi-omics analysis reveals heterogeneity and plasticity of neutrophil states in response to immunotherapies](/202607/10/biorxiv-10-64898-2026-07-02-735691-v1-single-cell-multi-omics-analysis-reveals-heterogeneity-and-plasticity-of-neutrophil-states-in-response-to-immunotherapies)  
    标签：评分：9.0/10、query:neo-resist
-   evidence：通过网络方法和单细胞分析阐明GIST伊马替尼耐药机制
-2. [Immunogenic tumor mass dormancy as a driver of persistent residual lesions in immunotherapy-treated melanoma](/202607/09/biorxiv-10-64898-2025-12-11-692633-v2-immunogenic-tumor-mass-dormancy-as-a-driver-of-persistent-residual-lesions-in-immunotherapy-treated-melanoma)  
-   标签：评分：9.0/10、query:neo-resist
-   evidence：免疫原性肿瘤质量休眠驱动免疫治疗黑色素瘤残留病灶，直接针对新辅助免疫治疗耐药
-3. [Driver-associated transcriptional rewiring reveals conditional genetic vulnerabilities in cancer](/202607/09/biorxiv-10-1101-2024-11-20-624509-v2-driver-associated-transcriptional-rewiring-reveals-conditional-genetic-vulnerabilities-in-cancer)  
+   evidence：免疫治疗耐药中中性粒细胞状态的单细胞多组学分析
+2. [STN1 upregulation promotes PARPi resistance in BRCA2-deficient cancer cells via replication fork protection and suppression of ssDNA gap formation](/202607/10/biorxiv-10-64898-2026-05-15-725290-v2-stn1-upregulation-promotes-parpi-resistance-in-brca2-deficient-cancer-cells-via-replication-fork-protection-and-suppression-of-ssdna-gap-formation)  
    标签：评分：8.0/10、query:neo-resist
-   evidence：整合计算框架解析癌症驱动突变导致的转录重编程
-4. [A Single-Cell and Spatial Atlas of MVP-PAN Evolution Reveals a Desmoplastic Dependency to Overcome Glioblastoma Resistance](/202607/09/biorxiv-10-64898-2025-12-25-696471-v3-a-single-cell-and-spatial-atlas-of-mvp-pan-evolution-reveals-a-desmoplastic-dependency-to-overcome-glioblastoma-resistance)  
+   evidence：RNA-seq分析发现PARP抑制剂耐药BRCA2缺陷细胞中STN1上调
+3. [Decoding Spatial Programs in Human Glioblastoma Through Surprisal Information-Theoretical Analysis](/202607/10/biorxiv-10-64898-2026-06-23-733938-v1-decoding-spatial-programs-in-human-glioblastoma-through-surprisal-information-theoretical-analysis)  
    标签：评分：8.0/10、query:neo-resist
-   evidence：单细胞与空间转录组学揭示胶质母细胞瘤耐药空间三联体
-5. [Site-Dependent Decoupling of Drug-Biomarker Associations in Clear Cell Renal Cell Carcinoma Revealed by Functional Profiling of Patient-Derived Cell Models](/202607/09/biorxiv-10-64898-2026-04-23-720088-v2-site-dependent-decoupling-of-drug-biomarker-associations-in-clear-cell-renal-cell-carcinoma-revealed-by-functional-profiling-of-patient-derived-cell-models)  
+   evidence：胶质母细胞瘤治疗耐药的空间转录组分析
+4. [Fibroblast-Enhanced Tumour Microenvironment Signalling Promotes Adaptive Doxorubicin Tolerance in Heterotypic Melanoma Spheroids](/202607/10/biorxiv-10-64898-2026-06-30-735445-v1-fibroblast-enhanced-tumour-microenvironment-signalling-promotes-adaptive-doxorubicin-tolerance-in-heterotypic-melanoma-spheroids)  
    标签：评分：8.0/10、query:neo-resist
-   evidence：ccRCC的多组学和功能谱分析揭示药物-生物标志物解耦，直接相关于肿瘤耐药的多组学表征
-6. [Defining biologically directed therapy target signatures in urothelial carcinoma: A transcriptomic framework for precision therapy](/202607/09/biorxiv-10-64898-2026-06-24-734314-v1-defining-biologically-directed-therapy-target-signatures-in-urothelial-carcinoma-a-transcriptomic-framework-for-precision-therapy)  
+   evidence：肿瘤微环境信号促进黑色素瘤药物耐受
+5. [A Glutamine antagonist-modulated tumor microenvironment unleashes enzalutamides immunotherapeutic effects](/202607/10/biorxiv-10-64898-2026-06-30-735585-v1-a-glutamine-antagonist-modulated-tumor-microenvironment-unleashes-enzalutamides-immunotherapeutic-effects)  
    标签：评分：8.0/10、query:neo-resist
-   evidence：尿路上皮癌免疫治疗和ADC耐药的转录组学表征
+   evidence：谷氨酰胺拮抗剂耐药调节免疫治疗反应
+6. [Pericyte-Derived Cancer-Associated Fibroblasts Correlate with Poor Survival and Are Enriched After Chemoradiotherapy in Glioblastoma](/202607/10/biorxiv-10-64898-2026-07-02-736148-v1-pericyte-derived-cancer-associated-fibroblasts-correlate-with-poor-survival-and-are-enriched-after-chemoradiotherapy-in-glioblastoma)  
+   标签：评分：8.0/10、query:neo-resist
+   evidence：单细胞RNA-seq揭示CAFs起源与治疗耐药相关
 
 ### 速读区论文标签
-1. [Residual Multi-Modal Learning for Pan-Breast-Cancer Drug Response Prediction](/202607/09/biorxiv-10-64898-2026-07-03-736239-v1-residual-multi-modal-learning-for-pan-breast-cancer-drug-response-prediction)  
+1. [Integrative analysis of TCGA transcriptomic states and DepMap dependencies prioritizes candidate vulnerabilities in immune-cold microsatellite-stable colorectal cancer](/202607/10/biorxiv-10-64898-2026-07-04-736484-v1-integrative-analysis-of-tcga-transcriptomic-states-and-depmap-dependencies-prioritizes-candidate-vulnerabilities-in-immune-cold-microsatellite-stable-colorectal-cancer)  
    标签：评分：8.0/10、query:neo-resist
-   evidence：深度学习预测乳腺癌药物反应
-2. [Quantifying target antigen-dependent CAR T-cell performance against AML](/202607/09/biorxiv-10-1101-2024-12-16-628628-v2-quantifying-target-antigen-dependent-car-t-cell-performance-against-aml)  
+   evidence：免疫冷MSS结直肠癌对免疫检查点阻断耐药的转录组整合分析
+2. [LeafRank: A phylodynamic framework for inferring relative fitness from single-cell phylogenies in chromosomally unstable tumors](/202607/10/biorxiv-10-64898-2026-07-06-736651-v1-leafrank-a-phylodynamic-framework-for-inferring-relative-fitness-from-single-cell-phylogenies-in-chromosomally-unstable-tumors)  
+   标签：评分：8.0/10、query:neo-resist
+   evidence：单细胞系统发育推断相对适应度，可用于耐药进化研究
+3. [TFAP2A links drug resistance to antitumor immunity](/202607/10/biorxiv-10-64898-2026-07-08-735861-v1-tfap2a-links-drug-resistance-to-antitumor-immunity)  
+   标签：评分：8.0/10、query:neo-resist
+   evidence：TFAP2A连接BRAF/MEK抑制剂耐药与抗肿瘤免疫及肿瘤微环境
+4. [Chemotherapy-induced multicellularity drives drug-tolerant persistence state in tumor cells](/202607/10/biorxiv-10-64898-2026-07-09-737606-v1-chemotherapy-induced-multicellularity-drives-drug-tolerant-persistence-state-in-tumor-cells)  
+   标签：评分：8.0/10、query:neo-resist
+   evidence：化疗诱导的多细胞性作为耐药机制
+5. [A Multi-Omic Phenobank Reveals Axes of Glioblastoma Growth, Invasion, and Therapeutic Vulnerability](/202607/10/biorxiv-10-1101-2025-03-25-645260-v3-a-multi-omic-phenobank-reveals-axes-of-glioblastoma-growth-invasion-and-therapeutic-vulnerability)  
    标签：评分：7.0/10、query:neo-resist
-   evidence：数学建模分析急性髓系白血病中CAR T细胞耐药机制
-3. [Multidimensional Single-Cell Transcriptomic Profiling of Uterine Leiomyosarcomas Reveals Distinct Tumor States with Inferred Therapeutic Vulnerabilities](/202607/09/biorxiv-10-1101-2025-11-17-688894-v2-multidimensional-single-cell-transcriptomic-profiling-of-uterine-leiomyosarcomas-reveals-distinct-tumor-states-with-inferred-therapeutic-vulnerabilities)  
+   evidence：多组学表征胶质母细胞瘤治疗脆弱性
+6. [Combination Immunotherapy Enhances Serial Radiofrequency Ablation Induced Systemic Antitumor Immunity in Pancreatic Cancer](/202607/10/biorxiv-10-64898-2026-04-05-713683-v2-combination-immunotherapy-enhances-serial-radiofrequency-ablation-induced-systemic-antitumor-immunity-in-pancreatic-cancer)  
    标签：评分：7.0/10、query:neo-resist
-   evidence：单细胞和空间转录组揭示肿瘤状态及治疗弱点
-4. [Identifying cancer cell-state transitions from multimodal single-cell data](/202607/09/biorxiv-10-64898-2026-03-02-708945-v2-identifying-cancer-cell-state-transitions-from-multimodal-single-cell-data)  
-   标签：评分：7.0/10、query:neo-resist
-   evidence：捕获表型可塑性的单细胞框架与治疗逃逸
-5. [Hypoxia-activated prodrug and chemotherapy disrupt resistance-associated metabolism in osteosarcoma](/202607/09/biorxiv-10-64898-2026-06-16-732534-v1-hypoxia-activated-prodrug-and-chemotherapy-disrupt-resistance-associated-metabolism-in-osteosarcoma)  
-   标签：评分：7.0/10、query:neo-resist
-   evidence：多模态空间代谢组学、蛋白质组学和金属组学分析骨肉瘤耐药相关代谢
-6. [The Boolean Breast-Cancer Network (BBCN): structural controllability of cell-fate signalling and a bistable resistance-apoptosis switch](/202607/09/biorxiv-10-64898-2026-06-18-733086-v1-the-boolean-breast-cancer-network-bbcn-structural-controllability-of-cell-fate-signalling-and-a-bistable-resistance-apoptosis-switch)  
-   标签：评分：7.0/10、query:neo-resist
-   evidence：布尔网络建模乳腺癌信号通路研究耐药与可控性
-7. [Disrupting Pregnane X Receptor Signaling Overcomes Temozolomide Resistance in Glioblastoma via Succisa pratensis-Derived Metabolites](/202607/09/biorxiv-10-64898-2026-06-22-733681-v1-disrupting-pregnane-x-receptor-signaling-overcomes-temozolomide-resistance-in-glioblastoma-via-succisa-pratensis-derived-metabolites)  
-   标签：评分：7.0/10、query:neo-resist
-   evidence：多组学分析胶质母细胞瘤替莫唑胺耐药
-8. [Relapse-founding cancer persister cells in follicular lymphoma](/202607/09/biorxiv-10-64898-2026-06-23-734001-v1-relapse-founding-cancer-persister-cells-in-follicular-lymphoma)  
-   标签：评分：7.0/10、query:neo-resist
-   evidence：滤泡性淋巴瘤治疗后的复发起始持续细胞
-9. [Spatial statistics for identifying and scoring immune clusters in high-plex profiles of primary prostate cancer](/202607/09/biorxiv-10-1101-2025-09-21-677465-v2-spatial-statistics-for-identifying-and-scoring-immune-clusters-in-high-plex-profiles-of-primary-prostate-cancer)  
+   evidence：联合免疫治疗增强抗肿瘤免疫，单细胞RNA测序揭示耐药机制
+7. [A Multi-Omic Phenobank Reveals Axes of Glioblastoma Growth, Invasion, and Therapeutic Vulnerability](/202607/10/biorxiv-10-1101-2025-03-25-645260-v2-a-multi-omic-phenobank-reveals-axes-of-glioblastoma-growth-invasion-and-therapeutic-vulnerability)  
    标签：评分：6.0/10、query:neo-resist
-   evidence：肿瘤微环境中免疫簇的空间统计方法
-10. [Stability Transitions in Discrete Tumor-Immune Dynamics under Immune Suppression](/202607/09/biorxiv-10-64898-2026-01-14-699451-v2-stability-transitions-in-discrete-tumor-immune-dynamics-under-immune-suppression)  
+   evidence：多组学表型库关联治疗脆弱性
+8. [Epigenetic profile drives accurate survival prediction in breast cancer via a multi-omics machine learning model](/202607/10/biorxiv-10-1101-2025-07-31-667894-v5-epigenetic-profile-drives-accurate-survival-prediction-in-breast-cancer-via-a-multi-omics-machine-learning-model)  
    标签：评分：6.0/10、query:neo-resist
-   evidence：肿瘤-免疫动力学数学模型分析免疫逃逸
-11. [Modeling the MRD state reveals the insomnia of chemotherapy-tolerant persister clones](/202607/09/biorxiv-10-64898-2026-06-14-732194-v1-modeling-the-mrd-state-reveals-the-insomnia-of-chemotherapy-tolerant-persister-clones)  
+   evidence：多组学机器学习生存预测与药物耐药相关
+9. [Ex Vivo Culture of Patient-Derived Primary, Metastatic, and Post-Mortem Lung Cancer Reveals Targetable States of EMT and Metabolic Plasticity](/202607/10/biorxiv-10-64898-2026-06-14-731898-v1-ex-vivo-culture-of-patient-derived-primary-metastatic-and-post-mortem-lung-cancer-reveals-targetable-states-of-emt-and-metabolic-plasticity)  
    标签：评分：6.0/10、query:neo-resist
-   evidence：化疗耐受持留克隆在微小残留病中的机制
+   evidence：多组学分析肺癌微肿瘤揭示EMT和代谢可塑性
+10. [Modeling pancreatic cancer tumor stroma co-evolution in an in ovo model](/202607/10/biorxiv-10-64898-2026-06-26-734719-v1-modeling-pancreatic-cancer-tumor-stroma-co-evolution-in-an-in-ovo-model)  
+   标签：评分：6.0/10、query:neo-resist
+   evidence：肿瘤-基质共进化模型与空间转录组学
+11. [APOBEC3-driven neoantigen-rich cancers co-opt 1q23.3 amplification for tumor-intrinsic immune cloaking](/202607/10/biorxiv-10-64898-2026-07-01-735125-v1-apobec3-driven-neoantigen-rich-cancers-co-opt-1q233-amplification-for-tumor-intrinsic-immune-cloaking)  
+   标签：评分：6.0/10、query:neo-resist
+   evidence：多组学揭示新抗原丰富肿瘤的免疫伪装机制
 
 
 <div class="dpr-home-promo-card">

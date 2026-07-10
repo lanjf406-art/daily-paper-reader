@@ -1,0 +1,24 @@
+---
+title: APOBEC3-driven neoantigen-rich cancers co-opt 1q23.3 amplification for tumor-intrinsic immune cloaking
+title_zh: APOBEC3驱动的新抗原丰富癌症通过1q23.3扩增实现肿瘤内在免疫伪装
+authors: "Yesudhas, D., Lone, B., Unal, E., Chakraborty, A., Keskus, A. G., Ryou, J., Butler, K., Aquino, T. C., Yousefi-Rad, A., Yang, W., Jenkins, L. M., Chelluri, R., Chandran, E. B., Romero, V. A. V., Boudjadi, S., Gurram, S., Kolmogorov, M., Apolo, A. B., Banday, A. R."
+date: 2026-07-10
+pdf: "https://www.biorxiv.org/content/10.64898/2026.07.01.735125v1.full.pdf"
+tags: ["query:neo-resist"]
+score: 6.0
+evidence: 多组学揭示新抗原丰富肿瘤的免疫伪装机制
+tldr: APOBEC3驱动的超突变肿瘤虽富含新抗原，但仍能逃避免疫识别。多组学分析发现1q23.3扩增（含NECTIN4）决定了新抗原高但CD8低的肿瘤状态。NECTIN4通过DDR1-SHP2轴抑制STAT1磷酸化，导致T细胞贫乏微环境和抗PD-1耐药；阻断NECTIN4可逆转免疫伪装。该研究揭示了突变过程与结构变异的耦合，提出靶向NECTIN4-DDR1-SHP2轴的治疗策略。
+source: biorxiv
+selection_source: fresh_fetch
+figures_json: "[{\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-07-01-735125-v1/fig-001.webp\", \"caption\": \"\", \"page\": 0, \"index\": 1, \"width\": 1432, \"height\": 2323, \"label\": \"Figure\"}, {\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-07-01-735125-v1/fig-002.webp\", \"caption\": \"\", \"page\": 0, \"index\": 2, \"width\": 1671, \"height\": 2333, \"label\": \"Figure\"}, {\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-07-01-735125-v1/fig-003.webp\", \"caption\": \"\", \"page\": 0, \"index\": 3, \"width\": 1560, \"height\": 2361, \"label\": \"Figure\"}, {\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-07-01-735125-v1/fig-004.webp\", \"caption\": \"\", \"page\": 0, \"index\": 4, \"width\": 1620, \"height\": 2464, \"label\": \"Figure\"}, {\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-07-01-735125-v1/fig-005.webp\", \"caption\": \"\", \"page\": 0, \"index\": 5, \"width\": 1663, \"height\": 2365, \"label\": \"Figure\"}, {\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-07-01-735125-v1/fig-006.webp\", \"caption\": \"\", \"page\": 0, \"index\": 6, \"width\": 1517, \"height\": 2406, \"label\": \"Figure\"}]"
+motivation: 探索新抗原丰富的肿瘤如何逃避免疫识别，发现1q23.3扩增介导的免疫伪装机制。
+method: 结合多组学分析和功能验证，鉴定NECTIN4为1q23.3扩增的关键效应分子，并通过体内实验验证其免疫抑制作用。
+result: NECTIN4通过DDR1-SHP2轴抑制STAT1信号，建立T细胞贫乏微环境并导致抗PD-1耐药，阻断NECTIN4可恢复免疫活性。
+conclusion: APOBEC3突变驱动1q23.3扩增，通过NECTIN4-DDR1-SHP2轴实现肿瘤内在免疫伪装，为免疫治疗提供新靶点。
+---
+
+## 摘要
+超突变过程，包括由APOBEC3家族胞苷脱氨酶驱动的过程，会产生大量新抗原，但由此产生的肿瘤却能逃避免疫识别。在这里，通过多组学分析及功能验证，我们识别了一种在新抗原丰富的上皮癌中存在的肿瘤内在免疫伪装机制，其特征是抗原呈递、免疫募集细胞因子和免疫检查点程序的协同抑制。在膀胱癌中，全基因组拷贝数分析发现复发性1q23.3扩增是新抗原高/CD8低肿瘤状态的基因组特征。在该位点内，NECTIN4成为主要的候选效应基因，其作为免疫-新抗原不一致性的预测因子优于染色体外DNA状态。在乳腺癌和肺癌中也观察到类似关联。功能研究表明，NECTIN4足以在免疫正常小鼠中建立T细胞贫乏的肿瘤微环境，并对PD-1阻断产生抗性。机制上，NECTIN4激活DDR1-SHP2轴，抑制STAT1磷酸化，沉默肿瘤细胞的免疫参与程序。阻断NECTIN4可恢复STAT1活性并减少肿瘤生长，表明这种伪装状态在药理学上是可逆的。突变特征、断点基序、时机和克隆性分析，连同APOBEC3B表达和种系遗传证据，将APOBEC3介导的诱变与包含NECTIN4的复发性1q23.3扩增联系起来。这些发现揭示了新抗原产生的突变过程如何与结构基因组进化耦合，从而通过可治疗靶向的NECTIN4-DDR1-SHP2轴实现肿瘤内在免疫伪装。
+
+## Abstract
+Hypermutational processes, including those driven by the APOBEC3 family of cytidine deaminases, generate abundant neoantigens yet give rise to tumors that evade immune recognition. Here, using multi-omics analyses followed by functional validation, we identified a tumor-intrinsic immune-cloaking mechanism in neoantigen-rich epithelial cancers, characterized by coordinated suppression of antigen presentation, immune-recruiting cytokines and immune-checkpoint programs. In bladder cancer, genome-wide copy-number analysis identified recurrent 1q23.3 amplification as a genomic feature of a neoantigen-high/CD8-low tumor state. Within this locus, NECTIN4 emerged as the dominant candidate effector, outperforming extrachromosomal DNA status as a predictor of immune-neoantigen discordance. Similar associations were observed across breast and lung cancers. Functional studies demonstrated that NECTIN4 was sufficient to establish a T-cell-poor tumor microenvironment and confer resistance to PD-1 blockade in immunocompetent mice. Mechanistically, NECTIN4 engaged a DDR1-SHP2 axis that suppressed STAT1 phosphorylation, silencing tumor-cell immune-engagement programs. NECTIN4 blockade restored STAT1 activity and reduced tumor growth, indicating that the cloaked state is pharmacologically reversible. Mutational signature, breakpoint motif, timing and clonality analyses, together with APOBEC3B expression and germline genetic evidence, linked APOBEC3-mediated mutagenesis to recurrent 1q23.3 amplification encompassing NECTIN4. These findings reveal how neoantigen-generating mutational processes can be coupled to structural genome evolution to enable tumor-intrinsic immune cloaking through a therapeutically targetable NECTIN4-DDR1-SHP2 axis.

@@ -1,0 +1,25 @@
+---
+title: "Ex Vivo Culture of Patient-Derived Primary, Metastatic, and Post-Mortem Lung Cancer Reveals Targetable States of EMT and Metabolic Plasticity"
+title_zh: 患者来源的原发性、转移性和尸检肺癌的离体培养揭示了EMT和代谢可塑性的可靶向状态
+authors: "Acevedo-Acevedo, S., Ackerman, H. D., Rubio, V. Y., Hackel, N., Carr, C. L., Miranda, K. A., Baldwin, J. R., Reiser, M., Lockhart, J. H., Lui, A., Stewart, P. A., Yu, X., Wright, G. M., Alontaga, A. Y., Koomen, J. M., Nguyen, D. T., Sawyer, W. G., DeNicola, G. M., Boyle, T., Cress, W. D., Haura, E. B., Flores, E. R."
+date: 2026-07-08
+pdf: "https://www.biorxiv.org/content/10.64898/2026.06.14.731898v1.full.pdf"
+tags: ["query:neo-resist"]
+score: 6.0
+evidence: 多组学分析肺癌微肿瘤揭示EMT和代谢可塑性
+tldr: 针对肺癌肿瘤微环境研究不足，开发了来自患者原发、转移和死后样本的微肿瘤模型，保留组织结构、细胞和分子特征。多组学分析揭示肺腺癌进展中EMT增强和脂肪酸合成代谢重编程，抑制ACC1/2可减少增殖，锁定可靶向脆弱性。该平台为研究肿瘤进展、治疗耐药及培养死后标本提供鲁棒系统。
+source: biorxiv
+selection_source: fresh_fetch
+figures_json: "[{\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-06-14-731898-v1/fig-001.webp\", \"caption\": \"\", \"page\": 0, \"index\": 1, \"width\": 1845, \"height\": 2664, \"label\": \"Figure\"}, {\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-06-14-731898-v1/fig-002.webp\", \"caption\": \"\", \"page\": 0, \"index\": 2, \"width\": 1904, \"height\": 2394, \"label\": \"Figure\"}, {\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-06-14-731898-v1/fig-003.webp\", \"caption\": \"\", \"page\": 0, \"index\": 3, \"width\": 1974, \"height\": 1006, \"label\": \"Figure\"}, {\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-06-14-731898-v1/fig-004.webp\", \"caption\": \"\", \"page\": 0, \"index\": 4, \"width\": 1875, \"height\": 1959, \"label\": \"Figure\"}, {\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-06-14-731898-v1/fig-005.webp\", \"caption\": \"\", \"page\": 0, \"index\": 5, \"width\": 1848, \"height\": 2622, \"label\": \"Figure\"}, {\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-06-14-731898-v1/fig-006.webp\", \"caption\": \"\", \"page\": 0, \"index\": 6, \"width\": 1903, \"height\": 2325, \"label\": \"Figure\"}]"
+tables_json: "[{\"url\": \"assets/tables/biorxiv/biorxiv-10-64898-2026-06-14-731898-v1/table-001.webp\", \"caption\": \"\", \"page\": 0, \"index\": 1, \"width\": 1646, \"height\": 664, \"label\": \"Table\"}, {\"url\": \"assets/tables/biorxiv/biorxiv-10-64898-2026-06-14-731898-v1/table-002.webp\", \"caption\": \"\", \"page\": 0, \"index\": 2, \"width\": 1649, \"height\": 700, \"label\": \"Table\"}, {\"url\": \"assets/tables/biorxiv/biorxiv-10-64898-2026-06-14-731898-v1/table-003.webp\", \"caption\": \"\", \"page\": 0, \"index\": 3, \"width\": 1850, \"height\": 1286, \"label\": \"Table\"}, {\"url\": \"assets/tables/biorxiv/biorxiv-10-64898-2026-06-14-731898-v1/table-004.webp\", \"caption\": \"\", \"page\": 0, \"index\": 4, \"width\": 1715, \"height\": 1216, \"label\": \"Table\"}, {\"url\": \"assets/tables/biorxiv/biorxiv-10-64898-2026-06-14-731898-v1/table-005.webp\", \"caption\": \"\", \"page\": 0, \"index\": 5, \"width\": 1849, \"height\": 786, \"label\": \"Table\"}]"
+motivation: 现有模型难以保留肿瘤微环境相互作用，需开发更贴近临床的体外系统。
+method: 从小鼠和人肺腺癌及小细胞肺癌样本（含尸检）培养微肿瘤，结合多组学分析。
+result: 微肿瘤保留微环境特征，发现EMT增强和脂肪酸合成代谢重编程，ACC1/2抑制有效。
+conclusion: 提供可培养死后样本的平台，用于研究肿瘤进展及可靶向代谢脆弱性。
+---
+
+## 摘要
+肺癌是一种高度异质性疾病，仍然是全球癌症相关死亡的主要原因。虽然小鼠模型和患者来源的类器官增进了我们对肺癌的理解，但肿瘤微环境（TME）中的关键相互作用仍不明确。我们利用小鼠和患者样本（包括手术切除和快速尸检标本）开发了肺腺癌（LUAD）和小细胞肺癌（SCLC）的微肿瘤模型。微肿瘤保留了天然TME的结构、细胞和分子特征，使得能够在离体条件下对肿瘤进展进行机制研究。LUAD微肿瘤的多组学分析揭示了进展相关的变化，包括上皮-间充质转化（EMT）增强和向脂肪酸合成的代谢重编程。通过ACC1/2对脂肪酸合成进行药理学抑制，减少了患者来源的微肿瘤的增殖，从而确定了一个可靶向的脆弱点。该平台为研究肺癌的肿瘤进展、治疗反应和耐药机制（包括培养当前模型中无法获得的尸检标本）提供了一个稳健的系统。
+
+## Abstract
+Lung cancer is a highly heterogeneous disease and remains the leading cause of cancer-related mortality worldwide. While mouse models and patient-derived organoids have advanced our understanding of lung cancer, key interactions within the tumor microenvironment (TME) remain poorly characterized. We developed microtumor models from lung adenocarcinoma (LUAD) and small cell lung cancer (SCLC) using mouse and patient samples, including surgical resections and rapid autopsy specimens. Microtumors preserve structural, cellular, and molecular features of the native TME, enabling mechanistic studies of tumor progression ex vivo. Multi-omics analyses of LUAD microtumors revealed progression-associated changes, including increased epithelial-to-mesenchymal transition (EMT) and metabolic reprogramming toward fatty acid synthesis. Pharmacologic inhibition of fatty acid synthesis through ACC1/2 reduced proliferation in patient-derived microtumors, identifying a targetable vulnerability. This platform provides a robust system for studying tumor progression, therapeutic response, and resistance mechanisms in lung cancer, including culturing postmortem specimens that are not accessible in current models.

@@ -1,0 +1,26 @@
+---
+title: Combination Immunotherapy Enhances Serial Radiofrequency Ablation Induced Systemic Antitumor Immunity in Pancreatic Cancer
+title_zh: 联合免疫治疗增强序贯射频消融诱导的胰腺癌系统性抗肿瘤免疫
+authors: "Strickland, L. N., Demmel, M. V., Liu, W., Waller, A. M., Dash, S., Turabi, K., Sardarni, U. K., Mardik, N. R., Van Kirk, C. J., OBrien, B., Rowe, J., Cen, P., Klute, K. A., Cox, J. L., Zhao, Z., Hingorani, S. R., Wray, C. J., Thosani, N. C., Bailey-Lundberg, J. M."
+date: 2026-07-09
+pdf: "https://www.biorxiv.org/content/10.64898/2026.04.05.713683v2.full.pdf"
+tags: ["query:neo-resist"]
+score: 7.0
+evidence: 联合免疫治疗增强抗肿瘤免疫，单细胞RNA测序揭示耐药机制
+tldr: 胰腺导管腺癌的局部热消融治疗虽能控制肿瘤，但其诱导系统性抗肿瘤免疫的机制和限制因素尚不明确。本研究利用双侧KPC小鼠模型进行连续射频消融，发现其增强局部控制和远隔效应，激活CD8 T和NK细胞，但诱导CSF1R驱动的髓系抵抗程序。联合阻断PD-L1和CD73增强系统免疫，再加CSF1R抑制进一步提高局部和远处肿瘤控制。该研究揭示了CSF1R依赖性髓系抵抗机制，为联合免疫治疗增强消融的系统性疗效提供了理论依据。
+source: biorxiv
+selection_source: fresh_fetch
+figures_json: "[{\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-04-05-713683-v2/fig-001.webp\", \"caption\": \"\", \"page\": 0, \"index\": 1, \"width\": 1999, \"height\": 2576, \"label\": \"Figure\"}, {\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-04-05-713683-v2/fig-002.webp\", \"caption\": \"\", \"page\": 0, \"index\": 2, \"width\": 1989, \"height\": 2598, \"label\": \"Figure\"}, {\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-04-05-713683-v2/fig-003.webp\", \"caption\": \"\", \"page\": 0, \"index\": 3, \"width\": 1991, \"height\": 2645, \"label\": \"Figure\"}, {\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-04-05-713683-v2/fig-004.webp\", \"caption\": \"\", \"page\": 0, \"index\": 4, \"width\": 1954, \"height\": 2836, \"label\": \"Figure\"}, {\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-04-05-713683-v2/fig-005.webp\", \"caption\": \"\", \"page\": 0, \"index\": 5, \"width\": 1996, \"height\": 2351, \"label\": \"Figure\"}, {\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-04-05-713683-v2/fig-006.webp\", \"caption\": \"\", \"page\": 0, \"index\": 6, \"width\": 1995, \"height\": 1476, \"label\": \"Figure\"}]"
+motivation: 探索连续射频消融增强胰腺癌系统性抗肿瘤免疫的机制，并识别限制该免疫应答的关键抵抗通路。
+method: 采用双侧KPC肿瘤模型进行连续RFA，结合单细胞测序分析免疫微环境变化，并评估PD-L1、CD73和CSF1R联合阻断的效果。
+result: 连续RFA激活CD8 T和NK细胞并诱导远隔效应，但CSF1R+髓系细胞积累导致免疫抵抗；联合阻断PD-L1、CD73和CSF1R显著增强局部和远处肿瘤控制。
+conclusion: 该研究鉴定出CSF1R依赖性髓系抵抗程序，为联合免疫治疗优化胰腺癌局部消融的系统性疗效提供了新策略。
+---
+
+## 摘要
+热消融技术越来越多地用于局部控制胰腺导管腺癌（PDAC），但其诱导系统性抗肿瘤免疫的能力以及限制该反应的机制尚不完全清楚。利用双侧LSL-KrasG12D/+; LSL-Trp53R172H/+; Pdx1-Cre（KPC）侧腹肿瘤模型，我们发现序贯射频消融（RFA）增强了局部肿瘤控制并诱导了强烈的远隔效应。该效应与CD8 T细胞和自然杀伤细胞的活化增加相关，并且被CD8 T细胞耗竭所消除。单细胞RNA测序揭示了细胞毒性免疫程序的扩增，同时诱导了CSF1R驱动的髓系反应，与适应性免疫抵抗一致。尽管PD-L1和CD73的联合阻断增强了系统性抗肿瘤反应，但在此基础上加入CSF1R抑制进一步增强了局部和远处肿瘤控制。这些发现确定了一个CSF1R依赖的髓系抵抗程序，该程序限制了消融诱导的系统性免疫，并证明合理的联合免疫治疗可以增强PDAC中肿瘤消融的系统性疗效。转化相关性声明：射频消融是一种局部热疗法，通过诱导肿瘤破坏和肿瘤微环境调节来治疗包括胰腺癌在内的多种实体瘤。序贯热消融诱导CD8+ T细胞和NK细胞的抗肿瘤免疫反应；然而，肿瘤细胞中Nt5e（CD73）增加，CD8+ T细胞中PD-1增加，并且序贯消融增加了消融肿瘤中CSF1R+巨噬细胞簇。联合靶向CD73、PD-L1和CSF1R可缓解CSF1R依赖的治疗抵抗，并增强局部和全身肿瘤控制。本研究确定了局部消融治疗的可靶向抗衡机制，并为将序贯肿瘤消融与系统性免疫调节药物相结合的联合策略提供了理论基础。未来的前瞻性研究应评估消融时间、剂量和顺序对免疫启动的影响，以改善胰腺癌的临床干预措施。
+
+## Abstract
+Thermal ablation is increasingly used for local control of pancreatic ductal adenocarcinoma (PDAC), but its capacity to induce systemic antitumor immunity and the mechanisms limiting this response remain incompletely defined. Using a bilateral LSL-KrasG12D/+; LSL-Trp53R172H/+; Pdx1-Cre (KPC) flank tumor model, we show serial radiofrequency ablation (RFA) enhances local tumor control and induces a robust abscopal response. This effect was associated with increased activation of CD8 T cells and natural killer cells, and was abrogated by CD8 T cell depletion. Single-cell RNA sequencing revealed expansion of cytotoxic immune programs alongside induction of a CSF1R-driven myeloid response consistent with adaptive immune resistance. Although combinatorial blockade of PD-L1 and CD73 augmented systemic antitumor responses, and the addition of CSF1R inhibition in this context further enhanced both local and distant tumor control. These findings identify a CSF1R-dependent myeloid resistance program which constrains ablation-induced systemic immunity and demonstrate that rational combination immunotherapy can potentiate the systemic efficacy of tumor ablation in PDAC.
+
+STATEMENT OF TRANSLATIONAL RELEVANCERadiofrequency ablation is a local thermal therapy that induces tumor destruction and modulation of the tumor microenvironment used for treatment of many solid tumors, including pancreatic cancer. Serial thermal ablations induce a CD8+ T cells and NK cell antitumor immunological response; however, Nt5e (CD73) is increased in tumor cells, PD-1 is increased in CD8+ T cells, and serial ablations increase a CSF1R+ macrophage cluster in ablated tumors. Combinational targeting of CD73, PD-L1, and CSF1R alleviates CSF1R-dependent therapeutic resistance and enhances local and systemic tumor control. This study identifies targetable countervailing mechanisms to local ablation therapy and provides a rationale for combinatorial strategies integrating serial tumor ablation with systemic immunomodulatory agents. Future prospective studies should evaluate the influence of timing, dosage, and sequence of ablation on immune priming to improve clinical interventions in pancreatic cancer.
