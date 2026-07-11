@@ -1,0 +1,37 @@
+---
+title: Spatial immune architecture and tumor lineage programs jointly shape clinical outcomes in advanced pancreatic ductal adenocarcinoma
+title_zh: 空间免疫架构与肿瘤谱系程序共同决定晚期胰腺导管腺癌的临床结局
+authors: "Oo, H. M., Anekpuritanang, T., Angkathunyakul, N., Degirmenci, U., Pongpaibul, A., Punyawatthananukool, S., Korphaisarn, K., Sampattavanich, S."
+date: 2026-07-10
+pdf: "https://www.biorxiv.org/content/10.64898/2026.06.28.734525v2.full.pdf"
+tags: ["query:neo-resist"]
+score: 6.0
+evidence: PDAC的空间蛋白质组和转录组分析揭示与临床结果相关的免疫结构和谱系状态
+tldr: 晚期胰腺导管腺癌存在广泛的分子和微环境异质性，但肿瘤谱系状态与空间免疫微环境的相互作用尚不明确。本研究通过多重空间蛋白质组学和空间转录组学分析晚期PDAC，发现上皮状态（Classical、Hybrid、Basal、Null）具有不同的免疫架构。Hybrid肿瘤包含空间分离的区域，其中Hybrid_Basal区域富集M2巨噬细胞并激活SPP1-CD44信号。研究者开发了基于CD8 T细胞、CD4 T细胞和M2巨噬细胞相对位置的空间免疫评分，该评分与较差生存相关，且整合肿瘤谱系信息后预后区分能力更强（AUC=0.822）。结果表明，肿瘤谱系状态与空间免疫组织是互补维度，空间肿瘤-免疫相互作用是晚期PDAC临床结局的关键决定因素。
+source: biorxiv
+selection_source: fresh_fetch
+figures_json: "[{\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-06-28-734525-v2/fig-001.webp\", \"caption\": \"\", \"page\": 0, \"index\": 1, \"width\": 1873, \"height\": 2392, \"label\": \"Figure\"}, {\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-06-28-734525-v2/fig-002.webp\", \"caption\": \"\", \"page\": 0, \"index\": 2, \"width\": 1798, \"height\": 1482, \"label\": \"Figure\"}, {\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-06-28-734525-v2/fig-003.webp\", \"caption\": \"\", \"page\": 0, \"index\": 3, \"width\": 1820, \"height\": 923, \"label\": \"Figure\"}, {\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-06-28-734525-v2/fig-004.webp\", \"caption\": \"\", \"page\": 0, \"index\": 4, \"width\": 1750, \"height\": 2566, \"label\": \"Figure\"}, {\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-06-28-734525-v2/fig-005.webp\", \"caption\": \"\", \"page\": 0, \"index\": 5, \"width\": 1587, \"height\": 2150, \"label\": \"Figure\"}, {\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-06-28-734525-v2/fig-006.webp\", \"caption\": \"\", \"page\": 0, \"index\": 6, \"width\": 1841, \"height\": 2725, \"label\": \"Figure\"}, {\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-06-28-734525-v2/fig-007.webp\", \"caption\": \"\", \"page\": 0, \"index\": 7, \"width\": 1566, \"height\": 819, \"label\": \"Figure\"}, {\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-06-28-734525-v2/fig-008.webp\", \"caption\": \"\", \"page\": 0, \"index\": 8, \"width\": 1817, \"height\": 949, \"label\": \"Figure\"}, {\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-06-28-734525-v2/fig-009.webp\", \"caption\": \"\", \"page\": 0, \"index\": 9, \"width\": 845, \"height\": 652, \"label\": \"Figure\"}]"
+tables_json: "[{\"url\": \"assets/tables/biorxiv/biorxiv-10-64898-2026-06-28-734525-v2/table-001.webp\", \"caption\": \"\", \"page\": 0, \"index\": 1, \"width\": 1129, \"height\": 1514, \"label\": \"Table\"}, {\"url\": \"assets/tables/biorxiv/biorxiv-10-64898-2026-06-28-734525-v2/table-002.webp\", \"caption\": \"\", \"page\": 0, \"index\": 2, \"width\": 1561, \"height\": 1698, \"label\": \"Table\"}]"
+motivation: 探索晚期PDAC中肿瘤谱系状态与空间免疫微环境的相互作用及其对临床结局的影响。
+method: 对27例晚期PDAC进行多重空间蛋白质组学(t-CyCIF)和空间转录组学分析，定义上皮状态，开发空间免疫评分。
+result: 不同上皮状态呈现不同免疫架构；Hybrid肿瘤内含空间分离区域；空间免疫评分高与较差生存相关，结合GATA6提升AUC至0.822。
+conclusion: 肿瘤谱系状态和空间免疫组织互补，空间肿瘤-免疫相互作用决定晚期PDAC临床结局。
+---
+
+## 摘要
+胰腺导管腺癌（PDAC）表现出广泛的分子和微环境异质性，然而在晚期疾病中，肿瘤谱系状态如何与空间免疫组织相互作用仍知之甚少。在这里，我们对27例晚期PDAC患者使用组织循环免疫荧光（t-CyCIF）进行了多重空间蛋白质组学分析，并将这些分析与代表性肿瘤的空间转录组学分析相结合。根据GATA6和CK5表达，肿瘤被分为经典型、混合型、基底型和空腔型上皮状态，显示出与临床结果相关的不同免疫架构。经典型和混合型肿瘤表现出富含淋巴细胞的免疫炎症微环境，而基底型和空腔型肿瘤则表现出免疫排斥、巨噬细胞主导的景观，其特征是M2型巨噬细胞增加。
+
+空间转录组学分析进一步揭示，混合型肿瘤并非均质的中间状态，而是包含空间分隔的混合型-经典区和混合型-基底区，具有不同的转录程序、免疫生态位和细胞间通信网络。混合型-基底区与M2型巨噬细胞富集增加以及巨噬细胞来源的SPP1-CD44信号优先激活相关，暗示局部免疫-上皮相互作用在上皮可塑性和谱系状态转变中的作用。
+
+为了量化空间免疫组织，我们开发了一个空间免疫评分，该评分捕捉CD8细胞毒性T细胞相对于CD4辅助性T细胞和CD163 M2型巨噬细胞的相对位置。较高的评分与较差的生存率相关，并且比传统的免疫细胞丰度指标提供了更强的预后信息。将空间免疫评分与GATA6表达整合，相比单独使用任一特征，实现了更优的预后区分（AUC = 0.822）。总之，这些发现表明肿瘤谱系状态和空间免疫组织代表了PDAC生物学的互补维度，并强调了空间肿瘤-免疫相互作用作为晚期胰腺癌临床结局的决定因素。
+
+总结：胰腺导管腺癌（PDAC）表现出显著的分子和微环境异质性，然而在晚期疾病中，肿瘤谱系状态如何与空间免疫微环境相互作用仍知之甚少。在这里，作者将多重空间蛋白质组学和空间转录组学应用于晚期PDAC，并显示由GATA6和CK5定义的上皮谱系状态与不同的免疫架构和富含巨噬细胞的信号生态位相关。混合型肿瘤包含空间分隔的上皮状态，具有不同的免疫参与和SPP1-CD44信号传导。作者进一步基于CD8 T细胞、CD4 T细胞和M2型巨噬细胞的相对位置确定了一个空间免疫评分，该评分可预测患者生存。将空间免疫组织与肿瘤谱系信息整合可改善预后分层，突出了空间肿瘤-免疫相互作用在晚期PDAC中的临床相关性。
+
+## Abstract
+Pancreatic ductal adenocarcinoma (PDAC) exhibits extensive molecular and microenvironmental heterogeneity, yet how tumor lineage states interact with spatial immune organization in advanced disease remains poorly understood. Here, we performed multiplexed spatial proteomic profiling using tissue cyclic immunofluorescence (t-CyCIF) in 27 patients with advanced PDAC and integrated these analyses with spatial transcriptomic profiling of representative tumors. Tumors were classified into Classical, Hybrid, Basal, and Null epithelial states based on GATA6 and CK5 expression, revealing distinct immune architectures associated with clinical outcome. Classical and Hybrid tumors displayed immune-inflamed microenvironments enriched for lymphocytes, whereas Basal and Null tumors exhibited immune-excluded, macrophage-dominated landscapes characterized by increased M2 macrophages.
+
+Spatial transcriptomic analysis further revealed that Hybrid tumors were not homogeneous intermediate states but instead contained spatially segregated Hybrid_Classical and Hybrid_Basal regions with distinct transcriptional programs, immune niches, and cell-cell communication networks. Hybrid_Basal regions were associated with increased M2 macrophage enrichment and preferential activation of macrophage-derived SPP1-CD44 signaling, implicating localized immune-epithelial interactions in epithelial plasticity and lineage-state transitions.
+
+To quantify spatial immune organization, we developed a spatial immune score that captures the relative positioning of CD8 cytotoxic T cells with respect to CD4 helper T cells and CD163 M2 macrophages. Higher scores were associated with worse survival and provided stronger prognostic information than conventional immune cell abundance metrics. Integration of the spatial immune score with GATA6 expression achieved superior prognostic discrimination (AUC = 0.822) compared with either feature alone. Together, these findings demonstrate that tumor lineage state and spatial immune organization represent complementary dimensions of PDAC biology and highlight spatial tumor-immune interactions as determinants of clinical outcome in advanced pancreatic cancer.
+
+SummaryPancreatic ductal adenocarcinoma (PDAC) exhibits marked molecular and microenvironmental heterogeneity, yet how tumor lineage states interact with the spatial immune microenvironment in advanced disease remains poorly understood. Here, the authors apply multiplexed spatial proteomics and spatial transcriptomics to advanced PDAC and show that epithelial lineage states defined by GATA6 and CK5 are associated with distinct immune architectures and macrophage-enriched signaling niches. Hybrid tumors contain spatially segregated epithelial states with differential immune engagement and SPP1-CD44 signaling. The authors further identify a spatial immune score based on the relative positioning of CD8 T cells, CD4 T cells, and M2 macrophages that predicts patient survival. Integration of spatial immune organization with tumor lineage information improves prognostic stratification, highlighting the clinical relevance of spatial tumor-immune interactions in advanced PDAC.

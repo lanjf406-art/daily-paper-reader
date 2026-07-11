@@ -1,0 +1,2166 @@
+Title: Viral rewiring of DDR signaling activates a pro-survival network that drives chemotherapy resistance
+
+URL Source: https://www.biorxiv.org/content/10.64898/2026.07.06.736708v1.full.pdf
+
+Number of Pages: 41
+
+Markdown Content:
+Viral rewiring of DDR signaling activates a pro -survival network that drives 1
+
+chemotherapy resistance 2
+
+3
+
+4
+
+5
+
+Michael A. Thomas*‡, Jiang Kong†, Hafiz Muhammad Faraz Azhar‡, Ahlam Akmel‡, Fayuan 6
+
+Wen‡, Jinrui Xu‡, 7
+
+8
+
+†Department of Microbiology, School of Medicine, ‡Department of Biology, College of Arts and 9
+
+Sciences, Howard University, Washington, D.C., USA, 10 
+
+11 
+
+Running Head: Viral reprogramming of the DDR major kinases 12 
+
+13 
+
+*Corresponding Author: Michael A. Thomas, Ph.D. Department of Biology, Howard University, 14 
+
+415 College Street, NW, Room 333, Washington, D.C. 20059. Phone: 202-806-6941; Email: 15 
+
+michael.thomas1@howard.edu. 16 
+
+17 
+
+Total word count from the introduction through the end of the discussion: 2498 words. 18 
+
+> .CC-BY-NC-ND 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 8, 2026. ;https://doi.org/10.64898/2026.07.06.736708 doi: bioRxiv preprint
+
+2
+
+ABSTRACT 19 
+
+20 
+
+Radiation and chemotherapy rely on an intact DNA damage response (DDR) to halt cell -cycle 21 
+
+progression and eliminate damaged cells, yet many tumors evade these outcomes and develop 22 
+
+resistance. Adenoviruses remodel host signaling networks in ways that mirror tumor evolution, 23 
+
+providing a powerful system to dissect how DDR pathways are subverted. Here, we identify two 24 
+
+scenarios in which the central DDR kinases ATM and ATR are reprogrammed from enforcing 25 
+
+CHK1/CHK2 -dependent checkpoint arrest to activating a NEMO-NF -κB survival pathway. This 26 
+
+rewiring induces transcriptional programs associated with stress tolerance, anti -apoptotic 27 
+
+signaling, and chemoresistance, and promotes the accumulation of cells with abnormal DNA 28 
+
+content. These findings reveal a previously unrecognized mode of DDR plasticity that generates 29 
+
+a pro -survival state reminiscent of early tumor evolution and suggest how ATM - and 30 
+
+ATR -dependent pathways can be co -opted to promote therapeutic resistance. 31 
+
+> .CC-BY-NC-ND 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 8, 2026. ;https://doi.org/10.64898/2026.07.06.736708 doi: bioRxiv preprint
+
+3
+
+INTRODUCTION 32 
+
+33 
+
+The DNA damage response (DDR) is initiated when the MRN complex, composed of MRE11, 34 
+
+RAD50, and NBS1, recruits the apical kinases ataxia-telangiectasia mutated (ATM) and ATM-35 
+
+and-Rad3-related (ATR) to sites of DNA lesions, triggering an evolutionarily conserved signaling 36 
+
+network that preserves genome integrity [1-3]. Once activated, ATM and ATR phosphorylate 37 
+
+key transducers, including the checkpoint kinases CHK1 and CHK2, and downstream effectors 38 
+
+such as p53, thereby coordinating cell-cycle arrest, DNA repair, or, when damage is irreparable, 39 
+
+cell death [1-3]. Cytotoxic therapies, including radiation and chemotherapy, exploit this 40 
+
+signaling network to eliminate tumor cells, making intact DDR function essential for therapeutic 41 
+
+efficacy. Yet many tumors evade these outcomes [4], underscoring persistent gaps in our 42 
+
+understanding of how DDR pathways are subverted during therapy resistance. 43 
+
+44 
+
+Adenoviruses (Ads) are widespread human pathogens, whose replication cycle is well 45 
+
+characterized. Although not oncogenic in humans, Ads remodel host signaling networks in ways 46 
+
+that mirror early tumor evolution, making them powerful tools for dissecting how 47 
+
+cancer -relevant pathways are rewired [5, 6]. Ad proteins perturb numerous cellular systems— 48 
+
+including the DDR, NF -κB signaling, and cell -cycle control-that are frequently dysregulated in 49 
+
+cancer [7, 8]. 50 
+
+51 
+
+Here, we use adenovirus infection to uncover two scenarios in which the central DDR kinases 52 
+
+ATM and ATR are reprogrammed from enforcing CHK1/2-dependent checkpoint arrest to 53 
+
+> .CC-BY-NC-ND 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 8, 2026. ;https://doi.org/10.64898/2026.07.06.736708 doi: bioRxiv preprint
+
+4
+
+activating a NEMO-NF -κB survival pathway. This signaling switch promotes the accumulation of 54 
+
+cells with abnormal DNA content and induces transcriptional programs associated with stress 55 
+
+tolerance, anti -apoptotic signaling, and chemoresistance. These findings reveal an 56 
+
+unappreciated plasticity in DDR signaling that generates a pro -survival state reminiscent of 57 
+
+early tumor evolution and suggest how ATM - and ATR -dependent pathways can be co -opted to 58 
+
+promote therapeutic resistance and potentially limit the efficacy of Ad -based vaccines and 59 
+
+oncolytic agents. 60 
+
+RESULTS 61 
+
+62 
+
+E4orf3 rewires ATM-ATR checkpoint signaling to drive abnormal DNA content 63 
+
+64 
+
+Adenovirus infection is widely assumed to inactivate ATM and ATR signaling because the virus 65 
+
+disables upstream DNA damage sensing [9, 10]. The E1B55K-E4orf6 complex targets MRE11 and 66 
+
+RAD50 for proteasomal degradation, while E4orf3 sequesters MRE11 and NBS1 into 67 
+
+higher -order nuclear assemblies [11], collectively disrupting the MRN complex and preventing 68 
+
+canonical DDR activation. Despite this, ATM phosphorylation at Ser1981-a hallmark of ATM 69 
+
+activation [12]-has been consistently observed in Ad -infection [13-15], prompting us to 70 
+
+examine how ATM and ATR behave when their upstream sensors are disabled. 71 
+
+72 
+
+Although HeLa cells harbor chromosomal translocations and other structural abnormalities not 73 
+
+typically present in normal human cells [24], flow -cytometric analysis (Fig. 1A) showed 74 
+
+expected G1, S, and G2/M distributions in mock -infected populations, with only ~1% of cells 75 
+
+> .CC-BY-NC-ND 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 8, 2026. ;https://doi.org/10.64898/2026.07.06.736708 doi: bioRxiv preprint
+
+5
+
+exceeding 4N DNA content (DNA >4N). E4orf3(+) Ad Infection dramatically increased the 76 
+
+fraction of cells with abnormal DNA content, whereas E4orf3(-) Ad induced a pronounced G2/M 77 
+
+arrest (Fig. 1A, B). These contrasting phenotypes suggested that E4orf3 fundamentally alters 78 
+
+genome -content control. 79 
+
+80 
+
+To determine whether ATM and ATR signal through their canonical downstream kinases [1, 2, 81 
+
+16] during infection, we monitored CHK1 and CHK2 phosphorylation in A549 cells (Fig. 1C). Both 82 
+
+kinases were phosphorylated in E4orf3(+) and E4orf3(-) Ad-infections, but only E4orf3(-) cells 83 
+
+maintained downstream CHK1 and CHK2 signaling (Fig. 1C). This disconnect between ATM/ATR 84 
+
+phosphorylation and downstream signaling indicate that checkpoint signaling are rewired in 85 
+
+E4orf3(+) Ad-infections. 86 
+
+87 
+
+Pharmacological inhibition of ATM (KU-60019) or ATR (VE-822) beginning at 4 hpi revealed that 88 
+
+either kinase markedly reduced the fraction of cells with abnormal DNA content (blue bars in 89 
+
+Fig. 1D, 1E). In contrast, ATM inhibition caused E4orf3(-) Ad-infected cells to accumulate 90 
+
+abnormal DNA content (Fig. 1D, red bars), whereas ATR inhibition modestly increased the 91 
+
+proportion of cells with abnormal DNA content (Fig. 1E, red bars). These opposing outcomes 92 
+
+demonstrate that ATM and ATR have distinct, context -dependent functions, shaped by E4orf3. 93 
+
+94 
+
+To further dissect ATR function, we compared VE -822 with Ceralasertib (AZD6738) [1, 17, 18]. 95 
+
+Unlike VE -822, Ceralasertib reduced abnormal DNA content in E4orf3(-) Ad infections (Fig. 1F), 96 
+
+consistent with reports that these ATR inhibitors exhibit divergent biological activities [19]. As 97 
+
+> .CC-BY-NC-ND 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 8, 2026. ;https://doi.org/10.64898/2026.07.06.736708 doi: bioRxiv preprint
+
+6
+
+an orthogonal approach, caffeine -an inhibitor of both ATM and ATR [31]- reduced abnormal 98 
+
+DNA content in E4orf3(+) Ad infections (Fig. 1G) but increased it in E4orf3(-) Ad infections (Fig. 99 
+
+1G). 100 
+
+101 
+
+Thus, E4orf3 rewires ATM-ATR signaling, enabling these kinases to promote abnormal DNA 102 
+
+content rather than enforcing canonical checkpoint arrest. 103 
+
+104 
+
+ATM and ATR impose distinct cell -cycle checkpoints governing abnormal DNA content 105 
+
+106 
+
+Because ATM and ATR inhibition produced opposing outcomes depending on E4orf3 status, we 107 
+
+next examined how each kinase shapes cell -cycle progression, the process most directly linked 108 
+
+to DNA content. In E4orf3(+) infections, inhibition of either kinase prevented further 109 
+
+accumulation of abnormal DNA content (Fig. 1D-G). ATM inhibition caused a pronounced G2/M 110 
+
+accumulation (Fig. 2B, 2C), whereas ATR inhibition blocked progression from G1 to S phase 111 
+
+progression (Fig. 2D). These results indicate that ATM and ATR regulate abnormal DNA content 112 
+
+through distinct, phase -specific checkpoint functions. 113 
+
+114 
+
+E4orf3(-) infections displayed a bimodal G1 and G2/M distribution (Fig. 1A, 2E). ATM inhibition 115 
+
+caused these cells to accumulate a broad range of abnormal DNA content (Fig. 2F), whereas 116 
+
+ATR inhibition reduced abnormal DNA content by preventing G1 -to -S progression (Fig. 2G). 117 
+
+These findings reveal a clear division of labor: ATR safeguards S -phase entry, whereas ATM 118 
+
+> .CC-BY-NC-ND 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 8, 2026. ;https://doi.org/10.64898/2026.07.06.736708 doi: bioRxiv preprint
+
+7
+
+enforces the G2/M checkpoint. Disrupting ATM -dependent signaling removes a critical barrier 119 
+
+to genome replication, enabling cells to accumulate abnormal DNA content. 120 
+
+121 
+
+Thus, ATM and ATR regulate abnormal DNA content by enforcing distinct, phase-specific 122 
+
+checkpoints. 123 
+
+124 
+
+Phosphorylated NEMO links ATM to NF-κB signaling during Ad-infection 125 
+
+126 
+
+The observation that ATM is phosphorylated in line with its activation yet fails to signal to CHK2 127 
+
+in E4orf3(+) infections (Fig. 1C) suggests that ATM may redirect its signaling to alternative 128 
+
+substrates. Prior work showed that ATM phosphorylation correlates with active NF -κB, which is 129 
+
+required for abnormal DNA content in E4orf3(+) Ad-infected cells [13]. Because NF -κB 130 
+
+activation depends on the IKK complex and its regulatory subunit NEMO, and ATM is known to 131 
+
+phosphorylate NEMO [20], we tested whether NEMO mediates NF -κB activation during Ad 132 
+
+infection (Fig. 3A) 133 
+
+134 
+
+Western blotting showed that phospho-p50 (serine 337) increased steadily in E4orf3(+) Ad 135 
+
+infections (Fig. 3B), mirroring the rise in phospho -NEMO and the abnormal DNA content 136 
+
+observed in Figs. 1 and 2. In contrast, E4orf3(–) infections showed reduced phospho -NEMO and 137 
+
+no increase in phospho -p50 (Fig. 3B). Confocal microscopy confirmed that phospho -NEMO 138 
+
+localized predominantly in the nuclei of E4orf3(+) cells but was nearly undetectable in E4orf3(-) 139 
+
+and mock-infected control cells (Fig. 3C). 140 
+
+> .CC-BY-NC-ND 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 8, 2026. ;https://doi.org/10.64898/2026.07.06.736708 doi: bioRxiv preprint
+
+8
+
+141 
+
+NF -κB inhibition (Caffeic Acid Phenethyl Ester (CAPE) [21] or Sulfasalazine (SC) [22] reduced 142 
+
+abnormal DNA content (Fig. 3D) and lowered phospho-p50 levels (Fig. 3E), whereas phospho -143 
+
+NEMO and phospho -ATM levels remained unchanged, indicating that ATM and NEMO act 144 
+
+upstream of NF -κB. 145 
+
+146 
+
+These findings identify NEMO phosphorylation as a key event linking ATM activation to NF -κB 147 
+
+signaling in E4orf3(+) Ad-infected cells and demonstrate that this pathway promotes abnormal 148 
+
+DNA content. 149 
+
+150 
+
+NEMO phosphorylation is required for abnormal DNA content and redirects ATM away from 151 
+
+MRN 152 
+
+153 
+
+To test whether NEMO is required for abnormal DNA content (Fig. 4A), we depleted NEMO 154 
+
+using siRNAs and confirmed efficient knockdown by immunoblotting (Fig. 4B). NEMO depletion 155 
+
+significantly reduced abnormal DNA content in both E4orf3(+) and E4orf3(-) infections (Fig. 4C), 156 
+
+demonstrating that NEMO is essential for this phenotype. 157 
+
+158 
+
+Immunofluorescence revealed that phospho-ATM colocalized with phospho-NEMO in E4orf3(+) 159 
+
+cells (Fig. 4D, row 2), whereas in E4orf3(-) cells, phospho-ATM did not colocalize with phospho-160 
+
+NEMO (Fig. 4D, row 3). Co-immunoprecipitation further showed that ATM preferentially 161 
+
+> .CC-BY-NC-ND 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 8, 2026. ;https://doi.org/10.64898/2026.07.06.736708 doi: bioRxiv preprint
+
+9
+
+associated with NEMO in E4orf3(+) infections, while in E4orf3(-) infections, it associated with 162 
+
+NBS1 (Fig. 4E), a component of the MRN complex [23, 24]. 163 
+
+164 
+
+Thus, E4orf3 redirects ATM away from its canonical MRN -dependent functions and toward 165 
+
+NEMO, whose phosphorylation is required for NF -κB activation and for abnormal DNA content. 166 
+
+167 
+
+Disrupting ATM-dependent DDR signaling is sufficient to activate NF-κB and drive abnormal 168 
+
+DNA content. 169 
+
+170 
+
+Because E4orf3 disrupts the MRN -dependent DDR signaling and redirects ATM toward NEMO, 171 
+
+we asked whether blocking ATM’s ability to transmit canonical DDR signals is itself sufficient to 172 
+
+activate the NEMO-NF -κB pathway (Fig. 5A). As expected, E4orf3(+) Ad infections showed 173 
+
+robust phosphorylation of NF-κB p50 (Fig. 5B). Strikingly, ATM inhibition alone induced 174 
+
+phosphorylation of NEMO and NF-κB p50 in E4orf3(-) Ad-infected cells, in sharp contrast to 175 
+
+untreated E4orf3(-) infections (Fig. 5B). ATMi inhibition also increased Ad DBP levels, consistent 176 
+
+with ATM’s role in restricting proteins required for viral replication [25]. 177 
+
+178 
+
+Immunofluorescence analysis showed that phosphorylated NEMO colocalized with 179 
+
+phosphorylated ATM in ATMi-treated E4orf3(-) Ad-infected cells (Fig. 5C, row 4), mirroring the 180 
+
+pattern observed in E4orf3(+) Ad-infections (Fig. 5C, row 2). NF-κB inhibition (CAPE or SC) 181 
+
+reduced phosphorylation of NF -κB p50, NEMO, and ATM (Fig. 5D) and reversed the ATMi-182 
+
+induced increase in abnormal DNA content (Fig. 5E). 183 
+
+> .CC-BY-NC-ND 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 8, 2026. ;https://doi.org/10.64898/2026.07.06.736708 doi: bioRxiv preprint
+
+10 
+
+184 
+
+Thus, disabling ATM-dependent DDR signaling is sufficient to activate NEMO-NF -κB and drive 185 
+
+abnormal DNA content. 186 
+
+187 
+
+Disrupting CHK2-dependent DDR signaling is sufficient to activate NF-κB and drive abnormal 188 
+
+DNA content 189 
+
+190 
+
+CHK2 is a central effector of MRN- and ATM-dependent DDR signaling [26]. We therefore asked 191 
+
+whether disabling CHK2 would mimic ATM inhibition and redirect ATM activity toward NEMO-192 
+
+NF -κB signaling (Fig. 6A). 193 
+
+194 
+
+In untreated E4orf3(-) Ad-infections, phosphor-ATM colocalized with NBS1 (Fig. 6B, row 1), 195 
+
+consistent with intact MRN -dependent DDR signaling. Strikingly, CHK2 inhibition disrupted 196 
+
+ATM-NBS1 colocalization (Fig. 6B, row 2) and instead caused phosphor-ATM to colocalize with 197 
+
+phospho -NEMO (Fig. 6C, row 2), indicating that CHK2 is required to maintain ATM’s canonical 198 
+
+pathway fidelity. 199 
+
+200 
+
+CHK1 inhibition did not alter abnormal DNA content (Fig. 6D), indicating that CHK1 is not 201 
+
+required for this phenotype. 202 
+
+203 
+
+CHK2 inhibition produced opposite outcomes depending on E4orf3 status. In E4orf3(+) 204 
+
+infections, CHK2 inhibition reduced abnormal DNA content (Fig. 6E, blue bars), similar to ATM 205 
+
+> .CC-BY-NC-ND 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 8, 2026. ;https://doi.org/10.64898/2026.07.06.736708 doi: bioRxiv preprint
+
+11 
+
+inhibition. In contrast, CHK2 inhibition markedly increased abnormal DNA content in E4orf3(-) 206 
+
+Ad-infected cells (Fig. 6E, red bars). NF -κB inhibition reduced abnormal DNA content in 207 
+
+CHK2i -treated E4orf3(-) Ad-infected cells (Fig. 6F, red bars), demonstrating that NF -κB activity is 208 
+
+essential for CHK2i -treated cells to accumulate abnormal DNA content. 209 
+
+Thus, CHK2 is a critical determinant of ATM pathway fidelity, and its inhibition is sufficient to 210 
+
+redirect ATM toward NEMO-NF -κB signaling and promote abnormal DNA content. 211 
+
+212 
+
+Switching from CHK1/2, to the NEMO-NF-κB pathway induces survival and 213 
+
+chemoresistance -associated gene expression 214 
+
+215 
+
+Cells with abnormal DNA content are known to show enhanced viability under stress [27]. 216 
+
+Because redirecting ATM/ATR signaling toward NEMO-NF-κB drives abnormal DNA content, we 217 
+
+next asked whether this signaling shift also reprograms the transcriptional outputs associated 218 
+
+with stress adaptation and chemoresistance. 219 
+
+220 
+
+RNA sequencing of A549 cells infected with E4orf3(+) or E4orf3(-) Ad and treated with an ATM 221 
+
+inhibitor revealed that myeloblastosis proto-oncogene-like 2 (MYBL2) was among the most 222 
+
+significantly upregulated genes in both conditions (fold changes = 2.623 and 2.587, respectively; 223 
+
+Fig. 7A). MYBL2 is a transcription factor essential for cell cycle progression and survival, and its 224 
+
+dysregulation is linked to abnormal DNA content, genomic instability, and poor cancer 225 
+
+outcomes [28]. MYBL2 is activated by Cyclin A/E-CDK2 [28], and we previously demonstrated 226 
+
+that CDK2 is activated in Ad-infected cells [8]. 227 
+
+> .CC-BY-NC-ND 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 8, 2026. ;https://doi.org/10.64898/2026.07.06.736708 doi: bioRxiv preprint
+
+12 
+
+228 
+
+MYBL2 promotes survival through multiple mechanisms, including activation of the PI3K/Akt 229 
+
+signaling pathway and induction of Bcl-2 [29]. Consistent with this, Bcl -2 RNA levels increased 230 
+
+significantly in E4orf3(+) Ad-infections (fold change of 1.58) and even more strongly in 231 
+
+ATMi -treated E4orf3(-) infections (fold change of 2.52) (Fig. 7B). Immunoblotting and flow 232 
+
+cytometry confirmed that Bcl-2 protein levels were highest in E4orf3(+) and ATMi-treated 233 
+
+E4orf3(-) Ad-infected cells (Fig. 7C, D). 234 
+
+235 
+
+Thus, redirecting ATM/ATR signaling from CHK1/CHK2 to the NEMO-NF -κB pathway induces 236 
+
+transcriptional and protein -level changes characteristic of stress -tolerant, chemoresistant cells, 237 
+
+including upregulation of MYBL2, activation of CDK2, and increased Bcl -2 expression. 238 
+
+239 
+
+DISCUSSION 240 
+
+241 
+
+Adenovirus infection has long been understood to disable canonical DNA -damage response 242 
+
+(DDR) signaling by dismantling the MRN complex [11], thereby preventing activation of ATM 243 
+
+and ATR [9, 10]. Yet our findings reveal that ATM and ATR are not merely passive bystanders in 244 
+
+this context. Instead, Ad, through E4orf3, repurposes these kinases, redirecting their signaling 245 
+
+away from the CHK1/CHK2 checkpoint axis and toward the NEMO-NF -κB pathway. This rewiring 246 
+
+induces transcriptional programs associated with survival and chemoresistance, revealing a 247 
+
+previously unrecognized plasticity in DDR signaling. 248 
+
+249 
+
+> .CC-BY-NC-ND 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 8, 2026. ;https://doi.org/10.64898/2026.07.06.736708 doi: bioRxiv preprint
+
+13 
+
+A central finding of this study is that ATM activation persists despite MRN disruption, but its 250 
+
+downstream signaling is selectively suppressed in E4orf3(+) infections. Although ATM and ATR 251 
+
+are phosphorylated, their canonical targets, CHK1 and CHK2, are not maintained, revealing a 252 
+
+disconnect between kinase activation and checkpoint enforcement. This uncoupling explains 253 
+
+the striking divergence in cell -cycle phenotypes: E4orf3(-) infections retain a robust G2/M 254 
+
+arrest, whereas E4orf3(+) infections progress to abnormal DNA content. 255 
+
+256 
+
+Our data show that E4orf3 is sufficient to reprogram ATM/ATR signaling, redirecting these 257 
+
+kinases toward NEMO. This is evident in the colocalization of phosphorylated ATM with 258 
+
+phosphorylated NEMO, the loss of ATM-NBS1 interactions, and the preferential formation of 259 
+
+ATM-NEMO complexes during E4orf3(+) infections. In E4orf3(-) Ad-infected cells, blocking ATM 260 
+
+or CHK2 mimics the effect of E4orf3, demonstrating that the key requirement for pathway 261 
+
+switching is not the viral protein itself but the interruption of canonical DDR signaling. 262 
+
+263 
+
+This shift toward NEMO-NF -κB signaling has profound consequences. NF -κB activation is 264 
+
+essential for the accumulation of abnormal DNA content, and its inhibition reverses the effects 265 
+
+of ATM or CHK2 blockade. These findings position NF -κB as the critical effector of the rewired 266 
+
+DDR, transforming what would normally be a checkpoint -enforcing response into a 267 
+
+pro -survival, genome -destabilizing program. 268 
+
+269 
+
+RNA -seq analysis revealed strong induction of MYBL2, a transcription factor strongly linked to 270 
+
+abnormal DNA content, genomic instability, and poor cancer outcomes [28]. MYBL2 activation, 271 
+
+> .CC-BY-NC-ND 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 8, 2026. ;https://doi.org/10.64898/2026.07.06.736708 doi: bioRxiv preprint
+
+14 
+
+together with persistent CDK2 activity, creates a permissive environment for genome over -272 
+
+replication. Moreover, induction of Bcl -2 at both the RNA and protein levels highlights a shift 273 
+
+toward anti -apoptotic signaling. These changes mirror transcriptional programs observed in 274 
+
+chemoresistant tumors [30, 31], suggesting that Ad-driven DDR rewiring co-opts pathways 275 
+
+typically associated with malignant progression. 276 
+
+277 
+
+Together, these findings support a model in which Ad infection repurposes ATM and ATR from 278 
+
+genome guardians into facilitators of viral replication and host -cell survival. By disabling 279 
+
+MRN -dependent checkpoint signaling and redirecting ATM/ATR activity toward NEMO-NF -κB, 280 
+
+the virus creates a cellular state characterized by abnormal DNA content, enhanced survival, 281 
+
+and resistance to stress. This model unifies previously disparate observations-persistent ATM 282 
+
+phosphorylation, NF -κB activation, abnormal DNA content, and enhanced viability of infected 283 
+
+cells-into a coherent framework for DDR pathway switching. 284 
+
+285 
+
+These insights have important implications for Ad -based therapeutics. E4orf3 -containing Ads 286 
+
+are being evaluated as oncolytic agents ([32, 33], ClinicalTrials.gov), yet E4orf3 -mediated 287 
+
+activation of survival pathways may limit their potency. They are also being evaluated for 288 
+
+vaccine delivery [34-36]. E4orf3 -dependent reprogramming of NF -κB signaling may attenuate 289 
+
+NF -κB -driven inflammatory responses that are critical to vaccine efficacy. These considerations 290 
+
+underscore the need to account for E4orf3’s signaling effects when designing next -generation 291 
+
+Ad vectors. 292 
+
+293 
+
+> .CC-BY-NC-ND 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 8, 2026. ;https://doi.org/10.64898/2026.07.06.736708 doi: bioRxiv preprint
+
+15 
+
+More broadly, our results reveal a previously unappreciated plasticity in DDR signaling. They 294 
+
+demonstrate that ATM and ATR can be reprogrammed not only by viral proteins but also by 295 
+
+perturbations to their downstream effectors, such as CHK2. This raises the possibility that 296 
+
+similar rewiring events occur in cancer, where DDR components are frequently mutated or 297 
+
+suppressed. The parallels between Ad -infected cells and chemoresistant tumor cells—MYBL2 298 
+
+upregulation, CDK2 activation, Bcl -2 induction, and NF -κB dependence—suggest that viruses 299 
+
+exploit vulnerabilities that cancer cells also leverage for survival. Understanding this shared 300 
+
+logic may illuminate new strategies to counteract therapeutic resistance. 301 
+
+302 
+
+RESOURCE AVAILABILITY 303 
+
+304 
+
+Lead Contact 305 
+
+306 
+
+Further information and requests for resources should be directed to 307 
+
+michael.thomas1@howard.edu 308 
+
+309 
+
+Materials Availability 310 
+
+311 
+
+This study did not generate new unique reagents. 312 
+
+Materials/Data generated in this study will be shared by the lead contact upon request. 313 
+
+314 
+
+Data and Code Availability 315 
+
+> .CC-BY-NC-ND 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 8, 2026. ;https://doi.org/10.64898/2026.07.06.736708 doi: bioRxiv preprint
+
+16 
+
+316 
+
+RNA -seq data will be deposited in a public repository upon acceptance. 317 
+
+No custom code was generated for this study. 318 
+
+Microscopy data reported in this paper will be shared by the lead contact upon request. 319 
+
+Any additional information required to reanalyze the data reported in this paper is available 320 
+
+from the lead contact upon request. 321 
+
+322 
+
+ACKNOWLEDGMENTS 323 
+
+324 
+
+We thank Dr. David Ornelles (Wake Forest University) for providing the dl 1520 and dl 3112 325 
+
+adenoviruses and DBP hybridoma cells. We are grateful to Dr. Marjorie Robert -Guroff for the 326 
+
+insightful review of the manuscript. We also thank Dr. Sergei Nekhai (Howard University) for 327 
+
+access to the BD FACSVerse, supported by NIH grants 1P50HL118006 and U54MD007597, and 328 
+
+Dr. Anna Allen (Howard University) for access to the spinning -disk confocal microscope, funded 329 
+
+by a Department of Defense HBCU/MI Equipment/Instrumentation Grant (64684 -RT -REP). 330 
+
+331 
+
+AUTHOR CONTRIBUTIONS 332 
+
+333 
+
+Role Authors 
+
+Conceptualization M. Thomas 
+
+Formal Analysis J. Kong, H. Azhar, M. Thomas 
+
+Investigation A. Akmel, J. Kong 
+
+Resources M. Thomas 
+
+Writing – Original Draft J. Kong, H. Azhar, A. Akmel, J. Xu, M. Thomas 
+
+Writing – Review & Editing J. Kong, H. Azhar, A. Akmel, J. Xu, F. Wen, M. Thomas 
+
+Visualization J. Kong, A. Akmel, M. Thomas 
+
+Supervision M. Thomas 
+
+> .CC-BY-NC-ND 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 8, 2026. ;https://doi.org/10.64898/2026.07.06.736708 doi: bioRxiv preprint
+
+17 
+
+Project Administration M. Thomas 
+
+Funding Acquisition M. Thomas 
+
+334 
+
+DECLARATION OF INTERESTS 335 
+
+336 
+
+The authors declare no competing interests. 337 
+
+338 
+
+METHODS 339 
+
+340 
+
+Key resources table 341 
+
+342 
+
+REAGENT or RESOURCE SOURCE IDENTIFIER 
+
+HeLa cells ATCC CCL -2
+
+A549 cells ATCC CCL -185 
+
+dl 1520 ( E4orf3 +) adenovirus D. Ornelles, Wake Forest Univ. N/A 
+
+dl 3112 ( E4orf3 –) adenovirus D. Ornelles, Wake Forest Univ. N/A 
+
+KU -60019 (ATM inhibitor) Selleckchem S1570 
+
+VE -822 (ATR inhibitor) Selleckchem 7102 
+
+Ceralasertib (ATR inhibitor) Selleckchem S7693 
+
+CAPE (NF -κB inhibitor) Selleckchem S7414 
+
+SC75741 (NF -κB inhibitor) Selleckchem S7273 
+
+Doxorubicin Selleckchem S1208 
+
+Caffeine Sigma -Aldrich C0750 -100G 
+
+CHK1 inhibitor Millipore Sigma SML2855 
+
+CHK2 inhibitor Millipore Sigma C3742 
+
+NEMO siRNA Santa Cruz Biotechnology sc -29363 
+
+Lipofectamine 2000 Thermo Fisher 11668019 
+
+Opti -MEM Thermo Fisher 31985070 
+
+Qiagen Blood DNA Mini Kit Qiagen 69504 
+
+DreamTaq Green Master Mix Thermo Fisher K1081 
+
+FxCycle PI/RNase Stain Invitrogen F10797 
+
+4% Paraformaldehyde EMS 15710 
+
+> .CC-BY-NC-ND 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 8, 2026. ;https://doi.org/10.64898/2026.07.06.736708 doi: bioRxiv preprint
+
+18 
+
+Triton X -100 Sigma -Aldrich X100 
+
+Fluorescence Mount G Invitrogen 00 -4959 -52 
+
+Dynabeads Protein A Thermo Fisher 10001D 
+
+Dynabeads Protein G Thermo Fisher 10003D 
+
+NuPAGE LDS Sample Buffer Thermo Fisher NP0007 
+
+Restore Stripping Buffer Thermo Fisher 21059 
+
+Primary antibodies See Antibodies section Various 
+
+Secondary antibodies (HRP) Invitrogen; Cell Signaling 626820; 7074S 
+
+BD FACSVerse BD Biosciences N/A 
+
+Nikon Ti -E PFS spinning -disk confocal Nikon N/A 
+
+LI -COR Odyssey Fc LI -COR N/A 
+
+FlowJo software BD Biosciences N/A 
+
+Prism software GraphPad N/A 
+
+DESeq2 Bioconductor N/A 
+
+343 
+
+EXPERIMENTAL MODEL 344 
+
+345 
+
+Cell lines 346 
+
+347 
+
+HeLa (ATCC® CCL-2™) and A549 (ATCC® CCL-185) cells were maintained in Dulbecco's Modified 348 
+
+Eagle’s Medium supplemented with 10% fetal bovine serum (FBS), 100 units/ml penicillin, and 349 
+
+100 mg/ml streptomycin at 37°C in a humidified atmosphere with 5% CO 2 . Cells were passaged 350 
+
+two or three times weekly at approximately 1:10 dilution. 351 
+
+352 
+
+Ethics Statement 353 
+
+354 
+
+All experiments were approved by the Howard University Institutional Biosafety Committee 355 
+
+(Approval # IBC-2023-0022, IBC-2024-0067). 356 
+
+> .CC-BY-NC-ND 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 8, 2026. ;https://doi.org/10.64898/2026.07.06.736708 doi: bioRxiv preprint
+
+19 
+
+357 
+
+METHOD DETAILS 358 
+
+359 
+
+Viruses 360 
+
+361 
+
+The early region 1B 55K (E1B55K)-deleted adenovirus dl1520, also known as Onyx-015, 362 
+
+Lontucirev, and CI-1042 [44], and the E1B55K- and early region 4 (E4) open reading frame 3 363 
+
+(E4orf3)-deleted Ad5 dl3112 [45] have been previously described. In Table 1 and throughout 364 
+
+the manuscript, these viruses are designated E4orf3(+) and E4orf3(−), respectively, to highlight 365 
+
+their major differences. All viral stocks were purified, and titers were determined by plaque 366 
+
+assay. 367 
+
+368 
+
+Sample DescripFon Abnormal DNA Content 
+
+Mock Cells with no virus No 
+
+E4orf3(+) E1B55K-deleted , (dl1520, Onyx-015, Lontucirev, CI-1042 ) Yes 
+
+E4orf3(-) E1B55K , E4orf3-deleted (dl3112 ) No 
+
+E4orf3(-) + ATMi dl3112 + ATM inhibitor Yes 
+
+Table 1: List of viruses 369 
+
+370 
+
+Infection 371 
+
+372 
+
+Cells were seeded 24 h before infection at 5 × 10⁵ cells/well (6 -well) or 2.5 × 10⁵ cells/well 373 
+
+(12 -well). Infections were performed at an MOI of 30 PFU/cell. The virus was adsorbed for 1 h 374 
+
+> .CC-BY-NC-ND 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 8, 2026. ;https://doi.org/10.64898/2026.07.06.736708 doi: bioRxiv preprint
+
+20 
+
+at 37 °C with gentle rocking, after which the inoculum was replaced with complete medium. 375 
+
+Cells were incubated for 24-48 h post -infection (hpi) depending on the experiment. 376 
+
+377 
+
+Pharmacological Inhibitors 378 
+
+379 
+
+Inhibitors used included: KU -60019 (ATM; Selleck S1570), VE -822 (ATR; Selleck 7102), 380 
+
+ceralasertib (ATR; Selleck S7693), CAPE (NF -κB DNA -binding; Selleck S7414), SC75741 (NF -κB 381 
+
+nuclear translocation; Selleck S7273), doxorubicin (Selleck S1208), caffeine (Sigma 382 
+
+C0750 -100G), CHK1 inhibitor (Sigma SML2855), and CHK2 inhibitor (Sigma C3742). Inhibitors 383 
+
+were added at indicated time points to interrogate ATM/ATR pathway switching. 384 
+
+385 
+
+Silencing RNA (siRNA) 386 
+
+387 
+
+Cells were seeded at 2 × 10⁵ cells/well (12 -well) in antibiotic -free medium 24 h before 388 
+
+transfection. NEMO -targeting siRNA (Santa Cruz sc -29363) was transfected using Lipofectamine 389 
+
+2000 (Thermo Fisher 11668019) in Opti -MEM (Thermo Fisher 31985070) for 4 h, after which 390 
+
+medium was replaced with complete antibiotic -free medium. Cells were mock -infected or 391 
+
+Ad -infected the following day and harvested at 48 hpi for flow cytometry or immunoblotting to 392 
+
+assess NEMO -dependent NF -κB signaling. 393 
+
+394 
+
+DNA extraction and PCR 395 
+
+396 
+
+> .CC-BY-NC-ND 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 8, 2026. ;https://doi.org/10.64898/2026.07.06.736708 doi: bioRxiv preprint
+
+21 
+
+Genomic DNA was isolated using the Qiagen Blood DNA Mini Kit. DNA was amplified using 397 
+
+DreamTaq Green Master Mix with adenovirus fiber primers in a 25 μL reaction. Each run 398 
+
+included a mock -DNA negative control and a mock -DNA sample spiked with Ad DNA as a 399 
+
+positive control. Products were resolved on 1% agarose, stained, and imaged on a LI -COR 400 
+
+system. 401 
+
+402 
+
+Flow Cytometry 403 
+
+404 
+
+Cell -cycle analysis 405 
+
+406 
+
+Cells were seeded at 2 × 10⁵ cells/well (12 -well), infected as described, and harvested at the 407 
+
+indicated time points. Cells were fixed overnight in 70% ethanol at -20 °C, washed, and stained 408 
+
+with FxCycle PI/RNase solution for 30 min. DNA content (10,000 events per sample) was 409 
+
+measured on a BD FACSVerse and analyzed with FlowJo. 410 
+
+411 
+
+Intracellular staining 412 
+
+413 
+
+Cells were infected as above, collected at defined time points, fixed in PFA, permeabilized, and 414 
+
+stained with fluorescent IgG or anti -Bcl -2 antibodies to quantify intracellular protein levels. 415 
+
+416 
+
+Immunoblotting 417 
+
+418 
+
+> .CC-BY-NC-ND 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 8, 2026. ;https://doi.org/10.64898/2026.07.06.736708 doi: bioRxiv preprint
+
+22 
+
+Cells were lysed in 1× SDS sample buffer containing protease/phosphatase inhibitors and 5% 419 
+
+β-mercaptoethanol. Equal protein amounts were resolved on 4-20% Tris -Glycine gels and 420 
+
+transferred to nitrocellulose, blocked in PBS/0.02% Tween -20 with 20% milk, and incubated 421 
+
+with primary antibodies overnight at 4 °C. After washing, membranes were incubated with 422 
+
+HRP -conjugated secondary antibodies and developed using a 1:1 luminol/enhancer substrate. 423 
+
+Images were acquired on a LI -COR Odyssey Fc. Blots were stripped and reprobed as needed. Ad 424 
+
+DBP served as an infection control; β -tubulin or vinculin served as a loading control. 425 
+
+426 
+
+Antibodies 427 
+
+428 
+
+Primary antibodies: ATM (Millipore Sigma A1106, 1:1000), phospho -ATM Ser1981 (Invitrogen 429 
+
+MAB -3806, 1:1000), phospho -ATR Ser1989 (Invitrogen MA5 -3626, 1:1000), Bcl -2 (Cell Signaling 430 
+
+15071S, 1:1000), β -tubulin (Invitrogen PA1 -16947, 1:5000), phospho -CHK1 Ser345 (Cell 431 
+
+Signaling 13303, 1:1000), phospho -CHK2 Thr68 (Invitrogen PA5 -17818, 1:1000), phospho -H2AX 432 
+
+Ser139 (BioLegend 613402, 1:1000), NBS1 (BD 611870, 1:1000), NEMO (ProSci 2335, 1:1000), 433 
+
+phospho -NEMO Ser85 (LSBio LS -C353075, 1:1000), phospho -p50 Ser337 (Santa Cruz 434 
+
+SC -271908, 1:1000), and vinculin (Santa Cruz SC -25336, 1:1000). HRP -conjugated secondary 435 
+
+antibodies: goat anti -mouse (Invitrogen 626820, 1:5000) and goat anti -rabbit (Cell Signaling 436 
+
+7074S, 1:5000). 437 
+
+438 
+
+Immunofluorescence 439 
+
+440 
+
+> .CC-BY-NC-ND 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 8, 2026. ;https://doi.org/10.64898/2026.07.06.736708 doi: bioRxiv preprint
+
+23 
+
+Cells were seeded at 2.5 × 10⁵ cells/well, infected, fixed in 4% PFA, permeabilized with 0.2% 441 
+
+Triton X -100, blocked in 10% BSA, and incubated with primary antibodies for 1 h. Alexa Fluor 442 
+
+488 - or 561 -conjugated secondary antibodies (1:2000) were incubated for 1 h. Samples were 443 
+
+mounted with Fluorescence Mount G and imaged on a Nikon Ti -E PFS spinning -disk confocal 444 
+
+using a 100× 1.4 NA objective and an Andor iXon 897 EMCCD camera. Images were processed in 445 
+
+NIS -Elements software. 446 
+
+447 
+
+Immunoprecipitation 448 
+
+449 
+
+Cells were mock -infected or Ad -infected in 6 -well plates and harvested at 48 hpi. Lysates were 450 
+
+prepared in lysis buffer, clarified, and incubated overnight at 4 °C with Dynabeads Protein A/G 451 
+
+pre -bound to 5 μg primary antibody. Beads were washed, and bound proteins were eluted in 452 
+
+NuPAGE LDS sample buffer with reducing agent at 70 °C for 10 min and analyzed by 453 
+
+immunoblotting. 454 
+
+455 
+
+RNA Sequencing 456 
+
+457 
+
+A549 cells were infected in triplicate at an MOI of 30, collected, snap -frozen, and submitted to 458 
+
+Azenta Life Sciences for RNA extraction and sequencing. Read counts were normalized for 459 
+
+sequencing depth. Sample similarity was assessed using Euclidean distance. Differential 460 
+
+expression was analyzed using DESeq2 with Wald test-derived p -values. Genes with adjusted 461 
+
+> .CC-BY-NC-ND 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 8, 2026. ;https://doi.org/10.64898/2026.07.06.736708 doi: bioRxiv preprint
+
+24 
+
+p < 0.05 and |log₂FC| > 1 were considered differentially expressed, enabling identification of 462 
+
+survival and chemoresistance programs. 463 
+
+464 
+
+QUANTIFICATION AND STATISTICAL ANALYSIS 465 
+
+466 
+
+Data are presented as mean ± SEM. Statistical analyses were performed in Prism. Two -way 467 
+
+ANOVA with Tukey’s post -hoc test was used for comparisons involving multiple groups. 468 
+
+Significance was defined as p < 0.05. 469 
+
+470 
+
+SUPPLEMENTAL INFORMATION 471 
+
+472 
+
+Figure S1: Ad DNA levels are equivalent in E4orf3(+) and E4orf3(-) infections early after entry .473 
+
+REFERENCES 474 
+
+1 Kciuk, M. , et al. (2026) Targeting ATR-CHK1 and ATM-CHK2 Axes in Pancreatic Cancer-A 475 Comprehensive Review of Literature. Int J Mol Sci 27 476 2 Fernandez, A. , et al. (2025) Cancer Vulnerabilities Through Targeting the ATR/Chk1 and 477 ATM/Chk2 Axes in the Context of DNA Damage. Cells 14 478 3 Mladenov, E. , et al. (2019) Radiation-dose-dependent functional synergisms between ATM, 479 ATR and DNA-PKcs in checkpoint control and resection in G(2)-phase. Sci Rep 9, 8255 480 4 Miller, K.D. , et al. (2022) Cancer treatment and survivorship statistics, 2022. CA Cancer J Clin 481 72, 409–436 482 5 Tessier, T.M. , et al. (2021) Almost famous: Human adenoviruses (and what they have taught 483 us about cancer). Tumour Virus Res 12, 200225 484 6 Bertzbach, L.D. , et al. (2024) A comparative review of adenovirus A12 and C5 oncogenes. 485 
+
+Curr Opin Virol 67, 101413 486 7 Ip, W.H. and Dobner, T. (2020) Cell transformation by the adenovirus oncogenes E1 and E4. 487 
+
+FEBS Lett 594, 1848–1860 488 8 Moore, M. , et al. (2025) The adenovirus E4orf1 protein initiates a feedback loop involving 489 insulin and growth factor receptors, AKT, and NF-kappaB, leading to abnormal DNA content in 490 infected cells. PLoS Pathog 21, e1013202 491 
+
+> .CC-BY-NC-ND 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 8, 2026. ;https://doi.org/10.64898/2026.07.06.736708 doi: bioRxiv preprint
+
+25 9 Carson, C.T. , et al. (2009) Mislocalization of the MRN complex prevents ATR signaling 492 during adenovirus infection. The EMBO journal 28, 652–662 493 10 Carson, C.T. , et al. (2003) The Mre11 complex is required for ATM activation and the G2/M 494 checkpoint. The EMBO journal 22, 6610–6620 495 11 Stracker, T.H. , et al. (2002) Adenovirus oncoproteins inactivate the Mre11-Rad50-NBS1 496 DNA repair complex. Nature 418, 348–352 497 12 Bakkenist, C.J. and Kastan, M.B. (2003) DNA damage activates ATM through intermolecular 498 autophosphorylation and dimer dissociation. Nature 421, 499–506 499 13 Almuzaini, N. , et al. (2022) Disruption of NBS1/MRN Complex Formation by E4orf3 500 Supports NF-kappaB That Licenses E1B55K-Deleted Adenovirus-Infected Cells to Accumulate 501 DNA>4n. Microbiol Spectr 10, e0188121 502 14 Connell, C.M. , et al. (2011) Genomic DNA damage and ATR-Chk1 signaling determine 503 oncolytic adenoviral efficacy in human ovarian cancer cells. J Clin Invest 121, 1283–1297 504 15 Cherubini, G. , et al. (2006) E1B55K-deleted adenovirus (ONYX-015) overrides G1/S and 505 G2/M checkpoints and causes mitotic catastrophe and endoreduplication in p53-proficient 506 normal cells. Cell Cycle 5, 2244–2252 507 16 Wan, Q. , et al. (2026) Tumor cell cycle regulation: integrated perspective of stage 508 characteristics, regulatory networks, and signaling pathway intervention strategies. Mol Biomed 509 7, 14 510 17 Kim, R. , et al. (2022) Phase II study of ceralasertib (AZD6738) in combination with 511 durvalumab in patients with advanced/metastatic melanoma who have failed prior anti-PD-1 512 therapy. Annals of oncology : official journal of the European Society for Medical Oncology / 513 
+
+ESMO 33, 193–203 514 18 Foote, K.M. , et al. (2018) Discovery and Characterization of AZD6738, a Potent Inhibitor of 515 Ataxia Telangiectasia Mutated and Rad3 Related (ATR) Kinase with Application as an 516 Anticancer Agent. Journal of medicinal chemistry 61, 9889–9907 517 19 Deppas, J.J. , et al. (2025) Comparative in vivo toxicology of ATR inhibitors ceralasertib, 518 elimusertib, and berzosertib alone and in combination with ionizing radiation. Toxicology and 519 
+
+applied pharmacology 500, 117375 520 20 Wu, Z.H. , et al. (2006) Molecular linkage between the kinase ATM and NF-kappaB signaling 521 in response to genotoxic stimuli. Science 311, 1141–1146 522 21 Natarajan, K. , et al. (1996) Caffeic acid phenethyl ester is a potent and specific inhibitor of 523 activation of nuclear transcription factor NF-kappa B. Proc Natl Acad Sci U S A 93, 9090–9095 524 22 Wahl, C. , et al. (1998) Sulfasalazine: a potent and specific inhibitor of nuclear factor kappa B. 525 
+
+J Clin Invest 101, 1163–1174 526 23 You, Z. , et al. (2005) ATM activation and its recruitment to damaged DNA require binding to 527 the C terminus of Nbs1. Mol Cell Biol 25, 5363–5379 528 24 Stiff, T. , et al. (2005) Nbs1 is required for ATR-dependent phosphorylation events. The 529 
+
+EMBO journal 24, 199–208 530 25 Shah, G.A. and O'Shea, C.C. (2015) Viral and Cellular Genomes Activate Distinct DNA 531 Damage Responses. Cell 162, 987–1002 532 26 Matsuoka, S. , et al. (2000) Ataxia telangiectasia-mutated phosphorylates Chk2 in vivo and in 533 vitro. Proc Natl Acad Sci U S A 97, 10389–10394 534 27 Anatskaya, O.V. and Vinogradov, A.E. (2022) Polyploidy as a Fundamental Phenomenon in 535 Evolution, Development, Adaptation and Diseases. Int J Mol Sci 23 536 
+
+> .CC-BY-NC-ND 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 8, 2026. ;https://doi.org/10.64898/2026.07.06.736708 doi: bioRxiv preprint
+
+26 28 Musa, J. , et al. (2017) MYBL2 (B-Myb): a central regulator of cell proliferation, cell survival 537 and differentiation involved in tumorigenesis. Cell Death Dis 8, e2895 538 29 Chen, J. , et al. (2025) MYBL2 promotes cell proliferation and inhibits cell apoptosis via 539 PI3K/AKT and BCL2/BAX/Cleaved-caspase-3 signaling pathway in gastric cancer cells. Sci Rep 540 15, 9148 541 30 Pan, B. , et al. (2023) The MYBL2-CCL2 axis promotes tumor progression and resistance to 542 anti-PD-1 therapy in ovarian cancer by inducing immunosuppressive macrophages. Cancer Cell 543 
+
+Int 23, 248 544 31 Morris, B. , et al. (2021) MYBL2-Driven Transcriptional Programs Link Replication Stress 545 and Error-prone DNA Repair With Genomic Instability in Lung Adenocarcinoma. Frontiers in 546 
+
+Oncology 10 547 32 Nadafi, R. , et al. (2025) Immunological Impact of Oncolytic Adenoviruses On Cancer 548 Therapy: Clinical Insights. European journal of immunology 55, e70024 549 33 Alam, S.M.S. , et al. (2025) A New Era in Oncology: Clinical Insights Into the Application of 550 Oncolytic Viruses. Cancer Control 32, 10732748251382295 551 34 Thomas, M.A. , et al. (2016) Beyond Oncolytics: E1B55K-Deleted Adenovirus as a Vaccine 552 Delivery Vector. PLoS One 11, e0158505 553 35 Sampson, A.T. , et al. (2025) Developing the next-generation of adenoviral vector vaccines. 554 
+
+Hum Vaccin Immunother 21, 2514356 555 36 Sangare, K. , et al. (2021) The immunological impact of adenovirus early genes on vaccine-556 induced responses in mice and nonhuman primates. J Virol 557 
+
+558 
+
+Figure Legends 559 
+
+560 
+
+Figure 1 . E4orf3 rewires ATM-ATR checkpoint signaling to drive abnormal DNA content 561 
+
+(A) Representative DNA -content histograms of HeLa cells mock -infected or infected with 562 
+
+E4orf3(+) , or E4orf3(-) adenovirus (Ad) at 48 hpi. Cells with DNA > 4N indicate abnormal DNA 563 
+
+content. 564 
+
+(B) Time -course analysis of cell -cycle distributions in mock -infected, E4orf3(+) or E4orf3(-) 565 
+
+Ad -infected HeLa cells collected every 12 h for 48 h and stained with propidium iodide. Bar 566 
+
+graphs show mean ± SEM from six independent experiments (n = 6). 567 
+
+> .CC-BY-NC-ND 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 8, 2026. ;https://doi.org/10.64898/2026.07.06.736708 doi: bioRxiv preprint
+
+27 
+
+(C) Immunoblot analysis of A549 cells mock -infected or infected with E4orf3(+) or E4orf3(–) Ad 568 
+
+and harvested at the indicated times. Doxorubicin (Dox) and TNFα serve as positive controls. 569 
+
+γ-H2AX marks DNA damage; Vinculin is a loading control. 570 
+
+(D, E ) HeLa cells mock -infected or infected with E4orf3(+) or E4orf3(-) Ad were treated at 4 hpi 571 
+
+with (D) the ATM inhibitor KU -60019 (5, 10, 15 μM) or (E) the ATR inhibitor VE -822 (1, 2, 4 μM). 572 
+
+At 48 hpi, cell -cycle profiles were analyzed by flow cytometry. Percentages of cells with 573 
+
+DNA > 4N are shown as mean ± SEM from three independent experiments. Statistical 574 
+
+significance: *p < 0.02, **p < 0.002, ***p < 0.0001. 575 
+
+(F) HeLa cells mock -infected or infected with E4orf3(+) or E4orf3(–) Ad were treated at 4 hpi 576 
+
+with the ATR inhibitor Ceralasertib (0.1, 0.5, 1.0 μM). Abnormal DNA content (DNA > 4N) was 577 
+
+quantified at 48 hpi. Data represent mean ± SEM from three independent experiments; 578 
+
+*p < 0.02, **p < 0.002, ***p < 0.0001. 579 
+
+(G) HeLa cells mock -infected or infected with E4orf3(+) or E4orf3(–) Ad were treated at 4 hpi 580 
+
+with caffeine (0–12.5 mM). Abnormal DNA content was measured at 48 hpi. Data represent 581 
+
+mean ± SEM from three independent experiments; *p < 0.01, **p < 0.001, ***p < 0.0001. 582 
+
+583 
+
+> .CC-BY-NC-ND 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 8, 2026. ;https://doi.org/10.64898/2026.07.06.736708 doi: bioRxiv preprint
+
+28 
+
+584 
+
+viral protein DDR kinase substrates 
+
+DBP 
+
+p-ATM (ser1981) 
+
+p-CHK2 (thr68) 
+
+p-CHK1 (ser345) 
+
+pATR (ser1989) 12 A549 Dox TNFα 24 36 48 12 24 36 48 Vinculin 
+
+rH2AX 
+
+E4orf3 (+) E4orf3 (-) KU (μM) HeLa E4orf3 (+) E4orf3 (-) HeLa E4orf3 (+) E4orf3 (-) VE (μM) 
+
+DACFEG
+
+> % cell with DNA > 4N % cell with DNA > 4N
+
+E4orf3 (+) E4orf3 (-) 12 24 36 48 12 24 36 48 hpi. 12 24 36 48 HeLa mock % cells per cell cycle phase 
+
+@ 48 hpi 
+
+HeLa mock E4orf3 (+) E4orf3 (-) DNA content cell count % cell with DNA > 4N Ceralasertib (μM) 0 0.1 0.5 1.0 A549 E4orf3 (+) E4orf3 (-) 0 0.1 0.5 1.0 0 0.1 0.5 1.0 
+
+> % cell with DNA > 4N
+
+caffeine (mM) HeLa E4orf3 (+) E4orf3 (-) 
+
+B<G1 
+
+2.59 
+
+>4N 
+
+73.6 
+
+G1 
+
+6.19 
+
+G2M 
+
+12.7 
+
+S
+
+4.95     
+
+> 500K 1.0M 1.5M 2.0M 2.5M
+> 0
+> 20
+> 40
+> 60
+
+<G1 
+
+9.93 >4N 
+
+16.6 
+
+G1 
+
+31.6 
+
+G2M 
+
+26.0 
+
+S
+
+15.9     
+
+> 500K 1.0M 1.5M 2.0M 2.5M
+> 0
+> 10
+> 20
+> 30
+> 40
+
+<G1 
+
+2.78 >4N 
+
+1.01 
+
+G1 
+
+71.3 
+
+G2M 
+
+13.5 
+
+S
+
+11.4     
+
+> 500K 1.0M 1.5M 2.0M 2.5M
+> 0
+> 200
+> 400
+> 600
+> 800
+
+.CC-BY-NC-ND 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 8, 2026. ;https://doi.org/10.64898/2026.07.06.736708 doi: bioRxiv preprint 29 
+
+Figure 2 . ATM and ATR impose distinct cell -cycle checkpoints governing abnormal DNA content 585 
+
+(A-G ) HeLa cells were mock -infected or infected with E4orf3(+) or E4orf3(-) Ad. At 4 hpi, cells 586 
+
+were treated with either the ATM inhibitor KU -60019 (15 μM) or the ATR inhibitor VE -822 587 
+
+(4 μM). At 48 hpi, cells were fixed, stained with propidium iodide, and analyzed by flow 588 
+
+cytometry. 589 
+
+(A) Mock -infected cells predominantly reside in G1. 590 
+
+(B) E4orf3(+) Ad-infected cells accumulate high levels of abnormal DNA content (DNA > 4N). 591 
+
+(C) ATM inhibition reduces abnormal DNA content in E4orf3(+) Ad infections and redirects cells 592 
+
+into a pronounced G2/M arrest. 593 
+
+(D) ATR inhibition decreases abnormal DNA content in E4orf3(+) Ad infections, with cells 594 
+
+accumulating in both G1 and G2/M. 595 
+
+(E) E4orf3(-) Ad -infected cells arrest in G1 and G2/M and show minimal abnormal DNA content. 596 
+
+(F) ATM inhibition in E4orf3(-) Ad-infected cells induces substantial abnormal DNA content, 597 
+
+indicating loss of ATM -dependent G2/M checkpoint control. 598 
+
+(G) ATR inhibition prevents E4orf3(-) cells from progressing through the cell cycle, resulting in 599 
+
+G1 accumulation. 600 
+
+Representative histograms from three independent experiments are shown. 601 
+
+> .CC-BY-NC-ND 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 8, 2026. ;https://doi.org/10.64898/2026.07.06.736708 doi: bioRxiv preprint
+
+30 
+
+602 
+
+603 
+
+E4orf3(+) ATMi ATMi ATRi ATRi E4orf3(-) <G1 
+
+2.21 
+
+>4N 
+
+31.0 
+
+G1 
+
+8.20 G2M 
+
+41.4 
+
+S
+
+17.2     
+
+> 500K 1.0M 1.5M 2.0M 2.5M
+> 0
+> 20
+> 40
+> 60
+> 80
+
+<G1 
+
+1.29 
+
+>4N 
+
+63.5 
+
+G1 
+
+7.90 
+
+G2M 
+
+20.4 
+
+S
+
+6.94     
+
+> 500K 1.0M 1.5M 2.0M 2.5M
+
+DNA Content 
+
+> 0
+> 20
+> 40
+> 60
+
+<G1 
+
+1.60 
+
+>4N 
+
+60.5 
+
+G1 
+
+10.2 
+
+G2M 
+
+21.3 
+
+S
+
+6.31     
+
+> 500K 1.0M 1.5M 2.0M 2.5M
+> 0
+> 20
+> 40
+> 60
+
+<G1 
+
+4.27 
+
+>4N 
+
+7.89 
+
+G1 
+
+25.5 
+
+G2M 
+
+48.8 
+
+S
+
+13.5     
+
+> 500K 1.0M 1.5M 2.0M 2.5M
+> 0
+> 50
+> 100
+> 150
+
+<G1 
+
+2.89 
+
+>4N 
+
+0.67 
+
+G1 
+
+71.4 
+
+G2M 
+
+13.0 
+
+S
+
+11.9     
+
+> 500K 1.0M 1.5M 2.0M 2.5M
+> 0
+> 200
+> 400
+> 600
+> 800
+> 1.0K
+
+<G1 
+
+3.52 
+
+>4N 
+
+31.2 
+
+G1 
+
+24.7 
+
+G2M 
+
+26.9 
+
+S
+
+13.7    
+
+> 500K 1.0M 1.5M 2.0M
+> 0
+> 10
+> 20
+> 30
+> 40
+> 50
+
+<G1 
+
+3.78 >4N 
+
+4.01 
+
+G1 
+
+67.2 
+
+G2M 
+
+15.4 
+
+S
+
+9.59     
+
+> 500K 1.0M 1.5M 2.0M 2.5M
+> 0
+> 100
+> 200
+> 300
+> 400
+
+A
+
+D
+
+> % Cells per cycle phase
+
+C% Cells per cycle phase 
+
+> 2.5M
+
+DNA Content 
+
+DNA Content 
+
+DNA Content DNA Content DNA Content DNA Content % Cells per cycle phase % Cells per cycle phase 
+
+> % Cells per cycle phase
+
+B
+
+G E F
+
+.CC-BY-NC-ND 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 8, 2026. ;https://doi.org/10.64898/2026.07.06.736708 doi: bioRxiv preprint 31 
+
+Figure 3 . Phosphorylated NEMO links ATM to NF-κB signaling during Ad-infection 604 
+
+(A) Schematic illustrating the proposed role of NEMO in mediating NF -κB activation 605 
+
+downstream of ATM in E4orf3(+) adenovirus (Ad) infection. 606 
+
+(B) Immunoblot analysis of A549 cells infected with E4orf3(+) or E4orf3(-) Ad and collected 607 
+
+every 12 h up to 48 hpi. Phosphorylation of NEMO and NF -κB p50 increases selectively in 608 
+
+E4orf3(+) infections. 609 
+
+(C) Confocal microscopy of A549 cells infected for 48 h with the indicated Ads and stained for 610 
+
+Ad DBP (green), phosphorylated NEMO (red), and DAPI (blue). Insets (white boxes) show 611 
+
+magnified merged images. Scale bar, 20 μm. 612 
+
+(D) Flow -cytometric quantification of abnormal DNA content (DNA > 4N) in A549 cells infected 613 
+
+with E4orf3(+) or E4orf3(-) Ad and treated at 4 hpi with or without the NF -κB inhibitors CAPE or 614 
+
+Sulfasalazine (SC). Data represent three independent experiments. 615 
+
+(E) Immunoblot analysis of lysates from the same conditions as in (D), showing effects of NF -κB 616 
+
+inhibition on phosphorylation of NEMO, NF -κB p50, and ATM. Results represent three 617 
+
+independent experiments. 618 
+
+> .CC-BY-NC-ND 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 8, 2026. ;https://doi.org/10.64898/2026.07.06.736708 doi: bioRxiv preprint
+
+32 
+
+619 
+
+620 
+
+Adenovirus infection NF-κB signaling ?abnormal DNA content cell cycle arrest 
+
+ATM ATR ATM ATR pCHK1 pCHK2 NEMO 
+
+E4orf3 (+) E4orf3 (-) viral protein NF-κB signaling 
+
+DBP p-NEMO (ser85) 12 A549 Dox TNFα 24 36 48 12 24 36 48 
+
+p-P50 (ser337) Vinculin 
+
+BE
+
+E4orf3 (+) E4orf3 (-) 
+
+DBP DAPI pNEMO 
+
+E4orf3 (+) A549 mock E4orf3 (-) 
+
+C Merge 
+
+> % cell with DNA > 4N
+
+E4orf3(-) 
+
+E4orf3(-) & CAPE 
+
+E4orf3(-) & SC % cell with DNA > 4N 
+
+24 CAPE CAPE SC 48 24 48 24 48 24 TNFα Α549 48 24 48 24 48 SC Vinculin p-ATM (ser1981) DBP γH2AX p-NEMO (ser85) p-P50 (ser337) 
+
+E4orf3 (+) E4orf3 (-) NF-κB signaling viral protein DDR kinase substrates % cell with DNA > 4N E4orf3 (+) 
+
+E4orf3 (+) & CAPE 
+
+E4orf3 (+) & SC 
+
+AD
+
+.CC-BY-NC-ND 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 8, 2026. ;https://doi.org/10.64898/2026.07.06.736708 doi: bioRxiv preprint 33 
+
+Figure 4. NEMO phosphorylation is required for abnormal DNA content and redirects ATM 621 
+
+away from MRN 622 
+
+(A) Schematic illustrating the proposed interactions between ATM/ATR and NEMO in E4orf3(+) 623 
+
+Ad-infected cells. 624 
+
+(B, C ) A549 cells were transfected with control or NEMO-targeting siRNA for 48 hours. 625 
+
+(B) Immunoblot confirming efficient NEMO depletion. 626 
+
+(C) Cells were mock-infected or infected with E4orf3(+) or E4orf3(-) Ads, fixed at 48 hpi, stained 627 
+
+with propidium iodide, and analyzed by flow cytometry. NEMO knockdown significantly 628 
+
+reduced abnormal DNA content (mean ± SEM, n = 3; ***p < 0.001). 629 
+
+(D) Immunofluorescence microscopy of A549 cells infected with E4orf3(+) or E4orf3(-) Ad for 48 630 
+
+h and stained for phosphorylated ATM (green) or phosphorylated NEMO (red), and DAPI (blue). 631 
+
+Insets (white boxes) show magnified merged images. Scale bars, 20 μm. 632 
+
+(E) Co- immunoprecipitation analysis of HeLa cells infected with E4orf3(+) or E4orf3(-) Ad for 48 633 
+
+h. Lysates were immunoprecipitated and probed for ATM, NEMO, and NBS1, demonstrating 634 
+
+preferential ATM-NEMO association in E4orf3(+) infections and ATM-NBS1 association in 635 
+
+E4orf3(-) infections. 636 
+
+> .CC-BY-NC-ND 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 8, 2026. ;https://doi.org/10.64898/2026.07.06.736708 doi: bioRxiv preprint
+
+34 
+
+637 
+
+638 
+
+Adenovirus infection E4orf3 (+) NF-κB signaling E4orf3 (-) abnormal DNA content cell cycle arrest 
+
+ATM ATM pCHK1 pCHK2 
+
+> NEMO
+> NBS1
+
+B
+
+A549 mock 
+
+pATM DAPI pNEMO Merge 
+
+> IP: ATM Mock
+
+E4orf3 (+) E4orf3 (-) 
+
+> Lysates
+> E4orf3 (+) HeLa NBS1 ATM NEMO NEMO DBP NBS1 Tubulin E4orf3 (-)
+
+CE
+
+A549 mock E4orf3(+) siNEMO scRNA siNEMO scRNA siNEMO scRNA E4orf3(-) % cell with DNA > 4N A549 mock siIKKγ NEMO Vinculin #1 #2 
+
+AD
+
+.CC-BY-NC-ND 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 8, 2026. ;https://doi.org/10.64898/2026.07.06.736708 doi: bioRxiv preprint 35 
+
+Figure 5. Disrupting ATM-dependent DDR signaling is sufficient to activate NF-κB and drive 639 
+
+abnormal DNA content. 640 
+
+(A) Schematic illustrating how inhibiting ATM in E4orf3(-) Ad-infected cells redirects DDR 641 
+
+signaling towards NEMO-NF-κB activation. 642 
+
+(B, C ) A549 cells were mock-infected or infected with E4orf3(+) or E4orf3(-) Ads and treated at 4 643 
+
+hpi with or without ATM or ATR kinase inhibitors. 644 
+
+(B) Immunoblot analysis of lysates collected at 24 and 48 hpi showing phosphorylation of ATM, 645 
+
+NEMO, and NF -κB p50, and accumulation of the Ad DBP. 646 
+
+(C) Immunofluorescence microscopy of cells fixed at 48 hpi and stained for phosphorylated 647 
+
+ATM (green), phosphorylated NEMO (red), and DAPI (blue). Insets (white boxes) show 648 
+
+magnified merged images. Scale bar, 20 μm. 649 
+
+(D, E ) A549 cells were mock-infected or infected with E4orf3(+) or E4orf3(-) Ads and treated 4 650 
+
+hpi with or without ATM inhibitor KU -60019 (KU) and/or the NF -κB inhibitors CAPE or 651 
+
+Sulfasalazine (SC). 652 
+
+(D) Immunoblot analysis of cell lysate collected at 48 hpi showing effects of NF -κB inhibition on 653 
+
+phosphorylation of ATM, NEMO, and NF -κB p50. 654 
+
+(E) Flow -cytometric quantification of abnormal DNA content (DNA > 4N) at 48 hpi. Data 655 
+
+represent mean ± SEM from three independent experiments; *p < 0.05, **p < 0.01, 656 
+
+***p < 0.001. 657 
+
+> .CC-BY-NC-ND 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 8, 2026. ;https://doi.org/10.64898/2026.07.06.736708 doi: bioRxiv preprint
+
+36 
+
+658 
+
+659 
+
+NF-κB signaling abnormal DNA content cell cycle arrest 
+
+pCHK1 pCHK2 
+
+> NEMO
+
+Adenovirus infection ATM inhibitor 
+
+ATM ATM 
+
+> NBS1
+> NBS1
+
+E4orf3 (-) E4orf3 (+) 
+
+B
+
+48 24 48 24 48 24 ATMi ATRi ATMi ATRi 48 24 48 
+
+viral protein NF-κB signaling E4orf3 (+) E4orf3 (-) p-P50 (ser337) A549 Dox 24 48 24 DBP p-NEMO (ser85) β-Tubulin 
+
+E4orf3 (+) A549 mock E4orf3 (-) E4orf3 (-) ATMi 
+
+pATM DAPI pNEMO Merge 
+
+A549 Mock Dox TNF-α KU KU KU CAPE SC 24 48 24 48 24 48 24 48 24 48 p-ATM(ser1981) p-P50(ser337) pNEMO DBP γΗ2ΑΧ β-Tubulin 
+
+NF-κB signaling viral protein DDR kinase substrates E4orf3 (+) E4orf3 (-) KU (μM) 0 10 10 10 CAPE (μM) 50 SC (μM) 50 10 10 10 50 5A549 E4orf3 (+) 0 10 E4orf3 (-) 10 10 50 5
+
+EACD
+
+> % cell with DNA > 4N
+
+.CC-BY-NC-ND 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 8, 2026. ;https://doi.org/10.64898/2026.07.06.736708 doi: bioRxiv preprint 37 
+
+Figure 6. Disrupting CHK2-dependent DDR signaling is sufficient to activate NF-κB and drive 660 
+
+abnormal DNA content. 661 
+
+(A) Schematic illustrating how inhibiting CHK2 in E4orf3(-) Ad-infected cells redirects ATM from 662 
+
+the MRN complex toward NEMO, thereby activating the NF-κB pathway and promoting 663 
+
+abnormal DNA content. 664 
+
+(B) A549 cells infected with E4orf3(-) Ad were treated at 4 hpi with or without CHK2 inhibitors. 665 
+
+At 48 hpi, cells were fixed and stained for phosphorylated ATM (green) and NBS1 (red). Insets 666 
+
+(white boxes) show magnified merged images. Scale bar, 20 μm. 667 
+
+(C) A549 cells infected with E4orf3(–) Ad were mock -treated or treated with CHK2 inhibitor at 668 
+
+4 hpi. At 48 hpi, cells were stained for phosphorylated ATM (green), phosphorylated NEMO 669 
+
+(red), and DAPI (blue). Insets highlight merged zoomed -in regions. Scale bar, 20 μm. 670 
+
+(D, E ) A549 cells infected with E4orf3(+) or E4orf3(-) Ad were treated at 4 hpi with increasing 671 
+
+concentrations of (D) CHK1 inhibitor or (E) CHK2 inhibitor. At 48 hpi, cells were fixed, stained 672 
+
+with propidium iodide, and analyzed by flow cytometry. Percentages of cells with abnormal 673 
+
+DNA content (DNA > 4N) are shown as mean ± SEM from three biological replicates; *p < 0.05, 674 
+
+**p < 0.01, ***p < 0.001. 675 
+
+(F) A549 cells infected with E4orf3(+) or E4orf3(-) Ad were treated at 4 hpi with a CHK2 inhibitor 676 
+
+and/or NF -κB inhibitors CAPE or Sulfasalazine (SC). At 48 hpi, abnormal DNA content was 677 
+
+quantified by flow cytometry. Data represent the mean ± SEM from three independent 678 
+
+experiments. 679 
+
+> .CC-BY-NC-ND 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 8, 2026. ;https://doi.org/10.64898/2026.07.06.736708 doi: bioRxiv preprint
+
+38 
+
+680 
+
+681 
+
+pATM NBS1 Merge 
+
+Adenovirus infection 
+
+ATM ATM pCHK1 pCHK2 
+
+> NEMO
+> NBS1
+> NBS1
+
+E4orf3 (+) E4orf3 (-) CHK2 inhibitor NF-κB signaling abnormal DNA content cell cycle arrest pATM pNEMO Merge 
+
+C
+
+DAPI E4orf3 (-) E4orf3 (-) CHK2i DAPI E4orf3 (-) E4orf3 (-) CHK2i 
+
+D 
+
+> CHK1i (μM)
+
+A549 E4orf3 (+) E4orf3 (-) 
+
+E 
+
+> CHK2i (μM)
+
+A549 E4orf3 (+) E4orf3 (-) 
+
+> % cell  with  DNA >  4N
+
+A549 10 10 10 550 10 10 10 550 10 10 10 550 
+
+E4orf3 (-) E4orf3 (+) 
+
+F% cell  with  DNA >  4N 
+
+ABC   
+
+> % cell with DNA>4n
+> CAPE (μM) CHK2i (μM) SC (μM)
+
+.CC-BY-NC-ND 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 8, 2026. ;https://doi.org/10.64898/2026.07.06.736708 doi: bioRxiv preprint 39 
+
+Figure 7. Switching from CHK1/2 to the NEMO-NF-κB pathway induces survival and 682 
+
+chemoresistance -associated gene expression. 683 
+
+(A, B ) A549 cells were mock-infected or infected in triplicate with E4orf3(+) or E4orf3(-) Ad. A 684 
+
+subset of E4orf3(-) Ad infections received ATM inhibitor (ATMi) at 4 hpi. RNA was isolated, 685 
+
+sequenced, normalized for depth, and analyzed using DESeq2. Log₂ fold -changes (mean ± SEM) 686 
+
+for differentially expressed genes are shown. 687 
+
+(A) MYBL2, expression was strongly upregulated in E4orf3(+) and ATMi -treated E4orf3(-) Ad 688 
+
+infections (adjusted p = 3.25 × 10⁻¹⁹² and 6.81 × 10⁻¹⁸⁹, respectively). 689 
+
+(B) BCL2 expression was similarly elevated in E4orf3(+) and ATMi -treated E4orf3(-) Ad infections 690 
+
+(adjusted p = 7.67 × 10⁻⁶ and 8.98 × 10⁻¹⁶, respectively). 691 
+
+(C) Immunoblot analysis of A549 cells infected with E4orf3(+) or E4orf3(-) Ad and treated at 4 692 
+
+hpi with ATMi or ATRi. Lysates collected at 24 and 48 hpi were probed for adenovirus DBP, 693 
+
+Bcl -2, and β -tubulin (loading control). 694 
+
+(D) Flow -cytometric analysis of Bcl -2 protein levels in A549 cells infected with E4orf3(+) or 695 
+
+ATMi -treated E4orf3(-) Ad. Top left: representative histograms showing mean fluorescence 696 
+
+intensity (MFI). Bottom left: mock overlay on infected samples. Right: quantification of MFI 697 
+
+(mean ± SEM, n = 3). Statistical significance: *p < 0.05, **p < 0.005, ***p < 0.001. 698 
+
+> .CC-BY-NC-ND 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 8, 2026. ;https://doi.org/10.64898/2026.07.06.736708 doi: bioRxiv preprint
+
+40 
+
+699 
+
+700 
+
+A549 mock  E4orf3 (-) E4orf3 (+)  E4orf3 (-) +ATMi  BcL2 Levels 
+
+> Mean Fluorescent Intensity (MFI)
+
+A C
+
+D
+
+A549 mock E4orf3 (+) E4orf3 (-) E4orf3 (-) +ATMi 
+
+48 24 48 24 48 24 48 24 48 A549 Dox 24 48 24 
+
+E4orf3 (+) E4orf3 (-) 
+
+ATMi ATMi AT Ri AT Ri
+
+59.8 10 2 10 3 10 4 10 5 10 6 10 70100 200 300 
+
+3.40 10 2 10 3 10 4 10 5 10 6 10 7050 100 150 200 250 
+
+1.24 10 2 10 3 10 4 10 5 10 6 10 7050 100 150 200 250            
+
+> Relative Cell Number
+> 10 210 310 410 510 610 70100 200 300
+
+59.8 10 2 10 3 10 4 10 5 10 6 10 70100 200 300 
+
+3.40 10 2 10 3 10 4 10 5 10 6 10 7050 100 150 200 250            
+
+> 10 210 310 410 510 610 70100 200 300
+
+BcL-2 overlay 
+
+58.1 58.1 
+
+> Relative Cell Number
+
+E4orf3 (+) E4orf3 (-) E4orf3 (-) +ATMi A549 mock 
+
+β-Tubulin 
+
+Bcl-2 DBP 
+
+B
+
+12.5 
+
+12. 0
+
+11.5 11.0
+
+10.5 10.06543
+
+BcL2 MYB L2 
+
+*
+
+Fluorescent Intensity 
+
+.CC-BY-NC-ND 4.0 International license available under a was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint (which this version posted July 8, 2026. ;https://doi.org/10.64898/2026.07.06.736708 doi: bioRxiv preprint 41 
+
+Supplementary Data 701 
+
+702 
+
+Figure S1: Ad DNA levels are equivalent in E4orf3(+) and E4orf3(-) infections early after entry .703 
+
+DNA was isolated from A549 and HeLa cells 2 h post -infection (hpi) with E4orf3(+) or E4orf3(-) 704 
+
+Ad, and viral DNA abundance was measured by PCR using Ad fiber–specific primers (Forward: 705 
+
+CACCCCTCACAGTTACCTCAGAAGCCC; Reverse: GTCTGTTTTGAGAATCAATCCTTAGTCCTC). 706 
+
+Mock -infected samples served as negative controls; wild-type Ad DNA-spiked mock samples 707 
+
+served as positive controls. Despite differences in Ad DNA -binding protein (DBP) accumulation 708 
+
+observed at later time points (Figs 1D, 3B, 3D), E4orf3(+) and E4orf3(-) infections exhibited 709 
+
+comparable viral DNA levels at 2 hpi, indicating equivalent early viral entry and genome 710 
+
+delivery. 711 
+
+712 
+
+Figure S1 713 
+
+714 
+
+1500
+
+500
+
+400
+
+700
+
+1000
+
+Fiber
+
+(492 bp)
+
+> Mock
+> wt Ad5(24hpi.)
+> +E4orf3
+> (2hpi.)
+> -E4orf3(2hpis.)
+> Mock
+> wt Ad5(24hpi.)
+> +E4orf3(2hpi.)
+> -E4orf3
+> (2hpis.)
+
+A549
+
+HeLa
+
+Fiber
+
+(492 bp)
+
+1500
+
+500
+
+400
+
+700
+
+1000
+
+1500
+
+500
+
+400
+
+700
+
+1000
+
+Fiber
+
+(492 bp)
+
+> Mock
+> wt Ad5(24hpi.)
+> +E4orf3
+> (2hpi.)
+> -E4orf3(2hpis.)
+> Mock
+> wt Ad5(24hpi.)
+> +E4orf3(2hpi.)
+> -E4orf3
+> (2hpis.)
+
+A549
+
+HeLa
+
+Fiber
+
+(492 bp)
+
+1500
+
+500
+
+400
+
+700
+
+1000
+
+A549 
+
+HeLa 
+
+1500 
+
+1000 
+
+700 
+
+500 
+
+400 
+
+1500 
+
+1000 
+
+700 
+
+500 
+
+400 
+
+Fiber 
+
+(492 bp) 
+
+Fiber 
+
+(492 bp)

@@ -1,0 +1,363 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-07-11T22:19:41.974868+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 0,
+    "deep_cap": 6,
+    "deep_selected": 0,
+    "quick_candidates": 8,
+    "quick_skim_target": 11,
+    "quick_selected": 8
+  },
+  "deep_dive": [],
+  "quick_skim": [
+    {
+      "id": "biorxiv-10-64898-2026-06-09-730783-v1",
+      "source": "biorxiv",
+      "title": "Mechanistically informed adaptive dosing for cancer immunotherapy using AI-guided decision making",
+      "abstract": "Optimizing dose and schedule remains a central challenge in oncology drug development, particularly for immunotherapies where fixed dosing regimens often fail to account for patient specific heterogeneity in tumor-immune dynamics. Here, we present a hybrid quantitative systems pharmacology-reinforcement learning-Monte Carlo Tree Search (QSP-RL-MCTS) framework for personalized immunotherapy dosing that formulates dose selection as a sequential decision-making problem. The approach integrates a mechanistic QSP model of prostate cancer immunotherapy, transcriptomics informed virtual patient populations and data driven AI system comprising reinforcement learning and Monte Carlo tree search. Reinforcement learning is used to learn adaptive generalized dosing policies that optimize treatment outcomes across the population, while Monte Carlo Tree Search provides forward-looking evaluation of RL predicted dosing trajectories to refine patient-specific decisions. On benchmarking against fixed dosing regimens of ipilimumab, the remission rate of the proposed model (95.2%) was comparable to the highest fixed dosing regimen of 10 mg/kg per dose while the median total dose (72 mg/kg) of the proposed model designed regimen was comparable to the lowest fixed dosing regimen of 3 mg/kg per dose. The model is generalizable across different dosing protocols and can be extended to predict optimal dose under different therapeutic scenarios. Analysis of the learned dosing trajectories enables stratification of patients into distinct response groups and identifies drug activity rate as the dominant determinant of long-term treatment outcome. These results demonstrate how mechanistically guided artificial intelligence can transform population-level dose optimization into patient-specific, biologically interpretable treatment strategies for precision immuno-oncology.",
+      "authors": [
+        "Garg, A.",
+        "Das, S. S.",
+        "Sivadasan, N.",
+        "Roy, A.",
+        "Chakrabarty, B."
+      ],
+      "primary_category": "systems biology",
+      "categories": [
+        "systems biology"
+      ],
+      "published": "2026-07-08T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.06.09.730783v1.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "machine learning drug resistance prediction immunotherapy dosing",
+      "llm_evidence_cn": "机器学习药物耐药预测免疫治疗剂量",
+      "llm_evidence": "机器学习药物耐药预测免疫治疗剂量",
+      "canonical_evidence": "机器学习药物耐药预测免疫治疗剂量",
+      "llm_tldr_en": "AI-guided adaptive dosing for cancer immunotherapy using QSP-RL-MCTS framework, integrating transcriptomics and mechanistic modeling to overcome resistance.",
+      "llm_tldr_cn": "该论文针对免疫治疗固定剂量方案无法适应患者肿瘤-免疫异质性的问题，提出一种混合定量系统药理学-强化学习-蒙特卡洛树搜索框架（QSP-RL-MCTS）。该框架结合机制性QSP模型、转录组学虚拟患者群体和AI决策系统，实现个性化免疫治疗剂量优化。有助于克服耐药。",
+      "llm_tldr": "该论文针对免疫治疗固定剂量方案无法适应患者肿瘤-免疫异质性的问题，提出一种混合定量系统药理学-强化学习-蒙特卡洛树搜索框架（QSP-RL-MCTS）。该框架结合机制性QSP模型、转录组学虚拟患者群体和AI决策系统，实现个性化免疫治疗剂量优化。有助于克服耐药。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "machine learning drug resistance prediction",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "biorxiv-10-64898-2025-11-28-691099-v3",
+      "source": "biorxiv",
+      "title": "Tensor-based machine learning for multi-omics integrative clustering and feature discovery",
+      "abstract": "Multi-omics integrative analysis is pivotal for elucidating complex molecular mechanisms and biological processes, yet remains challenging due to the high dimensionality and heterogeneity of multi-omics data. Here we present MIA, a machine learning framework for accurate sample clustering and feature discovery from multi-omics data. Unlike existing algorithms that primarily rely on two-dimensional representations, MIA models multi-omics data as a three-dimensional tensor and integrates tensor decomposition, fuzzy c-means, and an enhanced random forest model within a unified framework. Benchmarking on simulated and empirical datasets demonstrates that MIA consistently outperforms representative state-of-the-art algorithms in both clustering and feature identification. Application to multiple TCGA cancer types further shows its ability to stratify samples and identify molecular features associated with clinically relevant outcomes. Specifically, in glioblastoma, MIA reveals three previously uncharacterized subtypes with distinct prognostic profiles and uncovers feature genes strongly associated with subtype identity. These genes are further linked to therapeutic response and retain discriminative power across major glioblastoma cellular populations at single-cell resolution. Collectively, our results establish MIA as a generalizable computational framework for multi-omics integrative analysis, enabling systematic molecular stratification and interpretable feature discovery across diverse biological systems.",
+      "authors": [
+        "Zhang, Y.",
+        "Liu, L.",
+        "Liu, Z.",
+        "Liu, Q.",
+        "Ma, L.",
+        "Zhang, Z."
+      ],
+      "primary_category": "bioinformatics",
+      "categories": [
+        "bioinformatics"
+      ],
+      "published": "2026-07-11T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2025.11.28.691099v3.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "tensor-based machine learning for multi-omics integrative clustering",
+      "llm_evidence_cn": "基于张量的机器学习用于多组学整合聚类",
+      "llm_evidence": "基于张量的机器学习用于多组学整合聚类",
+      "canonical_evidence": "基于张量的机器学习用于多组学整合聚类",
+      "llm_tldr_en": "MIA is a tensor-based machine learning framework for multi-omics integrative clustering and feature discovery, outperforming state-of-the-art methods.",
+      "llm_tldr_cn": "该研究提出MIA框架，将多组学数据建模为三维张量，结合张量分解、模糊c均值和增强随机森林模型进行聚类和特征发现。在模拟和真实数据集上，MIA在聚类准确性和特征发现方面优于现有算法，为多组学耐药研究提供通用工具。",
+      "llm_tldr": "该研究提出MIA框架，将多组学数据建模为三维张量，结合张量分解、模糊c均值和增强随机森林模型进行聚类和特征发现。在模拟和真实数据集上，MIA在聚类准确性和特征发现方面优于现有算法，为多组学耐药研究提供通用工具。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "machine learning drug resistance prediction",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-06-30-735544-v1",
+      "source": "biorxiv",
+      "title": "The combination of nelfinavir and cisplatin drives lytic cell death through a caspase-8/caspase-3/GSDME axis in platinum-resistant ovarian cancer cells",
+      "abstract": "PurposeCisplatin (CDDP) is the most active chemotherapy for ovarian cancer; primary or acquired resistance signals a poor prognosis. Nelfinavir (NFV), an HIV protease inhibitor, has demonstrated anti-tumor activity in multiple cancer models, but its interaction with CDDP in ovarian cancer has yet to be demonstrated. In this work, we addressed whether the combination of CDDP and NFV provides treatment advantage in platinum (Pt)-resistant ovarian cancer cells.\n\nMethodsDrug synergy between NFV and CDDP was assessed using cell vitality assays and Loewe additivity modelling. Apoptotic and pyroptotic signalling were evaluated by immunoblotting, mitochondrial membrane potential analysis, and lactate dehydrogenase (LDH) release, and caspase inhibition. Transcriptomic changes were assessed by bulk mRNA sequencing followed by differential gene expression analysis and gene set enrichment analysis.\n\nResultsNFV synergized with CDDP to reduce the viability of Pt-resistant ovarian cancer cells, promoting a regulated lytic cell death phenotype involving apoptotic and pyroptotic features. Combination treatment induced caspase-8 and caspase-3 activation, and downstream gasdermin E (GSDME) processing. Inhibition of caspase-3 significantly attenuated cell death, and caspase-8 inhibition rescued viability and prevented Bid cleavage, caspase-3 activation, and GSDME cleavage. These effects occurred in the context of enhanced endoplasmic reticulum stress, increased DNA damage with reduced DNA repair, and impaired Akt-driven survival signalling.\n\nConclusionsOur findings establish that NFV synergizes with CDDP in killing Pt-resistant ovarian cancer cells by promoting a caspase-8-dependent apoptotic-to-secondary pyroptotic response, supporting further investigation of NFV as a potential drug to be repurposed to increase the efficacy of Pt-based therapy.",
+      "authors": [
+        "Forgie, B.",
+        "Prakash, R.",
+        "Marno, D.",
+        "Abdalbari, F. H.",
+        "Zorychta, E.",
+        "Noman, A. S. M.",
+        "Goyeneche, A. A.",
+        "Gilbert, L.",
+        "Burnier, J. V.",
+        "Telleria, C. M."
+      ],
+      "primary_category": "cancer biology",
+      "categories": [
+        "cancer biology"
+      ],
+      "published": "2026-07-09T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.06.30.735544v1.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Mechanism of platinum resistance reversal in ovarian cancer",
+      "llm_evidence_cn": "铂类耐药卵巢癌细胞中逆转耐药的机制",
+      "llm_evidence": "铂类耐药卵巢癌细胞中逆转耐药的机制",
+      "canonical_evidence": "铂类耐药卵巢癌细胞中逆转耐药的机制",
+      "llm_tldr_en": "This paper reveals that nelfinavir combined with cisplatin induces lytic cell death via caspase-8/caspase-3/GSDME axis in platinum-resistant ovarian cancer, directly addressing resistance mechanisms.",
+      "llm_tldr_cn": "该论文发现奈非那韦与顺铂联用通过caspase-8/caspase-3/GSDME轴在铂类耐药卵巢癌细胞中诱导裂解性细胞死亡。直接探究化疗耐药机制，虽未涉及新辅助语境，但机制研究可类推至新辅助化疗耐药。",
+      "llm_tldr": "该论文发现奈非那韦与顺铂联用通过caspase-8/caspase-3/GSDME轴在铂类耐药卵巢癌细胞中诱导裂解性细胞死亡。直接探究化疗耐药机制，虽未涉及新辅助语境，但机制研究可类推至新辅助化疗耐药。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "mechanisms of resistance to neoadjuvant therapy in tumors",
+      "matched_requirement_id": "req-7",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-06-28-734525-v2",
+      "source": "biorxiv",
+      "title": "Spatial immune architecture and tumor lineage programs jointly shape clinical outcomes in advanced pancreatic ductal adenocarcinoma",
+      "abstract": "Pancreatic ductal adenocarcinoma (PDAC) exhibits extensive molecular and microenvironmental heterogeneity, yet how tumor lineage states interact with spatial immune organization in advanced disease remains poorly understood. Here, we performed multiplexed spatial proteomic profiling using tissue cyclic immunofluorescence (t-CyCIF) in 27 patients with advanced PDAC and integrated these analyses with spatial transcriptomic profiling of representative tumors. Tumors were classified into Classical, Hybrid, Basal, and Null epithelial states based on GATA6 and CK5 expression, revealing distinct immune architectures associated with clinical outcome. Classical and Hybrid tumors displayed immune-inflamed microenvironments enriched for lymphocytes, whereas Basal and Null tumors exhibited immune-excluded, macrophage-dominated landscapes characterized by increased M2 macrophages.\n\nSpatial transcriptomic analysis further revealed that Hybrid tumors were not homogeneous intermediate states but instead contained spatially segregated Hybrid_Classical and Hybrid_Basal regions with distinct transcriptional programs, immune niches, and cell-cell communication networks. Hybrid_Basal regions were associated with increased M2 macrophage enrichment and preferential activation of macrophage-derived SPP1-CD44 signaling, implicating localized immune-epithelial interactions in epithelial plasticity and lineage-state transitions.\n\nTo quantify spatial immune organization, we developed a spatial immune score that captures the relative positioning of CD8 cytotoxic T cells with respect to CD4 helper T cells and CD163 M2 macrophages. Higher scores were associated with worse survival and provided stronger prognostic information than conventional immune cell abundance metrics. Integration of the spatial immune score with GATA6 expression achieved superior prognostic discrimination (AUC = 0.822) compared with either feature alone. Together, these findings demonstrate that tumor lineage state and spatial immune organization represent complementary dimensions of PDAC biology and highlight spatial tumor-immune interactions as determinants of clinical outcome in advanced pancreatic cancer.\n\nSummaryPancreatic ductal adenocarcinoma (PDAC) exhibits marked molecular and microenvironmental heterogeneity, yet how tumor lineage states interact with the spatial immune microenvironment in advanced disease remains poorly understood. Here, the authors apply multiplexed spatial proteomics and spatial transcriptomics to advanced PDAC and show that epithelial lineage states defined by GATA6 and CK5 are associated with distinct immune architectures and macrophage-enriched signaling niches. Hybrid tumors contain spatially segregated epithelial states with differential immune engagement and SPP1-CD44 signaling. The authors further identify a spatial immune score based on the relative positioning of CD8 T cells, CD4 T cells, and M2 macrophages that predicts patient survival. Integration of spatial immune organization with tumor lineage information improves prognostic stratification, highlighting the clinical relevance of spatial tumor-immune interactions in advanced PDAC.",
+      "authors": [
+        "Oo, H. M.",
+        "Anekpuritanang, T.",
+        "Angkathunyakul, N.",
+        "Degirmenci, U.",
+        "Pongpaibul, A.",
+        "Punyawatthananukool, S.",
+        "Korphaisarn, K.",
+        "Sampattavanich, S."
+      ],
+      "primary_category": "cancer biology",
+      "categories": [
+        "cancer biology"
+      ],
+      "published": "2026-07-10T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.06.28.734525v2.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "spatial proteomic and transcriptomic profiling of PDAC reveals immune architecture and lineage states associated with outcomes",
+      "llm_evidence_cn": "PDAC的空间蛋白质组和转录组分析揭示与临床结果相关的免疫结构和谱系状态",
+      "llm_evidence": "PDAC的空间蛋白质组和转录组分析揭示与临床结果相关的免疫结构和谱系状态",
+      "canonical_evidence": "PDAC的空间蛋白质组和转录组分析揭示与临床结果相关的免疫结构和谱系状态",
+      "llm_tldr_en": "Multiplexed spatial profiling and spatial transcriptomics in advanced PDAC classify tumors into lineage states with distinct immune architectures, linking tumor heterogeneity to clinical outcomes, which may inform resistance mechanisms.",
+      "llm_tldr_cn": "该研究对27例晚期胰腺导管腺癌患者进行多重空间蛋白质组和空间转录组分析，将肿瘤分为经典、混合、基底和零上皮状态，不同状态显示不同的免疫结构和临床结局。该多组学表征为理解肿瘤异质性和潜在的耐药机制提供了框架。",
+      "llm_tldr": "该研究对27例晚期胰腺导管腺癌患者进行多重空间蛋白质组和空间转录组分析，将肿瘤分为经典、混合、基底和零上皮状态，不同状态显示不同的免疫结构和临床结局。该多组学表征为理解肿瘤异质性和潜在的耐药机制提供了框架。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "multi omics characterization of tumor resistance",
+      "matched_requirement_id": "req-10",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-07-06-736708-v1",
+      "source": "biorxiv",
+      "title": "Viral rewiring of DDR signaling activates a pro-survival network that drives chemotherapy resistance",
+      "abstract": "Radiation and chemotherapy rely on an intact DNA damage response (DDR) to halt cell-cycle progression and eliminate damaged cells, yet many tumors evade these outcomes and develop resistance. Adenoviruses remodel host signaling networks in ways that mirror tumor evolution, providing a powerful system to dissect how DDR pathways are subverted. Here, we identify two scenarios in which the central DDR kinases ATM and ATR are reprogrammed from enforcing CHK1/CHK2-dependent checkpoint arrest to activating a NEMO-NF-{kappa}B survival pathway. This rewiring induces transcriptional programs associated with stress tolerance, anti-apoptotic signaling, and chemoresistance, and promotes the accumulation of cells with abnormal DNA content. These findings reveal a previously unrecognized mode of DDR plasticity that generates a pro-survival state reminiscent of early tumor evolution and suggest how ATM- and ATR-dependent pathways can be co-opted to promote therapeutic resistance.",
+      "authors": [
+        "Kong, J.",
+        "Azhar, H. M. F.",
+        "Akmel, A.",
+        "Wen, F.",
+        "Xu, J.",
+        "Thomas, M. A."
+      ],
+      "primary_category": "molecular biology",
+      "categories": [
+        "molecular biology"
+      ],
+      "published": "2026-07-08T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.07.06.736708v1.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "chemotherapy resistance mechanisms via DDR signaling",
+      "llm_evidence_cn": "通过DDR信号传导的化疗耐药机制",
+      "llm_evidence": "通过DDR信号传导的化疗耐药机制",
+      "canonical_evidence": "通过DDR信号传导的化疗耐药机制",
+      "llm_tldr_en": "This study reveals that adenoviral rewiring of DDR signaling activates a NEMO-NF-kB survival pathway, driving transcriptional programs linked to chemoresistance and stress tolerance.",
+      "llm_tldr_cn": "该研究发现腺病毒通过重编程DNA损伤反应信号，激活NEMO-NF-κB生存通路，诱导与应激耐受和化疗耐药相关的转录程序，揭示了耐药的新机制，可为新辅助治疗耐药提供参考。",
+      "llm_tldr": "该研究发现腺病毒通过重编程DNA损伤反应信号，激活NEMO-NF-κB生存通路，诱导与应激耐受和化疗耐药相关的转录程序，揭示了耐药的新机制，可为新辅助治疗耐药提供参考。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "mechanisms of resistance to neoadjuvant therapy in tumors",
+      "matched_requirement_id": "req-7",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-07-03-735750-v1",
+      "source": "biorxiv",
+      "title": "Multi-omics, organoid-based modeling reveals an SRC/mTOR-dependent fetal-like stem cell trajectory in colorectal cancer",
+      "abstract": "BackgroundSingle-cell atlases have described diverse stem cell states in colorectal cancer (CRC), however, the overarching trajectories of those states and the underlying functional mechanisms, including their relevance for drug sensitivity, need better understanding.\n\nMethodsWe established 64 patient-derived organoids from microsatellite-stable colorectal cancers, characterized their transcriptomes and genomes, and performed drug screening with 62-140 clinically approved substances. We analyzed additional published transcriptome data from patient-derived organoids (72 patients from three independent datasets), TCGA-CRC data (466 patients), and single-cell transcriptomes of tumor biopsies (123,000 cells from six independent cohorts) to establish a functional and molecular landscape of CRC stem cells. We performed mechanistic follow-up analyses by mass-spectrometry-based proteomics, large-scale kinase inhibition assays and immunofluorescence analyses.\n\nResultsWe find a continuous landscape of CRC stem cells that is characterized by distinct developmental programs: adult stem cell-to fetal-like regenerative states and transition between differentiation programs. By large-scale drug perturbations and multi-omics modeling, we identify a regenerative/fetal-like stem cell trajectory characterized by PI3K/mTOR dependency. We find the identified developmental axes conserved in organoid, clinical, as well as single-cell data, and the fetal-like PI3K/mTOR-dependent state to be associated with poor clinical prognosis. Mechanistically, PI3K/mTOR vulnerability is linked to a lack of adaptive capability due to suppressed mRNA translation and associated with an upregulated SRC signaling network.\n\nConclusionsOur work moves beyond a molecular CRC landscape by combined functional perturbation analyses in organoids. This enables mechanistic modeling of stem cell state regulation and identifies an SRC/mTOR-dependent regenerative state in CRC, which might allow improved therapeutic targeting in the future.",
+      "authors": [
+        "Mulholland, T.",
+        "Aybey, B.",
+        "Li, Z.",
+        "Schwarzmüller, L.",
+        "Rindtorff, N.",
+        "Tondo, L.",
+        "Sui, P.",
+        "Karabati, E.",
+        "Albrecht, P.",
+        "Riedesser, J. E.",
+        "Petersen, Y.",
+        "Miersch, T.",
+        "Valentini, E.",
+        "Burgermeister, E.",
+        "Zhan, T.",
+        "Dreikhausen, L.",
+        "Schulte, N.",
+        "Belle, S.",
+        "Wiemann, S.",
+        "Boutros, M.",
+        "Ebert, M. P.",
+        "Betge, J."
+      ],
+      "primary_category": "cancer biology",
+      "categories": [
+        "cancer biology"
+      ],
+      "published": "2026-07-09T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.07.03.735750v1.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "transcriptomics and drug sensitivity in CRC organoids",
+      "llm_evidence_cn": "结直肠癌类器官的转录组学与药物敏感性",
+      "llm_evidence": "结直肠癌类器官的转录组学与药物敏感性",
+      "canonical_evidence": "结直肠癌类器官的转录组学与药物敏感性",
+      "llm_tldr_en": "This study uses multi-omics and organoid-based modeling to reveal an SRC/mTOR-dependent fetal-like stem cell trajectory in colorectal cancer and its relevance to drug sensitivity.",
+      "llm_tldr_cn": "该研究整合多组学、患者来源类器官和药物筛选，发现结直肠癌中SRC/mTOR依赖的胎儿样干细胞轨迹，与药物敏感性相关，揭示了转录组层面的耐药相关机制。",
+      "llm_tldr": "该研究整合多组学、患者来源类器官和药物筛选，发现结直肠癌中SRC/mTOR依赖的胎儿样干细胞轨迹，与药物敏感性相关，揭示了转录组层面的耐药相关机制。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "transcriptomics tumor resistance",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-07-06-736185-v1",
+      "source": "biorxiv",
+      "title": "Long-read, whole-genome sequencing and chemotherapy response of two patient-derived organoids from a TP53- and KRAS-mutant ovarian carcinoma",
+      "abstract": "Patient-derived organoids (PDOs) have transformed translational cancer research, allowing tractable models that better represent clinical features than traditional immortalized cell lines. Here we describe two PDOs with differential responses to carboplatin derived from sequential ascites fluid collections from a patient with high-grade mullerian carcinoma, that could not be further subclassified on the omental biopsy. Uterine origin was clinically excluded by pelvic imaging/CT scan of the uterus and absence of vaginal bleeding. Successful derivation from independent collections enabled comparison of intra-patient heterogeneity across sequential ascites samples and demonstrates that PDO efficiency rate is at least partly patient-specific or tumor-dependent. We performed long-read whole genome sequencing on the two PDOs, OC104 and OC109, to better characterize the structural variant landscape while also obtaining information on single nucleotide variants and DNA methylation. In addition to confirming single nucleotide variants noted in clinical sequencing (TP53, KRAS, SPOP, PPP2R1A, KMT2D), we identified additional variants in TSC2, NCOR2, and CTNNA2 that are predicted to be likely pathogenic. The spectrum of mutations, particularly the coincident KRAS and TP53, highlighted unexpected overlap with ovarian mucinous carcinoma. We also identified larger insertions and deletions that result in non-synonymous variants in MUC5AC, TPRX1, and BMX, as well as four translocation events, including two that could not have been resolved with short-read sequencing. Differentially methylated promoters between the two PDOs include 201 oncogenes and tumor suppressor genes, with HNF1A, MSI2, and SETBP1 having methylation directions consistent with these genes' roles in platinum response differences observed between the PDOs. Notably, the clonal nature of PDOs produced from two samples taken one week apart is important for the field to appreciate, particularly since they have clonal differences in platinum response. The temporal differences in clonality may indicate a limitation of low volume sampling, however may provide opportunity to longitudinally predict clinical outcomes. We also demonstrate the ability of long-read sequencing to add detail into the genomics and epigenetics of ovarian cancer.",
+      "authors": [
+        "Wendt, J. R.",
+        "Adams, K. M.",
+        "Moreno, R.",
+        "Hossan, M. S.",
+        "Stram, A.",
+        "Lin, E. S.",
+        "Kersten, L.",
+        "Kratz, J. D.",
+        "Roy, M.",
+        "McGregor, S. M.",
+        "Lang, J. D."
+      ],
+      "primary_category": "cancer biology",
+      "categories": [
+        "cancer biology"
+      ],
+      "published": "2026-07-10T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.07.06.736185v1.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Long-read WGS of ovarian cancer organoids with differential chemotherapy response, enabling study of resistance",
+      "llm_evidence_cn": "卵巢癌类器官的长读长全基因组测序结合化疗差异反应，可研究耐药机制",
+      "llm_evidence": "卵巢癌类器官的长读长全基因组测序结合化疗差异反应，可研究耐药机制",
+      "canonical_evidence": "卵巢癌类器官的长读长全基因组测序结合化疗差异反应，可研究耐药机制",
+      "llm_tldr_en": "Two patient-derived organoids from a TP53- and KRAS-mutant ovarian carcinoma are characterized by long-read whole-genome sequencing, revealing differential responses to carboplatin and enabling comparison of intra-patient heterogeneity across sequential ascites samples.",
+      "llm_tldr_cn": "针对卵巢癌化疗反应个体差异和患者内异质性，本研究从腹水样本中成功建立两个患者来源类器官，通过长读长全基因组测序分析其对卡铂的差异反应，展示了类器官模型在模拟临床特征和研究耐药机制方面的价值。",
+      "llm_tldr": "针对卵巢癌化疗反应个体差异和患者内异质性，本研究从腹水样本中成功建立两个患者来源类器官，通过长读长全基因组测序分析其对卡铂的差异反应，展示了类器官模型在模拟临床特征和研究耐药机制方面的价值。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "bioinformatics for drug resistance",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-07-09-737344-v1",
+      "source": "biorxiv",
+      "title": "Synthesizing Mechanistic Hypotheses from Single-Cell Omics via Discretized Feature Attribution and Empirical Language Model Grounding",
+      "abstract": "Single-cell multimodal omics offer unprecedented resolution of cellular networks, yet translating continuous computational attributions into structured, testable biological mechanisms remains a persistent bottleneck. To address this limitation, we introduce an analytical pipeline employing decision trees to discretize continuous neural network attributions into explicit regulatory thresholds. These boundaries then structurally constrain large language models, enabling them to integrate established literature with empirical data to synthesize context-specific hypotheses. Applying this continuous-to-discrete framework across sparse datasets yielded novel biological mechanisms. Specifically, the framework articulated a cytoskeletal gating hierarchy governing EGF-stimulated pathways, identified transcriptomic drivers of input resistance in cortical interneurons, and delineated translational logic predicting Ki-67 abundance within spatial transcriptomics. Retrospective benchmarking validated the capacity of the framework to autonomously reconstruct published regulatory logic. Supported by a locally deployable open-weight language model and a code-free interface, this approach establishes an auditable methodology to extract robust experimental hypotheses from high-dimensional single-cell data.",
+      "authors": [
+        "Chen, J.",
+        "Hong, Y.",
+        "Bermudez, A.",
+        "Hu, J.",
+        "Hsieh, C.-J.",
+        "Lin, N."
+      ],
+      "primary_category": "systems biology",
+      "categories": [
+        "systems biology"
+      ],
+      "published": "2026-07-10T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.07.09.737344v1.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Single-cell omics to mechanistic hypotheses pipeline",
+      "llm_evidence_cn": "从单细胞组学合成机制假设的计算管线",
+      "llm_evidence": "从单细胞组学合成机制假设的计算管线",
+      "canonical_evidence": "从单细胞组学合成机制假设的计算管线",
+      "llm_tldr_en": "This paper introduces a pipeline that discretizes neural network attributions using decision trees and grounds them with LLMs to synthesize mechanistic hypotheses from single-cell omics, applicable to resistance mechanism discovery.",
+      "llm_tldr_cn": "该论文提出一种计算管线：先用决策树离散化神经网络特征归因，再结合大语言模型整合文献与数据，从单细胞组学数据中合成可检验的机制假说。该方法可直接应用于新辅助治疗耐药机制的发现，尤其适合多组学耐药特征的理论生成。",
+      "llm_tldr": "该论文提出一种计算管线：先用决策树离散化神经网络特征归因，再结合大语言模型整合文献与数据，从单细胞组学数据中合成可检验的机制假说。该方法可直接应用于新辅助治疗耐药机制的发现，尤其适合多组学耐药特征的理论生成。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "single cell sequencing resistance mechanism",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}
