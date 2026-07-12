@@ -1,0 +1,28 @@
+---
+title: "TAOK3 inhibition constrains invasion, potentiates paclitaxel, and reprograms the tumor microenvironment toward anti-tumor immunity in cervical cancer"
+title_zh: TAOK3抑制在宫颈癌中限制侵袭、增强紫杉醇作用并重编程肿瘤微环境向抗肿瘤免疫
+authors: "Iden, M., Schmidt, R., Mohammed, R. D. A. S., Dlugi, T. A., Kumar, R., Tsaih, S.-W., Nosirov, B., Kadamberi, I. P., Mittal, S., Narayan, S. L., Bradley, W. H., Erickson, B., Czaja, R. C., Felix, J. C., Jin, V., Ojesina, A. I., Pradeep, S., Smith, B. C., Rader, J. S."
+date: 2026-07-10
+pdf: "https://www.biorxiv.org/content/10.64898/2026.07.04.736128v1.full.pdf"
+tags: ["query:neo-resist"]
+score: 7.0
+evidence: 抑制TAOK3重编程宫颈癌肿瘤微环境，增强抗肿瘤免疫
+tldr: 宫颈癌中HPV整合靶向TAOK3可能驱动侵袭。本研究通过单细胞RNA-seq定位TAOK3于侵袭性上皮亚群，发现其沉默可延长G2/M期、抑制侵袭、增强紫杉醇敏感性并诱导methuosis样细胞死亡。体内实验表明，TAOK3敲低减少肿瘤负荷、下调KRT14并重塑微环境免疫（减少CD206+ M2巨噬细胞）。TAOK3是宫颈癌潜在治疗靶点和生物标志物，其抑制可协同化疗并增强抗肿瘤免疫。
+source: biorxiv
+selection_source: fresh_fetch
+figures_json: "[{\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-07-04-736128-v1/fig-001.webp\", \"caption\": \"\", \"page\": 0, \"index\": 1, \"width\": 3448, \"height\": 1158, \"label\": \"Figure\"}, {\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-07-04-736128-v1/fig-002.webp\", \"caption\": \"\", \"page\": 0, \"index\": 2, \"width\": 2888, \"height\": 1108, \"label\": \"Figure\"}, {\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-07-04-736128-v1/fig-003.webp\", \"caption\": \"\", \"page\": 0, \"index\": 3, \"width\": 1247, \"height\": 244, \"label\": \"Figure\"}, {\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-07-04-736128-v1/fig-004.webp\", \"caption\": \"\", \"page\": 0, \"index\": 4, \"width\": 2894, \"height\": 1391, \"label\": \"Figure\"}, {\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-07-04-736128-v1/fig-005.webp\", \"caption\": \"\", \"page\": 0, \"index\": 5, \"width\": 3266, \"height\": 1646, \"label\": \"Figure\"}, {\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-07-04-736128-v1/fig-006.webp\", \"caption\": \"\", \"page\": 0, \"index\": 6, \"width\": 3040, \"height\": 1374, \"label\": \"Figure\"}, {\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-07-04-736128-v1/fig-007.webp\", \"caption\": \"\", \"page\": 0, \"index\": 7, \"width\": 1924, \"height\": 1820, \"label\": \"Figure\"}, {\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-07-04-736128-v1/fig-008.webp\", \"caption\": \"\", \"page\": 0, \"index\": 8, \"width\": 2740, \"height\": 1161, \"label\": \"Figure\"}]"
+motivation: 探究TAOK3在宫颈癌侵袭与免疫微环境中的作用及治疗潜力。
+method: 结合患者样本、单细胞RNA-seq、siRNA/CRISPRi细胞功能实验及体内异种移植模型，评估TAOK3抑制效应。
+result: TAOK3沉默抑制侵袭、延长G2/M、增强紫杉醇敏感性；体内降低肿瘤负荷，下调KRT14，减少M2巨噬细胞，重塑免疫微环境。
+conclusion: TAOK3是宫颈癌侵袭性上皮亚群的标志，其抑制可协同化疗并促进抗肿瘤免疫，为潜在治疗靶点和生物标志物。
+---
+
+## 摘要
+TAOK3是一种较少研究的MAPK家族丝氨酸/苏氨酸激酶，我们课题组已证明其是HPV整合的靶点，提示在驱动侵袭性宫颈癌（ICC）中具有潜在作用。本研究通过分析患者肿瘤、转移灶及宫颈癌模型中的TAOK3表达，并整合两个单细胞RNA-seq数据集，将TAOK3定位于肿瘤上皮亚群。在细胞系和3D球体中，通过siRNA和CRISPRi评估TAOK3缺失的功能后果。利用种属特异性RNA-seq在宫颈内异种移植模型中评估体内效应，以区分肿瘤与微环境反应。TAOK3 mRNA/蛋白在原发性和转移性ICC中升高，主要定位于角蛋白阳性上皮亚群（T3epi），该亚群富含钙黏蛋白/S100结合、囊泡/内吞通路及前沿程序。TAOK3沉默将转录组和蛋白质组重编程为减少WNT/细胞周期和运动信号、改变内吞和细胞骨架组织，并与染色质重塑及ERBB2-ERBB3/细胞骨架激酶活性相关的磷酸网络重塑。功能上，TAOK3抑制延长G2/M期、抑制侵袭并增强对低剂量紫杉醇的敏感性。长期失活诱导伴有细胞外ATP释放的甲硫氨酸样细胞死亡。在异种移植模型中，TAOK3敲低减少肿瘤负荷，下调人肿瘤区室中的前导细胞标志物KRT14，并富集免疫激活的微环境通路，特别是CD206+ M2巨噬细胞特异性减少。TAOK3界定ICC中具有侵袭能力的上皮状态，并协调细胞周期控制、细胞骨架-膜动力学及肿瘤-免疫交互作用。遗传或药理学TAOK3抑制可限制肿瘤生长、增强紫杉醇作用并重塑微环境向抗肿瘤免疫，支持TAOK3作为ICC潜在治疗靶点和生物标志物。
+
+意义声明：TAOK3标记宫颈癌中具有侵袭能力的上皮亚群。TAOK3抑制减缓肿瘤生长、增强化疗反应并减少M2巨噬细胞，揭示TAOK3作为潜在治疗靶点和患者分层生物标志物。
+
+## Abstract
+TAOK3 is a lesser-studied MAPK family serine/threonine kinase our group has shown to be targeted by HPV integration, suggesting a potential role in driving invasive cervical cancer (ICC). Here, we profiled TAOK3 expression in patient tumors, metastases, and cervical cancer models and localized TAOK3 within a tumor epithelial subpopulation by integrating two single-cell RNA-seq datasets. Functional consequences of TAOK3 loss were assessed with siRNA and CRISPRi in cell lines and 3D spheroids. In vivo effects were evaluated in intracervical xenografts with species-specific RNA-seq to resolve tumor versus microenvironmental responses. TAOK3 mRNA/protein were elevated in primary and metastatic ICC and primarily localized to a keratin-positive epithelial subset (T3epi) enriched for cadherin/S100 binding, vesicle/endocytic pathways, and leading-edge programs. TAOK3 silencing reprogrammed transcriptomes and proteomes toward reduced WNT/cell-cycle and motility signaling, altered endocytosis and cytoskeleton organization, and reshaped phospho-networks linked to chromatin remodeling and ERBB2-ERBB3/cytoskeletal kinase activity. Functionally, TAOK3 inhibition prolonged G2/M, suppressed invasion, and enhanced sensitivity to low dose paclitaxel. Prolonged inactivation induced methuosis-like cell death with extracellular ATP release. In xenografts, TAOK3 knockdown reduced tumor burden, downregulated KRT14--a leader cell marker--within the human tumor compartment, and enriched microenvironmental pathways for immune activation, with a specific decrease in CD206+ M2 macrophages. TAOK3 delineates an invasion-competent epithelial state in ICC and coordinates cell-cycle control, cytoskeleton-membrane dynamics, and tumor-immune crosstalk. Genetic or pharmacologic TAOK3 inhibition constrains tumor growth, potentiates paclitaxel, and remodels the microenvironment toward anti-tumor immunity, supporting TAOK3 as a potential therapeutic target and biomarker in ICC.
+
+Statement of SignificanceTAOK3 marks an invasion-competent epithelial subpopulation in cervical cancer. TAOK3 inhibition slows tumor growth, enhances chemoresponse, and reduces M2 macrophages, revealing TAOK3 as a potential therapeutic target and biomarker for patient stratification.

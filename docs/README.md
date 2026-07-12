@@ -6,45 +6,55 @@
 </div>
 
 ## 每次日报
-- 最新运行日期：2026-07-11
-- 运行时间：2026-07-11 22:28:50 UTC
+- 最新运行日期：2026-07-12
+- 运行时间：2026-07-12 22:29:22 UTC
 - 运行状态：成功
-- 本次总论文数：8
-- 精读区：0
+- 本次总论文数：11
+- 精读区：3
 - 速读区：8
 
 ### 今日简报（AI）
-今日推荐8篇论文，聚焦癌症免疫治疗、铂耐药卵巢癌及化疗耐药病毒机制。最值得关注AI指导的免疫治疗适应性给药及奈非那韦联合顺铂诱导裂解性细胞死亡的新途径。建议优先阅读这两篇，了解AI辅助癌症决策与新型联合疗法突破。
-- 详情：[/202607/11/README](/202607/11/README)
+1) 今日聚焦膀胱癌与胃癌两项免疫新机制，并速览乳腺癌、宫颈癌研究热点。
+2) 核心发现：HLA-E/NKG2A轴是BCG无应答膀胱癌的治疗新靶点；肿瘤SPP1蛋白驱动胃癌腹膜转移中的免疫抑制巨噬细胞重塑。
+3) 建议关注SPP1及NKG2A相关免疫治疗进展，可作为肿瘤免疫逃逸及联合用药的潜在方向。
+- 详情：[/202607/12/README](/202607/12/README)
 
 ### 精读区论文标签
-- 本次无精读推荐。
+1. [The HLA-E/NKG2A axis identifies a therapeutic vulnerability in BCG-unresponsive bladder cancer](/202607/12/biorxiv-10-1101-2024-09-02-610816-v3-the-hla-enkg2a-axis-identifies-a-therapeutic-vulnerability-in-bcg-unresponsive-bladder-cancer)  
+   标签：评分：9.0/10、query:neo-resist
+   evidence：HLA-E/NKG2A轴介导BCG无应答膀胱癌的免疫逃逸
+2. [Tumor-Derived SPP1 Drives Immunosuppressive Macrophage Reprogramming in Gastric Peritoneal Carcinomatosis](/202607/12/biorxiv-10-64898-2026-06-21-733605-v2-tumor-derived-spp1-drives-immunosuppressive-macrophage-reprogramming-in-gastric-peritoneal-carcinomatosis)  
+   标签：评分：8.0/10、query:neo-resist
+   evidence：肿瘤微环境免疫抑制机制与耐药相关
+3. [Overcoming Daraxonrasib Resistance: Allele-Specific Mechanisms Guide Salvage Therapy in Pancreatic Cancer](/202607/12/biorxiv-10-64898-2026-07-05-735339-v1-overcoming-daraxonrasib-resistance-allele-specific-mechanisms-guide-salvage-therapy-in-pancreatic-cancer)  
+   标签：评分：8.0/10、query:neo-resist
+   evidence：胰腺癌中对RAS抑制剂的等位基因特异性耐药机制
 
 ### 速读区论文标签
-1. [Mechanistically informed adaptive dosing for cancer immunotherapy using AI-guided decision making](/202607/11/biorxiv-10-64898-2026-06-09-730783-v1-mechanistically-informed-adaptive-dosing-for-cancer-immunotherapy-using-ai-guided-decision-making)  
+1. [Comprehensive Analysis Reveals Adaptive DNA Repair and Replication Stress Networks in Genomically Unstable Breast Cancer](/202607/12/biorxiv-10-64898-2026-05-13-724208-v2-comprehensive-analysis-reveals-adaptive-dna-repair-and-replication-stress-networks-in-genomically-unstable-breast-cancer)  
    标签：评分：7.0/10、query:neo-resist
-   evidence：机器学习药物耐药预测免疫治疗剂量
-2. [The combination of nelfinavir and cisplatin drives lytic cell death through a caspase-8/caspase-3/GSDME axis in platinum-resistant ovarian cancer cells](/202607/11/biorxiv-10-64898-2026-06-30-735544-v1-the-combination-of-nelfinavir-and-cisplatin-drives-lytic-cell-death-through-a-caspase-8caspase-3gsdme-axis-in-platinum-resistant-ovarian-cancer-cells)  
+   evidence：生物信息学分析DNA修复在耐药中的作用
+2. [TAOK3 inhibition constrains invasion, potentiates paclitaxel, and reprograms the tumor microenvironment toward anti-tumor immunity in cervical cancer](/202607/12/biorxiv-10-64898-2026-07-04-736128-v1-taok3-inhibition-constrains-invasion-potentiates-paclitaxel-and-reprograms-the-tumor-microenvironment-toward-anti-tumor-immunity-in-cervical-cancer)  
    标签：评分：7.0/10、query:neo-resist
-   evidence：铂类耐药卵巢癌细胞中逆转耐药的机制
-3. [Viral rewiring of DDR signaling activates a pro-survival network that drives chemotherapy resistance](/202607/11/biorxiv-10-64898-2026-07-06-736708-v1-viral-rewiring-of-ddr-signaling-activates-a-pro-survival-network-that-drives-chemotherapy-resistance)  
-   标签：评分：7.0/10、query:neo-resist
-   evidence：通过DDR信号传导的化疗耐药机制
-4. [Tensor-based machine learning for multi-omics integrative clustering and feature discovery](/202607/11/biorxiv-10-64898-2025-11-28-691099-v3-tensor-based-machine-learning-for-multi-omics-integrative-clustering-and-feature-discovery)  
+   evidence：抑制TAOK3重编程宫颈癌肿瘤微环境，增强抗肿瘤免疫
+3. [Epigenetic profile drives accurate survival prediction in breast cancer via a multi-omics machine learning model](/202607/12/biorxiv-10-1101-2025-07-31-667894-v4-epigenetic-profile-drives-accurate-survival-prediction-in-breast-cancer-via-a-multi-omics-machine-learning-model)  
    标签：评分：6.0/10、query:neo-resist
-   evidence：基于张量的机器学习用于多组学整合聚类
-5. [Spatial immune architecture and tumor lineage programs jointly shape clinical outcomes in advanced pancreatic ductal adenocarcinoma](/202607/11/biorxiv-10-64898-2026-06-28-734525-v2-spatial-immune-architecture-and-tumor-lineage-programs-jointly-shape-clinical-outcomes-in-advanced-pancreatic-ductal-adenocarcinoma)  
+   evidence：多组学机器学习生存预测模型，可迁移至耐药预测
+4. [Oncohistone inhibition reshapes tumor-microenvironment communication in Diffuse Midline Glioma (DMG)](/202607/12/biorxiv-10-64898-2026-06-17-731637-v1-oncohistone-inhibition-reshapes-tumor-microenvironment-communication-in-diffuse-midline-glioma-dmg)  
    标签：评分：6.0/10、query:neo-resist
-   evidence：PDAC的空间蛋白质组和转录组分析揭示与临床结果相关的免疫结构和谱系状态
-6. [Multi-omics, organoid-based modeling reveals an SRC/mTOR-dependent fetal-like stem cell trajectory in colorectal cancer](/202607/11/biorxiv-10-64898-2026-07-03-735750-v1-multi-omics-organoid-based-modeling-reveals-an-srcmtor-dependent-fetal-like-stem-cell-trajectory-in-colorectal-cancer)  
+   evidence：重塑肿瘤微环境通讯
+5. [AI-enabled Spatial Profiling of Circulating Tumor-Immune Ecosystems Predicts Patient Outcomes Across Cancers](/202607/12/biorxiv-10-64898-2026-07-02-736133-v1-ai-enabled-spatial-profiling-of-circulating-tumor-immune-ecosystems-predicts-patient-outcomes-across-cancers)  
    标签：评分：6.0/10、query:neo-resist
-   evidence：结直肠癌类器官的转录组学与药物敏感性
-7. [Long-read, whole-genome sequencing and chemotherapy response of two patient-derived organoids from a TP53- and KRAS-mutant ovarian carcinoma](/202607/11/biorxiv-10-64898-2026-07-06-736185-v1-long-read-whole-genome-sequencing-and-chemotherapy-response-of-two-patient-derived-organoids-from-a-tp53--and-kras-mutant-ovarian-carcinoma)  
+   evidence：AI空间分析预测患者结局，可适配用于耐药预测
+6. [Targeting the Tumor-Stroma Crosstalk: An AI-Based Virtual Screening Strategy for Dual MET/SMO Inhibitors in Pancreatic Cancer](/202607/12/biorxiv-10-64898-2026-07-03-736313-v1-targeting-the-tumor-stroma-crosstalk-an-ai-based-virtual-screening-strategy-for-dual-metsmo-inhibitors-in-pancreatic-cancer)  
    标签：评分：6.0/10、query:neo-resist
-   evidence：卵巢癌类器官的长读长全基因组测序结合化疗差异反应，可研究耐药机制
-8. [Synthesizing Mechanistic Hypotheses from Single-Cell Omics via Discretized Feature Attribution and Empirical Language Model Grounding](/202607/11/biorxiv-10-64898-2026-07-09-737344-v1-synthesizing-mechanistic-hypotheses-from-single-cell-omics-via-discretized-feature-attribution-and-empirical-language-model-grounding)  
+   evidence：基于AI的虚拟筛选靶向肿瘤-基质交互；涉及肿瘤微环境和机器学习
+7. [LeafRank: A phylodynamic framework for inferring relative fitness from single-cell phylogenies in chromosomally unstable tumors](/202607/12/biorxiv-10-64898-2026-07-06-736651-v2-leafrank-a-phylodynamic-framework-for-inferring-relative-fitness-from-single-cell-phylogenies-in-chromosomally-unstable-tumors)  
    标签：评分：6.0/10、query:neo-resist
-   evidence：从单细胞组学合成机制假设的计算管线
+   evidence：利用单细胞系统发育推断染色体不稳定肿瘤的适应性
+8. [Expanding Microgel Parameters to Model the Tumor Microenvironment and Examine Temozolomide Resistance in Glioblastoma](/202607/12/biorxiv-10-64898-2026-07-08-737105-v1-expanding-microgel-parameters-to-model-the-tumor-microenvironment-and-examine-temozolomide-resistance-in-glioblastoma)  
+   标签：评分：6.0/10、query:neo-resist
+   evidence：肿瘤微环境替莫唑胺耐药模型
 
 
 <div class="dpr-home-promo-card">
