@@ -1,0 +1,340 @@
+Title: APOBEC3G expression marks a TMB-high, T cell-inflamed tumor state and is associated with response to immune checkpoint blockade in multiple cancer cohorts
+
+URL Source: https://www.biorxiv.org/content/10.64898/2026.07.08.737369v1.full.pdf
+
+Number of Pages: 17
+
+Markdown Content:
+1
+
+APOBEC3G expression marks a TMB-high, T cell–inflamed tumor state and is associated with response to immune checkpoint blockade in multiple cancer cohorts 
+
+Kelly E. Butler 1# , Dhanusha Yesudhas 1# , Bilal Lone 1, A. Rouf Banday 1* 
+
+> 1
+
+Genitourinary Malignancies Branch, Center for Cancer Research, National Cancer Institute, NIH, Bethesda, Maryland 20814 *Corresponding author: A. Rouf Banday, PhD Email: rouf.banday@nih.gov Ph: 240-551-4691 Address: 1Genitourinary Malignancies Branch, Center for Cancer Research, National Cancer Institute, National Institutes of Health, 37 Convent Dr Rm 1066A, Bethesda MD 20892  
+
+> #
+
+These authors contributed equally 
+
+> 105 and is also made available for use under a CC0 license. (which was not certified by peer review) is the author/funder. This article is a US Government work. It is not subject to copyright under 17 USC The copyright holder for this preprint this version posted July 13, 2026. ;https://doi.org/10.64898/2026.07.08.737369 doi: bioRxiv preprint
+
+2
+
+Abstract 
+
+Immune checkpoint therapies have transformed clinical practice; however, reliable biomarkers to predict response remain limited. Tumor mutational burden (TMB) has emerged as an important biomarker because it is thought to reflect neoantigen load, yet its predictive utility has been inconsistent. This limitation may partly arise because TMB primarily captures tumor-intrinsic immunogenicity, which is heterogeneous and does not fully reflect the state of antitumor immunity. To identify transcriptomic surrogates that capture both high mutational burden and antitumor immune activation, we investigated whether mRNA expression of mutagenic APOBEC3 family members could serve as surrogates for high TMB and T cell–rich tumors. Using a pan-cancer computational framework, we evaluated the association of four APOBEC3 genes with mutational burden, neoantigen load, immune infiltration, and immune checkpoint blockade response. Among APOBEC3A , APOBEC3B, APOBEC3G, and APOBEC3H ,
+
+APOBEC3G emerged as the strongest and most consistent marker of a TMB high CD8 high and Neoantigen high CD8 high tumor phenotypes. Single-cell analyses further demonstrated that 
+
+APOBEC3G is enriched in both malignant cells and T cells compared with other APOBEC3 
+
+family members, with APOBEC3G -positive CD8⁺ T cells exhibiting elevated activation markers including GZMB and IFNG. Importantly, retrospective analyses of 50 immune checkpoint blockade cohorts showed that APOBEC3G had the most consistent association among 
+
+APOBEC3 family members with treatment response and clinical outcomes. Together, these findings identify APOBEC3G as a candidate transcriptomic marker of a TMB-associated, T cell– inflamed tumor state linked to immune-checkpoint blockade benefit, warranting further prospective validation. 
+
+Keywords 
+
+APOBEC3G, Tumor Mutation Burden (TMB), Immunotherapy response, Biomarker, CD8+ T cells, Immune activation 
+
+> 105 and is also made available for use under a CC0 license. (which was not certified by peer review) is the author/funder. This article is a US Government work. It is not subject to copyright under 17 USC The copyright holder for this preprint this version posted July 13, 2026. ;https://doi.org/10.64898/2026.07.08.737369 doi: bioRxiv preprint
+
+3
+
+Introduction 
+
+Immune checkpoint therapies have transformed oncology; however, robust and broadly applicable biomarkers of response remain elusive. Tumor mutational burden (TMB) has been widely adopted as a surrogate for neoantigen load, yet its predictive performance is inconsistent across tumor types and clinical settings (1, 2). This limitation may reflect that TMB captures tumor-intrinsic mutational processes without fully accounting for the immune context required for effective anti-tumor responses (3). The APOBEC3 family of cytosine deaminases represents a major endogenous source of somatic mutagenesis in cancer, predominantly driving C>T and C>G substitutions in specific sequence contexts (4, 5). While APOBEC3A and APOBEC3B are most strongly linked with SBS2 and SBS13 mutational signatures, APOBEC3G has been associated with a distinct mutational signature (5, 6). Certain APOBEC3H haplotypes have also been reported to exhibit mutagenic activity (7). More broadly, APOBEC3 activity contributes to diffuse hypermutation, kataegis, and chromosomal instability (8, 9). In bladder, breast, cervical, head and neck, and lung malignancies, APOBEC3-induced mutations can account for a substantial fraction of overall tumor mutational burden, reaching over two-thirds in some cases. (10). Notably, APOBEC3 expression has been linked to both mutational load and tumor immune activity (11-13), raising the possibility that APOBEC3 transcripts may serve as integrated surrogates of tumor mutagenicity and immune activation. 
+
+Results and Discussion 
+
+We therefore hypothesized that APOBEC3 gene expression could serve as a composite, transcript-based biomarker of tumor immunogenicity. To address this, we first defined TMB high CD8 high and Neoantigen high CD8 high tumor phenotypes across 32 cancer types using residual-based regression analyses ( Supplementary methods ), then evaluated associations between these phenotypes and expression of mutagenic APOBEC3 family members. Although expression of all four mutagenic APOBEC3s was broadly associated with the TMB high CD8 high 
+
+and Neoantigen high CD8 high tumor phenotypes across multiple cancer types, APOBEC3G 
+
+exhibited the strongest and most consistent associations ( Figure 1a, b; Supplementary Figures 1 and 2 ). Pooled Cochran–Mantel–Haenszel analyses across multiple CD8 readouts further confirmed that APOBEC3G showed the strongest enrichment for tumors characterized by both the TMB high CD8 high and Neoantigen high CD8 high phenotypes, with APOBEC3H showing the next most consistent association ( Supplementary Figure 3 ). Complementary cancer-type-adjusted 
+
+> 105 and is also made available for use under a CC0 license. (which was not certified by peer review) is the author/funder. This article is a US Government work. It is not subject to copyright under 17 USC The copyright holder for this preprint this version posted July 13, 2026. ;https://doi.org/10.64898/2026.07.08.737369 doi: bioRxiv preprint
+
+4regression analyses supported these findings and showed that APOBEC3G remained associated with composite TMB high CD8 high and Neoantigen high CD8 high states after adjustment for tumor purity ( Supplementary Figure 4a, b ). Single-cell analyses provided additional biological insight. Because APOBEC3-family activity is most relevant in tumor types with prominent APOBEC3-medaited mutational processes, we first examined representative datasets from APOBEC3-mutagenesis–associated cancers, including non-small cell lung cancer (NSCLC), lung adenocarcinoma (LUAD), breast cancer (BRCA), and bladder cancer (BLCA) ( Figure 1c, d ). Among the APOBEC3 family members examined, 
+
+APOBEC3G showed the most consistent enrichment in both malignant epithelial cells and CD8⁺ T cells across these datasets. To assess whether this pattern extended beyond these datasets, we analyzed additional independent single-cell cohorts, including newly generated bladder cancer data and public kidney cancer, liver cancer, and melanoma cohorts ( Supplementary Figure 5a, b). These analyses similarly supported APOBEC3G enrichment in tumor and immune compartments. Within CD8⁺ T cells, APOBEC3G -positive cells showed higher expression of activation and effector markers, including GZMB and IFNG , compared with APOBEC3G -negative CD8⁺ T cells ( Figure 1e and Supplementary Figure 5c ). In addition, a substantial fraction of APOBEC3G⁺GZMB⁺IFNG⁺ CD8⁺ T cells co-expressed inhibitory or antigen-experience markers, including PDCD1, TIGIT, HAVCR2, LAG3, CTLA4, ENTPD1 , and TOX 
+
+(Figure 1f and Supplementary Figure 5d ). These findings suggest that APOBEC3G expression reflects a composite tumor–immune state, with contributions from both malignant and immune-cell compartments. In bulk data from TCGA tumors, APOBEC3G expression was also positively associated with multiple CD8/T-cell-inflamed markers in cancer-type-adjusted models, including analyses additionally accounting for tumor purity ( Supplementary Figure 4c ). These analyses further support the interpretation that APOBEC3G marks a T cell–inflamed tumor state rather than mutational burden alone. To assess clinical relevance, we evaluated the expression of APOBEC3 family genes across 50 immune-checkpoint blockade cohorts spanning multiple cancer types (>5,000 patients). Among the APOBEC3 family members evaluated, APOBEC3G showed the most consistent association with immune-checkpoint blockade response rates and survival outcomes across retrospective 
+
+> 105 and is also made available for use under a CC0 license. (which was not certified by peer review) is the author/funder. This article is a US Government work. It is not subject to copyright under 17 USC The copyright holder for this preprint this version posted July 13, 2026. ;https://doi.org/10.64898/2026.07.08.737369 doi: bioRxiv preprint
+
+5cohorts (Figure 2a-c ). Associations for APOBEC3A , APOBEC3B , and APOBEC3H were observed in fewer endpoints and cohorts ( Supplementary Figure 6) .Collectively, these data support a model in which bulk APOBEC3G expression marks a composite tumor–immune state in which mutational burden and antitumor immune activation coexist, particularly in cancers with high mutational activity. Unlike TMB, which reflects mutational load without directly measuring immune contexture, APOBEC3G expression appears to mark tumors in which mutational burden coexists with a T cell–inflamed microenvironment, a state associated with clinical benefit from immune-checkpoint blockade. These findings are based on retrospective transcriptomic analyses of independent cohorts with substantial heterogeneity in tumor type, treatment regimen, sequencing platform, preprocessing workflow, response definition, and sample size; thus, biomarker performance estimates should be interpreted cautiously and require prospective validation. A further limitation of bulk transcriptomic analyses is that APOBEC3G expression cannot be definitively assigned to malignant-cell-intrinsic versus immune-cell-derived sources. Therefore, we do not interpret bulk 
+
+APOBEC3G as a single-compartment marker. Rather, our data support APOBEC3G as a candidate composite transcriptomic biomarker that captures both tumor-associated APOBEC3 biology and immune-cell-associated inflammation within the tumor microenvironment. Importantly, APOBEC3G is not intended to replace TMB as an established biomarker, but rather to complement mutation-based metrics by capturing features of both mutational burden and immune activation in a single transcript-based measure. APOBEC3G expression may offer practical value in research or clinical contexts where tumor RNA-seq, targeted expression panels or transcriptomic profiling are already available; however, prospective validation will be required before clinical implementation. In summary, APOBEC3G emerged as the most consistent APOBEC3 family marker of immune-checkpoint blockade benefit across retrospective cancer cohorts. APOBEC3G thus warrants prospective evaluation as a candidate transcriptomic marker of a TMB-associated, T cell–inflamed tumor state linked to immune-checkpoint blockade response. More broadly, our findings suggest that transcript-based biomarkers integrating tumor-intrinsic mutational processes with immune context may complement mutation-based metrics and improve biomarker development for immune checkpoint blockade. 
+
+> 105 and is also made available for use under a CC0 license. (which was not certified by peer review) is the author/funder. This article is a US Government work. It is not subject to copyright under 17 USC The copyright holder for this preprint this version posted July 13, 2026. ;https://doi.org/10.64898/2026.07.08.737369 doi: bioRxiv preprint
+
+6
+
+Materials and Methods Human Tumor Omics Datasets and Data Sources 
+
+TCGA pan-cancer RNA-sequencing, mutation, neoantigen, immune-infiltration, and clinical annotation data were accessed through the UCSC Xena Browser, cBioPortal, and previously curated pan-cancer immunogenomic resources. TCGA cancer types were included when 
+
+APOBEC3 family expression estimates, mutational-burden or neoantigen-burden estimates, and CD8/T-cell infiltration readouts were available. No disease-specific inclusion or exclusion criteria were applied beyond availability of the required molecular and clinical annotations. For single-cell analyses, we analyzed whole-tumor single-cell or single-nucleus RNA-sequencing datasets from 25 bladder tumors (GEO: GSE169379), 26 breast tumors (GEO: GSE176078), 14 lung adenocarcinomas (GEO: GSE123902), and a non–small cell lung cancer dataset comprising 91 patients (GEO: GSE154826). We additionally analyzed whole-tumor single-cell RNA-sequencing datasets from 5 bladder tumors generated by our group (GEO: GSE319003), 10 melanoma tumors (GEO: GSE148190), 15 liver tumors (GEO: GSE125449), and 6 kidney tumors from the Broad Single Cell Portal dataset SCP1288, with raw data deposited in dbGaP under accession phs002065.v1.p1. Immune checkpoint blockade cohorts were obtained from the Cancer Immunology Data Engine (CIDE). We downloaded and analyzed the available processed cohort-level transcriptomic matrices and matched clinical annotation from CIDE for cohorts with pretreatment transcriptomic data and response and/or survival outcomes. Cohorts were included when 
+
+APOBEC3 family expression could be quantified from the available transcriptomic profiles. These datasets represented 43 studies comprising 50 treatment cohorts and 5,363 patients with at least one available clinical endpoint. Endpoint-specific sample sizes varied across cohorts according to the availability of response, RECIST, progression-free survival, or overall survival annotation. Additional genomics datasets used in this study are referenced and described in the relevant sections below. The full names of the abbreviated cancers are: Adrenocortical Carcinoma (ACC), Bladder Urothelial Carcinoma (BLCA), Breast Invasive Carcinoma (BRCA), Cervical Squamous 
+
+> 105 and is also made available for use under a CC0 license. (which was not certified by peer review) is the author/funder. This article is a US Government work. It is not subject to copyright under 17 USC The copyright holder for this preprint this version posted July 13, 2026. ;https://doi.org/10.64898/2026.07.08.737369 doi: bioRxiv preprint
+
+7Cell Carcinoma and Endocervical Adenocarcinoma (CESC), Cholangiocarcinoma (CHOL), Colon Adenocarcinoma (COAD), Lymphoid Neoplasm Diffuse Large B-cell Lymphoma (DLBC), Esophageal Carcinoma (ESCA), Glioblastoma Multiforme (GBM), Head and Neck Squamous Cell Carcinoma (HNSC), Kidney Chromophobe (KICH), Kidney Renal Clear Cell Carcinoma (KIRC), Kidney Renal Papillary Cell Carcinoma (KIRP), Acute Myeloid Leukemia (LAML), Brain Lower Grade Glioma (LGG), Liver Hepatocellular Carcinoma (LIHC), Lung Adenocarcinoma (LUAD), Lung Squamous Cell Carcinoma (LUSC), Mesothelioma (MESO), Ovarian Serous Cystadenocarcinoma (OV), Pancreatic Adenocarcinoma (PAAD), Pheochromocytoma and Paraganglioma (PCPG), Prostate Adenocarcinoma (PRAD), Rectum Adenocarcinoma (READ), Sarcoma (SARC), Skin Cutaneous Melanoma (SKCM), Stomach Adenocarcinoma (STAD), Testicular Germ Cell Tumors (TGCT), Thyroid Carcinoma (THCA), Thymoma (THYM), Uterine Corpus Endometrial Carcinoma (UCEC), Uterine Carcinosarcoma (UCS), Uveal Melanoma (UVM). 
+
+Single-cell and single-nucleus RNA-sequencing analysis 
+
+Single-cell and single-nucleus RNA-sequencing datasets were analyzed as whole-tumor datasets to evaluate the cellular compartments contributing to APOBEC3 family expression. We prioritized datasets that included tumor and immune compartments rather than datasets generated exclusively from sorted malignant or immune-cell populations. Cell-type annotations were used as provided by the original studies when available; otherwise, major cellular compartments were assigned using canonical lineage markers. APOBEC3 family expression was summarized by cell type using the percentage of expressing cells and average expression. For CD8⁺ T-cell analyses, 
+
+APOBEC3G -positive and APOBEC3G -negative CD8⁺ T cells were compared for expression of activation and effector markers, including GZMB, IFNG , and immune checkpoint-associated genes. 
+
+Residual-based identification of TMB high CD8 high and Neoantigen high CD8 high tumors 
+
+Tumors were analyzed separately within each cancer type. CD8⁺ T-cell abundance was quantified using five independent readouts: CD8A expression, CD8B expression, xCell CD8⁺ T-cell score (14) , CIBERSORT absolute CD8⁺ T-cell score (15), and TIMER CD8⁺ T-cell score 
+
+> 105 and is also made available for use under a CC0 license. (which was not certified by peer review) is the author/funder. This article is a US Government work. It is not subject to copyright under 17 USC The copyright holder for this preprint this version posted July 13, 2026. ;https://doi.org/10.64898/2026.07.08.737369 doi: bioRxiv preprint
+
+8(16). Tumor mutational burden (TMB) was represented by nonsynonymous mutation rate (Nonsilent_Mutation_Rate), and neoantigen load was represented by Total_Neoantigens as previously computed (17). For each cancer type and CD8 readout, linear regression models were fitted: CD8 readout ~ TMB, and CD8 readout ~ Total Neoantigens Residuals were extracted for each sample. A positive residual indicates that the observed CD8 signal exceeds that expected based on TMB or neoantigen load within that cancer type. Within each cancer type, samples were classified as TMB-high or neoantigen-high if their values were greater than or equal to the cancer-specific median of Nonsilent_Mutation_Rate or Total_Neoantigens, respectively. Samples were classified as CD8-high if the corresponding CD8 readout exceeded the cancer-specific median. A sample was defined as belonging to the TMB high CD8 high residual-enriched group if it satisfied all of the following criteria: a, TMB ≥ cancer-specific median; b, CD8 readout ≥ cancer-specific median; and c, Positive residual from the CD8 ~ TMB regression. Similarly, a sample was assigned to the Neoantigen high CD8 high 
+
+residual-enriched group. This framework was applied independently for each of the five CD8 readouts. 
+
+Association of APOBEC3 expression with residual-enriched immunogenomic groups 
+
+Expression of APOBEC3A, APOBEC3B, APOBEC3G , and APOBEC3H was analyzed separately. Expression values were analyzed on a log2(TPM + 1) scale. Within each cancer type, samples were dichotomized into APOBEC-high and APOBEC-low groups using the cancer-specific median expression of each gene. For each cancer type, 2×2 contingency tables were constructed comparing APOBEC-high versus APOBEC-low status with membership in the residual-enriched groups defined above. Analyses were performed separately for: a) TMB high CD8 high residual-enriched tumors, and b) Neoantigen high CD8 high residual-enriched tumors and repeated across all five CD8 readouts. To address zero counts and ensure stable estimation, a Haldane–Anscombe continuity correction (+0.5 to all cells) was applied prior to statistical testing. Odds ratios (ORs), 95% confidence intervals (CIs), and P values were computed using Fisher’s exact test. Odds ratios greater than 1 indicate enrichment of APOBEC-
+
+> 105 and is also made available for use under a CC0 license. (which was not certified by peer review) is the author/funder. This article is a US Government work. It is not subject to copyright under 17 USC The copyright holder for this preprint this version posted July 13, 2026. ;https://doi.org/10.64898/2026.07.08.737369 doi: bioRxiv preprint
+
+9high tumors within the residual-enriched (double-high) group. Estimates were classified as sparse when any cell in the original (uncorrected) contingency table contained fewer than five observations. These estimates were retained to preserve completeness but were flagged and interpreted with caution due to increased statistical uncertainty. 
+
+Cochran–Mantel–Haenszel analysis across cancer types 
+
+To obtain pan-cancer summary estimates while accounting for tumor-type stratification, associations between APOBEC-high status and residual-enriched group membership were evaluated using the Cochran–Mantel–Haenszel (CMH) test. For each APOBEC3 gene, CD8 readout, and immunogenomic grouping (TMB or neoantigen), cancer-specific 2×2 contingency tables were combined into a stratified 2×2×K table (K = number of cancer types). The CMH test was used to estimate common odds ratios, 95% confidence intervals, and two-sided P values across strata. This analysis tested whether tumors with high APOBEC3 expression had increased odds of belonging to TMB high CD8 high or Neoantigen high CD8 high residual-enriched groups, while controlling for cancer type. 
+
+Cancer-type- and tumor-purity-adjusted sensitivity analyses 
+
+To complement the stratified Cochran–Mantel–Haenszel analyses, we performed cancer-type-adjusted regression analyses evaluating the association between APOBEC3 family expression and composite TMB high CD8 high or Neoantigen high CD8 high tumor states. For each APOBEC3 gene, expression values were standardized, and logistic regression models were fitted with composite tumor-state membership as the outcome and APOBEC3 expression as the predictor, adjusting for cancer type as a categorical covariate. Odds ratios are reported per one standard deviation increase in APOBEC3 expression. 
+
+To evaluate whether APOBEC3G associations were explained by tumor purity, additional logistic regression models were fitted for APOBEC3G with cancer type and tumor purity included as covariates. Tumor purity estimates were obtained from available TCGA pan-cancer purity annotations. We also evaluated associations between APOBEC3G expression and immune/CD8-related markers using linear regression models adjusted for cancer type alone or for both cancer type and tumor purity. APOBEC3G expression and immune-marker values were 
+
+> 105 and is also made available for use under a CC0 license. (which was not certified by peer review) is the author/funder. This article is a US Government work. It is not subject to copyright under 17 USC The copyright holder for this preprint this version posted July 13, 2026. ;https://doi.org/10.64898/2026.07.08.737369 doi: bioRxiv preprint
+
+10 standardized before modeling, and standardized beta coefficients with 95% confidence intervals were reported. 
+
+Analysis of transcriptomic and clinical outcomes in immune checkpoint blockade cohorts 
+
+Processed pretreatment transcriptomic profiles and matched clinical outcome annotations for immune checkpoint blockade-treated cohorts were downloaded from the Cancer Immunology Data Engine (CIDE), accessed in December 2025 (18). Included cohorts had available APOBEC3 family expression estimates and at least one clinical endpoint, including objective response, RECIST response category, progression-free survival, or overall survival. Treatment cohorts primarily included anti-PD-1, anti-PD-L1, anti-CTLA-4, or combination checkpoint blockade regimens where available. For each cohort, APOBEC3A, APOBEC3B, APOBEC3G, and APOBEC3H expression values were analyzed using the processed expression matrices provided by CIDE. Parallel analyses were performed for datasets also available through dbGaP for cross-validation. Associations between APOBEC3 expression and binary treatment response were evaluated using logistic regression. Associations with progression-free survival or overall survival were evaluated using Cox proportional hazards regression. Analyses were performed at the cohort level using available matched transcriptomic and clinical annotations; endpoint-specific sample sizes differed depending on the availability of response, RECIST, PFS, or OS data. For logistic and Cox regression models, APOBEC3 expression was modeled as a continuous variable within each cohort without predefined expression cutoffs. Statistical significance was assessed using Wald test P values. 
+
+Reporting and statistics 
+
+For each APOBEC3 gene, analyses were performed across all five CD8 readouts and for both TMB-based and neoantigen-based definitions. Results are reported as common odds ratios with 95% confidence intervals and two-sided Cochran–Mantel–Haenszel (CMH) P values. Cancer-specific sample counts were retained for all strata. For immunotherapy cohorts, analyses were performed using endpoint-specific sample sets; therefore, the number of samples included for response, RECIST, PFS, and OS analyses could differ within the same cohort. All statistical tests 
+
+> 105 and is also made available for use under a CC0 license. (which was not certified by peer review) is the author/funder. This article is a US Government work. It is not subject to copyright under 17 USC The copyright holder for this preprint this version posted July 13, 2026. ;https://doi.org/10.64898/2026.07.08.737369 doi: bioRxiv preprint
+
+11 were two-sided, and no formal multiple testing correction was applied given the hypothesis-driven nature of the analyses; results were interpreted based on effect size, consistency across readouts, and nominal significance thresholds. Statistical analyses were performed using R. 
+
+List of abbreviations: Apolipoprotein B mRNA-editing enzyme, catalytic polypeptide 3 (APOBEC3), tumor mutation burden (TMB) 
+
+Declarations Ethics approval and consent to participate 
+
+Not applicable 
+
+Availability of data and materials 
+
+The datasets analyzed in the current study are available from public repositories. Single-cell and single-nucleus RNA-sequencing datasets were obtained from the Gene Expression Omnibus (GEO), including a bladder cancer dataset generated by our group and deposited in GEO (GSE319003). Additional datasets included single-cell RNA-sequencing data from 10 melanoma tumors (GSE148190), 15 liver tumors (GSE125449), and 6 kidney tumors (Broad Single Cell Portal SCP1288; dbGaP phs002065.v1.p1), as well as single-nucleus RNA-sequencing data from 25 bladder tumors (GSE169379), single-cell RNA-sequencing data from 26 breast tumors (GSE176078), lung adenocarcinoma data from 14 patients (GSE123902), and non-small cell lung cancer data from 91 patients (GSE154826). TCGA pan-cancer RNA-sequencing and copy-number alteration data comprising approximately 11,000 samples were obtained from the UCSC Xena Browser (https://xena.ucsc.edu) and cBioPortal for Cancer Genomics (https://www.cbioportal.org). Immunotherapy-response and clinical outcome data from 50 clinical cohorts comprising 5,363 patients were primarily obtained from the Cancer Immunology Data Engine (CIDE) repository (https://cide.ccr.cancer.gov) or from dbGaP through access ID:35035. 
+
+Competing interests 
+
+Authors declare no competing interests 
+
+Funding 
+
+> 105 and is also made available for use under a CC0 license. (which was not certified by peer review) is the author/funder. This article is a US Government work. It is not subject to copyright under 17 USC The copyright holder for this preprint this version posted July 13, 2026. ;https://doi.org/10.64898/2026.07.08.737369 doi: bioRxiv preprint
+
+12 A.R. Banday was supported by the Intramural Research Program of the Center for Cancer Research, National Cancer Institute, National Institutes of Health, through grant 1ZIABC012091 .
+
+Authors' contributions 
+
+A.R.B., K.E.B., D.Y., and B.L. conceived and designed the study. A.R.B. supervised the research. K.E.B., D.Y. and A.R.B. conducted statistical and bioinformatics analyses of the clinical and multi-omics data. A.R.B., K.E.B. and D.Y. wrote the manuscript. All authors contributed to revision and editing and approved the final manuscript. 
+
+Acknowledgements 
+
+This work was supported in part by the Intramural Research Program of the National Institutes of Health (NIH). Contributions by NIH authors were made as part of their official duties as federal employees and are considered works of the United States Government. The findings and conclusions are those of the authors and do not necessarily reflect the views of the NIH or the U.S. Department of Health and Human Services. 
+
+References 
+
+1. McGrail DJ, Pilie PG, Rashid NU, Voorwerk L, Slagter M, Kok M, et al. High tumor mutation burden fails to predict immune checkpoint blockade response across all cancer types. Ann Oncol. 2021;32(5):661-72. 2. Litchfield K, Reading JL, Puttick C, Thakkar K, Abbosh C, Bentham R, et al. Meta-analysis of tumor- and T cell-intrinsic mechanisms of sensitization to checkpoint inhibition. Cell. 2021;184(3):596-614 e14. 3. Chan TA, Yarchoan M, Jaffee E, Swanton C, Quezada SA, Stenzinger A, Peters S. Development of tumor mutation burden as an immunotherapy biomarker: utility for the oncology clinic. Ann Oncol. 2019;30(1):44-56. 4. Alexandrov LB, Kim J, Haradhvala NJ, Huang MN, Tian Ng AW, Wu Y, et al. The repertoire of mutational signatures in human cancer. Nature. 2020;578(7793):94-101. 5. Liu W, Newhall KP, Khani F, Barlow L, Nguyen D, Gu L, et al. The Cytidine Deaminase APOBEC3G Contributes to Cancer Mutagenesis and Clonal Evolution in Bladder Cancer. Cancer Res. 2023;83(4):506-20. 
+
+> 105 and is also made available for use under a CC0 license. (which was not certified by peer review) is the author/funder. This article is a US Government work. It is not subject to copyright under 17 USC The copyright holder for this preprint this version posted July 13, 2026. ;https://doi.org/10.64898/2026.07.08.737369 doi: bioRxiv preprint
+
+13 6. Yang H, Pacheco J, Kim K, Bokani A, Ito F, Ebrahimi D, Chen XS. Molecular mechanism for regulating APOBEC3G DNA editing function by the non-catalytic domain. Nat Commun. 2024;15(1):8773. 7. Starrett GJ, Luengas EM, McCann JL, Ebrahimi D, Temiz NA, Love RP, et al. The DNA cytosine deaminase APOBEC3H haplotype I likely contributes to breast and lung cancer mutagenesis. Nat Commun. 2016;7:12918. 8. Consortium ITP-CAoWG. Pan-cancer analysis of whole genomes. Nature. 2020;578(7793):82-93. 9. Bergstrom EN, Luebeck J, Petljak M, Khandekar A, Barnes M, Zhang T, et al. Mapping clustered mutations in cancer reveals APOBEC3 mutagenesis of ecDNA. Nature. 2022;602(7897):510-7. 10. Roberts SA, Lawrence MS, Klimczak LJ, Grimm SA, Fargo D, Stojanov P, et al. An APOBEC cytidine deaminase mutagenesis pattern is widespread in human cancers. Nat Genet. 2013;45(9):970-6. 11. Zhao K, Zhang Q, Flanagan SA, Lang X, Jiang L, Parsels LA, et al. Cytidine Deaminase APOBEC3A Regulates PD-L1 Expression in Cancer Cells in a JNK/c-JUN-Dependent Manner. Mol Cancer Res. 2021;19(9):1571-82. 12. Butler K, Banday AR. APOBEC3-mediated mutagenesis in cancer: causes, clinical significance and therapeutic potential. J Hematol Oncol. 2023;16(1):31. 13. Ng JCF, Quist J, Grigoriadis A, Malim MH, Fraternali F. Pan-cancer transcriptomic analysis dissects immune and proliferative functions of APOBEC3 cytidine deaminases. Nucleic Acids Res. 2019;47(3):1178-94. 14. Aran D, Hu Z, Butte AJ. xCell: digitally portraying the tissue cellular heterogeneity landscape. Genome Biol. 2017;18(1):220. 15. Newman AM, Steen CB, Liu CL, Gentles AJ, Chaudhuri AA, Scherer F, et al. Determining cell type abundance and expression from bulk tissues with digital cytometry. Nat Biotechnol. 2019;37(7):773-82. 16. Li T, Fu J, Zeng Z, Cohen D, Li J, Chen Q, et al. TIMER2.0 for analysis of tumor-infiltrating immune cells. Nucleic Acids Res. 2020;48(W1):W509-W14. 17. Thorsson V, Gibbs DL, Brown SD, Wolf D, Bortone DS, Ou Yang TH, et al. The Immune Landscape of Cancer. Immunity. 2018;48(4):812-30 e14. 
+
+> 105 and is also made available for use under a CC0 license. (which was not certified by peer review) is the author/funder. This article is a US Government work. It is not subject to copyright under 17 USC The copyright holder for this preprint this version posted July 13, 2026. ;https://doi.org/10.64898/2026.07.08.737369 doi: bioRxiv preprint
+
+14 18. Gong L, Luo J, Yang E, Ru B, Qi Z, Yang Y, et al. Cancer immunology data engine reveals secreted AOAH as a potential immunotherapy. Cell. 2025;188(18):5062-80 e32. 
+
+Main Figures Figure 1. APOBEC3G is the strongest APOBEC3 family correlate of TMB high CD8 high phenotype and is enriched in tumor and T cell compartments. (a) Forest plot showing odds ratios (ORs) and 95% confidence intervals (CIs) for the association between APOBEC3G expression (high vs. low) and a TMB high CD8 high phenotype across cancer types using CD8A as the CD8 readout. The full names of the abbreviated cancers, according to TCGA nomenclature, are provided in the Supplementary Materials (methods section). Cancer types are ordered by effect size. Gray points indicate estimates derived from 
+
+Odds ratio (log scale) 
+
+a b c Epithelial Cells 
+
+Mean expression (scaled) % Cells LUAD (n=14) NSCLC (n=91) BLCA (n=25) BRCA (n=26) 
+
+APOBEC3- A B G H
+
+dAPOBEC3G 
+
++-Activated CD8 +T cell markers 
+
+> BRCA (n=26) BLCA (n=25) NSCLC (n=91)  LUAD (n=14)
+
+e% of  APOBEC3G ⁺ GZMB ⁺/IFNG ⁺
+
+> cells expressing marker
+
+Study LUAD NSCLC BRCA BLCA 
+
+f
+
+> CD69 IL2RA CD38 GZMB PRF1 NKG7 IFNG TNF ICOS CXCL9 CXCL10
+
+25 50 75 
+
+−0.4 0.0 0.4 
+
++-+-+-
+
+Mean expression (scaled) 
+
+ns ns ns ns 
+
+0.043 0.0074 
+
+ns 
+
+8.48x 10 -5 
+
+1.73 x 10 -4 
+
+9.81 x 10 -14 
+
+3.86 x 10 -9 
+
+9.87 x 10 -9 
+
+7.42 x 10 -8 
+
+0.025 0.0011 2.08 x 10 -8 ns ns ns 
+
+0.047 0.022 2.49 x 10 -6 
+
+9.93 x 10 -6 
+
+4.27 x 10 −8 4.72 x 10 −11 1.57 x 10 −9 3.66 x 10 -11 
+
+4.81 x 10 -11 
+
+3.31 x 10 -17 
+
+1.63 x 10 -18 
+
+1.60 x 10 −21 2.98 x 10 −45 0.1 1.0 10.0 100.0 
+
+THYM (N=119) CHOL (N=36) UCS (N=57) UVM (N=80) KICH (N=65) GBM (N=160) DLBC (N=48) KIRP (N=282) CESC (N=160) STAD (N=410) LIHC (N=325) SARC (N=251) SKCM (N=444) ACC (N=78) MESO (N=83) PAAD (N=177) PCPG (N=183) OV (N=209) TGCT (N=155) LAML (N=130) ESCA (N=176) LGG (N=528) BLCA (N=404) PRAD (N=494) HNSC (N=499) THCA (N=493) LUSC (N=465) KIRC (N=367) LUAD (N=509) UCEC (N=526) COAD (N=489) BRCA (N=1066) 
+
+APOBEC3G -high vs -low with TMB high CD8A high 
+
+ns ns ns ns ns 
+
+0.025 0.0057 1.31 x 10 −10 7.99 x 10 −7 2.20 x 10 −7 4.23x 10 −11 0.0053 1.66 x 10 −8 
+
+ns ns ns ns ns 
+
+0.036 7.83 x 10 −5 2.80 x 10 −7 1.39 x 10 −11 4.88 x 10 −10 2.43 x 10 −9 1.45 x 10 −10 6.51 x 10 −9 1.09 x 10 −16 5.16 x 10 −21 9.50 x 10 −22 7.82 x 10 −44 
+
+ESCA (N=141) MESO (N=79) UVM (N=76) UCS (N=56) DLBC (N=37) SKCM (N=77) KICH (N=65) KIRC (N=349) SARC (N=233) KIRP (N=267) LIHC (N=351) ACC (N=78) CHOL (N=35) PAAD (N=162) THYM (N=116) PCPG (N=181) TGCT (N=149) OV (N=162) STAD (N=95) GBM (N=151) BLCA (N=404) LGG (N=521) PRAD (N=488) LUSC (N=458) THCA (N=485) HNSC (N=484) CESC (N=278) UCEC (N=510) COAD (N=488) LUAD (N=501) BRCA (N=998) 
+
+ns 
+
+APOBEC3G -high vs -low with Neoantigen high CD8A high Odds ratio (log scale) 
+
+0.1 1.0 10.0 100.0 
+
+0.1 0.2 2.5 5.0 7.5 
+
+10 010 20 30 40 012% Cells 
+
+APOBEC3- A B G H
+
+Mean expression (scaled) % Cells CD8 + T cells 
+
+LUAD (n=14) NSCLC (n=91) BLCA (n=25) BRCA (n=26) 020 40 60 80 PDCD1 CTLA4 LAG3 TIGIT HAVCR2 TOX ENTPD1 
+
+105 and is also made available for use under a CC0 license. (which was not certified by peer review) is the author/funder. This article is a US Government work. It is not subject to copyright under 17 USC The copyright holder for this preprint this version posted July 13, 2026. ;https://doi.org/10.64898/2026.07.08.737369 doi: bioRxiv preprint 15 sparse data (any contingency table cell <5), which were retained but interpreted with caution. (b) Same analysis as in ( a), evaluating neoantigen load in place of TMB. APOBEC3G shows consistent enrichment for tumors with Neoantigen high CD8 high phenotype across multiple cancer types. (c) Single-cell RNA sequencing analysis showing mean expression (color scale) and percentage of expressing cells (dot size) for mutagenic APOBEC3 family members ( APOBEC3A , APOBEC3B , APOBEC3G ,
+
+APOBEC3H ) in malignant epithelial cells across tumor types. (d) Single-cell analysis of APOBEC3 
+
+expression in CD8⁺ T cells across tumor types, showing mean expression and percentage of expressing cells. (e) Expression of activation markers in CD8⁺ T cells stratified by APOBEC3G expression. 
+
+APOBEC3G -positive CD8⁺ T cells exhibit increased expression of activation markers (e.g., GZMB and 
+
+IFNG ), consistent with an activated, antigen-experienced phenotype. (f) Percentage of APOBEC3G -positive cells co-expressing immune checkpoint and activation markers across immunotherapy-relevant genes, stratified by study and cancer type. 
+
+> 105 and is also made available for use under a CC0 license. (which was not certified by peer review) is the author/funder. This article is a US Government work. It is not subject to copyright under 17 USC The copyright holder for this preprint this version posted July 13, 2026. ;https://doi.org/10.64898/2026.07.08.737369 doi: bioRxiv preprint
+
+16 
+
+Figure 2. APOBEC3G mRNA expression is associated with clinical immunotherapy response and outcomes across independent cancer cohorts. (a) Dot plot summarizing associations between 
+
+APOBEC3G expression and clinical response (responders vs. non-responders) across multiple immunotherapy-treated cohorts. Clinical and molecular data were obtained and curated from the Cancer Immunology Data Engine (CIDE). Signed Wald z-statistics and corresponding P values were obtained from logistic regression models fitted using continuous expression values without predefined cutoffs. Colors indicate the direction and magnitude of association for higher APOBEC3G expression (red, favorable association; blue, unfavorable association). Circle size reflects statistical significance 
+
+*** ****** **** *
+
+APOBEC3G 
+
+−2 0 2 4
+
+Campbell 2023 Melanoma anti-CTLA4 to anti-PD1 (n =20 : 5,15) Zhao 2019 Glioblastoma anti-PD1 (n =15 : 8,7) Roper 2021 Small Cell Lung Durvalumab (n =14 : 3,11) Ravi 2023 NSCLC Adeno anti-PD1 (n =68 : 27,41) Miao 2018 CCRCC anti-PD(L)1/CTLA4/VEGF (n =33 : 20,13) Pusztai 2021 Breast HER2- Durvalumab+Olaparib (n =71 : 29,42) Mariathasan 2018 Urothelial Atezolizumab (n =298 : 68,230) Patil 2022-POPLAR NSCLC Atezolizumab (n =86 : 13,73) Finn 2020 Hepatocellular Atezolizumab (n =43 : 9,34) Riaz 2017 Melanoma Nivolumab on Ipilimumab Naive (n =25 : 6,19) Padron 2022 Pancreatic Nivolumab+Chemotherapy (n =19 : 10,9) Liu 2019 Melanoma anti-PD1 on Ipilimumab Naive (n =74 : 31,43) VanAllen 2015 Melanoma Ipilimumab (n =41 : 19,22) Li 2024 Hepatocellular anti-PD1 (n =17 : 8,9) Vos 2023 Salivary Nivolumab+Ipilimumab (n =27 : 4,23) Nabet 2024 Small Cell Lung Atezolizumab (n =125 : 97,28) Li 2023 Mixed ICB (n =66 : 24,42) McDermott 2018 Renal Atezolizumab (n =72 : 20,52) Ravi 2023 NSCLC Squamous anti-PD1 (n =17 : 5,12) Ravi 2023 NSCLC anti-PD1 (n =90 : 35,55) Wolf 2022 Breast Luminal Pembrolizumab (n =31 : 6,25) Hu 2023 NSCLC anti-PD1 (n =24 : 9,15) Braun 2020 CCRCC Nivolumab (n =164 : 53,111) Padron 2022 Pancreatic Nivolumab+Sotigalimab+Chemotherapy (n =19 : 8,11) Kim 2018 Gastric Pembrolizumab (n =44 : 12,32) Lee 2021 NSCLC Pembrolizumab (n =22 : 7,15) Riaz 2017 Melanoma Nivolumab after Ipilimumab Progressed (n =26 : 4,22) Hugo 2016 Melanoma anti-PD1 (n =26 : 14,12) Lauss 2017 Melanoma Adoptive TIL (n =25 : 10,15) Liu 2019 Melanoma anti-PD1 after Ipilimumab Progressed (n =46 : 17,29) Hamidi 2024-IMvigor130 Urothelial Atezolizumab+Chemotherapy (n =299 : 164,135) Motzer 2020-IMmotion151 Renal Atezolizumab+Bevacizumab (n =380 : 150,230) Hamidi 2024-IMvigor130 Urothelial Atezolizumab (n =235 : 62,173) Yang 2021 Mixed Pembrolizumab (n =64 : 18,46) Patil 2022-OAK NSCLC Atezolizumab (n =318 : 48,270) Gide 2019 Melanoma anti-PD1+anti-CTLA4 (n =32 : 21,11) Wolf 2022 Breast Basal Pembrolizumab (n =38 : 25,13) Montoya 2013 Melanoma MAGE-A3 (n =56 : 22,34) Hamidi 2024-IMvigor211 Urothelial Atezolizumab (n =339 : 53,286) Gide 2019 Melanoma anti-PD1 (n =41 : 19,22) Uppaluri 2020 HeadNeck Pembrolizumab (n =19 : 8,11) Finn 2020 Hepatocellular Atezolizumab+Bevacizumab (n =247 : 81,166) McDermott 2018 Renal Atezolizumab+Bevacizumab (n =82 : 27,55) 1.3 2 3Rish Z−score 
+
+−1 01234
+
+-log10 (p-vlaue) High (n=173) Low (n=173) 020 40 40 60 80 100 APOBEC3G Months High (n=127) Low (n=126) 0500 1000 20 40 60 80 100 PFS, % High (n=22) Low (n=24) 0500 1000 1500 High (n=173) Low (n=173) 020 40 60 70 80 90 100 APOBEC3G High (n=42) Low (n=42) 010 20 30 20 40 60 80 100 High (n=174) Low (n=168) 010 20 30 40 20 40 60 80 100 High (n=137) Low (n=137) 010 20 30 40 20 40 60 80 100 High (n=171) Low (n=173) 010 20 30 020 40 60 80 100 High (n=174) Low (n=173) 010 20 40 60 80 100 
+
+Powles2024 Urothelial Atezolizumab High (n=28) Low (n=27) 010 20 30 60 70 80 90 100 DFS, % Months OS, % OS, % PFS, % Months Months Days Months OS, % 20 40 60 80 100 PFS, % Days Months Months Months PFS, % OS, % OS, % 
+
+Cox-PH, Risk z-score = -3.66 
+
+P = 2.48 X 10 -4 Powles2024 Urothelial Atezolizumab Cox-PH, Risk z-score = -2.62 
+
+P = 0.0088 McDermott2018 Renal Cox-PH, Risk z-score = -3.55 
+
+P = 3.88 X 10 -4 Atezolizumab+Bevacizumab Hamidi2024-IMvigor130 Urothelial 
+
+Cox-PH, Risk z-score = -4.03 
+
+P = 5.65 X 10 -5 Atezolizumab + Chemotherapy Finn2020 Hepatocellular Cox-PH, Risk z-score = -3.24 
+
+P = 0.0012 Atezolizumab+Bevacizumab Mariathasan2018 Urothelial Atezolizumab Cox-PH, Risk z-score = -2.11 
+
+P = 0.034 Hamidi2024-IMvigor130 Urothelial 
+
+Cox-PH, Risk z-score = -2.73 
+
+P = 9.9963 Atezolizumab Patil2022-OAK NSCLC Atezolizumab Cox-PH, Risk z-score = -3.11 
+
+P = 0.0018 Cui2021 Melanoma Anti-PD1 Cox-PH, Risk z-score = -1.85 
+
+P = 0.064 Liu2019 Melanoma Ipilimumab Cox-PH, Risk z-score = -2.93 
+
+P = 0.0033 Risk Z−score Cox-PH using continuous data without cutoff 
+
+b ca
+
+Sample sizes: n = total : responders, non-responders 
+
+105 and is also made available for use under a CC0 license. (which was not certified by peer review) is the author/funder. This article is a US Government work. It is not subject to copyright under 17 USC The copyright holder for this preprint this version posted July 13, 2026. ;https://doi.org/10.64898/2026.07.08.737369 doi: bioRxiv preprint 17 (−log10 P value), and significance levels are denoted by asterisks ( P < 0.05, P < 0.01, P < 0.001). Sample sizes are shown as total patients, followed by responders and non-responders. (b, c) 
+
+Representative Kaplan–Meier curves illustrating associations between APOBEC3G expression and progression-free survival (PFS), disease-free survival (DFS), or overall survival (OS) in cohorts that showed the strongest associations. Risk z-statistics and corresponding P values were derived from Cox proportional hazards models.
