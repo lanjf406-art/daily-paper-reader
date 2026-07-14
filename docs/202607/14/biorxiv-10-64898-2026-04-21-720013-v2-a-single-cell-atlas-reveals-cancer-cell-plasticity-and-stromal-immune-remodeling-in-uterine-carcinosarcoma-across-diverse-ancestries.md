@@ -1,0 +1,24 @@
+---
+title: A Single-Cell Atlas Reveals Cancer Cell Plasticity and Stromal-Immune Remodeling in Uterine Carcinosarcoma Across Diverse Ancestries
+title_zh: 单细胞图谱揭示不同祖先人群子宫癌肉瘤中癌细胞可塑性和基质-免疫重塑
+authors: "Subhash, S., Bammert, M.-T., Yueh, B., Chu, T., Barbi, M., Alici, A., Eskiocak, O., Shah, V., Ozler, K. A., Nizam, A., Katcher, A., Chung, C., Ozcelik, E., Robine, N., Frimer, M., Goldberg, G. L., Beyaz, S."
+date: 2026-07-10
+pdf: "https://www.biorxiv.org/content/10.64898/2026.04.21.720013v2.full.pdf"
+tags: ["query:neo-resist"]
+score: 7.0
+evidence: 单细胞图谱揭示治疗耐药肿瘤中癌细胞可塑性和基质-免疫重塑
+tldr: 子宫癌肉瘤(UCS)是一种侵袭性子宫内膜癌，具有恶性上皮和间质成分，非洲裔患者负担重但基因组数据匮乏。本研究构建了富含非洲裔患者的单细胞图谱，结合全基因组测序，发现恶性细胞呈现上皮样、间质样、过渡态和干/祖细胞样状态，并存在RNA速度支持的转分化轨迹。肿瘤微环境中存在免疫抑制性髓系细胞和多种癌症相关成纤维细胞(CAF)，其中CAF通过CCL2-CXCL1/2-IL10模块驱动CD8 T细胞功能障碍，并通过TIGIT-CD96-PVR检查点轴发挥作用。该研究阐明了UCS中恶性可塑性与基质-免疫重塑的耦合关系，并提出了新的治疗靶点。
+source: biorxiv
+selection_source: fresh_fetch
+figures_json: "[{\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-04-21-720013-v2/fig-001.webp\", \"caption\": \"\", \"page\": 0, \"index\": 1, \"width\": 1843, \"height\": 1706, \"label\": \"Figure\"}, {\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-04-21-720013-v2/fig-002.webp\", \"caption\": \"\", \"page\": 0, \"index\": 2, \"width\": 1843, \"height\": 1741, \"label\": \"Figure\"}, {\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-04-21-720013-v2/fig-003.webp\", \"caption\": \"\", \"page\": 0, \"index\": 3, \"width\": 1830, \"height\": 1741, \"label\": \"Figure\"}, {\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-04-21-720013-v2/fig-004.webp\", \"caption\": \"\", \"page\": 0, \"index\": 4, \"width\": 1843, \"height\": 1741, \"label\": \"Figure\"}, {\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-04-21-720013-v2/fig-005.webp\", \"caption\": \"\", \"page\": 0, \"index\": 5, \"width\": 1824, \"height\": 1684, \"label\": \"Figure\"}, {\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-04-21-720013-v2/fig-006.webp\", \"caption\": \"\", \"page\": 0, \"index\": 6, \"width\": 1843, \"height\": 1686, \"label\": \"Figure\"}]"
+motivation: 解析侵袭性子宫癌肉瘤的细胞异质性和微环境重塑机制，补充非洲裔患者的基因组数据空白。
+method: 对13名富含非洲裔患者的15个原发及转移UCS样本进行单细胞RNA测序和全基因组测序，分析细胞状态与亚克隆演化。
+result: 恶性细胞具有多状态可塑性，微环境中存在 immunosuppressive 髓系和 diverse CAF，CCL2-CXCL1/2-IL10 模块与 CD8 T 细胞 dysfunction 相关，TIGIT-CD96-PVR 检查点模块被鉴定。
+conclusion: UCS中恶性可塑性与基质-免疫细胞重塑耦合，基质-免疫轴可作为潜在治疗靶点。
+---
+
+## 摘要
+子宫癌肉瘤（UCS）是一种侵袭性子宫内膜癌，其特征是恶性上皮和间充质成分共存、快速转移播散和治疗反应差。然而，其细胞生态系统仍未得到充分解析，尤其是在非洲裔患者中，这些患者在基因组数据集中代表性不足，尽管疾病负担不成比例地高。在这里，我们生成了一个包含来自13名患者的15份原发性和转移性UCS标本的单细胞图谱，该患者队列富含非洲裔，并与全基因组测序整合。恶性细胞在单个肿瘤内表现出上皮样、间充质样、过渡态和干/祖细胞样状态，这些状态映射到患者特异性拷贝数定义的亚克隆和RNA速度轨迹，支持化生性状态转变。与正常子宫内膜相比，原发性肿瘤富含上皮-间充质转化（EMT）、mTORC1和糖酵解程序，而匹配的转移灶显示出增强的TNF-NFκB相关侵袭程序。肿瘤微环境包含免疫抑制性髓系状态和多种癌症相关成纤维细胞（CAF）亚群，包括周细胞样和基质重塑亚群，这些亚群通过趋化因子和免疫检查点回路充当预测的通信枢纽。我们发现了一个以CAF为中心的CCL2-CXCL1/2-IL10模块，与CD8 T细胞功能障碍相关，以及一个TIGIT-CD96-PVR检查点模块。这些数据定义了UCS细胞生态系统，其中恶性可塑性与基质-免疫细胞重塑在富含祖先的患者队列中耦合，并提名了用于进一步治疗研究的基质-免疫轴。
+
+## Abstract
+Uterine carcinosarcoma (UCS) is an aggressive endometrial cancer defined by coexisting malignant epithelial and mesenchymal components, rapid metastatic dissemination, and poor therapeutic response. However, its cellular ecosystem remains poorly resolved, particularly in patients of African ancestry who are underrepresented in genomic datasets despite a disproportionate disease burden. Here, we generated a single-cell atlas of 15 primary and metastatic UCS specimens from a diverse cohort of 13 patients enriched for African ancestry, integrated with whole-genome sequencing. Malignant cells exhibited epithelial-like, mesenchymal-like, transitional, and stem/progenitor-like states within individual tumors that mapped to patient-specific copy number-defined subclones and RNA-velocity trajectories, supporting metaplastic state transitions. Compared to normal endometrium, primary tumors were enriched for epithelial-mesenchymal-transition (EMT), mTORC1, and glycolytic programs, whereas matched metastases show enhanced TNF-NF{kappa}B-associated invasive programs. The tumor microenvironment contained immunosuppressive myeloid states and diverse cancer-associated fibroblast (CAF) subsets, including pericyte-like and matrix-remodeling subsets that act as predicted communication hubs through chemokine and immune-checkpoint circuits. We found a CAF-centered CCL2-CXCL1/2-IL10 module linked to CD8 T-cell dysfunction and a TIGIT-CD96-PVR checkpoint module. These data define the UCS cellular ecosystem in which malignant plasticity is coupled to stromal-immune cell remodeling in a patient cohort of enriched ancestries and nominate stromal-immune axes for further therapeutic investigation.

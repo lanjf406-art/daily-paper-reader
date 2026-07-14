@@ -1,0 +1,2144 @@
+Title: 2026.07.08.737143v1.full.pdf
+
+URL Source: https://www.biorxiv.org/content/10.64898/2026.07.08.737143v1.full.pdf
+
+Number of Pages: 30
+
+Markdown Content:
+TOPAS: p hosphoproteome data analysis and decision support platform for 1
+
+## molecular tumor boards 2
+
+3
+
+Cecilia Bang Jensen 1,* , Amirhossein Sakhteman 1,* , Firas Hamood 1,* , Annika Schneider 1,* , Julia 4
+
+Wo ortman 1, Maria -Veronica Teleanu 2,3 ,4, Peter Horak 2,3 , Florian P. Bayer 1, Christoph Stange 1,5,5
+
+Jennifer Huellein 2,6 , Daniel Hübschmann 2,4, 6,7 , Anton G. Henssen 8, Stefan Fröhling 2,3,4,9 , Bernhard 6
+
+Kuster 1, 5,10 ,#, Matthew The 1,# 
+
+7
+
+8
+
+> 1
+
+School of Life Sciences, Technical University of Munich, 85354 Freising, Germany 9 2National Center for Tumor Diseases (NCT), NCT Heidelberg, a partnership between German Cancer 10 
+
+Research Center (DKFZ) and Heidelberg University Hospital, Germany 11  3Division of Translational Medical Oncology, German Cancer Research Center (DKFZ), Heidelberg, 12 
+
+Germany 13  4German Cancer Consortium (DKTK),  DKFZ c ore center Heidelberg, Germany 14  5German Cancer Consortium (DKTK),  partner site  Munich , a partnership between DKFZ and  University 15 
+
+Medical Center  Munich, Germany. 16  6Computational Oncology Group, Molecular Precision Oncology Program, National Center for Tumor 17 
+
+Diseases (NCT) Heidelberg, DKFZ, Heidelberg, Germany 18  7 Pattern Recognition and Digital Medicine, Heidelberg Institute for Stem Cell Technology and 19 
+
+Experimental Medicine (HI -STEM), Heidelberg, Germany 20  8Experimental and Clinical Research Center (ECRC) of the MDC and Charité Berlin, Berlin, Germany 21  9Institute of Human Genetics, Heidelberg University, Heidelberg, Germany 22  10 Bavarian Center for Cancer Research (BZKF), Partner Site Munich, Munich, Germany 23 
+
+24 
+
+25 
+
+26 
+
+27 
+
+* these authors contributed equally 28 
+
+# corresponding authors 29 
+
+30 
+
+Correspondence to:  matthew.the@tum.de 31 
+
+Correspondence to:  kuster@tum.de 32 
+
+33 
+
+> .CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 13, 2026. ;https://doi.org/10.64898/2026.07.08.737143 doi: bioRxiv preprint
+
+Abstract 34 
+
+The molecular tumor board (MTB) is central to precision oncology, providing personalized 35 
+
+treatment recommendations based on molecular profiles of patient tumors . Genomics is 36 
+
+instrumental for MTBs but often fail s to identify clinically actionable targets, a gap that 37 
+
+phosphoproteomic s can fill . We present the tumor proteome activity status (TOPAS) platform , an 38 
+
+end -to -end analysis pipeline that converts terabytes of phosphoproteomic data into patient -specific 39 
+
+reports for MTB discussions, focusing on clinically relevant signaling linked to oncogenic 40 
+
+mechanisms and therapeutic targets. Designed to scale with growing cohorts, the platform 41 
+
+integrates data from 1,998 tumor samples to support patient - and cohort -level hypothesis 42 
+
+generation. A web portal handles quality control, calculates TOPAS scores , identifies tumor 43 
+
+antigens and immune checkpoint s, and offers interactive analyses of differential protein abundance 44 
+
+and outlier detection . The TOPAS platform is open source, addresses a critical unmet need and 45 
+
+facilitates broader adoption of phosphoproteomics in precision oncology in the future .46 
+
+Main 47 
+
+Retrospective molecular tumor profiling initiatives such as The Cancer Genome Atlas (TCGA) 148 
+
+and the Clinical Proteomic Tumor Analysis Consortium (CPTAC) 2 have demonstrated conceptual 49 
+
+benefits of analyzing pan -cancer cohorts over single cancer types. Examples include the 50 
+
+identification of mo lecular signatures, cancer (immune) subtypes , or signaling patterns that span 51 
+
+entities or demarcate certain entities 3, 4 . The pan -cancer perspective is particularly relevant for the 52 
+
+analysis of patients suffering from the large variety and molecularly heterogeneous group of rare 53 
+
+or otherwise hard -to -treat cancers. For many patients , standard -of -care systemic therapy options 54 
+
+are either limited or not available at all 5, 6 . Molecular tumor boards (MTBs) aim to make 55 
+
+therapeutic recommendations for such cases based on their indiv idual genomic and , sometimes, 56 
+
+transcriptomic profiles 5, 7 . Despite noteworthy successes, identifying or predicting actionable 57 
+
+oncogenic drivers from nucleotide data remains challenging , and clinical trials conducted so far 58 
+
+only showed moderate patient benefit 5, 6, 8, 9 . Because many cancers are driven by aberrant protein 59 
+
+expression or signaling pathway activity , proteomics and phosphoproteomics (from here 60 
+
+collectively referred to as phosphoproteomics) are important additional data layers . In an 61 
+
+accompanying paper 10 , we demonstrate that adding this component to MTBs is not only 62 
+
+technica lly feasible but also enhances treatment recommendations across many tumor entities. 63 
+
+Here, we present the enabling end -to -end and open -source data analysis platform that turns raw 64 
+
+phosphoproteomic data into patient -specific reports to support decision -maki ng in MTBs and 65 
+
+enables gaining novel insights into the tumor biology of rare cancers such as alveolar 66 
+
+rhabdomyosarcoma (ARMS) in a robust, rapid , and scalable manner. 67 
+
+68 
+
+From raw phosphoproteome data to MTB reports 69 
+
+> .CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 13, 2026. ;https://doi.org/10.64898/2026.07.08.737143 doi: bioRxiv preprint
+
+Integrating phosphoproteom e data into pros pective weekly MTB meetings required the 70 
+
+development of a new and bespoke data processing pipeline that followed three major design 71 
+
+principles (Fig. 1a ).72 
+
+First, it needed to place data collected for an individual patient into an ever -growing background 73 
+
+cohort of samples from the same or different tumor entities. This design increases statistical power 74 
+
+and confidence in the biological and clinical interpretation of the profiles over time . The current 75 
+
+data set comprise s ~4 TB of raw mass spectrometry (MS) data ( 17,64 0 MS runs ) collected from 76 
+
+1,998 tumor samples from 1,852 patients . Analyzing all data for peptide and protein identification 77 
+
+and quantification in a single step each week was not feasible with reasonable computing 78 
+
+resources. Instead, each batch of 8 or 9 patients plus two or three common cell line quality control 79 
+
+(QC) samples (multiplexed by s table isotope labeling using tandem mass tags, TMT , Methods )80 
+
+was searched separately. Results from 29 4 such batches were combined using mass spectra 81 
+
+clustering by SIMSI -Transfer to reduce missing data between batches 11 and applying the picked 82 
+
+protein group approach 12 to control the false discovery rate (FDR) of protein identification at 1%. 83 
+
+This led to the quantification of 13, 069 protein -codi ng genes and 148,224 phosphopeptides , of 84 
+
+which 8,192 and 22,414 respectively were detected in ≥50% of all patient samples (Extended 85 
+
+Data Fig. 1a ). Samples with poor TMT labeling (<90%) , phosphopeptide enrichment (<80%), or 86 
+
+a summed TMT intensity of 5-fold below QC samples in the same batch were removed (Fig. 1b ,87 
+
+Extended Data Fig. 1b , Methods ) and n ormalization was applied to reduce batch effects ( Fig. 88 
+
+1b, Methods ). 89 
+
+Second, to aid molecular oncologists with data interpretation, the data volume per patient had to 90 
+
+be reduced to the essentials and analyzed using easily explainable methods rather than potentially 91 
+
+more powerful, but less intuitively accessible ones. For instance, whenever available, proteins and 92 
+
+phospho -sites of interest were annotated using prior knowledge from databases and the scientific 93 
+
+literature. In addition, tumor proteome activity status (TOPAS) scores and kinase substrate 94 
+
+phosphorylation scores were calculated for 18 receptor tyrosine kinases (RTKs) and 2895 
+
+intrace llular kinases (ICKs) (Fig. 1c ). The data processing pipeline takes about one day to create 96 
+
+>2,000 annotated patient -specific reports from the raw data using off -the -shelf computing 97 
+
+hardware ( Fig. 1d ). 98 
+
+Third, the data needed to be accessible in a simple f ashion. This was achieved by importing 99 
+
+abundance values, annotations and phosphoproteome scores into an interactive TOPAS Portal 100 
+
+(Fig. 1 e) that molecular oncologists use in tandem with a patient -specific tabular report (< 5 MB, 101 
+
+downloadable from the portal, Extended Data Table 1 ) to obtain an in -depth appreciation of 102 
+
+potentially dysregulated protein expression and pathway signaling in a patient’s tumor. This 103 
+
+information is summarized into a single page and discussed alongside the genomics and 104 
+
+transcriptomics data for the same patient in the weekly MTB. 105 
+
+> .CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 13, 2026. ;https://doi.org/10.64898/2026.07.08.737143 doi: bioRxiv preprint
+
+The TOPAS platform can also be applied to analyzing cohort data from other sources . Because the 106 
+
+patient data of the current study requires controlled access (see data availability), we demonstrate 107 
+
+this capabili ty by public data from the CPTAC data portal, comprising 153 breast, 225 lung and 108 
+
+153 Uterine Corpus Endometrial Carcinoma (UCEC) tumor samples and healthy controls 2.109 
+
+Additionally, we importe d all 44 sarcoma samples from a recently published pan -cancer proteome 110 
+
+atlas 13 to demonstrate compatibility with label -free quantificat ion and data independent acquisition 111 
+
+(DIA) data . We note that only a subset of the functionality is available for this data source , as the 112 
+
+phosphoproteome was not acquired. 113 
+
+114 
+
+115 
+
+Fig. 1: End -to -end phosphoproteom e data analysis platform. (a) Schematic of how the data analysis pipeline 116 
+
+condenses raw mass spectrometric protein and phosphopeptide ( p-peptide ) identification and quantification data into 117 
+
+patient -specific reports and scores of tumor activity , and imports these into an interactiv e web -based data portal where 118 
+
+molecular oncologists analyze the results to produce a summary for MTB discussions (MQ, MaxQuant software, 119 
+
+> .CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 13, 2026. ;https://doi.org/10.64898/2026.07.08.737143 doi: bioRxiv preprint
+
+TOPAS, tumor proteome activity status). (b) Along the path depicted in (a), the output of MaxQuant is assessed by 120 
+
+quali ty metrics (red line, minimal threshold for acceptance), enhanced for data completeness (TMT, tandem mass tags, 121 
+
+ID, peptide identification), and reduced for batch effects (MS1, mass spect rometric peptide intensity) . (c) Patient 122 
+
+phosphoproteome profiles are annotated using prior knowledge from databases and the scientific literature , and scored 123 
+
+for signaling activity (black dotted line indicates significance threshold). (d) Runtime and memory usage with 124 
+
+increasing number of batches. (e) Processed data is imp orted into a web -based data portal where it can be interrogated 125 
+
+in a patient - and cohort -centric manner. 126 
+
+127 
+
+Measuring and managing batch effects 128 
+
+Addressing technical variation is critical when integrating data over the course of months to years. 129 
+
+Five MS instruments were deployed on the project , and we observed performance drifts over time ,130 
+
+leading to batch effects ( Fig. 2a) that were also apparent at the level of tumor entities and 131 
+
+individual proteins ( Extended Data Fig. 2). The conventional approach to T MT batch correction 132 
+
+is to use a common reference sample (here two or three cell line QC samples) contained in every 133 
+
+batch 14 . However, this approach would have resulted in missing >5,000 pro teins detected in 134 
+
+patients, which were insufficiently abundant in the QC samples, an effect exacerbated by the 135 
+
+biological heterogeneity of a pan -cancer cohort. Moreover, batch -correction methods run the risk 136 
+
+of introducing art ifacts which can complicate da ta interpretation 15 . Instead, we addressed batc h137 
+
+effects as follows ( Methods ): To overcome missing data in QC samples, we computed quasi -label -138 
+
+free quantification (LFQ) intensities 2, 16 for any sample (QC or patient) by distributing the 139 
+
+precursor intensity (produced in the MS1 spectrum) across the relative contributions of the TMT 140 
+
+reporter fragment ion intensities (produced in the MS3 spectrum; Extended Data Fig. 3a). This 141 
+
+approach has the additional benefit of allowing comparison of cohorts that do not share a common 142 
+
+reference sample. For protein quantification, we observed that summing all peptide intensities of 143 
+
+a protein produced substantial batch effects ( Extended D ata Fig. 3b). This is because peptides 144 
+
+identifying a particular protein in different samples are not necessarily the same 17 . Using the 145 
+
+MaxLFQ approach 17 on the quasi -LFQ intensities for protein quantification alleviated these issues. 146 
+
+We found that median z -sco red MS intensities of all proteins for a patient were correlated with the 147 
+
+number of proteins identified in a given batch. This effect was minimized by using only proteins 148 
+
+detected in ≥70% of samples for median centering normalization (Extended Data Fig. 3c). 149 
+
+Combining these three steps led to improved clustering of samples from similar entities such as 150 
+
+alveolar rhabdomyosarcoma (ARMS) and embryonal rhabdomyosarcoma (ERMS) ( Fig. 2b, 151 
+
+Extended Data Fig. 2a, b). F it -for -purpose repeatability across batches was assessed for full 152 
+
+process replicates of the same patient sample (n=3, 18 % median CV for proteins, 23 % for 153 
+
+phosphopeptides; Fig. 2c , 7 additional patients in Extended Data Fig. 4) as well as QC sample 154 
+
+replicates (n=5 2, 25 % median CV for proteins and 26 % for phosphopeptides ; Fig. 2c ). Across 155 
+
+patients measured in the same TMT channel but across 49 different batches , median CVs were 156 
+
+much larger ( 65 % for proteins and 92 % for phosphopeptides ), demonstrating that technical and 157 
+
+biological abundance variations co uld be distinguished for the majority of cases. These figures of 158 
+
+merit provide important guidance for assessing differential abundance data between patients or 159 
+
+> .CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 13, 2026. ;https://doi.org/10.64898/2026.07.08.737143 doi: bioRxiv preprint
+
+cohorts. Data normalization also improved the interpretability of biological effects by reducing the 160 
+
+within -entity standard error of the mean (median reduction of 45% for proteins and 37 % for 161 
+
+phosphopeptides , Methods ). This is exemplified by an increased statistical significance of 162 
+
+differential abundance of NAB2, STAT6 and IGF2, known biomarkers for Solitary Fibrous 163 
+
+Tumors (SFT) 18 (Fig. 2d ) as well as EWSR1, FLI1, CD99, all biomarkers for Ewing Sarcoma 164 
+
+(ES) 19 (Extended Data Fig. 2c). Similar benefits were observed for phosphopeptides of interest 165 
+
+in ES (Extended Data Fig. 2d ).166 
+
+167 
+
+Fig. 2: Data normalization across sample batches. (a) MS1 signal intensity drift and differences between mass 168 
+
+spectrometers for proteomes ( top ) and phosphoproteomes ( bottom ) over time. (b) UMAPs analysis of protein 169 
+
+abundance of all patient samples before (left) and after (right) normalization. (c) Cumula tive frequency plots showing 170 
+
+the effect of data normalization on quantitative precision (coefficient of variation, CV) of technical replicates of 171 
+
+identical patient samples (n=3), QC samples (n=5 2), or diverse patient samples (n= 49 ; processed in different b atches) 172 
+
+> .CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 13, 2026. ;https://doi.org/10.64898/2026.07.08.737143 doi: bioRxiv preprint
+
+on protein and phosphopeptide level. ( d) Box plots showing the abundance of exemplary biomarkers for Solitary 173 
+
+fibrous tumors (SFT : n=49 for STAT6, IGF 2, NAB2 ) compared to all other patient s (Other: STAT6 n= 1, 949 , IGF2 174 
+
+n= 1, 928 , NAB2 n= 1, 896 ) samples before and after normalization. 175 
+
+176 
+
+Distilling biologically relevant information 177 
+
+The automated processing steps up to this point reduced the data collected per patient 2,000 -fold 178 
+
+(Fig. 1a ). However , further curation and prioritization of the information is required to derive 179 
+
+interpretable tumor biology. An important challenge is deciding which signals are reliable and 180 
+
+which represent technica l limitations . To address the latter , protein quantifications based on fewer 181 
+
+peptides than expected and qua ntifications below the dynamic range of the MS signal within the 182 
+
+batch were flagged (Methods, Fig. 3a ). The few m issing values for phosphopeptides within a 183 
+
+batch were imputed at the limit of the dynamic range , and p rotein missing values within a batch 184 
+
+were flagged as tentative evidence of absence. In addition , for each protein and phosphopeptide, 185 
+
+quantification robustness was assessed by the ratio of biolo gical over technical CV ( Fig. 3b ,186 
+
+Methods ). This led to their classification as robust (ratio > 2), var iable (1 < ratio < 2), unreliable 187 
+
+(ratio < 1) or uncharacterized (detected in too few technical replicates). 188 
+
+A straightforward way to prioritize aberrant biological signals is to analyze abundances of known 189 
+
+entity biomarkers, tumor antigens, oncogenes, tu mor suppressors, drug targets or phospho -sites, 190 
+
+annotations of which were obtained from OncoKB, KinHub, ADCdb, PSP and the literature 20 -22 191 
+
+(Fig. 3c, Extended Data Table 2 ). To evaluate if a patient show s abnormal abundance of a protein 192 
+
+or phosphopeptide of interest, one might compare the molecular profile to that of nearby healthy 193 
+
+tissue 23 . In a precision oncology setting, healthy control samples are not systematically available ,194 
+
+and the tissue of origin may be unknown , e.g. , for cancers of unknown primary (CUP) or many 195 
+
+rare subtypes. Detecting differences in the phosphoproteomes of proliferating cancer cells and 196 
+
+fully differentiated (non -proliferating) normal cells does not necessaril y imply that they are 197 
+
+oncogenic signals. Therefore , we chose all samples contained in th is study as a background cohort 198 
+
+and computed z-score s for each protein or phosphopeptide for each patient sample relative to the 199 
+
+cohort (Methods ). Z -scores ≥ 2 were typ ically considered for further investigation (Fig. 3 d),200 
+
+though clinically relevant results below this threshold were still reported if , e.g. , tumor cell content 201 
+
+was low. Analyte abundance relative to other patients from the same (or closely related) entity as 202 
+
+well as tissue topology (tumor/metastasis site) w ere also taken into account 10 .203 
+
+> .CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 13, 2026. ;https://doi.org/10.64898/2026.07.08.737143 doi: bioRxiv preprint
+
+204 
+
+Fig. 3: Annotation of quantification robustness and biological relevance of proteins and p -peptides. (a) Flags 205 
+
+for potential TMT -induced batch effects in protein and phosphopeptide quantification serve as a warning for the 206 
+
+interpretation of such values. (b) Comparison of the biological vs. technical coefficient of variation (CV) of detected 207 
+
+proteins and phosphopeptides allows quantification robustness asses sment as stable, variable , unreliable , or 208 
+
+uncharacterized (detected in too few technical replicates). (c) Quantification robustness assessment by occurrence 209 
+
+within the MTB cohort of proteins and phosphopeptides of interest, including oncogenic drivers, tumor suppressor 210 
+
+genes, immunotherapy targets , and curated kinase substrates . (d) Number of proteins with a z -score above 2 (≥98th 211 
+
+percentile) for each patient that are considered for further investigation. For pa tient P1426 (inset) , these proteins are 212 
+
+broken down by biological relevance an d quantification robustness (middle right panel). 213 
+
+214 
+
+Tumor proteome activity stat us (TOPAS) scoring 215 
+
+An exciting potential of patient phosphoproteome data is to infer dysregulation of kinase activity 216 
+
+and affected signaling pathways , and s everal tools have been developed for this purpose (KSEA, 217 
+
+INKA, PTM -SEA, KSTAR , ROKAI )24 -28 . These methods strongly depend on reliable kinase -218 
+
+substrate relationship (KSR) annotations but particularly f or intracellular kinases (ICKs), KSR 219 
+
+> .CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 13, 2026. ;https://doi.org/10.64898/2026.07.08.737143 doi: bioRxiv preprint
+
+databases contain many false positives . This is beca use the underlying data did not distinguish 220 
+
+between direct kinase substrates and phosphorylation mediated by downstream kinase activity 29 .221 
+
+To alleviate these issues , we built a series of TOPAS scores as follows ( Fig. 4a , Methods ). For 18 222 
+
+receptor tyrosine kinases (RTKs), we developed TOPAS -RTK scores by summing up three 223 
+
+subscores: 1) kinase protein abundance (overexpression can be a mechanism of overactivity 30, 31 ),224 
+
+2) abundance of (important) kinase activity -indica ting phosphorylation ( intersection of sites 225 
+
+curated from the literature , respond ing consistently to drug perturbation 29, 32 , and 226 
+
+hyperphosphorylated in patients with oncogenic mutations , Methods ), and 3) total abundance of 227 
+
+kinase phosphorylation ( Fig. 4b , Extended Data Table 3 ). Adaptor protein phosphorylation s by 228 
+
+RTKs are not considered in the score because they are not systematically known and the same 229 
+
+adaptors are often shared by several RTKs, leading to ambiguity. The 28 developed ICK -TOPAS 230 
+
+scores sole ly relied on the summed abundance of high -quality substrates. These were compiled 231 
+
+from coherent behavior in a large -scale dose -dependent phosphoproteomics screen in response to 232 
+
+kinase inhibitors recently developed by the authors 29 . Depending on the kinase, ICK -TOPAS 233 
+
+scores were based on few or many known substrates ( Fig. 4 c). The robustness of each score varies ,234 
+
+as not all proteins or ph ospho -sites comprising the scores are equally stably detected across 235 
+
+patients ( Fig. 4 d). Analogous to phospho peptide or protein abundance, TOPAS scores are 236 
+
+computed as z -scores across the cohort to simplify interpretation. 237 
+
+To verify the ability of TOPAS scores to detect dysregulated RTK signaling in patients, we 238 
+
+analyzed 94 cases from our own cohort and 79 from the CPTAC cohorts . The se patients carry 239 
+
+known oncogenic genomic alterations with therapeutic implications in nine RTKs ( ALK, EGFR, 240 
+
+ERBB2, FGFR1, KIT, MET, PDGFRA, PDGFRB, RET ) and were defined to represent ground 241 
+
+truth ( Fig. 4 e, Methods, Extended Data Table 4 ). Although far from perfect, TOPAS -RTK 242 
+
+performed better than INKA and both were far superior to several alternatives mentioned above 243 
+
+(Fig. 4 f). T he TOPAS sub -scores were of broadly equal performance making TOPAS robust 244 
+
+against relying on one metric alone (Extended Data Fig. 5a). In addition, results of TOPAS 245 
+
+scoring were consistent between patients in our cohort and those in CPTAC ( Extended Data 246 
+
+Fig. 5b ). To validate TOPAS scores by experiment , we treated five cell lines with known 247 
+
+oncogenic driver alterations in EGFR (A431, NCI -H1975) , ERBB2 (NCI -H87) and FGFR2 248 
+
+(KATOIII, MFM223) with afatinib (EGFRi) or futibatinib (FGFR2i) ( Fig. 4 g). Indeed , each cell 249 
+
+line showed a significant TOPAS score for its driver kinase , which was reduced upon the 250 
+
+respective drug treatment. Extending this analysis to ICK signaling activity in the RAF -MEK -251 
+
+ERK and PI3K -AKT pathways showed that their TOPAS was generally also reduced upon RTK 252 
+
+inhibition (Fig. 4 h). In t hree cases, the PI3K -AKT pathway was not inactivated upon kinase 253 
+
+inhibition, likely due to mechanisms that decouple the RTK from the downstream pathway: 254 
+
+A431 ( low PTEN levels ), NCI -H1975 (PIK3CA mut ation) , and MCM223 ( PIK3CA mutation) .255 
+
+As expected, k inase activities in other pathways remain ed unaffected ( Extended Data Fig. 6). 256 
+
+257 
+
+> .CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 13, 2026. ;https://doi.org/10.64898/2026.07.08.737143 doi: bioRxiv preprint
+
+258 
+
+259 
+
+Fig. 4: Development and validation of TOPAS scores for detect ing aberrant kinase signaling in patients. (a) 260 
+
+Schematic representation of the signaling events initiated by a receptor tyrosine kinase (RTK) dimer. The overall 261 
+
+TOPAS score (T) combines one (ICKs) or three (RTKs) subscores as indicated. (b) Selection of activity -indicating p -262 
+
+peptides for EGFR using the intersection of literature review, dose -resolved drug -phosphorylation modulation 263 
+
+(decryptM) , and sites detected in patients of the MTB cohort with oncogenic alterations in EGFR. To the right are the 264 
+
+respective n umber s used for each RTK as well as the number s of peptides and p-peptides used for each RTK 265 
+
+abundance and phosphorylation subscore. (c) The n umber of substrate p -peptides used for IC Ks. (d) Robustness and 266 
+
+occurrence within the MTB cohort of TOPAS -RTK and TOPAS -ICK scores as assessed by technical variation for QC 267 
+
+and patient replicates. (e) TOPAS -RTK scores for selected patients in the MTB and CPTAC cohorts with clinically 268 
+
+actionable RTK oncogenic driver signals. (f) Precision -recall analysis comparing kinase activity inference methods ,269 
+
+evaluated on the full set of patients with clinically actionable RTK oncogenic driver signals. (g) TOPAS -RTK scores 270 
+
+> .CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 13, 2026. ;https://doi.org/10.64898/2026.07.08.737143 doi: bioRxiv preprint (EGFR, ERBB2, FGFR2) for drug perturbation experiments on cell lines with known RTK oncogenic driver signals.
+
+271       
+
+> Scores without drug treatment a re shown as black dots, with drug treatment as colored dots. (h) TOPAS -ICK scores
+
+272  
+
+> (MEK -ERK, PI3K -AKT -mTOR pathways) for the drug perturbation experiments in (g) .
+
+273 
+
+274 
+
+Patient -centric analysis in the TOPAS Portal 275 
+
+To enable molecular oncologists to interrogate and interpret patient phosphoproteomes, we built 276 
+
+the TOPAS Portal, an interactive web -based decision support system comprised of seve ral 277 
+
+dashboards , each addressing specific aspects of the data (Fig. 5a, https://topas -278 
+
+portal.kusterlab.org/ ). Additionally, patient -specific reports can be downloaded in tabular format 279 
+
+for offline investigation and manual annotation of results. Using data from a testicular teratoma 280 
+
+patient (P1306) as an example , we illustrate how the portal and reports can be used to prepare for 281 
+
+the MTB meeting. First, the overall data quality for the patient and the TMT batch in which the 282 
+
+patient was contained is assessed ( Fig. 5b). This includes checking if i) the summed intensities of 283 
+
+peptides and phosphopeptides are in the acceptable range, ii) the QC samples contained in the 284 
+
+same batch cluster with the QC samples of all other batches in a principal component analysis 285 
+
+(PCA) and i ii ) other patients in the same batch who a re typically from different entities do not 286 
+
+cluster together in the PCA. For P1306, all three criteria were met. Failing QC criteria can lead to 287 
+
+excluding the patient or the entire batch. Alternatively, one can cho ose to continue the analysis 288 
+
+with consider ation of the problematic data quality. In the target identification step, aberrant kinase 289 
+
+activity can be explored using TOPAS scores , and aberrant abundance of biomarkers relevant for 290 
+
+treatment recommendations , such as tumor antigens, immune checkpoint pr oteins, immune cell 291 
+
+infiltration , or kinase substrate phosphorylation , can be considered (Fig. 5c). In our example ,292 
+
+EGFR should be considered because of an outstanding TOPAS score. ERBB2 had a TOPAS score 293 
+
+just below threshold , indicating potential HER1 -HER 2-heterodimer signaling. CLDN6 is a 294 
+
+noteworthy tumor antigen in this patient because an outstanding response to CLDN6 -specific 295 
+
+CAR -T cell treatment has been reported in a teratoma patient before 33 . For target verification ( Fig. 296 
+
+5d), each TOPAS subscore is evaluated individually to check if it supports the conclusion of 297 
+
+aberrant kinase activity implied by the overall TOPAS score. This includes looking up phospho -298 
+
+site annotations in PhosphositePlus ( PSP ) and their reported relevance for kinase activity. For 299 
+
+P1306, all TOPAS subscores suppo rted high EGFR activity. Next , the molecular oncologist 300 
+
+summarizes the results in a target evidence table ( Fig. 5e) that lists individual proteins that are 301 
+
+clinically actionable , along with the molecular evidence derived from the phosphoproteom e data. 302 
+
+Pote ntial inclusion of the patient in an ongoing clinical trial is also documented. Results from all 303 
+
+four steps are presented in the MTB, supported by plots downloaded from the portal, and discussed 304 
+
+alongside the genomics and transcriptomics data collected for the same patient. Final target 305 
+
+recommendation is made by accredited clinical oncologists. 306 
+
+307 
+
+> .CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 13, 2026. ;https://doi.org/10.64898/2026.07.08.737143 doi: bioRxiv preprint
+
+308 
+
+Fig. 5: Patient -centric analysis in the TOPAS Portal. (a) The portal consists of dashboards that help address specific 309 
+
+questions relevant for the MTB. (b) Qual ity control: distributions of the summed TMT reporter intensity, relative to 310 
+
+the QC channels, of peptides and phosphopeptides for all patients in the cohort , highlighting the patient of interest 311 
+
+(P1306 , left panel). PCA plot of the proteomes of all patient s, highlighting the patient of interest in red, the QC samples 312 
+
+contained in the same TMT batch in orange , and the other patients in the same batch in blue (right panel). (c) Target 313 
+
+identification: circular plot ranking RTK target proteins by TOPAS score (l eft panel). Table of proteins and kinase 314 
+
+substrates with detected outlier behavior (rank / among number of patients and z -score) relative to the chosen 315 
+
+background cohort (right panel). (d) Target validation: swarm plots of TOPAS subscores of all patients ( grey) and 316 
+
+highlighting the patient of interest in red (left panel). Table of phosphorylation sites with detected outlier behavior 317 
+
+(rank / among number of patients and z -score) relative to the chosen background cohort (right panel). (e) Target 318 
+
+recommendatio n: table summarizing the molecular evidence supporting a particular target for discussion in the MTB. 319 
+
+Cohort -centric analysis in the TOPAS Portal 320 
+
+Molecular data collections on pan -cancer cohorts are highly valuable for discovering common and 321 
+
+distinct aspects of tumor biology. In the prospective setting of a n MTB , this is particularly true as 322 
+
+it may drive therapy decisions. Creating new hypotheses is especially important for rare or 323 
+
+otherwise hard -to -treat cancers , a focus of our precision oncology program . The portal offers 324 
+
+functionalities to i) detect molecular subgroups within or across entities, ii) compare groups of 325 
+
+patients by genomic alteration , iii) detect proteins, kinases , or pathways exhibiting outlier behavior 326 
+
+in a group of patients, or iv) discover groups of co -regulated proteins and phospho -sites to name a 327 
+
+few ( Fig. 6a). 328 
+
+Below, we illustrate how the information in the portal can be lever aged and novel biological 329 
+
+insights generated using Alveolar Rhabdomyosarcoma (ARMS) patients from the 330 
+
+> .CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 13, 2026. ;https://doi.org/10.64898/2026.07.08.737143 doi: bioRxiv preprint
+
+MASTER/INFORM cohort as an example. RMS is very rare but the third most common pediatric 331 
+
+solid cancer with an incidence of 4.5 new cases per 1,000,000 chi ldren 34 . There are two major 332 
+
+subtypes, embryonal and alveolar rhabdomyosarcoma (ERMS, 75%; ARMS, 20% of cases) , with 333 
+
+ARMS patients having a worse prognosis than ERMS patients (five -year survival of 48 % and 73% ,334 
+
+respectively ), highlighting the need for alternatives to standard treatments 34 . To investigat e entity -335 
+
+specific signaling, the portal offers differential expression analysis on every data layer, from 336 
+
+protein abundance to TOPAS (sub) scores, and the abundance of individ ual phosphopeptides. All 337 
+
+but four of 46 ARMS patients formed a tight cluster in a UMAP analysis of protein abundance 338 
+
+(Fig. 6b). Using the metadata annotations provided in the portal, the six outlier cases either had 339 
+
+low tumor cell content or failed RNA lib rary preparation, usually indicating reduced overall 340 
+
+sample quality. These samples were excluded from subsequent analyses. About 80% of ARMS 341 
+
+patients have a chromosomal translocation leading to a PAX3/7 -FOXO1 fusion 35 . This fusion 342 
+
+promotes the transcription of several genes, including the RTKs FGFR4, IGF1R, ALK , and MET 343 
+
+as well as the transcription factors MYOD1 and MYOG 35 -37 . Differential protein abundance 344 
+
+analysis revealed 509 significant associations (t -test) for ARMS vs. all other patients ( Fig. 6c). 345 
+
+These included many tissue -enriched proteins as classified by the human protein atlas (skeletal 346 
+
+muscle: 4 tissue enriched, 50 group enriched, 34 tissue enhanced) 38 but also several PAX3/7 -347 
+
+FOXO1 target genes ( Extended Data Fig. 7a). 348 
+
+349 
+
+A similar analysis for cell surface proteins 39 revealed 10 proteins (Fisher’s exact test) including 350 
+
+the cel l adhesion proteins CDH15 and CADM2 40 as well as two receptors, NOTCH1 41 and FGFR4 351 
+
+(Fig. 6d). Interestingly , elevated exp ression of FGFR4 did not result in overactivity of downstream 352 
+
+kinases in the PI3K/AKT or RAS/MAPK pathways (Fig. 6e ). While FGFR4 inhibition has been 353 
+
+shown to provoke a response in RMS cell lines 42 , treatment of xenograft mouse models was 354 
+
+ineffective 43 . We , therefore , hypothesize that FGFR4 expression does not appear to drive the 355 
+
+growth of ARMS tumors. Instead , ICK -TOPAS scoring identified four potentially overactive 356 
+
+kinases in ARMS patients that may represent therapeutic vulnerabilities ( Fig. 6e). The two most 357 
+
+significant hits were ATM and A TR, both members of the PIKK family that share substrates 358 
+
+bearing the SQ/TQ motif. The observed high ATR substrate scores provided a molecular rationale 359 
+
+for the reported efficacy of ATR inhibitors in ARMS cell lines 44 . To investigate if ATR/ATM 360 
+
+TOPAS scores are predi ctive of reduced cell viability upon ATR inhibition , we measured 361 
+
+phosphoproteom e profiles for 7 ARMS cell lines. The well -known ATR substrate CHEK1_pS317 362 
+
+had a z -score above two for the five cell lines with strong response to ATR inhibition by 363 
+
+Elimusertib (EC50 < 20nM ), whereas the two cell lines with weak response (EC50 > 40 nM ) had 364 
+
+elevated but non -significant z -scores. Four cell lines with strong response s had ATR TOPAS 365 
+
+scores > 0.5, whereas the two cell lines with the weakest response had scores below z ero ( Fig. 6f ). 366 
+
+367 
+
+The high diversity in ATR activity across the pan -cancer cohort also provided an opportunity to 368 
+
+find new ATR/ATM substrates. This was achieved by correlating the abundance of SQ/TQ 369 
+
+phosphopeptides that have not yet been annotated as ATR/ATM substrates with the ATR TOPAS 370 
+
+> .CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 13, 2026. ;https://doi.org/10.64898/2026.07.08.737143 doi: bioRxiv preprint
+
+scores of patients ( Fig. 6g ; Extended Data Fig. 7b ). This approach detected well -known 371 
+
+substrates such as CHEK1_pS317 and PELP1_pS1033 but also added 29 potential new ones. 372 
+
+Among them are TAF15_pS97 , FUBP3 _pS569 , and POP1_pS367 , all of which responded to ATR 373 
+
+inhibition by Elimusertib in our recent study in PDAC cell lines 45 .374 
+
+375 
+
+Another interesting observation of ARMS tumor biology derived from the cohort analysis was an 376 
+
+elevated abundance of PARP1 ( Extended Data Fig. 7a). This rationalizes why combin ing ATR 377 
+
+and PARP inhibitors works synergistically in some ARMS cell lines 44 . Moreover, elevated levels 378 
+
+of the deacetylase SIRT2 provided a reasonable hypothesis for the high ATR activity in ARMS 379 
+
+because SIRT2 is known to drive ATR checkpoint activation by deacetylation of ATRIP 46 . SIRT2 380 
+
+also deacetylates FOXO1, resulting in nuclear import and increased transcriptional activity of 381 
+
+FOXO1 47 . This results in a feedback loop in which FOXO1 targets the promoter region of SIRT1 48 .382 
+
+Although n o such feedback loop has been described for SIRT2 yet, its promoter region contain s a383 
+
+binding site for FOX transcription factors 49 . This further suggests that SIRT2 inhibition may be 384 
+
+even more effective than ATR inhibition 50 . The model shown in Fig. 6h derived from the cohort 385 
+
+analysis generated several new hypotheses regarding aberrant signaling in ARMS and identified 386 
+
+ATR, PARP1 and SIRT2 as actionable targets, potentially paving the way for new targeted 387 
+
+therapies. 388 
+
+389 
+
+> .CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 13, 2026. ;https://doi.org/10.64898/2026.07.08.737143 doi: bioRxiv preprint
+
+390 
+
+Fig. 6: Cohort -centric analysis in the TOPAS Portal. (a) Schematic of the dashboards available in the TOPAS 391 
+
+portal. (b) UMAP analysis for protein abundance showing clustering of ARMS samples of high tissue quality in dark 392 
+
+blue , four dispersed cases of limited tissue quality in light blue , and all other pati ents in grey . (c) Volcano plot 393 
+
+illustrating differential protein abundance of ARMS vs. all other patient samples. Proteins of interest are highlighted 394 
+
+in red. (d) Detection rates and differential abundance analysis of cell surface proteins as potential imm unotherapy 395 
+
+targets in ARMS (blue) and other patients (grey) . (e) Results of differential ICK -TOPAS scores of ARMS patients vs. 396 
+
+other cancer entities. The vertical dashed line indicates the 5% false discovery rate (FDR) threshold. (f) Parallel 397 
+
+coordinates p lots for 7 ARMS cell lines displaying cell viability pEC50 upon ATR inhibition, z -score abundance of 398 
+
+the known ATR substrate CHEK1_pS317, and the ATR TOPAS score. (g) Examples of phosphopeptide abundances 399 
+
+correlating with ATR substrate phosphorylation scores across all patients for the known ATR substrate 400 
+
+CHEK1_pS317 and a novel candidate TAF15_pS97 (upper panel). Number and distribution of such correlations 401 
+
+across all frequent ly observed phosphopeptides (lower panel). ( h) Model of potential oncogenic signaling in ARMS 402 
+
+based on the literature and augmented with findings from the current study. 403 
+
+404 
+
+Discussion 405 
+
+> .CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 13, 2026. ;https://doi.org/10.64898/2026.07.08.737143 doi: bioRxiv preprint
+
+The TOPAS platform was developed to assist scientists and clinicians in ga ining therapeutically 406 
+
+actionable insights from analyzing the phosphoproteomes of individual cancer patients or cohorts 407 
+
+in a prospective MTB setting. Such data analysis pipelines for genomics and transcriptomics 51, 52 
+
+408 
+
+as well as clinical decision support systems (CDSS) for genomics 53 -55 have been available to MTBs 409 
+
+for some time, but no comparable tools existed for phosphoproteom e data . While the CPTAC data 410 
+
+analysis pipeline (CDAP) 56 , paire d with PANOPLY 57 , a cloud platform offering analysis tools for 411 
+
+cohort -wide investigations, follows a unified approach, it is currently not possible to analyze or 412 
+
+contextualize the profiles of individual patients. The same is true for the Clinical Knowledge Graph 413 
+
+(CKG), which integrates data processing, functional annotation , and visualization within a414 
+
+knowledge graph database 58 . In addition, a ll available tools today have only been used for 415 
+
+retrospective cohort analysis . To derive tailored options for each patient in ne ed of therapy, 416 
+
+independent of whether it is a common, well -studied , or a rare cancer subtype , or even a cancer of 417 
+
+unknown primary, retrospective cohort studies are insufficient. 418 
+
+The TOPAS platform specifically addresses this gap and is the first tool with demonstrated ability 419 
+
+to analyze the phosphoproteomes of a large number of prospective MTB cases. While the platform 420 
+
+is computationally efficient, the main current bottleneck is the time needed by molecular 421 
+
+oncologists to interpret and understand the data for each case well enough to arrive at a treatment 422 
+
+recommendation. This can be challenging because it is often unclear which level of over - or 423 
+
+underactivity of a signaling component (protein, phospho -site, kinase, pathway, etc.) may 424 
+
+constitute an actionable target in the complex biological and disease journey context of this 425 
+
+individual patient. The simple approach used here of prioritizing parameters with a z -score of ≥2 426 
+
+carries a risk for both false positives and negatives. In addition, the full potential of the TOPAS 427 
+
+scoring concept is currently underutilized because of the lack of comprehensive, high -confidence ,428 
+
+and cancer -context -aware kinase -substrate relationships. Recent computational advances in kinase 429 
+
+motif analysis 59 and large -scale phosphoproteome profiling of drug perturbation e xperiments 29, 32 430 
+
+can be expected, at least in part, to alleviate this issue. 431 
+
+The TOPAS platform is under continuous development and we are happy t o help other s set it up 432 
+
+in their MTB environment . In the future, visualizations that overlay the signaling components for 433 
+
+each patient directly onto curated pathway diagrams 60 will become available . Additionally, we are 434 
+
+collecting training data from manual evaluation s of dysregulated signaling pathways in patients to 435 
+
+develop machine learning models that can provide faster decision support. By close ,436 
+
+multidisciplinary collaboration, we anticipate that phosphoproteome profiling alongside the open -437 
+
+source TOPAS analysis platform has the potential to become a widely used component in precision 438 
+
+medicine programs around the globe. 439 
+
+440 
+
+Acknowledgements 441 
+
+We tha nk all members of the TU Munich team for high -quality technical an d intellectual support. 442 
+
+This work was supported by the European Research Council (ERC) grant 833710 (TOPAS), the 443 
+
+> .CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 13, 2026. ;https://doi.org/10.64898/2026.07.08.737143 doi: bioRxiv preprint
+
+German Federal Ministry of Education and Research (BMBF), grants 01KD2207F (H EROES -444 
+
+AYA), 01KD2206C (SATURN -3), 161L0214A (CLINSPECT -M), 03LW0243K (CLINSPECT -445 
+
+M-2), 031L0305A (DROP2AI) and 031L0168 (DIAS) , the German Research Foundation (DFG )446 
+
+grant 537476536 (PhoSAIC) . The MASTER program is supported by the  NCT Overarching 447 
+
+Clinical T ranslational Trial Program , the  NCT Heidelberg Molecular Precision Oncology 448 
+
+Program , and DKTK. 449 
+
+450 
+
+Author contributions 451 
+
+M.T. , A. Schneider and B.K. conceived and designed the study. C.B. J., A. Sakhteman, F.H., A. 452 
+
+Schneider and M.T. performed (phospho)proteome data processing and analyses. C.B. J., A. 453 
+
+Sakhteman, F.H., J.W. and M.T. wrote software/code. F.P.B., J.H., D.H. and S.F. provided 454 
+
+resources. A. Schneider, M.V.T., P.H. and C.S. performed data curation on MTB 455 
+
+recommendations and/or clinical data.  A.G.H. pr ovided cell line material and phenotypic data of 456 
+
+alveolar rhabdomyosarcoma cell lines.  M.T., S.F. and B.K. supervised the study. C.B.J., A. 457 
+
+Schneider, B.K. and M.T. wrote the manuscript. All authors reviewed and edited the manuscript. 458 
+
+459 
+
+Competing interests 460 
+
+BK is a non -operational co -founder of OmicScouts and MSAID and has or has had an ownership, 461 
+
+consulting or advisory role and/or received honoraria, research funding, and/or 462 
+
+travel/accommodation expenses funding from AstraZeneca, BASF, Bayer, Biogen, Boehringer 463 
+
+Ingelheim, Bruker, Covant Tx, Dunad Tx, EQT Partners, IBM, Merck KGaA, MSAID, MSD, 464 
+
+Nested Tx, OmicScouts, Roche, SAP and ThermoFisher Scientific. 465 
+
+S.F. has  or has  had a consulting or advisory role and /or  received honoraria, research funding, 466 
+
+and/or travel/accommodation expenses funding from Illumina and Oxford Nanopore 467 
+
+Technologies, outside the submitted work .468 
+
+469 
+
+Materials and correspondence 470 
+
+Correspondence to  kuster@t um.de ; matthew.the@tum.de 471 
+
+472 
+
+References 473 
+
+474 
+
+1. Bailey, M.H. et al. Comprehensive Characterization of Cancer Driver Genes and 475 
+
+Mutations. Cell 173 , 371 -385 e318 (2018). 476 
+
+2. Li, Y. et al. Pan -cancer proteogenomics connects oncogenic drivers to functional states. 477 
+
+Cell 186 , 3921 -3944 e3925 (2023). 478 
+
+3. Geffen, Y. et al. Pan -cancer analysis of post -translational modifications reveals shared 479 
+
+patterns of protein regulation. Cell 186 , 3945 -3967 e3926 (2023). 480 
+
+4. Petralia, F. et al. Pan -cancer proteogenomics characterization of tumor immunity. Cell 481 
+
+187 , 1255 -1277 e1227 (2024). 482 
+
+5. Horak, P. et al. Precision oncology based on omics data: The NCT Heidelberg experience. 483 
+
+Int J Cancer 141 , 877 -886 (2017). 484 
+
+> .CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 13, 2026. ;https://doi.org/10.64898/2026.07.08.737143 doi: bioRxiv preprint
+
+6. van Tilburg, C.M. et al. The Pediatric Precision Oncology INFORM Registry: Clinical 485 
+
+Outcome and Benefit for Patients with Very High -Evidence Targets. Cancer Discov 11 ,486 
+
+2764 -2779 (2021). 487 
+
+7. Luchini, C., Lawlor, R.T., Milella, M. & Scarpa, A. Molecular Tumor Boards in Clinical 488 
+
+Practice. Trends Cancer 6, 738 -744 (2020). 489 
+
+8. Le Tourneau, C. et al. Randomised proof -of -concept phase II trial comparing targeted 490 
+
+therapy based on tumour molecular profiling vs conventional therapy in patients with 491 
+
+refr actory cancer: results of the feasibility part of the SHIVA trial. Br J Cancer 111 , 17 -24 492 
+
+(2014). 493 
+
+9. Hyman, D.M., Taylor, B.S. & Baselga, J. Implementing Genome -Driven Oncology. Cell 494 
+
+168 , 584 -599 (2017). 495 
+
+10. Schneider, A. et al. Prospective pan -cancer phos phoproteomics at clinical scale extends 496 
+
+therapeutic options in precision oncology. bioRxiv (2026). 497 
+
+11. Hamood, F., Bayer, F.P., Wilhelm, M., Kuster, B. & The, M. SIMSI -Transfer: Software -498 
+
+Assisted Reduction of Missing Values in Phosphoproteomic and Proteomi c Isobaric 499 
+
+Labeling Data Using Tandem Mass Spectrum Clustering. Mol Cell Proteomics 21 , 100238 500 
+
+(2022). 501 
+
+12. The, M., Samaras, P., Kuster, B. & Wilhelm, M. Reanalysis of ProteomicsDB Using an 502 
+
+Accurate, Sensitive, and Scalable False Discovery Rate Estimation Approach for Protein 503 
+
+Groups. Mol Cell Proteomics 21 , 100437 (2022). 504 
+
+13. Knol, J.C. et al. The pan -cancer proteome atlas, a mass spectrometry -based landscape 505 
+
+for discovering tumor biology, biomarkers, and therapeutic targets. Cancer Cell 43 , 1328 -506 
+
+1346 e1328 (2025). 507 
+
+14. Plubell, D.L. et al. Extended Multiplexing of Tandem Mass Tags (TMT) Labeling Reveals 508 
+
+Age and High Fat Diet Specific Proteome Changes in Mouse Epididymal Adipose Tissue. 509 
+
+Mol Cell Proteomics 16 , 873 -890 (2017). 510 
+
+15. Brenes, A., Hukelmann, J., Be nsaddek, D. & Lamond, A.I. Multibatch TMT Reveals False 511 
+
+Positives, Batch Effects and Missing Values. Mol Cell Proteomics 18 , 1967 -1980 (2019). 512 
+
+16. Zecha, J. et al. Linking post -translational modifications and protein turnover by site -513 
+
+resolved protein turno ver profiling. Nat Commun 13 , 165 (2022). 514 
+
+17. Cox, J. et al. Accurate proteome -wide label -free quantification by delayed normalization 515 
+
+and maximal peptide ratio extraction, termed MaxLFQ. Mol Cell Proteomics 13 , 2513 -516 
+
+2526 (2014). 517 
+
+18. Hajdu, M. et al. IGF2 over -expression in solitary fibrous tumours is independent of 518 
+
+anatomical location and is related to loss of imprinting. J Pathol 221 , 300 -307 (2010). 519 
+
+19. De Feo, A. et al. CD99 Modulates the Proteomic Landscape of Ewing Sarcoma Cells and 520 
+
+Related Extracellular Vesicles. Int J Mol Sci 25 (2024). 521 
+
+20. Maalej, K.M. et al. CAR -cell therapy in the era of solid tumor treatment: current challenges 522 
+
+and emerging therapeutic advances. Mol Cancer 22 , 20 (2023). 523 
+
+21. Shafer, P., Kelly, L.M. & Hoyos, V. Cancer Therapy With TCR -Engineered T Cells: Current 524 
+
+Strategies, Challenges, and Prospects. Front Immunol 13 , 835762 (2022). 525 
+
+22. Xie, N. et al. Neoantigens: promising targets for cancer therapy. Signal Transduct Target 526 
+
+Ther 8, 9 (2023). 527 
+
+23. Gillette, M.A . et al. Proteogenomic Characterization Reveals Therapeutic Vulnerabilities 528 
+
+in Lung Adenocarcinoma. Cell 182 , 200 -225 e235 (2020). 529 
+
+24. Casado, P. et al. Kinase -substrate enrichment analysis provides insights into the 530 
+
+heterogeneity of signaling pathway acti vation in leukemia cells. Sci Signal 6, rs6 (2013). 531 
+
+25. Beekhof, R. et al. INKA, an integrative data analysis pipeline for phosphoproteomic 532 
+
+inference of active kinases. Mol Syst Biol 15 , e8250 (2019). 533 
+
+26. Krug, K. et al. A Curated Resource for Phosphosite -specific Signature Analysis. Mol Cell 534 
+
+Proteomics 18 , 576 -593 (2019). 535 
+
+> .CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 13, 2026. ;https://doi.org/10.64898/2026.07.08.737143 doi: bioRxiv preprint
+
+27. Crowl, S., Jordan, B.T., Ahmed, H., Ma, C.X. & Naegle, K.M. KSTAR: An algorithm to 536 
+
+predict patient -specific kinase activities from p hosphoproteomic data. Nat Commun 13 ,537 
+
+4283 (2022). 538 
+
+28. Yilmaz, S. et al. Robust inference of kinase activity using functional networks. Nat 539 
+
+Commun 12 , 1177 (2021). 540 
+
+29. Bayer, F.P. et al. Chemical proteomics decrypts the kinases that shape the dynamic 541 
+
+human phosphoproteome. bioRxiv (2025). 542 
+
+30. Spanheimer, P.M. et al.  Receptor Tyrosine Kinase Expression Predicts Response to 543 
+
+Sunitinib in Breast Cancer. Ann Surg Oncol 22 , 4287 -4294 (2015). 544 
+
+31. Lun, X.K. et al. Analysis of the Human Kinome and Phosphatome by Mass Cytometry 545 
+
+Reveals Overexpression -Induced Effects on Cancer -Related Signaling. Mol Cell 74 , 1086 -546 
+
+1102 e1085 (2019). 547 
+
+32. Zecha, J. et al. Decrypting drug actions and protein modifications by dose - and time -548 
+
+resolved proteomics. Science 380 , 93 -101 (2023). 549 
+
+33 . Mackensen, A. et al. CLDN6 -specific CAR -T cells plus amplifying RNA vaccine in relapsed 550 
+
+or refractory solid tumors: the phase 1 BNT211 -01 trial. Nat Med 29 , 2844 -2853 (2023). 551 
+
+34. Ognjanovic, S., Linabery, A.M., Charbonneau, B. & Ross, J.A. Trends in chil dhood 552 
+
+rhabdomyosarcoma incidence and survival in the United States, 1975 -2005. Cancer 115 ,553 
+
+4218 -4226 (2009). 554 
+
+35. Marshall, A.D. & Grosveld, G.C. Alveolar rhabdomyosarcoma - The molecular drivers of 555 
+
+PAX3/7 -FOXO1 -induced tumorigenesis. Skelet Muscle 2, 25 (2 012). 556 
+
+36. Skapek, S.X. et al. Rhabdomyosarcoma. Nat Rev Dis Primers 5, 1 (2019). 557 
+
+37. Cao, L. et al. Genome -wide identification of PAX3 -FKHR binding sites in 558 
+
+rhabdomyosarcoma reveals candidate target genes important for development and 559 
+
+cancer. Cancer Res 70 , 6497 -6508 (2010). 560 
+
+38. Uhlen, M. et al. Proteomics. Tissue -based map of the human proteome. Science 347 ,561 
+
+1260419 (2015). 562 
+
+39. Bausch -Fluck, D. et al. A mass spectrometric -derived cell surface protein atlas. PLoS One 563 
+
+10 , e0121314 (2015). 564 
+
+40. Thuault, S. et al. P -cadherin is a direct PAX3 -FOXO1A target involved in alveolar 565 
+
+rhabdomyosarcoma aggressiveness. Oncogene 32 , 1876 -1887 (2013). 566 
+
+41. Ignatius, M.S. et al. The NOTCH1/SNAIL1/MEF2C Pathway Regulates Growth and Self -567 
+
+Renewal in Embryonal Rhabdomyosarcoma. Ce ll Rep 19 , 2304 -2318 (2017). 568 
+
+42. Li, S.Q. et al. Targeting wild -type and mutationally activated FGFR4 in 569 
+
+rhabdomyosarcoma with the inhibitor ponatinib (AP24534). PLoS One 8, e76551 (2013). 570 
+
+43. Wu, J.T. et al. Preclinical Evaluation of the FGFR -Family Inhib itor Futibatinib for Pediatric 571 
+
+Rhabdomyosarcoma. Cancers (Basel) 15 (2023). 572 
+
+44. Dorado García, H. et al. Therapeutic targeting of ATR in alveolar rhabdomyosarcoma. Nat 573 
+
+Commun 13 , 4297 (2022). 574 
+
+45. Höfer, S. et al. Gemcitabine and ATR inhibitors synergize to kill PDAC cells by blocking 575 
+
+DNA damage response. Mol Syst Biol 21 , 231 -253 (2025). 576 
+
+46. Zhang, H. et al. ATRIP Deacetylation by SIRT2 Drives ATR Checkpoint Activation by 577 
+
+Promoting Binding to RPA -ssDNA. Cell Rep 14 , 1435 -1447 (2016). 578 
+
+47. Jing, E., Gesta, S. & Kahn, C.R. SIRT2 regulates adipocyte differentiation through FoxO1 579 
+
+acetylation/deacetylation. Cell Metab 6, 105 -114 (2007). 580 
+
+48. Xiong, S., Salazar, G., Patrushev, N. & Alexander, R.W. FoxO1 mediates an autofeedback 581 
+
+loop regulating SIR T1 expression. J Biol Chem 286 , 5289 -5299 (2011). 582 
+
+49. Yang, W. et al. Functional genetic variants within the SIRT2 gene promoter in acute 583 
+
+myocardial infarction. PLoS One 12 , e0176245 (2017). 584 
+
+50. Ma, L. et al. SIRT1 and SIRT2 inhibition impairs pediatric soft tissue sarcoma growth. Cell 585 
+
+Death Dis 5, e1483 (2014). 586 
+
+> .CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 13, 2026. ;https://doi.org/10.64898/2026.07.08.737143 doi: bioRxiv preprint
+
+51. Mock, A. et al. NCT/DKFZ MASTER handbook of interpreting whole -genome, 587 
+
+transcriptome, and methylome data for precision oncology. NPJ Precis Oncol 7, 109 588 
+
+(2023). 589 
+
+52. Reisinger, E. et al. OTP: An automatized system for managing and processing NGS data. 590 
+
+J Biotechnol 261 , 53 -62 (2017). 591 
+
+53. Tamborero, D. et al. The Molecular Tumor Board Portal supports clinical decisions and 592 
+
+automated report ing for precision oncology. Nat Cancer 3, 251 -261 (2022). 593 
+
+54. Figaschewski, M., Surun, B., Tiede, T. & Kohlbacher, O. The personalized cancer network 594 
+
+explorer (PeCaX) as a visual analytics tool to support molecular tumor boards. BMC 595 
+
+Bioinformatics 24 , 88 ( 2023). 596 
+
+55. Hübschmann, D. et al. The Knowledge Connector decision support system for multiomics -597 
+
+based precision oncology. Nat Commun 17 , 742 (2026). 598 
+
+56. Rudnick, P.A. et al. A Description of the Clinical Proteomic Tumor Analysis Consortium 599 
+
+(CPTAC) Common D ata Analysis Pipeline. J Proteome Res 15 , 1023 -1032 (2016). 600 
+
+57. Mani, D.R. et al. PANOPLY: a cloud -based platform for automated and reproducible 601 
+
+proteogenomic data analysis. Nat Methods 18 , 580 -582 (2021). 602 
+
+58. Santos, A. et al. A knowledge graph to interpr et clinical proteomics data. Nat Biotechnol 603 
+
+40 , 692 -702 (2022). 604 
+
+59. Johnson, J.L. et al. An atlas of substrate specificities for the human serine/threonine 605 
+
+kinome. Nature 613 , 759 -766 (2023). 606 
+
+60. Müller, J. et al. PTMNavigator: interactive visualization of differentially regulated post -607 
+
+translational modifications in cellular signaling pathways. Nat Commun 16 , 510 (2025). 608 
+
+609 
+
+> .CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 13, 2026. ;https://doi.org/10.64898/2026.07.08.737143 doi: bioRxiv preprint
+
+# Methods 1
+
+2
+
+## Data availability 3
+
+For the MTB cohort, patient raw phosphoproteome mass spectrometry data, peptide and protein 4
+
+identification and quantification data provided by MaxQuant, as well as TOPAS pipeline results are 5
+
+available from the German Human Genome-Phenome Archive (GHGA, study identifier pending). Because 6
+
+this data contains patient-derived information, controlled access is required and can be granted upon 7
+
+request. Raw phosphoproteome mass spectrometry data files for three published studies provided by 8
+
+CPTAC 1-3 were downloaded from the CPTAC data portal in May 2021 (https://cptac-data-9
+
+portal.georgetown.edu/datasets ) utilizing the IBM Aspera client. CPTAC peptide and protein identification 10 
+
+and quantification data provided by MaxQuant, as well as TOPAS pipeline results are available from 11 
+
+PRIDE with the project accession number (PXD061316). 12 
+
+Reviewers can access the dataset by logging into the PRIDE website using the following account details: 13 
+
+Username: reviewer_pxd061316@ebi.ac.uk 14 
+
+Password: eyGZ4OHWnDsv 15 
+
+16 
+
+Raw files for all 44 sarcoma samples from the TCPCA cohort 4 were downloaded from PRIDE with the 17 
+
+project accession number PXD054790 using the Python package pridepy v0.0.16. 18 
+
+19 
+
+## Peptide and protein identification and quantification by MaxQuant 20 
+
+For peptide and phophopeptide identification and quantification of the MTB and CPTAC cohorts, raw mass 21 
+
+spectrometry files were searched with MaxQuant (v.1.6.12.0 for Batch 1-229 and all CPTAC datasets, 22 
+
+v2.1.3.0 for Batch 230-336) against the human SwissProt+TrEMBL database (97,086 protein sequences 23 
+
+including isoforms, downloaded Nov 2020) and the common contaminants database from MaxQuant 5. To 24 
+
+distinguish CDKN2A p14 and p16 splice variants, CDKN2A entries had their gene name extended by the 25 
+
+respective splice variant names CDKN2A-p14 and CDKN2A-p16. The proteome and the phosphoproteome 26 
+
+datasets were searched separately and per TMT batch. A custom automated pipeline was set up in Python 27 
+
+to start a MaxQuant search as soon as all raw files for a batch were measured. 28 
+
+29 
+
+Default parameters of MaxQuant were used with the following changes. Searches were performed using 30 
+
+the ‘MS3 reporter ion’ experiment type and ‘TMT11plex’ labels. Isotope impurity correction factors 31 
+
+provided by the manufacturer were used for each TMT lot. Searches included up to three missed cleavage 32 
+
+sites, a minimum peptide length of 6, maximum peptide mass of 6,000 and a fragment ion tolerance of 0.4 33 
+
+Da (ITMS). PSM-level FDR was set to 1% and protein level to 100% (for protein level FDR control see 34 
+
+below). For the phosphoproteome, phosphorylation of serine, threonine, and tyrosine was set as variable 35 
+
+modification. CPTAC data were searched with the same parameters except the experiment type was set to 36 
+
+‘MS2 reporter ion’. 37 
+
+38 
+
+## Peptide and protein identification and quantification by FragPipe 39 
+
+For peptide and phophopeptide identification and quantification of the TCPCA cohort, raw mass 40 
+
+spectrometry files were searched with FragPipe v23.1 6 and quantified with DIA-NN v2.3.2 7 against the 41 
+
+> .CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 13, 2026. ;https://doi.org/10.64898/2026.07.08.737143 doi: bioRxiv preprint
+
+same SwissProt+TrEMBL database as described above for MaxQuant. Default parameters for the DIA 42 
+
+workflow in FragPipe were used with the following changes: diann.cmd-opts=--report-decoys, 43 
+
+msfragger.allowed_missed_cleavage_1=2, msfragger.allowed_missed_cleavage_2=2, phi-report.dont-use-44 
+
+prot-proph-file=true, phi-report.filter=--prot 1.0 --pep 1.0 --ion 1.0, phi-report.print-decoys=true. 45 
+
+46 
+
+## TOPAS pipeline 47 
+
+Software and performance 48 
+
+The TOPAS pipeline was implemented in Python 3.9.13 and is available at 49 
+
+https://github.com/kusterlab/topas-pipeline . A Docker image is automatically created with every git 50 
+
+commit. The pipeline performs the following steps (outlined in further detail below): quality control, MS2 51 
+
+identification transfer, normalization and imputation, protein grouping (proteome only), protein or 52 
+
+phosphopeptide quantification, fold-change and z-score calculation, functional annotation, TOPAS scoring 53 
+
+and report creation. System and unit tests were implemented to ensure stability and maintainability. The 54 
+
+pipeline is run in a Docker container by passing it a configuration file in TOML format with input/output 55 
+
+paths and settings for the pipeline run. Compute-intensive steps of the pipeline were optimized to use 56 
+
+multiple cores and a pipeline run of ~2,000 patients is completed in ~24 hours using ~250GB of RAM. The 57 
+
+pipeline is routinely run on a Linux server with 64 cores and 512GB of RAM which can run several pipeline 58 
+
+runs in parallel if needed. 59 
+
+60 
+
+Quality control 61 
+
+Batches with TMT labeling efficiency <90% (calculated by ‘summed intensity TMT-labelled 62 
+
+peptides’/‘summed intensity all peptides’) or mean IMAC enrichment efficiency <80% (calculated by 63 
+
+‘summed intensity phosphopeptides’/‘summed intensity all peptides’) over the 12 fractions were excluded. 64 
+
+Furthermore, samples for which the ‘summed TMT reporter intensity’ was <20% (threshold chosen 65 
+
+empirically) of the mean ‘summed intensity of TMT reporter intensity’ of both reference channels were 66 
+
+assigned a “QC failed” label and excluded from further analyses. Additionally, samples were also excluded 67 
+
+from further analyses if the genomics or transcriptomics data detected contaminations or if the sample 68 
+
+identity could not be ascertained (termed excluded by ‘other’). Samples with a tumor cell content <20%, 69 
+
+severe DNA degradation, documented long cold ischemia time (>30 min) or RNA library preparation 70 
+
+failure were assigned a ‘limited tissue quality’ label. 71 
+
+72 
+
+Missing data reduction between patient (TMT) batches 73 
+
+To improve data completeness, MQ output files from all TMT batches were submitted together to SIMSI-74 
+
+Transfer version 0.6.3 8 to transfer MS2 identifications. The following settings were used: “ --tmt_ms_level 75 
+
+ms3 --stringencies 10 --tmt_requantify --maximum_pep 1 --num_threads 8”. For the CPTAC dataset, the 76 
+
+setting “ --tmt_ms_level ms2” was used instead. 77 
+
+78 
+
+Normalization and imputation 79 
+
+For the MTB cohort, several normalization steps were performed to correct for differences in protein input 80 
+
+amounts and batch effects. A graphical depiction is also given in Extended Data Fig. 3a . Within each 81 
+
+batch, MS3 intensities were median centered using peptides detected in ≥4 TMT channels. Across batches, 82 
+
+MS1 intensities were median centered using peptides detected in >70% of batches. For precursors for which 83 
+
+MaxQuant did not report an MS1 intensity but an MS3 signal was measured in one of the QC channels 10 84 
+
+or 11 (5% of peptides and 12% of phosphopeptides), an MS1 intensity was imputed as 85 
+
+> .CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 13, 2026. ;https://doi.org/10.64898/2026.07.08.737143 doi: bioRxiv preprint
+
+𝑀𝑆1 𝑖𝑚𝑝𝑢𝑡𝑒𝑑 = ∑ 𝑀𝑆3 𝑐ℎ𝑎𝑛𝑛𝑒𝑙𝑗 𝑗 
+
+𝑀𝑆3 𝑄𝐶𝑐ℎ𝑎𝑛𝑛𝑒𝑙𝑠 
+
+× 1𝐵 ∑ ( 𝑀𝑆3 𝑏𝑎𝑡𝑐ℎ 𝑏 ;𝑄𝐶𝑐ℎ𝑎𝑛𝑛𝑒𝑙𝑠 
+
+∑ 𝑀𝑆3 𝑏𝑎𝑡𝑐ℎ 𝑏 ;𝑐ℎ𝑎𝑛𝑛𝑒𝑙 𝑗 𝑗 
+
+× 𝑀𝑆1 𝑏𝑎𝑡𝑐ℎ 𝑏 ) , 
+
+> 𝑏∈𝐵
+
+86 
+
+where B is the set of batches where an MS1 intensity was reported by MaxQuant. This normalization is 87 
+
+based on the assumption that the contribution of the QC channels to the MS1 signal (the term in parenthesis 88 
+
+in the summation) is equal in all batches and that is used as a correction factor for the batches where no 89 
+
+MS1 intensity was reported. 90 
+
+91 
+
+Within each batch, MS3 intensities were transformed into quasi-LFQ 9 intensities using the MS1 intensity 92 
+
+as 93 
+
+𝑄𝑢𝑎𝑠𝑖𝐿𝐹𝑄 𝑐ℎ𝑎𝑛𝑛𝑒𝑙 𝑖 = 𝑀𝑆3 𝑐ℎ𝑎𝑛𝑛𝑒𝑙 𝑖 
+
+∑ 𝑀𝑆3 𝑐ℎ𝑎𝑛𝑛𝑒𝑙 𝑗 𝑗 
+
+× 𝑀𝑆1. 94 
+
+95 
+
+For the CPTAC cohorts, a different approach was necessary because the MS1 peptide chromatograms were 96 
+
+insufficiently reproducible between batches. Therefore, within each batch, MS3 intensities were median 97 
+
+centered using peptides detected in ≥4 TMT channels. Next, ratios of the MS2 intensities to the common 98 
+
+reference channel were taken and transformed into quasi-LFQ intensities as 99 
+
+𝑄𝑢𝑎𝑠𝑖𝐿𝐹𝑄 𝑐ℎ𝑎𝑛𝑛𝑒𝑙 𝑖 = 𝑀𝑆2 𝑐ℎ𝑎𝑛𝑛𝑒𝑙 𝑖 
+
+𝑀𝑆2 𝑄𝐶𝑐ℎ𝑎𝑛𝑛𝑒𝑙𝑠 
+
+× 1𝐵 ∑ ( 𝑀𝑆2 𝑏𝑎𝑡𝑐ℎ 𝑏 ;𝑄𝐶𝑐ℎ𝑎𝑛𝑛𝑒𝑙𝑠 
+
+∑ 𝑀𝑆2 𝑏𝑎𝑡𝑐ℎ 𝑏 ;𝑐ℎ𝑎𝑛𝑛𝑒𝑙 𝑗 𝑗 
+
+× 𝑀𝑆1 𝑏𝑎𝑡𝑐ℎ 𝑏 )
+
+> 𝑏∈𝐵
+
+,100 
+
+where B is again the set of batches where an MS1 intensity was reported by MaxQuant. The term on the 101 
+
+right is the average contribution of the QC channels to the MS1 signal. This normalization was applied to 102 
+
+each of the three entities (BRCA, LUAD, UCEC) separately. 103 
+
+104 
+
+For the TCPCA cohort, the non-normalized MS1 intensities (“Ms1.Area” column) reported by DIA-NN 105 
+
+were used as peptide intensities. 106 
+
+107 
+
+Phosphopeptide normalization and imputation (phosphoproteome only) 108 
+
+In addition to the general normalization and imputation strategies described above, additional normalization 109 
+
+and imputation steps were performed for phosphopeptides. For phosphopeptides detected in at least 1 QC 110 
+
+channel for >67% of batches, intensities were bridge normalized using the QC channels as bridge channels. 111 
+
+Finally, for each phosphopeptide, intensities were median centered across different QC lots using the 112 
+
+median patient intensity per QC lot. If a phosphopeptide precursor ion was not detected for a channel but 113 
+
+was detected in the batch, it was imputed with either i) 1/100 th of the maximum intensity or ii) the minimum 114 
+
+intensity for the peptide within its batch, whichever of the two was lower. This imputation was based on 115 
+
+the fact that ratios smaller than 1/100 th can typically not be reliably measured by TMT. 116 
+
+117 
+
+Protein grouping and quantification (proteome only) 118 
+
+Protein grouping, 1% protein-level FDR control and MaxLFQ quantification of all TMT batches together 119 
+
+was performed on gene level using the picked protein group FDR package v0.7.6 10 . The fasta file used in 120 
+
+the MaxQuant database search was used as input and the following arguments were used: “ --gene_level --121 
+
+enzyme trypsinp --min-length 6 --cleavages 3 --lfq_min_peptide_ratios 1 --methods 122 
+
+picked_protein_group_mq_input --lfq_stabilize_large_ratios”. 123 
+
+124 
+
+Phosphopeptide grouping and quantification (phosphoproteome only) 125 
+
+> .CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 13, 2026. ;https://doi.org/10.64898/2026.07.08.737143 doi: bioRxiv preprint
+
+For each phosphopeptide, precursor intensities were summed up across charge states and fractions. To 126 
+
+reduce missing values due to ambiguous localization, phosphopeptides with the same naked sequence and 127 
+
+number of phosphorylated residues were grouped if each phosphorylated residue was within a ±2 residue 128 
+
+window. The most prevalent phosphopeptide within the group was defined as the representative modified 129 
+
+sequence. If multiple precursors were obtained for the same group in a single sample, the intensities were 130 
+
+summed. If all precursor intensities in a group were imputed, the quantification was flagged as “imputed”, 131 
+
+if imputed and non-imputed precursor intensities were combined, the quantification was flagged as 132 
+
+“partially imputed”. For simplicity, these groups are referred to as phosphopeptides throughout the 133 
+
+manuscript and the remainder of the methods section. 134 
+
+135 
+
+Caution flags for quantification values 136 
+
+Besides the “imputed” and “partially imputed” flags described above, three additional flags were employed. 137 
+
+First, false identification and inaccurate quantification of peptides can distort protein quantifications, 138 
+
+especially when based on few peptides. To detect such problematic cases, we performed a linear regression 139 
+
+for each protein, modeling its intensity as a function of the detected peptide count C across samples. Protein 140 
+
+quantification with a residual of 2 × 1.1 𝐶−1 standard deviations above the predicted protein intensity were 141 
+
+flagged as “pepcount_OOR”. The multiplicative factor 1.1 𝐶−1 was empirically determined to produce more 142 
+
+lenient thresholds as the peptide count increases. Second, quantification values below 1/100 th of the 143 
+
+maximum quantification value in the batch were flagged as “quan_OOR”, again informed by the 144 
+
+observation that ratios smaller than that can typically not be reliably measured by TMT. Third, if a protein 145 
+
+was not detected in a channel but detected in one or more other channels in that batch, the missing 146 
+
+quantification value was flagged as “detected in batch” to indicate a potential true absence. 147 
+
+148 
+
+Fold change and z-score calculation 149 
+
+Protein and phosphopeptides intensities were log10-transformed. For each protein and phosphopeptide, the 150 
+
+rank, z-score, and fold change were calculated relative to the cohort. For the z-score and fold change, the 151 
+
+median was used instead of the mean and the abundance for the patient itself was excluded from the 152 
+
+computation of the median and standard deviation. 153 
+
+154 
+
+Functional annotation 155 
+
+Cancer gene annotations were downloaded from OncoKB ( https://www.oncokb.org/cancer-genes , accessed 156 
+
+22 Aug 2024). Kinase gene annotations were downloaded from KinHub 157 
+
+(http://www.kinhub.org/kinases.html , accessed 17 Jan 2024). ADC targets were downloaded from ADCdb 158 
+
+(http://adcdb.idrblab.net/ , accessed 19 Aug 2024). Immunotherapy targets were collected from the 159 
+
+literature 11-13 . The full list of annotations can be found in Extended Data Table 1. Phosphopeptides were 160 
+
+annotated using the Python package psite_annotation v0.5.3 161 
+
+(https://github.com/kusterlab/psite_annotation ) using the following files downloaded from 162 
+
+PhosphoSitePlus (https://www.phosphosite.org/staticDownloads , accessed January 13th 2024): 163 
+
+Phosphosite_seq.fasta, Kinase_Substrate_Dataset, Phosphorylation_site_dataset, Regulatory_sites. RNA 164 
+
+tissue specificity classifications were downloaded from the Human Protein Atlas 165 
+
+(https://www.proteinatlas.org/download/tsv/rna_tissue_hpa.tsv.zip , accessed May 11 th 2026). Gene 166 
+
+annotations classified as "Tissue enhanced" or "Tissue specific" were retained together with the 167 
+
+corresponding tissue(s). 168 
+
+169 
+
+> .CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 13, 2026. ;https://doi.org/10.64898/2026.07.08.737143 doi: bioRxiv preprint
+
+CPTAC analysis 170 
+
+The three CPTAC cohorts were preprocessed together by the TOPAS pipeline, where each cohort was 171 
+
+assigned its own QC lot number. 172 
+
+173 
+
+## Tumor proteome activity status (TOPAS) scores 174 
+
+Kinase abundance score 175 
+
+The kinase abundance score of a patient is the z-score of that patients’ kinase abundance computed relative 176 
+
+to the background cohort consisting of all other patients, and is computed independently for every kinase. 177 
+
+178 
+
+Activity indicating phosphorylation score 179 
+
+For the activity indicating phosphorylation score a set of phosphopeptides (typically, well-known 180 
+
+autophosphorylation sites) are selected as the intersection of sets of phosphopeptides i) uniquely attributed 181 
+
+as substrate of the RTK according to PhosphoSitePlus, ii) regulated by a drug selectively targeting the RTK 182 
+
+in a decryptM experiment 14, 15 and iii) differentially abundant between patients with a known oncogenic 183 
+
+alteration in the RTK versus the rest of the MTB cohort. If one or two of these sets were unavailable for an 184 
+
+RTK, an intersection was done with the remaining sets. For each patient, the log10 fold change is computed 185 
+
+relative to the background cohort for each phosphopeptide included in the set. To arrive at the protein 186 
+
+phosphorylation scores, the sum of log10 fold changes are z-scored across all patients, resulting in 187 
+
+standardized scores that can be compared to each other. 188 
+
+189 
+
+Protein phosphorylation score 190 
+
+For the protein phosphorylation score, all phosphopeptides on the protein are considered, excluding 191 
+
+phosphopeptides shared with other proteins. As with activity indicating phosphorylation scores, the protein 192 
+
+phosphorylation scores is the sum of log10 fold changes, z-scored across all patients. 193 
+
+194 
+
+Substrate phosphorylation score 195 
+
+For substrate phosphorylation scores, we first removed the protein expression contribution for each 196 
+
+phosphopeptide by fitting a log-log-linear model with a bounded slope between 0 and 1, and subtracted the 197 
+
+regressed linear protein expression effect from the phosphosite abundance. For the substrate 198 
+
+phosphorylation score, all phosphopeptides annotated as a substrate of the kinase according to Bayer et 199 
+
+al. 15 , detected in at least 1 QC channel for 67% of batches (i.e. those for which bridge normalization was 200 
+
+performed) are considered. For MEKs, MAP2K3/6, CHEK1 and AAK1, only the seed sites were used as 201 
+
+kinase substrates. As with activity indicating phosphorylation scores, the substrate phosphorylation scores 202 
+
+is the sum of log10 fold changes, z-scored across all patients. 203 
+
+204 
+
+TOPAS scores 205 
+
+The TOPAS-RTK scoring consists of three subscores: kinase abundance, activity indicating 206 
+
+phosphorylation and protein phosphorylation. The TOPAS-ICK scoring consists of a single subscore: 207 
+
+substrate phosphorylation. For each TOPAS score, the subscores are summed up with the activity indicating 208 
+
+phosphorylation subscore weighted doubly. Finally, the summed scores are again z-scored across all 209 
+
+patients to arrive at a standardized TOPAS score for each of the 18 RTKs and 28 ICKs for each patient. 210 
+
+211 
+
+## TOPAS portal 212 
+
+Data portal 213 
+
+> .CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 13, 2026. ;https://doi.org/10.64898/2026.07.08.737143 doi: bioRxiv preprint
+
+The TOPAS portal ( https://github.com/kusterlab/topas-portal ) was implemented in Python v3.9.12, Flask 214 
+
+v2.3.3 (backend), and Vue v2.6.14 (frontend). The backend supports both an in-memory (default) and a 215 
+
+postgreSQL database for the data matrices. Docker images were created for both the frontend and backend 216 
+
+which are deployed together using docker-compose. The TOPAS portal supports multi-omics patient data 217 
+
+(proteomics, transcriptomics and genomics) and provides access to all the different data modalities (protein, 218 
+
+phosphopeptide and transcript abundance as well as TOPAS (sub)scores). It offers differential abundance 219 
+
+(t-test, ANOVA, multiple testing correction), cluster (PPCA, UMAP, silhouette scores) and correlation 220 
+
+analysis (Pearson correlation). All analyses can be performed on or between subgroups of the cohort based 221 
+
+on the provided metadata (e.g. cancer entity, genomic alteration, batch, etc.) or by uploading lists of sample 222 
+
+identifiers. This includes the option to compute ranks, z-scores and fold changes relative to, e.g. other 223 
+
+patients from the same (or similar) entity or from the same tissue topology (in case of metastatic samples). 224 
+
+Visualizations include swarm, volcano, kernel density estimation, correlation and bar plots as well as 225 
+
+histograms, heatmaps and Venn diagrams. Endpoint validation and unit tests were implemented to 226 
+
+safeguard stability. 227 
+
+228 
+
+Report creation 229 
+
+For each patient, a report in Excel format is created consisting of 4 tabs: Summary (containing TOPAS 230 
+
+scores and proteins of interest), Proteome, Phosphoproteome, and Protein phosphorylation score. Each of 231 
+
+the tabs contains the abundance/score, z-score, rank within cohort, rank within batch, fold-change and, if 232 
+
+applicable, functional annotation columns and if the abundance/score data was based on imputed data for 233 
+
+this patient. 234 
+
+235 
+
+## Cell culture and drug perturbation assays 236 
+
+TOPAS score cell line validation 237 
+
+A431, NCI-H1975 and NCI-N87 were cultured in RPMI-1640 (Gibco, A10491) supplemented with 10% 238 
+
+FBS (Pan Biotech). KATOIII was cultured in IMDM supplemented with 20% FBS (Pan Biotech) and 239 
+
+MFM-223 was cultured in DMEM supplemented with 15% FBS and 1% 100x ITS. Cells were cultured in 240 
+
+a humidified cell incubator at 37 °C and 5 % CO2 and regularly checked for mycoplasma contamination. 241 
+
+For perturbation experiments, cells were seeded in 10 cm² dishes and grown to 80% confluence within 48 h. 242 
+
+Cell culture medium was replaced 24 h after seeding. A431, NCI-H1975 and NCI-N87 cells were treated 243 
+
+with 100 nM Afatinib, 1 μM Lapatinib, 10 μM Osimertinib, or DMSO vehicle for 4h (NCI -H1975 and NCI-244 
+
+N87) in duplicates or with 500 nM Afatinib or DMSO vehicle for 2h (A431) in triplicates. KATOIII and 245 
+
+MFG-223 cells were treated with 100 nM Futibatinib, or DMSO vehicle for 2h in triplicates. Cells were 246 
+
+washed twice with PBS and lysed in SDS lysis buffer (2% SDS in 40 mM Tris -HCl, pH 7.6). For DNA 247 
+
+hydrolysis, samples were heated at 95 °C for 10 min and incubated with 2% trifluoroacetic acid (TFA) for 248 
+
+1 min, before the rea ction was quenched using 4% N-methylmorpholine (NMM). Lysate was cleared by 249 
+
+centrifugation at 10,000 × g for 10 min and protein concentration was determined using the Pierce BCA 250 
+
+Protein Assay Kit (Thermo Scientific) and cells were further processed in the same way as patient’s tumor 251 
+
+tissue specimen in separate cell line TMT-batches as described in our accompanying manuscript 16 .252 
+
+253 
+
+Alveolar Rhabdomyosarcoma 254 
+
+Alveolar rhabdomyosarcoma cell lines (Rh4, Rh5, Rh30, Rh41, RMS, KFR) were cultured and harvested 255 
+
+as previously described 17 . Cells were further processed in the same way as patient’s tumor tissue specimen 256 
+
+> .CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 13, 2026. ;https://doi.org/10.64898/2026.07.08.737143 doi: bioRxiv preprint
+
+in separate cell line TMT-batches as described in our accompanying manuscript 16 . Cell viability data were 257 
+
+taken from Dorado García et al. 17 and re-processed using CurveCurator v0.6.0 18 .258 
+
+259 
+
+## Data analysis 260 
+
+Comparisons to data matrices before normalization 261 
+
+The normalized data matrix was compared to a pre-normalized data matrix computed by skipping both the 262 
+
+within (MS3) and across (MS1) batch median centering but including calculation of quasi-LFQ intensities. 263 
+
+All other steps in the TOPAS pipeline were executed identically. 264 
+
+265 
+
+Comparison to summed intensity protein quantification 266 
+
+Summed intensity protein quantification was performed on gene level using the picked protein group FDR 267 
+
+package v0.7.6 10 using the same settings as described for MaxLFQ in the section “ Protein grouping and 268 
+
+quantification ”. All other steps in the TOPAS pipeline were executed identically. 269 
+
+270 
+
+Comparison to median centering without occurrence filter 271 
+
+The minimum occurrence filter on proteins or phosphopeptides used for median centering within and across 272 
+
+TMT batches was set from 70% to 0%. All other steps in the TOPAS pipeline were executed identically. 273 
+
+274 
+
+Quantitative precision analysis 275 
+
+Non-log-transformed intensities were used to compute the coefficient of variation (CV) as a metric for 276 
+
+quantitative precision for all proteins and phosphopeptides found in >70% of samples. Cumulative density 277 
+
+plots for CV were created for sample replicates and QC channels across batches. For sample replicate CV 278 
+
+calculation, replicate samples for P0291 measured in three batches (Batch 29, 30, 31) were used. For both 279 
+
+TMT Channel 1 (patient samples) and 9 (QC samples), CVs were computed across batches for the 280 
+
+corresponding lot of QC samples (batches 1-72). 281 
+
+282 
+
+Quantification robustness analysis 283 
+
+For each protein and phosphopeptide, CV was calculated on non-log-transformed intensities as CV = (1 + 284 
+
+1/4n) × SD/mean × 100, with the (1 + 1/4n) term correcting for small-sample bias. Technical CV was 285 
+
+computed from QC-channel replicates or from technical replicates of the same patient sample. Technical 286 
+
+CV was the median across TMT batches/lots (if detected in ≥70% of TMT batches) or patient replicate sets 287 
+
+(if detected in ≥5 patients) , whichever of the two had higher detection coverage. Biological CV was simply 288 
+
+computed across all patient samples (if detected in ≥20 patients) . For TOPAS (sub)scores, standard 289 
+
+deviations were calculated instead of CVs using the same criteria as described above for CVs. Biological-290 
+
+to-technical CV or standard deviation ratios were classified as "unreliable" (ratio <1), "variable" (ratio 1 –291 
+
+2), "stable" (ratio >2) , or “uncharacterized” (detected in too few QC channels and patient replicates). 292 
+
+293 
+
+Standard error of the mean reduction analysis 294 
+
+For each protein and phosphopeptide, log-transformed intensities were used to compute the standard error 295 
+
+of the mean for each entity with at least 10 patients. The reduction in standard error of the mean (SEM) was 296 
+
+calculated as (𝑆𝐸𝑀 𝑏𝑒𝑓𝑜𝑟𝑒 −𝑆𝐸𝑀 𝑎𝑓𝑡𝑒𝑟 )𝑆𝐸𝑀 𝑏𝑒𝑓𝑜𝑟𝑒 
+
+× 100% . Finally, the median reduction in SEM was computed across all 297 
+
+protein-entity or phosphopeptide-entity pairs. 298 
+
+299 
+
+> .CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 13, 2026. ;https://doi.org/10.64898/2026.07.08.737143 doi: bioRxiv preprint
+
+300 
+
+Biomarker differential expression 301 
+
+Known protein biomarkers for the Solitary Fibrous Tumor (SFT) and known protein and putative 302 
+
+phosphopeptide biomarkers for Ewing Sarcoma (ES) entities were selected based on literature research. P303 
+
+values were calculated between the protein or phosphopeptide abundances of patients within the entity 304 
+
+against the rest of the cohort using the two-sided independent t-test function ttest_ind() of scipy v1.11.4. 305 
+
+306 
+
+UMAP and PPCA 307 
+
+Proteins found in >50% of samples were retained. Missing values were imputed using the PPCA method 308 
+
+included in scikit-learn v1.3.0. UMAPs were plotted from the imputed data matrices using 10 neighbors 309 
+
+and 1,000 epochs. 310 
+
+311 
+
+Kinase activity scoring comparison 312 
+
+INKA 19 , KSEA 20 , RoKAI 21 , PTM-SEA 22 and KSTAR 23 enrichments were performed using the enrichment-313 
+
+server v0.1.3 of PTMNavigator 24 . For INKA, the intensities were used as input for each phosphopeptide. 314 
+
+For KSEA, RoKAI and PTM-SEA, the log2 fold changes of all patients relative to the median were used 315 
+
+as input for each phosphopeptide. For KSTAR, only log2 fold change > 1.0 were used as input for each 316 
+
+phosphopeptide. For the patient analysis, TOPAS-RTK scores were extracted for patients with at least one 317 
+
+oncogenic RTK alteration with a therapeutic evidence level according to OncoKB (accessed 18 May 2026). 318 
+
+The oncogenic altered RTKs for each patient were considered as real positives, whereas all other RTKs for 319 
+
+the patient were considered as real negatives. For the MCC and confusion matrix analyses, the following 320 
+
+thresholds were employed: z-score > 2 for TOPAS (sub)scores, summed intensity > 8.0 for INKA, and 321 
+
+FDR < 5% for KSEA, RoKAI, PTM-SEA and KSTAR. 322 
+
+323 
+
+Differential protein abundance analysis 324 
+
+For each protein, the p value was calculated between the protein abundances of ARMS samples (excluding 325 
+
+the six samples with degradation or low tumor cell content issues) and all other samples in the cohort using 326 
+
+the independent t-test function ttest_ind() of scipy v1.11.4. Benjamini-Hochberg multiple testing correction 327 
+
+was performed with the fdrcorrection() method of statsmodels v0.14.2. Proteins were classified as 328 
+
+significant if FDR <0.05 and log2(fold change) >0.5. Classification of tissue specific proteins was done 329 
+
+using the 921 elevated genes for skeletal muscle reported in the Human Protein Atlas 25 
+
+330 
+
+(https://www.proteinatlas.org/humanproteom/tissue/skeletal+muscle , accessed 19 Sep 2024). 331 
+
+332 
+
+Differential detection of surface expressed proteins 333 
+
+Surface expressed proteins were extracted from Supplementary Table S2A of the Cell Surface Protein Atlas 334 
+
+publication 26 . Only proteins with the CSPA category of “1 – high confidence” were retained. For each 335 
+
+protein, the p value was calculated between the presence of the protein in ARMS samples (excluding the 336 
+
+six samples with degradation or low tumor cell content issues) and all other samples in the cohort using the 337 
+
+fisher exact test hypergeom.sf() of scipy.stats v1.11.4. Benjamini-Hochberg multiple testing correction was 338 
+
+performed with the fdrcorrection() method of statsmodels v0.14.2. Proteins were classified as significant if 339 
+
+FDR <0.01, log2(fold change) >0.4 and the protein was detected in more than 30 of the 42 ARMS samples. 340 
+
+341 
+
+Differential kinase substrate phosphorylation analysis 342 
+
+> .CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 13, 2026. ;https://doi.org/10.64898/2026.07.08.737143 doi: bioRxiv preprint
+
+For each kinase, a p value was calculated between the TOPAS-ICK scores of ARMS samples (excluding 343 
+
+the four samples with degradation or low tumor cell content issues) and all other samples in the cohort using 344 
+
+the independent t-test function ttest_ind() of scipy v1.11.4. Benjamini-Hochberg multiple testing correction 345 
+
+was performed with the fdrcorrection() method of statsmodels v0.14.2. 346 
+
+347 
+
+ATR substrate correlation analysis 348 
+
+For each phosphopeptide detected in at least 1 QC channel for 67% of batches (i.e. those for which bridge 349 
+
+normalization was performed) and quantified in >200 patients, the Pearson correlation was calculated 350 
+
+between the ATR TOPAS substrate phosphorylation subscore and the protein expression corrected 351 
+
+abundances (as described in the TOPAS score section above) of the phosphopeptide across patients. Known 352 
+
+ATR/ATM/PRKDC substrates were extracted from PhosphoSitePlus and Bayer et al. 15 and 353 
+
+phosphopeptides with the pSQ/pTQ motif were marked. Phosphopeptides that had a Pearson correlation 354 
+
+>0.5, had the pSQ/pTQ motif and were not annotated as an ATR/ATM/PRKDC substrate in 355 
+
+PhosphoSitePlus were considered as potential new substrates of these kinases. 356 
+
+357 
+
+References 358 
+
+359 
+
+1. Krug, K. et al. Proteogenomic Landscape of Breast Cancer Tumorigenesis and Targeted 360 
+
+Therapy.  Cell  183 , 1436 -1456 e1431 (2020). 361 
+
+2. Dou, Y. et al. Proteogenomic Characterization of Endometrial Carcinoma. Cell 180 , 729-362 
+
+748 e726 (2020). 363 
+
+3. Gillette, M.A. et al. Proteogenomic Characterization Reveals Therapeutic Vulnerabilities 364 
+
+in Lung Adenocarcinoma.  Cell  182 , 200 -225 e235 (2020). 365 
+
+4. Knol, J.C. et al. The pan-cancer proteome atlas, a mass spectrometry-based landscape 366 
+
+for discovering tumor biology, biomarkers, a nd therapeutic targets.  Cancer Cell  43 , 1328 -367 
+
+1346 e1328 (2025). 368 
+
+5. Tyanova, S., Temu, T. & Cox, J. The MaxQuant computational platform for mass 369 
+
+spectrometry -based shotgun proteomics.  Nat Protoc  11 , 2301 -2319 (2016). 370 
+
+6. Yu, F. et al. Analysis of DIA proteomics data using MSFragger-DIA and FragPipe 371 
+
+computational platform.  Nat Commun  14 , 4154 (2023). 372 
+
+7. Demichev, V., Messner, C.B., Vernardis, S.I., Lilley, K.S. & Ralser, M. DIA-NN: neural 373 
+
+networks and interference correction enable deep proteome coverage in hi gh throughput. 374 
+
+Nat Methods  17 , 41 -44 (2020). 375 
+
+8. Hamood, F., Bayer, F.P., Wilhelm, M., Kuster, B. & The, M. SIMSI-Transfer: Software-376 
+
+Assisted Reduction of Missing Values in Phosphoproteomic and Proteomic Isobaric 377 
+
+Labeling Data Using Tandem Mass Spectrum Clu stering.  Mol Cell Proteomics  21 , 100238 378 
+
+(2022). 379 
+
+9. Zecha, J. et al. Linking post-translational modifications and protein turnover by site-380 
+
+resolved protein turnover profiling.  Nat Commun  13 , 165 (2022). 381 
+
+10. The, M., Samaras, P., Kuster, B. & Wilhelm, M. Reanalysis of ProteomicsDB Using an 382 
+
+Accurate, Sensitive, and Scalable False Discovery Rate Estimation Approach for Protein 383 
+
+Groups.  Mol Cell Proteomics  21 , 100437 (2022). 384 
+
+11. Maalej, K.M. et al. CAR-cell therapy in the era of solid tumor treatment: current challenges 385 
+
+and emerging therapeutic advances.  Mol Cancer  22 , 20 (2023). 386 
+
+12. Shafer, P., Kelly, L.M. & Hoyos, V. Cancer Therapy With TCR-Engineered T Cells: Current 387 
+
+Strategies, Challenges, and Prospects.  Front Immunol  13 , 835762 (2022). 388 
+
+13. Xie, N. et al. Neoantigens: promising targets for cancer therapy. Signal Transduct Target 389 
+
+Ther  8, 9 (2023). 390 
+
+> .CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 13, 2026. ;https://doi.org/10.64898/2026.07.08.737143 doi: bioRxiv preprint
+
+14. Zecha, J. et al. Decrypting drug actions and protein modifications by dose- and time-391 
+
+resolved proteomics.  Science  380 , 93 -101 (2023). 392 
+
+15. Bayer, F.P. et al. Chemical proteomics decrypts the kinases that shape the dynamic 393 
+
+human phosphoproteome.  bioRxiv  (2025). 394 
+
+16. Schneider, A. et al. Prospective pan-cancer phosphoproteomics at clinical scale extends 395 
+
+therapeutic options in precision oncology.  bioRxiv  (2026). 396 
+
+17. Dorado García, H. et al. Therapeutic targeting of ATR in alveolar rhabdomyosarcoma. Nat 397 
+
+Commun  13 , 4297 (2022). 398 
+
+18. Bayer, F.P., Gander, M., Kuster, B. & The, M. CurveCurator: a recalibrated F-statistic to 399 
+
+assess, classify, and explore significance of dose -res ponse curves.  Nat Commun  14 ,400 
+
+7902 (2023). 401 
+
+19. Beekhof, R. et al. INKA, an integrative data analysis pipeline for phosphoproteomic 402 
+
+inference of active kinases.  Mol Syst Biol  15 , e8250 (2019). 403 
+
+20. Casado, P. et al. Kinase-substrate enrichment analysis provides insights into the 404 
+
+heterogeneity of signaling pathway activation in leukemia cells.  Sci Signal  6, rs6 (2013). 405 
+
+21. Yilmaz, S. et al. Robust inference of kinase activity using functional networks. Nat 406 
+
+Commun  12 , 1177 (2021). 407 
+
+22. Krug, K. et al. A Curated Resource for Phosphosite-specific Signature Analysis. Mol Cell 408 
+
+Proteomics  18 , 576 -593 (2019). 409 
+
+23. Crowl, S., Jordan, B.T., Ahmed, H., Ma, C.X. & Naegle, K.M. KSTAR: An algorithm to 410 
+
+predict patient -specific kinase activities from p hosphoproteomic data.  Nat Commun  13 ,411 
+
+4283 (2022). 412 
+
+24. Müller, J. et al. PTMNavigator: interactive visualization of differentially regulated post-413 
+
+translational modifications in cellular signaling pathways.  Nat Commun  16 , 510 (2025). 414 
+
+25. Uhlen, M. et al. Proteomics. Tissue-based map of the human proteome. Science 347 ,415 
+
+1260419 (2015). 416 
+
+26. Bausch-Fluck, D. et al. A mass spectrometric-derived cell surface protein atlas. PLoS One 417 
+
+10 , e0121314 (2015). 418 
+
+419
