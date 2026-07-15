@@ -1,0 +1,3317 @@
+Title: Long read multi-omics sequencing reveals DNA-to-RNA evolutionary remodeling trajectories of recurrent astrocytoma
+
+URL Source: https://www.biorxiv.org/content/10.64898/2026.07.12.738108v1.full.pdf
+
+Number of Pages: 53
+
+Markdown Content:
+1
+
+Long read multi -omics sequencing reveals DNA -to -RNA evolutiona ry remodeling trajectories 1
+
+of recurrent astrocytoma 2
+
+Sherif Rashad 1,2 *, Daisuke Ando 1,3,5 , Shota Yamashita 5, Yoshiteru Shimoda 5, Masayuki 3
+
+Kanamori 5, Hidenori Endo 5, Kuniyasu Niizuma 1,2,4,5 .4
+
+1- Department of Neurosurgical Engineering and Translational Neuroscience, Tohoku 5
+
+University Graduate School of Medicine, Sendai, Japan. 6
+
+2- Department of Neurosurgical Engineering and Translational Neuroscience, Graduate School 7
+
+of Biomedical Engineering, Tohoku University, Sendai, Japan. 8
+
+3- Department of Neurology, Tohoku University Graduate School of Medicine, Sendai, Japan 9
+
+4- Division of Development and Discovery of Interventional Therapy, Tohoku University 10 
+
+Hospital 11 
+
+5- Department of Neurosurgery, Tohoku University Graduate School of Medicine, Sendai, 12 
+
+Japan. 13 
+
+14 
+
+*Corresponding author: 15 
+
+Sherif Rashad, MD, PhD 16 
+
+Sherif.mohamed.rashad.e3@tohoku.ac.jp 17 
+
+18 
+
+Abstract 19 
+
+Astrocytoma recurrence is shaped by genetic, epigenetic and transcriptional evolution, but how DNA 20 
+
+remodeling is propagated into full -length RNA isoforms and coding consequences remains poorly 21 
+
+resolved. Here we applied paired PacBio HiFi whole -genome sequencing and Kinnex full -length 22 
+
+RNA sequencing to matched primary and recurrent astrocytoma from six patients, with matched 23 
+
+blood controls. Recurrent tumors preserved core glioma driver identity while acquiring patient -24 
+
+specific remodeling across somatic variants, copy number, structural variation, loss of 25 
+
+heterozygosity, haplotype imbalance and DNA methylation. Long -read transcriptomics revealed 26 
+
+extensive recurrence -associated gene -expression, isoform -usage, differential transcript -usage and 27 
+
+predicted ORF/protein -fate remodeling beyond gene -level expression. A denominator -aware 28 
+
+integration framework showed that copy -number changes provide broad RNA -dosage links, whereas 29 
+
+expressed somatic variants, allele/haplotype -specific transcript usage, methylation -linked isoform 30 
+
+remodeling and structural variants generate more focused DNA –RNA –ORF chains. These findings 31 
+
+establish longitudinal long -read multi -omics as a framework for prioritizing patient -specific 32 
+
+remodeling trajectories and identifying targets for precision medicine in recurrent astrocytoma .33 
+
+Keywords 34 
+
+Astrocytoma; Glioma; long read sequencing; isoform remodeling; PacBio HiFi; Recurrent glioma; 35 
+
+open reading frame; methylation; structural variants 36 
+
+37 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.12.738108 doi: bioRxiv preprint
+
+2
+
+Introduction 38 
+
+Gliomas are the most common malignant primary brain tumors in adults and remain a major 39 
+
+cause of cancer -related morbidity and mortality in neuro -oncology 1. Although molecular classification 40 
+
+and standard treatment have improved the diagnosis and management of diffuse gliomas, 41 
+
+recurrence remains a central clinical problem 2,3 . Recurrent gliomas are not simple regrowth of the 42 
+
+original tumor. Instead, they emerge through longitudinal remodeling across genetic, epigenetic, 43 
+
+transcriptional, microenvironmental, and post -transcriptional layers 4-8. Large -scale and longitudinal 44 
+
+studies have shown that glioma progression is shaped by somatic evolution, treatment -associated 45 
+
+selection, DNA methylation remodeling, transcriptional state transitions, and interactions with the 46 
+
+tumor microenvironment 4-7. Nonetheless , connecting these regulatory layers within the same patient 47 
+
+remains difficult, especially when the molecular consequences of DNA remodeling extend beyond 48 
+
+gene -level expression. Likewise, Recent longitudinal studies have begun to define disease -specific 49 
+
+routes of IDH -mutant astrocytoma progression. Several studies have shown progressive genomic, 50 
+
+epigenomic, transcriptomic, and proteomic remodeling changes that drive IDH mutant astrocytoma 51 
+
+recurrence , cell state change, and immune evasiveness 8-11 . However, the se studies do not resolve 52 
+
+how these alterations are expressed through full -length transcript structures, allele - or haplotype -53 
+
+specific isoform usage, and isoform -specific coding consequences within the same patient. 54 
+
+Despite these advances, an important technical gap remains. Short -read DNA and RNA 55 
+
+sequencing have been indispensable for defining glioma /astrocytoma driver alterations, copy -56 
+
+number states, mutational processes, gene -expression programs, and DNA methylation classes. 57 
+
+However, short reads provide only fragmented views of many molecular features that are central to 58 
+
+tumor evolution, including complex structural variants, allele -specific events, long -range haplotypes, 59 
+
+phased methylation states, full -length transcript isoforms, fusion transcripts, and isoform -specific 60 
+
+coding consequences. As a result, most studies still analyze genome, epigenome, transcriptome, 61 
+
+and predicted protein -output changes as partially separate layers. This limits the ability to ask a 62 
+
+mechanistic question that is central to recurrence biology: which genomic and epigenomic 63 
+
+alterations are reflected at patient -matched RNA, isoform, allele -specific, and predicted open reading 64 
+
+frames ( ORF )/protein -fate levels? 65 
+
+Long -read sequencing provides an opportunity to address this gap. Long -read RNA 66 
+
+sequencing can capture full -length transcripts, enabling direct characterization of isoform diversity, 67 
+
+alternative transcript usage, fusion transcripts, and coding -potential changes that are difficult to infer 68 
+
+from short -read junction counts alone 12,13 . Recent cancer studies have shown that long -read 69 
+
+transcriptomics can uncover extensive previously unannotated isoform diversity, identify cancer -70 
+
+associated transcript structures, resolve isoform -level expression programs, and reveal genomic 71 
+
+alterations or fusions that may be misinterpreted by short -read RNA -seq 12,13 . Long -read DNA 72 
+
+sequencing, although adopted more slowly in cancer because of cost, input requirements, and 73 
+
+analytical complexity, can resolve structural variants, haplotypes, methylation landscapes, repetitive -74 
+
+element insertions, and complex rearrangements that are often inaccessible or ambiguous with 75 
+
+short -read data 14,15 . These properties make long -read sequencing particularly well suited for 76 
+
+studying recurrence, where DNA remodeling, epigenetic state changes, and transcriptome 77 
+
+reprogramming may converge on patient -specific molecular outcomes. 78 
+
+Despite these advances, the full potential of paired long -read DNA and RNA sequencing 79 
+
+remains underused in cancer. Many long -read RNA studies annotate novel isoforms and predict 80 
+
+open reading frames but rarely connect these isoforms to patient -matched DNA alterations, allele or 81 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.12.738108 doi: bioRxiv preprint
+
+3
+
+haplotype context, nonsense -mediated decay (NMD) potential, frameshift status, or altered 82 
+
+proteoform structure. Conversely, long -read DNA studies can resolve complex genome architecture 83 
+
+and methylation states, but their transcriptomic consequences are often inferred indirectly , combined 84 
+
+with short read sequencing which cannot capture many of the complex phenomena resolved by long 85 
+
+read DNA sequencing 15 , or not examined with matched full -length RNA data 14,15 . Thus, a key 86 
+
+unresolved problem is not only whether recurrent gliomas acquire DNA and RNA alterations, but 87 
+
+how often these alterations form coherent DNA -to -RNA -to -ORF remodeling chains. 88 
+
+Here, we apply paired long -read DNA and RNA sequencing to matched primary and 89 
+
+recurrent astrocytomas from six patients, with matched blood samples used as germline controls for 90 
+
+DNA analysis. We first define the recurrent astrocytoma DNA landscape using long -read genome 91 
+
+sequencing, including somatic variants, structural rearrangements, copy -number alterations, loss of 92 
+
+heterozygosity, and DNA methylation remodeling. We then use long -read RNA sequencing to 93 
+
+characterize recurrence -associated changes in gene expression, isoform diversity, transcript usage, 94 
+
+junction architecture, and predicted ORF/protein fate. Finally, we integrate the DNA and RNA layers 95 
+
+to determine how genomic, and epigenomic remodeling is reflected at patient -matched RNA, 96 
+
+isoform, allele/haplotype -specific, and predicted protein -output levels. This analysis reveals that 97 
+
+recurrent astrocytoma remodeling is frequently expressed through isoform and ORF -level 98 
+
+consequences that are not captured by gene -level expression alone and provides a denominator -99 
+
+aware framework for prioritizing high -confidence DNA -RNA -ORF remodeling chains in individual 100 
+
+patients , providing basis for precision oncology and patient -specific therapeutics .101 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.12.738108 doi: bioRxiv preprint
+
+4
+
+Results: 102 
+
+➢ Cohort, study design, and sequencing quality control 103 
+
+We selected six patients with matched primary and recurrent astrocytoma specimens collected 104 
+
+during routine surgical resection, together with matched blood samples for germline DNA control. 105 
+
+Samples were selected after RNA and DNA quality screening to ensure suitability for long -read 106 
+
+genome and transcriptome sequencing (Figure 1a). The cohort included four males and two 107 
+
+females, with age at primary tumor presentation ranging from 24 to 45 years. All patients underwent 108 
+
+debulking surgery. Except one patient , none had received either radi otherapy or chemotherapy 109 
+
+before recurrence. One patient had undergone postoperative concomitant radio therapy with 110 
+
+temozolomide . Four patients showed increased tumor grade at recurrence, and all tumors carried 111 
+
+IDH1 mutation. Additional clinical and molecular features are summarized in Supplementary Table 1. 112 
+
+Integrated diagnoses were made in accordance with the 5th edition of the WHO Classification of 113 
+
+Tumors of the Central Nervous System 3.114 
+
+We performed PacBio HiFi whole -genome sequencing on tumor and matched blood DNA, and 115 
+
+Kinnex full -length RNA sequencing on matched tumor RNA (Figure 1a). Tumor sequencing depth 116 
+
+was sufficient for DNA -dependent analyses in five of six recurrent -primary pairs, with most tumor 117 
+
+samples reaching approximately 60× or higher mean depth (Figure 1b; Supplementary Table 1). The 118 
+
+recurrent sample from patient 2 had substantially lower tumor depth because of a technical 119 
+
+sequencing issue and therefore that patient was excluded from DNA -dependent analyses, while 120 
+
+retained for RNA -based analyses (Supplementary table 1) . Tumor purity and effective tumor 121 
+
+coverage were acceptable for most samples, although lower purity in patient 4 primary and patient 6 122 
+
+recurrent tumors was noted and considered during downstream interpretation (Fig ure 1c,d). 123 
+
+Kinnex full -length RNA sequencing was performed at 10 million reads per sample and produced 124 
+
+4-8 million mapped and processed full -length (FL) reads per sample, providing sufficient depth for 125 
+
+isoform -level analyses across the cohort (Fig ure 1e). Pigeon transcript classification showed broadly 126 
+
+comparable structural -category composition across primary and recurrent samples, without evidence 127 
+
+of a major sample -level technical shift in transcript annotation classes (Fig ure 1f). Across genes, the 128 
+
+number of detected isoforms was highly variable: most genes were represented by a small number 129 
+
+of isoforms, whereas a subset showed extensive isoform diversity (Fig ure 1g). Gene -level full -length 130 
+
+read support was strongly associated with the number of detected isoforms, indicating that read 131 
+
+depth contributes to isoform discovery and must be considered when interpreting isoform richness 132 
+
+(Fig ure 1h). Genes with higher isoform counts also showed a larger fraction of non -canonical 133 
+
+transcript categories, consistent with increased transcript -structure diversity among highly complex 134 
+
+genes (Fig ure 1i). 135 
+
+Together, these quality -control analyses established a longitudinal long -read DNA/RNA cohort 136 
+
+suitable for downstream analysis of recurrent astrocytoma genome remodeling, transcriptome 137 
+
+remodeling, and patient -matched DNA -RNA integration. Because patient 2 recurrent tumor lacked 138 
+
+sufficient DNA coverage, DNA -dependent recurrence analyses were restricted to the five DNA -139 
+
+evaluable patient pairs, whereas RNA analyses included all six patients. 140 
+
+➢ Long -read DNA sequencing reveals multi -layer genome remodeling in recurrent 141 
+
+astrocytoma 142 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.12.738108 doi: bioRxiv preprint
+
+5
+
+We next used matched HiFi whole -genome sequencing to define the somatic DNA landscape of 143  primary and recurrent astrocytoma s. Across the paired cases, somatic SNV/indel analysis showed 144 
+
+shared, primary -only, and recurrent -only variants, indicating clonal relatedness between primary and 145  recurrent tumors together with ongoing patient -specific evolution (Fig. 2a). A driver -focused 146 
+
+SNV/indel heatmap confirmed the expected glioma genetic backbone, including recurrent 147 
+
+involvement of canonical glioma genes such as IDH1, TP53, ATRX, CIC, and other cancer -148  associated loci, while also showing patient -specific driver -context events (Fig. 2b). However, paired 149 
+
+SNV/indel burden, median variant allele fraction, and read depth did not show a uniform recurrence -150 
+
+associated increase across patients (Fig. 2c). Variant -level VAF and depth distributions supported 151  the reliability of the small -variant calls, while SBS96 context shifts showed patient -specific 152 
+
+mutational -context changes rather than one shared recurrence -wide mutational pattern 153 
+
+(Supplementary Fig. 1a,b). Thus, although small variants provide evidence of tumor lineage and 154 
+
+patient -specific evolution, they do not by themselves explain the recurrent DNA phenotype. 155 
+
+We therefore examined larger -scale copy -number and allelic remodeling. Gene copy -number 156 
+
+profiling revealed patient -specific gains, losses, and homozygous deletion -like states across 157 
+
+canonical glioma -associated genes, including receptor tyrosine kinase, PI3K pathway, cell -cycle, 158  and tumor suppressor loci (Fig. 2d). Loss of heterozygosity ( LOH ) analysis further showed 159 
+
+substantial allelic remodeling across samples, with total LOH exceeding copy -neutral LOH in most 160  tumors and marked variation between primary and recurrent disease (Fig. 2e). Chromosome -level 161 
+
+haplotype imbalance analysis identified recurrent -primary shifts affecting selected chromosomes 162 
+
+rather than a uniform genome -wide direction of change (Fig. 2f). Additional haplotype -aware 163  analyses showed chromosome -level dominant haplotype switching, ranked chromosome -level 164 
+
+haplotype imbalance shifts, and patient -specific changes in CN -LOH, genome -wide haplotype 165  imbalance, ploidy, purity, subclonal burden, and total LOH (Supplementary Fig. 1c –e). These results 166 
+
+indicate that astrocytoma recurrence is accompanied by allele -aware copy -number remodeling, 167 
+
+including changes in LOH and haplotype imbalance that are not fully captured by gene -level CNV 168 
+
+calls alone. 169 
+
+Methylation analysis revealed a third major layer of DNA remodeling. Differentially methylated 170  region burden varied strongly across patients, with patient 1 showing a prominent recurrent increase 171 
+
+in DMR number and median absolute methylation change, whereas other patients showed more 172  modest or opposite shifts (Fig. 2g). Cancer -gene -focused promoter DMR analysis revealed broad 173 
+
+promoter methylation differences across primary and recurrent tumors, including both 174 
+
+hypermethylated and hypomethylated states across genes involved in signaling, transcriptional 175  regulation, and tumor biology (Fig. 2h). A focused analysis of shared promoter genes with the 176 
+
+strongest primary -recurrent methylation shifts further highlighted patient -specific promoter 177 
+
+methylation remodeling (Supplementary Fig. 2a). DMRs were detected across genomic contexts, 178  with the largest absolute burden in intronic regions, while promoter and exon -associated DMRs 179 
+
+provided more directly interpretable regulatory contexts (Supplementary Fig. 2b). Signal -level 180  methylation summaries supported the DMR calls: promoter bigWig signal shifts differed by haplotype 181 
+
+context, DMR -derived methylation differences showed high agreement with bigWig signal, and most 182 
+
+promoter regions with bigWig support overlapped haplotype -resolved regions rather than no -overlap 183  regions (Supplementary Fig. 2c –e). Across samples, promoter methylation signal shifted between 184 
+
+primary and recurrent tumors, absolute promoter methylation change varied by patient, DMR -derived 185  methylation estimates correlated strongly with bigWig signal, and genome -wide DMR signal showed 186 
+
+patient -specific primary -recurrent remodeling (Supplementary Fig. 2f –i). Together, these data show 187 
+
+that recurrent astrocytoma s undergo broad, patient -specific DNA methylation remodeling that can be 188 
+
+linked to promoter and haplotype contexts. 189 
+
+➢ Structural, copy -number, and methylation alterations define recurrently remodeled 190 
+
+genomic substrates 191 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.12.738108 doi: bioRxiv preprint
+
+6
+
+We then focused on structural genome remodeling, which represented one of the richest long -192  read DNA signals. SV burden varied markedly across patients, with some tumors showing reduced 193 
+
+SV burden at recurrence and others showing persistent or increased structural alteration (Fig. 3a). 194  Representative circos plots for patient 1 illustrated extensive primary structural rearrangement and a 195 
+
+remodeled recurrent structural landscape, supporting the idea that recurrence is not simply a linear 196 
+
+accumulation of identical structural events (Fig. 3b). At the chromosome level, structural complexity 197  was concentrated in selected patient -chromosome combinations rather than distributed evenly 198 
+
+across the cohort (Fig. 3c). SV type composition showed that deletions, insertions, and duplications 199 
+
+formed the major classes of detected SVs, with lower relative contributions from inversions and 200  breakend -like events in most samples (Fig. 3d). These findings point to patient -specific structural 201 
+
+genome remodeling as a major substrate of recurrent astrocytoma evolution. 202 
+
+To determine whether recurrent disease preserved the same structural loci or instead remodeled 203 
+
+related genomic neighborhoods, we examined breakpoint -cluster sharing. Breakpoint -cluster 204  neighborhoods showed recurrently involved chromosomal regions across patient pairs, suggesting 205 
+
+that some structurally unstable regions persist or re -emerge even when exact breakpoints are not 206 
+
+retained (Fig. 3e). Exact private breakpoint events were highly patient - and timepoint -specific, with 207  large private SV burdens in selected primary or recurrent samples (Supplementary Fig. 3a). 208 
+
+Complex rearrangement candidate classes, including clustered rearrangement, dense breakpoint 209  cluster, rearranged amplicon candidate, and chromothripsis -like candidate classes, further showed 210 
+
+that structural architecture varied across samples (Supplementary Fig. 3b). These labels should be 211 
+
+interpreted as structural proxy classes rather than formally validated mechanisms, but they show 212  that recurrent astrocytoma’s structural remodeling often occurs at the level of regional genome 213 
+
+architecture rather than isolated SV events alone .214 
+
+We next evaluated focal amplicon and rearranged copy -number architecture. Copy -number 215 
+
+amplitude plotted against local SV breakpoint support identified amplified regions with variable 216  degrees of structural support, including regions with high copy number and local breakpoint 217 
+
+enrichment (Fig. 3f). Refined driver/onco -amplicon gene copy -number calls highlighted patient -218 
+
+specific focal copy -number gains involving cancer -relevant loci, providing a direct link between 219  structural genome remodeling and oncogenic dosage architecture (Supplementary Fig. 3c). CCG -220 
+
+focused SV heatmaps further showed that SVs intersected selected cancer -associated genes in a 221  patient -specific manner (Supplementary Fig. 3d). These results indicate that copy -number 222 
+
+remodeling in recurrent astrocytoma includes not only broad CNV states but also structurally 223 
+
+complex focal amplicon -like architectures. 224 
+
+We also examined repeat, mobile -element, and telomere -associated contexts as supporting 225 
+
+annotations of the structural landscape. RepeatMasker annotation showed that SV breakpoints 226 
+
+frequently intersected repeat contexts, including Alu, LINE/L1, LTR/ERV, DNA transposon, simple -227 
+
+repeat, low -complexity, and related repeat classes (Fig. 3g). RepeatMasker annotation of somatic 228  indels showed related but not identical repeat -class distributions, and primary -to -recurrent mobile -229 
+
+element/repeat -context shifts were patient -specific rather than uniform (Supplementary Fig. 3e,f). 230 
+
+Telomere -proximal breakage and telomere -window LOH only partially overlapped, suggesting that 231  local telomere -proximal structural breakage and broader telomeric allelic imbalance are related but 232 
+
+non -identical features of recurrence -associated genome instability (Supplementary Fig. 3g). These 233 
+
+repeat and telomere analyses should be interpreted as genomic -context associations rather than 234 
+
+definitive evidence of active mobile -element insertion or telomere -maintenance mechanism 235 
+
+switching .236 
+
+Finally, primary -to -recurrent mutational -process shifts were heterogeneous across patients, 237 
+
+without evidence for one shared recurrence -wide repair phenotype (Fig. 3h). Overall, long -read DNA 238  sequencing showed that recurrent astrocytomas preserve core driver identity while undergoing 239 
+
+extensive patient -specific remodeling across small variants, CNV, LOH, haplotype imbalance, 240 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.12.738108 doi: bioRxiv preprint
+
+7
+
+promoter methylation, SVs, focal amplicon architecture, repeat/telomere -associated genomic 241  contexts, and mutational -process features. The dominant DNA -side conclusion is therefore not a 242 
+
+single universal recurrence mechanism, but a heterogeneous remodeling landscape in which each 243  recurrent tumor combines different genomic and epigenomic routes to generate a remodeled 244 
+
+disease state. This multi -layer DNA substrate provides the foundation for the downstream long -read 245 
+
+RNA and DNA -RNA integration analyses, where these genomic alterations can be connected to 246 
+
+gene -expression, isoform, fusion, and ORF -level consequences .247 
+
+➢ Long -read transcriptome sequencing reveals global changes in gene programs during 248 
+
+astrocytoma recurrence 249 
+
+After defining the DNA remodeling landscape, we next asked whether recurrent tumors showed 250 
+
+corresponding transcriptomic state changes using long -read RNA sequencing. We first analyzed 251 
+
+gene -level expression by summing full -length (FL) Pigeon read counts per gene and fitting a paired 252 
+
+primary -versus -recurrent model. This conventional gene -level analysis identified both upregulated 253 
+
+and downregulated genes in recurrence (Fig. 4a). Over -representation analysis of recurrently 254 
+
+upregulated genes highlighted mitochondrial and respiratory programs, including proton 255 
+
+transmembrane transport, oxidative phosphorylation, electron transport chain, aerobic electron 256 
+
+transport, ATP synthesis -coupled electron transport, and mitochondrial ATP synthesis -coupled 257 
+
+electron transport (Fig. 4b). To complement single -gene differential expression, we performed 258 
+
+sample -level program scoring using ssGSEA across Hallmark, Reactome, Oncogenic, and 259 
+
+Immunologic gene -set collections. This analysis revealed patient -paired shifts in multiple tumor -state 260 
+
+and microenvironment -related programs, including hypoxia, reactive oxygen species, epithelial –261 
+
+mesenchymal transition, UV -response -associated programs, interferon and inflammatory signatures, 262 
+
+PDGF/ERK -related programs, IL15 response, and Rho GTPase signaling (Supplementary Fig. 4a –263 
+
+k). Because many program -level changes were nominal and did not uniformly survive global 264 
+
+multiple -testing correction, we interpret these results as a paired tumor -state remodeling landscape 265 
+
+rather than as a set of independently validated pathway claims. Together, this data show s that 266 
+
+recurrent astrocytoma s exhibit broad expression and pathway -state changes, but this analysis alone 267 
+
+cannot resolve whether recurrence also remodels the structure and coding output of transcripts. 268 
+
+➢ Long -read transcriptome sequencing reveals extensive isoform remodeling 269 
+
+independent of apparent gene expression changes 270 
+
+We therefore next examined isoform -level remodeling directly. Differential isoform expression 271 
+
+analysis using paired primary -vs -recurrent DEseq2 -based analysis revealed sets of up and 272 
+
+downregulated isoforms in recurrent tumors (Fig. 4c). However, these changes cannot be completely 273 
+
+separated from global changes in gene expression, and they fail in capturing the complexity of gene 274 
+
+isoform remodeling beyond simple changes in expression. Therefore, next we examined isoform 275 
+
+gain/loss in recurrent tumors, restricting our criteria to isoforms with at least 5 FL reads that are 276 
+
+present in at least 4 patient samples in either primary or recurrent tumors, and that represent at least 277 
+
+10% of the total gene FL reads. The paired isoform gain/loss analysis showed that each patient 278 
+
+acquired and lost thousands of detected isoforms between primary and recurrent tumors, indicating 279 
+
+extensive turnover of the expressed isoform repertoire across recurrence (Fig. 4d). Structural -280 
+
+category enrichment analysis of high -confidence gained and lost isoforms showed that recurrently 281 
+
+gained isoforms were enriched in full -splice match and incomplete -splice match categories, whereas 282 
+
+lost isoforms enriched in novel isoforms either in catalog or not in catalog (Supplementary Fig. 5a). 283 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.12.738108 doi: bioRxiv preprint
+
+8
+
+These findings indicate that recurrence -associated transcriptome remodeling cannot be reduced to 284 
+
+simple changes in isoform abundance. 285 
+
+To capture gene -level isoform remodeling more comprehensively, we used to independent 286 
+
+statistical approaches. In the first approach, we classified each gene using a model based on 287 
+
+isoform fractions rather than absolute abundance alone. First, we defined the dominant isoform per 288 
+
+gene across primary and recurrent group (see methods ). This framework allowed us to separate 289 
+
+genes into six remodeling classes: Class A, dominant isoform switching, where a dominant isoform 290 
+
+is present in both groups but changes identity; Class B, same -dominant remodeling, where the 291 
+
+dominant isoform is preserved but secondary isoforms remodel; Class C, primary -dominant lost, 292 
+
+where a dominant primary isoform is no longer dominant in recurrence; Class D, recurrent -dominant 293 
+
+gained, where a dominant isoform emerges in recurrence; Class E, no -dominant remodeling, where 294 
+
+no clear dominant isoform exists in either group but the isoform distribution changes strongly; and 295 
+
+Class F, stable or not high -confidence remodeled genes. Most genes were classified as Class F 296 
+
+(i.e., stable with no major isoform changes) and Class A had the least number of genes 297 
+
+(Supplementary Fig. 5b). To identify genes within each class that showed statistical divergence from 298 
+
+primary to recurrent tumors, we calculated, for each gene, the isoform fraction of each transcript 299 
+
+within the gene, compared the primary and recurrent isoform -fraction distributions using Jensen –300 
+
+Shannon divergence (JSD), and quantified the largest individual isoform usage shift using maximum 301 
+
+absolute delta isoform fraction, max |dIF| (see methods). High -confidence remodeling required JSD 302 
+
+≥ 0.1, max |dIF| ≥ 0.2, and support in at least four patients. This model distinguished a small subset 303 
+
+of high -confidence remodeled genes from a large background of stable genes (Fig. 4e; 304 
+
+Supplementary Fig. 5c –d). 305 
+
+We then extended this model by adding Shannon entropy, which measures how concentrated or 306 
+
+diffuse isoform usage is within each gene, providing an additional layer of complexity that allows the 307 
+
+capture of complex isoform remodeling events. A positive recurrent -primary entropy shift indicates 308 
+
+that recurrent isoform usage becomes more diffuse across multiple isoforms, whereas a negative 309 
+
+shift indicates that recurrent isoform usage becomes more focused toward fewer isoforms. The 310 
+
+JSD –entropy framework separated genes with high distributional divergence but stable entropy from 311 
+
+genes in which recurrence produced either a more diffuse or more focused isoform landscape (Fig. 312 
+
+4f; Supplementary Fig. 5e,f). The JSD –entropy quadrant analysis showed that remodeling classes 313 
+
+differ not only in whether their isoform distributions diverge, but also in how recurrence changes 314 
+
+isoform complexity (Fig. 4f). For example, many Class A and Class B genes remained in low -JSD 315 
+
+bins, indicating that dominant isoform identity or secondary isoform structure can change without 316 
+
+producing the largest global distributional divergence. In contrast, Classes C, D, and E contained 317 
+
+larger fractions of high -JSD genes, consistent with stronger remodeling when dominant isoforms are 318 
+
+lost, gained, or absent. Entropy further separated high -JSD genes into cases where recurrence 319 
+
+produced a more diffuse isoform landscape, a more focused isoform landscape, or a large usage 320 
+
+shift with relatively stable complexity. Thus, the JSD –dIF –entropy model captures three related but 321 
+
+distinct dimensions of isoform remodeling: distributional divergence, largest isoform -fraction shift, 322 
+
+and change in isoform -usage complexity. 323 
+
+Genes with high JSD (JSD ≥ 0.2) were enriched for biological processes related to extracellular 324 
+
+matrix organization, extracellular structure organization, cilium movement, cilium -dependent motility, 325 
+
+and microtubule/axoneme -associated processes, suggesting that strong isoform redistribution is not 326 
+
+random but concentrates in genes linked to structural and motility -associated biology 327 
+
+(Supplementary Fig. 5g). Representative isoform -usage plots, including RBM10, CFAP410, JUN, 328 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.12.738108 doi: bioRxiv preprint
+
+9
+
+and EWSR1, illustrate how this combined framework captures several remodeling modes, including 329 
+
+dominant switching, secondary isoform redistribution, and recurrence -associated changes in 330 
+
+transcript structural category usage (Supplementary Fig. 6a –d). 331 
+
+The second approach used Dirichlet -multinomial modeling with DRIMSeq 16 to identify genes with 332 
+
+statistically significant differential transcript usage while accounting for patient pairing. The 333 
+
+distribution of gene -level adjusted P values indicated a subset of genes with significant or near -334 
+
+significant transcript -usage remodeling (Fig. 4g). Enrichment analysis of DTU -significant genes (271 335 
+
+genes with FDR ≤ 0.1) highlighted RNA splicing, mRNA splicing via spliceosome, RNA localization, 336 
+
+and related post -transcriptional processes, consistent with recurrence -associated remodeling of 337 
+
+RNA -processing programs (Supplementary Fig. 7a). 338 
+
+DTU gene structural -category composition was broadly similar between primary and recurrent 339 
+
+tumors, indicating that the most important signal was not a total replacement of transcript annotation 340 
+
+classes, but selective redistribution within and across transcript structures (Fig. 4h). At the isoform 341 
+
+level, DTU events involved both increased and decreased usage of full -splice match, incomplete -342 
+
+splice match, and novel -in -catalog isoforms, showing that recurrent transcript usage changes were 343 
+
+distributed across annotated and partially novel transcript structures (Fig. 4i, Supplementary Fig. 7b). 344 
+
+When DTU -significant genes were overlaid onto the Class A –F isoform -remodeling framework, many 345 
+
+DTU genes still fell into the stable Class F category, while smaller subsets mapped to Class A, Class 346 
+
+C, and Class D remodeling classes, indicating that many apparently stable genes show significant 347 
+
+remodeling of their transcript usage (Supplementary Fig. 7c). This distinction is important: Dirichlet -348 
+
+multinomial modeling detects statistically significant transcript -usage shifts, whereas the 349 
+
+JSD/dIF/entropy model prioritizes larger effect -size remodeling of gene -level isoform architecture. 350 
+
+The two approaches are therefore complementary rather than redundant. Paired isoform trajectory 351 
+
+examples, including DELE1 and SLC25A6, showed reciprocal gain and loss of specific isoforms 352 
+
+across patients, illustrating how transcript usage remodeling can change dominant isoform 353 
+
+architecture even when the same gene remains globally expressed in both primary and recurrent 354 
+
+tumors (Supplementary Fig. 7d,e). 355 
+
+Overall, the RNA analysis shows that recurrent astrocytoma s undergo transcriptome remodeling 356 
+
+at multiple resolutions. Conventional gene -level analysis captures recurrence -associated expression 357 
+
+and program shifts, but long -read RNA sequencing reveals a deeper layer of isoform repertoire 358 
+
+turnover, dominant and secondary isoform remodeling, entropy -defined changes in transcript usage 359 
+
+complexity, and statistically significant differential transcript usage. These data establish that 360 
+
+recurrence -associated RNA remodeling is not simply a change in gene abundance. Instead, 361 
+
+recurrent tumors reorganize the structure and usage of expressed transcripts, providing the 362 
+
+substrate for the ORF/protein -fate analysis and DNA -RNA integration analyses that follow. 363 
+
+➢ Isoform remodeling is linked to distinct ORF/protein consequences not captured by 364 
+
+traditional sequencing approaches 365 
+
+Having established that recurrent astrocytoma s undergo extensive isoform remodeling, we next 366 
+
+asked whether these transcript changes were predicted to alter coding potential or protein -output 367 
+
+state. W e used GeneMark -hmm to predict open reading frames (ORFs) from support -filtered Iso -Seq 368 
+
+transcripts 17 . To do so, we extracted the FL transcript sequence s from each sample, and used 369 
+
+GeneMark to predict ORFs from each transcript, limiting the prediction to one ORF per transcript for 370 
+
+simplification. Next, we “lifted” the ORF coordinates, which were in the transcript space, back to 371 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.12.738108 doi: bioRxiv preprint
+
+10 
+
+genome coordinates to properly classify the ORFs compared to the Gencode canonical annotation 372 
+
+transcripts as well as to annotate consequence features such as nonsense mediated decay (NMD) 373 
+
+potential, frameshift potential, or truncation states . As expected, predicted ORF detection was 374 
+
+substantially higher among protein -coding transcripts than among noncoding transcripts in both 375 
+
+primary and recurrent tumors, supporting the validity of the ORF annotation framework while also 376 
+
+showing that a subset of noncoding -classified transcripts carried predicted ORFs (Fig. 5a). 377 
+
+Across all support -filtered isoforms, the ORF landscape was diverse and included canonical or 378 
+
+alternative canonical ORFs, N - or C -terminal truncation -like ORFs, internal ORFs, upstream or 379 
+
+downstream ORF configurations, transcripts without canonical CDS annotation, and transcripts with 380 
+
+no predicted ORF (Fig. 5b). The most abundant classes were iORF and doORF followed by N -381 
+
+terminal truncated ORFs and canonical ORFs (Fig. 5b). The overall ORF -class composition was 382 
+
+broadly similar between primary and recurrent tumors, indicating that recurrence did not produce a 383 
+
+wholesale shift in the global coding -class composition of all detected transcripts /ORFs (Fig. 5c). 384 
+
+Nevertheless, direct recurrent -primary comparison revealed measurable class -level shifts, including 385 
+
+an increase in transcripts without predicted ORFs and decreases in selected ORF classes such as 386 
+
+internal ORFs and N -terminal truncation -like classes in recurrent tumors (Fig. 5d). Patient -stratified 387 
+
+ORF -class composition showed that this global pattern was not driven by a single outlier sample, 388 
+
+although patient -level differences in class proportions were present (Supplementary Fig. 8a). 389 
+
+Transcript length and exon count distributions differed across ORF classes (Supplementary Fig. 8b -390 
+
+c). Additionally, frameshift ing and NMD rates were enriched in biologically plausible ORF categories 391 
+
+(For example; F rameshifting was not observed in canonical ORFs but was observed in iORF, 392 
+
+uoORF, doORF, and N -terminal truncated ORFs) , supporting the internal consistency of the 393 
+
+predicted ORF annotations (Supplementary Fig. 8 d–e). 394 
+
+We then asked whether the isoforms gained or lost during recurrence were associated with 395 
+
+distinct ORF states. High -confidence primary -lost and recurrent -gained isoforms both spanned 396 
+
+multiple predicted ORF classes, showing that recurrence -associated isoform turnover affects 397 
+
+transcripts with a range of predicted coding outputs rather than only noncoding or low -confidence 398 
+
+transcript models (Fig. 5e). ORF -class enrichment analysis further showed that recurrently gained 399 
+
+and primary -lost isoforms differed in their relative enrichment for selected ORF classes, indicating 400 
+
+that isoform turnover changes the predicted coding -state composition of the expressed transcript 401 
+
+repertoire (Supplementary Fig. 9a). For example, ORFs spanning both start and stop codons into 402 
+
+untranslated regions (span -both) were more frequently gained in recurrent tumors as well as 403 
+
+doORFs and uoORFs. These findings extend the gain/loss analysis from Figure 4 by showing that 404 
+
+recurrent isoform turnover is not only structural, but also potentially coding -relevant. 405 
+
+Next, we focused on genes with dominant isoform switching, because these provide the clearest 406 
+
+examples in which the main expressed transcript of a gene changes between primary and recurrent 407 
+
+tumors. Among Class A dominant -switch genes, primary and recurrent dominant isoforms frequently 408 
+
+differed in predicted ORF class, including transitions among internal ORF, downstream -overlapping 409 
+
+ORF, upstream -overlapping ORF, no -ORF, and other noncanonical ORF states (Fig. 5f). We then 410 
+
+generalized this analysis across the A –F isoform -remodeling classes by assigning dominant protein -411 
+
+output consequences. Although many genes retained the same predicted protein -output category, 412 
+
+remodeled classes contained substantial fractions of genes with predicted ORF gain, ORF loss, N -413 
+
+terminal change, C -terminal change or truncation, internal or complex change, and major length 414 
+
+change (Fig. 5g). This shows that the A –F remodeling classes are not merely transcript -label 415 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.12.738108 doi: bioRxiv preprint
+
+11 
+
+changes; rather , they correspond to predicted changes in coding architecture and candidate 416 
+
+proteoform output. 417 
+
+We also connected ORF consequences to the independent differential transcript usage analysis. 418 
+
+Among DTU -associated isoforms, ORF -class composition differed by usage direction, indicating that 419 
+
+isoforms increased, decreased, or only minimally changed in recurrence carried different predicted 420 
+
+ORF -state distributions (Fig. 5h). DTU -associated genes also showed linked transitions between 421 
+
+dominant transcript structural category and dominant ORF class from primary to recurrence, 422 
+
+demonstrating that transcript -usage remodeling can couple structural isoform changes to predicted 423 
+
+coding -state changes (Fig. 5i). Top ORF -class switches among DTU isoforms showed that recurrent 424 
+
+up - and down -shifted isoforms were not symmetric; different ORF transitions contributed to 425 
+
+increased versus decreased usage in recurrent tumors (Supplementary Fig. 9b). Stratifying DTU 426 
+
+isoforms by both Pigeon structural category and ORF class further showed that full -splice match, 427 
+
+incomplete -splice match, and novel -in -catalog isoforms all contributed to predicted ORF remodeling, 428 
+
+rather than a single transcript annotation class dominating the result (Supplementary Fig. 9c). 429 
+
+Nonetheless, as most significant DTU changes were annotated as full -splice matches, this class 430 
+
+remained the most abundant and carried the most changes in ORF remodeling. Importantly, this 431 
+
+indicates that even with stable isoform architecture in remodeled genes, the remodeling potentially 432 
+
+leads to translational and proteome consequences. 433 
+
+Overall, these analyses show that recurrence -associated isoform remodeling has predicted 434 
+
+coding consequences at several levels. Globally, primary and recurrent tumors retain broadly similar 435 
+
+ORF -class composition, but specific gained/lost isoforms, dominant isoform switches, and DTU 436 
+
+events are associated with changes in predicted ORF class, NMD or frameshift potential, and 437 
+
+protein -output category. Thus, long -read RNA sequencing provides a transcript -to -ORF bridge that is 438 
+
+not available from gene -level expression alone. These predicted ORF consequences do not replace 439 
+
+proteomic validation, but they provide a principled framework for prioritizing isoform remodeling 440 
+
+events most likely to affect protein output and for integrating RNA remodeling with DNA alterations in 441 
+
+the following sections. 442 
+
+➢ An integrative framework maps DNA remodeling to RNA and predicted ORF 443 
+
+consequences 444 
+
+Having defined DNA remodeling, RNA isoform remodeling, and predicted ORF consequences 445 
+
+separately, we next asked how often these layers could be connected within patient -matched 446 
+
+primary and recurrent tumors. Because many DNA alterations occur in genes that are not detected 447 
+
+or not quantifiable in long -read RNA, we constructed a denominator -aware framework that separated 448 
+
+the global DNA event universe from progressively RNA -aware subsets. 449 
+
+At the DNA level, copy -number alterations represented the largest event family, followed by 450 
+
+DMR/methylation events, SV -linked RNA -architecture support, SV/rearrangement events, SNV/indel 451 
+
+events, compound cis events, and multi -layer DNA events (Fig. 6a). At the RNA level, the recurrent 452 
+
+RNA alteration universe was dominated by gene -expression changes and isoform -usage 453 
+
+remodeling, followed by predicted ORF/protein -fate consequences, expressed somatic ALT RNA, 454 
+
+differential transcript usage, SV -linked RNA architecture, allele -specific expression or allele -specific 455 
+
+transcript usage (ASE/ASTU), and isoform -specific mutant expression (Fig. 6b). Methylation –RNA 456 
+
+coupling was tracked separately from the core RNA alteration denominator to avoid counting prior 457 
+
+DNA –RNA support itself as an independent RNA alteration class. 458 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.12.738108 doi: bioRxiv preprint
+
+12 
+
+We then quantified how the DNA event denominator changed as RNA -awareness became 459 
+
+stricter. The broadest denominator contained all DNA events. This was reduced first to DNA events 460 
+
+occurring in genes detected by long -read RNA in the cohort, then to DNA events occurring in 461 
+
+patient -matched RNA -detected patient -gene pairs, and finally to DNA events in RNA -quantifiable 462 
+
+patient -gene pairs (Fig. 6c). Here, a patient -gene pair means that a DNA event and RNA 463 
+
+measurement are considered in the same patient and gene context, rather than only at the gene 464 
+
+level across the cohort. The stricter RNA -quantifiable denominator further requires sufficient RNA 465 
+
+support in that patient -gene context to evaluate RNA remodeling, so it excludes genes that are 466 
+
+merely detectable at low or non -informative levels. This denominator structure is important because 467 
+
+it prevents silent, non -transcribed, or insufficiently quantified DNA events from diluting DNA -to -RNA 468 
+
+interpretation. 469 
+
+Using these denominators, we next estimated how often DNA events were reflected at the RNA 470 
+
+and predicted ORF/protein -fate layers. The apparent fraction of DNA events with RNA response, 471 
+
+ORF/protein -fate response, or combined RNA plus ORF/protein -fate response depended strongly on 472 
+
+the denominator used, with the RNA -quantifiable patient -gene denominator providing the most 473 
+
+conservative basis for interpreting DNA -to -RNA reflection (Supplementary Fig. 10a). DNA -layer 474 
+
+reflection classes further showed that CNV and DMR/methylation events made up most of the RNA -475 
+
+aware DNA event universe, whereas SV and SNV/indel layers contributed fewer events but more 476 
+
+specific DNA –RNA links, such as SV -linked RNA architecture and mutant RNA with predicted 477 
+
+ORF/protein consequences (Supplementary Fig. 10b). 478 
+
+We then reversed the direction of analysis and asked how often recurrent RNA remodeling had 479 
+
+patient -matched DNA support. DNA support specificity differed substantially by RNA alteration layer 480 
+
+(Fig. 6d). Isoform -specific mutant expression and SV -linked RNA architecture showed the strongest 481 
+
+high -specificity DNA support, as expected for RNA features that directly encode sequence -variant or 482 
+
+structural -variant relationships. Gene -expression change, isoform -usage remodeling, differential 483 
+
+transcript usage, ASE/ASTU, and predicted ORF/protein -fate remodeling more often showed 484 
+
+directional/layer -concordant or broad DNA -context support rather than direct event -level DNA –RNA 485 
+
+evidence (Fig. 6d). Across all RNA -altered patient -gene pairs, most events had directional/layer -486 
+
+concordant DNA support or broad DNA context, whereas high -specificity DNA –RNA/ORF support 487 
+
+represented a smaller, more stringent subset (Fig. 6e; Supplementary Fig. 10c). This distinction is 488 
+
+important: broad DNA context supports patient -matched genomic co -occurrence, but it should not be 489 
+
+interpreted as direct causal evidence. 490 
+
+Finally, we focused on the most interpretable connected events. We used a tiered framework to 491 
+
+separate complete DNA –RNA –ORF chains from broader contextual support. Tier 1 represented the 492 
+
+strongest class: patient -matched DNA alterations connected to RNA remodeling and a predicted 493 
+
+ORF/protein -fate consequence. Tier 2 represented patient -matched, layer -concordant DNA –RNA 494 
+
+chains without requiring an ORF/protein -fate consequence. Broader Tier 3 and Tier 4 categories 495 
+
+captured patient -matched or gene -level DNA –RNA context but were not treated as high -confidence 496 
+
+mechanistic chains (Supplementary Fig. 10d). For the main candidate analysis, we therefore 497 
+
+focused on Tier 1 and Tier 2 events. 498 
+
+Within this high -confidence subset, the largest connected classes involved SV -linked RNA 499 
+
+architecture and SV -linked isoform remodeling, followed by CNV loss associated with decreased 500 
+
+expression, expressed variants with predicted ORF consequences, SV -linked isoform -to -ORF 501 
+
+chains, and CNV gain associated with increased expression (Fig. 6f). A candidate -focused alluvial 502 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.12.738108 doi: bioRxiv preprint
+
+13 
+
+map connected DNA mechanism, mechanistic rule, RNA consequence, predicted ORF/protein -fate 503 
+
+category, and support tier (Fig. 6g). Structural variants mainly connected to SV -linked RNA 504 
+
+architecture and isoform remodeling, sequence variants connected to mutant RNA and predicted 505 
+
+mutant ORF/protein consequences, and copy -number changes connected to directionally 506 
+
+concordant expression remodeling (Fig. 6g). 507 
+
+Together, these analyses provide a denominator -aware map of how recurrent glioma DNA 508 
+
+remodeling is reflected in the long -read transcriptome. The key result is not that every DNA event 509 
+
+produces an RNA consequence, nor that every RNA alteration can be assigned a precise DNA 510 
+
+cause. Instead, long -read integration separates global DNA remodeling, RNA -evaluable DNA 511 
+
+events, RNA alterations with broad DNA context, and a stringent subset of high -specificity DNA –512 
+
+RNA or DNA –RNA –ORF chains. This framework provides the quantitative foundation for the 513 
+
+following layer -specific and gene -set -specific integration analyses. 514 
+
+.515 
+
+➢ Copy -number and expressed sequence variants define broad and high -specificity 516 
+
+DNA -to -RNA remodeling routes 517 
+
+Having established a denominator -aware integration framework, we next asked how individual 518 
+
+DNA layers contributed to RNA and predicted ORF -level remodeling. Across DNA layer families, 519 
+
+copy -number changes were the most abundant source of DNA -RNA coupling, whereas focal non -520 
+
+CNV layers, including sequence variants, DMRs, SVs, LOH, and compound cis -event combinations, 521 
+
+contributed fewer but often more specific RNA consequences (Fig. 7a). The layer -to -consequence 522 
+
+map showed that CNV gain and CNV loss were most frequently associated with expression up - or 523 
+
+down -regulation, while non -CNV layers were more frequently linked to isoform/DTU remodeling, 524 
+
+dominant isoform changes, or smaller focused sets of expression -linked events (Fig. 7a). This 525 
+
+pattern supports a layered interpretation: CNV provides the broadest dosage -associated RNA signal, 526 
+
+whereas focal DNA events provide more specific candidate mechanisms for transcript -architecture 527 
+
+and coding -output remodeling. 528 
+
+We first focused on CNV because it represented the largest DNA event family and the most 529 
+
+abundant DNA -to -RNA connection. CNV -linked RNA remodeling was dominated by CNV gain 530 
+
+associated with expression increase, followed by CNV loss associated with expression increase, 531 
+
+CNV loss associated with expression decrease, and CNV gain associated with expression decrease 532 
+
+(Fig. 7b). Thus, while canonical dosage -concordant relationships were common, CNV state did not 533 
+
+deterministically predict expression direction in all patient -gene contexts. Patient -level CNV coupling 534 
+
+profiles showed that all DNA -evaluable patients carried large numbers of CNV -linked RNA events, 535 
+
+with variable proportions of concordant, discordant, and isoform/DTU/ORF -coupled cases (Fig. 7c). 536 
+
+A direct comparison of recurrent -primary CNV delta against recurrent -primary RNA expression 537 
+
+change s further showed a mixture of concordant, discordant, isoform/ORF -linked, and non -strictly 538 
+
+coupled events across patients (Supplementary Fig. 11 a). Compound cis -event combinations also 539 
+
+mapped to multiple RNA consequence classes, including expression change, isoform/DTU 540 
+
+remodeling, and dominant isoform change, suggesting that some RNA effects occur in genomic 541 
+
+contexts where more than one DNA layer is altered in the same gene -patient setting (Supplementary 542 
+
+Fig. 11 b). Together, these analyses indicate that CNV provides a broad RNA -dosage substrate, but 543 
+
+additional regulatory and structural layers are needed to explain the full spectrum of RNA 544 
+
+remodeling. 545 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.12.738108 doi: bioRxiv preprint
+
+14 
+
+We then examined somatic SNVs and indels, which are less frequent than CNV events but can 546 
+
+provide more direct molecular links when the mutant allele is expressed. Most DNA variants had no 547 
+
+informative RNA evidence because the variant fell in a gene or region without sufficient RNA 548 
+
+coverage, or because RNA coverage at the variant base was non -informative (Fig. 7d). Among 549 
+
+RNA -informative variants, only a smaller subset showed high -confidence or sensitive evidence of 550 
+
+somatic alternative ( ALT ) RNA expression (Fig. 7d). Nonetheless, the absence of mutant RNA 551 
+
+evidence could reflect RNA detectability and base -level coverage constraints rather than true 552 
+
+absence of mutant transcript expression. Integrated variant classes further showed that most patient 553 
+
+variants remained DNA -only or low RNA -support events, whereas smaller subsets showed variant -554 
+
+associated RNA remodeling, ASE/ASTU support, expressed recurrent variants, or mutant -dominant 555 
+
+isoform evidence (Supplementary Fig. 11c). Patient -gene bubble summaries highlighted recurrently 556 
+
+altered genes with stronger integrated evidence, including canonical glioma or cancer -associated 557 
+
+genes such as IDH1, TP53, ATRX, and CIC -related contexts, but also showed that high -confidence 558 
+
+expressed -variant evidence remained selective rather than universal (Supplementary Fig. 11d). 559 
+
+Long -read RNA provided an additional advantage by assigning expressed mutant alleles to 560 
+
+isoform context. Most ALT -expressed variants did not show clear isoform -specific enrichment, but a 561 
+
+subset showed evidence for ALT expression concentrated in particular isoforms or associated with 562 
+
+isoform -specific mutant -expression patterns (Fig. 7e). This distinction is important because mutant 563 
+
+RNA expression at the gene level does not necessarily imply that all isoforms carry the mutant allele 564 
+
+equally. Mutation -linked isoform rows were then classified by predicted ORF/protein -output event 565 
+
+family. The largest groups involved amino -acid output change, ORF -annotated transcripts without a 566 
+
+strong ORF delta, transcript remodeling, frameshift remodeling, NMD remodeling, ORF -class 567 
+
+switching, ambiguous protein -output states, and ORF gain or loss (Fig. 7f). These results show that 568 
+
+expressed somatic variants can extend beyond simple mutant allele detection to candidate isoform -569 
+
+specific and predicted coding -output consequences. 570 
+
+Finally, we asked whether mutational -process context helped organize expressed variants and 571 
+
+their RNA consequences. Somatic mutation burden and temporal mutation classes varied across 572 
+
+patients, with recurrent -primary burden changes showing patient -specific gains and losses rather 573 
+
+than one uniform recurrence pattern (Supplementary Fig. 11e –g). COSMIC SBS signature analysis 574 
+
+assigned recurrence -gained mutations to clock -like/background, MMR -like, and other/uncertain 575 
+
+signature groups, with different patients showing distinct signature compositions (Fig. 7g; 576 
+
+Supplementary Fig. 12a). When signature -context mutations were linked to RNA expression, most 577 
+
+remained DNA -only or signature -context events without RNA expression, but smaller subsets were 578 
+
+RNA -expressed, recurrence -gained, treatment/MMR -associated, nonsynonymous or splice -linked, or 579 
+
+isoform -specific mutant -expression events (Fig. 7h). The most frequent RNA -expressed signature 580 
+
+contexts included SBS86, SBS15, SBS5, SBS8, SBS96, and SBS44, and patient -level heatmaps 581 
+
+showed that RNA -expressed signature -context mutations were distributed across clock -582 
+
+like/background, MMR -like, and other/uncertain groups (Supplementary Fig. 12b,c). A signature -to -583 
+
+RNA -to -isoform/coding alluvial further showed that only a minority of signature -context mutations 584 
+
+propagated into RNA expression, isoform -specific mutant RNA, or predicted coding consequences 585 
+
+(Supplementary Fig. 12d). Thus, mutational -process analysis provides context for expressed 586 
+
+variants, but the strongest mechanistic interpretation comes from the subset of mutations that can be 587 
+
+connected directly to mutant RNA, isoform specificity, and predicted ORF/protein -output 588 
+
+consequences. 589 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.12.738108 doi: bioRxiv preprint
+
+15 
+
+Overall, these analyses show that DNA -to -RNA coupling is layer -dependent. CNV alterations 590 
+
+provide the broadest and most abundant route to RNA remodeling, but their effects are often 591 
+
+dosage -associated and sometimes directionally discordant. In contrast, expressed somatic variants 592 
+
+and signature -context mutations are less frequent but more mechanistically specific when mutant 593 
+
+RNA, isoform -specific ALT expression, and predicted ORF/protein -output consequences can be 594 
+
+demonstrated. This separation between broad dosage coupling and focused expressed -variant 595 
+
+chains provides the first layer -specific extension of the denominator -aware framework. 596 
+
+➢ Allele - and haplotype -specific transcript usage reveals recurrence -associated isoform 597 
+
+remodeling 598 
+
+We next asked whether recurrence -associated RNA remodeling could be resolved at the allele 599 
+
+or haplotype -marker level. We distinguished two related but different signals. Allele -specific 600 
+
+expression (ASE) measures whether one allele contributes more total RNA from a gene, usually 601 
+
+summarized as a major -allele fraction across RNA -covered heterozygous markers. In contrast, 602 
+
+allele - or haplotype -specific transcript usage (ASTU) asks whether reads assigned to different alleles 603 
+
+or haplotype -marker groups use different isoforms within the same gene. Therefore, ASE captures 604 
+
+allelic dosage imbalance, whereas ASTU captures allele -resolved isoform choice. Importantly, ASTU 605 
+
+can occur with or without strong gene -level ASE. 606 
+
+We first evaluated recurrent ASE and its DNA support. RNA -covered heterozygous SNPs were 607 
+
+abundant across patients and timepoints, providing sufficient marker coverage for allele -aware RNA 608 
+
+analysis (Supplementary Fig. 13a). Most high -confidence recurrent ASE candidates were supported 609 
+
+by LOH or allele -specific copy -number evidence, whereas RNA -only ASE candidates without 610 
+
+patient -specific DNA support represented a much smaller class (Fig. 8a; Supplementary Fig. 13b). 611 
+
+Gene -level major -allele fraction distributions showed broad allelic imbalance spectra across patients, 612 
+
+with a subset of genes approaching strong monoallelic or near -monoallelic RNA contribution 613 
+
+(Supplementary Fig. 13c). These findings indicate that recurrent ASE is frequently embedded in 614 
+
+DNA allelic architecture rather than being only a transcript -level imbalance. 615 
+
+We then asked whether DNA -supported ASE coincided with isoform and predicted ORF 616 
+
+remodeling. LOH/allele -specific CNV -supported ASE candidates were dominated by genes classified 617 
+
+as bulk -stable in the A –F Pigeon remodeling framework, but smaller subsets overlapped dominant or 618 
+
+secondary isoform -remodeling classes (Fig. 8b). This indicates that allele -specific imbalance can 619 
+
+occur in genes that do not show a major bulk isoform -class switch, meaning that allele -aware 620 
+
+analysis can uncover remodeling hidden from aggregate RNA measurements. At the patient level, 621 
+
+LOH/allele -specific CNV -supported ASE genes showed variable burdens of predicted protein -output 622 
+
+consequences, including same predicted protein, altered protein isoform, ORF -class change, 623 
+
+ORF/protein gain or loss, and NMD or frameshift -rate shifts (Fig. 8c,d). Extended ASE summaries 624 
+
+similarly showed that DNA -supported ASE candidates were enriched for isoform/ORF remodeling, 625 
+
+while patient -specific recurrent ASE was most often explained by LOH or allele -specific copy -626 
+
+number imbalance, with smaller contributions from multi -layer DNA explanations (Supplementary 627 
+
+Fig. 13d,e). Top recurrent ASE candidates showed both ASE gained in recurrence and ASE 628 
+
+strengthened in recurrence classes, with recurrent major -allele fractions reaching high values in 629 
+
+selected genes (Supplementary Fig. 13f). 630 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.12.738108 doi: bioRxiv preprint
+
+16 
+
+We next moved from total allelic expression to allele - or haplotype -marker -resolved isoform 631 
+
+usage. Read -level HP1/HP2 assignment confirmed that large numbers of full -length reads could be 632 
+
+assigned to haplotype -marker groups across samples, enabling isoform -fraction comparisons 633 
+
+between haplotypes (Supplementary Fig. 14a). ASTU effect -size analysis compared two 634 
+
+dimensions: Jensen –Shannon divergence between HP1 and HP2 isoform distributions, which 635 
+
+measures how different the haplotype -specific isoform repertoires are, and the maximum absolute 636 
+
+isoform -fraction shift, which captures the largest isoform -level difference between haplotypes 637 
+
+(Supplementary Fig. 14b). Comparing primary and recurrent HP1 -versus -HP2 JSD further showed 638 
+
+that haplotype -specific isoform divergence could be maintained, gained, lost, weakened, or 639 
+
+strengthened across recurrence (Supplementary Fig. 14c). Thus, ASTU provides an isoform -640 
+
+resolution view of allele/haplotype remodeling that is not captured by gene -level ASE alone. 641 
+
+We then integrated ASTU with upstream DNA mechanism classes and downstream RNA/ORF 642 
+
+fate axes. Recurrence -associated ASTU candidates were observed across all DNA -evaluable 643 
+
+patients and were associated with broad CNV context, DMR/methylation support, LOH or allele -644 
+
+specific CNV, strict CNV -coupled support, and SV/fusion contexts (Supplementary Fig. 14d). 645 
+
+Downstream, ASTU candidates overlapped bulk isoform -remodeling context, dominant isoform -646 
+
+switch consequences, and predicted ORF/protein -fate consequences, although many remained in 647 
+
+an ASTU -only class without detected dominant fate switching (Supplementary Fig. 14e). When 648 
+
+ASTU was cross -tabulated with gene -level ASE, most ASTU events occurred without detectable 649 
+
+gene -level ASE, whereas a smaller subset showed both ASTU and gene -level ASE (Fig. 8e,f). Thus, 650 
+
+allele -specific isoform usage is distinct from allele -specific expression , and it can reveal allele -651 
+
+resolved transcript architecture even when total RNA output from the two alleles is not strongly 652 
+
+imbalanced. 653 
+
+Finally, we examined how ASTU related to bulk Pigeon isoform -remodeling classes. Most 654 
+
+recurrence -ASTU candidates occurred in genes classified as Class F/stable in bulk isoform analysis, 655 
+
+with smaller contributions from dominant switching, same -dominant remodeling, primary -dominant 656 
+
+loss, recurrent -dominant gain, and no -dominant remodeling classes (Supplementary Fig. 14f –h). 657 
+
+This shows that marker -resolved isoform usage can expose a hidden layer of remodeling that is 658 
+
+averaged out in bulk gene -level or isoform -class analyses . Four -state examples in patient 3 659 
+
+illustrated this behavior. In GFPT2, haplotype -specific isoform usage was lost in recurrence, with 660 
+
+recurrent HP1 and HP2 converging toward a more similar isoform composition (Fig. 8g). In 661 
+
+FAM120B, the primary and recurrent haplotype -marker groups showed a possible direction switch in 662 
+
+isoform preference, demonstrating that recurrence can alter not only the strength but also the 663 
+
+direction of allele/haplotype -specific isoform usage (Fig. 8h). 664 
+
+Together, these analyses show that recurrence -associated transcript remodeling includes an 665 
+
+allele -aware layer that is not captured by gene -level expression, bulk isoform usage, or ORF 666 
+
+analyses alone. ASE identifies genes in which one allele contributes more total RNA, often in the 667 
+
+setting of LOH or allele -specific copy -number imbalance. ASTU identifies genes in which allele - or 668 
+
+haplotype -marker groups use different isoforms, frequently without detectable gene -level ASE. This 669 
+
+distinction supports a model in which recurrent astrocytoma s remodel not only RNA abundance and 670 
+
+isoform composition, but also the allele -specific architecture of transcript usage. 671 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.12.738108 doi: bioRxiv preprint
+
+17 
+
+➢ DNA methylation remodeling links regulatory DNA changes to isoform and predicted 672 
+
+ORF consequences 673 
+
+We next asked whether recurrence -associated DNA methylation changes were connected to 674 
+
+RNA architecture and predicted coding consequences. Differentially methylated regions (DMRs) 675 
+
+were first stratified by regulatory context and temporal status. Across UTR, promoter, intronic, gene -676 
+
+annotated, and exonic DMR classes, many patient -gene DMR relationships were shared between 677 
+
+primary and recurrent tumors, but both primary -only and recurrent -only DMRs were also detected 678 
+
+across regulatory categories (Fig. 9a). DMR directionality showed that hypermethylated and 679 
+
+hypomethylated DMRs were distributed across regulatory contexts, with intronic and gene -annotated 680 
+
+DMRs forming the largest absolute classes (Supplementary Fig. 15a). The recurrent -primary 681 
+
+methylation effect distribution was broad and centered near zero, with positive and negative tails, 682 
+
+indicating that most DMR -associated patient -gene contexts showed modest shifts while a smaller 683 
+
+subset showed stronger recurrent hypermethylation or hypomethylation (Supplementary Fig. 15b). 684 
+
+We then connected DMRs to gene expression and isoform remodeling. Promoter/TSS 685 
+
+methylation changes showed both concordant and discordant relationships with gene expression, 686 
+
+rather than a simple one -directional methylation -expression pattern across all genes (Supplementary 687 
+
+Fig. 15c). We therefore treated methylation -RNA relationships as regulatory associations that require 688 
+
+genomic and transcript context, not as direct proof of repression or activation. Direction -aware DMR -689 
+
+RNA classification showed that most DMR -linked patient -gene pairs were associated with isoform or 690 
+
+UTR remodeling rather than simple promoter methylation -expression concordance, although 691 
+
+compatible promoter hypermethylation/RNA down and promoter hypomethylation/RNA up 692 
+
+relationships were present in subsets of cases (Fig. 9 b). Extended coupling analysis similarly 693 
+
+showed that many DMRs had RNA architecture context, while smaller subsets linked gene -body 694 
+
+DMRs to ORF consequences, isoform switching, or DTU -like remodeling (Supplementary Fig. 15d). 695 
+
+Because long -read RNA captures complete isoform structures, we next asked whether DMR -696 
+
+associated RNA remodeling reached dominant isoform and predicted ORF/protein -fate levels. DMR -697 
+
+linked dominant isoform analysis showed that most gene -patient pairs did not undergo a dominant 698 
+
+isoform switch, but subsets showed dominant structural -category switching, recurrent dominant 699 
+
+isoform gain, primary dominant isoform loss, or dominant isoform switching (Fig. 9 c). Multilayer and 700 
+
+confounder -aware methylation summaries showed that many methylation -RNA candidates occurred 701 
+
+without detected LOH/CNV context, while a smaller subset occurred together with LOH/CNV, SV, or 702 
+
+haplotype -context support (Supplementary Fig. 15e). Directional DMR -to -isoform -to -ORF alluvial 703 
+
+analysis further connected recurrent hypermethylation and hypomethylation, promoter/TSS and 704 
+
+gene -body/transcript DMR contexts, isoform events, and predicted ORF/protein consequences (Fig. 705 
+
+9d). In this restricted set of complete DMR –isoform –ORF chains, gene -body or transcript -associated 706 
+
+DMRs contributed prominently to coding -impact classes, including protein remodeling without simple 707 
+
+gain or loss and ORF/protein gain or loss categories, whereas promoter/TSS DMRs contributed a 708 
+
+smaller but more directly interpretable expression -linked component (Fig. 9d; Supplementary Fig. 709 
+
+15f,g). These results indicate that methylation remodeling in recurrent astrocytoma is not only a 710 
+
+promoter -expression phenomenon. A subset of DMRs is linked to isoform architecture and predicted 711 
+
+coding -output changes, especially when DMRs occur in gene -body or transcript -associated contexts. 712 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.12.738108 doi: bioRxiv preprint
+
+18 
+
+➢ Structural variants link focal non -CNV DNA remodeling to RNA architecture and 713 
+
+predicted coding consequences 714 
+
+We next examined focal non -CNV DNA alterations, focusing on structural variants because they 715 
+
+provide a direct architectural route from DNA rearrangement to RNA structure. Across patients, focal 716 
+
+non -CNV DNA -RNA remodeling included DMRs, DNA -supported RNA fusions, SVs, LOH, and 717 
+
+compound cis events, with different patients showing different dominant non -CNV layers (Fig. 9e). 718 
+
+This patient -level heterogeneity indicates that focal DNA -to -RNA remodeling is not driven by one 719 
+
+universal event type, but by patient -specific combinations of regulatory, allelic, and structural 720 
+
+mechanisms. 721 
+
+SVs were then analyzed in more detail. Most detected SVs were primary -only or recurrent -only 722 
+
+rather than shared, indicating substantial temporal remodeling of the structural -variant landscape 723 
+
+(Supplementary Fig. 16a). Breakend -like events represented the largest SV class, followed by 724 
+
+deletions, insertions, and duplications (Supplementary Fig. 16b). Breakpoints were enriched in 725 
+
+intragenic and near -gene contexts, with additional promoter -proximal, TSS -proximal, and TTS -726 
+
+proximal subsets (Supplementary Fig. 16c). Many SV breakpoints were located within several 727 
+
+kilobases of linked isoform boundaries, and breakpoint -to -isoform -boundary links were particularly 728 
+
+common near novel isoform TSS/TTS positions, observed isoform boundaries, and recurrently 729 
+
+gained isoform boundaries (Supplementary Fig. 16d,e). These patterns support a structural model in 730 
+
+which SVs can remodel RNA architecture by altering, disrupting, or lying near transcript boundary 731 
+
+regions. 732 
+
+We next asked whether SVs were supported by RNA junction evidence and whether they 733 
+
+mapped to specific RNA consequence classes. A substantial fraction of recurrent and recurrence -734 
+
+gained SV breakpoint -gene links showed gene -level RNA junction support, although this should not 735 
+
+be interpreted as base -pair -resolution fusion validation for every event (Supplementary Fig. 16f). 736 
+
+RNA consequence composition differed by SV subtype, with breakend -like, deletion, duplication, and 737 
+
+insertion events showing different fractions of SV -DNA -only calls, SV -linked gene -level RNA 738 
+
+architecture support, isoform remodeling, somatic -variant expression context, and TSS/TTS or ORF 739 
+
+remodeling classes (Fig. 9f). At the transcript -annotation level, most SV -linked events mapped to 740 
+
+bulk -stable Class F genes, but recurrent SVs also intersected genes with Class E, Class C, and 741 
+
+Class B remodeling patterns, indicating that SV -associated RNA effects can occur both with and 742 
+
+without a large bulk isoform -class transition (Fig. 9g; Supplementary Fig. 16 g). This mirrors the 743 
+
+allele/haplotype -specific transcript -usage findings: focal DNA events can affect transcript 744 
+
+architecture in ways that are partly hidden by bulk remodeling classes. 745 
+
+Finally, recurrent -only SVs were connected to predicted ORF/protein consequences. Breakend -746 
+
+like events contributed the largest number of recurrent -only SV -linked ORF/protein consequence 747 
+
+rows, partly reflecting their higher event burden, but deletions, duplications, and insertions also 748 
+
+contributed to recurrent isoform gain, disruptive ORF gain, protein truncation gain, protein length 749 
+
+changes, frameshift gain, NMD gain, and amino -acid sequence change categories (Fig. 9h). SV -750 
+
+linked RNA architecture consequence classes further showed that SVs were associated with isoform 751 
+
+switch or DTU -like remodeling, DNA -only SVs, TSS/TTS -boundary ORF remodeling, isoform -ORF 752 
+
+remodeling, gene -level RNA architecture support, and somatic -variant expression context 753 
+
+(Supplementary Fig. 16 h). A top -gene candidate analysis identified genes with recurrent SV 754 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.12.738108 doi: bioRxiv preprint
+
+19 
+
+breakpoints linked to junction remodeling, with NLGN1 among the strongest candidates 755 
+
+(Supplementary Fig. 17a). Representative IGV DNA tracks and RNA sashimi plots for NLGN1 from 756 
+
+patient 4 show structural complexity at the NLGN1 locus and the remodeling observed in the 757 
+
+recurrent tumor, together with altered primary -to -recurrent junction architecture at the RNA level .758 
+
+(Supplementary Fig. 17b,c). Together, these analyses show that SVs provide one of the clearest 759 
+
+focal DNA -to -RNA architectural links in the cohort, with a subset extending to predicted ORF/protein -760 
+
+fate consequences. 761 
+
+➢ Targeted biological gene sets reveal convergence of DNA –RNA –ORF remodeling on 762 
+
+recurrence -relevant programs 763 
+
+After defining layer -specific DNA –RNA mechanisms, we asked whether these events converged 764 
+
+on biological gene sets relevant to astrocytoma recurrence. We first examined splicing and RNA -765 
+
+binding protein regulators, which are relevant to the extensive isoform remodeling observed . Within 766 
+
+this gene set, integrated DNA –RNA –ORF flows showed that many gene -patient pairs had either 767 
+
+CNV -dominant or no clear DNA event context, but a subset connected DNA remodeling to 768 
+
+expressed somatic ALT RNA, major dominant -isoform switching, methylation –RNA coupling, SV -769 
+
+linked RNA architecture, and predicted mutant RNA or ORF/protein consequences (Fig. 10a). 770 
+
+Consistent with this, paired expression analysis showed recurrent shifts in multiple splicing/RBP 771 
+
+regulators, including increases in several RBM, SRSF, SF3, HNRNP, and RNA -processing genes, 772 
+
+while others decreased in recurrence (Supplementary Fig. 18a). These results suggest that splicing -773 
+
+regulatory genes are themselves remodeled at DNA and RNA levels, providing a plausible upstream 774 
+
+context for the widespread isoform remodeling observed across the cohort. 775 
+
+We next focused on glioma drivers and tumor suppressors. Patient -level outcome summaries 776 
+
+showed that driver/suppressor genes were frequently altered across multiple consequence classes, 777 
+
+with large contributions from methylation –RNA coupling, ORF/protein -fate context, DNA -only 778 
+
+alterations, isoform -specific mutant expression, expressed somatic ALT, recurrence -expressed 779 
+
+somatic ALT, and SV -linked RNA architecture (Fig. 10b). Mechanistic flow analysis showed that 780 
+
+CNV -dominant, promoter DMR -dominant, multi -layer DNA remodeling, expressed somatic ALT, and 781 
+
+SV -linked mechanisms could each connect to distinct RNA consequences and, in selected cases, to 782 
+
+predicted ORF/protein -fate outcomes (Fig. 10c). Exemplar summaries highlighted recurrently 783 
+
+relevant driver/suppressor genes, including ATRX, PTEN, BCOR, MET, and EGFR, illustrating how 784 
+
+different genes entered the integration framework through different DNA mechanisms and RNA/ORF 785 
+
+consequence routes (Supplementary Fig. 18b). Thus, canonical glioma genes were not only altered 786 
+
+at the DNA level; subsets showed evidence of propagation into RNA remodeling or predicted coding 787 
+
+consequences. 788 
+
+Immune, antigen -presentation, and interferon -related genes showed a related but distinct 789 
+
+pattern. Most immune -related gene -patient pairs with detectable activity fell into a DNA –RNA 790 
+
+coupled category, while smaller subsets showed RNA -only microenvironment or state -associated 791 
+
+signal, DNA -only change, or no clear immune change (Fig. 10d). Patient -level outcome burdens 792 
+
+showed that immune/antigen/interferon genes were dominated by methylation –RNA coupling and 793 
+
+ORF/protein -fate context, with additional contributions from isoform/usage remodeling, SV -linked 794 
+
+RNA architecture, SV/ORF -linked RNA architecture, expressed somatic ALT, and DNA -only 795 
+
+alterations (Fig. 10e). Mechanistic flow analysis again emphasized promoter DMR -dominant and 796 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.12.738108 doi: bioRxiv preprint
+
+20 
+
+multi -layer DNA remodeling routes, with smaller SV -linked RNA and ORF -linked paths (Fig. 10f). 797 
+
+Exemplar immune summaries included genes such as HLA -A, ISG15, JAK2, CD47, NLRC5, and 798 
+
+ITGAM, showing that immune -related remodeling was heterogeneous across patients and 799 
+
+mechanisms rather than captured by a single immune -evasion axis (Supplementary Fig. 18c). 800 
+
+Finally, we examined stemness and lineage -plasticity genes. Similar to the immune set, 801 
+
+stemness/lineage gene -patient pairs were most often classified as DNA –RNA coupled, followed by 802 
+
+RNA -only state change, no clear lineage change, isoform -remodeling context, and DNA -only change 803 
+
+(Fig. 10g). Patient -level burdens showed recurrent involvement of methylation –RNA coupling, 804 
+
+ORF/protein -fate context, isoform/usage remodeling, expressed somatic ALT, recurrence -expressed 805 
+
+somatic ALT, SV -linked RNA architecture, SV/ORF -linked RNA architecture, and DNA -only 806 
+
+alterations (Fig. 10h). The corresponding mechanistic flow showed promoter DMR -dominant, CNV -807 
+
+dominant, multi -layer DNA remodeling, expressed somatic ALT, and SV -linked RNA architecture 808 
+
+routes converging on methylation –RNA coupling, isoform/usage remodeling, recurrence -expressed 809 
+
+somatic ALT, and predicted ORF/protein -fate categories (Supplementary Fig. 18d). Exemplar 810 
+
+summaries included lineage and plasticity -associated genes such as TEAD1, TEAD2, MYC, CD44, 811 
+
+JAG1, AQP4, PROM1, and STK3, further illustrating patient -specific routes into lineage -state 812 
+
+remodeling (Supplementary Fig. 18e). 813 
+
+Together, these targeted analyses show that the DNA –RNA –ORF integration framework 814 
+
+converges on biologically interpretable systems rather than producing a random catalog of events. 815 
+
+Splicing/RBP regulators provide a direct link to the isoform -remodeling phenotype, driver/suppressor 816 
+
+genes anchor the analysis in canonical astrocytoma biology, immune/antigen/interferon genes 817 
+
+highlight microenvironment and immune -state remodeling, and stemness/lineage genes connect 818 
+
+genomic remodeling to cellular plasticity. The dominant conclusion remains patient -specific: 819 
+
+recurrent astrocytoma s use different combinations of CNV, methylation, expressed variants, SV -820 
+
+linked RNA architecture, isoform remodeling, and predicted ORF/protein -fate changes to remodel 821 
+
+biologically relevant programs. 822 
+
+823 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.12.738108 doi: bioRxiv preprint
+
+21 
+
+Discussion 824 
+
+In this study, we used paired long -read DNA and RNA sequencing to show that recurrent 825 
+
+astrocytoma remodeling is not only a genetic or transcriptional process, but a multi -layer DNA -to -826 
+
+RNA -to -isoform -to -ORF remodeling trajectory. The central finding is that genetic and epigenetic 827 
+
+alterations acquired or retained during recurrence can be traced to distinct RNA consequences, 828 
+
+including gene -expression shifts, isoform redistribution, allele - or haplotype -specific transcript usage, 829 
+
+expressed mutant RNA, SV -linked transcript architecture, and predicted ORF/protein -fate changes. 830 
+
+Importantly, these effects were not uniform across patients or DNA layers. CNV provided the 831 
+
+broadest dosage -associated RNA signal, SVs provided the clearest architectural DNA -to -RNA links, 832 
+
+expressed SNVs/indels provided high -specificity mutant RNA and isoform -specific mutant -833 
+
+expression events, and DMRs showed context -dependent relationships with expression, isoform 834 
+
+usage, and predicted coding output. Thus, the main contribution of this study is not simply that long -835 
+
+read sequencing detects more events, but that matched long -read DNA and full -length RNA can 836 
+
+connect recurrence -associated genome and epigenome remodeling to patient -specific transcript and 837 
+
+predicted coding consequences. 838 
+
+Glioma recurrence has been extensively studied using short -read genomic, transcriptomic, 839 
+
+and epigenomic profiling, but most prior studies have described recurrence through molecular layers 840 
+
+that remain partly disconnected. Paired glioblastoma studies showed that primary and recurrent 841 
+
+tumors are clonally related yet often diverge through patient -specific genetic evolution, therapy -842 
+
+associated selection, expression -state switching, and altered copy -number structure 4,18 . Large -scale 843 
+
+diffuse glioma studies extended this framework by showing that many founding driver alterations are 844 
+
+retained at recurrence, whereas recurrent tumors acquire heterogeneous changes in aneuploidy, 845 
+
+subclonal architecture, hypermutation, cell -cycle alterations, transcriptional state, and 846 
+
+microenvironmental composition 5,6,19 . More recent longitudinal single -cell and multi -omic studies 847 
+
+further emphasized that glioma progression cannot be understood from DNA alone, because genetic 848 
+
+evolution is accompanied by changes in malignant -cell state, DNA methylation, immune and stromal 849 
+
+composition, proteomic state, and treatment -associated ecosystem remodeling 7,20,21 . Several studies 850 
+
+have also interrogated IDH -mutant astrocytoma recurrence using multi -omics approaches. 851 
+
+Vallentgoed et al. 8 identified cell cycling, altered differentiation, extracellular -matrix remodeling, and 852 
+
+DNA methylation loss as convergent features of malignant progression. Rodriguez Almaraz et al. 9
+
+853 
+
+showed that recurrent high -grade tumors can acquire diverse RAS –MAPK pathway alterations 854 
+
+associated with inferior survival, emphasizing that progression can converge at the pathway level 855 
+
+despite heterogeneity in the individual genomic event. Rautajoki et al. 10 reported increased 856 
+
+rearrangements and deletions during progression to grade 4, together with recurrent CDKN2A/RB1 857 
+
+inactivation, activating PDGFRA/MET alterations, DNA -repair changes, and NRG3 loss. Tang et al. 11 858 
+
+showed that recurrent IDH -mutant astrocytomas increasingly adopt proliferative/progenitor and 859 
+
+immune/mesenchymal -enriched proteomic states, with the latter characterized by gemistocytic 860 
+
+differentiation and immune infiltration. Our findings fit an emerging disease -specific model in which 861 
+
+IDH -mutant astrocytomas retain their founding molecular identity while acquiring heterogeneous 862 
+
+progression -associated changes. Further, despite smaller cohort, our findings complement and 863 
+
+support these previous studies. However, t he previous approaches using in the glioma or 864 
+
+astrocytoma cohorts remain constrained by the read structure of short -read technologies. Short -read 865 
+
+DNA sequencing is powerful for SNVs, indels, copy -number alterations, and mutational signatures, 866 
+
+but has limited ability to resolve complex rearrangements, long -range haplotypes, repeat -associated 867 
+
+structures, phased methylation states, and allele -specific structural context. Short -read RNA 868 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.12.738108 doi: bioRxiv preprint
+
+22 
+
+sequencing captures gene expression and local splice junctions, but generally infers transcript 869 
+
+structures indirectly and cannot routinely assign full -length isoforms, fusion architecture, mutant 870 
+
+alleles, haplotype -specific transcript usage, and predicted ORF consequences to the same RNA 871 
+
+molecule. Thus, prior short -read multi -omic studies have been powerful for defining recurrence -872 
+
+associated layers, but less able to determine how DNA remodeling is expressed through full -length 873 
+
+RNA and coding -output remodeling within the same patient. 874 
+
+The current approach differs also from classical long -read sequencing fundamentally. Many 875 
+
+cancer cohorts long -read studies have used long -read DNA or RNA as powerful single -layer 876 
+
+discovery tools 14,22 . Long -read DNA studies have resolved complex rearrangements, haplotypes, 877 
+
+methylation landscapes, viral integrations, ecDNA, and repeat -associated structural events that are 878 
+
+difficult to interpret with short reads 14,15 . Long -read transcriptome studies have catalogued extensive 879 
+
+cancer -associated isoform diversity, including unannotated transcripts and isoform -level programs 880 
+
+with clinical or biological relevance 12,13 . These studies establish the value of long -read sequencing, 881 
+
+but they usually ask either a genome -architecture question or an isoform -discovery question. Here, 882 
+
+the long -read sequencing was used to establish a direct DNA -RNA -ORF/proteome potential causal 883 
+
+chain . To our knowledge, this paired longitudinal long -read DNA and full -length RNA integration has 884 
+
+not yet been applied to glioma or to other cancer cohorts .885 
+
+An important advantage of this study is the introduction of new analytical modalities to 886 
+
+resolve complex isoform remodeling and to connect the DNA and RNA layers. To date, s tandard 887 
+
+long -read RNA analysis workflows often stops at transcript discovery, structural -category annotation, 888 
+
+presence/absence analysis, or differential isoform abundance 12,13,23 . Those approaches are useful, 889 
+
+but they cannot resolve whether there is remodel ing in isoform architecture without large gene -890 
+
+expression change . We therefore introduce complementary approaches to quantify isoform 891 
+
+remodeling that can detect significant changes even within apparently stable genes . The class A–F892 
+
+framework separated dominant isoform switching, same -dominant secondary remodeling, primary -893 
+
+dominant isoform loss, recurrent -dominant isoform gain, no -dominant remodeling, and stable genes. 894 
+
+Jensen –Shannon divergence and maximum absolute delta isoform fraction quantified the overall 895 
+
+distributional shift and the largest isoform -level usage change, while Shannon entropy measured 896 
+
+whether recurrence made isoform usage more diffuse or more focused. This entropy component is 897 
+
+important because two genes can show similar divergence but opposite changes in transcript 898 
+
+complexity. In parallel, Dirichlet -multinomial modeling with DRIMSeq provided statistical evidence of 899 
+
+differential transcript usage 16 . These analyses are not redundant: JSD/dIF/entropy prioritize effect 900 
+
+size and architecture, whereas DTU prioritizes statistical redistribution of isoform proportions. 901 
+
+Together with ORF prediction and transcript -to -genome coordinate lifting 17 , this framework converts 902 
+
+long -read RNA from an isoform catalog into a consequence -aware model of isoform and predicted 903 
+
+coding -output remodeling. Another important advantage of this work is the demonstration of the 904 
+
+power of long read multiomics in resolving how genomic events can be reflected at the gene, 905 
+
+isoform, or even protein level . A common problem in multi -omics is that overlap is mistaken for 906 
+
+mechanism. If all DNA events are used as the denominator, many silent or non -quantifiable events 907 
+
+dilute DNA -to -RNA reflection. If only RNA -altered genes are considered, broad DNA context can be 908 
+
+overinterpreted as causal support. We therefore separated global DNA events from RNA -detected 909 
+
+genes, patient -matched RNA -detected patient -gene pairs, and RNA -quantifiable patient -gene pairs. 910 
+
+We also distinguished high -specificity DNA –RNA/ORF support from directional or layer -concordant 911 
+
+support and broad DNA context. Such a framework allowed us to understand the complex and 912 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.12.738108 doi: bioRxiv preprint
+
+23 
+
+multilayered remodeling of glioma recurrence to an extent that cannot be equally revealed using 913 
+
+standard short read sequencing methods. 914 
+
+Biologically, the study supports a model in which recurrent gliomas preserve core driver 915 
+
+identity while remodeling how that identity is expressed through RNA architecture and predicted 916 
+
+coding output. This patient -specific structure is consistent with previous longitudinal glioma studies, 917 
+
+but the long -read design reveals an additional layer: recurrence can be expressed through isoform 918 
+
+redistribution, altered transcript -boundary usage, allele - or haplotype -specific isoform choice, mutant 919 
+
+isoform expression, and predicted ORF/protein -fate changes. Targeted gene -set analyses further 920 
+
+showed that integrated DNA –RNA –ORF chains converge on biologically interpretable systems, 921 
+
+including splicing and RNA -binding proteins , glioma drivers and tumor suppressors, immune and 922 
+
+interferon -related genes, and stemness or lineage -plasticity programs. These analyses do not prove 923 
+
+pathway causality, and they should not be read as functional validation. Their value is that they 924 
+
+prioritize coherent, patient -specific remodeling chains that can be tested experimentally. Expanding 925 
+
+this framework to larger cohorts will therefore be essential for identifying novel targets and gene sets 926 
+
+that can be exploited as glioma vulnerabilities. 927 
+
+Several limitations should be acknowledged directly. The cohort is small, DNA -dependent 928 
+
+recurrence analyses were limited to five evaluable patient pairs and predicted ORF/protein -fate 929 
+
+consequences are computational rather than direct proteomic measurements. 2 patients had lower 930 
+
+purity of either primary or recurrent tumor samples, indicating lower tumor coverage. While these 2 931 
+
+patients did not appear to be major outliers in different analyses, the results should be interpreted 932 
+
+carefully. Bulk tumor profiling cannot fully separate malignant -cell -intrinsic remodeling from changes 933 
+
+in tumor purity, lineage composition, or microenvironmental admixture. Despite these limitations, this 934 
+
+study provides a proof -of -principle framework for longitudinal long -read multi -omics in recurrent 935 
+
+glioma. Future work should extend this approach to larger molecularly stratified cohorts, integrate 936 
+
+proteomics or Ribo -seq where tissue permits, and functionally validate selected SV -, DMR -, ASTU -,937 
+
+and mutant -isoform -linked candidates. The broader implication is that precision oncology in recurrent 938 
+
+glioma may benefit from moving beyond lists of DNA alterations or gene -expression changes toward 939 
+
+patient -specific DNA -to -RNA -to -isoform -to -ORF remodeling chains. 940 
+
+941 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.12.738108 doi: bioRxiv preprint
+
+24 
+
+Methods: 942 
+
+Patient cohort 943 
+
+Among participants enrolled in a study approved by the Ethics Committee of Tohoku University 944 
+
+Hospital (2025 -1-1029), six patients with IDH -mutant astrocytoma were selected based on the 945 
+
+availability of paired tumor tissues resected at initial diagnosis and recurrence. Tumor specimens 946 
+
+were flash -frozen in liquid nitrogen immediately after surgical resection and stored at −80°C until 947 
+
+nucleic acid extraction. Peripheral blood samples were collected before the initial surgery in EDTA -948 
+
+2Na blood collection tubes, and whole blood was stored at −80°C until DNA extraction. Written 949 
+
+informed consent was obtained from all participants. Cohort information are presented in 950 
+
+Supplementary table 1. The study was approved by Tohoku University Hospital’s ethical review 951 
+
+board (# 2023 -1-446). 952 
+
+DNA extraction 953 
+
+High -molecular -weight genomic DNA was extracted using the Nanobind PanDNA kit (PacBio, Cat. 954 
+
+No. 103 -260 -000) according to the manufacturer’s protocol. For tumor specimens, approximately 10 955 
+
+mg of frozen tissue was dissected using a scalpel and homogenized by 10 strokes using a Dounce 956 
+
+homogenizer. The homogenate was then transferred to a new tube, and the remaining extraction 957 
+
+steps were performed according to the kit protocol. For matched blood samples, high -molecular -958 
+
+weight genomic DNA was extracted from 400 μL of whole blood using the whole -blood RBC lysis 959 
+
+protocol of the Nanobind PanDNA kit. Briefly, whole blood was subjected to red blood cell lysis, 960 
+
+followed by white blood cell pelleting and genomic DNA extraction using the Nanobind -based 961 
+
+workflow. DNA was assessed for quantity and quality using NanoDrop spectrophotometry, Qubit 962 
+
+fluorometry, and the Agilent Femto Pulse system with the Genomic DNA 165 kb kit (Agilent, Cat. No. 963 
+
+FP -1002 -0275). All genome quality numbers (GQN) at 10k values were greater than 7.0, with a 964 
+
+median of 9.9. 965 
+
+RNA extraction 966 
+
+Total RNA was extracted using the RNeasy Mini kit (QIAGEN, Cat. No. 74104) according to the 967 
+
+manufacturer’s protocol. Briefly, approximately 10 mg of each frozen tumor sample was 968 
+
+homogenized in QIAzol Lysis Reagent (QIAGEN, Cat. No. 79306), followed by phase separation 969 
+
+with chloroform. The aqueous phase was transferred to a new tube, and the remaining purification 970 
+
+steps were performed according to the RNeasy Mini kit protocol. Extracted RNA was assessed for 971 
+
+quantity and quality using NanoDrop spectrophotometry, Qubit fluorometry, and an Agilent 2100 972 
+
+Bioanalyzer with the RNA 6000 Nano kit (Agilent, Cat. No. 5067 -1511). All samples used had RNA 973 
+
+integrity number (RIN) values were greater than 7.0 with a median of 7.3 .974 
+
+Preparation of whole -genome sequencing libraries for long -read sequencing 975 
+
+Long -read whole -genome sequencing libraries were prepared from high -molecular -weight genomic 976 
+
+DNA using the SMRTbell Prep Kit 3.0 (PacBio, Cat. No. 102 -182 -700) according to the 977 
+
+manufacturer’s protocol. Briefly, short DNA fragments were depleted from genomic DNA samples 978 
+
+using the Short Read Eliminator kit (PacBio, Cat. No. 102 -208 -300), followed by DNA shearing using 979 
+
+the Hamilton Microlab Prep system at Haplo Pharma Inc. , Sendai, Japan . Up to 3,000 ng of genomic 980 
+
+DNA was processed using the high -mass workflow, depending on sample yield, and samples with 981 
+
+limited DNA yield were processed using the low -mass workflow. If shearing was insufficient, 982 
+
+additional shearing was performed until the average fragment size reached approximately 20 –25 kb. 983 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.12.738108 doi: bioRxiv preprint
+
+25 
+
+Sheared DNA was then converted into SMRTbell libraries using the SMRTbell Prep Kit 3.0. The final 984 
+
+libraries were evaluated using the Agilent Femto Pulse system at Haplo Pharma Inc ., Sendai, Japan ,985 
+
+and libraries with an average size of 15 –20 kb were used for sequencing. 986 
+
+Libraries were sequenced on the PacBio Revio sequencing platform at PacBio, Menlo Park, CA, 987 
+
+USA. Sequencing was performed with target coverages of 60× for tumor tissue samples, 988 
+
+corresponding to 1.5 SMRT Cell equivalents per sample, and 30× for blood samples, corresponding 989 
+
+to 0.75 SMRT Cell equivalents per sample. 990 
+
+Preparation of Kinnex libraries for long -read RNA sequencing 991 
+
+Full -length RNA long -read sequencing libraries were prepared using the Iso -Seq Express 2.0 Kit 992 
+
+(PacBio, Cat. No. 103 -071 -500) and the Kinnex PCR 8 -fold kit (PacBio, Cat. No. 103 -071 -600) 993 
+
+according to the manufacturer’s protocol. Briefly, 300 ng of total RNA was used for cDNA synthesis, 994 
+
+followed by cDNA amplification and Kinnex PCR. The Kinnex PCR products were then used to 995 
+
+generate Kinnex arrays. For multiplex sequencing, each sample was assigned a unique barcode 996 
+
+combination. The final libraries were assessed using the Agilent Femto Pulse system. Libraries were 997 
+
+sequenced on the PacBio Revio system with a target output of 10 million HiFi reads per sample. 998 
+
+Long Read RNA data analysis 999 
+
+Long read RNA sequencing were analyzed using the isoseq -pigeon workflow ( https://isoseq.how/ ). 1000 
+
+However, for Allele specific transcript usage (ASTU), we mapped the long read RNA reads after the 1001 
+
+Refine step in the isoseq workflow. All other analysis was performed using the classical workflow 1002 
+
+and outputs. All downstream analysis was performed in R studio. 1003 
+
+Long read DNA data analysis 1004 
+
+Long read DNA sequencing was analyzed using the standard HiFi -somatic -WDL workflow 1005 
+
+(https://github.com/PacificBiosciences/HiFi -somatic -WDL ). All downstream analysis using outputs 1006 
+
+from the HiFi -somatic workflow and was performed in R studio. 1007 
+
+Long -read RNA annotation and full -length count matrix construction 1008 
+
+Pigeon filtered classification and junction outputs were parsed for each Iso -Seq sample and merged 1009 
+
+into a sample -level transcript annotation table. Isoforms were harmonized across samples using 1010 
+
+Pigeon/PacBio isoform identifiers together with junction -chain signatures to reduce sample -specific 1011 
+
+identifier ambiguity. For each transcript, we retained the associated gene, Pigeon structural 1012 
+
+category, full -length read count, transcript coordinates, coding annotation when available, predicted 1013 
+
+NMD status when available, and sample metadata. Gene -level full -length counts were calculated by 1014 
+
+summing full -length reads across all isoforms assigned to the same gene in each sample. Isoform -1015 
+
+level analyses used the harmonized isoform identifier as the primary transcript unit. 1016 
+
+Gene -level differential expression was performed using full -length read counts summed per gene 1017 
+
+and modeled with DESeq2 24 using a paired design where timepoint compared recurrent versus 1018 
+
+primary tumors. Genes with fewer than 10 total full -length reads across all samples were excluded 1019 
+
+before model fitting. Isoform -level differential abundance was similarly modeled with DESeq2 using 1020 
+
+full -length isoform counts and the same paired design. Isoforms were retained if they were detected 1021 
+
+in at least four patients in both primary and recurrent groups, had at least 10 total full -length reads, 1022 
+
+and mapped to genes passing a relaxed gene -level differential -expression screen. Gene -set activity 1023 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.12.738108 doi: bioRxiv preprint
+
+26 
+
+was estimated from variance -stabilized gene -level counts using ssGSEA across Hallmark, 1024 
+
+Reactome, oncogenic, and immunologic gene -set collections, followed by paired recurrent -primary 1025 
+
+testing. 1026 
+
+Isoform gain/loss and gene -level isoform remodeling 1027 
+
+Isoform gain and loss were evaluated using support -filtered isoforms. An isoform was considered 1028 
+
+present in a sample if it had at least five full -length reads and accounted for at least 10% of the 1029 
+
+gene’s full -length read support in that sample. High -confidence recurrent -gained or primary -lost 1030 
+
+isoforms required support in at least four patients. 1031 
+
+For gene -level isoform remodeling, we calculated isoform fractions within each gene. For gene  𝑔 ,1032 
+
+isoform  𝑖 , and group  𝑡 where  𝑡 ∈ {primary ,recurrent }, the mean isoform fraction was defined as: 1033 
+
+𝐼 𝐹 𝑔 ,𝑖 ,𝑡 = 1
+
+𝑛 𝑡 
+
+∑ 𝐶 𝑔 ,𝑖 ,𝑠 
+
+∑ 𝐶 𝑔 ,𝑗 ,𝑠 
+
+> 𝑗
+> 𝑠 ∈𝑡
+
+1035 
+
+1034 
+
+where  𝐶 𝑔 ,𝑖 ,𝑠 is the full -length read count for isoform  𝑖 of gene  𝑔 in sample  𝑠 , and the denominator is the 1036 
+
+total full -length read count for all isoforms of gene  𝑔 in that sample. 1037 
+
+For each gene, the primary -to -recurrent isoform -fraction shift for isoform  𝑖 was: 1038 
+
+𝑑𝐼 𝐹 𝑔 ,𝑖 = 𝐼 𝐹 𝑔 ,𝑖 ,recurrent − 𝐼 𝐹 𝑔 ,𝑖 ,primary 1040 
+
+1039 
+
+and the largest isoform -level usage change was: 1041 
+
+max ∣ 𝑑𝐼 𝐹 𝑔 ∣= max  
+
+> 𝑖
+
+∣ 𝑑𝐼 𝐹 𝑔 ,𝑖 ∣1043 
+
+1042 
+
+Distributional divergence between primary and recurrent isoform usage was measured using 1044 
+
+Jensen –Shannon divergence. For the primary and recurrent isoform -fraction vectors  𝑃 𝑔 and  𝑄 𝑔 :1045 
+
+𝐽𝑆𝐷 (𝑃 𝑔 , 𝑄 𝑔 ) = 1
+
+2 𝐷 𝐾𝐿 (𝑃 𝑔 ∣∣ 𝑀 𝑔 ) + 1
+
+2 𝐷 𝐾𝐿 (𝑄 𝑔 ∣∣ 𝑀 𝑔 )1047 
+
+1046 
+
+where: 1048 
+
+𝑀 𝑔 = 1
+
+2 (𝑃 𝑔 + 𝑄 𝑔 )1050 
+
+1049 
+
+and: 1051 
+
+𝐷 𝐾𝐿 (𝑃 ∣∣ 𝑀 ) = ∑ 𝑃 𝑖 
+
+> 𝑖
+
+log ( 𝑃 𝑖 
+
+𝑀 𝑖 
+
+)1053 
+
+1052 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.12.738108 doi: bioRxiv preprint
+
+27 
+
+A small pseudocount was added before normalization to avoid undefined logarithms. Genes were 1054 
+
+eligible for remodeling analysis if they had at least 20 total full -length reads and at least two 1055 
+
+expressed isoforms with at least five total full -length reads. High -confidence isoform remodeling 1056 
+
+required  𝐽𝑆𝐷 ≥ 0.10 , max ∣ 𝑑𝐼𝐹 ∣≥ 0.20 , and patient -level support in at least four patients. 1057 
+
+Dominant isoforms were defined using both group -level and patient -level support. A dominant 1058 
+
+isoform required mean isoform fraction ≥0.35, margin over the second -ranked isoform ≥0.10, and 1059 
+
+support in at least four patients. Genes were then assigned to six remodeling classes: Class A, 1060 
+
+dominant isoform switching; Class B, same dominant isoform with secondary isoform remodeling; 1061 
+
+Class C, primary dominant isoform lost; Class D, recurrent dominant isoform gained; Class E, no -1062 
+
+dominant remodeling with strong distributional change; and Class F, stable or not high -confidence 1063 
+
+remodeled. 1064 
+
+Shannon entropy analysis of isoform complexity 1065 
+
+To determine whether recurrence made isoform usage more diffuse or more focused, Shannon 1066 
+
+entropy was calculated for each gene’s primary and recurrent isoform -fraction distributions: 1067 
+
+𝐻 (𝑃 𝑔 ) = − ∑ 𝑃 𝑔 ,𝑖 
+
+> 𝑖
+
+log (𝑃 𝑔 ,𝑖 )1069 
+
+1068 
+
+and: 1070 
+
+Δ𝐻 𝑔 = 𝐻 (𝑄 𝑔 ) − 𝐻 (𝑃 𝑔 )1072 
+
+1071 
+
+where  𝑃 𝑔 and  𝑄 𝑔 are the primary and recurrent isoform -fraction vectors. Positive  Δ𝐻 indicates more 1073 
+
+diffuse isoform usage in recurrence, whereas negative  Δ𝐻 indicates more focused isoform usage. A 1074 
+
+normalized entropy was also calculated as: 1075 
+
+𝐻 norm (𝑃 𝑔 ) = 𝐻 (𝑃 𝑔 )
+
+log (𝐾 𝑔 )
+
+1077 
+
+1076 
+
+where  𝐾 𝑔 is the number of expressed isoforms. For visualization, high -divergence entropy classes 1078 
+
+used  𝐽𝑆𝐷 ≥ 0.20 and  ∣ Δ𝐻 ∣≥ 0.20 .1079 
+
+Differential transcript usage analysis 1080 
+
+Differential transcript usage was tested using DRIMSeq 16 . Full -length isoform counts were modeled 1081 
+
+within genes using a Dirichlet -multinomial framework with patient pairing. The design matrix included 1082 
+
+patient and timepoint . Only genes with at least two retained isoforms were tested. Isoforms were 1083 
+
+required to reach at least 1% within -gene proportion in at least four samples before DRIMSeq 1084 
+
+filtering. Additional DRIMSeq filters required gene expression in at least four samples, minimum 1085 
+
+gene count of 20, isoform expression in at least four samples, and minimum isoform count of 10. 1086 
+
+Gene -level and isoform -level DTU statistics were extracted, and stageR was used for two -stage 1087 
+
+adjustment of gene -level screening and isoform -level confirmation. DTU results were interpreted as 1088 
+
+statistical evidence of transcript -usage redistribution, complementary to the JSD/dIF/entropy 1089 
+
+framework, which prioritizes effect size and transcript -architecture remodeling. 1090 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.12.738108 doi: bioRxiv preprint
+
+28 
+
+Predicted ORF and protein -output annotation 1091 
+
+Genemark -hmm 17 was used to predict ORFs from long read transcripts. First, per sample long read 1092 
+
+transcript sequences were exported, and Genemark -hmm was used to predict the ORFs, limiting the 1093 
+
+predicted ORFs to maximum of one per transcript to reduce complexity, and using standard settings. 1094 
+
+Predicted ORFs were parsed from GeneMarkS -T/GeneMark transcript -coordinate GFF outputs. ORF 1095 
+
+coordinates were lifted from transcript space to genome coordinates using PacBio/Pigeon isoform 1096 
+
+exon models. Lifted ORFs were compared with canonical GENCODE v49 coding sequence 1097 
+
+annotations, prioritizing MANE Select transcripts where available, then Ensembl canonical 1098 
+
+transcripts, and otherwise the longest coding transcript. 1099 
+
+ORFs were classified relative to the canonical coding sequence as annotated/canonical, alternative 1100 
+
+canonical, upstream ORF, downstream ORF, upstream -overlapping ORF, downstream -overlapping 1101 
+
+ORF, internal ORF, N -terminal truncation, C -terminal truncation, span -both, CDS -overlap other, no 1102 
+
+canonical CDS, no ORF, or unknown/unlifted ORF. NMD potential was estimated using an exon -1103 
+
+junction -complex heuristic, where predicted stop codons located at least 55 nucleotides upstream of 1104 
+
+the last exon -exon junction were flagged as NMD -compatible. Frameshift potential was annotated for 1105 
+
+CDS -overlapping ORF classes by comparing the lifted ORF start frame with the canonical CDS start 1106 
+
+frame. ORF/protein -output consequences were treated as computational predictions and not as 1107 
+
+direct proteomic measurements. 1108 
+
+Denominator aware DNA –RNA integration framework 1109 
+
+DNA event calls were imported from the established HiFi -somatic analysis outputs, including somatic 1110 
+
+SNV/indel, SV, CNV/LOH, DMR/methylation, mutational -signature, and haplotype/allelic -context 1111 
+
+tables. The integration analysis did not re -call DNA events. Instead, DNA events were standardized 1112 
+
+to common patient, timepoint, gene, event -class, and recurrence -status fields and then linked to 1113 
+
+long -read RNA features. 1114 
+
+To avoid denominator ambiguity, DNA events were summarized using progressively RNA -aware 1115 
+
+denominators: all DNA events; DNA events occurring in RNA -detected genes; DNA events occurring 1116 
+
+in patient -matched RNA -detected patient -gene pairs; and DNA events occurring in RNA -quantifiable 1117 
+
+patient -gene pairs. A patient -gene pair required DNA and RNA information from the same patient 1118 
+
+and gene context. RNA -quantifiable patient -gene pairs required sufficient RNA support to evaluate 1119 
+
+gene expression, isoform usage, DTU, ASE/ASTU, or ORF/protein -fate features. 1120 
+
+RNA alterations were grouped into core consequence layers, including gene -expression remodeling, 1121 
+
+isoform -usage remodeling, DTU, SV -linked RNA architecture, expressed somatic ALT RNA, isoform -1122 
+
+specific mutant expression, ASE/ASTU, and predicted ORF/protein -fate consequences. RNA 1123 
+
+alterations were then stratified by DNA support specificity: high -specificity DNA –RNA/ORF support, 1124 
+
+directional or layer -concordant support, broad DNA context, no available DNA, or no detected DNA 1125 
+
+support. High -specificity support included direct relationships such as expressed somatic ALT RNA, 1126 
+
+isoform -specific mutant expression, SV -linked RNA architecture, or DNA –RNA –ORF chains. 1127 
+
+Directional/layer -concordant support included relationships such as CNV gain with increased RNA 1128 
+
+expression, CNV loss with decreased RNA expression, or compatible promoter methylation -1129 
+
+expression patterns. Broad DNA context indicated patient -matched DNA alteration in the same gene 1130 
+
+without a specific directional or event -level RNA mechanism. 1131 
+
+Layer -specific DNA –RNA analyses 1132 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.12.738108 doi: bioRxiv preprint
+
+29 
+
+For CNV -RNA coupling, recurrent -primary CNV delta was calculated for each patient -gene pair 1133 
+
+using gene -level copy -number summaries. Absolute copy -number -like changes of at least 0.5 were 1134 
+
+classified as CNV gain or loss. CNV -RNA relationships were classified as concordant when CNV 1135 
+
+gain associated with RNA upregulation or CNV loss associated with RNA downregulation, discordant 1136 
+
+when the opposite pattern was observed, or isoform/DTU/ORF -coupled when copy -number context 1137 
+
+overlapped RNA architecture remodeling without simple expression concordance. 1138 
+
+For somatic variant expression, somatic SNVs from the HiFi -somatic pipeline were scanned in 1139 
+
+genome -aligned Iso -Seq RNA BAM files. Each RNA read overlapping a somatic SNV was classified 1140 
+
+as supporting the reference allele, somatic ALT allele, other allele, deletion/gap, or no -call. High -1141 
+
+confidence RNA ALT expression required at least three ALT -supporting reads, at least five total 1142 
+
+informative reads, and ALT fraction ≥0.10. Sensitive ALT expression required at least two ALT -1143 
+
+supporting reads and ALT fraction ≥0.05. RNA reads were then linked back to Pigeon isoforms to 1144 
+
+evaluate isoform -specific mutant allele expression and predicted ORF/protein -output consequences. 1145 
+
+For mutational -signature integration, temporal somatic mutation catalogs were exported for 1146 
+
+SigProfiler -based SBS signature assignment 25,26 . Signature -context mutations were then overlaid 1147 
+
+with RNA ALT expression, recurrence -gained mutation status, isoform -specific mutant expression, 1148 
+
+nonsynonymous/splice annotation, and predicted ORF/protein -output consequences. 1149 
+
+For ASE, high -confidence germline heterozygous SNPs were selected from matched normal DNA 1150 
+
+and intersected with RNA reads. At each RNA -covered heterozygous marker, reference and 1151 
+
+alternate allele counts were obtained. Gene -level ASE was calculated by aggregating informative 1152 
+
+SNPs within each gene and sample. A gene -level ASE call required at least three informative SNPs, 1153 
+
+at least 30 total ref+alt RNA counts, gene -level FDR ≤0.05, and weighted major -allele fraction ≥0.65. 1154 
+
+Strong ASE used weighted major -allele fraction ≥0.75. High -confidence recurrent ASE candidates 1155 
+
+required at least five informative SNPs and at least 50 ref+alt RNA counts in each compared 1156 
+
+timepoint. 1157 
+
+For haplotype -resolved ASTU, Iso -Seq reads were assigned to HP1 or HP2 using normal HiPhase 1158 
+
+germline haplotype markers. HP1 and HP2 are technical haplotype labels and were not interpreted 1159 
+
+as maternal or paternal alleles. Haplotype -assigned reads were linked to Pigeon isoforms, and 1160 
+
+isoform fractions were calculated separately for each haplotype -marker group. Within -sample ASTU 1161 
+
+was summarized using HP1 -versus -HP2 JSD and maximum absolute isoform -fraction difference. 1162 
+
+Recurrence -specific ASTU was tested per patient -gene using a Poisson model comparing: 1163 
+
+read count ∼ timepoint × haplotype × isoform 1165 
+
+1164 
+
+against a reduced model without the three -way interaction: 1166 
+
+read count ∼ (timepoint + haplotype + isoform )2
+
+1168 
+
+1167 
+
+The three -way interaction tested whether haplotype -specific isoform usage changed between 1169 
+
+primary and recurrent tumors. Recurrence -ASTU candidates required sufficient reads in both 1170 
+
+timepoints and both haplotypes, at least two isoforms, FDR ≤0.10 or a recurrence -associated effect -1171 
+
+size change, and maximum interaction  ∣ 𝑑𝐼𝐹 ∣≥ 0.25 .1172 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.12.738108 doi: bioRxiv preprint
+
+30 
+
+For DMR -RNA coupling, DMRs were grouped by regulatory context, including promoter, TSS -1173 
+
+proximal, gene -body/transcript, intronic, exonic, UTR, and proximal classes. Paired recurrent -1174 
+
+primary methylation direction was summarized per patient -gene -DMR class. Promoter/TSS DMRs 1175 
+
+were compared with patient -level gene expression direction and classified as concordant, 1176 
+
+discordant, stable, or insufficiently expressed. DMRs in other regulatory contexts were overlaid with 1177 
+
+isoform switching, DTU, TSS/TTS remodeling, junction remodeling, and predicted ORF/protein -fate 1178 
+
+consequences. Because methylation -RNA relationships are context -dependent, they were 1179 
+
+interpreted as associations unless supported by additional RNA architecture or ORF evidence. 1180 
+
+For SV -RNA architecture integration, SV breakpoints were annotated relative to genes, promoters, 1181 
+
+TSS/TTS windows, and Pigeon isoform boundaries. Breakpoints were linked to nearby isoform 1182 
+
+TSS/TTS or junction features, recurrently gained isoforms, SV -linked RNA junction evidence, fusion -1183 
+
+support evidence where available, isoform remodeling, and predicted ORF/protein -fate 1184 
+
+consequences. SV -linked RNA architecture support was interpreted as evidence of structural 1185 
+
+proximity or gene -level RNA architectural remodeling, not as base -pair -resolution fusion validation 1186 
+
+unless direct fusion support was present. 1187 
+
+Targeted biological gene -set integration 1188 
+
+Targeted biological gene sets were analyzed using the same standardized DNA –RNA integration 1189 
+
+framework. For each gene set, patient -gene pairs were annotated for DNA events, RNA 1190 
+
+consequences, expressed somatic ALT RNA, isoform -specific mutant expression, SV -linked RNA 1191 
+
+architecture, methylation -RNA coupling, isoform/DTU remodeling, and predicted ORF/protein -fate 1192 
+
+consequences. Gene -patient pairs were classified as DNA -only, RNA -only, DNA –RNA coupled, or 1193 
+
+multi -layer DNA –RNA coupled. Candidate prioritization used a weighted score incorporating target 1194 
+
+priority, recurrence -gained DNA events, number of DNA layers, splice -site/splice -region variants, 1195 
+
+SVs, CNVs, promoter DMRs, mutational -signature context, gene -expression change, isoform/DTU 1196 
+
+remodeling, somatic ALT RNA expression, isoform -specific mutant expression, SV -linked RNA 1197 
+
+architecture, methylation -RNA coupling, predicted ORF/protein -fate evidence, and recurrence across 1198 
+
+patients. These scores were used only to rank and summarize candidate patterns, not as validation 1199 
+
+of causality. 1200 
+
+The targeted gene sets used for the biological integration figure were: 1201 
+
+Splicing regulators and RNA -binding protein s: SF3B1, SRSF2, U2AF1, U2AF2, ZRSR2, PRPF8, 1202 
+
+SNRNP200, SF3A1, SF3A2, SF3A3, SF3B2, SF3B3, SF3B4, SNRPA1, SNRPB, SNRPC, SNRPD1, 1203 
+
+SNRPD2, SNRPD3, SNRPE, SNRPF, SNRPG, SRSF1, SRSF3, SRSF6, SRSF7, SRSF9, TRA2A, 1204 
+
+TRA2B, HNRNPA1, HNRNPA2B1, HNRNPC, HNRNPK, HNRNPM, PTBP1, PTBP2, QKI, RBFOX1, 1205 
+
+RBFOX2, ESRP1, ESRP2, MBNL1, MBNL2, CELF1, NOVA1, NOVA2, RBM10, RBM15, RBM39, 1206 
+
+DDX5, DDX17, DHX9, DHX15, DHX16, DHX38, EFTUD2, BUD13, SNW1. 1207 
+
+Glioma drivers and tumor suppressors: IDH1, IDH2, TP53, ATRX, EGFR, PTEN, NF1, RB1, 1208 
+
+CDKN2A, CDKN2B, PDGFRA, MET, MDM2, MDM4, CDK4, CDK6, PIK3CA, PIK3R1, TERT, BRAF, 1209 
+
+CIC, FUBP1, NOTCH1, NOTCH2, SETD2, ARID1A, SMARCA4, BCOR, KMT2D, KDM6A, MYC, 1210 
+
+MYCN. 1211 
+
+Immune, antigen -presentation, and interferon -related genes: HLA -A, HLA -B, HLA -C, HLA -DRA, 1212 
+
+HLA -DRB1, HLA -DPA1, HLA -DPB1, B2M, TAP1, TAP2, TAPBP, NLRC5, CIITA, IFNGR1, IFNGR2, 1213 
+
+JAK1, JAK2, STAT1, STAT2, IRF1, IRF7, IRF9, ISG15, IFIT1, IFIT2, IFIT3, MX1, OAS1, CXCL9, 1214 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.12.738108 doi: bioRxiv preprint
+
+31 
+
+CXCL10, CXCL11, CD274, PDCD1LG2, CTLA4, LAG3, HAVCR2, TIGIT, LGALS9, CD47, SIRPA, 1215 
+
+VTCN1, IDO1, IDO2, CSF1, CSF1R, AIF1, ITGAM, CD68, CD163, MRC1, LST1, TYROBP, TREM2, 1216 
+
+FCGR1A, FCGR2A, CX3CR1, CD3D, CD3E, CD8A, CD8B, GZMB, PRF1, NKG7, GNLY, CXCR3, 1217 
+
+CCR5. 1218 
+
+Stemness and lineage -plasticity genes: SOX2, POU3F2, SALL2, OLIG2, NES, PROM1, CD44, 1219 
+
+BMI1, MYC, MYCN, ASCL1, OLIG1, DLL3, SOX10, PDGFRA, BCAN, DCX, NKX2 -2, CSPG4, 1220 
+
+GFAP, AQP4, ALDH1L1, VIM, LCN2, SLC1A3, FABP7, CLU, NOTCH1, NOTCH2, NOTCH3, DLL1, 1221 
+
+JAG1, JAG2, HES1, HES5, HEY1, YAP1, WWTR1, TEAD1, TEAD2, TEAD3, TEAD4, LATS1, 1222 
+
+LATS2, MST1, STK4, STK3. 1223 
+
+1224 
+
+Acknowledgments : This work was supported by Biomedical Research Core of Tohoku University 1225 
+
+Graduate School of Medicine. A part of this study was supported by the Support system for young 1226 
+
+researchers to use research equipment, instruments, and devices in Tohoku University. The authors 1227 
+
+report no conflict of interest regarding this work. A large language model (LLM; ChatGPT) was used 1228 
+
+for language editing and code development. 1229 
+
+Funding : This work was funded by PacBio SMRT Cancer grant and the Japan Society for 1230 
+
+Promotion of Science (JSPS) grant (#23H02741) for S.R. 1231 
+
+Author contributions : S.R.: Conception, Funding, Formal analysis & Bioinformatics, writing. S.R., 1232 
+
+D.A., M.K.: Study design. D.A., S.Y., M.K.: Sample/cohort collection. D.A.: Sequencing libraries 1233 
+
+preparation. D.A., S.Y., M.K., H.E., K.N.: review and editing. 1234 
+
+Data availability : Raw long read RNA and DNA sequencing data were deposited in sequencing 1235 
+
+read archive (SRA) under project number: 1236 
+
+1237 
+
+1238 
+
+1239 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.12.738108 doi: bioRxiv preprint
+
+32 
+
+References: 1240 
+
+1 Price, M. et al. CBTRUS Statistical Report: Primary Brain and Other Central Nervous 1241 
+
+System Tumors Diagnosed in the United States in 2017 -2021. Neuro Oncol 26 , vi1 -1242 
+
+vi85, doi:10.1093/neuonc/noae145 (2024). 1243 
+
+2 Stupp, R. et al. Radiotherapy plus concomitant and adjuvant temozolomide for 1244 
+
+glioblastoma. N Engl J Med 352 , 987 -996, doi:10.1056/NEJMoa043330 (2005). 1245 
+
+3 Louis, D. N. et al. The 2021 WHO Classification of Tumors of the Central Nervous 1246 
+
+System: a summary. Neuro Oncol 23 , 1231 -1251, doi:10.1093/neuonc/noab106 1247 
+
+(2021). 1248 
+
+4 Kim, J. et al. Spatiotemporal Evolution of the Primary Glioblastoma Genome. 1249 
+
+Cancer Cell 28 , 318 -328, doi:10.1016/j.ccell.2015.07.013 (2015). 1250 
+
+5 Ceccarelli, M. et al. Molecular Profiling Reveals Biologically Discrete Subsets and 1251 
+
+Pathways of Progression in Diffuse Glioma. Cell 164 , 550 -563, 1252 
+
+doi:10.1016/j.cell.2015.12.028 (2016). 1253 
+
+6 Barthel, F. P. et al. Longitudinal molecular trajectories of diffuse glioma in adults. 1254 
+
+Nature 576 , 112 -120, doi:10.1038/s41586 -019 -1775 -1 (2019). 1255 
+
+7 Varn, F. S. et al. Glioma progression is shaped by genetic evolution and 1256 
+
+microenvironment interactions. Cell 185 , 2184 -2199.e2116, 1257 
+
+doi:10.1016/j.cell.2022.04.038 (2022). 1258 
+
+8 Vallentgoed, W. R. et al. Evolutionary trajectories of IDH -mutant astrocytoma 1259 
+
+identify molecular grading markers related to cell cycling. Nat Cancer 6, 1693 -1713, 1260 
+
+doi:10.1038/s43018 -025 -01023 -z (2025). 1261 
+
+9 Rodriguez Almaraz, E. et al. Longitudinal profiling of IDH -mutant astrocytomas 1262 
+
+reveals acquired RAS -MAPK pathway mutations associated with inferior survival. 1263 
+
+Neurooncol Adv 7, vdaf024, doi:10.1093/noajnl/vdaf024 (2025). 1264 
+
+10 Rautajoki, K. J. et al. Genomic characterization of IDH -mutant astrocytoma 1265 
+
+progression to grade 4 in the treatment setting. Acta Neuropathol Commun 11 , 176, 1266 
+
+doi:10.1186/s40478 -023 -01669 -9 (2023). 1267 
+
+11 Tang, J. et al. Protein -based classification reveals an immune -hot subtype in IDH 1268 
+
+mutant astrocytoma with worse prognosis. Cancer Cell 43 , 2136 -2155.e2114, 1269 
+
+doi:10.1016/j.ccell.2025.08.006 (2025). 1270 
+
+12 Shi, X. et al. Transcript isoform diversity defines molecular subtypes and prognosis 1271 
+
+in acute myeloid leukemia through long -read sequencing. Cell Rep 44 , 116216, 1272 
+
+doi:10.1016/j.celrep.2025.116216 (2025). 1273 
+
+13 Dondi, A. et al. Detection of isoforms and genomic alterations by high -throughput 1274 
+
+full -length single -cell RNA sequencing in ovarian cancer. Nat Commun 14 , 7780, 1275 
+
+doi:10.1038/s41467 -023 -43387 -9 (2023). 1276 
+
+14 Zumalave, S. et al. Concurrent L1 retrotransposition events promote reciprocal 1277 
+
+translocations in human tumorigenesis. Science 392 , eaee4513, 1278 
+
+doi:10.1126/science.aee4513 (2026). 1279 
+
+15 O'Neill, K. et al. Long -read sequencing of an advanced cancer cohort resolves 1280 
+
+rearrangements, unravels haplotypes, and reveals methylation landscapes. Cell 1281 
+
+Genom 4, 100674, doi:10.1016/j.xgen.2024.100674 (2024). 1282 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.12.738108 doi: bioRxiv preprint
+
+33 
+
+16 Nowicka, M. & Robinson, M. D. DRIMSeq: a Dirichlet -multinomial framework for 1283 
+
+multivariate count outcomes in genomics. F1000Res 5, 1356, 1284 
+
+doi:10.12688/f1000research.8900.2 (2016). 1285 
+
+17 Lukashin, A. V. & Borodovsky, M. GeneMark.hmm: new solutions for gene finding. 1286 
+
+Nucleic Acids Res 26 , 1107 -1115, doi:10.1093/nar/26.4.1107 (1998). 1287 
+
+18 Wang, J. et al. Clonal evolution of glioblastoma under therapy. Nat Genet 48 , 768 -1288 
+
+776, doi:10.1038/ng.3590 (2016). 1289 
+
+19 Brat, D. J. et al. Comprehensive, Integrative Genomic Analysis of Diffuse Lower -1290 
+
+Grade Gliomas. N Engl J Med 372 , 2481 -2498, doi:10.1056/NEJMoa1402121 (2015). 1291 
+
+20 Spitzer, A. et al. Deciphering the longitudinal trajectories of glioblastoma 1292 
+
+ecosystems by integrative single -cell genomics. Nat Genet 57 , 1168 -1178, 1293 
+
+doi:10.1038/s41588 -025 -02168 -4 (2025). 1294 
+
+21 Dekker, L. J. M. et al. Multiomics profiling of paired primary and recurrent 1295 
+
+glioblastoma patient tissues. Neurooncol Adv 2, vdaa083, 1296 
+
+doi:10.1093/noajnl/vdaa083 (2020). 1297 
+
+22 Veiga, D. F. T. et al. A comprehensive long -read isoform analysis platform and 1298 
+
+sequencing resource for breast cancer. Sci Adv 8, eabg6711, 1299 
+
+doi:10.1126/sciadv.abg6711 (2022). 1300 
+
+23 Shi, Q., Li, X., Liu, Y., Chen, Z. & He, X. FLIBase: a comprehensive repository of full -1301 
+
+length isoforms across human cancers and tissues. Nucleic Acids Res 52 , D124 -1302 
+
+d133, doi:10.1093/nar/gkad745 (2024). 1303 
+
+24 Love, M. I., Huber, W. & Anders, S. Moderated estimation of fold change and 1304 
+
+dispersion for RNA -seq data with DESeq2. Genome Biol 15 , 550, 1305 
+
+doi:10.1186/s13059 -014 -0550 -8 (2014). 1306 
+
+25 Khandekar, A. et al. Visualizing and exploring patterns of large mutational events 1307 
+
+with SigProfilerMatrixGenerator. BMC Genomics 24 , 469, doi:10.1186/s12864 -023 -1308 
+
+09584 -y (2023). 1309 
+
+26 Bergstrom, E. N. et al. SigProfilerMatrixGenerator: a tool for visualizing and 1310 
+
+exploring patterns of small mutational events. BMC Genomics 20 , 685, 1311 
+
+doi:10.1186/s12864 -019 -6041 -2 (2019). 1312 
+
+1313 
+
+1314 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.12.738108 doi: bioRxiv preprint
+
+34 
+
+1315  Figure 1. Longitudinal long -read DNA/RNA cohort design and sequencing quality control. 1316 
+
+.CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.12.738108 doi: bioRxiv preprint 35 
+
+a, Study design. Matched primary and recurrent glioma specimens were collected from six patients, 1317 
+
+together with matched blood samples for germline DNA control. Tumor and blood DNA were profiled 1318 
+
+using PacBio HiFi whole -genome sequencing, while matched tumor RNA was profiled using Kinnex 1319 
+
+full -length RNA sequencing. 1320 
+
+b, Mean tumor sequencing depth across tumor DNA samples. The recurrent sample from patient 2 1321 
+
+had low sequencing depth and was excluded from DNA -dependent analyses. 1322 
+
+c, Tumor purity estimated from DNA sequencing. 1323 
+
+d, Effective tumor coverage after accounting for tumor purity. 1324 
+
+e, Processed full -length RNA read support per sample used for isoform -level analyses. 1325 
+
+f, Pigeon structural -category composition across RNA samples, showing broadly comparable 1326 
+
+transcript annotation profiles across the cohort. 1327 
+
+g, Distribution of the number of detected isoforms per gene among support -filtered expressed 1328 
+
+isoforms. 1329 
+
+h, Relationship between gene -level full -length read support and the number of detected isoforms per 1330 
+
+gene. 1331 
+
+i, Structural -category composition stratified by gene -level isoform complexity, showing increased 1332 
+
+representation of non -canonical transcript categories among genes with higher isoform counts. 1333 
+
+1334 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.12.738108 doi: bioRxiv preprint
+
+36 
+
+1335  Figure 2. Long -read DNA sequencing reveals multi -layer small -variant, copy -number, allelic, 1336 
+
+and methylation remodeling during astrocytoma recurrence. 1337 
+
+.CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.12.738108 doi: bioRxiv preprint 37 
+
+a, Patient -level distribution of shared, primary -only, and recurrent -only somatic SNV/indel events 1338 
+
+across paired evaluable DNA samples. 1339 
+
+b, Driver -focused SNV/indel heatmap showing presence or absence of somatic SNV/indel events in 1340 
+
+recurrently altered glioma/cancer -associated genes across primary and recurrent samples. 1341 
+
+c, Paired SNV/indel evolution summary showing somatic SNV/indel burden, median variant allele 1342 
+
+fraction, and median read depth in primary and recurrent tumors. 1343 
+
+d, Glioma gene copy -number heatmap showing gain, loss, and homozygous deletion -like copy -1344 
+
+number states across selected glioma -associated genes. 1345 
+
+e, LOH and copy -neutral LOH burden across primary and recurrent tumors. 1346 
+
+f, Chromosome -level recurrent -primary change in haplotype imbalance, summarized per patient and 1347 
+
+chromosome. 1348 
+
+g, DMR burden and median absolute methylation change across paired primary and recurrent 1349 
+
+tumors. 1350 
+
+h, Cancer -gene -focused promoter DMR heatmap showing mean differential methylation across 1351 
+
+selected cancer -associated genes and samples. 1352 
+
+1353 
+
+1354 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.12.738108 doi: bioRxiv preprint
+
+38 
+
+1355  Figure 3. Long -read DNA sequencing identifies structural rearrangement, focal amplicon, and 1356 
+
+repeat -associated genome remodeling during astrocytoma recurrence. 1357 
+
+.CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.12.738108 doi: bioRxiv preprint 39 
+
+a, Structural variant burden across paired primary and recurrent tumors. 1358 
+
+b, Representative circos plots showing translocation/rearrangement architecture in patient 1 primary 1359 
+
+and recurrent tumors. 1360 
+
+c, Chromosome -level structural complexity across samples, showing patient - and chromosome -1361 
+
+specific concentration of complex rearrangement signal. 1362 
+
+d, SV type composition by sample, including deletion, duplication, insertion, inversion, and 1363 
+
+breakend -like classes. 1364 
+
+e, Shared breakpoint -cluster neighborhoods across patients and chromosomes, summarizing 1365 
+
+regional structural instability rather than exact breakpoint identity. 1366 
+
+f, Copy -number amplitude versus local breakpoint support for focal amplicon -like regions, stratified 1367 
+
+by timepoint and structural architecture class. 1368 
+
+g, RepeatMasker classes at SV breakpoints, showing the repeat contexts intersected by structural 1369 
+
+rearrangement breakpoints. 1370 
+
+h, Primary -to -recurrent mutational -process shifts across patients. 1371 
+
+1372 
+
+1373 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.12.738108 doi: bioRxiv preprint
+
+40 
+
+1374  Figure 4. Long -read transcriptome sequencing reveals gene -program and isoform -usage 1375 
+
+remodeling during astrocytoma recurrence. 1376 
+
+.CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.12.738108 doi: bioRxiv preprint 41 
+
+a, Gene -level differential expression volcano plot comparing recurrent versus primary glioma using 1377 
+
+full -length Pigeon read counts summed per gene and modeled with a paired design. 1378 
+
+b, Gene Ontology biological process over -representation analysis of recurrently upregulated genes, 1379 
+
+highlighting mitochondrial respiration, electron transport, oxidative phosphorylation, proton 1380 
+
+transmembrane transport, and ATP synthesis -associated programs. 1381 
+
+c, Isoform -level differential expression volcano plot comparing recurrent versus primary tumors using 1382 
+
+support -filtered full -length isoform counts. 1383 
+
+d, Paired recurrent gain and loss of expressed isoforms per patient using high -confidence isoform 1384 
+
+support filters. 1385 
+
+e, Gene -level isoform remodeling map based on Jensen –Shannon divergence and maximum 1386 
+
+absolute delta isoform fraction. Dashed lines indicate the high -confidence thresholds used for 1387 
+
+remodeling calls: JSD ≥ 0.1 and max |dIF| ≥ 0.2, with patient support ≥4. 1388 
+
+f, JSD –entropy quadrant composition across A –F isoform remodeling classes. JSD captures overall 1389 
+
+primary -recurrent isoform -distribution divergence, whereas recurrent -primary Shannon entropy shift 1390 
+
+captures whether recurrent isoform usage becomes more diffuse, more focused, or remains similarly 1391 
+
+distributed. 1392 
+
+g, DRIMSeq gene -level adjusted P -value distribution from paired differential transcript usage 1393 
+
+analysis. 1394 
+
+h, Gene -weighted Pigeon structural -category composition among DTU genes in primary and 1395 
+
+recurrent tumors. 1396 
+
+i, Mean net recurrent -primary DTU usage shift by Pigeon structural category, showing category -level 1397 
+
+directionality of transcript usage changes. 1398 
+
+1399 
+
+1400 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.12.738108 doi: bioRxiv preprint
+
+42 
+
+1401  Figure 5. Isoform remodeling is linked to predicted ORF and protein -output consequences 1402 
+
+during astrocytoma recurrence. 1403 
+
+.CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.12.738108 doi: bioRxiv preprint 43 
+
+a, Predicted ORF detection rate among protein -coding and noncoding transcript contexts in primary 1404 
+
+and recurrent tumors. 1405 
+
+b, Global distribution of predicted ORF classes across all support -filtered transcripts. ORF classes 1406 
+
+include canonical or alternative canonical ORFs, N - or C -terminal truncation -like ORFs, internal 1407 
+
+ORFs, upstream or downstream ORF configurations, transcripts without canonical CDS annotation, 1408 
+
+and transcripts without a predicted ORF. 1409 
+
+c, Predicted ORF -class composition in primary and recurrent tumors across all support -filtered 1410 
+
+transcripts. 1411 
+
+d, Recurrent -primary shift in global ORF -class fraction across all support -filtered transcripts. Positive 1412 
+
+values indicate relative enrichment in recurrent tumors; negative values indicate relative depletion. 1413 
+
+e, ORF -class composition of high -confidence primary -lost and recurrent -gained isoforms. 1414 
+
+f, Predicted ORF -class transitions among Class A dominant -switch genes, comparing the dominant 1415 
+
+isoform ORF class in primary and recurrent tumors. 1416 
+
+g, Dominant predicted protein -output consequence across A –F isoform remodeling classes. 1417 
+
+Consequences include same predicted protein, ORF gain or loss in recurrence, N - or C -terminal 1418 
+
+change, internal or complex change, major length change, and missing ORF in both groups. 1419 
+
+h, ORF -class composition of DTU -associated isoforms stratified by recurrent usage direction. 1420 
+
+i, Alluvial plot linking dominant transcript structural category and dominant predicted ORF class in 1421 
+
+DTU genes from primary to recurrent tumors. 1422 
+
+1423 
+
+1424 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.12.738108 doi: bioRxiv preprint
+
+44 
+
+1425  Figure 6. Denominator -aware integration of DNA remodeling with RNA and predicted ORF 1426 
+
+consequences. 1427 
+
+.CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.12.738108 doi: bioRxiv preprint 45 
+
+a, DNA remodeling event universe summarized by DNA layer family. DNA event families include 1428 
+
+CNV, DMR/methylation, SV -linked RNA -architecture support, SV/rearrangement, SNV/indel, 1429 
+
+compound cis events, and multi -layer DNA events. 1430 
+
+b, Core RNA alteration universe summarized by RNA alteration layer. RNA layers include gene -1431 
+
+expression change, isoform -usage remodeling, predicted ORF/protein -fate consequence, expressed 1432 
+
+somatic ALT RNA, differential transcript usage, SV -linked RNA architecture, ASE/ASTU, and 1433 
+
+isoform -specific mutant expression. Methylation –RNA coupling was tracked separately as prior 1434 
+
+DNA –RNA support rather than counted as a core RNA alteration class. 1435 
+
+c, DNA event denominators used for RNA -aware integration. Bars show the global DNA event 1436 
+
+universe and progressively stricter RNA -aware subsets: DNA events in RNA -detected genes, DNA 1437 
+
+events in RNA -detected patient -gene pairs, and DNA events in RNA -quantifiable patient -gene pairs. 1438 
+
+d, DNA support specificity by RNA alteration layer. Fractions are recalculated within each RNA 1439 
+
+alteration layer and stratified as high -specificity DNA –RNA/ORF support, directional/layer -1440 
+
+concordant DNA support, broad DNA context, or no support/not DNA -evaluable. 1441 
+
+e, Global DNA support specificity among RNA -altered patient -gene pairs, separating high -specificity 1442 
+
+support from directional/layer -concordant support, broad DNA context, and no support/not DNA -1443 
+
+evaluable categories. 1444 
+
+f, High -confidence mechanistic candidate classes, showing the top DNA –RNA and DNA –RNA –ORF 1445 
+
+support categories. Categories include SV -linked RNA architecture, SV -linked isoform remodeling, 1446 
+
+CNV loss with decreased expression, expressed variants with predicted ORF consequences, SV -1447 
+
+linked isoform -to -ORF chains, and CNV gain with increased expression. 1448 
+
+g, Candidate -focused alluvial plot linking DNA mechanism, mechanistic rule, RNA consequence, 1449 
+
+predicted ORF/protein -fate category, and support tier among high -confidence DNA –RNA and DNA –1450 
+
+RNA –ORF chains. Background rows, broader context rows, and DNA -only rows are excluded to 1451 
+
+emphasize the most interpretable connected events. 1452 
+
+1453 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.12.738108 doi: bioRxiv preprint
+
+46 
+
+1454  Figure 7. Copy -number and expressed sequence variants connect DNA remodeling to RNA 1455 
+
+and predicted ORF consequences. 1456 
+
+.CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.12.738108 doi: bioRxiv preprint 47 
+
+a, DNA remodeling layers mapped to RNA consequence classes. Point size indicates the number of 1457 
+
+patient -gene pairs, and color indicates the fraction of events within each DNA layer mapping to the 1458 
+
+indicated RNA consequence. RNA consequence classes include expression up, expression down, 1459 
+
+expression plus isoform change, isoform/DTU remodeling, and dominant isoform change. 1460 
+
+b, CNV delta -linked RNA remodeling classes across patient -gene pairs. Categories summarize 1461 
+
+directional relationships between recurrent -primary CNV change and RNA expression change, 1462 
+
+including CNV gain with RNA up, CNV loss with RNA up, CNV loss with RNA down, CNV gain with 1463 
+
+RNA down, and CNV -associated isoform/ORF remodeling. 1464 
+
+c, CNV -linked RNA coupling by patient. Stacked bars summarize patient -level counts of CNV 1465 
+
+gain/RNA down discordance, CNV gain/RNA up concordance, and CNV -associated 1466 
+
+isoform/DTU/ORF -coupled events. 1467 
+
+d, Somatic variant RNA -expression classes. DNA variants were stratified according to RNA 1468 
+
+coverage and ALT RNA evidence, including DNA -only variants without RNA coverage, RNA -covered 1469 
+
+but non -informative variants, variants excluded for low base -informative RNA coverage, DNA -1470 
+
+only/RNA REF -only variants, high -confidence expressed somatic variants, ambiguous low -level RNA 1471 
+
+evidence, and sensitive expressed -variant calls. 1472 
+
+e, Isoform -specific mutant -expression classes among RNA -informative variants. Categories 1473 
+
+distinguish variants without ALT isoform evidence from ALT -expressed variants without isoform 1474 
+
+specificity and smaller subsets with isoform -specific ALT concentration or related isoform -specific 1475 
+
+mutant -expression patterns. 1476 
+
+f, Predicted ORF/protein -output event families among mutation -linked isoform rows. Events include 1477 
+
+amino -acid output change, ORF -annotated transcripts without strong ORF delta, transcript 1478 
+
+remodeling, frameshift remodeling, NMD remodeling, ORF -class switching, ambiguous ORF/protein -1479 
+
+output states, and ORF gain or loss. 1480 
+
+g, COSMIC SBS signatures assigned to recurrence -gained mutations by patient. Signature groups 1481 
+
+are summarized as clock -like/background, MMR -like, or other/uncertain mutational -process 1482 
+
+contexts. 1483 
+
+h, Signature -context mutations linked to RNA expression. Classes separate DNA -only signature -1484 
+
+context mutations from RNA -expressed, recurrence -gained, treatment/MMR -associated, 1485 
+
+nonsynonymous/splice -linked, and isoform -specific mutant -expression subsets. 1486 
+
+1487 
+
+1488 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.12.738108 doi: bioRxiv preprint
+
+48 
+
+1489  Figure 8. Allele -specific expression and allele/haplotype -specific transcript usage reveal 1490 
+
+recurrence -associated RNA remodeling. 1491 
+
+.CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.12.738108 doi: bioRxiv preprint 49 
+
+a, DNA support for high -confidence recurrent ASE candidates. Bars stratify recurrent ASE transitions 1492 
+
+by primary DNA support layer, including LOH/allele -specific copy -number support and RNA -only 1493 
+
+ASE without patient -specific DNA support. 1494 
+
+b, LOH/allele -specific CNV -supported ASE candidates stratified by bulk Pigeon isoform -remodeling 1495 
+
+class. Class F indicates genes stable or not high -confidence remodeled in the bulk A –F isoform 1496 
+
+framework. 1497 
+
+c, Patient burden of LOH/allele -specific CNV -supported ASE genes with isoform or predicted 1498 
+
+ORF/protein -output remodeling. Bars summarize predicted consequence classes per patient. 1499 
+
+d, Predicted protein -output consequences of LOH/allele -specific CNV -supported ASE genes, 1500 
+
+stratified by ASE transition class. Consequence classes include same predicted protein, altered 1501 
+
+protein isoform, ORF -class change, ORF/protein gain or loss, no predicted ORF in both groups, and 1502 
+
+NMD or frameshift -rate shift. 1503 
+
+e, Relationship between ASTU and gene -level ASE across upstream DNA mechanism classes. 1504 
+
+Counts are stratified by whether ASTU occurred with or without detectable gene -level ASE and by 1505 
+
+DNA mechanism context, including broad CNV context, DMR/methylation support, multi -strict DNA 1506 
+
+mechanism, no detected upstream DNA mechanism, and strict CNV -coupled support. 1507 
+
+f, Relationship between ASTU and gene -level ASE across downstream fate axes. Counts are 1508 
+
+stratified by whether ASTU occurred with or without detectable gene -level ASE and by downstream 1509 
+
+fate category, including ASTU without detected dominant fate switch, bulk isoform -remodeling 1510 
+
+context, dominant isoform -switch consequence, and predicted ORF/protein -fate consequence. 1511 
+
+g, Four -state haplotype -marker ASTU example for GFPT2 in patient 3. Bars show isoform fractions 1512 
+
+for HP1 and HP2 marker -assigned reads in primary and recurrent tumors, illustrating loss of 1513 
+
+haplotype -specific transcript usage in recurrence. 1514 
+
+h, Four -state haplotype -marker ASTU example for FAM120B in patient 3. Bars show isoform 1515 
+
+fractions for HP1 and HP2 marker -assigned reads in primary and recurrent tumors, illustrating a 1516 
+
+possible recurrence -associated direction switch in haplotype -specific isoform preference. 1517 
+
+1518 
+
+1519 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.12.738108 doi: bioRxiv preprint
+
+50 
+
+1520  Figure 9. DMRs and structural variants connect focal non -CNV DNA remodeling to RNA 1521 
+
+architecture and predicted ORF consequences. 1522 
+
+.CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.12.738108 doi: bioRxiv preprint 51 
+
+a, DMR pair status by regulatory class. Patient -gene DMR classes are stratified by genomic context, 1523 
+
+including UTR, promoter, intronic, gene -annotated, and exonic DMRs, and by temporal status as 1524 
+
+shared, primary -only, or recurrent -only. 1525 
+
+b, Direction -aware DMR -RNA relationships by patient. Patient -gene pairs are classified by whether 1526 
+
+DMR direction and RNA change are compatible with promoter hypermethylation/RNA down, 1527 
+
+promoter hypomethylation/RNA up, discordant promoter relationships, isoform or UTR remodeling, 1528 
+
+or other DMR -linked contexts. 1529 
+
+c, Dominant isoform switch classes among DMR -linked patient -gene pairs. Bars summarize whether 1530 
+
+genes show no dominant isoform switch, dominant structural -category switch, recurrent dominant 1531 
+
+isoform gain, primary dominant isoform loss, or dominant isoform switching. 1532 
+
+d, Directional DMR -to -isoform -to -predicted ORF/protein alluvial. Flows connect recurrent methylation 1533 
+
+direction, DMR context, isoform event class, and predicted ORF/protein event class among DMR -1534 
+
+linked rows with specific isoform and ORF/protein consequence annotations. 1535 
+
+e, Focal non -CNV DNA -RNA remodeling burden by patient. Stacked bars summarize patient -level 1536 
+
+counts across focal DNA layers, including compound cis events, DMRs, DNA -supported RNA 1537 
+
+fusions, LOH, and SVs. 1538 
+
+f, RNA consequence composition within each SV subtype. Fractions are shown separately for 1539 
+
+breakend -like, deletion, duplication, and insertion SV classes and stratified by RNA consequence 1540 
+
+class. 1541 
+
+g, SV subtype by Pigeon bulk isoform -remodeling class. Heatmap values indicate SV event counts 1542 
+
+across SV subtype and A –F Pigeon remodeling classes. 1543 
+
+h, Recurrent -only SV subtype by predicted ORF/protein consequence. Heatmap values indicate 1544 
+
+recurrent -only SV -linked event counts across SV subtype and ORF/protein consequence class. 1545 
+
+1546 
+
+1547 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.12.738108 doi: bioRxiv preprint
+
+52 
+
+1548  Figure 10. Targeted biological gene -set integration reveals convergence of DNA –RNA –ORF 1549 
+
+remodeling on recurrence -relevant programs. 1550 
+
+.CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.12.738108 doi: bioRxiv preprint 53 
+
+a, Collapsed mechanistic flow for splicing and RNA -binding protein regulator genes. Flows connect 1551 
+
+DNA remodeling class, RNA consequence class, and predicted ORF/protein -fate class across 1552 
+
+splicing/RBP gene -patient pairs. Rare low -count paths are collapsed for readability. 1553 
+
+b, Driver and tumor -suppressor outcome burden by patient. Stacked bars summarize target -gene 1554 
+
+hits across outcome classes, including DNA -only alteration, expressed somatic ALT, isoform -specific 1555 
+
+mutant expression, methylation –RNA coupling, ORF/protein -fate context, recurrence -expressed 1556 
+
+somatic ALT, SV -linked RNA architecture, and SV/ORF -linked RNA architecture. 1557 
+
+c, Collapsed mechanistic flow for driver and tumor -suppressor genes. Flows connect DNA 1558 
+
+remodeling class, RNA consequence class, and predicted ORF/protein -fate class, with rare low -1559 
+
+count paths collapsed for readability. 1560 
+
+d, Immune, antigen -presentation, and interferon activity summary. Bars show gene -patient pair 1561 
+
+counts classified as DNA –RNA coupled, RNA -only microenvironment or state signal, DNA -only 1562 
+
+alteration, or no clear immune change. 1563 
+
+e, Immune, antigen -presentation, and interferon outcome burden by patient. Stacked bars 1564 
+
+summarize outcome classes among immune -related target genes, including DNA -only alteration, 1565 
+
+isoform/usage remodeling, methylation –RNA coupling, ORF/protein -fate context, SV -linked RNA 1566 
+
+architecture, and SV/ORF -linked RNA architecture. 1567 
+
+f, Collapsed mechanistic flow for immune, antigen -presentation, and interferon genes. Flows 1568 
+
+connect DNA remodeling class, RNA consequence class, and predicted ORF/protein -fate class, with 1569 
+
+rare low -count paths collapsed for readability. 1570 
+
+g, Stemness and lineage -plasticity activity summary. Bars show gene -patient pair counts classified 1571 
+
+as DNA –RNA coupled, RNA -only state change, isoform -remodeling context, DNA -only alteration, or 1572 
+
+no clear stemness/lineage change. 1573 
+
+h, Stemness and lineage -plasticity outcome burden by patient. Stacked bars summarize outcome 1574 
+
+classes among stemness/lineage target genes, including DNA -only alteration, expressed somatic 1575 
+
+ALT, isoform/usage remodeling, methylation –RNA coupling, ORF/protein -fate context, recurrence -1576 
+
+expressed somatic ALT, SV -linked RNA architecture, and SV/ORF -linked RNA architecture. 1577 
+
+1578 
+
+1579 
+
+1580 
+
+1581
