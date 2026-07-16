@@ -6,32 +6,29 @@
 </div>
 
 ## 每次日报
-- 最新运行日期：2026-07-15
-- 运行时间：2026-07-15 22:11:10 UTC
+- 最新运行日期：2026-07-16
+- 运行时间：2026-07-16 22:45:40 UTC
 - 运行状态：成功
-- 本次总论文数：4
-- 精读区：1
-- 速读区：3
+- 本次总论文数：3
+- 精读区：2
+- 速读区：1
 
 ### 今日简报（AI）
-今日精读1篇、速读3篇，重点关注直肠癌上皮干细胞命运决定放化疗反应的研究（评分9.0/10）。值得关注的方向是干细胞机制与治疗抵抗，并留意多组学及小RNA分析在肿瘤复发中的进展。建议普通读者优先阅读精读论文，并延伸关注相关肿瘤干细胞与预后标志物研究。
-- 详情：[/202607/15/README](/202607/15/README)
+今日精读2篇、速读1篇，聚焦肿瘤免疫微环境、T细胞扩增及代谢对免疫治疗的影响。最值得关注9.0分IL-2纳米颗粒促进CD8⁺T细胞扩增并重编程肿瘤微环境，以及8.0分高血糖通过GLUT1表观遗传改写削弱食管癌免疫疗法。建议后续重点探索纳米载体联合免疫治疗策略，同时评估患者血糖水平对免疫应答的潜在影响。
+- 详情：[/202607/16/README](/202607/16/README)
 
 ### 精读区论文标签
-1. [Epithelial Stem Cell Fate Determines Chemoradiotherapy Response in Rectal Cancer](/202607/15/biorxiv-10-64898-2026-07-15-736775-v1-epithelial-stem-cell-fate-determines-chemoradiotherapy-response-in-rectal-cancer)  
+1. [High-Density Wild-Type IL-2 Nanoparticles Preferentially Enhance CD8⁺ T-Cell Expansion and Reprogram the Tumor Microenvironment](/202607/16/biorxiv-10-64898-2026-07-14-738558-v1-high-density-wild-type-il-2-nanoparticles-preferentially-enhance-cd8-t-cell-expansion-and-reprogram-the-tumor-microenvironment)  
    标签：评分：9.0/10、query:neo-resist
-   evidence：单细胞分析直肠癌类器官揭示干细胞命运决定放化疗反应
+   evidence：IL-2纳米颗粒重编程肿瘤微环境以克服免疫治疗耐药
+2. [High glucose confers senescence resistance via GLUT1 epigenetic rewiring to blunt immunotherapy responses in esophageal squamous cell carcinoma](/202607/16/biorxiv-10-64898-2026-07-15-738372-v1-high-glucose-confers-senescence-resistance-via-glut1-epigenetic-rewiring-to-blunt-immunotherapy-responses-in-esophageal-squamous-cell-carcinoma)  
+   标签：评分：8.0/10、query:neo-resist
+   evidence：通过GLUT1在食管鳞癌中介导免疫治疗耐药的机制
 
 ### 速读区论文标签
-1. [ORBIT: Annotation-Aware Empirical Enrichment and Semantic Reranking for Interpretable Functional-Class Recovery](/202607/15/biorxiv-10-64898-2026-07-01-735870-v1-orbit-annotation-aware-empirical-enrichment-and-semantic-reranking-for-interpretable-functional-class-recovery)  
-   标签：评分：7.0/10、query:neo-resist
-   evidence：ORBIT基因集富集工具可用于耐药转录组分析
-2. [Long read multi-omics sequencing reveals DNA-to-RNA evolutionary remodeling trajectories of recurrent astrocytoma](/202607/15/biorxiv-10-64898-2026-07-12-738108-v1-long-read-multi-omics-sequencing-reveals-dna-to-rna-evolutionary-remodeling-trajectories-of-recurrent-astrocytoma)  
+1. [Paired Tumor Biopsies Reveal Spatiotemporal Myeloid Remodeling After Local Chemotherapy in Glioblastoma](/202607/16/biorxiv-10-64898-2026-05-13-725006-v2-paired-tumor-biopsies-reveal-spatiotemporal-myeloid-remodeling-after-local-chemotherapy-in-glioblastoma)  
    标签：评分：6.0/10、query:neo-resist
-   evidence：复发性星形细胞瘤的多组学测序进化研究
-3. [Small-RNA Profiling Links 5'-tRNA Halves to Post-therapeutic Disease Persistence and Poor Patient Survival in Glioblastoma](/202607/15/biorxiv-10-64898-2026-07-14-738483-v1-small-rna-profiling-links-5-trna-halves-to-post-therapeutic-disease-persistence-and-poor-patient-survival-in-glioblastoma)  
-   标签：评分：6.0/10、query:neo-resist
-   evidence：小RNA转录组分析揭示与胶质母细胞瘤治疗耐药相关
+   evidence：化疗后胶质母细胞瘤中髓系细胞时空重塑，与微环境和复发相关
 
 
 <div class="dpr-home-promo-card">
