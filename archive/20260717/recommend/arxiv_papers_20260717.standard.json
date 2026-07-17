@@ -1,0 +1,348 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-07-17T20:42:37.767516+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 4,
+    "deep_cap": 6,
+    "deep_selected": 4,
+    "quick_candidates": 4,
+    "quick_skim_target": 11,
+    "quick_selected": 4
+  },
+  "deep_dive": [
+    {
+      "id": "biorxiv-10-64898-2026-07-11-737994-v1",
+      "source": "biorxiv",
+      "title": "CAR T cell foundation model predicts immunotherapy response",
+      "abstract": "Single-cell transcriptomics resolves CAR T-cell states, yet translating heterogeneous cellular signals into patient-level therapeutic response remains challenging. Existing studies primarily identify response-associated genes or cell populations through experimental and statistical analyses, but few predictive frameworks integrate gene-level structure with clinical outcomes. Here, we present gANCHOR, a T-cell foundation model built on a hierarchical hypergraph attention framework combining biologically informed representation learning with patient-level response prediction. By encoding gene-pathway relationships, gANCHOR learns pathway-aware cell embeddings that improve biological conservation and batch robustness. A cell-to-patient attention module then aggregates cellular information to infer therapeutic response. Across benchmark datasets, gANCHOR achieved the strongest overall performance in biological conservation and batch-correction assessments. In response prediction across 161 patients from five CAR T-cell studies, gANCHOR achieved an F1 score of 0.87, outperforming benchmarked single-cell foundation models. gANCHOR also identified reproducible response- and non-response-associated gene programs, providing interpretable biological insights into CAR T-cell efficacy and resistance.",
+      "authors": [
+        "Li, Y.",
+        "Fang, D.",
+        "Mao, C.",
+        "Wu, X.",
+        "Luo, Y."
+      ],
+      "primary_category": "bioinformatics",
+      "categories": [
+        "bioinformatics"
+      ],
+      "published": "2026-07-16T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.07.11.737994v1.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "Foundation model using single-cell transcriptomics and hypergraph attention to predict immunotherapy response, applicable to resistance prediction",
+      "llm_evidence_cn": "利用单细胞转录组和超图注意力机制的基础模型预测免疫治疗反应，可用于耐药预测",
+      "llm_evidence": "利用单细胞转录组和超图注意力机制的基础模型预测免疫治疗反应，可用于耐药预测",
+      "canonical_evidence": "利用单细胞转录组和超图注意力机制的基础模型预测免疫治疗反应，可用于耐药预测",
+      "llm_tldr_en": "gANCHOR is a T-cell foundation model using hierarchical hypergraph attention to integrate gene-pathway relationships and predict immunotherapy response at patient level from single-cell transcriptomics.",
+      "llm_tldr_cn": "针对单细胞数据难以整合基因结构与临床结局的问题，提出gANCHOR T细胞基础模型，采用分层超图注意力框架嵌入基因-通路关系，学习通路感知细胞嵌入，并通过细胞-患者注意力模块聚合预测免疫治疗反应，可用于评价和预测耐药。",
+      "llm_tldr": "针对单细胞数据难以整合基因结构与临床结局的问题，提出gANCHOR T细胞基础模型，采用分层超图注意力框架嵌入基因-通路关系，学习通路感知细胞嵌入，并通过细胞-患者注意力模块聚合预测免疫治疗反应，可用于评价和预测耐药。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "machine learning drug resistance prediction",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-07-11-737994-v2",
+      "source": "biorxiv",
+      "title": "CAR T cell foundation model predicts immunotherapy response",
+      "abstract": "Single-cell transcriptomics resolves CAR T-cell states, yet translating heterogeneous cellular signals into patient-level therapeutic response remains challenging. Existing studies primarily identify response-associated genes or cell populations through experimental and statistical analyses, but few predictive frameworks integrate gene-level structure with clinical outcomes. Here, we present gANCHOR, a T-cell foundation model built on a hierarchical hypergraph attention framework combining biologically informed representation learning with patient-level response prediction. By encoding gene-pathway relationships, gANCHOR learns pathway-aware cell embeddings that improve biological conservation and batch robustness. A cell-to-patient attention module then aggregates cellular information to infer therapeutic response. Across benchmark datasets, gANCHOR achieved the strongest overall performance in biological conservation and batch-correction assessments. In response prediction across 161 patients from five CAR T-cell studies, gANCHOR achieved an F1 score of 0.87, outperforming benchmarked single-cell foundation models. gANCHOR also identified reproducible response- and non-response-associated gene programs, providing interpretable biological insights into CAR T-cell efficacy and resistance.",
+      "authors": [
+        "Li, Y.",
+        "Fang, D.",
+        "Mao, C.",
+        "Wu, X.",
+        "Luo, Y."
+      ],
+      "primary_category": "bioinformatics",
+      "categories": [
+        "bioinformatics"
+      ],
+      "published": "2026-07-16T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.07.11.737994v2.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "Foundation model using single-cell transcriptomics and hypergraph attention to predict immunotherapy response, applicable to resistance prediction",
+      "llm_evidence_cn": "利用单细胞转录组和超图注意力机制的基础模型预测免疫治疗反应，可用于耐药预测",
+      "llm_evidence": "利用单细胞转录组和超图注意力机制的基础模型预测免疫治疗反应，可用于耐药预测",
+      "canonical_evidence": "利用单细胞转录组和超图注意力机制的基础模型预测免疫治疗反应，可用于耐药预测",
+      "llm_tldr_en": "gANCHOR is a T-cell foundation model using hierarchical hypergraph attention to integrate gene-pathway relationships and predict immunotherapy response at patient level from single-cell transcriptomics.",
+      "llm_tldr_cn": "针对单细胞数据难以整合基因结构与临床结局的问题，提出gANCHOR T细胞基础模型，采用分层超图注意力框架嵌入基因-通路关系，学习通路感知细胞嵌入，并通过细胞-患者注意力模块聚合预测免疫治疗反应，可用于评价和预测耐药。",
+      "llm_tldr": "针对单细胞数据难以整合基因结构与临床结局的问题，提出gANCHOR T细胞基础模型，采用分层超图注意力框架嵌入基因-通路关系，学习通路感知细胞嵌入，并通过细胞-患者注意力模块聚合预测免疫治疗反应，可用于评价和预测耐药。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "machine learning drug resistance prediction",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-07-16-738502-v1",
+      "source": "biorxiv",
+      "title": "Coupled Cell-Intrinsic and Microenvironmental Heterogeneity Drives Divergent Trajectories in Castration-Resistant Prostate Cancer",
+      "abstract": "Castration-resistant prostate cancer emerges from coupling between cell-intrinsic heterogeneity and microenvironmental constraints. Mechanistically dissecting this coupling, rather than either factor in isolation, is the central aim of this study. To systematically study the effect of intrinsic and extrinsic spatial axes on disease trajectories, we developed an integrated multiscale framework: a cellular signaling model (MHS) parameterized with TCGA genomic data from control, biochemical recurrence (BR), and treatment-resistant (TR) cohorts, coupled to a spatial agent-based model (ABM). Machine learning surrogates trained on the MHS model identified PTEN, MDM4, and AR as dominant intrinsic drivers, using SHAP-based feature ranking. Clinical validation via Kaplan-Meier and Cox regression across cBioPortal cohorts confirmed these rankings: AR alterations (median OS 20 vs. 86 months), PTEN loss (54 vs. 77 months), and MDM4 amplification (33 vs. 75 months) predicted poor overall survival outcomes independently. At the tissue scale, ABM simulations were run to study the effect of microenvironmental (cell-extrinsic) factors such as physical confinement, androgen uptake kinetics, and adhesion-motility strength, on disease progression. This spatiotemporal analysis revealed that identical genetic alterations produce varied selection outcomes depending on microenvironmental context. Extending this coupling logic to the individual patient level, we parameterized the MHS model using gene expression profiles from 14 patients in the EUREKA1 prospective registry. Patient-specific androgen sensitivity ratios, the ratio of net cell growth under high versus low testosterone, stratified patients by model-predicted androgen dependence without requiring longitudinal PSA observations and showed that PTEN deletion shifts the proliferative response toward androgen independence in a patient-specific magnitude set by the broader expression background. This provides a model-based route from genomic data at diagnosis to personalized prediction of ADT resistance risk. Together, these findings establish that CRPC emergence is an emergent property of the intrinsic-extrinsic coupling, that neither molecular nor spatial analyses in isolation can predict clinical trajectories, and that mechanistic integration of both is required for accurate patient stratification.",
+      "authors": [
+        "Kemkar, S.",
+        "Tao, M.",
+        "Ghosh, A.",
+        "Ramamurthy, A.",
+        "Radhakrishnan, R."
+      ],
+      "primary_category": "systems biology",
+      "categories": [
+        "systems biology"
+      ],
+      "published": "2026-07-17T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.07.16.738502v1.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "machine learning surrogate model for treatment resistance in prostate cancer",
+      "llm_evidence_cn": "机器学习代理模型预测前列腺癌治疗耐药",
+      "llm_evidence": "机器学习代理模型预测前列腺癌治疗耐药",
+      "canonical_evidence": "机器学习代理模型预测前列腺癌治疗耐药",
+      "llm_tldr_en": "Multiscale framework with ML surrogate identifies drivers of castration-resistant prostate cancer.",
+      "llm_tldr_cn": "该研究针对去势抵抗性前列腺癌的耐药机制，建立了整合细胞信号模型（MHS）和空间代理模型（ABM）的多尺度框架，并利用机器学习代理训练识别出PTEN、MDM4和AR作为关键内在驱动因素，揭示了细胞内在与微环境异质性耦合驱动耐药轨迹。",
+      "llm_tldr": "该研究针对去势抵抗性前列腺癌的耐药机制，建立了整合细胞信号模型（MHS）和空间代理模型（ABM）的多尺度框架，并利用机器学习代理训练识别出PTEN、MDM4和AR作为关键内在驱动因素，揭示了细胞内在与微环境异质性耦合驱动耐药轨迹。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "machine learning drug resistance prediction",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-07-17-738886-v1",
+      "source": "biorxiv",
+      "title": "Cisplatin-Induced Plasticity Drives Cross-Resistance to CDK4/6 Inhibitors and Reveals Targetable Vulnerabilities Through HDAC Inhibition in Esophageal Squamous Cell Carcinoma.",
+      "abstract": "Esophageal squamous cell carcinoma (ESCC) accounts for 90% of esophageal cancer cases worldwide and carries a poor prognosis, with overall survival below 20%. Chemotherapy remains the standard of care, yet acquired resistance is a critical barrier and the programs that establish and stabilize it are still poorly defined. Using an in vitro model of cisplatin resistance, we show that sustained platinum exposure does not drive a single, uniform resistant state but a continuum of adaptive transcriptional states. Most resistant clones presented a drug-tolerant persister (DTP)-like phenotype with stemness traits and slow-cycling behaviour. The DTP phenotype persisted after cisplatin withdrawal and was accompanied by markers of resistance, suggesting consolidation into a stable, acquired-resistance state. Unexpectedly, the effect of this reprogramming extended beyond cisplatin. Resistant clones displayed impaired cytostatic control and failed to suppress cell cycle programs upon CDK4/6 inhibition (CDK4/6i), revealing collateral cross-resistance. Multiomic profiling revealed an attenuation of the immune and inflammatory signaling expected from CDK4/6i, upregulation of immune-evasive markers and a dysregulated IFN pathway activation at baseline in cisplatin-resistant clones, reflecting an immune-evasive state consequent to cisplatin-induced reprogramming. A signature-based approach identified HDAC inhibitors as candidates for reversing resistance, and functional validation confirmed that HDACi combined with cisplatin fully restored parental-level sensitivity while also enhancing CDK4/6i efficacy, supporting epigenetic reprogramming as a strategy to counteract cross-resistance. Together, our findings define cisplatin resistance in ESCC as a reversible, epigenetically encoded and immune-evasive state, and provide a mechanistic rationale for HDACi-based combinations to restore sensitivity to both cisplatin and CDK4/6 inhibitors.",
+      "authors": [
+        "Avalos-Moreno, M.",
+        "Vigato, A.",
+        "Moresi, F.",
+        "Japon-Ruiz, D.",
+        "Beck, B.",
+        "Bisteau, X."
+      ],
+      "primary_category": "cancer biology",
+      "categories": [
+        "cancer biology"
+      ],
+      "published": "2026-07-17T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.07.17.738886v1.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "mechanisms of cisplatin-induced cross-resistance in esophageal cancer",
+      "llm_evidence_cn": "食管癌中顺铂诱导交叉耐药的机制",
+      "llm_evidence": "食管癌中顺铂诱导交叉耐药的机制",
+      "canonical_evidence": "食管癌中顺铂诱导交叉耐药的机制",
+      "llm_tldr_en": "This study reveals that cisplatin-induced plasticity drives cross-resistance to CDK4/6 inhibitors in ESCC, with drug-tolerant persister states and identifies HDAC inhibition as a vulnerability.",
+      "llm_tldr_cn": "该研究利用食管鳞癌顺铂耐药模型，发现持续铂类暴露导致适应性转录状态连续体，多数耐药克隆呈现药物耐受持久态（DTP）表型，具有干性和慢周期特征。进一步揭示通过HDAC抑制可靶向这些可塑性状态，克服交叉耐药。直接关联新辅助治疗耐药机制。",
+      "llm_tldr": "该研究利用食管鳞癌顺铂耐药模型，发现持续铂类暴露导致适应性转录状态连续体，多数耐药克隆呈现药物耐受持久态（DTP）表型，具有干性和慢周期特征。进一步揭示通过HDAC抑制可靶向这些可塑性状态，克服交叉耐药。直接关联新辅助治疗耐药机制。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "mechanisms of resistance to neoadjuvant therapy in tumors",
+      "matched_requirement_id": "req-7",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "biorxiv-10-64898-2026-07-10-737648-v1",
+      "source": "biorxiv",
+      "title": "SHINE: Decoding transcriptional-metabolic microenvironments through higher-order spatial integration",
+      "abstract": "Spatial omics technologies are expanding to co-profile transcriptomics and metabolomics on the same tissue slide, providing complementary views of gene expression and biochemical activity to reveal molecular programs within native tissue microenvironments. However, integrating the transcriptome and metabolome remains technically challenging due to spatial misalignment, resolution disparity, and higher-order cross-modality interactions. Here, we present SHINE, a hypergraph-based computational framework for the joint analysis of spatial gene expression and metabolic networks derived from the co-profiling slide, focusing on representation learning and cross-modality interaction. Across multiple datasets, SHINE consistently outperformed existing methods for domain segmentation and biomarker co-localization and provided interpretable insights into metabolic-transcriptional microenvironments. Specifically, in Parkinson's disease mouse models, SHINE accurately delineates dopaminergic neuron-depleted regions and reconstructs coherent dopamine-associated axes. In human lung and breast cancers, SHINE resolves tumor-associated spatial regions and identifies spatially organized gene-metabolite programs associated with the tumor microenvironment. SHINE enables scalable spatial multi-omics integration across diverse biological systems.",
+      "authors": [
+        "Du, B.",
+        "Wong, J. W. H.",
+        "Huang, Y."
+      ],
+      "primary_category": "bioinformatics",
+      "categories": [
+        "bioinformatics"
+      ],
+      "published": "2026-07-16T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.07.10.737648v1.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "bioinformatics framework integrating spatial transcriptomics and metabolomics",
+      "llm_evidence_cn": "整合空间转录组和代谢组的生物信息学框架",
+      "llm_evidence": "整合空间转录组和代谢组的生物信息学框架",
+      "canonical_evidence": "整合空间转录组和代谢组的生物信息学框架",
+      "llm_tldr_en": "SHINE is a hypergraph-based framework for integrating spatial transcriptomics and metabolomics, enabling analysis of tumor microenvironments and potentially applicable to drug resistance studies.",
+      "llm_tldr_cn": "SHINE是一个基于超图的计算框架，用于联合分析空间基因表达和代谢网络，解决了空间转录组和代谢组整合中的错位、分辨率差异和跨模态交互问题。该工具可广泛应用于肿瘤微环境研究，包括耐药相关的代谢重编程和转录调控。",
+      "llm_tldr": "SHINE是一个基于超图的计算框架，用于联合分析空间基因表达和代谢网络，解决了空间转录组和代谢组整合中的错位、分辨率差异和跨模态交互问题。该工具可广泛应用于肿瘤微环境研究，包括耐药相关的代谢重编程和转录调控。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "bioinformatics for drug resistance",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-03-13-708862-v2",
+      "source": "biorxiv",
+      "title": "Transcriptomic data and biomedical literature synergize in finding pharmacologic gene regulators",
+      "abstract": "Most disorders caused by a deficiency or excess of one gene product lack targeted therapies. Since these disorders can be modeled with a gene overexpression, knockout, or knockdown, drugs that oppose the transcriptomic effects of such perturbations may be promising therapeutic candidates. RNA-Sequencing (RNA-Seq) studies can fuel this drug-prioritization, but their labels, written in plain language, must be annotated manually. Hence, we introduce Signature-based Networks from Automatically Curated Knockout, Knockdown, and Small-molecule Studies (SNACKKSS), which automatically curates gene-disruption and drug-treatment studies from the Gene Expression Omnibus and, in partnership with uniformly computed read count datasets, feeds the labels and RNA-Seq data directly into regulatory relationship predictions. Through cross-validation, we show that SNACKKSS' predictions (specifically, from a variation called \"SA4\") make a unique contribution to finding protein-inhibiting compounds, even alongside existing predictors. We demonstrate the benefit of aggregating multiple predictive tools, and provide this powerful ensemble alongside SNACKKSS. Importantly, we advise researchers to test complex machine learning models on multiple devices, since the hardware architecture can affect their output. Nonetheless, the downstream predictive ability was striking, and our findings support the value of integrating automatically curated RNA-Seq signatures with literature- and co-expression-based predictors for drug-repurposing prioritization.",
+      "authors": [
+        "Deisseroth, C. A.",
+        "Brazelton, B.",
+        "Shaik, Z.",
+        "Sandberg, B. S.",
+        "Liu, Z.",
+        "Zoghbi, H. Y."
+      ],
+      "primary_category": "genomics",
+      "categories": [
+        "genomics"
+      ],
+      "published": "2026-07-15T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.03.13.708862v2.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "transcriptomic data integration for drug target discovery, applicable to resistance",
+      "llm_evidence_cn": "整合转录组数据用于药物靶标发现，可应用于耐药研究",
+      "llm_evidence": "整合转录组数据用于药物靶标发现，可应用于耐药研究",
+      "canonical_evidence": "整合转录组数据用于药物靶标发现，可应用于耐药研究",
+      "llm_tldr_en": "An automated pipeline (SNACKKSS) integrates transcriptomic data from GEO and literature to identify drugs that reverse gene perturbation signatures, useful for discovering therapies against resistance mechanisms.",
+      "llm_tldr_cn": "该研究针对基因产物异常导致的疾病缺乏靶向疗法的问题，开发了SNACKKSS流程。该流程自动从GEO中获取基因扰动和药物处理研究的转录组数据，通过整合文献信息，识别能够逆转异常基因表达特征的药物。该方法可用于发现针对耐药机制的候选药物，为肿瘤耐药转录组学分析提供了新的生物信息学工具。",
+      "llm_tldr": "该研究针对基因产物异常导致的疾病缺乏靶向疗法的问题，开发了SNACKKSS流程。该流程自动从GEO中获取基因扰动和药物处理研究的转录组数据，通过整合文献信息，识别能够逆转异常基因表达特征的药物。该方法可用于发现针对耐药机制的候选药物，为肿瘤耐药转录组学分析提供了新的生物信息学工具。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "transcriptomics tumor resistance",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-05-17-725770-v2",
+      "source": "biorxiv",
+      "title": "Mapping Tumor-Microenvironment dependencies with TMEformer: A spatial foundation framework enabling in silico perturbation",
+      "abstract": "Despite the fundamental role of spatial context in driving tumor progression, most current computational models for virtual perturbation have largely overlooked its importance. Here, we introduce TMEformer, a tumor microenvironment-aware deep learning framework that leverages high-resolution spatial transcriptomics to jointly model intrinsic tumor cell programs and local microenvironmental signals by explicitly incorporating spatial architecture. Validated across diverse tumor spatial transcriptomic cohorts, TMEformer enables virtual perturbations that capture functional dependencies within local cellular ecosystems. Despite being trained on cancer-specific spatial datasets, TMEformer outperforms baseline models pretrained on large-scale corpora in capturing key tumor transitions, including lineage plasticity and the emergence of therapy resistance. Systematic perturbation analyses prioritize tumor-intrinsic transcription factors and TME-derived ligands that drive disease progression, recovering established regulators and revealing novel candidates. Furthermore, TME-derived embeddings improve the spatial stratification of tumor cells and align more closely with pathological architecture. Together, TMEformer establishes a general framework for modeling tumors as spatially coupled, perturbable ecosystems.",
+      "authors": [
+        "Chen, S.",
+        "Zhu, G.",
+        "Yang, L.",
+        "Wei, X.",
+        "Li, S.",
+        "Liu, P.",
+        "Chen, Q.",
+        "Zhang, Z.",
+        "Liu, D.",
+        "Tang, Y.",
+        "Xu, G.",
+        "Zhou, M.",
+        "Luo, J.",
+        "Huang, L.",
+        "Chen, B.",
+        "Ou, S.",
+        "Jiang, J."
+      ],
+      "primary_category": "bioinformatics",
+      "categories": [
+        "bioinformatics"
+      ],
+      "published": "2026-07-17T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.05.17.725770v2.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "tumor microenvironment spatial modeling",
+      "llm_evidence_cn": "肿瘤微环境空间建模",
+      "llm_evidence": "肿瘤微环境空间建模",
+      "canonical_evidence": "肿瘤微环境空间建模",
+      "llm_tldr_en": "TMEformer is a spatial foundation model using deep learning on spatial transcriptomics to model tumor-microenvironment dependencies and enable in silico perturbation.",
+      "llm_tldr_cn": "现有虚拟扰动模型大多忽略了空间背景的重要性。本文提出TMEformer，一种肿瘤微环境感知的深度学习框架，利用高分辨率空间转录组数据联合建模肿瘤细胞内在程序与局部微环境信号，明确整合空间结构。在多种肿瘤空间转录组队列中验证，TMEformer能够进行虚拟扰动，捕获局部细胞生态系统中的功能依赖性，尽管仅在癌症特异性空间数据集上训练，但其性能优于基线模型。",
+      "llm_tldr": "现有虚拟扰动模型大多忽略了空间背景的重要性。本文提出TMEformer，一种肿瘤微环境感知的深度学习框架，利用高分辨率空间转录组数据联合建模肿瘤细胞内在程序与局部微环境信号，明确整合空间结构。在多种肿瘤空间转录组队列中验证，TMEformer能够进行虚拟扰动，捕获局部细胞生态系统中的功能依赖性，尽管仅在癌症特异性空间数据集上训练，但其性能优于基线模型。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "tumor microenvironment neoadjuvant resistance",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-06-24-734168-v1",
+      "source": "biorxiv",
+      "title": "A microscopy-based readout to assess tumour-specific viability in neuroblastoma co-cultures and short-term cultured patient samples",
+      "abstract": "High-risk neuroblastoma patients face poor survival despite intensive treatment. Drug testing using patient-derived models can support therapy prioritization for precision medicine and drug development. Models incorporating tumour microenvironmental components, such as co-cultures and short-term cultured patient samples containing substantial non-malignant cell fractions, could better recapitulate microenvironment-dependent drug responses. However, conventional viability assays measure the combined signal from all viable cells in a well and therefore cannot determine tumour-specific drug responses. Here, we establish a microscopy-based readout to quantify cell-type-specific viability in two complementary settings: neuroblastoma-PBMC co-cultures and freshly dissociated patient tumour samples. In the co-cultures, PBMCs were pre-labelled with a cell-tracking dye, and Calcein staining was used to independently quantify the viability of tumour cells and PBMCs in the same well. The Calcein-based viability readout correlated strongly with conventional CellTiter-Glo measurements and was compatible with automated high-throughput drug screening. The imaging workflow enabled identification of compounds with differential efficacy in co-culture versus monoculture and distinguished tumour-specific effects from PBMC toxicity. The microscopy-based viability readout was further adapted to short-term cultured patient samples. Neuroblastoma tumour cells were distinguished from the non-malignant cells using a combination of tumour-specific surface markers NCAM, L1CAM and B7H3. This enabled determination of tumour fractions and measurement of tumour-specific drug responses. Tumour fractions varied substantially between patient samples, highlighting the importance of tumour-specific viability measurements. Together, the microscopy-based viability readout for co-cultures and patient samples enables scalable assessment of tumour-specific drug responses.",
+      "authors": [
+        "Schoonbeek, M.",
+        "Valova, S.",
+        "Swaak, S.",
+        "Looze, E.",
+        "Watzeels, M.",
+        "Brink, L.",
+        "Roman, M.",
+        "Velzen, J.",
+        "ODuibhir, E.",
+        "Langenberg, K.",
+        "Wienke, J.",
+        "Hooff, S.",
+        "Boogaard, M.",
+        "Eising, S.",
+        "Molenaar, J."
+      ],
+      "primary_category": "Cancer Biology",
+      "categories": [
+        "Cancer Biology"
+      ],
+      "published": "2026-07-09T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.06.24.734168v1.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "microscopy-based readout for tumor-specific viability in co-cultures with tumor microenvironment",
+      "llm_evidence_cn": "基于显微镜的读出方法用于评估含肿瘤微环境共培养中的肿瘤特异性活力",
+      "llm_evidence": "基于显微镜的读出方法用于评估含肿瘤微环境共培养中的肿瘤特异性活力",
+      "canonical_evidence": "基于显微镜的读出方法用于评估含肿瘤微环境共培养中的肿瘤特异性活力",
+      "llm_tldr_en": "Establishes a microscopy-based readout to quantify tumor-specific viability in co-cultures and patient samples containing non-malignant cells, enabling assessment of microenvironment-dependent drug responses.",
+      "llm_tldr_cn": "针对传统活力测定无法区分肿瘤特异性反应的问题，该研究建立了一种基于显微镜的读出方法，能够在包含非恶性细胞的共培养和患者样本中量化肿瘤特异性活力。该方法可结合肿瘤微环境成分，更好地模拟微环境依赖的药物反应，为精准医学和药物开发提供支持。",
+      "llm_tldr": "针对传统活力测定无法区分肿瘤特异性反应的问题，该研究建立了一种基于显微镜的读出方法，能够在包含非恶性细胞的共培养和患者样本中量化肿瘤特异性活力。该方法可结合肿瘤微环境成分，更好地模拟微环境依赖的药物反应，为精准医学和药物开发提供支持。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "tumor microenvironment neoadjuvant resistance",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}

@@ -1,0 +1,2690 @@
+Title: A microscopy-based readout to assess tumour-specific viability in neuroblastoma co-cultures and short-term cultured patient samples
+
+URL Source: https://www.biorxiv.org/content/10.64898/2026.06.24.734168v1.full.pdf
+
+Number of Pages: 25
+
+Markdown Content:
+# A microscopy-based readout to assess tumour-1specific viability in neuroblastoma co-cultures and 2short-term cultured patient samples 3
+
+> Authors
+
+4
+
+> Marlinde C. Schoonbeek 1,3 , Sabina Valová 1, Sarah Swaak 1, Eleonora J. Looze 1, Merle M.J.
+
+5
+
+> Watzeels 1, Luca M. van den Brink 1, Mario Barrera Román 1, Jeroen F. van Velzen 1, Eoghan
+
+6
+
+> O’Duibhir 1, Karin P.S. Langenberg 1, Judith Wienke 1, Sander R. van Hooff 1, Marlinde L. van
+
+7
+
+> den Boogaard 1, Selma Eising  1, Jan J. Molenaar 1,2,3
+
+8
+
+> 1.  Princess Máxima Center for Paediatric Oncology, Utrecht, Netherlands
+
+9
+
+> 2.  Department of Pharmaceutical Sciences, Utrecht University, Utrecht, Netherlands
+
+10 
+
+> 3.  Marlinde C. Schoonbeek is corresponding author during the submission, reviewer
+
+11 
+
+> and proof-reading process and Jan J. Molenaar is the only corresponding author after
+
+12 
+
+> publication/acceptance. Postal address for both: Princess Máxima Center for
+
+13 
+
+> Paediatric Oncology. P.O. Box 113, 3720 AC Bilthoven. Heidelberglaan 25, 3584 CS
+
+14 
+
+> Utrecht.
+
+15 
+
+16 
+
+> Abstract
+
+17 
+
+> High-risk neuroblastoma patients face poor survival despite intensive treatment. Drug
+
+18 
+
+> testing  using  patient-derived  models  can  support  therapy  prioritization  for  precision
+
+19 
+
+> medicine  and  drug  development.  Models  incorporating  tumour  microenvironmental
+
+20 
+
+> components, such as co-cultures and short-term cultured patient samples containing
+
+21 
+
+> substantial  non-malignant  cell  fractions,  could  better  recapitulate  microenvironment-
+
+22 
+
+> dependent drug responses. However, conventional viability assays measure the combined
+
+23 
+
+> signal from all viable cells in a well and therefore cannot determine tumour-specific drug
+
+24 
+
+> responses. Here, we establish a microscopy-based readout to quantify cell-type-specific
+
+25 
+
+> viability in two complementary settings: neuroblastoma-PBMC co-cultures and freshly
+
+26 
+
+> dissociated patient tumour samples. In the co-cultures, PBMCs were pre-labelled with a cell-
+
+27 
+
+> tracking dye, and Calcein staining was used to independently quantify the viability of tumour
+
+28 
+
+> .CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 25, 2026. ;https://doi.org/10.64898/2026.06.24.734168 doi: bioRxiv preprint cells and PBMCs in the same well. The Calcein-based viability readout correlated strongly
+
+29 
+
+> with conventional CellTiter-Glo measurements and was compatible with automated high-
+
+30 
+
+> throughput drug screening. The imaging workflow enabled identification of compounds with
+
+31 
+
+> differential efficacy in co-culture versus monoculture and distinguished tumour-specific
+
+32 
+
+> effects from PBMC toxicity. The microscopy-based viability readout was further adapted to
+
+33 
+
+> short-term cultured patient samples. Neuroblastoma tumour cells were distinguished from
+
+34 
+
+> the non-malignant cells using a combination of tumour-specific surface markers NCAM,
+
+35 
+
+> L1CAM and B7H3. This enabled determination of tumour fractions and measurement of
+
+36 
+
+> tumour-specific drug responses. Tumour fractions varied substantially between patient
+
+37 
+
+> samples, highlighting the importance of tumour-specific viability measurements. Together,
+
+38 
+
+> the microscopy-based viability readout for co-cultures and patient samples enables scalable
+
+39 
+
+> assessment of tumour-specific drug responses.
+
+40 
+
+41 
+
+> Introduction
+
+42 
+
+> Neuroblastoma arises from neural crest progenitor cells of the developing sympathetic
+
+43 
+
+> nervous system and is the most common extra-cranial solid tumour in children. 1,2  Despite
+
+44 
+
+> intensive multimodal treatment, high-risk neuroblastoma remains associated with poor
+
+45 
+
+> outcome, with 5-year overall survival rates of approximately 50%. 2,3  In addition, survivors
+
+46 
+
+> often experience severe long-term treatment-related toxicity. 4,5  This highlights the need for
+
+47 
+
+> more effective and better tailored treatment strategies.
+
+48 
+
+> Patient-derived organoids are widely used for drug testing in neuroblastoma. 6–8
+
+49 
+
+> Organoid establishment usually takes several months, but once established, they are
+
+50 
+
+> scalable for high-throughput assays which makes them well suited for drug development. 7–9
+
+51 
+
+> Conventional  organoid  monocultures,  however,  lack  components  of  the  tumour
+
+52 
+
+> microenvironment, which can influence drug response and are essential for evaluating
+
+53 
+
+> immune-mediated therapies. 10–12  Co-culture models incorporating immune cells increase
+
+54 
+
+> physiological relevance while retaining scalability. However, these assays require readouts
+
+55 
+
+> that  distinguish  tumour  viability  from  immune-cell  viability  in  the  same  well. 13–16
+
+56 
+
+> Furthermore, drug testing on  ex vivo  short-term cultured patient material, containing
+
+57 
+
+> unknown tumour fractions, is increasingly being explored as a complementary approach to
+
+58 
+
+> molecular profiling for precision oncology. 8,17–20
+
+59 
+
+> .CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 25, 2026. ;https://doi.org/10.64898/2026.06.24.734168 doi: bioRxiv preprint Most high-throughput viability assays, including CellTiter-Glo, measure the combined
+
+60 
+
+> metabolic activity from all cells present in the well and therefore cannot distinguish tumour
+
+61 
+
+> from non-malignant cells. 8,21,22  Genetic labelling strategies, such as luciferase expression, can
+
+62 
+
+> enable cell-type-specific readouts but require prior modification of the tumour cells which is
+
+63 
+
+> time- and labour-intensive and not feasible for primary patient samples. 16  Therefore,
+
+64 
+
+> scalable, non-genetic, cell-type-specific viability assays are needed to assess drug responses
+
+65 
+
+> in  physiologically  relevant  in  vitro  models.  Immunofluorescent  microscopy-based
+
+66 
+
+> approaches are increasingly compatible with high-throughput workflows and provide a
+
+67 
+
+> solution for tumour-specific viability measurements in co-cultures and patient-derived
+
+68 
+
+> samples. 21,23–25  Tumour-specific markers, already established in diagnostics and therapeutic
+
+69 
+
+> targeting, enable tumour-specific labelling in mixed cell populations. However, expression of
+
+70 
+
+> these individual markers is heterogeneous across neuroblastoma samples, which limits the
+
+71 
+
+> reliability of single-marker approaches. 26–29
+
+72 
+
+> By combining viability dyes with either pre-labelling of PBMCs or a cocktail of
+
+73 
+
+> tumour-specific surface markers, we establish a microscopy-based viability readout that
+
+74 
+
+> enables separate quantification of tumour and non-tumour viability in neuroblastoma-PBMC
+
+75 
+
+> co-cultures and patient samples.
+
+76 
+
+77 Methods 78 
+
+> Detailed  experimental  procedures,  including  model  establishment,  culture  conditions,
+
+79 
+
+> CellTracker Orange (CTO) retention after T-cell activation, drug screening methods, imaging
+
+80 
+
+> settings and data processing pipelines, are provided in the Supplementary Methods.
+
+81 
+
+82 
+
+> Shared methodology
+
+83 
+
+> In short, two organoid lines from distinct tumour sites of the same patient 6 were used
+
+84 
+
+> throughout the study: AMC691T, (primary tumour; mesenchymal phenotype; HLA +) and
+
+85 
+
+> AMC691B (bone marrow metastasis; adrenergic phenotype; HLA -).
+
+86 
+
+> A compound library of 134 compounds was screened in 6 concentrations in a 384-
+
+87 
+
+> well format. Viability was normalized to vehicle-treated controls and the area under the
+
+88 
+
+> curve (AUC) was determined from the dose-response curves. Quality control included
+
+89 
+
+> .CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 25, 2026. ;https://doi.org/10.64898/2026.06.24.734168 doi: bioRxiv preprint assessment of growth rates, positive and negative controls, replicate consistency, and visual
+
+90 
+
+> inspection of curve fits of individual curves and the overall screen.
+
+91 
+
+92 
+
+> Neuroblastoma-immune co-cultures
+
+93 
+
+> In short, peripheral blood mononuclear cells (PBMCs) were obtained from healthy donors
+
+94 
+
+> (Mini Donor Bank; institutional review board approval at UMCU: TC18-774), isolated using
+
+95 
+
+> Ficoll density gradient centrifugation 30  and cryopreserved at -180 °C until use.
+
+96 
+
+> Organoids were seeded in 384-well plates and co-cultured with PBMCs, which were pre-
+
+97 
+
+> labelled with CTO to enable distinction between tumour and immune cells during image
+
+98 
+
+> analysis. Co-cultures were established at an effector-to-target ratio of 1:5 and exposed to
+
+99 
+
+> compounds for 120 hours.
+
+100 
+
+> At readout, viable cells were stained using Calcein Violet (CalceinV) and imaged using the
+
+101 
+
+> high-content confocal microscope Opera Phenix (5x air objective; confocal mode). One fixed
+
+102 
+
+> Z-plane was selected based on comparison with a five-plane z-stack and its maximal
+
+103 
+
+> intensity projection. CellTiter-Glo 3D (CTG) assays were performed after imaging for multiple
+
+104 
+
+> plates, to benchmark the microscopy-based viability readout against conventional whole-
+
+105 
+
+> well viability measurements. 7,8,22
+
+106 
+
+> Image analysis was performed in Harmony software (Revvity). PBMCs were identified
+
+107 
+
+> as  CTO + regions. All viable cells were defined as CalceinV⁺ regions. Viable PBMCs were then
+
+108 
+
+> defined as overlapping CTO +/CalceinV + regions and viable tumour cells as CalceinV + regions
+
+109 
+
+> subtracting the viable PBMC mask. The viability (CalceinV) was quantified using the sum
+
+110 
+
+> pixel intensity of images. Compounds showing intrinsic autofluorescence that interfered
+
+111 
+
+> with signal detection (Suppl. Table 1) were excluded from downstream analyses in the
+
+112 
+
+> affected channel.
+
+113 
+
+114 
+
+> Patient-derived samples
+
+115 
+
+> In short, patient-derived tumour samples were obtained through institutionally approved
+
+116 
+
+> biobank protocols of the Erasmus Medical Center Rotterdam (MEC-2016-793) and the
+
+117 
+
+> Princess Máxima Center (PMCLAB2022.370). Freshly dissociated samples were short-term
+
+118 
+
+> cultured prior to plating in round-bottom 384-well plates. To distinguish tumour from non-
+
+119 
+
+> malignant cells, a neuroblastoma-specific antibody cocktail (NB-cocktail) targeting NCAM,
+
+120 
+
+> L1CAM and B7H3 conjugated to a far-red fluorophore was combined with the viability dye
+
+121 
+
+> .CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 25, 2026. ;https://doi.org/10.64898/2026.06.24.734168 doi: bioRxiv preprint CalceinAM. Neuroblastoma samples (MaxPatient1-3) were cultured for 4–7 days prior to
+
+122 
+
+> screening,  whereas  one  melanotic  neuroectodermal  tumour  of  infancy  sample
+
+123 
+
+> (MaxPatient4) was cultured for one month until screening was performed.
+
+124 
+
+> Images were acquired using optimized confocal microscopy settings (10x objective;
+
+125 
+
+> single-field acquisition; 6 z-planes) and analysed using mask-based segmentation workflows.
+
+126 
+
+> Viable tumour cells were defined as NB-cocktail +/CalceinAM + and total viable cells as
+
+127 
+
+> CalceinAM +. The sum of the integrated pixel intensities of the CalceinAM signal was
+
+128 
+
+> determined in both populations. Tumour fractions were calculated as the ratio of viable
+
+129 
+
+> tumour cells to total viable cells. For proof-of-principle drug testing, patient-derived samples
+
+130 
+
+> were exposed to selected compounds and tumour-specific viability was quantified within
+
+131 
+
+> tumour-marker + populations.
+
+132 
+
+> Results
+
+133 
+
+> Optimization of a microscopy-based viability readout
+
+134 
+
+> To  enable  microscopy-based  measurement  of  viability  in  neuroblastoma-immune  co-
+
+135 
+
+> cultures, we first optimized and validated technical aspects of the readout method. We
+
+136 
+
+> utilized two organoid lines derived from distinct tumour regions of the same patient:
+
+137 
+
+> AMC691T and AMC691B (Fig. 1A). 6 AMC691T represents the mesenchymal phenotype and
+
+138 
+
+> expresses MHC-I (HLA +), enabling interaction with immune cells, such as cytotoxic T cells and
+
+139 
+
+> natural  killer  cells.  In  contrast,  AMC691B  represents  the  more  typical  adrenergic
+
+140 
+
+> neuroblastoma phenotype and lacks MHC-I expression (HLA -), thereby limiting immune
+
+141 
+
+> recognition. This allowed us to model phenotypic heterogeneity regarding tumour-immune
+
+142 
+
+> interactions while keeping other properties of the models as similar as possible.
+
+143 
+
+> To validate CalceinV as a reliable measure of cell viability, we benchmarked this
+
+144 
+
+> imaging-based readout against the luminescence-based assay CTG, the current standard for
+
+145 
+
+> drug screens in monocultures of organoids. 8 Calcein Violet (CalceinV) reports on esterase
+
+146 
+
+> activity in viable cells, whereas CTG quantifies cellular ATP content (Suppl. Fig. 1A).
+
+147 
+
+> Microscopy-based CalceinV staining clearly distinguished viable (vehicle treated) from non-
+
+148 
+
+> viable (staurosporine treated) cells (Suppl. Fig. 1B). The coefficients of variation in untreated
+
+149 
+
+> wells  were  comparable  between  CalceinV  and  CTG  signals,  indicating  similar  assay
+
+150 
+
+> reproducibility for both readouts (Fig. 1B; Suppl. Fig. 1C).
+
+151 
+
+> .CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 25, 2026. ;https://doi.org/10.64898/2026.06.24.734168 doi: bioRxiv preprint To compare drug sensitivities in tumour monocultures, both organoid lines were
+
+152 
+
+> screened using a comprehensive drug library (n = 134 compounds). Comparing area under
+
+153 
+
+> the dose response curve values (AUC), CalceinV-derived drug sensitivity correlated strongly
+
+154 
+
+> with that of CTG (r = 0.88-0.96; Fig. 1C). Despite their phenotypic differences, overall drug
+
+155 
+
+> sensitivity  was  largely  conserved between  AMC691T  and  AMC691B, with  differential
+
+156 
+
+> responses limited to a small subset of compounds (Suppl. Fig. 1D). Eight compounds,
+
+157 
+
+> including prexasertib, showed higher efficacy (ΔAUC ≥ 100) in AMC691B (Suppl. Fig. 1E). In
+
+158 
+
+> contrast, five compounds, including cobimetinib, were more effective in AMC691T (Suppl.
+
+159 
+
+> Fig. 1E). Together, these results demonstrate that the microscopy-based readout provides a
+
+160 
+
+> quantitative and robust measure of cell viability and drug response.
+
+161 
+
+162 
+
+> Distinguishing cell type-specific viability in tumour-immune co-cultures
+
+163 
+
+> To assess cell-type-specific viability in co-culture conditions, peripheral blood mononuclear
+
+164 
+
+> cells (PBMCs) from healthy donors were pre-stained with the proliferation dye CellTracker
+
+165 
+
+> Orange (CTO) and distinguished from tumour cells using an image-based masking strategy
+
+166 
+
+> (Fig. 1D). Downstream analysis pipelines for co-cultures segmented viable organoids as
+
+167 
+
+> CalceinV +/CTO - regions and viable PBMCs as CalceinV +/CTO + regions. Cell-type specific
+
+168 
+
+> CalceinV sum intensities were extracted from both regions. We used this approach to
+
+169 
+
+> distinguish between viable and non-viable fractions for both cell types present in the co-
+
+170 
+
+> culture well.
+
+171 
+
+> We first assessed the baseline killing of the AMC691T and AMC691B by PBMCs.
+
+172 
+
+> Immune mediated differences were expected, since, in contrast to AMC691T, AMC691B is
+
+173 
+
+> HLA -, limiting T-cell recognition. Indeed, AMC691T showed reduced viability in a PBMC co-
+
+174 
+
+> culture compared to monoculture (Suppl. Fig. 2A), consistent with PBMC-mediated killing. To
+
+175 
+
+> achieve ~20% baseline killing, we tested multiple effector-to-target ratios and found 1:5
+
+176 
+
+> consistently optimal across three donors (Suppl. Fig. 2B). In contrast, the growth of
+
+177 
+
+> AMC691B was comparable with and without PBMCs (Suppl. Fig. 2C).
+
+178 
+
+> We assessed the stability of CTO labelling over the 120-hour assay duration, including
+
+179 
+
+> conditions of immune activation that may induce proliferation and subsequent dye dilution.
+
+180 
+
+> PBMC monocultures were stimulated via CD3 signalling to induce TCR-mediated activation.
+
+181 
+
+> Under these conditions, CTO loss was minimal: below 3% of viable cells misclassified as CTO -
+
+182 
+
+> (Fig. 1E). PBMCs were selected for pre-labelling rather than organoids because organoids are
+
+183 
+
+> .CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 25, 2026. ;https://doi.org/10.64898/2026.06.24.734168 doi: bioRxiv preprint cultured for an additional 48 hours and generally display higher proliferative capacity,
+
+184 
+
+> potentially resulting in greater dye dilution. These results demonstrate that CTO pre-staining
+
+185 
+
+> enables stable and reliable identification of immune cells throughout the screening assay.
+
+186 
+
+> Finally,  to  enable  high-throughput  screening,  we  automated  the  readout  and
+
+187 
+
+> optimized imaging speed by selecting a single Z plane, as described in the methods section.
+
+188 
+
+> This reduced imaging time approximately two-fold, resulting in ~8 minutes acquisition time
+
+189 
+
+> per 384-well plate, without compromising signal intensity (Suppl. Fig. 2D-E). Collectively,
+
+190 
+
+> these validation experiments established a robust, scalable cell-type specific microscopy-
+
+191 
+
+> based readout suitable for high-throughput drug screening in neuroblastoma-immune co-
+
+192 
+
+> cultures.
+
+193 
+
+194 
+
+195 
+
+196 
+
+> .CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 25, 2026. ;https://doi.org/10.64898/2026.06.24.734168 doi: bioRxiv preprint
+
+197 
+
+198 
+
+> Figure 1: Set up and technical validation of a microscopy-based readout to reliably
+
+199 
+
+> distinguish cell types for high-throughput drug screening in co-culture models
+
+200 
+
+> A) Representative microscopy images of organoid lines AMC691B and AMC691T, which are
+
+201 
+
+> derived from different tumour locations of the same patient and differ in morphology and
+
+202 
+
+> immune interaction.
+
+203 
+
+> B) Bar plots representing the intensity of CalceinV (sum) and the CTG luminescence  in
+
+204 
+
+> untreated AMC691T and AMC691B organoids. The error bars represent the standard
+
+205 
+
+> deviation. The intra-assay coefficient of variance for CalceinV (indicated above the bars)
+
+206 
+
+> were: 13.84% (AMC691B) and 12.3% (AMC691T), and for CTG: 13.16% (AMC691B) and
+
+207 
+
+> 12.73% (AMC691T).
+
+208 
+
+> C) Scatter plot representing the correlation of drug response (AUC) measured by CalceinV
+
+209 
+
+> intensity versus CTG for AMC691T and AMC691B. Each dot represents the mean AUC of two
+
+210 
+
+> replicates normalized to the vehicle-only control of a compound (n = 45). Compounds are
+
+211 
+
+> coloured by drug target, as indicated in the legend. Compound treatment lasted 120 hours.
+
+212 
+
+> The Pearson correlation coefficient (r) and p-value are mentioned above the scatter plot.
+
+213 
+
+> D) Schematic representation of the image analyses control conditions and workflow. Left
+
+214 
+
+> part: representative microscopic images of control conditions (AMC691T): vehicle-only
+
+215 
+
+> control (DMSO, 0.25%), positive control for cytotoxicity (staurosporine, 10 μM) and maximal
+
+216 
+
+> .CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 25, 2026. ;https://doi.org/10.64898/2026.06.24.734168 doi: bioRxiv preprint immune-engagement control (CD3⁺). Images are shown for CalceinV, CTO and merged
+
+217 
+
+> channels. Right part: analysis workflow. Images were segmented to define populations as
+
+218 
+
+> follows: live PBMCs = CTO⁺/CalceinV⁺, dead PBMCs = CTO⁺/CalceinV⁻, and live NB =
+
+219 
+
+> CTO⁻/CalceinV⁺. CalceinV intensity was measured within the live-NB and live-PBMC masks.
+
+220 
+
+> Cell-type-specific dose–response curves for each compound were generated by normalizing
+
+221 
+
+> signals to the DMSO control.
+
+222 
+
+> E) Bar graphs representing CTO retention over time in CD3-stimulated PBMCs. PBMCs were
+
+223 
+
+> seeded  at  2,000  cells/well.  The  CTO –/CalceinV⁺  fraction  indicates  CalceinV  signal
+
+224 
+
+> misclassified as non-PBMCs. This fraction (indicated above the bars) was 1.04% at  t = 0
+
+225 
+
+> hours, 2.94% at  t = 72 hours and 2.89% at  t = 120 hours. Error bars represent standard
+
+226 
+
+> deviation.
+
+227 
+
+> AUC = area under the dose-response curve; CTG = CellTiter-Glo 3D; CTO = CellTracker
+
+228 
+
+> Orange; CalceinV = Calcein Violet; DMSO = Dimethyl sulfoxide; NB = neuroblastoma; PBMC =
+
+229 
+
+> Peripheral Blood Mononuclear Cells; Stauro = Staurosporine.
+
+230 
+
+231 
+
+> Identifying compound sensitivities in co-cultures using the microscopy-based readout
+
+232 
+
+> Having established and technically validated this microscopy-based readout for cell-type-
+
+233 
+
+> specific drug responses, we next applied it to high-throughput drug testing in organoid-
+
+234 
+
+> PBMC co-cultures (Fig. 2A). In short, organoids were seeded in 384-well plates. Two days
+
+235 
+
+> later ( t = 0 h), pre-labelled PBMCs were added to the organoids and compounds were added
+
+236 
+
+> for 120 hours. At readout, the viability dye CalceinV was added and automated image
+
+237 
+
+> acquisition was performed. The drug library was screened across both conditions in the two
+
+238 
+
+> organoid lines, AMC691T and AMC691B.
+
+239 
+
+> To identify compounds with altered efficacy in the presence of PBMCs, we compared
+
+240 
+
+> drug responses between mono- and co-culture conditions (Fig. 2B). A clear distinction was
+
+241 
+
+> observed between the two organoid models, in accordance with their immune status.
+
+242 
+
+> Specifically, there were several compounds with altered efficacy in co- versus monoculture
+
+243 
+
+> for AMC691T, whereas in AMC691B almost no differences were observed (Fig. 2B). In
+
+244 
+
+> AMC691T, five compounds showed increased efficacy in the co-culture (ΔAUC ≥ 50), and 22
+
+245 
+
+> compounds  showed reduced  efficacy, in  contrast  to  AMC691B  where  only  3 and  2
+
+246 
+
+> compounds  showed  increased  and  reduced  efficacy,  respectively.  No  overlapping
+
+247 
+
+> compounds with altered efficacy were identified between the two organoid lines. In
+
+248 
+
+> .CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 25, 2026. ;https://doi.org/10.64898/2026.06.24.734168 doi: bioRxiv preprint AMC691T, AZD5582 demonstrated greater efficacy in co-culture compared to monoculture
+
+249 
+
+> (ΔAUC = 197; Fig. 2C-D; Suppl. Fig. 3), suggesting a PBMC-mediated effect. In line with this,
+
+250 
+
+> AZD5582 did not exert toxic effects on PBMCs at concentrations below 10 μM (Fig. 2C).
+
+251 
+
+> Similarly, vinblastine showed increased efficacy in co-culture (ΔAUC = 50), with PBMCs
+
+252 
+
+> remaining viable at high concentrations (Fig. 2C-D; Suppl. Fig. 3). Together, these results
+
+253 
+
+> demonstrate the applicability of this microscopy-based approach to identify compounds
+
+254 
+
+> with  altered  efficacy  in  co-culture  conditions,  potentially  informing  the  selection  of
+
+255 
+
+> compounds for combination with immunotherapy.
+
+256 
+
+> To identify compounds with tumour-selective efficacy, we directly compared tumour
+
+257 
+
+> cell and PBMC responses from the same wells, as limiting PBMC toxicity may preserve
+
+258 
+
+> immune-mediated anti-tumour activity  in vivo . We identified 6 compounds that were
+
+259 
+
+> consistently more effective in tumour cells in both organoid lines (ΔAUC ≥ 100 in organoids
+
+260 
+
+> vs PBMCs in both lines), comprising 5 microtubule-targeting agents (docetaxel, paclitaxel,
+
+261 
+
+> vindesine, vinblastine and vincristine) and antimetabolite gemcitabine (Fig. 2E). For example,
+
+262 
+
+> docetaxel and paclitaxel induced tumour killing at low concentrations (0.001 μM and 0.01
+
+263 
+
+> μM, respectively), while PBMC viability was unaffected up to 10 μM (Fig. 2F-G). Additional
+
+264 
+
+> tumour-selective compounds were identified in only one of the two organoid lines, with two
+
+265 
+
+> compounds specific for AMC691T and 30 for AMC691B (Suppl. Fig. 4A). The AMC691B-
+
+266 
+
+> specific compounds included prexasertib, decitabine, alisertib and carboplatin, which were
+
+267 
+
+> already more effective in AMC691B monocultures and did not affect PBMC viability.
+
+268 
+
+> Together,  these  results  demonstrate  that  the  microscopy-based  readout  enables
+
+269 
+
+> identification  of  tumour-selective  compounds  that  may  be  relevant  for  combination
+
+270 
+
+> strategies with immunotherapies.
+
+271 
+
+> We next assessed compounds with comparable effects on tumour and immune cells,
+
+272 
+
+> as the toxicity of the compounds on the immune cells may be a reason to not apply them  in
+
+273 
+
+> vivo . Compounds were selected based on efficacy in both cell types (AUC < 400) and limited
+
+274 
+
+> differences in viability reduction between PBMCs and organoids (|ΔAUC| < 100). We
+
+275 
+
+> identified six compounds, the proteasome inhibitors bortezomib and ixazomib, the HDAC
+
+276 
+
+> inhibitors romidepsin and fimepinostat, β-catenin antagonist tegavivint and CDK12/13
+
+277 
+
+> inhibitor SR-4835, with similar activity in tumour cells and PBMCs across both organoid lines
+
+278 
+
+> (Suppl. Fig. 4B-C). No compounds were consistently more toxic to PBMCs versus organoids
+
+279 
+
+> across the full dose-response range (ΔAUC ≥ 100 in PBMCs versus organoid in both lines).
+
+280 
+
+> .CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 25, 2026. ;https://doi.org/10.64898/2026.06.24.734168 doi: bioRxiv preprint Overall, this data demonstrates the applicability of this readout for high-throughput drug
+
+281 
+
+> screening  in  tumour-immune  co-cultures,  enabling  assessment  of  compounds  with
+
+282 
+
+> enhanced or decreased efficacy in co-cultures, tumour-specific effects, and potential PBMC
+
+283 
+
+> toxicity.
+
+284 
+
+285 
+
+286 
+
+287 
+
+288 
+
+> Figure 2: Identification of compounds with altered efficacy in mono- versus co-culture
+
+289 
+
+> using a microscopy-based readout.
+
+290 
+
+> A) Protocol workflow of plating, compound treatment and image acquisition. In brief,
+
+291 
+
+> organoids are seeded ( t = -48 hours), CTO pre-stained PBMCs were seeded and then
+
+292 
+
+> .CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 25, 2026. ;https://doi.org/10.64898/2026.06.24.734168 doi: bioRxiv preprint compounds were added ( t = 0 hours). At the day of readout ( t = 120 hours), viability is
+
+293 
+
+> assessed using CalceinV and images are acquired.
+
+294 
+
+> B) Scatterplots comparing drug efficacy (AUC) of the tumour cells in mono- versus co-culture
+
+295 
+
+> for AMC691T and AMC691B. AUC values were calculated from two technical replicates per
+
+296 
+
+> compound and normalized to the vehicle control (0.25% DMSO) of that condition (i.e.
+
+297 
+
+> viabilities of treated wells from the co-culture condition were normalized to the vehicle-
+
+298 
+
+> treated co-culture condition). Each point represents one compound. Compounds with
+
+299 
+
+> |ΔAUC| ≥ 50 were considered to show altered efficacy; red and green dots indicate
+
+300 
+
+> decreased and increased efficacy in co-culture, respectively.
+
+301 
+
+> C) Dose-response curves of the tumour cells of AMC691T in mono- (light blue) and co-
+
+302 
+
+> culture (blue), and of PBMCs (red) treated with apoptosis protein antagonist AZD5582 (left)
+
+303 
+
+> and tubulin inhibitor vinblastine (right). Symbols indicate the mean and error bars the
+
+304 
+
+> standard deviation. AUC values are determined from this dose-response curve and represent
+
+305 
+
+> the mean of two technical replicates (AZD5582: AUC_co = 216 versus AUC_mono = 412;
+
+306 
+
+> Vinblastine: AUC_co = 282 versus AUC_mono = 332).
+
+307 
+
+> D) Representative microscopy images of AMC691T in mono- and co-culture stained with
+
+308 
+
+> CalceinV. Conditions shown: vehicle control (0.25% DMSO), apoptosis protein antagonist
+
+309 
+
+> AZD5582 (0.001 μM); tubulin inhibitor vinblastine (0.01 μM).
+
+310 
+
+> E) Heatmap showing drug response (AUC) for compounds with tumour-selective effects
+
+311 
+
+> (ΔAUC ≥ 100 in organoids versus PBMCs, per line) for both organoid lines.
+
+312 
+
+> F) Dose-response curves of organoids and PBMCs in co-culture. Colours represent AMC691T
+
+313 
+
+> (blue), AMC691B (green) and PBMCs (red), treated with the microtubule-targeting agents
+
+314 
+
+> docetaxel (top) and paclitaxel (bottom). Symbols indicate the mean and error bars the
+
+315 
+
+> standard deviation. Data points exceeding the plotted y-axis range are not displayed.
+
+316 
+
+> G) Representative microscopy images of AMC691T in co-culture treated with microtubule-
+
+317 
+
+> targeting compounds docetaxel (0.01 μM, top) and paclitaxel (0.1 μM, bottom).
+
+318 
+
+> AUC = Area Under the dose-response Curve; CTO = CellTracker Orange; CalceinV = Calcein
+
+319 
+
+> Violet; DMSO = Dimethyl sulfoxide; PBMC = Peripheral Blood Mononuclear Cells
+
+320 
+
+321 
+
+> Development and validation of a microscopy-based readout to determine tumour-specific
+
+322 
+
+> viability in patient-derived samples
+
+323 
+
+> .CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 25, 2026. ;https://doi.org/10.64898/2026.06.24.734168 doi: bioRxiv preprint In short-term cultured patient material, which still contains the tumour microenvironment, it
+
+324 
+
+> is essential to assess tumour-specific viability, similar to the co-cultures described above. To
+
+325 
+
+> distinguish tumour from their microenvironmental cells, we developed a microscopy-based
+
+326 
+
+> readout for use in primary patient material.
+
+327 
+
+> To enable drug testing in low-input patient samples, we optimized the assay for
+
+328 
+
+> reduced cell numbers per well. Standard flat-bottom assays typically require ~5000 cells per
+
+329 
+
+> well, which is not feasible for testing multiple compounds on minimally invasive biopsies. 8,22
+
+330 
+
+> Therefore, we adapted the assay to round-bottom 384-well plates to improve cell viability
+
+331 
+
+> and promote spheroid growth from a limited cell density (500 cells/well). Round-bottom
+
+332 
+
+> plates  pose  challenges  for  automated  microscopy  due  to  potential  focus  errors,  as
+
+333 
+
+> consecutive autofocus failures lead to termination of automated image acquisition. To
+
+334 
+
+> address this, we optimized imaging settings using the two organoid models by systematically
+
+335 
+
+> comparing objective magnification and numbers of field-of-view and selecting for the lowest
+
+336 
+
+> amount of focus errors. Imaging with a 10× objective and a single central field resulted in
+
+337 
+
+> zero focus errors, whereas imaging with multiple fields or the 5x magnification increased
+
+338 
+
+> error rates substantially ( n = 28 and 5, respectively; Suppl. Fig. 5A). Additionally, using only
+
+339 
+
+> one field of view imaged 42 wells in 4 minutes versus 13 minutes for the 4 fields of view
+
+340 
+
+> condition. Therefore, we selected the 10x objective with one central field of view, imaging
+
+341 
+
+> the centre of the well while excluding the well edges. These optimized imaging settings
+
+342 
+
+> enabled robust and fast image acquisition in round-bottom plates with a reduced cell input
+
+343 
+
+> of 500 cells per well.
+
+344 
+
+> Patient material is more complex than neuroblastoma-PBMC co-culture systems,
+
+345 
+
+> because tumour cells must be distinguished from multiple non-malignant cell types. As
+
+346 
+
+> these cells cannot be selectively pre-labelled prior to plating, tumour cells were identified
+
+347 
+
+> using a far-red-conjugated neuroblastoma-specific antibody cocktail targeting NCAM, L1CAM
+
+348 
+
+> and B7H3 (NB-cocktail). These markers are widely used in neuroblastoma diagnostics and
+
+349 
+
+> are being explored as therapeutic targets due to their high expression on tumour cells and
+
+350 
+
+> limited expression in surrounding stromal and immune cells. 26–29  By combining these
+
+351 
+
+> markers with the viability dye CalceinAM Green (CalceinAM), it is possible to identify viable
+
+352 
+
+> neuroblastoma cells as NB-cocktail +/CalceinAM + and non-neuroblastoma viable cells as NB-
+
+353 
+
+> cocktail -/CalceinAM + (Fig. 3A).
+
+354 
+
+> .CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 25, 2026. ;https://doi.org/10.64898/2026.06.24.734168 doi: bioRxiv preprint We first evaluated the tumour markers both individually and combined on two
+
+355 
+
+> organoid models by quantifying CalceinAM intensity within each marker-defined population.
+
+356 
+
+> The adrenergic organoid line AMC691B showed strong positivity for all three markers,
+
+357 
+
+> whereas its mesenchymal counterpart AMC691T was positive for B7H3 but showed minimal
+
+358 
+
+> expression of NCAM and L1CAM (Fig 3B-C; Suppl. Fig. 5B). Combining all three markers into a
+
+359 
+
+> single neuroblastoma-specific antibody cocktail resulted in robust detection of tumour cells
+
+360 
+
+> in both organoids while PBMC controls showed minimal signal (Fig. 3B). We then tested the
+
+361 
+
+> sensitivity and specificity of the NB-cocktail setup in a co-culture of AMC691B organoids
+
+362 
+
+> with pre-labelled PBMCs and observed that the NB-cocktail distinguished tumour from
+
+363 
+
+> immune cells (Suppl. Fig. 5C-E), with minimal overlap between the NB-cocktail and PBMC-
+
+364 
+
+> specific  eFluor450  signals.  The  combination  of  three  tumour  markers  is  particularly
+
+365 
+
+> advantageous for patient-derived samples, where (individual) marker expression is not
+
+366 
+
+> determined prior to the assay.
+
+367 
+
+368 
+
+> Tumour-specific viability and drug responses in short-term cultured patient samples
+
+369 
+
+> To apply the established microscopy-based readout to  ex vivo  tumour material, we obtained
+
+370 
+
+> three neuroblastoma patient samples (two biopsies and one resection) and one melanocytic
+
+371 
+
+> neuroectodermal tumour of infancy sample (MNTI; resection; Suppl. Table 2). This rare
+
+372 
+
+> paediatric tumour was included to demonstrate broader applicability of the workflow, since
+
+373 
+
+> it was confirmed B7H3 positive by pathology.
+
+374 
+
+> We analysed the viability of the tumour and non-tumour fractions at baseline and
+
+375 
+
+> during short-term culture. The MNTI sample (MaxPatient4) consisted almost entirely of
+
+376 
+
+> tumour cells at  t = 0 h (99%), whereas tumour fractions varied substantially across the
+
+377 
+
+> neuroblastoma samples, ranging from 22% (MaxPatient3) to 66% (MaxPatient2), with
+
+378 
+
+> MaxPatient1 at 55% (Fig. 3D-E; Suppl. Fig. 6A-B). These findings underscore the importance
+
+379 
+
+> of tumour-specific viability measurements, as drug responses of tumour cells may be
+
+380 
+
+> masked by large non-malignant cell fractions. Marker expression also varied between
+
+381 
+
+> patients. MaxPatient2 showed higher expression of B7H3 and NCAM compared to L1CAM,
+
+382 
+
+> whereas  MaxPatient3  was  positive  for  L1CAM  and  NCAM,  but  showed  lower  B7H3
+
+383 
+
+> expression (Suppl. Fig. 6C). Together, these results support the use of the NB-cocktail in
+
+384 
+
+> patient samples with different marker expression profiles and demonstrate the applicability
+
+385 
+
+> of the readout to determine tumour fractions and tumour-specific viability.
+
+386 
+
+> .CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 25, 2026. ;https://doi.org/10.64898/2026.06.24.734168 doi: bioRxiv preprint We next assessed whether this readout can be applied to determine tumour-specific
+
+387 
+
+> drug responses in short-term cultured patient samples. Because of the limited amount of
+
+388 
+
+> tumour material, we selected a small number of compounds to test at a single concentration
+
+389 
+
+> as a proof-of-concept. Staurosporine was included as a cytotoxic compound. Vincristine was
+
+390 
+
+> selected based on the use in standard neuroblastoma treatment regimens and, together
+
+391 
+
+> with cytarabine, showed limited PBMC toxicity in our co-culture experiments. Due to the
+
+392 
+
+> limited availability of viable tumour cells in MaxPatient1, only a single compound was
+
+393 
+
+> tested. Viability was quantified within tumour-specific masks and compared with total cell
+
+394 
+
+> viability (Suppl. Fig. 7A). The low tumour fraction at  t = 0 h for MaxPatient3 (Fig. 3D; Suppl.
+
+395 
+
+> Fig. 6A) was reflected by a clear difference between total and tumour-specific viability at the
+
+396 
+
+> drug screen readout ( t = 72 h; Suppl. Fig. 7A). In contrast, the MNTI sample MaxPatient4
+
+397 
+
+> showed more similar total and tumour-specific viability, consistent with the high tumour
+
+398 
+
+> fraction. In addition, the neuroblastoma samples showed limited changes in viability during
+
+399 
+
+> the assay (75-115% viability from 0 h to 72 h), whereas the MNTI sample did proliferate
+
+400 
+
+> (146%).
+
+401 
+
+> Cytotoxicity could clearly be detected using this microscopy-based readout, as
+
+402 
+
+> staurosporine (10 μM) induced cell death compared to the vehicle control (0.25% DMSO;
+
+403 
+
+> Fig. 3F-G; Suppl. Fig. 7A-B). Tubulin inhibitor vincristine (1 μM) and DNA polymerase
+
+404 
+
+> inhibitor cytarabine (10 μM) showed limited efficacy in the neuroblastoma samples, likely
+
+405 
+
+> reflecting the limited cell proliferation (Suppl. Fig. 7A). In contrast, vincristine induced cell
+
+406 
+
+> killing in the MNTI sample, while cytarabine showed minimal activity. Finally, the MNTI
+
+407 
+
+> sample provided sufficient material for larger drug screen of 44 compounds across the full
+
+408 
+
+> dose-response range (Fig. 3H; Suppl. Fig. 7C). Mitoxantrone and daunorubicin were the most
+
+409 
+
+> effective compounds. The high tumour fraction allowed for direct comparison of CTG versus
+
+410 
+
+> CalceinAM based drug response  quantified within the tumour population, which was highly
+
+411 
+
+> concordant (r = 0.88; Suppl. Fig. 7D). Together, this data supports the feasibility and
+
+412 
+
+> specificity of this microscopy-based readout for the use of short-term cultured patient
+
+413 
+
+> samples to determine the tumour fraction over time and, if sufficient material is available, to
+
+414 
+
+> test tumour-specific drug response.
+
+415 
+
+416 
+
+417 
+
+> .CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 25, 2026. ;https://doi.org/10.64898/2026.06.24.734168 doi: bioRxiv preprint
+
+418 
+
+> Figure 3: A microscopy-based readout to determine tumour fractions and tumour-specific
+
+419 
+
+> drug responses in freshly dissociated patient samples
+
+420 
+
+> A) Schematic overview of the microscopy-based set up. Viable neuroblastoma (NB) cells are
+
+421 
+
+> identified as NB-cocktail +
+> /CalceinAM +
+> and viable tumour microenvironment (TME) cells are
+
+422 
+
+> defined as NB-cocktail -
+> /CalceinAM +
+> . The NB-cocktail consists of antibodies against the
+
+423 
+
+> neuroblastoma-specific markers B7H3, L1CAM and NCAM.
+
+424 
+
+> B) Bar graphs of the quantified CalceinAM sum intensity within different masks, including
+
+425 
+
+> the NB-cocktail (1:1000 final concentration) and individual markers (B7H3, L1CAM, NCAM)
+
+426 
+
+> for NB organoids and immune cells. Values are normalized to the total CalceinAM intensity
+
+427 
+
+> per well. Error bars indicate standard deviation.
+
+428 
+
+> C) Representative microscopy images of AMC691T showing L1CAM staining (top) and NB-
+
+429 
+
+> cocktail staining (bottom; B7H3, L1CAM, NCAM).
+
+430 
+
+> D) Graph representing tumour-specific viability, measured as CalceinAM sum intensity within
+
+431 
+
+> the tumour-specific mask. Neuroblastoma samples were dissociated directly after tissue
+
+432 
+
+> collection and plated within 4-7 days, the melanocytic neuroectodermal tumour of infancy
+
+433 
+
+> sample was cultured for a month.  t = 0 h is 24 hours after plating.
+
+434 
+
+> E)  Representative  microscopy  images  of  MaxPatient1  and  MaxPatient3  representing
+
+435 
+
+> CalceinAM (green) and NB-cocktail (red). Merged channels are shown, single channels are in
+
+436 
+
+> .CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 25, 2026. ;https://doi.org/10.64898/2026.06.24.734168 doi: bioRxiv preprint Suppl. Fig. 6B. Samples were dissociated directly after tissue collection and plated within 4-7
+
+437 
+
+> days.  t = 0 h, 24 hours after plating, is shown.
+
+438 
+
+> F) Bar graphs representing tumour-specific viabilities normalized to vehicle-treated controls.
+
+439 
+
+> Cells were treated with vehicle control (0.25% DMSO; blue), cytarabine (10 μM; purple) and
+
+440 
+
+> MaxPatient2, MaxPatient3 and MaxPatient4 were additionally treated with staurosporine
+
+441 
+
+> (10 μM; red) and vincristine (1 μM; green). Viability is quantified as CalceinAM sum intensity
+
+442 
+
+> in CalceinAM +/tumour-marker + mask and raw intensities are in Suppl. Fig. 7A.
+
+443 
+
+> G) Representative microscopy images of neuroectodermal sample MaxPatient4 at the day of
+
+444 
+
+> readout ( t = 72 h), cells were treated with vehicle control (0.25% DMSO), cytarabine (10
+
+445 
+
+> μM), vincristine (1 μM) or staurosporine (10 μM). Merged channels (green: CalceinAM; red:
+
+446 
+
+> B7H3) are represented, single channels are in Suppl. Fig. 7B.
+
+447 
+
+> H) Heatmap representing tumour-specific drug response (AUC, determined by CalceinAM
+
+448 
+
+> sum intensity in CalceinAM +/B7H3 + mask) of MaxPatient4 for the top 10 most effective
+
+449 
+
+> compounds of the 44 tested compounds (all compounds in Suppl. Fig. 7C).
+
+450 
+
+451 Discussion 452 
+
+> To  advance  drug  testing  in  neuroblastoma,  a difficult-to-treat  paediatric  cancer,  we
+
+453 
+
+> developed a microscopy-based viability readout that enables assessment of drug responses
+
+454 
+
+> in the presence of the tumour microenvironment (TME), in both neuroblastoma-immune co-
+
+455 
+
+> cultures and short-term cultured patient samples. This is increasingly relevant as the TME
+
+456 
+
+> influences drug response and because immunomodulatory therapies are emerging for
+
+457 
+
+> neuroblastoma. 10–12  The  readout  strongly  correlated  with  conventional  viability
+
+458 
+
+> measurements  while  providing  additional  value  through  cell  type-specific  viability
+
+459 
+
+> quantification. 7,8
+
+460 
+
+461 
+
+> The microscopy-readout for organoid-PBMC co-cultures enables direct comparison of drug
+
+462 
+
+> effects on tumour cells and PBMCs within the same well, in contrast to approaches that
+
+463 
+
+> assess PBMC toxicity in separate monoculture assays independently from tumour cell
+
+464 
+
+> viability. 8,31,32  Compounds effective against tumour cells either showed comparable PBMC
+
+465 
+
+> toxicity or largely spared PBMC viability. The latter may preserve anti-tumour immune
+
+466 
+
+> activity  in  vivo  and  thereby  support  combination  strategies  with  immunotherapies.
+
+467 
+
+> .CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 25, 2026. ;https://doi.org/10.64898/2026.06.24.734168 doi: bioRxiv preprint Microtubule-targeting agents were especially effective against tumour cells and had little
+
+468 
+
+> effect on PBMC viability. These agents disrupt microtubule dynamics, leading to mitotic
+
+469 
+
+> arrest  and  apoptosis,  processes  to  which  highly  proliferative  cells  are  particularly
+
+470 
+
+> vulnerable. 33,34  Both organoid lines proliferated substantially more than PBMCs  in vitro ,
+
+471 
+
+> which may partly explain their dependency on microtubule dynamics and the resulting
+
+472 
+
+> cytotoxic selectivity. Although PBMC viability represents only a limited measure of non-
+
+473 
+
+> tumour toxicity, this high-throughput workflow supports identification of tumour-selective
+
+474 
+
+> compounds to be further validated in future studies.
+
+475 
+
+> Several  compounds  showed  increased  efficacy  in  co-culture  compared  to
+
+476 
+
+> monoculture, including the apoptosis protein antagonist AZD5582 and microtubule targeting
+
+477 
+
+> agent vinblastine. Previous studies have indicated immunomodulatory effects for AZD5582,
+
+478 
+
+> including  enhanced  tumour  infiltration  by  CD8+  T-cells,  reduced  regulatory  T-cell
+
+479 
+
+> abundance, dendritic cell activation and improved T-cell priming. 35–37  Similarly, vinblastine
+
+480 
+
+> has been shown to stimulate anti-tumour immune responses through activation of dendritic
+
+481 
+
+> cells, although dendritic cells are present at low frequencies in PBMCs. 38  These findings
+
+482 
+
+> illustrate the value of the co-culture screen in scalable detection of compounds whose
+
+483 
+
+> efficacy  is  enhanced  by  the  presence  of  immune  cells.  Prioritized  candidates  can
+
+484 
+
+> subsequently be characterized using immune profiling approaches, including evaluation of
+
+485 
+
+> their effects on different immune cell subsets, cytokine production and activation and
+
+486 
+
+> exhaustion markers. 39
+
+487 
+
+> The co-culture readout used allogeneic PBMCs from healthy adult donors to allow
+
+488 
+
+> standardization, reproducibility and scalability, but these may not fully recapitulate the
+
+489 
+
+> immune composition and dysfunction observed in neuroblastoma patients. 12,40  Future
+
+490 
+
+> studies  could  incorporate  autologous  patient-derived  immune  cells,  although  limited
+
+491 
+
+> material  from  minimally  invasive  paediatric  procedures  remains  a challenge.  PBMCs
+
+492 
+
+> represent only part of the TME and incorporating additional cell types such as stromal cells
+
+493 
+
+> would increase physiological relevance. The workflow is also suited for studying emerging
+
+494 
+
+> immune-mediated  therapies,  such  as  CAR-T  cells,  which  are  increasingly  relevant  in
+
+495 
+
+> neuroblastoma and could be incorporated into co-culture screens. 12,41  This co-culture
+
+496 
+
+> workflow provides a scalable assay for tumour-immune drug screening, with potential to
+
+497 
+
+> inform both immunotherapy development and tumour-selective compound prioritization in
+
+498 
+
+> neuroblastoma.
+
+499 
+
+> .CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 25, 2026. ;https://doi.org/10.64898/2026.06.24.734168 doi: bioRxiv preprint
+
+500 
+
+> We extended the microscopy-based viability readout to short-term cultured patient material
+
+501 
+
+> to quantify tumour fraction and tumour-specific drug response in mixed cell populations.
+
+502 
+
+> This addresses an important limitation of current  ex vivo  drug screening approaches, which
+
+503 
+
+> rely on whole-well viability measurements and cannot distinguish tumour from non-
+
+504 
+
+> malignant cells. 42,19
+
+505 
+
+> Combining neuroblastoma-associated markers (L1CAM, NCAM and B7H3) into a
+
+506 
+
+> cocktail enabled distinction of tumour cells from surrounding cells, compensating for intra-
+
+507 
+
+> and interpatient variability in surface marker expression. Although these markers are widely
+
+508 
+
+> used neuroblastoma markers, NCAM can also be expressed by immune cells (particularly NK
+
+509 
+
+> cells) and B7H3  can be expressed by myeloid and endothelial  cells  in  the  tumour-
+
+510 
+
+> microenvironment. 26–29,43–45  Using a threshold-based separation limits false tumour-positive
+
+511 
+
+> signals, as neuroblastoma cells have higher surface expression than immune cells. This
+
+512 
+
+> microscopy-based viability readout for patient samples can be readily adapted to other
+
+513 
+
+> tumour types by substituting tumour-specific markers.
+
+514 
+
+> Limited viable tumour material remains a challenge for  ex vivo  short-term patient
+
+515 
+
+> screens. 8,19,22,42  Therefore, we reduced the cell density per well. Neuroblastoma patient
+
+516 
+
+> samples retained non-malignant cells during short-term culture, showing variable tumour
+
+517 
+
+> fractions (22-66%), but tumour cells showed little to no proliferation during the assay, which
+
+518 
+
+> likely  contributed  to  the  limited  compound  responses  observed.  Longer  pre-culture
+
+519 
+
+> durations  may  increase  viable  tumour  cell  numbers  and  proliferation  rates  but
+
+520 
+
+> simultaneously change TME representation, as illustrated in the MNTI sample. After one
+
+521 
+
+> month of culture, the MNTI sample consisted almost entirely of tumour cells with an
+
+522 
+
+> increased proliferation rate, providing more viable tumour material for screening that
+
+523 
+
+> enabled  testing  of a  larger  compound panel.  The balance between  preserving  TME
+
+524 
+
+> components and obtaining sufficient tumour material requires optimization based on the
+
+525 
+
+> research question and available material.
+
+526 
+
+> Current precision oncology initiatives such as INFORM and ZERO rely on whole-well
+
+527 
+
+> viability measurements for  ex vivo  drug testing. 19,20  For cultures containing both tumour and
+
+528 
+
+> non-malignant cells, tumour-specific viability assessment provides additional  value by
+
+529 
+
+> distinguishing tumour-specific drug responses from effects on surrounding non-malignant
+
+530 
+
+> cells. The predictive value of  ex vivo  drug screening for treatment response in patients
+
+531 
+
+> .CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 25, 2026. ;https://doi.org/10.64898/2026.06.24.734168 doi: bioRxiv preprint remains to be established in large paediatric cohorts. Microscopy-based tumour-specific
+
+532 
+
+> viability readouts could contribute to this effort by enabling more precise drug response
+
+533 
+
+> measurements, thereby ultimately supporting treatment stratification in neuroblastoma
+
+534 
+
+> precision medicine.
+
+535 Conclusion 536 
+
+> We developed a scalable microscopy-based readout that enables cell-type-specific drug
+
+537 
+
+> response profiling in neuroblastoma-immune co-cultures and short-term cultured patient
+
+538 
+
+> samples that could support future immunotherapy development and precision medicine.
+
+539 
+
+540 541 
+
+> .CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 25, 2026. ;https://doi.org/10.64898/2026.06.24.734168 doi: bioRxiv preprint
+
+# Acknowledgements 542 
+
+> We thank all patients and their parents for providing samples that made this research
+
+543 
+
+> possible. We appreciate the support given by the High Throughput Screening Facility and the
+
+544 
+
+> Imaging Center of the Princess Máxima Center for Paediatric oncology. This work was partly
+
+545 
+
+> supported by Oncode Accelerator, a Dutch national growth fund project under grant nr
+
+546 
+
+> NGFOP220. Biorender was used to create figures 2A and 3A.
+
+547 
+
+548 Financial disclosures 549 
+
+> All co-authors have nothing to disclose.
+
+550 
+
+551 Author contribution statement 552 
+
+> Jan J. Molenaar: Writing - review & editing, Supervision, Conceptualization. Selma Eising:
+
+553 
+
+> Writing - review & editing, Supervision, Conceptualization. Marlinde L. van den Boogaard:
+
+554 
+
+> Writing - review & editing, Supervision, Conceptualization. Sander van Hooff: Writing -
+
+555 
+
+> review & editing, Supervision, Conceptualization. Judith Wienke: Writing - review & editing,
+
+556 
+
+> Supervision. Karin Langenberg: Recourses.  Eoghan O’Duibhir: Resources, Investigation.
+
+557 
+
+> Jeroen F. van Velzen: Resources.  Barrera Román: Resources. Luca M. van den Brink:
+
+558 
+
+> Resources. Merle M.J. Watzeels: Investigation. Eleonora J. Looze: Investigation. Sarah Swaak:
+
+559 
+
+> Investigation,  Visualisation.  Sabina  Valová:  Writing  - original  draft,  Visualization,
+
+560 
+
+> Investigation, Formal analysis. Marlinde C. Schoonbeek: Writing - original draft, Visualization,
+
+561 
+
+> Project administration, Investigation, Methodology, Formal analysis, Data curation.
+
+562 
+
+563 References 564 
+
+> 1.  Ponzoni, M.  et al.  Recent advances in the developmental origin of neuroblastoma: an
+
+565 
+
+> overview.  Journal of Experimental and Clinical Cancer Research  vol. 41 Preprint at
+
+566 
+
+> https://doi.org/10.1186/s13046-022-02281-w (2022).
+
+567 
+
+> 2.  Lundberg, K. I., Treis, D. & Johnsen, J. I. Neuroblastoma Heterogeneity, Plasticity, and
+
+568 
+
+> Emerging Therapies.  Current Oncology Reports  vol. 24 1053–1062 Preprint at
+
+569 
+
+> https://doi.org/10.1007/s11912-022-01270-8 (2022).
+
+570 
+
+> .CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 25, 2026. ;https://doi.org/10.64898/2026.06.24.734168 doi: bioRxiv preprint 3.  Qiu, B. & Matthay, K. K. Advancing therapy for neuroblastoma.  Nature Reviews Clinical
+
+571 
+
+> Oncology  vol. 19 515–533 Preprint at https://doi.org/10.1038/s41571-022-00643-z
+
+572 
+
+> (2022).
+
+573 
+
+> 4.  Friedman, D. N. & Henderson, T. O. Late effects and survivorship issues in patients
+
+574 
+
+> with neuroblastoma.  Children  vol. 5 Preprint at
+
+575 
+
+> https://doi.org/10.3390/children5080107 (2018).
+
+576 
+
+> 5.  Applebaum, M. A.  et al.  Neuroblastoma survivors are at increased risk for second
+
+577 
+
+> malignancies: A report from the International Neuroblastoma Risk Group Project.  Eur.
+
+578 
+
+> J. Cancer  72 , 177–185 (2017).
+
+579 
+
+> 6.  Bate-Eya, L. T.  et al.  Newly-derived neuroblastoma cell lines propagated in serum-free
+
+580 
+
+> media recapitulate the genotype and phenotype of primary neuroblastoma tumours.
+
+581 
+
+> Eur. J. Cancer  50 , 628–637 (2014).
+
+582 
+
+> 7.  Langenberg, K. P. S.  et al.  Exploring high-throughput drug sensitivity testing in
+
+583 
+
+> neuroblastoma cell lines and patient-derived tumor organoids in the era of precision
+
+584 
+
+> medicine.  Eur. J. Cancer  218 , (2025).
+
+585 
+
+> 8.  Schoonbeek, M. C.  et al.  Sensitivity profiling reveals consistent drug responses across
+
+586 
+
+> preclinical neuroblastoma models. Preprint at
+
+587 
+
+> https://doi.org/10.64898/2026.02.24.707695 (2026).
+
+588 
+
+> 9.  Aaltonen, K.  et al.  Patient-derived models: Advanced tools for precision medicine in
+
+589 
+
+> neuroblastoma.  Frontiers in Oncology  vol. 12 Preprint at
+
+590 
+
+> https://doi.org/10.3389/fonc.2022.1085270 (2023).
+
+591 
+
+> 10.  Louault, K., De Clerck, Y. A. & Janoueix-Lerosey, I. The neuroblastoma tumor
+
+592 
+
+> microenvironment: From an in-depth characterization towards novel therapies.  EJC
+
+593 
+
+> Paediatric Oncology  3, (2024).
+
+594 
+
+> 11.  Garner, E. F. & Beierle, E. A. Cancer stem cells and their interaction with the tumor
+
+595 
+
+> microenvironment in neuroblastoma.  Cancers (Basel).  8, (2015).
+
+596 
+
+> 12.  Wienke, J.  et al.  The immune landscape of neuroblastoma: Challenges and
+
+597 
+
+> opportunities for novel therapeutic strategies in pediatric oncology.  European Journal
+
+598 
+
+> of Cancer  vol. 144 123–150 Preprint at https://doi.org/10.1016/j.ejca.2020.11.014
+
+599 
+
+> (2021).
+
+600 
+
+> 13.  Herbst, S. A.  et al.  Comparing the value of mono- vs coculture for high-throughput
+
+601 
+
+> compound screening in hematological malignancies.  Blood Adv.  7, 5925–5936 (2023).
+
+602 
+
+> .CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 25, 2026. ;https://doi.org/10.64898/2026.06.24.734168 doi: bioRxiv preprint 14.  Dekkers, J. F.  et al.  Uncovering the mode of action of engineered T cells in patient
+
+603 
+
+> cancer organoids.  Nat. Biotechnol.  41 , 60–69 (2023).
+
+604 
+
+> 15.  Li, P., Huang, M., Ma, Y., Zhang, Y. & Shi, C. Novel research model for in vitro
+
+605 
+
+> immunotherapy: co-culturing tumor organoids with peripheral blood mononuclear
+
+606 
+
+> cells.  Cancer Cell International  vol. 24 Preprint at https://doi.org/10.1186/s12935-
+
+607 
+
+> 024-03628-3 (2024).
+
+608 
+
+> 16.  Kholosy, W. M.  et al.  Neuroblastoma and DIPG organoid coculture system for
+
+609 
+
+> personalized assessment of novel anticancer immunotherapies.  J. Pers. Med.  11 ,
+
+610 
+
+> (2021).
+
+611 
+
+> 17.  Letai, A. Functional precision cancer medicine-moving beyond pure genomics.  Nat.
+
+612 
+
+> Med.  23 , 1028–1035 (2017).
+
+613 
+
+> 18.  Letai, A., Bhola, P. & Welm, A. L. Functional precision oncology: testing tumors with
+
+614 
+
+> drugs to identify vulnerabilities and novel combinations.  Cancer Cell  40 , 26–35 (2022).
+
+615 
+
+> 19.  Mayoh, C.  et al.  High-Throughput Drug Screening of Primary Tumor Cells Identifies
+
+616 
+
+> Therapeutic Strategies for Treating Children with High-Risk Cancer.  Cancer Res.  83 ,
+
+617 
+
+> 2716–2732 (2023).
+
+618 
+
+> 20.  Peterziel, H.  et al.  Drug sensitivity profiling of 3D tumor tissue cultures in the pediatric
+
+619 
+
+> precision oncology program INFORM.  NPJ Precis. Oncol.  6, (2022).
+
+620 
+
+> 21.  Santo, V. E.  et al.  Drug screening in 3D in vitro tumor models: overcoming current
+
+621 
+
+> pitfalls of efficacy read-outs.  Biotechnol. J.  12 , (2017).
+
+622 
+
+> 22.  Schoonbeek, M. C.  et al.  Ex vivo drug sensitivity profiling to complement molecular
+
+623 
+
+> profiling in pediatric precision oncology.  NPJ Precis. Oncol.
+
+624 
+
+> https://doi.org/10.1038/s41698-025-01266-0 (2026) doi:10.1038/s41698-025-01266-
+
+625 
+
+> 0.
+
+626 
+
+> 23.  Berker, Y.  et al.  Patient-by-Patient Deep Transfer Learning for Drug-Response Profiling
+
+627 
+
+> Using Confocal Fluorescence Microscopy of Pediatric Patient-Derived Tumor-Cell
+
+628 
+
+> Spheroids.  IEEE Trans. Med. Imaging  41 , 3981–3999 (2022).
+
+629 
+
+> 24.  Wardwell-Swanson, J.  et al.  A Framework for Optimizing High-Content Imaging of 3D
+
+630 
+
+> Models for Drug Discovery.  SLAS Discovery  25 , 709–722 (2020).
+
+631 
+
+> 25.  Herter, S.  et al.  High content-imaging drug synergy screening identifies specific
+
+632 
+
+> senescence-related vulnerabilities of mesenchymal neuroblastomas.  Cell Death Dis.
+
+633 
+
+> 16 , (2025).
+
+634 
+
+> .CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 25, 2026. ;https://doi.org/10.64898/2026.06.24.734168 doi: bioRxiv preprint 26.  Epperly, R., Gottschalk, S. & DeRenzo, C. CAR T cells redirected to B7-H3 for pediatric
+
+635 
+
+> solid tumors: Current status and future perspectives.  EJC Paediatric Oncology  3,
+
+636 
+
+> (2024).
+
+637 
+
+> 27.  Wachowiak, R.  et al.  Universal expression of cell adhesion molecule NCAM in
+
+638 
+
+> neuroblastoma in contrast to L1: Implications for different roles in tumor biology of
+
+639 
+
+> neuroblastoma? in  Pediatric Surgery International  vol. 24 1361–1364 (2008).
+
+640 
+
+> 28.  Heinly, B. E. & Grant, C. N. Cell Adhesion Molecules in Neuroblastoma: Complex Roles,
+
+641 
+
+> Therapeutic Potential.  Frontiers in Oncology  vol. 12 Preprint at
+
+642 
+
+> https://doi.org/10.3389/fonc.2022.782186 (2022).
+
+643 
+
+> 29.  Dondero, A.  et al.  Multiparametric flow cytometry highlights B7-H3 as a novel
+
+644 
+
+> diagnostic/therapeutic target in GD2neg/low neuroblastoma variants.  J. Immunother.
+
+645 
+
+> Cancer  9, (2021).
+
+646 
+
+> 30.  Wienke, J.  et al.  Integrative analysis of neuroblastoma by single-cell RNA sequencing
+
+647 
+
+> identifies the NECTIN2-TIGIT axis as a target for immunotherapy.  Cancer Cell
+
+648 
+
+> https://doi.org/10.1016/j.ccell.2023.12.008 (2024) doi:10.1016/j.ccell.2023.12.008.
+
+649 
+
+> 31.  Sakai, H.  et al.  Effects of anticancer agents on cell viability, proliferative activity and
+
+650 
+
+> cytokine production of peripheral blood mononuclear cells.  J. Clin. Biochem. Nutr  52 ,
+
+651 
+
+> 64–71 (2013).
+
+652 
+
+> 32.  Https://Www.Evotec.Com/Solutions/Drug-Discovery-Preclinical-
+
+653 
+
+> Development/Cyprotex-Adme-Tox-Solutions/Toxicology/Immunotoxicology/Pbmc-
+
+654 
+
+> Cytotoxicity-Assay .
+
+655 
+
+> 33.  Hafner, M., Niepel, M., Chung, M. & Sorger, P. K. Growth rate inhibition metrics
+
+656 
+
+> correct for confounders in measuring sensitivity to cancer drugs.  Nat. Methods  13 ,
+
+657 
+
+> 521–527 (2016).
+
+658 
+
+> 34.  Assunção, H. C., Silva, P. M. A., Bousbaa, H. & Cidade, H. Recent Advances in
+
+659 
+
+> Microtubule Targeting Agents for Cancer Therapy.  Molecules  vol. 30 Preprint at
+
+660 
+
+> https://doi.org/10.3390/molecules30163314 (2025).
+
+661 
+
+> 35.  Wang, W., Wu, F., Wu, Z., Zhang, M. & Lu, Q. The XIAP inhibitor AZD5582 improves the
+
+662 
+
+> treatment effect of microwave ablation on hepatocellular carcinoma.  Front. Immunol.
+
+663 
+
+> 16 , (2025).
+
+664 
+
+> .CC-BY-NC 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted June 25, 2026. ;https://doi.org/10.64898/2026.06.24.734168 doi: bioRxiv preprint 36.  Hoefsmit, E. P.  et al.  Inhibitor of Apoptosis Proteins Antagonist Induces T-cell
+
+665 
+
+> Proliferation after Cross-Presentation by Dendritic Cells.  Cancer Immunol. Res.  11 ,
+
+666 
+
+> 450–465 (2023).
+
+667 
+
+> 37.  Beug, S. T.  et al.  Smac mimetics synergize with immune checkpoint inhibitors to
+
+668 
+
+> promote tumour immunity against glioblastoma.  Nat. Commun.  8, (2017).
+
+669 
+
+> 38.  Tanaka, H., Matsushima, H., Nishibu, A., Clausen, B. E. & Takashima, A. Dual
+
+670 
+
+> therapeutic efficacy of vinblastine as a unique chemotherapeutic agent capable of
+
+671 
+
+> inducing dendritic cell maturation.  Cancer Res.  69 , 6987–6994 (2009).
+
+672 
+
+> 39.  Caforio, M.  et al.  GD2 redirected CAR T and activated NK-cell-mediated secretion of
+
+673 
+
+> IFNγovercomes MYCN-dependent IDO1 inhibition, contributing to neuroblastoma cell
+
+674 
+
+> immune escape.  J. Immunother. Cancer  9, (2021).
+
+675 
+
+> 40.  Marino, J., Paster, J. & Benichou, G. Allorecognition by T lymphocytes and allograft
+
+676 
+
+> rejection.  Frontiers in Immunology  vol. 7 Preprint at
+
+677 
+
+> https://doi.org/10.3389/fimmu.2016.00582 (2016).
+
+678 
+
+> 41.  Zappa, E.  et al.  Adoptive cell therapy in paediatric extracranial solid tumours: current
+
+679 
+
+> approaches and future challenges.  European Journal of Cancer  vol. 194 Preprint at
+
+680 
+
+> https://doi.org/10.1016/j.ejca.2023.113347 (2023).
+
+681 
+
+> 42.  Peterziel, H.  et al.  Drug sensitivity profiling of 3D tumor tissue cultures in the pediatric
+
+682 
+
+> precision oncology program INFORM.  NPJ Precis. Oncol.  6, 94 (2022).
+
+683 
+
+> 43.  Van Acker, H. H., Capsomidis, A., Smits, E. L. & Van Tendeloo, V. F. CD56 in the immune
+
+684 
+
+> system: More than a marker for cytotoxicity?  Frontiers in Immunology  vol. 8 Preprint
+
+685 
+
+> at https://doi.org/10.3389/fimmu.2017.00892 (2017).
+
+686 
+
+> 44.  Pulido, R. & Nunes-Xavier, C. E. Hopes on immunotherapy targeting B7-H3 in
+
+687 
+
+> neuroblastoma.  Transl. Oncol.  27 , (2023).
+
+688 
+
+> 45.  Jansen, L., Wienke, J., Molkenbur, R., Rossig, C. & Meissner, R. B7-H3 in the tumor
+
+689 
+
+> microenvironment: Implications for CAR T cell therapy in pediatric solid tumors.
+
+690 
+
+> Cancer and Metastasis Reviews  vol. 44 Preprint at https://doi.org/10.1007/s10555-
+
+691 
+
+> 025-10294-y (2025).
+
+692 
+
+693
