@@ -1,0 +1,1632 @@
+Title: Pan-cancer NET-associated immunothrombosis coupling
+
+URL Source: https://www.biorxiv.org/content/10.64898/2026.07.14.738403v1.full.pdf
+
+Number of Pages: 25
+
+Markdown Content:
+Pan-cancer NET-associated tumor ecology  
+
+> Page 1
+
+# Pan-cancer NET-associated immunothrombosis coupling identifies a 
+
+# neutrophil-linked but neutrophil-irreducible tumor ecology 
+
+Short title: Pan-cancer NET-associated tumor ecology 
+
+Zhang Lin* 
+
+Department of Pharmacy, Shaoxing People's Hospital (Shaoxing Hospital, Zhejiang University School of Medicine, The First 
+
+Affiliated Hospital of Shaoxing University), Shaoxing 312000, Zhejiang Province, China 
+
+*Correspondence: Zhang Lin, Department of Pharmacy, Shaoxing People's Hospital, Shaoxing 312000, Zhejiang Province, 
+
+China. Email: zhanglinfudan@zju.edu.cn. ORCID: 0000-0002-3767-0249. 
+
+Article type: Research | Target journal: Molecular Cancer 
+
+## Abstract 
+
+Background:  Neutrophil extracellular traps (NETs) connect innate immunity with thrombosis, metastasis 
+
+and immune escape, but bulk-tumor NET-associated signatures may mainly report neutrophil abundance. 
+
+We tested whether an established NETs score also captures a neutrophil-irreducible tumor ecology. 
+
+Methods:  We reanalysed a published 19-gene NETs score in 9,496 TCGA tumors across 32 cancer types. 
+
+Tumor-stratified correlations mapped Hallmark and custom immunothrombosis modules. Within each 
+
+cancer type, the score was residualized against a curated neutrophil proxy and partitioned into four 
+
+median-defined ecological quadrants. Clinical survival and two independent immune-checkpoint-
+
+blockade cohorts provided outcome context. 
+
+Results:  Raw NETs score was positively associated with TNF-alpha/NF-kB signaling in 32/32 cancers 
+
+(median Spearman rho=0.404; FDR<0.05 in 30) and hypoxia in 32/32 (median rho=0.394; FDR<0.05 in 
+
+31). After neutrophil residualization, hypoxia (median rho=0.206; positive in 30/32) and TNF-alpha/NF-
+
+kB signaling (median rho=0.165; positive in 29/32) remained dominant. NETs-high/neutrophil-low 
+
+tumors retained myeloid-inflammatory, immunothrombotic and hypoxic enrichment. Residual NETs 
+
+score was associated with adverse overall survival in eight of 23 evaluable cancers after available clinical 
+
+adjustment. It did not discriminate response in IMvigor210 (AUC=0.519, P=0.642) or GSE91061 
+
+(AUC=0.527, P=0.808), although it differed across IMvigor210 immune phenotypes (P=0.045). 
+
+Conclusions:  The published NETs score contains a neutrophil-linked yet incompletely neutrophil-
+
+reducible component that organizes hypoxic, inflammatory and immunothrombotic tumor ecology. Its 
+
+23
+
+4
+
+5
+
+67
+
+89
+
+10 
+
+11 
+
+12 13 14 
+
+15 16 17 18 19 
+
+20 21 22 23 24 25 26 27 
+
+28 29  
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.14.738403 doi: bioRxiv preprint Pan-cancer NET-associated tumor ecology
+> Page 2
+
+translational value is context dependent rather than that of a universal standalone immunotherapy 
+
+biomarker. 
+
+Keywords:  neutrophil extracellular traps; immunothrombosis; pan-cancer; tumor microenvironment; 
+
+hypoxia; immune checkpoint blockade 
+
+## Background 
+
+Neutrophil extracellular traps were first described as extracellular chromatin fibers decorated with 
+
+antimicrobial proteins that immobilize and kill microorganisms [1]. The concept has since broadened 
+
+from a discrete antimicrobial event to a family of chromatin-release programs with context-dependent 
+
+roles in sterile inflammation, autoimmunity, vascular injury and cancer [2]. That breadth creates a 
+
+measurement problem for human tumors: histological NET structures, circulating NET markers and bulk-
+
+tissue transcription are related but non-equivalent readouts. A transcriptomic NET-associated score 
+
+should therefore be interpreted as an ecological proxy, not as direct proof that extracellular traps are 
+
+physically present in every scored sample. 
+
+Cancer research nevertheless provides strong biological reasons to map this proxy. Contemporary 
+
+reviews place NETs at the intersection of tumor initiation, dissemination, immune regulation and 
+
+treatment failure [3]. Reciprocal tumor-neutrophil signaling can prime granulopoiesis and NET release, 
+
+while NET-associated DNA, histones and proteases remodel local and distant tissue niches [4]. This 
+
+bidirectionality suggests that a tumor-level score may contain information about the tissue state that 
+
+induces NETs as well as the downstream effects of NET formation. 
+
+The immunothrombotic dimension is especially compelling. Tumor-bearing hosts can systemically 
+
+prime neutrophils to release extracellular DNA that supports cancer-associated thrombosis [5]. NETs can 
+
+also create adhesive vascular and parenchymal niches that facilitate metastatic seeding [6], and 
+
+inflammatory NET remodeling can awaken dormant disseminated cancer cells [7]. These mechanisms 
+
+imply that inflammation, coagulation, complement, endothelial activation and extracellular-matrix 
+
+30 31 
+
+32 33 
+
+34 
+
+35 36 37 38 39 40 41 42 
+
+43 44 45 46 47 48 
+
+49 50 51 52 53  
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.14.738403 doi: bioRxiv preprint Pan-cancer NET-associated tumor ecology
+> Page 3
+
+remodeling are not merely parallel correlates of NET-associated tumors; they may constitute a coupled 
+
+host-defense program that malignant tissues exploit. 
+
+NETs also influence immune access. Tumor-derived CXCR1/CXCR2 agonists can induce traps that 
+
+physically interfere with NK- and T-cell cytotoxicity [8]; IL-17-driven NETs can mediate checkpoint 
+
+blockade resistance in pancreatic cancer [9]; and a tumor-derived Chi3l1-NET axis can promote T-cell 
+
+exclusion in triple-negative breast cancer [10]. Recent work extends this logic to an NET-STC1 feedback 
+
+circuit linked to immune evasion in bladder cancer [11] and to CCDC25-dependent epithelial-
+
+mesenchymal transition and treatment resistance in breast cancer [12]. Together, these studies predict that 
+
+the biological meaning of a NET-associated transcriptional state depends on surrounding hypoxic, stromal 
+
+and immune programs. 
+
+A 19-gene coefficient-weighted NETs score has already been reported as a pan-cancer prognostic 
+
+signature [13]. The present study deliberately does not claim to develop another signature. Instead, it asks 
+
+a different question that is essential for interpreting the published score: after the expected contribution of 
+
+neutrophil abundance is modeled within each cancer type, does the remaining signal still organize a 
+
+coherent tumor ecology? This distinction matters because many genes in NET-related signatures are 
+
+expressed by neutrophils or myeloid cells. Without an abundance-aware analysis, a nominal NET signal 
+
+can collapse into a relabeled leukocyte-content measure. 
+
+A second unresolved issue is the biological unit represented by a bulk-tumor score. NET formation is 
+
+an event, whereas bulk RNA is a time-averaged mixture of malignant, immune, stromal and vascular 
+
+cells. A score may therefore rise because more neutrophils are present, because resident neutrophils are 
+
+activated, because other cells express overlapping inflammatory genes, or because the tissue environment 
+
+favors NET formation. These explanations are not mutually exclusive, but they imply different 
+
+experiments and clinical uses. An abundance-aware atlas cannot resolve every cellular source; it can, 
+
+however, identify which ecological relationships survive a stringent first separation from estimated 
+
+neutrophil quantity. 
+
+54 55 
+
+56 57 58 59 60 61 62 63 
+
+64 65 66 67 68 69 70 
+
+71 72 73 74 75 76 77 78  
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.14.738403 doi: bioRxiv preprint Pan-cancer NET-associated tumor ecology
+> Page 4
+
+This reasoning generates three discriminating predictions. If the score is only an abundance marker, 
+
+pathway coupling should largely disappear after neutrophil residualization and NETs-high/neutrophil-low 
+
+tumors should resemble their NETs-low counterparts. If it reflects a broader tissue program, selected 
+
+associations should persist in both analyses. Finally, if that program is a universal treatment biomarker, 
+
+the same score should discriminate response across independent checkpoint-blockade cohorts. Testing 
+
+these predictions in one workflow makes negative findings informative and prevents survival association 
+
+alone from being used as proof of mechanism or clinical portability. 
+
+The Cancer Genome Atlas (TCGA) provides a harmonized foundation for this test [14]. Its pan-
+
+cancer immune landscape demonstrates that immune states recur across tissue lineages [15], whereas cell-
+
+of-origin structure remains a major determinant of molecular variation [16]. High-quality, uniformly 
+
+curated survival endpoints permit tumor-stratified outcome analyses [17], and expression-derived stromal 
+
+and immune estimates can provide admixture sensitivity checks where data are available [18]. These 
+
+properties favor an analysis that standardizes and tests associations within each tumor type before 
+
+summarizing cross-cancer consistency. 
+
+We therefore constructed an abundance-aware coupling atlas using selected Hallmark pathways from 
+
+MSigDB [19] and transparent immune-cell modules informed by established tumor immune signatures 
+
+[20]. We further examined the published score in pretreatment melanoma samples exposed to nivolumab 
+
+[21] and in the IMvigor210 anti-PD-L1 urothelial cohort [22]. The prespecified organizing hypothesis 
+
+was that NET-associated transcription would remain coupled to hypoxic and inflammatory programs after 
+
+neutrophil adjustment, but would not function as a universally portable response classifier. The resulting 
+
+design integrates raw coupling, within-cancer residualization, four-quadrant ecology, survival context and 
+
+external immunotherapy evaluation. 
+
+79 80 81 82 83 84 85 
+
+86 87 88 89 90 91 92 
+
+93 94 95 96 97 98 99 100  
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.14.738403 doi: bioRxiv preprint Pan-cancer NET-associated tumor ecology
+> Page 5
+
+## Methods 
+
+Study design and data sources 
+
+This study was a retrospective, multi-cohort transcriptomic analysis. The discovery dataset comprised 
+
+TCGA primary-tumor RNA expression, sample annotations and Pan-Cancer Clinical Data Resource 
+
+outcomes. Samples were harmonized to 15-character TCGA sample barcodes and 12-character patient 
+
+barcodes. Tumor types were retained when at least 30 samples had a finite NETs score. This yielded 
+
+9,496 tumor samples from 32 cancer types. Clinical analyses used one patient-level mean score when 
+
+more than one tumor aliquot was available. No normal-tissue comparisons were used to support the 
+
+principal conclusions. 
+
+External treatment context was evaluated in two independent cohorts: IMvigor210 urothelial cancer 
+
+treated with atezolizumab and GSE91061 melanoma treated with nivolumab. Processed expression and 
+
+clinical files already archived in the project were used. Pretreatment samples with mapped binary 
+
+response labels were selected for response discrimination. All analyses used de-identified public data; no 
+
+new participant recruitment, intervention or access to identifiable information occurred. 
+
+Published NETs score reconstruction 
+
+The coefficient file accompanying the published 19-gene NETs prognostic signature was used 
+
+without refitting. Gene symbols were harmonized, including IL8 to CXCL8, and the weighted score was 
+
+computed as the sum of log-scale expression multiplied by the published coefficient for each matched 
+
+gene. All 19 genes matched the TCGA and IMvigor210 expression matrices; 17 matched GSE91061 after 
+
+Entrez-to-symbol conversion. Within each TCGA cancer type, the raw score was standardized to mean 
+
+zero and unit variance; a global z score was used only for the cross-cancer distribution plot. 
+
+The source publication describes the variable as a NETs-related prognostic score. Existing project 
+
+code and figures use the label NETosis. In this manuscript, NETs score and NET-associated score refer to 
+
+the same expression-derived variable; neither label is intended to claim direct microscopy, citrullinated-
+
+histone measurement or biochemical quantification of extracellular traps. 
+
+101 
+
+102 
+
+103 104 105 106 107 108 109 
+
+110 111 112 113 114 
+
+115 
+
+116 117 118 119 120 121 
+
+122 123 124 125  
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.14.738403 doi: bioRxiv preprint Pan-cancer NET-associated tumor ecology
+> Page 6
+
+Pathway and immune-ecology modules 
+
+Thirteen prespecified Hallmark programs were selected to cover TNF-alpha/NF-kB signaling, 
+
+hypoxia, inflammatory response, IL6/JAK/STAT3 signaling, complement, angiogenesis, coagulation, 
+
+epithelial-mesenchymal transition, TGF-beta signaling, interferon-gamma response, IL2/STAT5 
+
+signaling, KRAS signaling and WNT/beta-catenin signaling. Five transparent custom modules 
+
+represented a neutrophil core, immunothrombosis, myeloid inflammation, T-cell exhaustion/checkpoints 
+
+and CAF-endothelial stroma. Module gene membership and matching diagnostics are supplied in the 
+
+supplementary tables. 
+
+For each module, expression of every matched gene was z standardized across the analyzed 
+
+expression matrix and the sample-level module score was the mean of those gene-wise z scores. Modules 
+
+required at least three matched genes. The curated neutrophil-abundance proxy comprised MPO, ELANE, 
+
+PADI4, S100A8, S100A9, CXCL8, MMP9, CTSG, LCN2, LTF, CEACAM8 and OLFM4; 10 of these 12 
+
+genes were available. This proxy was standardized within cancer type before residualization. 
+
+Neutrophil residualization and quadrant ecology 
+
+Within each cancer type, ordinary least-squares regression modeled the standardized NETs score as a 
+
+function of the standardized neutrophil proxy. The residual, termed neutrophil-residual NETs score, is the 
+
+component linearly uncorrelated with the proxy in that cancer type. Residualization was used as a signal-
+
+separation device, not as evidence of biological independence or causality. Sensitivity residuals 
+
+additionally included stromal score or tumor purity where available. 
+
+A complementary four-quadrant analysis dichotomized both the standardized NETs score and 
+
+neutrophil proxy at their within-cancer medians. The key contrast compared NETs-high/neutrophil-low 
+
+with NETs-low/neutrophil-low tumors, thereby holding the coarse neutrophil stratum constant. For each 
+
+feature and cancer type, the effect was the difference in median module score between these groups. 
+
+Wilcoxon rank-sum tests were applied when at least 10 finite observations and both groups were present. 
+
+126 
+
+127 128 129 130 131 132 133 
+
+134 135 136 137 138 
+
+139 
+
+140 141 142 143 144 
+
+145 146 147 148 149  
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.14.738403 doi: bioRxiv preprint Pan-cancer NET-associated tumor ecology
+> Page 7
+
+Correlation and cross-cancer consistency analyses 
+
+Spearman correlations were calculated separately within each cancer type between the raw or residual 
+
+NETs score and each pathway module. A test required at least 10 complete observations and at least three 
+
+unique values in both variables. Benjamini-Hochberg correction was performed across the 32 cancer-
+
+specific tests for each score-module combination. Cross-cancer consistency was summarized by the 
+
+median rho, proportion of positive correlations and number of cancer types with false-discovery rate 
+
+(FDR) below 0.05. The quadrant contrasts were analogously corrected within each feature across cancer 
+
+types. All tests were two sided. 
+
+Clinical outcome analyses 
+
+Overall survival (OS), disease-specific survival and progression-free interval were taken from the 
+
+curated TCGA clinical outcome resource. Cox proportional-hazards models were fitted separately by 
+
+cancer type when at least 50 patients and 20 events were available. The exposure was a one-standard-
+
+deviation increase in raw or neutrophil-residual NETs score. Univariable, age/sex-adjusted and 
+
+age/sex/stage-adjusted model families were estimated. Covariates entered only when coverage and 
+
+variation thresholds were met; thus the nominal fully adjusted family used age alone or age plus sex in 
+
+cancers lacking usable stage. FDR correction was performed within endpoint, score and model family. 
+
+Immunotherapy analyses 
+
+The published coefficients were applied to each external expression matrix after gene harmonization. 
+
+Responders were complete or partial responders and nonresponders were stable or progressive disease, 
+
+according to each processed clinical file. Wilcoxon tests compared standardized scores, and ROC AUC 
+
+was oriented toward nonresponse. In IMvigor210, a Kruskal-Wallis test compared desert, excluded and 
+
+inflamed immune phenotypes. These were external context analyses; no threshold was trained in TCGA 
+
+and transferred to the treatment cohorts. 
+
+Purity, genomic and reproducibility analyses 
+
+Expression-derived ESTIMATE immune, stromal and purity scores matched only 396 bladder cancer 
+
+samples in the available local input. These analyses were therefore explicitly treated as a BLCA-only 
+
+150 
+
+151 152 153 154 155 156 157 
+
+158 
+
+159 160 161 162 163 164 165 
+
+166 
+
+167 168 169 170 171 172 
+
+173 
+
+174 175  
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.14.738403 doi: bioRxiv preprint Pan-cancer NET-associated tumor ecology
+> Page 8
+
+sensitivity assessment and not as pan-cancer purity correction. Available TMB, mutation-signature proxy 
+
+and thresholded copy-number burden also mapped to only one cancer type and were reported solely as 
+
+exploratory supplementary analyses. Neither restricted analysis was used to support a cross-cancer 
+
+genomic or purity claim. 
+
+The complete workflow was rerun from the project entry point in R, followed by submission-asset 
+
+finalization. Tables and figures were compared by SHA-256 hashes before and after rerun. OpenAI 
+
+ChatGPT was used for code review, manuscript organization, English-language editing and reference 
+
+cross-checking. All numerical analyses were executed locally in R; every reported number and reference 
+
+was checked against the generated output or PubMed metadata and approved by the author. The language 
+
+model was not treated as an author. 
+
+Table 1. Study design and analytic layers. 
+
+Layer  Operational definition  Interpretive role 
+
+Discovery cohort  9,496 TCGA tumors from 32 cancer types  Pan-cancer landscape and within-cancer analyses 
+
+NETs score  Published 19-gene coefficient-weighted score; 
+
+all 19 genes matched in TCGA 
+
+Reanalysis of an established score, not a newly 
+
+trained model 
+
+Ecology layer  13 Hallmark and five custom modules scored 
+
+by mean gene-wise z score 
+
+Inflammatory, hypoxic, stromal, immune and 
+
+immunothrombotic context 
+
+Separation strategy  Within-cancer residualization and four median-
+
+defined NETs/neutrophil quadrants 
+
+Distinguishes abundance-linked from abundance-
+
+irreducible signal 
+
+Clinical context  Tumor-stratified Cox models and two 
+
+independent immunotherapy cohorts  Prognostic and treatment-response interpretation 
+
+TCGA, The Cancer Genome Atlas; NETs, neutrophil extracellular traps. 
+
+## Results 
+
+Cohort composition and pan-cancer distribution 
+
+The final discovery atlas included 9,496 tumors from 32 TCGA cancer types, ranging from 36 
+
+cholangiocarcinomas to 1,102 breast cancers. All 19 genes in the published coefficient set matched the 
+
+TCGA expression matrix. Global standardization revealed marked lineage-level heterogeneity: 
+
+glioblastoma, cholangiocarcinoma, esophageal carcinoma, lung squamous-cell carcinoma and 
+
+hepatocellular carcinoma had the highest median global z scores. Because cell lineage and baseline 
+
+176 177 178 179 
+
+180 181 182 183 184 185 
+
+186 
+
+187 
+
+188 
+
+189 
+
+190 191 192 193 194  
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.14.738403 doi: bioRxiv preprint Pan-cancer NET-associated tumor ecology
+> Page 9
+
+immune composition differ substantially across tumors, all subsequent association tests used within-
+
+cancer standardized scores rather than pooling samples across cancer types (Fig. 1). 
+
+Figure 1. Pan-cancer distribution of the NETs score.  Violin and box plots show the published coefficient-weighted NETs 
+
+score across 9,496 TCGA tumors from 32 cancer types. Cancer types are ranked by median globally standardized score. Points 
+
+and inner summaries display the observed sample distribution; downstream analyses used within-cancer standardization. 
+
+Raw NETs score maps an inflammatory and immunothrombotic state 
+
+Tumor-stratified analyses showed a highly recurrent raw coupling pattern (Fig. 2; Table 2). TNF-
+
+alpha/NF-kB signaling was positively correlated with the NETs score in all 32 cancer types, with a 
+
+median rho of 0.404 and FDR below 0.05 in 30. Hypoxia was likewise positive in all 32 cancers (median 
+
+rho=0.394; FDR<0.05 in 31). The custom immunothrombosis core had a median rho of 0.278, was 
+
+positive in 30 of 32 cancers and significant in 23. Inflammatory response, myeloid inflammation, 
+
+IL6/JAK/STAT3, complement, angiogenesis and coagulation also had positive median correlations. 
+
+195 196 
+
+197 
+
+198 199 200 
+
+201 
+
+202 203 204 205 206 207 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.14.738403 doi: bioRxiv preprint
+
+Pan-cancer NET-associated tumor ecology 
+
+Page 10 
+
+These effects establish that the score is embedded in a broad tissue-stress and host-defense program, but 
+
+they do not by themselves distinguish NET-associated activity from neutrophil content. 
+
+Figure 2. Raw NETs-pathway coupling across cancer types.  The heat map reports within-cancer Spearman correlations 
+
+between the standardized NETs score and selected Hallmark or custom modules. Color represents rho; point size represents 
+
+-log10(FDR). The consistency panel summarizes median rho and the fraction of cancers with a positive association. FDR was 
+
+controlled across cancer types for each score-module combination. 
+
+Table 2. Raw and residual pathway coupling. 
+
+Score  Module  Median rho  Positive cancers  FDR<0.05 
+
+Raw NETs score  TNF-alpha Signaling Via NF-kB  0.404  32/32  30 
+
+Raw NETs score  Hypoxia  0.394  32/32  31 
+
+Raw NETs score  Immunothrombosis Core  0.278  30/32  23 
+
+Raw NETs score  Inflammatory Response  0.272  29/32  25 
+
+Neutrophil-residual 
+
+score  Hypoxia  0.206  30/32  20 
+
+Neutrophil-residual 
+
+score  TNF-alpha Signaling Via NF-kB  0.165  29/32  17 
+
+208 209 
+
+210 
+
+211 212 213 214 
+
+215 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.14.738403 doi: bioRxiv preprint
+
+Pan-cancer NET-associated tumor ecology 
+
+Page 11 
+
+Score Module Median rho Positive cancers FDR<0.05 
+
+Neutrophil-residual 
+
+score  TGF-beta Signaling  0.078  22/32  17 
+
+Neutrophil-residual 
+
+score  Epithelial Mesenchymal Transition  0.070  22/32  9
+
+Neutrophil-residual 
+
+score  Immunothrombosis Core  0.068  20/32  9
+
+FDR, false-discovery rate. Rows are ordered by median rho within score type. 
+
+Hypoxic and NF-kB coupling persists after neutrophil residualization 
+
+Figure 3. Neutrophil-adjusted residual NETs-pathway coupling.  Within each cancer type, the standardized NETs score was 
+
+regressed on a curated neutrophil-abundance proxy. The heat map displays Spearman correlations between the resulting residual 
+
+and pathway modules. Color denotes rho and point size denotes -log10(FDR). Residualization is an operational signal-separation 
+
+analysis and does not establish cell independence or causality. 
+
+Residualization attenuated the magnitude of most associations, confirming that neutrophil abundance 
+
+contributes substantially to the raw score. It did not erase the cross-cancer structure (Fig. 3). Hypoxia 
+
+remained the leading residual correlate, with median rho=0.206, positive direction in 30 of 32 cancer 
+
+types and FDR<0.05 in 20. TNF-alpha/NF-kB signaling ranked second (median rho=0.165; positive in 29 
+
+of 32; significant in 17). TGF-beta signaling, epithelial-mesenchymal transition and the 
+
+immunothrombosis core retained smaller positive median associations (rho=0.078, 0.070 and 0.068, 
+
+respectively). In contrast, checkpoint/exhaustion and CAF-endothelial stroma modules had negative 
+
+median residual correlations. Thus the residual was not a weaker copy of the entire raw immune 
+
+216 
+
+217 
+
+218 
+
+219 220 221 222 
+
+223 224 225 226 227 228 229 230 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.14.738403 doi: bioRxiv preprint
+
+Pan-cancer NET-associated tumor ecology 
+
+Page 12 
+
+landscape; it selectively preserved hypoxic and inflammatory coupling while decoupling from several 
+
+cell-content-associated modules. 
+
+NETs-high neutrophil-low tumors retain immunothrombotic ecology 
+
+Figure 4. NETs-neutrophil ecological quadrants.  (A) Fractions of samples in four cancer-specific median-defined quadrants. 
+
+(B) Mean within-cancer z scores of pathway and ecology modules in each quadrant. The principal comparison contrasts NETs-
+
+high/neutrophil-low with NETs-low/neutrophil-low tumors, retaining the same coarse neutrophil stratum while varying the NETs 
+
+score. 
+
+The four-quadrant analysis provided an assumption-light complement to linear residualization (Fig. 
+
+4). Because both axes were split at cancer-specific medians, every tumor type contained all four 
+
+231 232 
+
+233 
+
+234 
+
+235 236 237 238 
+
+239 240  
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.14.738403 doi: bioRxiv preprint Pan-cancer NET-associated tumor ecology
+> Page 13
+
+ecological states, although their fractions varied. Within the neutrophil-low stratum, NETs-high tumors 
+
+showed the largest cross-cancer increase in myeloid inflammation (median delta=0.128; positive in 25 of 
+
+32 cancers; FDR<0.05 in eight), followed by immunothrombosis core (median delta=0.110; positive in 
+
+23; significant in eight) and TNF-alpha/NF-kB signaling (median delta=0.104; positive in 29; significant 
+
+in 13). Hypoxia increased in 27 of 32 cancers and was significant in 16. The checkpoint/exhaustion and 
+
+CAF-endothelial modules did not show the same positive pan-cancer shift. This contrast supports an 
+
+ecologically specific NET-associated state among tumors with comparatively low neutrophil proxy 
+
+values. 
+
+Table 3. NETs-high neutrophil-low quadrant contrasts. 
+
+Module  Median delta  Positive cancers  FDR<0.05 
+
+Myeloid Inflammation  0.128  25/32  8
+
+Immunothrombosis Core  0.110  23/32  8
+
+TNF-alpha Signaling Via NF-kB  0.104  29/32  13 
+
+Inflammatory Response  0.073  23/32  9
+
+Angiogenesis  0.065  23/32  7
+
+Hypoxia  0.061  27/32  16 
+
+Epithelial Mesenchymal Transition  0.060  25/32  9
+
+IL6 JAK STAT3 Signaling  0.050  22/32  5
+
+Delta is the median-score difference between NETs-high/neutrophil-low and NETs-low/neutrophil-low tumors. 
+
+Residual NETs score has context-dependent survival associations 
+
+Twenty-three cancer types met the OS modeling criteria. In the nominal age/sex/stage model family, 
+
+higher neutrophil-residual NETs score was associated with shorter OS at FDR<0.05 in eight cancers: 
+
+LGG, KIRC, UVM, PAAD, LUAD, KIRP, BRCA and CESC (Fig. 5; Table 4). The strongest association 
+
+was in LGG (HR=1.80 per standard deviation, 95% CI 1.44-2.26, FDR=7.85e-6), followed by UVM 
+
+(HR=2.67, 95% CI 1.42-5.01, FDR=0.014) and KIRP (HR=1.91, 95% CI 1.23-2.97, FDR=0.015). KIRC, 
+
+PAAD and LUAD showed more moderate but significant effects. Covariate availability varied by tumor 
+
+type, and the adjusted model family used only available eligible covariates. The heterogeneity of effect 
+
+sizes and evaluable covariates argues against presenting the residual score as a universal prognostic 
+
+instrument. 
+
+241 242 243 244 245 246 247 248 
+
+> 249
+> 250
+
+251 
+
+252 253 254 255 256 257 258 259 260 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.14.738403 doi: bioRxiv preprint
+
+Pan-cancer NET-associated tumor ecology 
+
+Page 14 
+
+Figure 5. Overall-survival associations of residual NETs.  Forest plots show hazard ratios per one-standard-deviation increase 
+
+in neutrophil-residual NETs score for univariable, age/sex-adjusted and age/sex/stage-adjusted model families. Points indicate 
+
+estimates, horizontal lines indicate 95% confidence intervals and filled shapes indicate FDR<0.05. Actual covariates used 
+
+depended on tumor-specific coverage and variation. 
+
+Table 4. Residual NETs overall-survival associations. 
+
+Cancer  N Events  HR (95% CI)  FDR  Covariates used 
+
+LGG  511  125  1.80 (1.44-2.26)  7.85e-06  age + sex 
+
+KIRC  531  175  1.36 (1.14-1.62)  0.007  age + sex + stage 
+
+UVM  80  23  2.67 (1.42-5.01)  0.014  age + sex + stage 
+
+PAAD  177  93  1.44 (1.14-1.81)  0.014  age + sex + stage 
+
+LUAD  502  182  1.26 (1.08-1.48)  0.015  age + sex + stage 
+
+KIRP  287  44  1.91 (1.23-2.97)  0.015  age + sex + stage 
+
+BRCA  1081  151  1.28 (1.08-1.53)  0.018  age + sex + stage 
+
+CESC  291  71  1.40 (1.08-1.81)  0.032  age only 
+
+Rows show the eight lowest P values in the nominal age/sex/stage model family. HR is per one-standard-deviation increase. 
+
+261 
+
+262 263 264 265 
+
+266 
+
+267 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.14.738403 doi: bioRxiv preprint
+
+Pan-cancer NET-associated tumor ecology 
+
+Page 15 
+
+Checkpoint coupling does not translate into universal response discrimination 
+
+Figure 6. Checkpoint coupling and immunotherapy context.  (A) Cancer-specific Spearman correlations between the NETs 
+
+score and selected immune-checkpoint genes in TCGA. (B) Standardized score by binary response in IMvigor210 urothelial 
+
+cancer. (C) Pretreatment score by binary response in GSE91061 melanoma. Box plots show medians and interquartile ranges; P 
+
+values are two-sided Wilcoxon tests. 
+
+Raw NETs score showed heterogeneous correlations with immune-checkpoint genes across TCGA 
+
+cancers (Fig. 6A), prompting direct external evaluation rather than inference from checkpoint expression 
+
+alone. In IMvigor210, all 19 signature genes matched and 298 patients had binary response data (68 
+
+responders, 230 nonresponders). Median score was 0.174 standard-deviation units higher in 
+
+268 
+
+269 
+
+270 271 272 273 
+
+274 275 276 277  
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.14.738403 doi: bioRxiv preprint Pan-cancer NET-associated tumor ecology
+> Page 16
+
+nonresponders, but the difference was not significant (P=0.642) and discrimination was near chance 
+
+(AUC=0.519; Fig. 6B). In GSE91061, 17 genes matched and 47 pretreatment samples had mapped 
+
+outcomes (10 responders, 37 nonresponders). The corresponding difference was 0.231, P=0.808 and 
+
+AUC=0.527 (Fig. 6C). In contrast, score distributions differed across IMvigor210 immune phenotypes 
+
+(n=284; Kruskal-Wallis P=0.045), with medians of -0.219, -0.044 and 0.077 in desert, excluded and 
+
+inflamed tumors. The score therefore tracked immune context weakly but was not a standalone response 
+
+classifier.                     
+
+> Table 5. Immunotherapy cohort context.
+> Cohort Setting N (R/NR) AUC PScore contrast
+> IMvigor210 Urothelial cancer; anti-PD-L1 298 (68/230) 0.519 0.642 +0.174
+> GSE91061 Melanoma; anti-PD-1; pretreatment 47 (10/37) 0.527 0.808 +0.231
+> IMvigor210
+> phenotype Desert/excluded/inflamed 284 NA 0.045 -0.219/-0.044/0.077
+> Score contrast is nonresponder minus responder for binary response, or desert/excluded/inflamed medians for phenotype.
+
+Restricted sensitivity analyses define the boundary of inference 
+
+The available ESTIMATE file matched 396 BLCA samples only. In that restricted subset, raw NETs 
+
+score correlated positively with immune score (rho=0.249), stromal score (rho=0.134) and neutrophil 
+
+proxy (rho=0.460), and negatively with tumor purity (rho=-0.200; all FDR<0.01). After additional 
+
+adjustment for stromal score or purity within BLCA, hypoxia, TNF-alpha/NF-kB and immunothrombosis 
+
+correlations remained positive (Supplementary Fig. S1). However, these data cannot establish pan-cancer 
+
+purity robustness. Genomic features likewise covered one tumor type; correlations with TMB, mutation-
+
+signature proxy and absolute thresholded CNV burden were small and are shown only in Supplementary 
+
+Fig. S2. These restricted analyses were retained to make data limitations visible, not to enlarge the 
+
+principal claim. 
+
+## Discussion 
+
+This study changes the interpretation of an established NETs prognostic score rather than proposing a 
+
+new one. The earlier pan-cancer study demonstrated that a 19-gene model could stratify outcome. Our 
+
+analysis shows what that score appears to represent at the tumor-ecology level: a large neutrophil-linked 
+
+278 279 280 281 282 283 284 
+
+> 285
+> 286
+
+287 
+
+288 289 290 291 292 293 294 295 296 
+
+297 
+
+298 299 300  
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.14.738403 doi: bioRxiv preprint Pan-cancer NET-associated tumor ecology
+> Page 17
+
+component plus a smaller, reproducible residual aligned most strongly with hypoxia and TNF-alpha/NF-
+
+kB signaling. The four-quadrant analysis reaches the same conclusion without depending on linear 
+
+residuals. Together, these results define the central advance: the NET-associated signal is abundance 
+
+linked, but not exhausted by a curated neutrophil-abundance proxy. We use 'neutrophil-irreducible' in this 
+
+operational sense, not to imply that the residual is generated outside neutrophils. 
+
+Three linked design choices make that interpretation more than a conventional signature correlation 
+
+study. First, every association was estimated within cancer type, preventing lineage-level differences from 
+
+driving the result. Second, residualization directly tested the dependence of the score on a prespecified 
+
+neutrophil proxy instead of treating neutrophil enrichment as an after-the-fact annotation. Third, the 
+
+median-defined quadrants reproduced the key pattern without assuming a linear relation between the two 
+
+scores. Convergence between these analytically distinct views is the strongest evidence in the study: raw 
+
+coupling identifies the full NET-associated ecosystem, whereas residual and quadrant analyses isolate the 
+
+part least compatible with a simple abundance explanation. 
+
+Cross-cancer consistency is important here, but uniformity is neither expected nor desirable. Cancer 
+
+types differ in lineage, vascular architecture, treatment history, mutational landscape and baseline 
+
+leukocyte composition. We therefore summarized direction and median effect rather than fitting one 
+
+pooled pan-cancer coefficient. A pathway that is positive in most cancers yet strong in only a subset may 
+
+represent a shared ecological tendency whose clinical consequences depend on local constraints. 
+
+Conversely, tumor-specific outliers can reveal settings in which the 19-gene score is driven by alternative 
+
+cell sources or biology. The atlas is consequently a map of reproducibility and heterogeneity, not a claim 
+
+that all tumors instantiate one NET program. 
+
+This distinction is biologically plausible because tumor-associated neutrophils are heterogeneous in 
+
+developmental state, localization and function [23]. Their phenotypes can range from direct tumor control 
+
+to trophic, angiogenic and immunosuppressive programs, and cell number alone cannot encode that 
+
+functional diversity [24]. A weighted score containing inflammatory receptors, chemotactic genes, tissue 
+
+301 302 303 304 305 
+
+306 307 308 309 310 311 312 313 
+
+314 315 316 317 318 319 320 321 
+
+322 323 324 325  
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.14.738403 doi: bioRxiv preprint Pan-cancer NET-associated tumor ecology
+> Page 18
+
+factor and degranulation-associated genes may therefore respond to activation state, neighboring-cell 
+
+expression and tissue stress in addition to neutrophil quantity. Residualization does not identify the 
+
+cellular source, but it helps prevent abundance from being the only explanation. 
+
+The residual should consequently be read as a contrast, not as a purified molecular entity. A positive 
+
+residual can arise when the weighted 19-gene program is higher than expected for the measured 
+
+neutrophil proxy. That mismatch may reflect activated neutrophils, spatially concentrated NET-producing 
+
+cells, expression of score genes by tumor or stromal compartments, or imperfect sensitivity of the proxy. 
+
+The consistent association with hypoxia and NF-kB narrows these possibilities toward a tissue-stress 
+
+interpretation, but it does not choose among them. This framing is intentionally falsifiable: cell-resolved 
+
+and spatial experiments can test whether high residual tumors contain more NET structures per neutrophil 
+
+or instead express the program in neighboring compartments. 
+
+The persistence of hypoxia and inflammatory coupling also connects this atlas to experimental cancer 
+
+models. Cathepsin C-driven neutrophil recruitment and NET formation can promote breast-cancer lung 
+
+metastasis [25], and chronic stress can remodel metastatic niches through neutrophil-dependent 
+
+mechanisms [26]. Human brain tumors locally activate neutrophils in tissue-specific ways [27], while 
+
+reciprocal tumor-neutrophil signaling shapes bladder-cancer progression [28]. Most directly relevant to 
+
+our residual result, hypoxia-driven histone lactylation can reprogram neutrophil function in brain tumors 
+
+[29]. These studies support a model in which low oxygen, inflammatory signaling and local metabolites 
+
+change what neutrophils do, not merely how many are present. 
+
+Additional work illustrates how the surrounding stroma and systemic environment can feed this state. 
+
+Stromal amyloid-beta-dependent signaling can induce NETs and modulate tumor growth [30]; serotonin-
+
+dependent histone serotonylation and citrullination can drive NETs and liver metastasis [31]; and 
+
+NETosis has been implicated in radiation and systemic-therapy resistance [32]. These mechanisms make 
+
+a purely cell-count interpretation inadequate. They also caution against treating the residual as one 
+
+326 327 328 
+
+329 330 331 332 333 334 335 336 
+
+337 338 339 340 341 342 343 344 
+
+345 346 347 348 349  
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.14.738403 doi: bioRxiv preprint Pan-cancer NET-associated tumor ecology
+> Page 19
+
+uniform molecular process: similar transcriptomic coupling may arise through distinct metabolic, 
+
+cytokine, chromatin or stromal routes in different cancers. 
+
+At the cellular level, NET formation encompasses multiple routes of chromatin decondensation, 
+
+membrane remodeling and granule-protein redistribution [33]. PAD4-dependent chromatin citrullination 
+
+can participate in a default NET-forming program under some conditions [34], yet neutrophil plasticity in 
+
+tumors is broader than any single pathway [35]. IL-17-producing gamma-delta T cells can cooperate with 
+
+neutrophils to promote metastasis [36], and NETosis can be a major driver of thrombosis in immune-
+
+mediated vascular disease [37]. The atlas therefore supports an integrated inflammatory-tissue-stress 
+
+interpretation rather than equating the score with PAD4 activity or with one morphologic NET subtype. 
+
+The immunotherapy results are deliberately negative in their strongest test. Productive PD-1 blockade 
+
+is associated with pre-existing immune-cell positioning and adaptive immune resistance [38], whereas 
+
+pan-tumor response models integrate variables such as T-cell-inflamed expression and mutational load 
+
+[39]. T-cell dysfunction/exclusion frameworks [40], interferon-gamma-related expression profiles [41] 
+
+and tumor mutational burden [42] each capture distinct response dimensions. It is therefore unsurprising 
+
+that one NET-associated score had AUCs near 0.5 in two small, heterogeneous cohorts. The result is 
+
+informative because it narrows the translational claim: NET-associated biology may modify immune 
+
+access or resistance in selected contexts, but is not sufficient by itself to predict response across diseases 
+
+and drugs. 
+
+The phenotype association in IMvigor210 is consistent with a contextual role. Cancer-associated 
+
+fibroblasts can influence anti-PD-1/PD-L1 response through matrix, cytokine and exclusion programs 
+
+[43], and physical or functional T-cell exclusion is a central property of immune-privileged tumor niches 
+
+[44]. Our residual score was negatively coupled to the CAF-endothelial module across cancers, while the 
+
+raw score varied across inflamed, excluded and desert phenotypes. This apparent tension is useful: raw 
+
+score, residual score and categorical immune architecture are not interchangeable. A future predictive 
+
+350 351 
+
+352 353 354 355 356 357 358 
+
+359 360 361 362 363 364 365 366 367 
+
+368 369 370 371 372 373  
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.14.738403 doi: bioRxiv preprint Pan-cancer NET-associated tumor ecology
+> Page 20
+
+model should combine NET-associated activation with direct measures of T-cell state, stroma, 
+
+antigenicity and treatment context. 
+
+This context dependence also changes the therapeutic hypothesis. Blocking NET formation would be 
+
+most rational where active traps are demonstrated and where the surrounding ecology provides a 
+
+mechanistic route to resistance, such as IL-17 signaling, hypoxia, T-cell exclusion or a stromal barrier. 
+
+The present atlas does not nominate a single drug or justify indiscriminate DNase, PAD4, CXCR1/2 or 
+
+complement inhibition. Instead, it supplies a stratification logic for combination studies: enrich for tumors 
+
+with a high NET-associated score, verify NET structures directly, and then pair the intervention with the 
+
+dominant contextual liability. A hypoxic NET-associated tumor may require vascular or metabolic 
+
+normalization; an excluded tumor may require stromal remodeling; an inflamed but resistant tumor may 
+
+require interruption of a myeloid checkpoint circuit. 
+
+The immunothrombosis findings provide a second translational axis. Immunothrombosis was defined 
+
+as the use of coagulation and platelet pathways as intravascular effectors of innate immunity [45]. 
+
+Inflammation and thrombosis reinforce each other through endothelial, leukocyte and coagulation circuits 
+
+[46], and antibodies plus complement can be major thrombotic drivers [47]. The positive raw and 
+
+quadrant-level immunothrombosis signals are compatible with this architecture. They do not establish 
+
+clinical thrombosis, because TCGA lacks prospective venous-thromboembolism phenotyping, but they 
+
+identify tumor types and samples in which molecular and clinical thrombosis measurements would be 
+
+especially valuable. 
+
+That distinction is clinically important. Venous thrombosis varies substantially by cancer type, stage 
+
+and treatment exposure [48], and validated clinical risk tools such as the Khorana model rely on readily 
+
+measured patient and tumor variables rather than tumor transcriptomics [49]. The present score should not 
+
+replace those tools. Its potential role is mechanistic enrichment: identifying an inflammatory, hypoxic and 
+
+immunothrombotic tissue state for studies that jointly collect pathology, plasma NET markers, 
+
+374 375 
+
+376 377 378 379 380 381 382 383 384 
+
+385 386 387 388 389 390 391 392 
+
+393 394 395 396 397  
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.14.738403 doi: bioRxiv preprint Pan-cancer NET-associated tumor ecology
+> Page 21
+
+complement/coagulation assays and longitudinal thrombotic outcomes. This positioning also fits the 
+
+expanded hallmarks view of cancer as a disease shaped by interacting host and tumor capabilities [50]. 
+
+A credible biomarker program should therefore pair four measurement domains rather than optimize 
+
+the RNA score in isolation. Tumor tissue should establish NET morphology and cellular location; blood 
+
+should quantify MPO-DNA or citrullinated-histone complexes together with conventional coagulation 
+
+markers; clinical follow-up should capture thrombosis, metastasis and treatment exposure; and 
+
+transcriptomic or spatial data should define the hypoxic, stromal and immune context. Discordance 
+
+among these domains would be scientifically informative. For example, a high transcriptomic score 
+
+without circulating NET markers may represent a locally confined ecology, whereas high plasma markers 
+
+without a tumor-tissue signal may reflect systemic inflammation. This paired design is needed to convert 
+
+the atlas from a mechanistic map into a clinically interpretable assay. 
+
+The composition of the published score further argues for this multimodal validation. Its coefficients 
+
+span chemotaxis, neutrophil activation, tissue factor, adhesion and genes with broader expression across 
+
+immune or vascular compartments. Several also intersect conceptually or directly with the inflammatory 
+
+modules tested here. Such overlap is not necessarily a defect: coordinated expression is part of the 
+
+proposed ecology. It does mean that transcript-to-transcript correlations cannot independently validate 
+
+NET biology. The strongest future evidence will come from convergence between the score and 
+
+orthogonal readouts that do not reuse the same genes, including imaging-defined extracellular chromatin, 
+
+protein-DNA complexes, spatial cell proximity and functional perturbation. 
+
+Several limitations bound the inference. First, bulk RNA cannot visualize extracellular chromatin, 
+
+assign gene expression to specific cells or distinguish vital from lytic NET formation. Second, the 
+
+neutrophil proxy is curated rather than measured by histology or single-cell deconvolution; residualization 
+
+removes only its linear component and cannot prove causal independence. Third, the NETs score and 
+
+several tested modules share inflammatory genes, which can inflate association through biological or 
+
+398 399 
+
+400 401 402 403 404 405 406 407 408 
+
+409 410 411 412 413 414 415 416 
+
+417 418 419 420 421  
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.14.738403 doi: bioRxiv preprint Pan-cancer NET-associated tumor ecology
+> Page 22
+
+mathematical overlap. We retained transparent gene lists and emphasized effect consistency, but 
+
+orthogonal protein and spatial assays are needed. 
+
+Fourth, ESTIMATE and genomic sensitivity inputs covered only BLCA or one available cancer type, 
+
+respectively; they cannot support pan-cancer robustness claims. Fifth, stage and other covariates were 
+
+incompletely available, so adjusted Cox models differed in their actual covariate sets and remain 
+
+exploratory. Sixth, IMvigor210 and GSE91061 differ in cancer type, drug, platform, gene matching and 
+
+response distribution, and both provide limited power for interaction analyses. Finally, the study lacks 
+
+experimental perturbation, spatial validation, circulating NET measurements and prospective thrombosis 
+
+outcomes. These are not cosmetic gaps; they define the validation program required before clinical use. 
+
+A practical next step is to prospectively assay the NETs-high/neutrophil-low state. Multiplex 
+
+immunofluorescence or imaging mass cytometry could quantify citrullinated histones, MPO-DNA 
+
+complexes, neutrophil localization, T-cell distance and fibrin/platelet deposition in the same tissue. 
+
+Spatial transcriptomics could test whether the residual program localizes to hypoxic tumor-stromal 
+
+interfaces. Plasma assays and longitudinal imaging could connect that state to thrombosis and metastasis. 
+
+Such validation would determine whether the operational ecology identified here marks active NET 
+
+formation, a permissive microenvironment, or both. 
+
+## Conclusions 
+
+Reanalysis of a published 19-gene NETs score across 32 cancer types identifies a reproducible, 
+
+abundance-aware tumor-ecology pattern. The score is strongly linked to neutrophil content, yet hypoxic 
+
+and TNF-alpha/NF-kB coupling persists after within-cancer neutrophil adjustment and in 
+
+NETs-high/neutrophil-low tumors. Survival and immunotherapy associations are context dependent. The 
+
+atlas therefore supports NET-associated transcription as a testable organizer of inflammatory and 
+
+immunothrombotic ecology, not as direct NET measurement or a universal standalone clinical biomarker. 
+
+422 423 
+
+424 425 426 427 428 429 430 
+
+431 432 433 434 435 436 437 
+
+438 
+
+439 440 441 442 443 444  
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.14.738403 doi: bioRxiv preprint Pan-cancer NET-associated tumor ecology
+> Page 23
+
+## List of abbreviations 
+
+AUC, area under the receiver operating characteristic curve; BLCA, bladder urothelial carcinoma; CAF, 
+
+cancer-associated fibroblast; CI, confidence interval; CNV, copy-number variation; FDR, false-discovery 
+
+rate; GDC, Genomic Data Commons; HR, hazard ratio; ICB, immune checkpoint blockade; MSigDB, 
+
+Molecular Signatures Database; NETs, neutrophil extracellular traps; NF-kB, nuclear factor kappa B; OS, 
+
+overall survival; ROC, receiver operating characteristic; TCGA, The Cancer Genome Atlas; TMB, tumor 
+
+mutational burden. 
+
+## Declarations 
+
+Ethics approval and consent to participate:  Not applicable. This study used publicly available, de-
+
+identified datasets and involved no new human-participant recruitment or intervention. 
+
+Consent for publication:  Not applicable. 
+
+Availability of data and materials:  TCGA data are available through the NCI Genomic Data Commons 
+
+(https://portal.gdc.cancer.gov/) and UCSC Xena (https://xenabrowser.net/datapages/). GSE91061 is 
+
+available from NCBI GEO (https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE91061). 
+
+IMvigor210 data were analyzed from the processed files described in the original publication. Analysis 
+
+code, derived summary tables and figure source data are provided as Additional files with this 
+
+submission. 
+
+Competing interests:  The author declares no competing interests. 
+
+Funding:  Not applicable. 
+
+Author contributions:  Z.L. conceived and designed the study, curated data, developed and verified the 
+
+analysis workflow, interpreted results, prepared figures, drafted and critically revised the manuscript, and 
+
+approved the submitted version. 
+
+Acknowledgements:  Not applicable. 
+
+## References 
+
+> 1. Brinkmann V, Reichard U, Goosmann C, Fauler B, Uhlemann Y, Weiss DS, et al. Neutrophil extracellular traps kill bacteria. Science.
+> 2004;303(5663):1532-5. doi:10.1126/science.1092385.
+
+445 
+
+446 447 448 449 450 451 
+
+452 
+
+453 454 
+
+455 
+
+456 457 458 459 460 461 
+
+462 
+
+463 
+
+464 465 466 
+
+467 
+
+468 
+
+> 469 470
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.14.738403 doi: bioRxiv preprint
+
+Pan-cancer NET-associated tumor ecology 
+
+Page 24 
+
+2. Papayannopoulos V. Neutrophil extracellular traps in immunity and disease. Nat Rev Immunol. 2018;18(2):134-147. 
+
+doi:10.1038/nri.2017.105. 
+
+3. Shahzad MH, Rayes RF, Cools-Lartigue J, Spicer JD. Neutrophil extracellular traps in cancer. Nat Rev Cancer. 2026;26(2):104-117. 
+
+doi:10.1038/s41568-025-00888-7. 
+
+4. Adrover JM, McDowell SAC, He XY, Quail DF, Egeblad M. NETworking with cancer: The bidirectional interplay between cancer and 
+
+neutrophil extracellular traps. Cancer Cell. 2023;41(3):505-526. doi:10.1016/j.ccell.2023.02.001. 
+
+5. Demers M, Krause DS, Schatzberg D, Martinod K, Voorhees JR, Fuchs TA, et al. Cancers predispose neutrophils to release extracellular DNA 
+
+traps that contribute to cancer-associated thrombosis. Proc Natl Acad Sci U S A. 2012;109(32):13076-81. doi:10.1073/pnas.1200419109. 
+
+6. Park J, Wysocki RW, Amoozgar Z, Maiorino L, Fein MR, Jorns J, et al. Cancer cells induce metastasis-supporting neutrophil extracellular 
+
+DNA traps. Sci Transl Med. 2016;8(361):361ra138. doi:10.1126/scitranslmed.aag1711. 
+
+7. Albrengues J, Shields MA, Ng D, Park CG, Ambrico A, Poindexter ME, et al. Neutrophil extracellular traps produced during inflammation 
+
+awaken dormant cancer cells in mice. Science. 2018;361(6409):eaao4227. doi:10.1126/science.aao4227. 
+
+8. Teijeira Á, Garasa S, Gato M, Alfaro C, Migueliz I, Cirella A, et al. CXCR1 and CXCR2 Chemokine Receptor Agonists Produced by Tumors 
+
+Induce Neutrophil Extracellular Traps that Interfere with Immune Cytotoxicity. Immunity. 2020;52(5):856-871.e8. 
+
+doi:10.1016/j.immuni.2020.03.001. 
+
+9. Zhang Y, Chandra V, Riquelme Sanchez E, Dutta P, Quesada PR, Rakoski A, et al. Interleukin-17-induced neutrophil extracellular traps 
+
+mediate resistance to checkpoint blockade in pancreatic cancer. J Exp Med. 2020;217(12):e20190354. doi:10.1084/jem.20190354. 
+
+10. Taifour T, Attalla SS, Zuo D, Gu Y, Sanguin-Gendreau V, Proud H, et al. The tumor-derived cytokine Chi3l1 induces neutrophil extracellular 
+
+traps that promote T cell exclusion in triple-negative breast cancer. Immunity. 2023;56(12):2755-2772.e8. doi:10.1016/j.immuni.2023.11.002. 
+
+11. Cai T, Feng T, Zhang W, Ge Q, Peng L, Wang Y, et al. Neutrophil extracellular traps-STC1 positive feedback loop promotes immune evasion 
+
+and metastasis in bladder cancer. J Immunother Cancer. 2025;13(11):e012736. doi:10.1136/jitc-2025-012736. 
+
+12. Li H, Zhang Y, Lin J, Zeng J, Liang X, Xu L, et al. Tumor-derived neutrophil extracellular trap-associated DNA impairs treatment efficacy in 
+
+breast cancer via CCDC25-dependent epithelial-mesenchymal transition. J Clin Invest. 2026;136(1):e190557. doi:10.1172/JCI190557. 
+
+13. Zhang Y, Guo L, Dai Q, Shang B, Xiao T, Di X, et al. A signature for pan-cancer prognosis based on neutrophil extracellular traps. J 
+
+Immunother Cancer. 2022;10(6):e004210. doi:10.1136/jitc-2021-004210. 
+
+14. , Weinstein JN, Collisson EA, Mills GB, Shaw KR, Ozenberger BA, et al. The Cancer Genome Atlas Pan-Cancer analysis project. Nat Genet. 
+
+2013;45(10):1113-20. doi:10.1038/ng.2764. 
+
+15. Thorsson V, Gibbs DL, Brown SD, Wolf D, Bortone DS, Ou Yang TH, et al. The Immune Landscape of Cancer. Immunity. 2018;48(4):812-
+
+830.e14. doi:10.1016/j.immuni.2018.03.023. 
+
+16. Hoadley KA, Yau C, Hinoue T, Wolf DM, Lazar AJ, Drill E, et al. Cell-of-Origin Patterns Dominate the Molecular Classification of 10,000 
+
+Tumors from 33 Types of Cancer. Cell. 2018;173(2):291-304.e6. doi:10.1016/j.cell.2018.03.022. 
+
+17. Liu J, Lichtenberg T, Hoadley KA, Poisson LM, Lazar AJ, Cherniack AD, et al. An Integrated TCGA Pan-Cancer Clinical Data Resource to 
+
+Drive High-Quality Survival Outcome Analytics. Cell. 2018;173(2):400-416.e11. doi:10.1016/j.cell.2018.02.052. 
+
+18. Yoshihara K, Shahmoradgoli M, Martínez E, Vegesna R, Kim H, Torres-Garcia W, et al. Inferring tumour purity and stromal and immune 
+
+cell admixture from expression data. Nat Commun. 2013;4:2612. doi:10.1038/ncomms3612. 
+
+19. Liberzon A, Birger C, Thorvaldsdóttir H, Ghandi M, Mesirov JP, Tamayo P. The Molecular Signatures Database (MSigDB) hallmark gene 
+
+set collection. Cell Syst. 2015;1(6):417-425. doi:10.1016/j.cels.2015.12.004. 
+
+20. Bindea G, Mlecnik B, Tosolini M, Kirilovsky A, Waldner M, Obenauf AC, et al. Spatiotemporal dynamics of intratumoral immune cells 
+
+reveal the immune landscape in human cancer. Immunity. 2013;39(4):782-95. doi:10.1016/j.immuni.2013.10.003. 
+
+21. Riaz N, Havel JJ, Makarov V, Desrichard A, Urba WJ, Sims JS, et al. Tumor and Microenvironment Evolution during Immunotherapy with 
+
+Nivolumab. Cell. 2017;171(4):934-949.e16. doi:10.1016/j.cell.2017.09.028. 
+
+22. Mariathasan S, Turley SJ, Nickles D, Castiglioni A, Yuen K, Wang Y, et al. TGFβ attenuates tumour response to PD-L1 blockade by 
+
+contributing to exclusion of T cells. Nature. 2018;554(7693):544-548. doi:10.1038/nature25501. 
+
+23. Jaillon S, Ponzetta A, Di Mitri D, Santoni A, Bonecchi R, Mantovani A. Neutrophil diversity and plasticity in tumour progression and 
+
+therapy. Nat Rev Cancer. 2020;20(9):485-503. doi:10.1038/s41568-020-0281-y. 
+
+24. Coffelt SB, Wellenstein MD, de Visser KE. Neutrophils in cancer: neutral no more. Nat Rev Cancer. 2016;16(7):431-46. 
+
+doi:10.1038/nrc.2016.52. 
+
+25. Xiao Y, Cong M, Li J, He D, Wu Q, Tian P, et al. Cathepsin C promotes breast cancer lung metastasis by modulating neutrophil infiltration 
+
+and neutrophil extracellular trap formation. Cancer Cell. 2021;39(3):423-437.e7. doi:10.1016/j.ccell.2020.12.012. 
+
+26. He XY, Gao Y, Ng D, Michalopoulou E, George S, Adrover JM, et al. Chronic stress increases metastasis via neutrophil-mediated changes to 
+
+the microenvironment. Cancer Cell. 2024;42(3):474-486.e12. doi:10.1016/j.ccell.2024.01.013. 
+
+27. Maas RR, Soukup K, Fournier N, Massara M, Galland S, Kornete M, et al. The local microenvironment drives activation of neutrophils in 
+
+human brain tumors. Cell. 2023;186(21):4546-4566.e27. doi:10.1016/j.cell.2023.08.043. 
+
+28. Jing W, Wang G, Cui Z, Li X, Zeng S, Jiang X, et al. Tumor-neutrophil cross talk orchestrates the tumor microenvironment to determine the 
+
+bladder cancer progression. Proc Natl Acad Sci U S A. 2024;121(20):e2312855121. doi:10.1073/pnas.2312855121. 
+
+29. Ugolini A, De Leo A, Yu X, Scirocchi F, Liu X, Peixoto B, et al. Functional Reprogramming of Neutrophils within the Brain Tumor 
+
+Microenvironment by Hypoxia-Driven Histone Lactylation. Cancer Discov. 2025;15(6):1270-1296. doi:10.1158/2159-8290.CD-24-1056. 
+
+30. Munir H, Jones JO, Janowitz T, Hoffmann M, Euler M, Martins CP, et al. Stromal-driven and Amyloid β-dependent induction of neutrophil 
+
+extracellular traps modulates tumor growth. Nat Commun. 2021;12(1):683. doi:10.1038/s41467-021-20982-2. 
+
+31. Liu K, Zhang Y, Du G, Chen X, Xiao L, Jiang L, et al. 5-HT orchestrates histone serotonylation and citrullination to drive neutrophil 
+
+extracellular traps and liver metastasis. J Clin Invest. 2025;135(8):e183544. doi:10.1172/JCI183544. 
+
+32. Mowery YM, Luke JJ. NETosis Impact on Tumor Biology, Radiation, and Systemic Therapy Resistance. Clin Cancer Res. 
+
+2024;30(18):3965-3967. doi:10.1158/1078-0432.CCR-24-1363. 
+
+33. Thiam HR, Wong SL, Wagner DD, Waterman CM. Cellular Mechanisms of NETosis. Annu Rev Cell Dev Biol. 2020;36:191-218. 
+
+doi:10.1146/annurev-cellbio-020520-111016. 
+
+34. Zhu YP, Speir M, Tan Z, Lee JC, Nowell CJ, Chen AA, et al. NET formation is a default epigenetic program controlled by PAD4 in apoptotic 
+
+neutrophils. Sci Adv. 2023;9(51):eadj1397. doi:10.1126/sciadv.adj1397. 
+
+35. Giese MA, Hind LE, Huttenlocher A. Neutrophil plasticity in the tumor microenvironment. Blood. 2019;133(20):2159-2167. 
+
+doi:10.1182/blood-2018-11-844548. 
+
+> 471 472
+> 473 474
+> 475 476
+> 477 478
+> 479 480
+> 481 482
+> 483 484 485
+> 486 487
+> 488 489
+> 490 491
+> 492 493
+> 494 495
+> 496 497
+> 498 499
+> 500 501
+> 502 503
+> 504 505
+> 506 507
+> 508 509
+> 510 511
+> 512 513
+> 514 515
+> 516 517
+> 518 519
+> 520 521
+> 522 523
+> 524 525
+> 526 527
+> 528 529
+> 530 531
+> 532 533
+> 534 535
+> 536 537
+> 538 539
+
+.CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.14.738403 doi: bioRxiv preprint Pan-cancer NET-associated tumor ecology 
+
+Page 25 
+
+36. Coffelt SB, Kersten K, Doornebal CW, Weiden J, Vrijland K, Hau CS, et al. IL-17-producing γδ T cells and neutrophils conspire to promote 
+
+breast cancer metastasis. Nature. 2015;522(7556):345-348. doi:10.1038/nature14282. 
+
+37. Perdomo J, Leung HHL, Ahmadi Z, Yan F, Chong JJH, Passam FH, et al. Neutrophil activation and NETosis are the major drivers of 
+
+thrombosis in heparin-induced thrombocytopenia. Nat Commun. 2019;10(1):1322. doi:10.1038/s41467-019-09160-7. 
+
+38. Tumeh PC, Harview CL, Yearley JH, Shintaku IP, Taylor EJ, Robert L, et al. PD-1 blockade induces responses by inhibiting adaptive 
+
+immune resistance. Nature. 2014;515(7528):568-71. doi:10.1038/nature13954. 
+
+39. Cristescu R, Mogg R, Ayers M, Albright A, Murphy E, Yearley J, et al. Pan-tumor genomic biomarkers for PD-1 checkpoint blockade-based 
+
+immunotherapy. Science. 2018;362(6411):eaar3593. doi:10.1126/science.aar3593. 
+
+40. Jiang P, Gu S, Pan D, Fu J, Sahu A, Hu X, et al. Signatures of T cell dysfunction and exclusion predict cancer immunotherapy response. Nat 
+
+Med. 2018;24(10):1550-1558. doi:10.1038/s41591-018-0136-1. 
+
+41. Ayers M, Lunceford J, Nebozhyn M, Murphy E, Loboda A, Kaufman DR, et al. IFN-γ-related mRNA profile predicts clinical response to 
+
+PD-1 blockade. J Clin Invest. 2017;127(8):2930-2940. doi:10.1172/JCI91190. 
+
+42. Samstein RM, Lee CH, Shoushtari AN, Hellmann MD, Shen R, Janjigian YY, et al. Tumor mutational load predicts survival after 
+
+immunotherapy across multiple cancer types. Nat Genet. 2019;51(2):202-206. doi:10.1038/s41588-018-0312-8. 
+
+43. Pei L, Liu Y, Liu L, Gao S, Gao X, Feng Y, et al. Roles of cancer-associated fibroblasts (CAFs) in anti- PD-1/PD-L1 immunotherapy for 
+
+solid cancers. Mol Cancer. 2023;22(1):29. doi:10.1186/s12943-023-01731-z. 
+
+44. Joyce JA, Fearon DT. T cell exclusion, immune privilege, and the tumor microenvironment. Science. 2015;348(6230):74-80. 
+
+doi:10.1126/science.aaa6204. 
+
+45. Engelmann B, Massberg S. Thrombosis as an intravascular effector of innate immunity. Nat Rev Immunol. 2013;13(1):34-45. 
+
+doi:10.1038/nri3345. 
+
+46. Stark K, Massberg S. Interplay between inflammation and thrombosis in cardiovascular pathology. Nat Rev Cardiol. 2021;18(9):666-682. 
+
+doi:10.1038/s41569-021-00552-1. 
+
+47. Stark K, Kilani B, Stockhausen S, Busse J, Schubert I, Tran TD, et al. Antibodies and complement are key drivers of thrombosis. Immunity. 
+
+2024;57(9):2140-2156.e10. doi:10.1016/j.immuni.2024.08.007. 
+
+48. Timp JF, Braekkan SK, Versteeg HH, Cannegieter SC. Epidemiology of cancer-associated venous thrombosis. Blood. 2013;122(10):1712-23. 
+
+doi:10.1182/blood-2013-04-460121. 
+
+49. Khorana AA, Kuderer NM, Culakova E, Lyman GH, Francis CW. Development and validation of a predictive model for chemotherapy-
+
+associated thrombosis. Blood. 2008;111(10):4902-7. doi:10.1182/blood-2007-10-116327. 
+
+50. Hanahan D. Hallmarks of Cancer: New Dimensions. Cancer Discov. 2022;12(1):31-46. doi:10.1158/2159-8290.CD-21-1059. 
+
+> 540 541
+> 542 543
+> 544 545
+> 546 547
+> 548 549
+> 550 551
+> 552 553
+> 554 555
+> 556 557
+> 558 559
+> 560 561
+> 562 563
+> 564 565
+> 566 567
+> 568
+
+.CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.14.738403 doi: bioRxiv preprint

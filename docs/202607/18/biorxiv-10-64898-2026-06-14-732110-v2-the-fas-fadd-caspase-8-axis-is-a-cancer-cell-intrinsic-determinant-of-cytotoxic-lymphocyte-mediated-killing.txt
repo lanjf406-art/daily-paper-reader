@@ -1,0 +1,2322 @@
+Title: 27344538
+
+URL Source: https://www.biorxiv.org/content/10.64898/2026.06.14.732110v2.full.pdf
+
+Number of Pages: 40
+
+Markdown Content:
+1
+
+The Fas –FADD –caspase -8 axis is a cancer cell -intrinsic determinant of cytotoxic 1
+
+lymphocyte –mediated killing 2
+
+Elise Solli 1,2# , Shixiong Wang 3#, Qian Wei 1, Nathaniel Edward Bennett Saidu 1, Kjetil Taskén 1,2* ,3
+
+Youxian Li 1,2* 
+
+4
+
+> 1
+
+Department of Cancer Immunology, Institute for Cancer Research, Oslo University Hospital, Oslo, 5
+
+Norway 6
+
+> 2
+
+Institute for Clinical Medicine, University of Oslo, Oslo, Norway 7
+
+> 3
+
+Department of Clinical Molecular Biology (EpiGen), Akershus University Hospital, Lørenskog, 8
+
+Norway 9 
+
+> #
+
+These  authors contributed equally .10 
+
+* Correspondence  to :11 
+
+Youxian Li:  youxian.li@medisin.uio.no 12 
+
+Kjetil Taskén:  kjetil.tasken@medisin.uio.no 13 
+
+14 
+
+Abstract: 15 
+
+Cytotoxic lymphocytes induce cancer cell death through death receptor –ligand interactions and 16 
+
+the perforin –granzyme pathway. These pathways are generally thought to converge on the 17 
+
+activation of executioner caspases to drive apoptosis. Here, we employed a reductionist 18 
+
+approach to systematically disrupt key cell death mediators in a cytotoxic lymphocyte killing 19 
+
+system to define their roles in determining cancer cell fate. We found that loss of executioner 20 
+
+caspases conferred only limited resistance to cytotoxic lymphocyte –mediated killing. To 21 
+
+identify cancer cell –intrinsic regulators that function beyond executioner caspases, we 22 
+
+performed unbiased genome -wide CRISPR screens in executioner caspase -deficient cells. 23 
+
+> .CC-BY-NC 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 15, 2026. ;https://doi.org/10.64898/2026.06.14.732110 doi: bioRxiv preprint
+
+2
+
+Unexpectedly, disruption of Fas or FADD —core components of the death receptor pathway —24 
+
+conferred substantial resistance to cytotoxic lymphocyte –mediated killing even in the absence 25 
+
+of executioner caspases. This resistance persisted following additional disruption of known 26 
+
+downstream mediators of Fas –FADD –caspase -8 (CASP8) signaling. Together, these findings 27 
+
+identify the Fas –FADD –CASP8 axis as a central cancer cell –intrinsic determinant of 28 
+
+susceptibility to cytotoxic lymphocyte –mediated killing whose function is not fully explained 29 
+
+by canonical apoptotic or non -apoptotic effector pathways. Our results further suggest that 30 
+
+CASP8 engages additional downstream substrates or mechanisms to promote cytotoxic 31 
+
+lymphocyte –induced cancer cell death. 32 
+
+Introduction 33 
+
+Cytotoxic lymphocytes, including cytotoxic T lymphocytes (CTLs) and natural killer (NK) cells, 34 
+
+play fundamental roles in the elimination of cancer cells.  These immune effector cells recognize 35 
+
+malignant targets through distinct mechanisms: CTLs detect tumor –derived antigens presented 36 
+
+on major histocompatibility complex (MHC) molecules  1, whereas NK cells sense aberrant 37 
+
+expression of activating and inhibitory ligands  2. However,  both CTLs and NK cells induce 38 
+
+target  cell death primarily through two major pathways  3,4 . The first is the death ligand –death 39 
+
+receptor pathway, most prominently mediated by the interaction of Fas ligand (FasL) expressed 40 
+
+on CTLs with the Fas receptor on target cells. The second  pathway  involves the delivery of 41 
+
+cytotoxic granzymes into target cells through perforin –dependent pore formation in the target 42 
+
+cell plasma membrane. The ability of cytotoxic lymphocytes to selectively eradicate malignant 43 
+
+cells underpins modern cancer immunotherapy, including chimeric antigen receptor (CAR) T -44 
+
+cell therapy, T -cell receptor (TCR) -engineered T -cell therapy, and  NK cell –based therapeutic 45 
+
+approaches  5-7.46 
+
+> .CC-BY-NC 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 15, 2026. ;https://doi.org/10.64898/2026.06.14.732110 doi: bioRxiv preprint
+
+3
+
+A key downstream consequence of both the death receptor and perforin –granzyme pathways is 47 
+
+the activation of apoptosis, a well -characterized form of programmed cell death mediated by 48 
+
+caspases  8. Among these, caspase -3 (CASP3)  serves as a principal executioner caspase in 49 
+
+apoptosis  9,10 . It can be activated directly by granzyme B  11  or via caspase -8 (CASP8) 50 
+
+downstream of Fas –FADD signaling  12,13 . In addition, both  CASP3  and granzyme B cleave B ID 51 
+
+into truncated BID  (tB ID ) 14 -16 , which promotes mitochondrial outer membrane 52 
+
+permeabilization (MOMP) through B AX  and/or B AK  17,18 . This process results in the release 53 
+
+of cytochrome c and Smac/DIABLO, facilitating apoptosome formation and caspase -9 (CASP9) 54 
+
+activation, which ultimately leads to  CASP3  activation  19 -22 . Activated  CASP3  executes the 55 
+
+apoptotic program by cleaving numerous downstream substrates  9, resulting in hallmark 56 
+
+features such as apoptotic body formation and DNA fragmentation  8,23 . Two other executioner 57 
+
+caspases, caspase -6 (CASP6) and caspase -7 (CASP7), also exist.  CASP3 and CASP7 show 58 
+
+functional redundancy in driving apoptosis in response to both extrinsic and intrinsic apoptotic 59 
+
+stimuli, whereas CASP6  has  no apparent role in these processes  24 .60 
+
+In addition to apoptosis, alternative forms of cell death have been implicated in cytotoxic 61 
+
+lymphocyte –mediated killing of cancer cells  25 . Pyroptosis , a lytic form of programmed cell 62 
+
+death mediated by pore -forming gasdermin proteins  26,27 , can be induced in target cancer cells 63 
+
+by cytotoxic lymphocytes  28,29 . For example, gasdermin  E (GSDME) can be cleaved and 64 
+
+activated by  CASP3  27,30 ; t herefore, in GSDME -expressing cancer cells,  CASP3  can mediate 65 
+
+both apoptosis and pyroptosis via the CASP3 –GSDME axis. Gasdermins have also been 66 
+
+reported as direct substrates of granzymes  28,31 . Furthermore, in cases  where  CASP 8 is inhibited, 67 
+
+death receptor  signaling  can initiate necroptosis, an alternative signaling pathway  mediated by 68 
+
+receptor -interacting protein kinase 1 –receptor -interacting protein kinase 3 –mixed lineage 69 
+
+kinase domain -like (RIPK1 –RIPK3 –MLKL) axis  32 . Ferroptosis is another form of regulated 70 
+
+> .CC-BY-NC 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 15, 2026. ;https://doi.org/10.64898/2026.06.14.732110 doi: bioRxiv preprint
+
+4
+
+necrotic cell death driven by plasma membrane lipid peroxidation and has also been proposed 71 
+
+to contribute to cytotoxic lymphocyte –mediated cancer cell death  33,34 
+
+72 
+
+Despite our increased understanding of the various forms of cell death and their associated 73 
+
+pathways, the contribution of individual pathways and mediators to cancer cell survival and 74 
+
+resistance remains poorly understood . Indeed, although executioner caspases play critical roles 75 
+
+in apoptosis and are essential for apoptotic hallmarks such as DNA fragmentation, they have 76 
+
+often been reported to be dispensable for cell death itself  15,35 -37 . In such cases, cell death is 77 
+
+frequently attributed to alternative mechanisms, including pyroptosis, necroptosis, and 78 
+
+mitochondrial damage resulting from MOMP  31,38 . However, a systematic evaluation of the 79 
+
+relative contributions of alternative cell death pathways and their mediators has been lacking. 80 
+
+Here, we employed an unbiased approach to identify cancer cell –intrinsic factors that determine 81 
+
+susceptibility to cytotoxic lymphocyte –mediated killing. We found that cancer cells deficient 82 
+
+in Fas –FADD –CASP8 signaling are markedly more resistant to cytotoxic lymphocyte –83 
+
+mediated killing , even in the absence of executioner caspases, necroptosis, or BID –mediated 84 
+
+mitochondrial damage.  Our findings establish Fas –FADD –CASP8 signaling as a central cancer 85 
+
+cell –intrinsic determinant of cell fate under immune attack. Furthermore, our results strongly 86 
+
+indicate the existence of additional, as yet unidentified substrates downstream of Fas –FADD –87 
+
+CASP8 that contribute to cytotoxic lymphocyte –induced cancer cell death. 88 
+
+Results: 89 
+
+Loss of executioner caspases confers minimal resistance to CTL –mediated cytotoxicity 90 
+
+To systematically assess the contribution of various death mediators to cytotoxic lymphocyte –91 
+
+mediated cancer cell death, we established a simple and robust killing system using the mouse 92 
+
+mastocytoma cell line P815 as the target cancer cell line  (Figure 1A ). P815 cells endogenously 93 
+
+express mouse Fc γ receptors (Fc γRs)  39 , enabling efficient recognition and killing by primary 94 
+
+> .CC-BY-NC 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 15, 2026. ;https://doi.org/10.64898/2026.06.14.732110 doi: bioRxiv preprint
+
+5
+
+human CTLs upon coating with a mouse -derived anti -human CD3 antibody ( αCD3), without 95 
+
+the need for antigen –TCR engineering. Their rapid growth also facilitates efficient generation 96 
+
+of knockout cell lines.  In addition,  P815 cells express  Casp 3 but not  Casp 7 (Figure 1B ),97 
+
+allowing complete disruption of apoptosis through deletion of  Casp3  alone . P815 cells express 98 
+
+Gsdme  and are susceptible to  CASP3 –GSDME –mediated pyroptosis , as  evidenced by  GSDME 99 
+
+cleavage  (Figure 1C ) and the characteristic ballooning morphology  observed  following 100 
+
+treatment with raptinal  (Figure 1 D, left panel ), a potent caspase activator . D eletion of  Casp3 101 
+
+(Figure 1 E) renders the cells resistant to both apoptosis and pyroptosis  induced by  raptinal 102 
+
+(Figure 1 D, right panel ). To investigate the extent to which  Casp3  deletion confers resistance 103 
+
+to CTL –mediated killing, we expressed ZsGreen1 fluorescence in WT  and  Casp3 -/- P815 cells 104 
+
+and co -cultured them with primary human CTLs in the presence of  αCD3.  Because dead cells 105 
+
+eventually lose fluorescence due to cessation of protein expression, quantification of the green 106 
+
+fluorescent area provides a reliable measure of cancer cell growth (increase in green area) and 107 
+
+death (decrease in green area) in co -culture systems.  αCD3 -directed killing by human CTLs 108 
+
+efficiently eliminated WT P815 cells at an effector -to -target ratio of 1:1, as indicated by the loss 109 
+
+of green fluorescence in co -culture  within  72 hours  (Figure 1 F). Interestingly,  although  Casp3 -
+
+110  
+
+> /-
+
+P815  cells showed a slight delay in elimination,  the majority of the cells were  ultimately 111 
+
+efficiently killed  (Figure 1 F), indicating  that  Casp3  deletion  confers minimal  protection against 112 
+
+CTL –mediated killing. 113 
+
+Genome -wide CRISPR screening identifies Fas –FADD signaling as a key mediator of 114 
+
+CASP3 –independent CTL –mediated killing 115 
+
+To gain insight into cytotoxic lymphocyte –mediated,  CASP3 –independent cancer cell death, 116 
+
+we leveraged the CTL –αCD3 –P815 killing system and performed a genome -wide CRISPR 117 
+
+screen.  Casp3 -/- P815 cells were transduced with a mouse genome -wide g uide  RNA  (gRNA) 118 
+
+library ( Brie library; 19,674 genes targeted by four gRNAs per gene, together with 1,000 non -119 
+
+> .CC-BY-NC 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 15, 2026. ;https://doi.org/10.64898/2026.06.14.732110 doi: bioRxiv preprint
+
+6
+
+targeting controls; 78,637 gRNAs in total ) 40  and subjected to CTL –mediated selection. 120 
+
+Surviving cells were collected and sequenced to identify gRNAs enriched following selection. 121 
+
+As shown in  Fig ure 2A , gRNAs targeting Fc γR genes ( Fcgr1  and  Fcgr3 ),  Fcer1g , which is 122 
+
+required for murine  Fc γR assembly  41 , and the transcription factor  Spi1 , which  controls  Fc γR123 
+
+expression  42,43 , were among the top hits. This is consistent with the requirement for  αCD3 –124 
+
+Fc γR coupling to enable CTL –P815 engagement in this system  (Figure  1A). Notably, despite 125 
+
+CASP3 being a downstream effector of Fas –FADD signaling and already deleted prior to the 126 
+
+screen, both  Fas  and  Fadd  emerged as top hits  (Figure 2A , Supplementary Table I ). In 127 
+
+addition , Sec62 —an endoplasmic reticulum translocation factor involved in the  biogenesis  of 128 
+
+multiple secretory and transmembrane protein s 44 -46 —was also identified among the top hits 129 
+
+(Figure 2 A, Supplementary Table I ).  Flow cytometry confirmed that  Casp3 -/-Sec62 -/- cells 130 
+
+(Figure 2B, left panel ) lacked surface expression of Fas ( Figure 2 C), further  supporting  the 131 
+
+importance of Fas –FADD  signaling in driving cancer cell death even in the absence of  CASP3 .132 
+
+Deletion of  either  Fas  or  Fadd  (Figure 2 B, middle  and right panels ) rendered  Casp3 -/- cells 133 
+
+considerably  more resistant to CTL –mediated killing  (Figure 2 D). Consistently , Casp3 -/-Sec62 -
+
+134  
+
+> /-
+
+cells  exhibited  resistance to CTL –mediated cell death  comparable to that of  Casp3 -/-Fas -/- and 135 
+
+Casp3 -/-Fadd -/- cells ( Figure  2E ).  These data suggest that death signaling through the Fas –136 
+
+FADD pathway remains a major driver of CTL –mediated cancer cell death even in the absence 137 
+
+of CASP3 .138 
+
+Necro ptotic  and mitochondrial pathways partially contribute to  CASP3 –independent CTL -139 
+
+mediated killing 140 
+
+Death receptor –ligand engagement can trigger necroptosis, an alternative form of cell death that 141 
+
+occurs under conditions of CASP8 inhibition and is mediated by activation of the RIPK1 –142 
+
+RIPK3 –MLKL axis  32 . Deletion of the effector caspase  Casp3  in our system may induce a 143 
+
+negative feedback effect on upstream  CASP8  activation  24 , thereby promoting diversion of cells 144 
+
+> .CC-BY-NC 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 15, 2026. ;https://doi.org/10.64898/2026.06.14.732110 doi: bioRxiv preprint
+
+7
+
+toward activation of the necroptotic program . To assess the contribution of necroptosis to 145 
+
+cytotoxic lymphocyte –mediated, C ASP 3–independent cancer cell death, we generated a  Casp3 -
+
+146 
+
+> /-
+
+Mlkl -/- double -knockout P815  cell line  (Figure 3A , left panel ). Deletion of  Mlkl  had a modest 147 
+
+protective effect against CTL –mediated killing of  Casp3 -/- P815 cells  (Figure 3 B), suggesting 148 
+
+that MLKL –dependent necroptosis  only  partially contributes to CASP3 –independent cancer 149 
+
+cell death induced by CTLs. 150 
+
+GSDME has been proposed to serve as a direct substrate of granzyme B  31 . To assess the 151 
+
+contribution of the putative granzyme B –GSDME axis to CTL –induced cell death, we 152 
+
+generated a  Casp3 -/-Mlkl -/-Gs dme -/- P815 cell line  (Figure 3C ) and compared its susceptibility 153 
+
+to CTL –mediated killing with that of its parental  Casp3 -/-Mlkl -/- line  (Figure 3 D). No difference 154 
+
+in sensitivity was observed between the two cell lines,  suggesting that GSDME contributes 155 
+
+minimally to CTL –induced cell death in the absence of C ASP 3, at least in this experimental 156 
+
+system.  Similarly, pretreatment of  Casp3 -/-Mlkl -/- cells with ferrostatin -1, a specific inhibitor of 157 
+
+ferroptosis, had little  protective  effect  (Figure 3E ), indicating that ferroptosis plays a minimal 158 
+
+role in this context. 159 
+
+MOMP is often considered a point of no return because, in addition to releasing intermembrane 160 
+
+space proteins such as cytochrome c and Smac/DIABLO into the cytosol to promote 161 
+
+apoptosome formation and CASP9 –dependent activation of CASP3, it can also induce 162 
+
+mitochondrial injury, reactive oxygen species (ROS) production, and oxidative stress  47,48 . To 163 
+
+assess the contribution of BID –mediated MOMP to  CASP3 –independent CTL –mediated 164 
+
+cancer cell death, we generated a  Casp3 -/-Mlkl -/-Bid -/- triple -knockout P815 cell line.  Deletion 165 
+
+of  Bid  in the  Casp3 -/-Mlkl -/- background  (Figure 3A, right panel ) further increased resistance 166 
+
+to CTL –mediated killing  (Figure 3B), suggesting that BID –mediated  MOMP and 167 
+
+mitochondrial damage  also  contributes to CTL –induced cell death  even when downstream 168 
+
+apoptotic execution is impaired. 169 
+
+> .CC-BY-NC 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 15, 2026. ;https://doi.org/10.64898/2026.06.14.732110 doi: bioRxiv preprint
+
+8
+
+Fas –FADD –CASP8 signaling remains essential after disruption of apoptotic, necroptotic, 170 
+
+and mitochondrial death pathways 171 
+
+We observed that the triple -knockout P815 cell line  Casp3 -/-Mlkl -/-Bid -/- initially expanded 172 
+
+following CTL attack  (Figure 3 B) but eventually succumbed to cell death, as indicated by  a173 
+
+transient increase followed by  a reduction of ZsGreen1 signal.  This observation led us to 174 
+
+hypothesize that CTL –mediated cancer cell death cannot be fully explained by apoptosis, 175 
+
+necroptosis, and BID –mediated mitochondrial damage alone.  To gain insight into additional 176 
+
+factors contributing to CTL –induced cancer cell death, we performed a nother  genome -wide 177 
+
+CRISPR screen using the newly generated  Casp3 -/-Mlkl -/-Bid -/- cell line . Interestingly, following 178 
+
+CTL selection, components of the Fas –FADD signaling pathway ( Fas, Fadd,  and  Casp8 ), as 179 
+
+well as the Fas membrane expression regulator  Sec62 , again emerged as top hits  (Figure 4A ,180 
+
+Supplementary Table II ). To validate these findings, we generated quadruple -knockout P815 181 
+
+cell lines ( Casp3 -/-Mlkl -/-Bid -/-Fas -/-, Casp3 -/-Mlkl -/-Bid -/-Fa dd-/-, and  Casp3 -/-Mlkl -/-Bid -/-Casp8 -
+
+182 
+
+> /-
+
+) (Figure 4B ) and compared them with their parental  Casp3 -/-Mlkl -/-Bid -/- counterpart . The 183 
+
+quadruple -knockout cells displayed markedly increased resistance to CTL –mediated killing 184 
+
+(Figure 4 C, D ). Together, these data strongly indicate that the Fas –FADD –CASP  signaling axis 185 
+
+is a critical determinant of cancer cell fate, governing survival versus death even when apoptosis, 186 
+
+necroptosis, and BID –mediated mitochondrial damage are impaired. 187 
+
+Fas –FADD –CASP8  signaling  governs cancer cell susceptibility to NK cell –mediated 188 
+
+cytotoxicity in HeLa cells 189 
+
+To validate the role of Fas –FADD –CASP8 signaling in an independent cytotoxic lymphocyte –190 
+
+mediated killing system, we employed a complementary reductionist model based on NK -92 –191 
+
+mediated killing of HeLa cells, using NK -92 as a n NK  cell line.  We first generated a  CASP 3-/-
+
+192 
+
+CASP 7-/- double -knockout Hela EGFP  cell  line  (Figure 5A ) and  confirmed that these cells were 193 
+
+> .CC-BY-NC 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 15, 2026. ;https://doi.org/10.64898/2026.06.14.732110 doi: bioRxiv preprint
+
+9
+
+resistant to raptinal –induced apoptosis and pyroptosis  (Figure 5 B). We then assessed killing of 194 
+
+wild -type  and  CASP3 -/-CASP7 -/- Hela EGFP  cell s by NK -92 cells. At an effector -to -target ratio of 195 
+
+1:1, killing was inefficient for both cell lines  (Figure 5 C, upper panel ). At a 3:1 effector -to -196 
+
+target ratio, deletion of CASP3 and CASP7 conferred little  non -significant  resistance to NK -197 
+
+92 –mediated killing compared with wild -type cells ( Figure 5C, lower panel ). This is consistent 198 
+
+with our observation in P815 cells that disruption of executioner caspases provides little 199 
+
+protection against cytotoxic lymphocyte –mediated killing ( Figure 1F ).  HeLa cells are known 200 
+
+to be resistant to necroptosis due to defective RIPK3 expression  32 ; therefore, disruption of 201 
+
+necroptosis was not performed. 202 
+
+Consistent with our observations in P815 cells, additional deletion of  BID  (Figure 5 D, left 203 
+
+panel ) in  the  CASP3 -/-CASP7 -/- background  conferred  resistance to NK cell –mediated killing 204 
+
+(Figure 5 E, F ). Importantly, subsequent deletion of either  FAS  or  CASP8  (CASP3 -/-CASP7 -/-
+
+205 
+
+BID -/-FAS -/- and  CASP3 -/-CASP7 -/-BID -/-CASP8 -/-) (Figure 5D , middle and right panels )206 
+
+rendered the cells  markedly more resistant to  NK -92 –mediated  killing than their parental 207 
+
+CASP3 -/-CASP7 -/-BID -/- counterpart  (Figure 5 E, F ). Together, these findings further establish 208 
+
+the Fas –FADD –CASP8 signaling pathway as a critical cancer cell –intrinsic determinant of 209 
+
+cytotoxic lymphocyte –induced cell  death , operating in both CTL – and NK cel l–mediated 210 
+
+killing. 211 
+
+CASP8  is preferentially  mutated in  cancer  compared  with  known  downstream  substrates 212 
+
+The importance of the FAS –FADD –CASP8 signaling pathway in conferring cancer resistance 213 
+
+is underscored by the substantially higher frequency of  CASP8  mutations observed in cancer 214 
+
+patients compared with mutations in its downstream  effector s. Analysis of The Cancer Genome 215 
+
+Atlas (TCGA) data identified  simple  somatic  mutations (SSMs ) in  CASP8  in 1.91% of patients 216 
+
+across all cohorts (349 of 18,289 cases) ( Figure  6A ).  In contrast,  SSMs  in  CASP3 , CASP7 , and 217 
+
+> .CC-BY-NC 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 15, 2026. ;https://doi.org/10.64898/2026.06.14.732110 doi: bioRxiv preprint
+
+10 
+
+BID  occurred  at considerably lower frequencies, with 74, 93, and 77 cases, respectively, among 218 
+
+the  18,289 patients  analyzed  (Figure  6A ).  Moreover,  CASP8  also harbored a markedly greater 219 
+
+number of distinct SSMs, with 286 unique mutations compared with 66, 80, and 74 for  CASP3 ,220 
+
+CASP7 , and  BID , respectively  (Figure  6B ).  The necroptosis effector  MLKL  exhibited slightly 221 
+
+higher  SSM  frequencies and a  greater number of distinct  SSMs  than  CASP3 , CASP7 , and  BID 222 
+
+(Figure  6A , B). Interestingly,  FAS  and  FADD  displayed lower SSM frequencies than  CASP8 ,223 
+
+suggesting that  CASP8  is more susceptible to genetic alteration within this signaling axis 224 
+
+(Figure  6A , B).  The Ensembl Variant Effect Predictor (VEP)  49  indicated that a substantial 225 
+
+proportion  (26%)  of  CASP8  SSMs are predicted to have high -impact (disruptive) consequences, 226 
+
+including protein truncation, loss of function, or nonsense -mediated decay. Notably,  CASP8  ha s227 
+
+the highest proportion of high -impact variants among the seven genes examined ( Figure 6C, 228 
+
+D).  Further analysis of the most recurrent SSMs (present in ≥5 of the 18,289 cases)  in  CASP8 229 
+
+revealed that the majority are likely loss -of -function mutations, with six of the nine most 230 
+
+frequent variants predicted to cause  frameshift  or premature stop codons ( Figure 6E ).  These 231 
+
+clinical observations are consistent with our experimental findings that the Fas –FADD –CASP8 232 
+
+signaling axis plays a central role in determining cancer cell susceptibility to cytotoxic 233 
+
+lymphocyte –mediated killing. They further support the notion that this pathway has functions 234 
+
+beyond its established roles in canonical cell death and suggest that disruption of  CASP8 235 
+
+provides a selective advantage during cancer evolution. 236 
+
+Discussion 237 
+
+In this study, we used targeted genetic disruption to evaluate the contribution of multiple known 238 
+
+death mediators involved in apoptosis, pyroptosis, necroptosis, and MOMP to cytotoxic 239 
+
+lymphocyte –induced cancer cell death. In parallel, we performed unbiased genome -wide 240 
+
+CRISPR screens to systematically identify cancer cell –intrinsic factors that determine survival 241 
+
+or death following cytotoxic lymphocyte attack. Compared with the most reductionist 242 
+
+> .CC-BY-NC 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 15, 2026. ;https://doi.org/10.64898/2026.06.14.732110 doi: bioRxiv preprint
+
+11 
+
+experimental approaches using recombinant death ligands or granzymes,  our co -culture killing 243 
+
+system more closely recapitulates the biological context of cytotoxic lymphocyte –mediated 244 
+
+killing of cancer cells, in which multiple effector mechanisms  act in parallel on target cells.  In 245 
+
+addition, we focused on perturbation of cancer cell –intrinsic factors rather than effector cell 246 
+
+components (e.g., perforin or granzyme expression in cytotoxic lymphocytes), based on the 247 
+
+rationale that cancer cells may exploit their intrinsic genetic programs to evade immune attack. 248 
+
+Our screens consistently identified the death receptor –ligand pathway, signaling through the 249 
+
+Fas –FADD –CASP8 axis, as a key determinant of cancer cell fate. We validated the importance 250 
+
+of this pathway in two independent killing systems using CTLs or NK cells as effector 251 
+
+populations. 252 
+
+Various methodologies have been developed to measure cell death, and care must be taken when 253 
+
+interpreting their readouts, as many approaches have intrinsic limitations. For example, 254 
+
+CASP3/7 substrates are frequently used as indicators of cancer cell death; however, this 255 
+
+approach inherently detects only apoptosis or CASP3 –GSDME –mediated pyroptosis and 256 
+
+therefore excludes other forms of cell death. Similarly, methods that rely on membrane 257 
+
+permeabilization, such as calcein release assays, lactate dehydrogenase (LDH) release assays, 258 
+
+and intracellular DNA staining, tend to emphasize necrotic forms of death, because plasma 259 
+
+membrane integrity is generally preserved during apoptosis, at least in its early stages  50 .260 
+
+Viability assays based on ATP quantification or cellular metabolic activity, such as CellTiter -261 
+
+Glo and MTT assays, are difficult to apply in co -culture systems because the presence of 262 
+
+effector immune cells confounds interpretation of the measurements.  In this study, we adopted 263 
+
+an unbiased approach in which cancer cell death or expansion was quantified based on 264 
+
+endogenously expressed fluorescent signals. Because  dead  cancer cells cease fluorescent 265 
+
+protein expression and eventually lose fluorescence, whereas surviving cells continue to 266 
+
+> .CC-BY-NC 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 15, 2026. ;https://doi.org/10.64898/2026.06.14.732110 doi: bioRxiv preprint
+
+12 
+
+proliferate, this strategy provides a more objective assessment of overall cancer cell survival 267 
+
+and death. 268 
+
+Although the extrinsic death signaling pathway mediated by Fas –FADD –CASP8 has been 269 
+
+recognized for many years, its importance has primarily been appreciated in the context of 270 
+
+apoptosis through downstream activation of the executioner caspases CASP3 and CASP7  51,52 ,271 
+
+either directly by CASP8 or indirectly  via  CASP8 –mediated cleavage of BID  53 . Our data 272 
+
+suggest that the Fas –FADD –CASP8 axis is more broadly important than previously appreciated, 273 
+
+remaining functionally relevant even when canonical downstream substrates, including CASP3, 274 
+
+CASP7, and BID, are fully disrupted. 275 
+
+Notably, CASP3, despite being a central mediator of apoptosis and an upstream regulator of 276 
+
+GSDME –mediated pyroptosis, is rarely mutated in cancer  54,55 . This somewhat counterintuitive 277 
+
+observation raises the possibility that executioner caspases are not the ultimate determinants of 278 
+
+cell death per  se but  rather function as downstream effectors that channel cells into specific 279 
+
+forms of death following activation of upstream death signals. Caspase –independent cell death 280 
+
+has long been recognized  35 , and MOMP has been proposed to represent a point of no return for 281 
+
+cell  death , irrespective of downstream caspase activation  48 . Nevertheless, CTLs have been 282 
+
+shown to abrogate target cell proliferation and induce cell death even upon inhibition of both 283 
+
+executioner caspases and mitochondrial events  37 . This finding is consistent with our 284 
+
+observation that systematic disruption of several well -established mediators of cell death —285 
+
+including  CASP3 /7 (apoptosis and pyroptosis),  MLKL  (necroptosis), and  BID  (MOMP) —did 286 
+
+not fully  prevent  cytotoxic lymphocyte –induced killing. Importantly, even when these 287 
+
+downstream death mediators were disrupted, additional deletion of upstream Fas –FADD –288 
+
+CASP8 components conferred substantial resistance to cytotoxic lymphocyte –mediated killing. 289 
+
+Consistent with this, analysis of TCGA data shows that alterations in  CASP8  are more 290 
+
+frequently observed in cancer than mutations in  CASP3 , CASP7 , or  BID . It is noteworthy that 291 
+
+> .CC-BY-NC 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 15, 2026. ;https://doi.org/10.64898/2026.06.14.732110 doi: bioRxiv preprint
+
+13 
+
+CASP3, CASP7, and BID can  also  be activated by granzyme B, meaning that loss of functional 292 
+
+CASP8 does not completely abolish apoptosis or CASP3 –GSDME -mediated pyroptosis 293 
+
+induced by cytotoxic lymphocytes . Furthermore, CASP8 deficiency has the potential to 294 
+
+promote necroptosis in cancer cells. Therefore, the relatively high frequency of CASP8 295 
+
+mutations observed in human cancers suggests that CASP8 inactivation provides selective 296 
+
+advantages that cannot be fully explained by currently recognized cell death mechanisms alone. 297 
+
+Together, our findings from cytotoxic lymphocyte killing assays, genome -wide CRISPR 298 
+
+screens, and clinical observations strongly indicate that additional, as yet unidentified, CASP8 299 
+
+substrates or downstream effectors contribute to cytotoxic lymphocyte –induced cancer cell 300 
+
+death. 301 
+
+In summary, using a reductionist genetic approach, we provide compelling evidence that the 302 
+
+Fas –FADD –CASP8 signaling pathway governs cancer cell susceptibility to cytotoxic 303 
+
+lymphocyte –mediated killing. The relevance of this pathway extends beyond its established 304 
+
+roles in apoptosis, necroptosis, and mitochondrial damage. Our work offers a potential 305 
+
+explanation for why certain well -established death mediators, such as  CASP3 , are rarely 306 
+
+mutated in cancer. These findings also highlight the importance of future studies aimed at 307 
+
+identifying previously unrecognized CASP8 substrates that may contribute to cancer cell  death 308 
+
+beyond currently defined canonical cell death pathways. 309 
+
+Materials and Methods 310 
+
+Cell lines and cell culture 311 
+
+The mouse mastocytoma  cell line P815 and the human natural killer cell line NK -92 were 312 
+
+obtained from ATCC. The Lenti -X™ 293T cell line was obtained from Takara Bio. P815 cells 313 
+
+used in this study were transduced with pLVX -IRES -ZsGreen1 (V012720, NovoPro) to 314 
+
+constitutively express ZsGreen1 fluorescence. HeLa EGFP  cells were obtained from Cell Biolabs. 315 
+
+> .CC-BY-NC 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 15, 2026. ;https://doi.org/10.64898/2026.06.14.732110 doi: bioRxiv preprint
+
+14 
+
+P815, HeLa EGFP , and Lenti -X™ 293T cells were cultured in Dulbecco's Modified Eagle 316 
+
+Medium (DMEM) supplemented with 10% fetal bovine serum (FBS; Gibco) and 1% penicillin -317 
+
+streptomycin (Sigma -Aldrich, St. Louis, MO, USA). NK -92 cells were cultured in MEM  α318 
+
+(Gibco) supplemented with 12.5% horse serum (Gibco), 12.5% FBS (Gibco), 2 mM L -319 
+
+glutamine  (Gibco) , 1% penicillin -streptomycin (Sigma -Aldrich), and 200 U/mL recombinant 320 
+
+human IL -2 (R&D Systems). All cell cultures were maintained at 37  °C in a humidified 321 
+
+atmosphere containing 5% CO₂. 322 
+
+Isolation and activation of human T cells 323 
+
+Human T cells were isolated from buffy coats obtained from healthy anonymous blood donors 324 
+
+through the Oslo University Hospital Blood Centre. Sample collection and use were approved 325 
+
+by the Regional Committee for Medical and Health Research Ethics (REK approval no. 326 
+
+280751). Total T cells were isolated using the RosetteSep ™ Human T Cell Enrichment Cocktail 327 
+
+(STEMCELL Technologies), followed by density gradient centrifugation using Lymphoprep ™328 
+
+(STEMCELL Technologies), according to the manufacturer's instructions. 329 
+
+CD8⁺  CTLs  were subsequently isolated from total T cells using Dynabeads ™ CD8 (Invitrogen) 330 
+
+according to the manufacturer's instructions. Purified CD8⁺ T cells were activated using 331 
+
+Dynabeads ™ Human T -Activator CD3/CD28 (Gibco) and cultured for 7 –15 days in RPMI 332 
+
+1640 medium containing L -glutamine (VWR), supplemented with 10% FBS (Gibco), 1% non -333 
+
+essential amino acids (Gibco), 1% sodium pyruvate (Gibco), 1% penicillin -streptomycin 334 
+
+(Sigma -Aldrich), and 100 U/mL recombinant human IL -2 (R&D Systems). Cells were 335 
+
+maintained at 37  °C in a humidified atmosphere containing 5% CO₂. 336 
+
+Reverse transcription quantitative  PCR  (RT -qPCR )337 
+
+A total of 3 × 10⁵ cells were harvested, and total RNA was isolated using the RNeasy® Mini 338 
+
+Kit (Qiagen,) according to the manufacturer's instructions. Complementary DNA (cDNA) was 339 
+
+> .CC-BY-NC 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 15, 2026. ;https://doi.org/10.64898/2026.06.14.732110 doi: bioRxiv preprint
+
+15 
+
+synthesized from the isolated RNA using the RevertAid First Strand cDNA Synthesis Kit 340 
+
+(Thermo Fisher Scientific) following the manufacturer's protocol. 341 
+
+RT -qPCR was performed using PowerTrack ™ SYBR ™ Green Master Mix (Thermo Fisher 342 
+
+Scientific) according to the manufacturer's instructions. Forward and reverse primers for the 343 
+
+target genes were purchased from Sigma -Aldrich.  Primer sequences used in this study were as 344 
+
+follows: 345 
+
+Casp3 346 
+
+• Forward: 5′ -GGAGTCTGACTGGAAAGCCGAA -3′ 347 
+
+• Reverse: 5′ -CTTCTGGCAAGCCATCTCCTCA -3′ 348 
+
+Casp7 349 
+
+• Forward: 5′ -CCGTCCACAATGACTGCTCTTG -3′ 350 
+
+• Reverse: 5′ -CCCGTAAATCAGGTCCTCTTCC -3′ 351 
+
+Gapdh 352 
+
+• Forward: 5′ - CATCACTGCCACCCAGAAGACTG -3′ 353 
+
+• Reverse: 5′ - ATGCCAGTGAGCTTCCCGTTCAG -3′ 354 
+
+Western Blot 355 
+
+For Western blot analysis, cells were harvested and lysed in Triton ™ X-100 Lysis Buffer 356 
+
+(Thermo Fisher Scientific) supplemented with Halt ™ Protease Inhibitor Cocktail (Thermo 357 
+
+Fisher Scientific). Cell lysates were prepared at a concentration of 1 × 10⁶ cells/ 100μL  and 358 
+
+centrifuged at 15,000 ×  g for 10 min at 4°C. The supernatants were collected and mixed with 359 
+
+Invitrogen ™ NuPAGE ™ LDS Sample Buffer and Invitrogen ™ NuPAGE ™ Sample Reducing 360 
+
+Agent (Thermo Fisher Scientific), followed by incubation at 70°C for 10 min. 361 
+
+> .CC-BY-NC 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 15, 2026. ;https://doi.org/10.64898/2026.06.14.732110 doi: bioRxiv preprint
+
+16 
+
+Protein samples were separated by SDS -PAGE using 4 –12% Bis -Tris gels (Invitrogen) in 362 
+
+Invitrogen ™ NuPAGE ™ MES SDS Running Buffer (Thermo Fisher Scientific). Proteins were 363 
+
+subsequently transferred onto nitrocellulose membranes using the iBlot ™ 2 Dry Blotting 364 
+
+System (Thermo Fisher Scientific) according to the manufacturer's instructions. 365 
+
+Primary and secondary antibodies were diluted in solutions from the iBind ™ Solution Kit 366 
+
+(Invitrogen). The following primary antibodies were used: rabbit anti -CASP3 (mouse and 367 
+
+human; #9662, Cell Signaling Technology,), rabbit anti -CASP7 (human; #9492, Cell Signaling 368 
+
+Technology), rabbit anti -CASP8 (mouse and human; #4790, Cell Signaling Technology), rabbit 369 
+
+anti -FADD (mouse; #A307 -154A, Antibodies.com ), rabbit anti -FADD (human; #2782, Cell 370 
+
+Signaling Technology), rabbit anti -Fas (human; #4233, Cell Signaling Technology), rabbit anti -371 
+
+Fas (mouse; #96825, Cell Signaling Technology), rabbit anti -GSDME (mouse; #ab215191, 372 
+
+Abcam,), rabbit anti -MLKL (mouse; #37705, Cell Signaling Technology), rabbit anti -BID 373 
+
+(mouse; #2003, Cell Signaling Technology), rabbit anti -BID (human; #2002, Cell Signaling 374 
+
+Technology), rabbit anti -SEC62 (mouse; #ab140644, Abcam), and mouse anti -β-actin (mouse 375 
+
+and human; #sc -47778, Santa Cruz Biotechnology).  The secondary antibodies used were 376 
+
+horseradish peroxidase (HRP) -conjugated anti -mouse IgG (#115 -001 -003) and anti -rabbit IgG 377 
+
+(#111 -001 -003) antibodies (Jackson ImmunoResearch).  Membranes were mounted onto 378 
+
+iBind ™ Cards wetted with iBind ™ Solution and placed into an iBind ™ Western Device 379 
+
+(Invitrogen). Diluted primary and secondary antibodies were added according to the 380 
+
+manufacturer's protocol and incubated for a minimum of 2.5 h at room temperature (RT). 381 
+
+Following antibody incubation, membranes were washed with deionized water for 5 min and 382 
+
+incubated with SuperSignal ™ West Pico PLUS Chemiluminescent Substrate (Thermo Fisher 383 
+
+Scientific) for 2 min at RT. Chemiluminescent signals were detected using an iBright ™ 1500 384 
+
+Imaging System (Invitrogen). 385 
+
+Flow cytometry 386 
+
+> .CC-BY-NC 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 15, 2026. ;https://doi.org/10.64898/2026.06.14.732110 doi: bioRxiv preprint
+
+17 
+
+WT and  Sec62 -/- P815  cells  were washed with phosphate -buffered saline (PBS) and stained with 387 
+
+Fixable Viability Dye Alexa Fluor ™ 700 (Thermo Fisher Scientific) for  15  min at room 388 
+
+temperature (RT). Following viability staining, cells were washed with PBS supplemented with 389 
+
+2% fetal bovine serum (FBS) and incubated with an APC -conjugated anti -Fas antibody  (mouse; 390 
+
+#17 -0951 -82, Thermo Fisher Scientific) for 30 min at RT.  Cells were subsequently washed and 391 
+
+fixed using Buffer A from the Human FoxP3 Buffer Set (BD Biosciences) for 10 min at RT. 392 
+
+Following fixation, cells were resuspended in PBS containing 2% FBS and analyzed using a 393 
+
+BD  LSRFortessa ™ flow cytometer (BD Biosciences).  Data were analyzed using FlowJo 394 
+
+v10.8.1 (BD). 395 
+
+CRISPR –Cas9 –mediated knockout generation 396 
+
+For the generation of knockout P815 cell lines, guide RNAs (gRNAs) targeting mouse genes 397 
+
+were cloned into lentiCRISPR v2 -derived lentiviral vectors carrying different antibiotic 398 
+
+resistance markers: hygromycin (#98291, Addgene) for generation of  Casp3 ⁻/⁻ cells, neomycin 399 
+
+(#98292, Addgene) for generation of  Mlkl ⁻/⁻ cells, blasticidin (#98293, Addgene) for generation 400 
+
+of  Bid ⁻/⁻ cells, and puromycin (#52961, Addgene) for generation of all other knockout cell lines. 401 
+
+gRNAs were cloned according to the Zhang laboratory lentiCRISPR v2 cloning protocol  56,57 .402 
+
+Lentiviral particles were produced in Lenti -X™ 293T cells seeded at  5 × 10 5 cells per well in 403 
+
+12 -well plates and cultured in DMEM supplemented with 10% FBS and 20 mM HEPES. Cells 404 
+
+were co -transfected with the lentiviral transfer vector (1.33 μg/well), the packaging plasmid 405 
+
+psPAX2 (1.0 μg/well), and the envelope plasmid pCMV -VSV -G (0.44 μg/well) using 406 
+
+Lipofectamine ™ 2000 (Invitrogen; 5 μL/well) in 200 μL Opti -MEM ™ (Gibco). The culture 407 
+
+medium was replaced 24 h after transfection. Viral supernatants were harvested  72  h post -408 
+
+transfection, clarified by centrifugation, and 300 μL of viral supernatant was used to transduce 409 
+
+P815 cells (5 × 10⁴ cells/well in 12 -well plates). Following transduction, cells were selected 410 
+
+> .CC-BY-NC 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 15, 2026. ;https://doi.org/10.64898/2026.06.14.732110 doi: bioRxiv preprint
+
+18 
+
+with the appropriate antibiotic to generate stable gRNA -expressing cell populations.  Antibiotic -411 
+
+resistant cells were seeded into 96 -well plates at a density of 0.75 cells/well to obtain single -412 
+
+cell -derived clones. Individual colonies were expanded and screened for loss of target protein 413 
+
+expression by Western blot analysis. 414 
+
+For generation of knockout HeLa EGFP  cell lines, gRNAs targeting human genes were cloned 415 
+
+into the pSpCas9(BB) -2A -Puro (PX459) V2.0 vector  (#62988,  Addgene)  according to the 416 
+
+Zhang laboratory cloning and target sequencing protocol  58 . HeLa EGFP  cells were seeded at 1 × 417 
+
+10⁵ cells/well in 12 -well plates and transfected with 1.6 μg of gRNA -containing plasmid using 418 
+
+Lipofectamine ™ 2000 (5 μL/well) in 200 μL Opti -MEM ™. Twenty -four hours after 419 
+
+transfection, cells were subjected to puromycin selection for 72 h. Surviving cells were 420 
+
+expanded in T25 flasks for 48 h before being seeded into 96 -well plates at a density of 0.75 421 
+
+cells/well. Single -cell -derived colonies were isolated, expanded, and screened for loss of target 422 
+
+protein expression by Western blot analysis. 423 
+
+DNA sequences used for cloning of gRNAs in this study are summarized in  Supplementary 424 
+
+Table III .425 
+
+Genome -wide CRISPR screen 426 
+
+The mouse genome -wide Brie CRISPR knockout pooled library (lentiGuide -Puro, #73633, 427 
+
+Addgene) was amplified using Endura ™ ElectroCompetent Cells (Biosearch Technologies; 428 
+
+#60242 -2) according to the manufacturer's instructions. Colony numbers were determined from 429 
+
+serial dilutions to ensure ≥100 -fold representation of the library diversity (4 sgRNAs per gene). 430 
+
+Colonies were harvested by scraping in LB medium, and plasmid DNA was extracted using an 431 
+
+endotoxin -free maxiprep kit (NucleoBond Xtra Maxi Plus EF ) and stored at −20°C. 432 
+
+For the genome -wide screen, 7.5 × 10⁷  Casp3⁻/⁻  (hygromycin -resistant) or  Casp3⁻/⁻Mlkl⁻/⁻Bid⁻/⁻ 433 
+
+(hygromycin -, neomycin -, and blasticidin -resistant) P815 cells were transduced with the Brie 434 
+
+> .CC-BY-NC 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 15, 2026. ;https://doi.org/10.64898/2026.06.14.732110 doi: bioRxiv preprint
+
+19 
+
+lentiviral library at a multiplicity of infection (MOI) of 0.3 to ensure single integration events 435 
+
+per cell.  48  hours post -transduction, cells were selected with puromycin (0.6 μg/mL). After 48 436 
+
+h of selection, surviving cells were pooled, cultured in puromycin -free medium, and subjected 437 
+
+to CTL selection. 438 
+
+For CTL selection, 8 × 10⁶ target cells were co -cultured with activated human CD8⁺ T cells at 439 
+
+equal effector -to -target ratios in the presence of 5 μg/mL anti -CD3 antibody (#317347, 440 
+
+BioLegend). Four biological replicates were used for  Casp3⁻/⁻  cells and three replicates for 441 
+
+Casp3⁻/⁻Mlkl⁻/⁻Bid⁻/⁻  cells. After 24 h ( Casp3⁻/⁻ ) or 48 h ( Casp3⁻/⁻Mlkl⁻/⁻Bid⁻/⁻ ) of co -culture, 442 
+
+cells were collected and treated with puromycin to eliminate residual CD8⁺ T cells. Surviving 443 
+
+P815 cells were expanded, and CTL selection was repeated three times for  Casp3⁻/⁻  cells and 444 
+
+twice for  Casp3⁻/⁻Mlkl⁻/⁻Bid⁻/⁻  cells.  Following selection, surviving cells were expanded, and 445 
+
+genomic DNA was extracted from 2 × 10⁷ cells per replicate using the NucleoSpin ™ Blood L 446 
+
+Midi kit (Macherey -Nagel; #740954.20). sgRNA sequences were amplified and prepared for 447 
+
+next -generation sequencing (NGS) using a two -step PCR strategy.  In the first PCR (30 –45 448 
+
+cycles), sgRNA -containing regions were amplified from genomic DNA using eight staggered 449 
+
+forward primers (PCR1_Fwd_1 –8) together with a vector -specific reverse primer, using Q5® 450 
+
+High -Fidelity DNA Polymerase (New England Biolabs; M0491S). PCR products were pooled 451 
+
+and purified using the NucleoSpin ™ Gel and PCR Clean -up Midi kit (Macherey -Nagel; 452 
+
+#740986.20). In the second PCR (8 cycles), Illumina P5 and P7 adapters and sample -specific 453 
+
+indices were added.  Final libraries were purified using SpeedBeads (GE65152105050250, 454 
+
+Cytiva), quantified using a Qubit fluorometer (Thermo Fisher Scientific), and quality -checked 455 
+
+using TapeStation system with D1000 ScreenTape (5067 -5582, Agilent). Libraries were pooled 456 
+
+equimolarly and sequenced on a NovaSeq X platform (Illumina), targeting a depth of 20 –30 457 
+
+million reads per sample. 458 
+
+> .CC-BY-NC 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 15, 2026. ;https://doi.org/10.64898/2026.06.14.732110 doi: bioRxiv preprint
+
+20 
+
+Screening data were analyzed using MAGeCK -VISPR  59  to identify significantly enriched or 459 
+
+depleted sgRNAs/genes.  In brief, sgRNA counting was first performed using the  mageck count 460 
+
+function on FASTQ files. CTL –treated and non -treated samples were then compared using the 461 
+
+mageck test  function, and normalization was performed using control sgRNAs. 462 
+
+The primers used for the first -round PCR are listed below. Blue indicates the sequences used 463 
+
+for amplification of the gRNA within the lentiGuide -Puro vector backbone, and red indicates 464 
+
+stagger sequences introduced to increase sequence diversity. 465 
+
+PCR1_Fwd_1: CCCTACACGACGCTCTTCCGATCT TTGTGGAAAGGACGAAACACCG 466 
+
+PCR1_Fwd_2: CCCTACACGACGCTCTTCCGATCT CTTGTGGAAAGGACGAAACACCG 467 
+
+PCR1_Fwd_3: CCCTACACGACGCTCTTCCGATCT GC TTGTGGAAAGGACGAAACACCG 468 
+
+PCR1_Fwd_4: CCCTACACGACGCTCTTCCGATCT AGC TTGTGGAAAGGACGAAACACCG 469 
+
+PCR1_Fwd_5: CCCTACACGACGCTCTTCCGATCT CAAC TTGTGGAAAGGACGAAACACCG 470 
+
+PCR1_Fwd_6: CCCTACACGACGCTCTTCCGATCT TGCACC TTGTGGAAAGGACGAAACACCG 471 
+
+PCR1_Fwd_7: CCCTACACGACGCTCTTCCGATCT ACGCAAC TTGTGGAAAGGACGAAACACCG 472 
+
+PCR1_Fwd_8: CCCTACACGACGCTCTTCCGATCT GAAGACCC TTGTGGAAAGGACGAAACACCG 473 
+
+PCR1_Rev: 474 
+
+GTGACTGGAGTTCAGACGTGTGCTCTTCCGATCT AAGATCTAGTTACGCCAAGCTTAAA 475 
+
+Primers used for the second PCR were as follows, where N₈ represents sample -specific index 476 
+
+sequences: 477 
+
+Forward: 478 
+
+AATGATACGGCGACCACCGAGATCTACACNNNNNNNNACACTCTTTCCCTACACGACGCTCTTC 479 
+
+CGATC*T 480 
+
+Reverse: 481 
+
+CAAGCAGAAGACGGCATACGAGATNNNNNNNNGTGACTGGAGTTCAGACGTGTGCTCTTCCG 482 
+
+ATC*T 483 
+
+> .CC-BY-NC 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 15, 2026. ;https://doi.org/10.64898/2026.06.14.732110 doi: bioRxiv preprint
+
+21 
+
+CTL –αCD3 –P815 killing assay 484 
+
+P815 ZsGreen1  cells were prepared at a concentration of 10⁵ cells/mL in P815 culture medium. 485 
+
+Anti -CD3 antibody  (#317347, BioLegend ) was added to a final concentration of 3.6 μg/mL, 486 
+
+and cells were seeded into 96 -well plates (100 μL per well). Each condition (with or without 487 
+
+CTLs) was performed in three technical replicates. Cells were incubated for 1 h at 37  °C in 5% 488 
+
+CO₂ prior to the addition of activated CD8⁺ CTLs (100 μL per well; 10⁵ cells/mL in CD8⁺ 489 
+
+culture medium , with beads removed using a magnetic stand ), corresponding to an effector -to -490 
+
+target ratio of 1:1. Plates were then placed in an Incucyte® S3 or S5 live -cell imaging system 491 
+
+(Sartorius) and imaged every 2 h for 72 –96 h. 492 
+
+NK -92 –HeLa killing assay 493 
+
+HeLa EGFP  cells were seeded at 2 × 10⁴ cells/mL in HeLa culture medium and allowed to adhere 494 
+
+for 24 h. Each condition (with or without NK -92 cells) was performed in three technical 495 
+
+replicates. NK -92 cells were prepared in NK -92 culture medium and added to HeLa cultures at 496 
+
+an effector -to -target ratio of  1:1 or  3:1, assuming approximately twofold expansion of HeLa 497 
+
+cells over 24 h. Plates were then incubated in an Incucyte® S3 or S5 live -cell imaging system 498 
+
+(Sartorius) for 4 6–50  h, with images acquired every 2 h. 499 
+
+TCGA database analysis 500 
+
+The number and frequency of simple somatic mutations (SSMs), excluding copy number 501 
+
+variations, for individual genes were manually extracted from The Cancer Genome Atlas 502 
+
+(TCGA) by querying genes of interest through the Genomic Data Commons Data Portal 503 
+
+(https://portal.gdc.cancer.gov/ ). A pan -cancer dataset was generated by aggregating data across 504 
+
+all TCGA projects without stratification by tumor type.  Variant annotations, including Ensembl 505 
+
+Variant Effect Predictor (VEP)  49  classifications, were manually extracted from TCGA and used 506 
+
+for data visualization.  Following definitions are used for the impact ratings: 507 
+
+> .CC-BY-NC 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 15, 2026. ;https://doi.org/10.64898/2026.06.14.732110 doi: bioRxiv preprint
+
+22 
+
+• HIGH  (HI) : The variant is assumed to have high (disruptive) impact in the protein, 508 
+
+probably causing protein truncation, loss of function or triggering nonsense mediated 509 
+
+decay:  transcript_ablation, splice_acceptor_variant, splice_donor_variant, 510 
+
+stop_gained,  frameshift variant , stop_lost, start_lost, transcript_amplification .511 
+
+• MODERATE  (MO) : A non -disruptive variant that might change protein 512 
+
+effectiveness:  inframe_insertion, inframe_deletion, missense_variant, 513 
+
+protein_altering_variant, regulatory_region_ablation .514 
+
+• LOW  (LO) : Assumed to be mostly harmless or unlikely to change protein 515 
+
+behavior:  splice_region_variant, incomplete_terminal_codon_variant, 516 
+
+stop_retained_variant, synonymous_variant .517 
+
+• MODIFIER  (MR) : Usually non -coding variants or variants affecting non -coding genes, 518 
+
+where predictions are difficult or there is no evidence of 519 
+
+impact:  coding_sequence_variant, mature_miRNA_variant, 5_prime_UTR_variant, 520 
+
+3_prime_UTR_variant, non_coding_transcript_exon_variant, intron_variant, 521 
+
+NMD_transcript_variant, non_coding_transcript_variant, upstream_gene_variant, 522 
+
+downstream_gene_variant, TFBS_ablation, TFBS_amplification, 523 
+
+TF_binding_site_variant, regulatory_region_amplification, feature_elongation, 524 
+
+regulatory_region_variant, feature_truncation, intergenic_variant .525 
+
+Statistical analysis 526 
+
+Statistical analyses were performed using GraphPad Prism version 10.6.1. A two -tailed 527 
+
+unpaired  t-test was used for comparisons between two groups, while one -way ANOVA was 528 
+
+used for comparisons among more than two groups. Differences were considered statistically 529 
+
+significant as indicated in the figure legends. 530 
+
+Data Availability statement 531 
+
+> .CC-BY-NC 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 15, 2026. ;https://doi.org/10.64898/2026.06.14.732110 doi: bioRxiv preprint
+
+23 
+
+The CRISPR screen datasets have been deposited in the NCBI Gene Expression Omnibus (GEO) 532 
+
+under accession numbers GSE336303 and GSE336305. Additional datasets generated and/or 533 
+
+analyzed during the current study are available from the corresponding author s upon reasonable 534 
+
+request. 535 
+
+Author  Contributions 536 
+
+E.S.: Methodology, Data curation, Visualization, Writing  – original draft, review, and editing. 537 
+
+S.W .:  Conceptualization, Methodology, Data curation, Visualization, Writing  – review and 538 
+
+editing. Q.W.:  Methodology,  Data curation, Writing  – review and editing.  N. E. B. S.: 539 
+
+Methodology, Writing  – review and editing. K.T.: Supervision, Project administration, 540 
+
+Resources, Conceptualization, Writing  – review and editing. Y .L. : Supervision, Project 541 
+
+administration, Resources, Conceptualization, Methodology, Data curation, Visualization, 542 
+
+Writing  – original draft, review, and editing .543 
+
+Acknowledgements 544 
+
+We thank Mentowa Fürst Bright, Nora Rojahn Bråthen, Jenny Karoline Jebsen  and  Siri 545 
+
+Sæterstad  for their expert technical assistance. We are grateful to the Norwegian Sequencing 546 
+
+Centre for assistance with CRISPR screen sequencing. The illustration in Figure 1A was created 547 
+
+using  BioRender  (https://www.biorender.com ). 548 
+
+This work was supported by the Research Council of Norway (grant 344942 to Y.L.  and  grant 549 
+
+328827  to KT ), the  Astri  and  Birger Torsteds foundation  (to Y.L.) , the Norwegian Cancer 550 
+
+Society (grant 298910 to K.T.)  and  the  Regional Health Authority for South -Eastern Norway 551 
+
+(grant  2025081 to  KT) . Y.L. also received funding from the European Union’s Horizon 2020 552 
+
+Research and Innovation Programme through the Marie Skłodowska -Curie Actions (Scientia 553 
+
+Fellowship, Grant Agreement No. 801133). 554 
+
+Competing Interests 555 
+
+> .CC-BY-NC 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 15, 2026. ;https://doi.org/10.64898/2026.06.14.732110 doi: bioRxiv preprint
+
+24 
+
+The authors declare no competing interests. 556 
+
+References 557 
+
+1 Boon, T. & van der Bruggen, P. Human tumor antigens recognized by T lymphocytes. 558 
+
+Journal of Experimental Medicine  183 , 725 –729 (1996). 559 
+
+https://doi.org/10.1084/jem.183.3.725 560 
+
+2 Lanier, L. L. NK cell recognition.  Annu Rev Immunol  23 , 225 –274 (2005). 561 
+
+https://doi.org/10.1146/annurev.immunol.23.021704.115526 562 
+
+3 Chávez -Galán, L., Arenas -Del Angel, M. C., Zenteno, E., Chávez, R. & Lascurain, R. 563 
+
+Cell death mechanisms induced by cytotoxic lymphocytes.  Cell Mol Immunol  6, 15 –564 
+
+25 (2009).  https://doi.org/10.1038/cmi.2009.3 565 
+
+4 Liu, J., Ye, Y. & Cai, L. Supramolecular attack particle: the way cytotoxic T 566 
+
+lymphocytes kill target cells.  Signal Transduction and Targeted Therapy  5, 210 567 
+
+(2020).  https://doi.org/10.1038/s41392 -020 -00319 -z568 
+
+5 Peng, L., Sferruzza, G., Yang, L., Zhou, L. & Chen, S. CAR -T and CAR -NK as 569 
+
+cellular cancer immunotherapy for solid tumors.  Cellular & Molecular Immunology 570 
+
+21 , 1089 –1108 (2024).  https://doi.org/10.1038/s41423 -024 -01207 -0571 
+
+6 Baulu, E., Gardet, C., Chuvin, N. & Depil, S. TCR -engineered T cell therapy in solid 572 
+
+tumors: State of the art and perspectives.  Sci Adv  9, eadf3700 (2023). 573 
+
+https://doi.org/10.1126/sciadv.adf3700 574 
+
+7 Page, A., Chuvin, N., Valladeau -Guilemond, J. & Depil, S. Development of NK cell -575 
+
+based cancer immunotherapies through receptor engineering.  Cellular & Molecular 576 
+
+Immunology  21 , 315 –331 (2024).  https://doi.org/10.1038/s41423 -024 -01145 -x577 
+
+8 Elmore, S. Apoptosis: a review of programmed cell death.  Toxicol Pathol  35 , 495 –516 578 
+
+(2007).  https://doi.org/10.1080/01926230701320337 579 
+
+> .CC-BY-NC 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 15, 2026. ;https://doi.org/10.64898/2026.06.14.732110 doi: bioRxiv preprint
+
+25 
+
+9 Slee, E. A., Adrain, C. & Martin, S. J. Executioner Caspase -3,  -6, and  -7 Perform 580 
+
+Distinct, Non -redundant Roles during the Demolition Phase of Apoptosis*.  Journal of 581 
+
+Biological Chemistry  276 , 7320 –7326 (2001). 582 
+
+https://doi.org/https://doi.org/10.1074/jbc.M008363200 583 
+
+10  Jänicke, R. U., Sprengart, M. L., Wati, M. R. & Porter, A. G. Caspase -3 Is Required 584 
+
+for DNA Fragmentation and Morphological Changes Associated with Apoptosis*. 585 
+
+Journal of Biological Chemistry  273 , 9357 –9360 (1998). 586 
+
+https://doi.org/https://doi.org/10.1074/jbc.273.16.9357 587 
+
+11  Darmon, A. J., Nicholson, D. W. & Bleackley, R. C. Activation of the apoptotic 588 
+
+protease CPP32 by cytotoxic T -cell -derived granzyme B.  Nature  377 , 446 –448 (1995). 589 
+
+https://doi.org/10.1038/377446a0 590 
+
+12  Boldin, M. P., Goncharov, T. M., Goltsev, Y. V. & Wallach, D. Involvement of MACH, 591 
+
+a novel MORT1/FADD -interacting protease, in Fas/APO -1- and TNF receptor -induced 592 
+
+cell death.  Cell  85 , 803 –815 (1996).  https://doi.org/10.1016/s0092 -8674(00)81265 -9593 
+
+13  Muzio, M.  et al.  FLICE, a novel FADD -homologous ICE/CED -3-like protease, is 594 
+
+recruited to the CD95 (Fas/APO -1) death --inducing signaling complex.  Cell  85 , 817 –595 
+
+827 (1996).  https://doi.org/10.1016/s0092 -8674(00)81266 -0596 
+
+14  Li, H., Zhu, H., Xu, C. J. & Yuan, J. Cleavage of BID by caspase 8 mediates the 597 
+
+mitochondrial damage in the Fas pathway of apoptosis.  Cell  94 , 491 –501 (1998). 598 
+
+https://doi.org/10.1016/s0092 -8674(00)81590 -1599 
+
+15  Barry, M.  et al.  Granzyme B short -circuits the need for caspase 8 activity during 600 
+
+granule -mediated cytotoxic T -lymphocyte killing by directly cleaving Bid.  Mol Cell 601 
+
+Biol  20 , 3781 –3794 (2000).  https://doi.org/10.1128/mcb.20.11.3781 -3794.2000 602 
+
+> .CC-BY-NC 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 15, 2026. ;https://doi.org/10.64898/2026.06.14.732110 doi: bioRxiv preprint
+
+26 
+
+16  Alimonti, J. B., Shi, L., Baijal, P. K. & Greenberg, A. H. Granzyme B induces BID -603 
+
+mediated cytochrome c release and mitochondrial permeability transition.  J Biol Chem 604 
+
+276 , 6974 –6982 (2001).  https://doi.org/10.1074/jbc.M008444200 605 
+
+17  Desagher, S.  et al.  Bid -induced conformational change of Bax is responsible for 606 
+
+mitochondrial cytochrome c release during apoptosis.  J Cell Biol  144 , 891 –901 607 
+
+(1999).  https://doi.org/10.1083/jcb.144.5.891 608 
+
+18  Wei, M. C.  et al.  tBID, a membrane -targeted death ligand, oligomerizes BAK to 609 
+
+release cytochrome c.  Genes Dev  14 , 2060 –2071 (2000). 610 
+
+19  Li, P.  et al.  Cytochrome c and dATP -dependent formation of Apaf -1/caspase -9611 
+
+complex initiates an apoptotic protease cascade.  Cell  91 , 479 –489 (1997). 612 
+
+https://doi.org/10.1016/s0092 -8674(00)80434 -1613 
+
+20  Liu, X., Kim, C. N., Yang, J., Jemmerson, R. & Wang, X. Induction of apoptotic 614 
+
+program in cell -free extracts: requirement for dATP and cytochrome c.  Cell  86 , 147 –615 
+
+157 (1996).  https://doi.org/10.1016/s0092 -8674(00)80085 -9616 
+
+21  Du, C., Fang, M., Li, Y., Li, L. & Wang, X. Smac, a mitochondrial protein that 617 
+
+promotes cytochrome c -dependent caspase activation by eliminating IAP inhibition. 618 
+
+Cell  102 , 33 –42 (2000).  https://doi.org/10.1016/s0092 -8674(00)00008 -8619 
+
+22  Verhagen, A. M.  et al.  Identification of DIABLO, a mammalian protein that promotes 620 
+
+apoptosis by binding to and antagonizing IAP proteins.  Cell  102 , 43 –53 (2000). 621 
+
+https://doi.org/10.1016/s0092 -8674(00)00009 -x622 
+
+23  Häcker, G. The morphology of apoptosis.  Cell and Tissue Research  301 , 5 –17 (2000). 623 
+
+https://doi.org/10.1007/s004410000193 624 
+
+24  McComb, S.  et al.  Efficient apoptosis requires feedback amplification of upstream 625 
+
+apoptotic signals by effector caspase -3 or -7.  Science advances  5, eaau9433 (2019). 626 
+
+> .CC-BY-NC 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 15, 2026. ;https://doi.org/10.64898/2026.06.14.732110 doi: bioRxiv preprint
+
+27 
+
+25  de Miguel, D.  et al.  Inflammatory cell death induced by cytotoxic lymphocytes: a 627 
+
+dangerous but necessary liaison.  Febs j  289 , 4398 –4415 (2022). 628 
+
+https://doi.org/10.1111/febs.16093 629 
+
+26  Liu, X. & Lieberman, J. in  Advances in Immunology  Vol. 135 (ed Frederick W. Alt) 630 
+
+81 –117 (Academic Press, 2017). 631 
+
+27  Wang, Y.  et al.  Chemotherapy drugs induce pyroptosis through caspase -3 cleavage of 632 
+
+a gasdermin.  Nature  547 , 99 –103 (2017).  https://doi.org/10.1038/nature22393 633 
+
+28  Zhou, Z.  et al.  Granzyme A from cytotoxic lymphocytes cleaves GSDMB to trigger 634 
+
+pyroptosis in target cells.  Science  368  (2020).  https://doi.org/10.1126/science.aaz7548 635 
+
+29  Zhang, Z.  et al.  Gasdermin E suppresses tumour growth by activating anti -tumour 636 
+
+immunity.  Nature  579 , 415 –420 (2020).  https://doi.org/10.1038/s41586 -020 -2071 -9637 
+
+30  Rogers, C.  et al.  Cleavage of DFNA5 by caspase -3 during apoptosis mediates 638 
+
+progression to secondary necrotic/pyroptotic cell death.  Nature Communications  8,639 
+
+14128 (2017).  https://doi.org/10.1038/ncomms14128 640 
+
+31  Zhang, Z.  et al.  Gasdermin E suppresses tumour growth by activating anti -tumour 641 
+
+immunity.  Nature  579 , 415 –420 (2020). 642 
+
+32  Sun, L.  et al.  Mixed Lineage Kinase Domain -like Protein Mediates Necrosis Signaling 643 
+
+Downstream of RIP3 Kinase.  Cell  148 , 213 –227 (2012). 644 
+
+https://doi.org/10.1016/j.cell.2011.11.031 645 
+
+33  Zhou, Q.  et al.  Ferroptosis in cancer: from molecular mechanisms to therapeutic 646 
+
+strategies.  Signal transduction and targeted therapy  9, 55 (2024). 647 
+
+34  Flem -Karlsen, K.  et al.  Cytotoxic CD8+ T cells downregulate GPX4 to promote 648 
+
+ferroptosis in melanoma that drives antitumor immunity.  Cancer Research  85 , 4139 –649 
+
+4150 (2025). 650 
+
+> .CC-BY-NC 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 15, 2026. ;https://doi.org/10.64898/2026.06.14.732110 doi: bioRxiv preprint
+
+28 
+
+35  Tait, S. W. & Green, D. R. Caspase -independent cell death: leaving the set without the 651 
+
+final cut.  Oncogene  27 , 6452 –6461 (2008).  https://doi.org/10.1038/onc.2008.311 652 
+
+36  Chipuk, J. E. & Green, D. R. Do inducers of apoptosis trigger caspase -independent 653 
+
+cell death?  Nat Rev Mol Cell Biol  6, 268 –275 (2005).  https://doi.org/10.1038/nrm1573 654 
+
+37  Pardo, J.  et al.  Granzyme B -induced cell death exerted by ex vivo CTL: discriminating 655 
+
+requirements for cell death and some of its signs.  Cell Death & Differentiation  15 ,656 
+
+567 –579 (2008). 657 
+
+38  Tait, S. W. & Green, D. R. Caspase -independent cell death: leaving the set without the 658 
+
+final cut.  Oncogene  27 , 6452 –6461 (2008). 659 
+
+39  Almonte, A. A., Cavic, G., Carroll, C. S., Neeman, T. & Fahrer, A. M. Early T Cell 660 
+
+Infiltration Correlates with Anti -CTLA4 Treatment Response in Murine Cancer 661 
+
+Models.  The Journal of Immunology  211 , 1858 –1867 (2023). 662 
+
+40  Doench, J. G.  et al.  Optimized sgRNA design to maximize activity and minimize off -663 
+
+target effects of CRISPR -Cas9.  Nature biotechnology  34 , 184 –191 (2016). 664 
+
+41  Takai, T., Li, M., Sylvestre, D., Clynes, R. & Ravetch, J. V. FcR  γ chain deletion 665 
+
+results in pleiotrophic effector cell defects.  Cell  76 , 519 –529 (1994). 666 
+
+42  Carter, M. J.  et al.  The ETS -family transcription factor PU. 1 is a critical regulator of 667 
+
+the inhibitory Fc γ receptor IIB expression in humans.  The Journal of Immunology  214 ,668 
+
+1937 –1950 (2025). 669 
+
+43  Satoh, J. -i., Asahina, N., Kitano, S. & Kino, Y. A comprehensive profile of ChIP -Seq -670 
+
+based PU. 1/Spi1 target genes in microglia.  Gene regulation and systems biology  8,671 
+
+GRSB. S19711 (2014). 672 
+
+44  Reithinger, J. H., Kim, J. E. H. & Kim, H. Sec62 protein mediates membrane insertion 673 
+
+and orientation of moderately hydrophobic signal anchor proteins in the endoplasmic 674 
+
+reticulum (ER).  Journal of Biological Chemistry  288 , 18058 –18067 (2013). 675 
+
+> .CC-BY-NC 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 15, 2026. ;https://doi.org/10.64898/2026.06.14.732110 doi: bioRxiv preprint
+
+29 
+
+45  Jung, S. -j., Kim, J. E. H., Reithinger, J. H. & Kim, H. The Sec62 –Sec63 translocon 676 
+
+facilitates translocation of the C -terminus of membrane proteins.  Journal of cell 677 
+
+science  127 , 4270 –4278 (2014). 678 
+
+46  Lang, S.  et al.  Different effects of Sec61 α, Sec62 and Sec63 depletion on transport of 679 
+
+polypeptides into the endoplasmic reticulum of mammalian cells.  Journal of cell 680 
+
+science  125 , 1958 –1969 (2012). 681 
+
+47  Haraguchi, M.  et al.  Apoptotic protease activating factor 1 (Apaf -1) –independent cell 682 
+
+death suppression by Bcl -2.  The Journal of experimental medicine  191 , 1709 –1720 683 
+
+(2000). 684 
+
+48  Tait, S. W. G. & Green, D. R. Mitochondria and cell death: outer membrane 685 
+
+permeabilization and beyond.  Nature reviews. Molecular cell biology  11 , 621 –632 686 
+
+(2010).  https://doi.org/10.1038/nrm2952 687 
+
+49  McLaren, W.  et al.  The ensembl variant effect predictor.  Genome biology  17 , 122 688 
+
+(2016). 689 
+
+50  Zhang, Y., Chen, X., Gueydan, C. & Han, J. Plasma membrane changes during 690 
+
+programmed cell deaths.  Cell research  28 , 9 –21 (2018). 691 
+
+51  Earnshaw, W. C., Martins, L. M. & Kaufmann, S. H. Mammalian caspases: structure, 692 
+
+activation, substrates, and functions during apoptosis.  Annu Rev Biochem  68 , 383 –424 693 
+
+(1999).  https://doi.org/10.1146/annurev.biochem.68.1.383 694 
+
+52  Orning, P. & Lien, E. Multiple roles of caspase -8 in cell death, inflammation, and 695 
+
+innate immunity.  J Leukoc Biol  109 , 121 –141 (2021). 696 
+
+https://doi.org/10.1002/jlb.3mr0420 -305r 697 
+
+53  Galluzzi, L.  et al.  Molecular mechanisms of cell death: recommendations of the 698 
+
+Nomenclature Committee on Cell Death 2018.  Cell Death Differ  25 , 486 –541 (2018). 699 
+
+https://doi.org/10.1038/s41418 -017 -0012 -4700 
+
+> .CC-BY-NC 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 15, 2026. ;https://doi.org/10.64898/2026.06.14.732110 doi: bioRxiv preprint
+
+30 
+
+54  Soung, Y. H.  et al.  Somatic mutations of CASP3 gene in human cancers.  Hum Genet 701 
+
+115 , 112 –115 (2004).  https://doi.org/10.1007/s00439 -004 -1129 -3702 
+
+55  Eskandari, E. & Eaves, C. J. Paradoxical roles of caspase -3 in regulating cell survival, 703 
+
+proliferation, and tumorigenesis.  J Cell Biol  221  (2022). 704 
+
+https://doi.org/10.1083/jcb.202201159 705 
+
+56  Sanjana, N. E., Shalem, O. & Zhang, F. Improved vectors and genome -wide libraries 706 
+
+for CRISPR screening.  Nature methods  11 , 783 –784 (2014). 707 
+
+57  Shalem, O.  et al.  Genome -scale CRISPR -Cas9 knockout screening in human cells. 708 
+
+Science  343 , 84 –87 (2014). 709 
+
+58  Ran, F. A.  et al.  Genome engineering using the CRISPR -Cas9 system.  Nature 710 
+
+protocols  8, 2281 –2308 (2013). 711 
+
+59  Li, W.  et al.  Quality control, modeling, and visualization of CRISPR screens with 712 
+
+MAGeCK -VISPR.  Genome biology 16 , 281 (2015). 713 
+
+714 
+
+715 
+
+716 
+
+717 
+
+718 
+
+719 
+
+720 
+
+721 
+
+722 
+
+> .CC-BY-NC 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 15, 2026. ;https://doi.org/10.64898/2026.06.14.732110 doi: bioRxiv preprint
+
+31 
+
+Figure legend s723 
+
+Figure 1. Establishment and validation of a cytotoxic T lymphocyte (CTL) –P815 killing 724 
+
+system.  A)  Schematic overview of the CTL –P815 killing system  used in this study.  B) 725 
+
+Transcript levels of Caspase -3 (Casp3 ) and Caspase -7 ( Casp7 ) in P815 wild -type (WT) cells 726 
+
+were quantified by reverse transcription quantitative PCR (RT -qPCR) and normalized to  Gapdh 727 
+
+expression.  C)  P815 WT cells were treated with the caspase activator raptinal or DMSO as a 728 
+
+vehicle control to assess their capacity to undergo C ASP 3–gasdermin E (GSDME) –dependent 729 
+
+pyroptosis.  Pyroptotic induction was confirmed by GSDME cleavage into its N -terminal 730 
+
+fragment (N -GSDME) and by characteristic ballooning morphology (see panel  D, left)  D)  WT 731 
+
+and  Casp3 -/- P815 ZsGreen1  cells were treated with raptinal  for 1 h  to evaluate susceptibility to 732 
+
+apoptosis and  pyroptosis.  Green and orange arrows indicate apoptotic and pyroptotic cells, 733 
+
+respectively.  E)  Complete knockout (KO) of  Casp3  in P815 cells was validated by Western blot 734 
+
+analysis.  F)  WT and  Casp3 -/- P815 ZsGreen1  cells were co -cultured with activated primary human 735 
+
+CD8⁺ CTLs  (in the presence of  anti -CD3 ) at an effector -to -target ratio of 1:1. Target cell death 736 
+
+was quantified by loss of ZsGreen 1 fluorescence and reported as the percentage of green area, 737 
+
+normalized to the 0 h time point.  *P < 0.05, two -tailed unpaired  t-test.  Data are presented as 738 
+
+mean ± SD of three technical replicates and are representative of at least two independent 739 
+
+experiments (F). 740 
+
+Figure 2. Identification and validation of candidate mediators of Caspase -3 (CASP3) –741 
+
+independent cell death  induced by cytotoxic T lymphocytes (CTLs) . A)  Ranked list of top 742 
+
+candidate genes identified from the  genome -wide  CRISPR –Cas9 screen as putative mediators 743 
+
+of  CASP3 –independent cell death.  Positive control genes associated with Fc γ receptor (Fc γR) 744 
+
+expression are highlighted in green.  B)  Complete knockout  (KO)  of  Sec62 , Fas , and  Fadd  in 745 
+
+P815  Casp3 -/- cells was confirmed by Western blot analysis.  The arrow indicates the Fas -746 
+
+specific band, and the asterisks indicate two faint non -specific bands.  C)  Surface expression of 747 
+
+> .CC-BY-NC 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 15, 2026. ;https://doi.org/10.64898/2026.06.14.732110 doi: bioRxiv preprint
+
+32 
+
+Fas was assessed by flow cytometry in  Casp3 -/-, Casp3 -/-Sec62 -/- and  Casp3 -/-Fas -/- P815 cells. 748 
+
+The percentage of Fas -positive cells is shown in the left panel, with flow cytometry plots shown 749 
+
+in the right panel.  D)  Casp3 -/-, Casp3 -/-Fas -/-, or  Casp3 -/-Fadd -/- P815 ZsGreen1  cells were co -750 
+
+cultured with activated primary human CTLs  (in the presence of  anti -CD3 ) at an effector -to -751 
+
+target ratio of 1:1. Target cell death was quantified by loss of ZsGreen 1 fluorescence and 752 
+
+reported as the percentage of green area, normalized to the 0 h time point.  E)  CTL –mediated 753 
+
+killing of  Casp3 -/- or  Casp3 -/-Sec62 -/- P815 ZsGreen1  cells  was assessed as in  (D).  *P < 0.05,  **P < 754 
+
+0.0 1, *** P < 0.0 01,  one -way ANOVA (D) and  two -tailed unpaired  t-test  (E) . Data are presented 755 
+
+as mean ± SD of  three technical replicates and are representative of  at least  two independent 756 
+
+experiments  (D and E ).757 
+
+Figure 3. Genetic and pharmacological dissection of Caspase -3 (CASP3) –independent 758 
+
+cytotoxic T lymphocyte (CTL) –mediated killing pathways.  A)  Western blot analysis 759 
+
+confirming complete knockout (KO) of  Casp3  and  Mlkl  (left panel), and of  Casp3 , Mlkl , and 760 
+
+Bid  (right panel ) in P815 cells.  B)  Casp3 -/-, Casp3 -/-Mlkl -/-, or  Casp3 -/-Mlkl -/-Bid -/- P815 ZsGreen1 
+
+761 
+
+cells were co -cultured with activated primary human CD8⁺ CTLs  (in the presence of  anti -CD3 )762 
+
+at an effector -to -target ratio of 1:1.  Target cell death was quantified by loss of ZsGreen 1763 
+
+fluorescence and reported as the percentage of green area, normalized to the 0 h time point.  C) 764 
+
+Western blot analysis confirming complete KO of  Casp3 , Mlkl , and  Gsdme  in P815 cells.  D) 765 
+
+CTL –mediated killing was assessed as described in (B) using  Casp3 -/-Mlkl -/- and  Casp3 -/-Mlk l-
+
+766 
+
+> /-
+
+Gsdme -/- P815 cells to evaluate the contribution of GSDME to  target cell death . E)  CTL –767 
+
+mediated killing was assessed as described in (B) using  Casp3 -/-Mlkl -/- P815 cells in the 768 
+
+presence  or absence  of the ferroptosis inhibitor ferrostatin -1 (Fer -1) to assess the potential 769 
+
+contribution of ferroptosis to target cell death.  n.s., not significant, ** P < 0.0 1, **** P < 0.0 001, 770 
+
+one -way ANOVA (B) and  two -tailed unpaired  t-test  (D and E) . Data are presented as mean ± 771 
+
+> .CC-BY-NC 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 15, 2026. ;https://doi.org/10.64898/2026.06.14.732110 doi: bioRxiv preprint
+
+33 
+
+SD of  three technical replicates and are representative of  at least  two independent experiments 772 
+
+(B, D, and E). 773 
+
+Figure 4. Identification of Fas –FADD –caspase -8 (CASP8)  axis as a mediator of residual 774 
+
+cytotoxic T lymphocyte (CTL) –induced killing in a CASP3/MLKL/BID –deficient 775 
+
+background.  A)  Ranked list of top candidate genes identified from the  genome -wide  CRISPR –776 
+
+Cas9  screen performed in the  Casp3 -/-Mlkl -/-Bid -/- background, representing putative mediators 777 
+
+of residual CTL -mediated killing.  Positive control genes associated with Fc γ receptor (Fc γR) 778 
+
+expression are highlighted in green.  B)  Western blot analysis confirming complete knockout 779 
+
+(KO) of  Fas , Fadd , and  Casp8  in the  Casp3 -/-Mlkl -/-Bid -/- background.  The arrow indicates the 780 
+
+Fas -specific band, and the asterisks indicate two faint non -specific bands.  C)  Casp3 -/-Mlkl -/-Bid -
+
+781 
+
+> /-
+
+, Casp3 -/-Mlkl -/-Bid -/-Fas -/-, Casp3 -/-Mlkl -/-Bid -/-Fadd -/-, or  Casp3 -/-Mlkl -/-Bid -/-Casp8 -/-
+
+782 
+
+P815 ZsGreen1  cells were co -cultured with activated primary human CD8⁺ CTLs  (in the presence 783 
+
+of  anti -CD3 ) at an effector -to -target ratio of 1:1.  Target cell death was quantified by loss of 784 
+
+ZsGreen 1 fluorescence and reported as the percentage of green area, normalized to the 0 h time 785 
+
+point.  D)  Representative  Incucyte ® images showing the death or proliferation of the indicated 786 
+
+P81 5ZsGreen1  cell strains (green) at the indicated time points following CTL -mediated killing 787 
+
+(effector -to -target ratio, 1:1).  *** P < 0.0 01,  one -way ANOVA.  Data are presented as mean ± 788 
+
+SD of  three technical replicates and are representative of  at least  two independent experiments 789 
+
+(C).790 
+
+Figure 5.  The Fas –FADD –caspase -8 (CASP8)  axis governs cytotoxic lymphocyte –791 
+
+mediated killing in human cancer . A)  Western blot analysis confirming  complete  knockout 792 
+
+(KO) of  CASP3  and  CASP7  in HeLa EGFP  cells.  B)  Wild -type (WT) or  CASP3 -/-CASP7 -/-
+
+793 
+
+HeLa EGFP  cells were treated with the caspase activator raptinal  for 6 h  to assess their capacity 794 
+
+to undergo apoptosis and pyroptosis. Resistance to caspase -dependent  apoptosis  and pyroptosis 795 
+
+in  CASP3 -/-CASP7 -/- cells was confirmed by the absence of  apoptotic bodies or  ballooning 796 
+
+> .CC-BY-NC 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 15, 2026. ;https://doi.org/10.64898/2026.06.14.732110 doi: bioRxiv preprint
+
+34 
+
+morphology.  C)  WT or  CASP3 -/-CASP7 -/- HeLa EGFP  cells were co -cultured with NK -92 cells, 797 
+
+and cytotoxic killing assays were performed at  the indicated  effector -to -target ratio. Target cell 798 
+
+death was quantified by loss of EGFP fluorescence and  reported as the percentage of green area, 799 
+
+normalized to the 0 h time point.  D)  Western blot analysis confirming complete knockout (KO) 800 
+
+of  BID  in the  CASP3 -/-CASP7 -/- background  and of  FAS  and  caspase -8 ( CASP8 ) in the  CASP3 -
+
+801 
+
+> /-
+
+CASP7 -/-BID -/- background . The arrow indicates the Fas -specific band, and the asterisk 802 
+
+indicate s a faint non -specific band.  E) Cytotoxic killing assays were performed as described in 803 
+
+(C) using  CASP3 -/-CASP7 -/-, CASP3 -/-CASP7 -/-BID -/-, CASP3 -/-CASP7 -/-BID -/-FAS ⁻/⁻, or  CASP3 -
+
+804 
+
+> /-
+
+CASP7 -/-BID -/-CASP 8-/- HeLa EGFP  cells . F) Representative  Incucyte ® images showing the 805 
+
+death or proliferation of the indicated  HeLa EGFP  cell strains (green) at the indicated time points 806 
+
+following  NK -92 -mediated killing (effector -to -target ratio,  3:1).  n.s., not significant, * P < 0.0 5,807 
+
+two -tailed unpaired  t-test  (C) and one -way ANOVA (E) . Data are presented as mean ± SD of 808 
+
+three technical replicates and are representative of  at least  two independent experiments  (C and 809 
+
+E). 810 
+
+Figure 6. CASP8 is preferentially mutated in human cancers.  A–B)  The number of cancer 811 
+
+cases across all cancer types (pan -cancer; total n = 18,289)  harboring  simple somatic mutations 812 
+
+(SSMs) in selected cell death regulators (A), and the total number of distinct SSMs identified 813 
+
+per gene (B), were retrieved from The Cancer Genome Atlas (TCGA).  C–D)  Distinct  SSMs for 814 
+
+each gene were categorized according to predicted functional impact based on Ensembl Variant 815 
+
+Effect Predictor (VEP) annotations (HI, high impact; MO, moderate impact; LO, low impact; 816 
+
+MR, modifier).  Definitions of impact categories are provided in the Materials and Methods.  E) 817 
+
+Most frequent SSMs in  CASP8 , defined as variants detected in ≥5 of the 18,289 cases. 818 
+
+819 
+
+> .CC-BY-NC 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 15, 2026. ;https://doi.org/10.64898/2026.06.14.732110 doi: bioRxiv preprint Raptinal
+
+GSDME (full length) 
+
+N-GSDME 
+
+> DMSO
+
+A B
+
+C
+
+E F
+
+Figure 1 Casp3 Casp7 
+
+> 0.000 0.005 0.010 0.015 0.020
+> Casp/Gapdh
+
+CASP3 
+
+β-actin 
+
+> WT
+> Casp3 -/-
+
+20μm 
+
+> Raptinal (+)
+
+WT  Casp3 -/-
+
+D
+
+β-actin 0 20 40 60 050 100 150 
+
+CTL:P815 ZsGreen1 = 1:1 hours Green Area (%) WT 
+
+Casp3 -/-
+
+*Figure 2 
+
+A B
+
+C Casp3 -/- Casp3 -/-Sec62 -/-
+
+> SSC -A
+
+Fas 0 20 40 60 80 050 100 150 
+
+CTL:P815 ZsGreen1 = 1:1 Hours Green Area (%) 
+
+Casp3 -/-
+
+Casp3 -/-Sec62 -/-   
+
+> *020 40 60 050 100 150 200 250
+
+CTL:P815 ZsGreen1 = 1:1 Hours Green Area (%)  Casp3 -/-
+
+Casp3 -/-Fas -/-
+
+Casp3 -/-Fadd -/-
+
+> ** ***
+
+D E
+
+Target 
+
+Gene 
+
+Ranking of 
+
+Enrichment 
+
+(Out  of  19674 genes) 
+
+No. of Enriched 
+
+gRNAs 
+
+(Out of 4 gRNAs) 
+
+Spi1  1 4
+
+Fcer1g  2 4
+
+Bap1  3 4
+
+Fcgr1  4 4
+
+Sec62  5 4
+
+Kmt2c  6 4
+
+Fcgr3  7 4
+
+Rybp  8 4
+
+Taf4a  9 4
+
+Rara  10  4
+
+Fas  15  4
+
+Fadd  41  4
+
+Fas 
+
+> WT
+> Casp3 -/-Fas -/-
+
+CASP3 
+
+β-actin 
+
+FADD 
+
+CASP3 
+
+β-actin 
+
+> WT
+> Casp3 -/-Fadd -/-
+> WT
+> Casp3 -/-Sec62 -/-
+
+SEC62 
+
+CASP3 
+
+β-actin 
+
+*
+
+*Casp3 -/-
+
+> Casp3 -/-Sec62 -/-
+> Casp3 -/-Fas -/-
+
+0510 15 
+
+> Fas (%)
+
+Casp3 -/-Fas -/-
+
+13,2 %  0,22 %  0,02 % Figure 3 
+
+B0 20 40 60 020 40 60 80 100 120 
+
+CTL:P815 ZsGreen1 = 1:1 hours Green Area (%) 
+
+Casp3 -/-Mlkl -/-
+
+Casp3 -/-Mlkl -/-Gsdme -/-
+
+n.s.  D
+
+E0 20 40 60 0100 200 300 
+
+CTL:P815 ZsGreen1 = 1:1 hours Green Area (%) 
+
+Casp3 -/-
+
+Casp3 -/-Mlkl -/-
+
+Casp3 -/-Mlkl -/-Bid -/-
+
+> ** ****
+
+0 20 40 60 020 40 60 80 100 120 
+
+CTL:P815 ZsGreen1 = 1:1 hours Green Area (%) 
+
+Casp3 -/-Mlkl -/- Fer1 (-) 
+
+Casp3 -/-Mlkl -/- Fer1 (+) 
+
+n.s. 
+
+MLKL 
+
+CASP3 
+
+β-actin 
+
+> WT
+> Casp3 -/-Mlkl -/-
+> WT
+> Casp3 -/-Mlkl -/-Bid -/-
+
+MLKL 
+
+CASP3 
+
+β-actin 
+
+BID 
+
+A C
+
+MLKL 
+
+CASP3 
+
+β-actin 
+
+GSDME 
+
+> WT
+> Casp3 -/-Mlkl -/-Gsdme -/-
+
+Figure 4 
+
+A B0 20 40 60 80 100 0200 400 600 800 
+
+CTL:P815 ZsGreen1 = 1:1 hours Green Area (%) 
+
+Casp3 -/-Mlkl -/-Bid -/-
+
+Casp3 -/-Mlkl -/-Bid -/-Fas -/-
+
+Casp3 -/-Mlkl -/-Bid -/-Fadd -/-
+
+Casp3 -/-Mlkl -/-Bid -/-Casp8 -/-
+
+> *** *** ***
+
+Target 
+
+Gene 
+
+Ranking of 
+
+Enrichment 
+
+(Out  of  19674 genes) 
+
+No. of Enriched 
+
+gRNAs 
+
+(Out of 4 gRNAs) 
+
+Spi1  1 4
+
+Fcer1g  2 4
+
+Brd2  3 4
+
+Kmt2c  4 4
+
+Fcgr1  5 4
+
+Atp2b1  6 4
+
+Bap1  7 4
+
+Taf4a  8 4
+
+Tm9sf2  9 4
+
+Fas  10  4
+
+Casp8  11  4
+
+Sec62  14  4
+
+Fcgr3  15  4
+
+Fadd  23  4
+
+C
+
+Fas 
+
+*
+
+*
+
+> Casp3 -/-Mlkl -/-Bid -/-Fas -/-
+> Casp3 -/-Mlkl -/-Bid -/-Fadd -/-
+> Casp3 -/-Mlkl -/-Bid -/-Casp8 -/-
+> WT
+> WT
+> WT
+
+FADD  CASP8 
+
+CASP3 
+
+MLKL 
+
+BID 
+
+β-actin 
+
+CASP3 
+
+MLKL 
+
+BID 
+
+β-actin 
+
+CASP3 
+
+MLKL 
+
+BID 
+
+β-actin 
+
+0h  24h  72h 
+
+> Casp3 -/-Mlkl -/-Bid -/-Casp3 -/-Mlkl -/-Bid -/-
+> Fas -/-
+> Casp3 -/-Mlkl -/-Bid -/-
+> Fadd -/-
+> Casp3 -/-Mlkl -/-Bid -/-
+> Casp8 -/-
+
+D
+
+100μm Figure 5 
+
+B
+
+WT  CASP3 -/-CASP7 -/-
+
+> Raptinal (+)
+
+C
+
+F0 10 20 30 40 050 100 150 200 
+
+NK-92:HeLa EGFP = 3:1 hours Green Area (%) 
+
+CASP3 -/-CASP7 -/-
+
+CASP3 -/-CASP7 -/-BID -/-
+
+CASP3 -/-CASP7 -/-BID -/-FAS -/-
+
+CASP3 -/-CASP7 -/-BID -/-CASP8 -/-
+
+> **
+
+E
+
+100μm 
+
+A
+
+hFas  hCASP8 
+
+> CASP3 -/-CASP7 -/-BID -/-FAS -/-
+> WT
+> CASP3 -/-CASP7 -/-BID -/-CASP8 -/-
+> WT
+
+*
+
+> CASP3 -/-CASP7 -/-
+> WT
+> CASP3 -/-CASP7 -/-BID -/-
+> WT
+
+D
+
+hCASP7 
+
+hCASP7 
+
+hBID 
+
+hCASP3 
+
+hCASP3 
+
+β-actin 
+
+β-actin 
+
+hCASP7 
+
+hBID 
+
+hCASP3 
+
+β-actin 
+
+hCASP7 
+
+hBID 
+
+hCASP3 
+
+β-actin 0 10 20 30 40 50 050 100 150 
+
+NK-92:HeLa EGFP = 1:1 
+
+hours Green Area (%) WT CASP3 -/-CASP7 -/-
+
+n.s. 0 10 20 30 40 50 020 40 60 80 100 
+
+NK-92:HeLa EGFP = 3:1 
+
+hours Green Area (%) WT 
+
+CASP3 -/-CASP7 -/-
+
+n.s. 
+
+> WT
+> CASP3 -/-
+> CASP7 -/-
+> CASP3 -/-
+> CASP7 -/-
+> BID -/-
+> CASP3 -/-
+> CASP7 -/-
+> BID -/-
+> FAS -/-
+> CASP3 -/-
+> CASP7 -/-
+> BID -/-
+> CASP8 -/-
+
+0h  18h  46h 
+
+100μm CASP8 FAS FADD CASP3 CASP7 BID MLKL 
+
+0.0 0.5 1.0 1.5 2.0 
+
+> % Cases affected by SSMs CASP8 FAS FADD CASP3 CASP7 BID MLKL
+
+0100 200 300 
+
+> No. of SSMs identified
+
+Figure  6
+
+HI  MO  LO  MR 
+
+CASP8  74 (26%)  172 (60%)  25 (9%)  15 (5%) 
+
+FAS  23 (15%)  70 (46%)  28 (19%)  30 (20%) 
+
+FADD  7 (10%)  38 (54%)  19 (27%)  6 (9%) 
+
+BID  8 (11%)  38 (51%)  15 (20%)  13 (18%) 
+
+CASP3  8 (12%)  38 (58%)  16 (24%)  4 (6%) 
+
+CASP7  7 (9%)  48 (60%)  19 (24%)  6 (7%) 
+
+MLKL  11 (9%)  77 (66%)  27 (23%)  2 (2%) Casp8 
+
+Total=286 HI MO LO MR CASP8 CASP7 BID MLKL FAS FADD C A S P 3 
+
+B
+
+A C
+
+D
+
+DNA Change  Protein Change  Type  Consequences  Affected Cases  Impact 
+
+chr2:g.201286567delA  CASP8K532Nfs*73  Deletion  Frameshift  14/18,289(0.08%)  HI 
+
+chr2:g.201285307C>T  CASP8R491*  Substitution  Stop Gained  12/18,289(0.07%)  HI 
+
+chr2:g.201266689G>A  CASP8R127Q  Substitution  Missense  12/18,289(0.07%)  MO 
+
+chr2:g.201285316C>T  CASP8R494*  Substitution  Stop Gained  9/18,289(0.05%)  HI 
+
+chr2:g.201276864G>A  CASP8R292Q  Substitution  Missense  8/18,289(0.04%)  MO 
+
+chr2:g.201276863C>T  CASP8R292W  Substitution  Missense  7/18,289(0.04%)  MO 
+
+chr2:g.201285028C>T  CASP8Q398*  Substitution  Stop Gained  5/18,289(0.03%)  HI 
+
+chr2:g.201272764G>T  CASP8E239*  Substitution  Stop Gained  5/18,289(0.03%)  HI 
+
+chr2:g.201286547C>T  CASP8Q524*  Substitution  Stop Gained  5/18,289(0.03%)  HI 
+
+E

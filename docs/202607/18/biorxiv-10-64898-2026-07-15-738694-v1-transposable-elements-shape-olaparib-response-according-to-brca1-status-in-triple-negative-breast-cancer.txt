@@ -1,0 +1,1114 @@
+Title: Transposable elements shape olaparib response according to BRCA1 status in triple-negative breast cancer
+
+URL Source: https://www.biorxiv.org/content/10.64898/2026.07.15.738694v1.full.pdf
+
+Number of Pages: 31
+
+Markdown Content:
+Transposable elements shape olaparib response according to BRCA1 status in triple-negative breast cancer 
+
+Daniela Moreira Mombach 1,2 , Carlos Mendez-Dorantes 3,4,5 , Rafael L. V. Mercuri 2, Phillip Schofield 3,Suelen Cristina Soares Baal 6, Maria Augusta Poersch 6, Kathleen H. Burns 3,4,5 , Jaqueline Carvalho de Oliveira 6, Elgion Lucio Silva Loreto 7, and Pedro A. F. Galante 2,* 
+
+> 1
+
+Programa de Pós-Graduação em Genética e Biologia Molecular, Universidade Federal do Rio Grande do Sul, Porto Alegre, Rio Grande do Sul, Brazil 
+
+> 2
+
+Hospital Sírio-Libanês, São Paulo, São Paulo, Brazil 
+
+> 3
+
+Department of Pathology, Dana-Farber Cancer Institute, Boston, Massachusetts 02115, USA 
+
+> 4
+
+Department of Pathology, Harvard Medical School, Boston, Massachusetts 02115, USA 
+
+> 5
+
+Broad Institute of Massachusetts Institute of Technology and Harvard, Cambridge, Massachusetts 02142, USA 
+
+> 6
+
+Departamento de Genética, Universidade Federal do Paraná, Curitiba, Paraná, Brazil 
+
+> 7
+
+Departamento de Bioquímica e Biologia Molecular, Universidade Federal de Santa Maria, Santa Maria, Rio Grande do Sul, Brazil 
+
+*Corresponding author email:  pgalante@mochsl.org.br 
+
+Graphical Abstract (1st proposal) 
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 16, 2026. ;https://doi.org/10.64898/2026.07.15.738694 doi: bioRxiv preprint
+
+ABSTRACT 
+
+Background: Triple-negative breast cancer (TNBC) is an aggressive subtype with limited therapeutic options. While PARP inhibitors, such as olaparib, show promise in BRCA1-deficient TNBC through synthetic lethality, up to 50% of patients fail to respond, highlighting the need to understand the molecular mechanisms underlying PARP inhibitors efficacy. Transposable elements (TEs), particularly LINE-1 elements, are increasingly recognized as modulators of genomic instability associated with DNA repair processes and potential key players in synthetic lethality. Here, we investigate the functional relationship between TE activity and olaparib treatment in TNBC with distinct BRCA1 functional status. Methods: We performed comprehensive multi-OMICs analysis of four TNBC cell lines (two BRCA1-deficient: SUM1315 and MDA-MB-436; two BRCA1-proficient: MDA-MB-468 and BT549) treated with olaparib. We analyzed expression and differential expression of protein-coding genes, TEs, and gene-TE chimeric transcripts. Long-read whole-genome sequencing was employed to detect de novo TE insertions, complemented by a functional assay to quantify LINE-1 retrotransposition activity in olaparib-treated cells. Results: Olaparib treatment induces extensive transcriptomic and genomic disorganization mediated by TEs, especially LINE-1, exclusively in BRCA1-deficient cells. We observed aberrant overexpression of both genes and TEs, including gene–TE chimeric transcripts harboring poison exons within tumorigenic genes and multi-exonic TE–TE chimeras capable of forming immunostimulatory double-stranded RNA (dsRNA) structures. Functional enrichment analyses revealed activation of antiviral immune pathways linked to LINE-1 activity. Consistently, orthogonal assays confirmed LINE-1 retrotransposition in BRCA1-deficient cells following olaparib exposure. Conclusions: Our findings demonstrate that olaparib treatment induces TE activation especially in BRCA1-deficient cells, a novel mechanism that may underlie synthetic lethality in TNBC. This TE activation triggers immune responses and genomic instability, providing new therapeutic opportunities through immunotherapy combinations and suggesting that TE activity may serve as a potential biomarker for treatment stratification of TNBC. 
+
+Keywords: triple-negative breast cancer; LINE-1, transposable element; parp inhibitor; BRCA1, olaparib 
+
+2
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 16, 2026. ;https://doi.org/10.64898/2026.07.15.738694 doi: bioRxiv preprint
+
+INTRODUCTION 
+
+Breast cancer (BC) remains the most prevalent and the leading cause of cancer-related deaths among 
+
+women globally, with early-stage, non-metastatic cases often treatable  [1] . However, Triple-Negative Breast 
+
+Cancer (TNBC), an aggressive BC subtype characterized by the absence of estrogen receptor, progesterone receptor, and HER2 expression, presents significant therapeutic challenges due to its high 
+
+metastatic potential, frequent relapse, and poor prognosis  [2,3] . TNBC is frequently associated with TP53 
+
+mutations  [3]  and up to 20% of patients carry BRCA1 or BRCA2 (BRCA1/2 ) mutations  [4] , with higher 
+
+prevalence in Black and Hispanic populations  [5] . Recent advances include PARP inhibition therapy, 
+
+particularly for BRCA1/2-deficient TNBC, and have shown promise in improving progression-free survival, with drugs like olaparib leveraging synthetic lethality to induce cell death by accumulating irreparable DNA 
+
+damage in cells with compromised homologous recombination (HR) repair  [6] . Despite these therapeutic 
+
+advances, resistance mechanisms to olaparib treatment lead to disease relapse. Accordingly, the 
+
+heterogeneous response to PARP inhibitors and tumor recurrences  [7–9]  highlight the need to identify 
+
+additional molecular players that may guide this therapeutic strategy. 
+
+Transposable elements (TEs) are repetitive DNA sequences with significant regulatory and 
+
+mutagenic potential  [10–12] . In the human genome, Long Interspersed Element-1 human-specific (L1Hs), 
+
+the only currently active protein-coding element  [13] , encodes proteins ORF1p  [14,15]  and ORF2p  [16,17] ,
+
+which facilitate their (and other RNAs in trans ) retrotransposition via target-primed reverse transcription 
+
+[18] , typically resulting in de novo insertions flanked by target site duplications  [18,19] . In cancer cells, 
+
+particularly TNBC, epigenetic mechanisms that suppress TE activity, such as L1Hs promoter methylation 
+
+[20] , become disrupted, leading to aberrant TE activation  [20] . Somatically acquired LINE-1 insertions are 
+
+particularly prevalent in tumors with high chromosomal instability, where L1Hs retrotransposition may drive 
+
+DNA damage  [11] , genomic deletions  [10] , and chromosomal rearrangements  [12] , a process that may be 
+
+further exacerbated by defective DNA repair due to mutations in genes such as BRCA1  [21] . Moreover, the 
+
+frequent co-occurrence of TP53 mutations in TNBC cells creates a permissive environment for sustained 
+
+L1Hs expression  [22]  and genomic instability. 
+
+The intricate relationship between DNA repair deficiencies and TE activity becomes especially relevant in TNBC, where BRCA1 mutations and PARP inhibitor (PARPi) therapy intersect. When functional BRCA1 or BRCA2 (BRCA1/2) is absent, HR-mediated repair of double-strand DNA breaks (DSBs) is 
+
+3
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 16, 2026. ;https://doi.org/10.64898/2026.07.15.738694 doi: bioRxiv preprint
+
+compromised and PARPi therapies can cause complex DNA lesions, forcing reliance on other DNA repair 
+
+pathways, including PARP proteins (PARP1/2) for DNA repair via base-excision repair pathways  [23] . While 
+
+PARPis exploit this vulnerability through synthetic lethality, the substantial treatment failure rate (up to 50% 
+
+of germline BRCA1/2-deficient patients not responding  [7–9] ) suggests additional complexity, which may be 
+
+associated with the genomic instability and abnormal transcriptional profiles. 
+
+In this study, we investigate, in TNBC with distinct BRCA1 mutational status, the functional relationship between the TE activity, BRCA1-deficiency, and olaparib treatment. Through comprehensive transcriptome profiling and long-read whole-genome sequencing (WGS), we systematically analyzed TE activity, expression, and functional consequence in olaparib treatment versus controls cells in both BRCA1-deficient and proficient backgrounds. Our results reveal how the TE activities associated with BRCA1 status fundamentally shape genomic and transcriptomic changes in response to PARP inhibition. Additionally, we provide novel mechanistic insights, based on the TE activities, for the synthetic lethal interaction between BRCA1 deficiency and PARPi treatment in TNBC. 
+
+RESULTS 
+
+Olaparib induces immune activation in BRCA1-deficient TNBC cell lines 
+
+We compared transcriptomic analyses from four different TNBC cell lines treated with olaparib. Two cell lines were BRCA1-deficient (SUM1315 and MDA-MB-436), two were BRCA1-proficient (MDA-MB-468 and BT549), and all cell lines were TP53 -deficient (Fig. 1a ). Overall, BRCA1-deficient cell lines presented and shared more upregulated protein-coding genes than BRCA1-proficient cells upon treatment with olaparib (Fig. 1b , Additional file 1: Fig. S1 and Additional file 2: Table S1 ). The pronounced response of BRCA1-deficient cells compared to proficient cells is consistent with BRCA1 mutation being a predictive biomarker for olaparib therapy. Notably, shared upregulated genes in BRCA1-deficient cell lines, such as CMPK2, IFIT2, IFIT3, have been described as involved in immune response and antiviral defense (Additional file 2: Table S2 ). 
+
+Consistently, Gene Ontology (Biological Process) analysis of differentially upregulated protein-coding genes upon olaparib treatment revealed an enrichment of genes related to “defense response to virus”—a general term that includes the also enriched “response to type I interferon” 
+
+4
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 16, 2026. ;https://doi.org/10.64898/2026.07.15.738694 doi: bioRxiv preprint
+
+process—for both BRCA1-deficient cell lines. This result was specific to the BRCA1-deficient cells and not seen for BRCA1-proficient cells ( Fig. 1c and Additional file 2: Table S3 ). This result led us to evaluate expression changes in the immune system genes implicated in the antiviral response across all cell lines. We observed a considerable difference between treated and control samples as well as between cell lines, which were grouped accordingly ( Fig. 1d ). In both BRCA1-deficient cell lines, samples treated with olaparib showed higher expression of immune activation-related genes, including the cytosolic exonuclease TREX1 
+
+known to degrade cytosolic nucleic acids  [24] .
+
+In addition, we observed a trend toward increased expression of genes within the DNA sensing cGAS-STING pathway (Additional file 1: Fig. S2 ), which can induce a type I interferon response. This trend was noted explicitly in BRCA1-deficient cell lines treated with olaparib, whereas the opposite trend was observed for BRCA1 -proficient cells. Previous studies have demonstrated that PARP inhibition can activate the cGAS-STING pathway, thereby eliciting an immune response that may be essential for therapeutic 
+
+efficacy  [25,26] . Lastly members of the IFIT family, which bind 5'-triphosphate RNA, and the OAS family, 
+
+which respond to double-stranded RNA (dsRNA), are upregulated by olaparib treatment in BRCA1-deficient cell lines ( Fig. 1d ). These results indicate that olaparib treatment induces an innate immune response in BRCA1-deficient cell lines, but not in BRCA1-proficient cells. 
+
+5
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 16, 2026. ;https://doi.org/10.64898/2026.07.15.738694 doi: bioRxiv preprint
+
+Figure 1. Differential analysis of protein-coding genes reveals immune activation in BRCA1-deficient cell lines upon olaparib treatment. a) Overview of the treatment and transcriptome comparison. b) Intersection of upregulated genes between cell lines (cut-off: log 2-fold change ≥ 2 and adjusted p-value < 0.05). c) Biological processes enriched in upregulated protein-coding genes in BRCA1-deficient cell lines and only displayed those with a fold enrichment higher than 6. d) Expression of genes related to immune activation across cell lines (expression values were plotted in log2 (TPM+1)). BRCA1-deficient cell lines are in bold. 
+
+Transposable element upregulation triggers immune response in BRCA1-deficient TNBC cells 
+
+Several studies have linked the activation of TEs as a source of an innate immune response via viral 
+
+mimicry  [27,28] . Mechanistically, these TE-derived RNAs can form double-stranded or repetitive structures 
+
+that resemble viral intermediates and are recognized by cytosolic innate immune sensors, thereby 
+
+potentially triggering an interferon-mediated antiviral response  [29–32] . Accordingly, we sought to address 
+
+whether the activation of transposable elements may be the source of the innate immune response induced by olaparib treatment in BRCA1-deficient cells. For this, we first investigated TE expression changes following olaparib treatment in all cell lines. We used an index built from deep-coverage long-read RNA 
+
+6
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 16, 2026. ;https://doi.org/10.64898/2026.07.15.738694 doi: bioRxiv preprint
+
+sequencing to annotate TE transcripts more accurately, named TEscape  [33] . Since TEscape uses 
+
+full-length transcripts, it provides more precise and complete transcription start and termination sites, as well as transcript structural variants for all genes, including transcribed TEs. TE transcripts were classified into two main categories: TE locus and TE-TE chimera ( Fig. 2a ). TE-TE chimeras were further divided into mono- and multi-exonic types. For differential TE expression analysis, we excluded TE loci within DEGs to avoid any noise of a high expression interference in our results. 
+
+Differential expression analysis of TEs revealed that BRCA1-deficient cell lines (Fig. 2b-c )presented more differentially expressed TEs transcripts, particularly, more upregulated TEs than BRCA1 -proficient cells ( Fig. 2d-e and Additional file 2: Table S4 ). More surprisingly, multi-exonic TE-TE chimeras were especially upregulated in BRCA1-deficient cell lines upon olaparib treatment. The top 20 upregulated TE transcripts showed a considerable difference between treatment and control samples as well as cell lines, which were grouped accordingly (Additional file 1: Fig. S3 ). These results indicate that olaparib treatment is associated with a regulation of TE expression, particularly in BRCA1-deficient cell lines. 
+
+7
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 16, 2026. ;https://doi.org/10.64898/2026.07.15.738694 doi: bioRxiv preprint
+
+Figure 2. Olaparib impacts on transposable elements expression. a) TEscape index transcripts classification: transposable element (TE) loci and TE-TE chimeras. TE-TE chimeras are further divided into mono- and multi-exonic. The figure displays examples of transcripts present in the index. Differentially expressed TE loci and TE-TE chimeras for b) MDA-MB-436 ( BRCA1 -/-)cells, c) SUM1315 ( BRCA1 -/-) cells, d) MDA-MB-468 ( BRCA1 +/+ ) cells, and e) BT549 ( BRCA1 +/+ ) cells (cut-off: log 2-fold change ≥ 2 and adjusted p-value < 0.05). BRCA1 -deficient cell lines are in bold. 
+
+Given that TE-derived RNAs can adopt double-stranded or repetitive structures resembling viral 
+
+intermediates  [29–32] , we first examined the features of the upregulated multi-exonic TE-containing 
+
+transcripts to address if these TE-derived RNAs can form secondary structures that can illicit an interferon 
+
+8
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 16, 2026. ;https://doi.org/10.64898/2026.07.15.738694 doi: bioRxiv preprint
+
+response. In Fig. 3a we first highlighted the top 10 upregulated multi-exonic TE-TE chimera transcripts across all cell lines. Notably, the BRCA1-deficient cell line with olaparib treatment samples displayed a distinct further apart grouping from their corresponding control samples, emphasizing the impact of olaparib specifically on BRCA1-deficient cells. In both BRCA1-deficient cell lines, we observed upregulation of TE-TE chimera transcripts containing elements from the same TE subfamily, implicating the potential for 
+
+the generation of intramolecular dsRNA from self-fold RNA  [29–32] . Namely, distinct TE-TE chimera 
+
+transcripts featuring repeats from the same subfamily—expressed in sense and antisense—point to the 
+
+formation of intermolecular dsRNA from RNA duplexes  [29] . These findings, coupled with the observation 
+
+that olaparib treatment induced an immune response, prompted us to investigate whether the upregulated TE-TE chimera transcripts can form secondary dsRNA structures via intra- and intermolecular interactions. For this analysis, we considered mono- and multi-exonic transcripts of 200-2000 nt, as this size range 
+
+aligns with the usual sizes of immunostimulatory dsRNA and TE transcripts  [34] . Additional RNA folding 
+
+support and cut-offs (described in the Methods section) were employed to confirm biological relevance and RNA stability. 
+
+We found that both BRCA1-deficient cell lines presented TE-TE chimeras capable of forming stable intra- and intermolecular dsRNA, whereas proficient cells did not (Additional file 2: Table S5 ). Both mono-and multi-exonic TE-TE chimera transcripts were candidates of self-fold RNA, such as AluSx|AluSc8|AluSx1|7SLRNA and AluSz6|MLT1A|MER3|AluY (Additional file 1: Fig. S4 ). Mono-exonic transcripts were also capable of forming stable RNA duplexes, such as AluSx1|MER51B|AluSx3::L2c|AluSz|L2c|AluSx1 and L1M5|AluSx::L1M5|AluSx1. Consistent with previous 
+
+studies  [30–32] , most self-folding RNA transcripts contained Alu repeats from the SINE subfamily ( Fig. 3b ). 
+
+However, we also identified transcripts featuring repeats from other TE families, such as L1, that have not been previously reported in this context. Altogether, these findings suggest that BRCA1-deficient cell lines' immune response to olaparib treatment might be, in part, a consequence of mono- and multi-exonic TE-TE transcripts formation of intra- and intermolecular dsRNA, in addition to other TE-derived RNA accumulating in these cells cytoplasm ( Fig. 3c ). 
+
+9
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 16, 2026. ;https://doi.org/10.64898/2026.07.15.738694 doi: bioRxiv preprint
+
+Figure 3. Transposable elements upregulation triggers immune response in BRCA1-deficient cells. a) Top 10 upregulated multi-exonic TE-TE chimera transcripts (expression values are in log2 (TPM+1)). BRCA1-deficient cell lines are in bold. b) 
+
+Classification of TE-TE chimeras participating in intra- and intermolecular dsRNA formation. c) TE-TE chimeras intra- and intermolecular dsRNA formation and TE-derived RNA transcripts. 
+
+Olaparib reveals transposable-element poison exons in tumorigenesis-related genes 
+
+Another known mechanism by which activation of TEs alters gene expression in various malignancies, 
+
+including BC  [35] , is the exposure of cryptic regulatory sequences  [36] . Among these newly uncovered 
+
+sequences are alternative RNA splicing sites, which may generate non-coding exons. When incorporated into the mature mRNA, these exons can trigger nonsense-mediated mRNA decay; therefore, named poison 
+
+exons  [37] . Using the TEscape  [33]  index, we identified gene-TE chimeric transcripts that could represent 
+
+either novel isoforms or previously annotated transcripts in Gencode  [38] .
+
+Differential expression analysis of gene-TE chimeras following olaparib treatment revealed that BRCA1-deficient cell lines showed upregulation of chimeras associated with tumorigenesis. In contrast, 
+
+BRCA1 -proficient cells exhibited minimal upregulation of chimeras and lacked such function (Additional file 2: Table S6 ). The BRCA1-deficient SUM1315 cell line presented three upregulated gene-TE chimeras: 
+
+10 
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 16, 2026. ;https://doi.org/10.64898/2026.07.15.738694 doi: bioRxiv preprint
+
+GINS1 , GLMP , and ZNF169 . GINS1 (or PSF1 ), a component of the GINS complex, is critical for DNA replication initiation and progression, playing a key role in cell cycle regulation and serving as a potential 
+
+biomarker in certain cancers  [39,40] . Whilst the BRCA1-deficient MDA-MB-436 cell line presented two 
+
+upregulated chimeras: BRCC3 and ZNF10 . BRCC3 , part of the BRCA1-A complex, is essential for the DNA 
+
+damage response, particularly in the repair of DSBs  [41] . For both GINS1 and BRCC3 , the TE segment 
+
+involved in the chimeric isoforms is located in the 3’-UTR, consistent with prior isoform reports. While chimerization does not alter the protein sequence, it may introduce novel sequences that can affect gene 
+
+regulation, such as microRNA binding sites  [42] .
+
+Nonetheless, olaparib induced novel upregulated chimeric transcripts among Krüppel-associated box zinc finger protein (KRAB-ZNF) family members in BRCA1-deficient cells; these genes play a critical 
+
+role in regulating gene expression  [43] . The gene-TE chimeric transcripts arose from the exonization of 
+
+poison TE exons, leading to premature termination sites ( Fig. 4a-b ). Specifically, chimerization in ZNF169 
+
+can result in a truncated protein ( Fig. 4a ), whereas ZNF10 chimerization cannot be translated to a protein 
+
+(Fig. 4b ). Consistently, ZNF10 is implicated in breast invasive ductal carcinoma progression  [44]  and 
+
+ZNF169 promotes colorectal  [45]  and hepatocellular carcinoma growth  [46] . Since the source genes of 
+
+these gene-TE chimeras showed no differential expression in our prior analyses, we further investigated their percentage isoform composition. Chimeric isoforms of gene-TE chimeras contributed substantially to the genes’ expression in treatment samples compared to controls. While the median in control samples, the 
+
+ZNF169 and ZNF10 chimeras accounted for 13 and 11% of isoforms, in treatment, they accounted for over 62% and 32%, respectively. Given the role of these genes in tumorigenesis, the presence of non-functional chimeric isoforms may modulate the response of BRCA1-deficient cells to olaparib therapy. 
+
+11 
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 16, 2026. ;https://doi.org/10.64898/2026.07.15.738694 doi: bioRxiv preprint
+
+Figure 4. Novel gene isoforms induced by olaparib treatment uncover transposable elements’ poison exons in 
+
+BRCA1 -deficient cells. a) ZNF169::AluSz6|L1ME1 novel upregulated chimeric transcript in SUM1315 (BRCA1 -/-) cells. Transposable element exonization results in a truncated protein. b) 
+
+ZNF10::L2c|AluJr4|AluJb|MIR|L1MEc|L1MB4|AluSx3|L1MEc|MLT1E2 novel upregulated chimeric transcript in MDA-MB-436 (BRCA1 -/-) cells. Transposable element exonization results in no protein. Both transcripts were compared to their respective 
+
+reference (REF) transcript of Matched Annotation from NCBI and EMBL-EBI (MANE)  [47] .
+
+BRCA1-deficiency facilitates L1Hs activity upon olaparib treatment 
+
+Given that olaparib treatment is associated with inducing of TE expression in BRCA1-deficient cells, we hypothesized that this vulnerable genomic environment may also enable the retrotransposition of currently active mobile elements. Therefore, we performed bulk Nanopore long-read WGS in BRCA1-deficient MDA-MB-436 cells and compared control and treatment (24 h olaparib) samples. To investigate de novo TE insertions, we used a tool that identifies inserted segments that failed to align to the reference hg38. Since TE can also be polymorphic — common in some populations but not in others and/or absent in the 
+
+reference hg38 — we used variant calls for mobile element insertions from the dbVAR database  [48]  to filter 
+
+them out. To determine if unaligned segments indeed represented TE sequences, we performed a search 
+
+against the Dfam TE sequence database  [49] . We also confirmed that candidate events were absent in the 
+
+control sample long-read from the same region. 
+
+12 
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 16, 2026. ;https://doi.org/10.64898/2026.07.15.738694 doi: bioRxiv preprint
+
+We identified a 286 bp 5’-truncated L1Hs insertion at chr9 q21.11 in the olaparib-treated sample of BRCA1-deficient MDA-MB-436 cells ( Fig. 5a ). This de novo insertion occurred on the reverse strand, featuring hallmark characteristics of TPRT, including a poly-T tail and 5 bp target site duplications 
+
+(5′-TTCTT-3′)  [49] . The downstream flanking region harbored a canonical L1Hs endonuclease (EN) cutting 
+
+motif on the reverse strand (5′-TTTTTA-3′)  [16,50] . This insertion disrupted the intron of a novel non-coding 
+
+RNA gene (ENSG00000294531) and was located just 18 bp upstream of the 3′-UTR of a long non-coding RNA (ENSG00000294571). Notably, even 5′-truncated de novo insertions — a common feature of de novo 
+
+L1Hs events — can exert diverse functional consequences. These include transcript truncation  [51] , as 
+
+observed here  [52] , or even the initiation of tumorigenesis  [53] . This observation supports the notion that 
+
+L1Hs is active in BRCA1-deficient TNBC cells following olaparib treatment. 
+
+To directly address the impact of olaparib on L1Hs retrotransposition activity and to elucidate the 
+
+role of BRCA1, we employed the synthetic L1Hs reporter construct ORFeus-Hs  [54]  in MDA-MB-436 cells, 
+
+comparing parental BRCA1-deficient cells with cells complemented with wild-type BRCA1  [55] . ORFeus-Hs 
+
+encodes a codon-optimized human L1Hs element expressing ORF1p, ORF2p, and a GFP-based 
+
+retrotransposition reporter  [50,56] , which we previously validated  [57]  (Fig. 5b ). Unlike the WGS approach, 
+
+which relies on activation of endogenous L1Hs elements, this system enables robust expression of L1Hs RNA and protein, allowing direct quantification of retrotransposition events. 
+
+We found that BRCA1 complementation significantly suppressed L1Hs retrotransposition. The frequency of GFP-positive cells — indicative of de novo L1Hs insertions — was reduced by at least two-fold in the BRCA1 -complemented cells compared to BRCA1-deficient cells (Fig. 5c ). As expected, no GFP-positive cells were observed in cells harboring an reverse transcriptase (RT, D702Y ORF2p) deficient 
+
+construct, confirming the requirement of RT for L1Hs retrotransposition as previously described  [12,57,58] .
+
+Notably, we also found that BRCA1 complementation reduced the frequency of L1Hs EN-independent insertions, which we measured using a L1Hs endonuclease (EN, H230A ORF2p) deficient reporter construct. L1Hs is known to generate de novo insertions independent of its EN activity, albeit at a relatively low efficiency compared to the EN-dependent insertions, by exploiting endogenous sites of DNA damage 
+
+[16,57,59] . Together, our results show that BRCA1 suppresses both EN-dependent and EN-independent 
+
+L1Hs insertions, suggesting that it likely suppresses retrotransposition independent of the first-strand nick during target-primed reverse transcription. However, it is also possible that BRCA1 deficiency increases 
+
+13 
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 16, 2026. ;https://doi.org/10.64898/2026.07.15.738694 doi: bioRxiv preprint
+
+endogenous DNA damage levels, which are then exploited for L1Hs integration independent of its EN activity. Together, our results here are consistent with several other studies showing that BRCA1 
+
+suppresses L1 retrotransposition  [22,60–62] .
+
+We next sought to test the impact of olaparib treatment on the frequency of L1Hs retrotransposition in cells proficient and deficient in BRCA1. For this, we used a native L1Hs sequence (L1RP) containing a GFP-AI reporter cassette for retrotransposition in its 3’ UTR in BRCA1-proficient and -deficient RPE-1 
+
+TP53 −/− cells treated with increasing concentrations of olaparib. First, we found that the frequency of L1Hs retrotransposition was elevated in BRCA1 -deficient versus BRCA1 -proficient cells at baseline, consistent with our result above showing that BRCA1 suppresses L1Hs retrotransposition. In addition, we found that olaparib treatment suppressed L1Hs retrotransposition in a dose-dependent manner (Additional file 1: Fig. S5 ). Our result aligns with prior evidence showing that olaparib treatment inhibits EN-dependent L1Hs 
+
+retrotransposition in cells  [63] . Here, we found that the inhibitory effect of olaparib on L1Hs 
+
+retrotransposition is independent of BRCA1, suggesting that PARP1/2 may play a critical role in resolving L1Hs insertions even in the absence of BRCA1. 
+
+14 
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 16, 2026. ;https://doi.org/10.64898/2026.07.15.738694 doi: bioRxiv preprint
+
+Figure 5. L1 activation induced by olaparib treatment in MDA-MB-436 ( BRCA1 -/-) cells. a) De novo insertion of a 5’-truncated L1Hs (blue) presenting the target site duplication (bold pink), the poly-T tail (yellow), and the endonuclease (EN) cutting motif (black). b) ORFeus-Hs retrotransposition GFP reporter. The ORFeus-Hs expression plasmid contains an eGFP cassette in the L1 3′-UTR which is in the opposite orientation of the L1 and is interrupted by an intron. Cells express eGFP only after the ORFeus-Hs transcript undergoes splicing and intron removal, reverse transcription, and integration into chromosomal DNA. c) Frequency of GFP-positive cells in MDA-MB-436 ( BRCA1 -/-) cells, and two MDA-MB-436 ( BRCA1 +) cell’ clones of ORFeus-Hs wild-type (WT), RTmut, or ENmut. 
+
+Transposable elements as hotspots of unconservative repair mechanisms 
+
+Interestingly, a duplication event was initially misclassified as a de novo L1Hs insertion, owing to the presence of an L1PA2 element detected through Nanopore long-read whole-genome sequencing in BRCA1-deficient MDA-MB-436 cells treated with olaparib. In further detail, this event was a non-tandem duplication of a pre-existing 5’-truncated L1PA2 of 559 bp at chr11 p11.12 ( Fig. 6a-b ), exclusively observed 
+
+in the olaparib-treated sample and absent in the control. We used the BLAT tool  [64]  from UCSC Genome 
+
+Browser  [65]  to search for sequence similarity elsewhere in the genome to the newly inserted sequence 
+
+15 
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 16, 2026. ;https://doi.org/10.64898/2026.07.15.738694 doi: bioRxiv preprint
+
+and found the same L1PA2 upstream in the chromosome (~190 Mb distance) ( Fig. 6a ). We confirmed the 
+
+sequences’ high similarity using Blast2Seq  [66] , which also revealed a template-switching ( Fig. 6b ). L1PA2 
+
+duplication occurred in the region of two different transcript isoforms from the same lncRNA gene (LINC02750). Looking further into this, we also found a 15 bp deletion at the duplication site, and a 14 bp microhomology between the duplication site and the original L1PA2 flanking region. The identification of a non-tandem duplication event with template switching, accompanied by a small deletion and microhomology, suggests that the duplication may be a result of a repair by microhomology-mediated 
+
+break-induced replication (MMBIR)  [67] . These findings shed light on the underlying repair mechanisms at 
+
+play in BRCA1-deficient TNBC cells upon olaparib treatment and on TEs as hotspots for unconservative repair mechanisms. 
+
+Figure 6. Duplication of an L1PA2 element induced by olaparib treatment in MDA-MB-436 ( BRCA1 -/-) cells. a) L1PA2 is present in the reference genome, and its b) Duplication is further away in the genome, presenting a deletion (black), a microhomology (yellow), and the template switching. 
+
+Olaparib and the expression of young L1 families 
+
+Transposition cannot always be attributed to specific progenitor elements since quantifying L1 RNA at 
+
+specific loci poses significant challenges  [68] . When characterizing TE expression using TEscape, this 
+
+limitation persisted due to the locus-specific methodology applied. Nevertheless, identifying the expression of L1 loci is crucial for understanding the basis of retrotransposition upon olaparib treatment. To address 
+
+16 
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 16, 2026. ;https://doi.org/10.64898/2026.07.15.738694 doi: bioRxiv preprint
+
+these challenges, we employed a complementary approach using L1EM  [69] , which enables loci-specific 
+
+quantification of L1 transcripts. L1EM categorizes L1 transcripts into four distinct groups and also separates transcripts that are capable of generating retrotransposition from those that are not (see Methods for further details). 
+
+To deepen our understanding of how olaparib could stimulate L1 activity, we investigated L1 locus-specific expression in BRCA1-deficient MDA-MB-436 cells (as in our previous results). Our analysis focused on young L1 families — specifically L1Hs and L1PA2 — because these families are known to 
+
+harbor active, autonomous loci  [13,69] . We identified deregulation of a few L1PA2 and L1Hs loci, 
+
+highlighting how challenging it is to recover L1 loci-specific expression (Additional file 1: Fig. S6 and Additional file 2: Table S7 ). Although our analysis showed a few down-regulated L1 loci, they are, in fact, passive transcripts not driven by L1 expression. Still, we found an interesting full-length (6026 bp) L1PA2 candidate. Overall, these results indicate that olaparib influences the expression of young L1 families, thereby establishing a foundation for our findings on L1 activation upon olaparib treatment. 
+
+DISCUSSION 
+
+Here, we presented a comprehensive characterization and investigation of BRCA1-deficient and BRCA1-proficient TNBC cells’ response to olaparib. Our findings reveal a BRCA1-dependent immune activation: olaparib treatment selectively induces an antiviral-like response in BRCA1-deficient TNBC cells, marked by the upregulation of genes involved in the detection and processing of RNA species—including dsRNA, ssRNA—as well as dsDNA and ssDNA. This immune response appears to be driven by the overexpression and cytoplasmic accumulation of TE-derived transcripts BRCA1-deficiency creates apermissive environment for TE expression and L1Hs retrotransposition, which, in turn, may drive immunostimulatory signaling and DNA damage. Concurrently, we identify additional genomic vulnerabilities in BRCA1-deficient TNBC cells, where structural variation is tightly linked to the repetitive nature of TEs, suggesting that the sequences of these elements serve as hotspots for non-conservative DNA repair and further genomic instability. 
+
+Our results demonstrate that BRCA1 suppresses L1Hs retrotransposition in TNBC cells. Namely, BRCA1 deficiency causes an elevation of both EN-dependent and -independent L1 insertions. 
+
+17 
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 16, 2026. ;https://doi.org/10.64898/2026.07.15.738694 doi: bioRxiv preprint
+
+Mechanistically, our results suggest that BRCA1 suppresses L1 retrotransposition downstream of the first-strand DNA nick during target-primed reverse transcription. Our results are consistent with several 
+
+genetic screen studies showing a critical role of BRCA1 in suppressing L1 retrotransposition  [22,60,70,71] ,
+
+which have proposed a working model of BRCA1 in preventing L1 integration at ongoing DNA replication forks. We additionally suggest here that the complex DNA lesions caused directly or indirectly by olaparib treatment might serve as vulnerable sites of L1 insertions. Here, we found that olaparib inhibits EN-dependent L1 insertions in both BRCA1-proficient and BRCA1-deficient cells, consistent with a previous 
+
+study showing that PARP1/2 are required for L1 retrotransposition  [63] . However, olaparib suppressive 
+
+effect on L1 retrotransposition appears specific on EN-dependent insertions, but not EN-independent 
+
+insertions  [63] . In view of this, we propose that olaparib-induced unrepaired DNA lesions can be resolved 
+
+through retrotransposon-mediated DNA repair, thereby bypassing the requirement for EN and PARP2 for retrotransposition ( Fig. 7 ). Additionally, BRCA1 may regulate L1Hs expression via interactions with the 
+
+SWI/SNF chromatin remodeling complex  [72]  and the DNA methyltransferase DNMT1  [21] . Collectively, our 
+
+findings indicate that BRCA1-deficient cancer cells can sustain L1Hs expression and retrotransposition following olaparib treatment, in stark contrast to its dose-dependent suppressive effects on L1Hs activity in normal cells. 
+
+Simultaneously, olaparib can cause complex DNA lesions including PARP trapping on DNA, olaparib-induced replication fork collapse and unrepaired single-strand breaks, all of which can result in 
+
+toxic DSBs  [23,67] . The generation of free DNA ends occurs, for instance, in regions where there is no 
+
+replication fork coming from the opposite direction. Given that PARPi-induced collapsed forks such as 
+
+single-ended DNA breaks cannot be repaired by non-homologous end joining (NHEJ)  [73] , we propose that 
+
+MMBIR is engaged to resolve these breaks. When equal loci on sister chromatids or homologous chromosomes are available (S-phase) and selected as a donor, the resolution of the DNA break is neutral. Conversely, when HR repair is compromised, MMBIR may be activated in response, utilizing short homologous sequences to resolve these breaks ( Fig. 7 ). This repair facilitates misalignment of non-allelic loci. The involvement of an L1PA2 indicates that repetitive elements may be particularly susceptible to 
+
+non-allelic homologous alignment  [67] , thereby promoting structural variations  [74]  including duplications 
+
+and microdeletions. 
+
+18 
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 16, 2026. ;https://doi.org/10.64898/2026.07.15.738694 doi: bioRxiv preprint
+
+Interestingly, our findings align with the dual role of TE in cancer  [75] . While TEs may act as 
+
+hotspots of PARPi resistance, they also expose genomic vulnerabilities that can be therapeutically exploited under the same conditions. Encouraging findings about TEs deregulation in response to therapies for which 
+
+they are not the primary target have sparked scientific interest  [75,76] , including in TNBC  [77] . Further 
+
+research could enlighten if the olaparib-driven immune response in BRCA1-deficient cells can sensitize 
+
+tumors to immunotherapies, similarly to other TE-activating drugs  [78–80] . Taken together, our findings 
+
+provide new insights into olaparib’s synthetic lethality and previously unrecognized mechanisms of TEs. 
+
+Figure 7. Repair mechanisms induced by olaparib in BRCA1-deficient cancer cells. Olaparib-induced PARP inhibition and trapping lead to stalled replication forks (S-phase) and unrepaired DNA breaks. Lagging strands generated in this context may serve as primers for LINE-1 reverse transcriptase, facilitating retrotransposon-mediated repair through EN-independent retrotransposition. Concurrently, replication fork collapse and unrepaired DNA damage can produce double-strand breaks (DSBs), particularly one-ended DSBs in highly unstable genomic environments. During S-phase, these breaks may be repaired via microhomology-mediated break-induced replication (MMBIR), an error-prone mechanism that promotes structural variation. Together, retrotransposon-mediated repair and MMBIR contribute to cancer cell survival under therapeutic pressure. 
+
+19 
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 16, 2026. ;https://doi.org/10.64898/2026.07.15.738694 doi: bioRxiv preprint
+
+METHODS 
+
+Reagents and Cell Culture 
+
+Olaparib (AZD2281) was purchased from Selleckchem (Houston, Texas, USA) and was dissolved in dimethyl sulphoxide (DMSO). BRCA1-deficient MDA-MB-436 TNBC cells were obtained from Hospital Sírio-Libanês (São Paulo, Brazil), cell line identity was confirmed by short tandem repeat analysis (STR) and absence of mycoplasma contaminations by PCR. Cells were maintained in RPMI supplemented with 10% fetal bovine serum and used within 3-8 passages. Cells were kept at 37°C, with a minimum relative humidity of 95% and an atmosphere containing 5% CO 2. MDA-MD-436 cells engineered to express 
+
+BRCA1-proficient  [55] , as well as control cells containing an empty vector, were a generous gift from Dr. 
+
+Bing Xia (Rutgers Cancer Institute). RPE-1 TP53 -/- hTERT and RPE-1 TP53 -/- BRCA1 -/- hTERT  [81]  were a 
+
+generous gift from Dr. Dipanjan Chowdhyury (Dana-Farber Cancer Institute). 
+
+Cell Survival 
+
+MDA-MB-436 cells were seeded at 1 - 1,5 × 10³ cells/well in 96-well plates and treated with olaparib at 0-64μM concentrations. Cell viability was assessed at 72h post-treatment by the Resazurin assay. Data were expressed as a percentage of control and were the mean±SD of four separate experiments, each performed in triplicate. Half maximal inhibitory concentration (IC50) of olaparib was determined by variable slope least squares fit of inhibitor vs. normalized response as 11.72μM (rounded up to 12μM), and this concentration was used for the experiments (Additional file 1: Fig. S7 ). 
+
+RNA extraction and sequencing 
+
+Cells were seeded at 40000 cells per well in 6-well plates, after 24h of acclimation, submitted to 24h of control/treatment. Control samples were incubated for 24h in DMSO, and treatment samples for 24h in 12uM olaparib. RNA sequencing (RNA-seq) was performed using poly-A + NEBNext Ultra II Directional Library in a DNBSEQ-T7 PE150 machine. The RNA-seq data were deposited in the European Nucleotide Archive (ENA)(PRJEB97215). 
+
+20 
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 16, 2026. ;https://doi.org/10.64898/2026.07.15.738694 doi: bioRxiv preprint
+
+RNA-seq data processing 
+
+We used RNA-seq data from the BRCA1 -proficient MDA-MB-468 and BT549 TNBC cell lines and the BRCA1-deficient TNBC SUM1315, available in GenBank (NCBI) under accession GSE165914 and GSE149621. All samples were prepared as single-end triplicate libraries. MDA-MB-436 samples were in duplicate paired-end libraries. Comparisons were between treatment and control samples for each cell line. The treatment consisted of the IC50 of each cell, specifically, overnight exposure to 3μM olaparib for MDA-MB-468 and 8μM for SUM1315, 48h of exposure to 20μM olaparib for BT549, and 24h exposure to 12μM olaparib for MDA-MB-436. Data were downloaded from the Sequence Read Archive using the SRA toolkit v3.0.0 (https://github.com/ncbi/sra-tools) and converted to FastQ with fastq-dump. FastQC v0.11.9 
+
+software  [82]  was used to assess the sequencing quality of the data. Reads were trimmed using a custom 
+
+Pearl script if necessary. 
+
+Gene and TE expression 
+
+TEscape v1.0  [33]  index was merged with Gencode v36  [38]  genes. Kallisto v0.48.0  [83]  was used for 
+
+pseudo-alignment and transcript-level read quantification. Gene transcripts were aggregated to the gene 
+
+level using the tximport v1.3.9  [84]  R package. The merged gene and TEs count tables were filtered to 
+
+include only samples with either all control or all treatment samples differing from zero, and submitted to 
+
+DESeq2 v1.38.3  [85] . Differentially expressed TE loci within DEGs were dropped. Cut-off of log 2-fold 
+
+change ≥ |2| and adjusted P-value of 0.05 were used to consider genes, TE transcripts, and gene-TE chimeric transcripts as differentially expressed. For better visualization purposes, TE-TE chimera names were displayed based on the first TE participating in the transcript (supplementary tables display the name 
+
+of all participants). The Gene Ontology Resource v20240807  [86]  was used for enrichment analysis of 
+
+DEGs (PANTHER Overrepresentation Test, Fisher test type, and FDR correction). Biological processes were considered enriched if fold enrichment was over 2 and FDR < 0.05. Gene-TE chimeric transcript 
+
+putative protein formation and comparison with the canonical transcript protein ORF finder  [87]  from NCBI 
+
+was used. 
+
+21 
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 16, 2026. ;https://doi.org/10.64898/2026.07.15.738694 doi: bioRxiv preprint
+
+TE-TE chimera transcripts dsRNA formation 
+
+We employed the ViennaRNA  [88]  package for the analyses of intra- and intermolecular dsRNA formation. 
+
+RNAfold v2.6.3 was used for intramolecular RNA folding, and RNAcofold v2.6.3 was used for intermolecular RNA duplexes. Cut-offs included: upregulated TE-TE chimeras with transcript sizes varying from 200 to 2000 nt and ΔG/nt < -0.25 kcal/mol. In addition, for intramolecular dsRNA, a Z-score compared to that of 100 randomized sequences ((energy - mean energy) / standard deviation energy < -3) and, for intermolecular RNAs, the ensemble ΔG of the heterodimer should be lower than that of the homodimers. 
+
+DNA extraction and sequencing 
+
+Cells were seeded at 200 x10 6 cells per bottle, after 24h of acclimation, and submitted to 24h of control/treatment. The Ultra-Long DNA Sequencing Kit V14 (SQK-ULK114) was used in combination with the Monarch HMW DNA Extraction Kit for Tissue (New England Biolabs, T3060) to extract ultra-high molecular weight gDNA. Sequencing was performed in a PromethION (Oxford Nanopore Technologies) machine. The median sequencing depth across chromosomes (1-22) was 16.68x for the control sample and 14.53x for the treatment sample, with a median percentage of covered bases of 95% in both samples. The median sequencing depth of coverage per chromosome is displayed in Additional file 1: Fig. S8 . The WGS data were deposited in ENA (PRJEB97215). 
+
+Whole-genome insertions calling 
+
+NanoPlot and samtools coverage were used to assess read quality. Reads filtered for “PASS” were mapped to the reference genome hg38 with minimap2 v2.24-r1122. BAM files of each fastQ were merged with Samtools merge. Samtools MAPQ was used to keep reads with a Phred Quality Score of 20 or higher. The 
+
+GraffiTE tool  [89]  was used to identify unaligned segments to the reference genome, and the Dfam TE 
+
+sequence database to identify these segments as TEs. For this analysis, polymorphic insertions were 
+
+filtered using variant calls of mobile element insertions from the dbVAR database  [48] . The absence of de 
+
+novo insertion candidates in the control sample was confirmed, and all candidates identified in the treatment sample were manually validated. 
+
+22 
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 16, 2026. ;https://doi.org/10.64898/2026.07.15.738694 doi: bioRxiv preprint
+
+L1Hs retrotransposition reporter assays 
+
+MDA-MD-436 cells 
+
+MDA-MD-436 cells complemented with BRCA1-proficient (two clones) and the control cells containing an 
+
+empty vector were established and validated by Dr. Bing Xia  [55] . To assay L1Hs retrotransposition 
+
+frequency, we used a synthetic L1Hs sequence (ORFeus-Hs wild-type)  [54]  encoding ORF1p and ORF2p 
+
+and containing a GFP reporter for retrotransposition in the 3’ UTR (pMT527). We also used two retrotransposition mutant versions of the L1Hs reporter plasmid, each containing mutations in the encoded ORF2p: a reverse transcriptase mutant (pLD631, D702Y) and an endonuclease mutant (pLD632, H230A). These L1Hs constructs were expressed from a pCEP4 episomal vector modified to contain a Puromycin 
+
+resistance gene under a CMV promoter. All three plasmids have been previously validated  [57] .
+
+We used these plasmids to perform the L1Hs GFP-AI reporter assay for retrotransposition in the 
+
+BRCA1 complemented and control MDA-MD-436 cells as previously described  [57,90] . Briefly, we seeded 
+
+1 x10 5 cells in 6-well plates (day 1, d 1). The following day, we transfected each well with Viafect (Promega) and 1 μM of each pCEP4-Puromycin plasmid (d 2): pMT527 (wild-type), pLD631 (RTmutant-D702Y), pLD632A (ENmutant-H230A). The media for cells transfected with the L1Hs reporter plasmids was changed again two days after transfection (d 4) and supplemented with 5μM/mL of Puromycin. Cells were then incubated until day 7 when cells were collected and assayed for the percentage of GFP+ cells by flow cytometry (BD LSRFortessa). In addition, a pCEP4-Puromycin vector expressing a GFP cassette (MT498, pCEP4-GFP) was used to monitor transfection efficiency by assaying the percentage of GFP+ cells on d 4 by flow cytometry (BD LSRFortessa). We normalized the percentage of GFP+ cells from the cells transfected with the L1Hs reporter plasmids to the percentage of GFP+ cells from cells transfected with the GFP plasmid. 
+
+RPE-1 hTERT cells 
+
+We also performed the L1Hs-GFP reporter assay in RPE-1 TP53 -/- hTERT and in RPE-1 TP53 -/- BRCA1 -/-
+
+cells, which were previously established by Dr. Dipanjan Chowdhury  [81] . For this experiment, we used a 
+
+native L1Hs sequence (L1RP, GenBank: AF148856.1) with its 3’UTR modified to contain a GFP-AI reporter 
+
+cassette for retrotransposition, which we previously validated  [90]  and was expressed from a pCEP4 vector 
+
+modified to express Puromycin instead of Hygromycin. The L1Hs-GFP reporter assay as above, except the media containing olaparib or DMSO as a control was supplemented at day 4. 
+
+23 
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 16, 2026. ;https://doi.org/10.64898/2026.07.15.738694 doi: bioRxiv preprint
+
+Young L1 elements expression 
+
+L1EM v1.1  [68]  was used to quantify L1Hs and L1PA2 at the genomic locus level. L1EM uses an 
+
+expectation-maximization algorithm to separate transcripts capable of generating retrotransposition from those that are not. Therefore, L1EM categorizes L1 transcripts into four distinct groups: (1) ‘Only’ transcripts: these run sense and include only the annotated L1 element. (2) ‘Run-on’ transcripts: these run sense and extend into downstream sequences. (3) ‘Passive’ transcripts: these encompass both upstream and downstream sequences and are further divided into sense and antisense categories. (4) Antisense transcripts: these run antisense and include the first 500 bases of the L1 element, along with upstream sequences. The count table was filtered to include only samples with either all control or all treatment counts different from zero, and submitted to DESeq2. Cut-off of log 2-fold change ≥ |2| and adjusted P-value of 0.05 were used to consider L1 elements as differentially expressed. 
+
+24 
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 16, 2026. ;https://doi.org/10.64898/2026.07.15.738694 doi: bioRxiv preprint
+
+SUPPLEMENTARY INFORMATION 
+
+Additional file 1: PDF document containing Figures S1–S8. 
+
+Additional file 2: Microsoft Excel document containing Tables S1–S7. 
+
+LIST OF ABBREVIATIONS 
+
+BC: Breast Cancer 
+
+TNBC: Triple-Negative Breast Cancer 
+
+HR: Homologous Recombination 
+
+TE: Transposable Element 
+
+L1Hs: Long Interspersed Nuclear Element 1 human-specific 
+
+PARPi: PARP inhibitor 
+
+DSB: Double-Strand DNA Break 
+
+WGS: Whole-Genome Sequencing 
+
+DEG: Differentially Expressed Gene 
+
+dsRNA: double-stranded RNA 
+
+dsDNA: double-stranded DNA 
+
+ssDNA: single-stranded DNA 
+
+EN: Endonuclease 
+
+RT: Reverse Transcriptase 
+
+MMBIR: Microhomology-Mediated Break-Induced Replication 
+
+NHEJ: Non-Homologous End Joining 
+
+RNA-seq: RNA sequencing 
+
+25 
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 16, 2026. ;https://doi.org/10.64898/2026.07.15.738694 doi: bioRxiv preprint
+
+DECLARATIONS 
+
+DATA AVAILABILITY 
+
+The datasets supporting the conclusions of this article are available in the European Nucleotide Archive 
+
+(ENA) repository, under BioProject PRJEB97215 ( https://www.ebi.ac.uk/ena/browser/view/PRJEB97215 ), 
+
+and in GenBank (NCBI) under BioProjects GSE165914 
+
+(https://www.ncbi.nlm.nih.gov/bioproject/?term=GSE165914%20 ) and GSE149621 
+
+(https://www.ncbi.nlm.nih.gov/bioproject/?term=GSE149621%20 ). 
+
+COMPETING INTERESTS 
+
+The authors declare no competing interests. 
+
+FUNDING 
+
+D.M.M. was supported by a scholarship from the Conselho Nacional de Desenvolvimento Científico e Tecnológico (CNPq), and is currently supported by the fellowship #2025/11174-7 from the São Paulo Research Foundation (FAPESP). C.M.D. is a fellow of The Jane Coffin Childs Fund for Medical Research and a recipient of the Charles A. King Trust Postdoctoral Research Fellowship Award. R.L.V.M was supported by a scholarship from FAPESP (#2020/02413-4), and is currently supported by the fellowship from the Young Scientist program. S.C.S.B. is supported by a scholarship from the CNPq. M.A.P. is supported by a scholarship from the Coordenação de Aperfeiçoamento de Pessoal de Nível Superior (Capes 001). K.H.B. is supported by the National Institutes of Health (R01CA240816, R01CA276112, R01CA289390, UG3NS132127). J.C.O is supported by the grant #309226/2021-0 from CNPq. E.L.S.L. is supported by CAPES and CNPq. P.A.F.G. is supported by the grant #2018/15579-8 from FAPESP. 
+
+AUTHOR’S CONTRIBUTIONS 
+
+D.M.M., J.C.O., E.L.S.L. and P.A.F.G. conceived the project. D.M.M., J.C.O. and E.L.S.L. designed cell line experiments, transcriptome and whole-genome sequencing. D.M.M. performed cell line experiments for transcriptome sequencing and analyses of experimental data with support from S.C.S.B., J.C.O. and E.L.S.L. D.M.M. and M.A.P. performed cell line experiments for whole-genome sequencing with support from J.C.O. and E.L.S.L. M.A.P. performed whole-genome sequencing with support from J.C.O. C.M.-D. and P.S. performed ORFeus-Hs experiments with support from K.H.B. D.M.M. performed all the bioinformatic analyses with support from R.L.V.M and P.A.F.G. D.M.M. and P.A.F.G. wrote the manuscript with input from all authors. 
+
+26 
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 16, 2026. ;https://doi.org/10.64898/2026.07.15.738694 doi: bioRxiv preprint
+
+REFERENCES 
+
+1. Harbeck N, Penault-Llorca F, Cortes J, Gnant M, Houssami N, Poortmans P, et al. Breast cancer. Nat Rev Dis 
+
+Primers. 2019;5:66. https://doi.org/10.1038/s41572-019-0111-2 
+
+2. Zagami P, Carey LA. Triple negative breast cancer: Pitfalls and progress. npj Breast Cancer. 2022;8:95. 
+
+https://doi.org/10.1038/s41523-022-00468-0 
+
+3. Yadav BS. Biomarkers in triple negative breast cancer: A review. WJCO. 2015;6:252. 
+
+https://doi.org/10.5306/wjco.v6.i6.252 
+
+4. Gonzalez-Angulo AM, Timms KM, Liu S, Chen H, Litton JK, Potter J, et al. Incidence and Outcome of BRCA 
+
+Mutations in Unselected Patients with Triple Receptor-Negative Breast Cancer. Clinical Cancer Research. 
+
+2011;17:1082–9. https://doi.org/10.1158/1078-0432.CCR-10-2560 
+
+5. Olufosoye O, Soler R, Babagbemi K. Disparities in genetic testing for breast cancer among black and Hispanic 
+
+women in the United States. Clinical Imaging. 2024;107:110066. https://doi.org/10.1016/j.clinimag.2023.110066 
+
+6. Griguolo G, Dieci MV, Guarneri V, Conte P. Olaparib for the treatment of breast cancer. Expert Review of Anticancer 
+
+Therapy. 2018;18:519–30. https://doi.org/10.1080/14737140.2018.1458613 
+
+7. Tutt A, Robson M, Garber JE, Domchek SM, Audeh MW, Weitzel JN, et al. Oral poly(ADP-ribose) polymerase 
+
+inhibitor olaparib in patients with BRCA1 or BRCA2 mutations and advanced breast cancer: a proof-of-concept trial. 
+
+The Lancet. 2010;376:235–44. https://doi.org/10.1016/S0140-6736(10)60892-6 
+
+8. Robson M, Im S-A, Senkus E, Xu B, Domchek SM, Masuda N, et al. Olaparib for Metastatic Breast Cancer in 
+
+Patients with a Germline BRCA Mutation. N Engl J Med. 2017;377:523–33. https://doi.org/10.1056/NEJMoa1706450 
+
+9. Fong PC, Yap TA, Boss DS, Carden CP, Mergui-Roelvink M, Gourley C, et al. Poly(ADP)-Ribose Polymerase 
+
+Inhibition: Frequent Durable Responses in BRCA Carrier Ovarian Cancer Correlating With Platinum-Free Interval. 
+
+JCO. 2010;28:2512–9. https://doi.org/10.1200/JCO.2009.26.9589 
+
+10. Gilbert N, Lutz-Prigge S, Moran JV. Genomic Deletions Created upon LINE-1 Retrotransposition. Cell. 
+
+2002;110:315–25. https://doi.org/10.1016/S0092-8674(02)00828-0 
+
+11. Gasior SL, Wakeman TP, Xu B, Deininger PL. The Human LINE-1 Retrotransposon Creates DNA Double-strand 
+
+Breaks. Journal of Molecular Biology. 2006;357:1383–93. https://doi.org/10.1016/j.jmb.2006.01.089 
+
+12. Mendez-Dorantes C, Zeng X, Karlow JA, Schofield P, Turner S, Kalinowski J, et al. Chromosomal rearrangements 
+
+and instability caused by the LINE-1 retrotransposon [Internet]. 2024 [cited 2025 Sept 16]. 
+
+https://doi.org/10.1101/2024.12.14.628481 
+
+13. Beck CR, Collier P, Macfarlane C, Malig M, Kidd JM, Eichler EE, et al. LINE-1 Retrotransposition Activity in Human 
+
+Genomes. Cell. 2010;141:1159–70. https://doi.org/10.1016/j.cell.2010.05.021 
+
+14. Martin SL, Branciforte D, Keller D, Bain DL. Trimeric structure for an essential protein in L1 retrotransposition. Proc 
+
+Natl Acad Sci USA. 2003;100:13815–20. https://doi.org/10.1073/pnas.2336221100 
+
+15. Khazina E, Weichenrieder O. Non-LTR retrotransposons encode noncanonical RRM domains in their first open 
+
+reading frame. Proc Natl Acad Sci USA. 2009;106:731–6. https://doi.org/10.1073/pnas.0809964106 
+
+16. Feng Q, Moran JV, Kazazian HH, Boeke JD. Human L1 Retrotransposon Encodes a Conserved Endonuclease 
+
+Required for Retrotransposition. Cell. 1996;87:905–16. https://doi.org/10.1016/S0092-8674(00)81997-2 
+
+17. Mathias SL, Scott AF, Kazazian HH, Boeke JD, Gabriel A. Reverse Transcriptase Encoded by a Human 
+
+Transposable Element. Science. 1991;254:1808–10. https://doi.org/10.1126/science.1722352 
+
+18. Cost GJ. Human L1 element target-primed reverse transcription in vitro. The EMBO Journal. 2002;21:5899–910. 
+
+https://doi.org/10.1093/emboj/cdf592 
+
+19. Luan DD, Eickbush TH. RNA Template Requirements for Target DNA-Primed Reverse Transcription by the R2 
+
+Retrotransposable Element. Molecular and Cellular Biology. 1995;15:3882–91. https://doi.org/10.1128/MCB.15.7.3882 
+
+27 
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 16, 2026. ;https://doi.org/10.64898/2026.07.15.738694 doi: bioRxiv preprint
+
+20. Burns KH. Transposable elements in cancer. Nat Rev Cancer. 2017;17:415–24. 
+
+https://doi.org/10.1038/nrc.2017.35 
+
+21. Shukla V, Coumoul X, Lahusen T, Wang R-H, Xu X, Vassilopoulos A, et al. BRCA1 affects global DNA methylation 
+
+through regulation of DNMT1. Cell Res. 2010;20:1201–15. https://doi.org/10.1038/cr.2010.128 
+
+22. Ardeljan D, Steranka JP, Liu C, Li Z, Taylor MS, Payer LM, et al. Cell fitness screens reveal a conflict between 
+
+LINE-1 retrotransposition and DNA replication. Nat Struct Mol Biol. 2020;27:168–78. 
+
+https://doi.org/10.1038/s41594-020-0372-1 
+
+23. Bryant HE, Schultz N, Thomas HD, Parker KM, Flower D, Lopez E, et al. Specific killing of BRCA2-deficient 
+
+tumours with inhibitors of poly(ADP-ribose) polymerase. Nature. 2005;434:913–7. https://doi.org/10.1038/nature03443 
+
+24. Thomas CA, Tejwani L, Trujillo CA, Negraes PD, Herai RH, Mesci P, et al. Modeling of TREX1-Dependent 
+
+Autoimmune Disease using Human Stem Cells Highlights L1 Accumulation as a Source of Neuroinflammation. Cell 
+
+Stem Cell. 2017;21:319-331.e8. https://doi.org/10.1016/j.stem.2017.07.009 
+
+25. Wang Q, Bergholz JS, Ding L, Lin Z, Kabraji SK, Hughes ME, et al. STING agonism reprograms tumor-associated 
+
+macrophages and overcomes resistance to PARP inhibition in BRCA1-deficient models of breast cancer. Nat 
+
+Commun. 2022;13:3022. https://doi.org/10.1038/s41467-022-30568-1 
+
+26. Pantelidou C, Sonzogni O, De Oliveria Taveira M, Mehta AK, Kothari A, Wang D, et al. PARP Inhibitor Efficacy 
+
+Depends on CD8+ T-cell Recruitment via Intratumoral STING Pathway Activation in BRCA-Deficient Models of 
+
+Triple-Negative Breast Cancer. Cancer Discovery. 2019;9:722–37. https://doi.org/10.1158/2159-8290.CD-18-1218 
+
+27. Chiappinelli KB, Strissel PL, Desrichard A, Li H, Henke C, Akman B, et al. Inhibiting DNA Methylation Causes an 
+
+Interferon Response in Cancer via dsRNA Including Endogenous Retroviruses. Cell. 2015;162:974–86. 
+
+https://doi.org/10.1016/j.cell.2015.07.011 
+
+28. Roulois D, Loo  Yau H, Singhania R, Wang Y, Danesh A, Shen SY, et al. DNA-Demethylating Agents Target 
+
+Colorectal Cancer Cells by Inducing Viral Mimicry by Endogenous Transcripts. Cell. 2015;162:961–73. 
+
+https://doi.org/10.1016/j.cell.2015.07.056 
+
+29. Lee K, Ku J, Ku D, Kim Y. Inverted Alu repeats: friends or foes in the human transcriptome. Exp Mol Med. 
+
+2024;56:1250–62. https://doi.org/10.1038/s12276-024-01177-3 
+
+30. Ahmad S, Mu X, Yang F, Greenwald E, Park JW, Jacob E, et al. Breaching Self-Tolerance to Alu Duplex RNA 
+
+Underlies MDA5-Mediated Inflammation. Cell. 2018;172:797-810.e13. https://doi.org/10.1016/j.cell.2017.12.016 
+
+31. Chen R, Ishak CA, De Carvalho DD. Endogenous Retroelements and the Viral Mimicry Response in Cancer 
+
+Therapy and Cellular Homeostasis. Cancer Discovery. 2021;11:2707–25. 
+
+https://doi.org/10.1158/2159-8290.CD-21-0506 
+
+32. Mehdipour P, Marhon SA, Ettayebi I, Chakravarthy A, Hosseini A, Wang Y, et al. Epigenetic therapy induces 
+
+transcription of inverted SINEs and ADAR1 dependency. Nature. 2020;588:169–73. 
+
+https://doi.org/10.1038/s41586-020-2844-1 
+
+33. Mercuri RLV, Mombach DM, Dos Santos FRC, Perez-Schindler J, Huang Y, Spealman P, et al. TEscape: Defining 
+
+the human transposable element transcriptome using multiplatform long-read sequencing [Internet]. Bioinformatics; 
+
+2026 [cited 2026 July 13]. https://doi.org/10.64898/2026.07.08.737305 
+
+34. Chen YG, Hur S. Cellular origins of dsRNA, their recognition and consequences. Nat Rev Mol Cell Biol. 
+
+2022;23:286–301. https://doi.org/10.1038/s41580-021-00430-1 
+
+35. Nesta A, Veiga DFT, Banchereau J, Anczukow O, Beck CR. Alternative splicing of transposable elements in 
+
+human breast cancer. Mobile DNA. 2025;16:6. https://doi.org/10.1186/s13100-025-00341-4 
+
+36. Clayton EA, Rishishwar L, Huang T-C, Gulati S, Ban D, McDonald JF, et al. An atlas of transposable 
+
+element-derived alternative splicing in cancer. Phil Trans R Soc B. 2020;375:20190342. 
+
+https://doi.org/10.1098/rstb.2019.0342 
+
+37. Leclair NK, Anczuków O. ‘Poisoning’ of the transcriptome by ultraconserved elements. Nat Rev Mol Cell Biol. 
+
+2022;23:777–777. https://doi.org/10.1038/s41580-022-00527-1 
+
+28 
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 16, 2026. ;https://doi.org/10.64898/2026.07.15.738694 doi: bioRxiv preprint
+
+38. Mudge JM, Carbonell-Sala S, Diekhans M, Martinez JG, Hunt T, Jungreis I, et al. GENCODE 2025: reference 
+
+gene annotation for human and mouse. Nucleic Acids Research. 2025;53:D966–75. 
+
+https://doi.org/10.1093/nar/gkae1078 
+
+39. Liang M, Lai T, Li Z, Yu W, Cao M, Yao N, et al. GINS1 is a prognostic biomarker and correlated with methylation 
+
+and immune escape in liver hepatocellular carcinoma. Front Oncol. 2025;15:1492599. 
+
+https://doi.org/10.3389/fonc.2025.1492599 
+
+40. Zhao H, He X, Ma Z. Identification of GINS1 as a potential prognostic biomarker for sarcoma using bioinformatic 
+
+analysis. Transl Cancer Res. 2023;12:1021–32. https://doi.org/10.21037/tcr-23-524 
+
+41. Dong Y, Hakimi M-A, Chen X, Kumaraswamy E, Cooch NS, Godwin AK, et al. Regulation of BRCC, a Holoenzyme 
+
+Complex Containing BRCA1 and BRCA2, by a Signalosome-like Subunit and Its Role in DNA Repair. Molecular Cell. 
+
+2003;12:1087–99. https://doi.org/10.1016/S1097-2765(03)00424-6 
+
+42. Qin S, Jin P, Zhou X, Chen L, Ma F. The Role of Transposable Elements in the Origin and Evolution of MicroRNAs 
+
+in Human. Navarro A, editor. PLoS ONE. 2015;10:e0131365. https://doi.org/10.1371/journal.pone.0131365 
+
+43. Venkatesan R, Park YU, Ji E, Yeo E-J, Kim SY. Malathion increases apoptotic cell death by inducing lysosomal 
+
+membrane permeabilization in N2a neuroblastoma cells: a model for neurodegeneration in Alzheimer’s disease. Cell 
+
+Death Discov. 2017;3:17007. https://doi.org/10.1038/cddiscovery.2017.7 
+
+44. Duan J, Zhen T, Liang J, Tang J, Zhou Y, Gao H, et al. The clinicopathological significance of ZNF10 in invasive 
+
+ductal carcinoma of the breast. Int J Clin Exp Pathol. 2018;11:2968–79. 
+
+45. Zhang J, Wang Y, Hou S, Chi X, Ding D, Xue M, et al. Overexpression of ZNF169 promotes the growth and 
+
+proliferation of colorectal cancer cells via the upregulation of ANKZF1. Oncol Rep. 2024;51:82. 
+
+https://doi.org/10.3892/or.2024.8741 
+
+46. Hu C, Ainiwaer A, Lu Y, Li J, Fu Y, Luo J, et al. Zinc finger protein 169 promotes tumor progress of hepatocellular 
+
+cancer via up ‐regulating cyclin ‐dependent kinase 19. IUBMB Life. 2025;77:e2943. https://doi.org/10.1002/iub.2943 
+
+47. Morales J, Pujar S, Loveland JE, Astashyn A, Bennett R, Berry A, et al. A joint NCBI and EMBL-EBI transcript set 
+
+for clinical genomics and research. Nature. 2022;604:310–5. https://doi.org/10.1038/s41586-022-04558-8 
+
+48. Lappalainen I, Lopez J, Skipper L, Hefferon T, Spalding JD, Garner J, et al. dbVar and DGVa: public archives for 
+
+genomic structural variation. Nucleic Acids Research. 2012;41:D936–41. https://doi.org/10.1093/nar/gks1213 
+
+49. Kazazian HH, Wong C, Youssoufian H, Scott AF, Phillips DG, Antonarakis SE. Haemophilia A resulting from de 
+
+novo insertion of L1 sequences represents a novel mechanism for mutation in man. Nature. 1988;332:164–6. 
+
+https://doi.org/10.1038/332164a0 
+
+50. Flasch DA, Macia Á, Sánchez L, Ljungman M, Heras SR, García-Pérez JL, et al. Genome-wide de novo L1 
+
+Retrotransposition Connects Endonuclease Activity with Replication. Cell. 2019;177:837-851.e28. 
+
+https://doi.org/10.1016/j.cell.2019.02.050 
+
+51. Han JS, Szak ST, Boeke JD. Transcriptional disruption by the L1 retrotransposon and implications for mammalian 
+
+transcriptomes. Nature. 2004;429:268–74. https://doi.org/10.1038/nature02536 
+
+52. Wheelan SJ, Aizawa Y, Han JS, Boeke JD. Gene-breaking: A new paradigm for human retrotransposon-mediated 
+
+gene evolution. Genome Res. 2005;15:1073–8. https://doi.org/10.1101/gr.3688905 
+
+53. Cajuso T, Sulo P, Tanskanen T, Katainen R, Taira A, Hänninen UA, et al. Retrotransposon insertions can initiate 
+
+colorectal cancer and are associated with poor survival. Nat Commun. 2019;10:4022. 
+
+https://doi.org/10.1038/s41467-019-11770-0 
+
+54. An W, Dai L, Niewiadomska AM, Yetil A, O’Donnell KA, Han JS, et al. Characterization of a synthetic human 
+
+LINE-1 retrotransposon ORFeus-Hs. Mobile DNA. 2011;2:2. https://doi.org/10.1186/1759-8753-2-2 
+
+55. Anantha RW, Simhadri S, Foo TK, Miao S, Liu J, Shen Z, et al. Functional and mutational landscapes of BRCA1 
+
+for homology-directed repair and therapy resistance. Elife. 2017;6:e21350. https://doi.org/10.7554/eLife.21350 
+
+56. Ostertag EM. Determination of L1 retrotransposition kinetics in cultured cells. Nucleic Acids Research. 
+
+2000;28:1418–23. https://doi.org/10.1093/nar/28.6.1418 
+
+29 
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 16, 2026. ;https://doi.org/10.64898/2026.07.15.738694 doi: bioRxiv preprint
+
+57. Tao J, Wang Q, Mendez-Dorantes C, Burns KH, Chiarle R. Frequency and mechanisms of LINE-1 retrotransposon 
+
+insertions at CRISPR/Cas9 sites. Nat Commun. 2022;13:3685. https://doi.org/10.1038/s41467-022-31322-3 
+
+58. Mathias SL, Scott AF, Kazazian HH, Boeke JD, Gabriel A. Reverse transcriptase encoded by a human 
+
+transposable element. Science. 1991;254:1808–10. https://doi.org/10.1126/science.1722352 
+
+59. Morrish TA, Garcia-Perez JL, Stamato TD, Taccioli GE, Sekiguchi J, Moran JV. Endonuclease-independent LINE-1 
+
+retrotransposition at mammalian telomeres. Nature. 2007;446:208–12. https://doi.org/10.1038/nature05560 
+
+60. Mita P, Sun X, Fenyö D, Kahler DJ, Li D, Agmon N, et al. BRCA1 and S phase DNA repair pathways restrict 
+
+LINE-1 retrotransposition in human cells. Nat Struct Mol Biol. 2020;27:179–91. 
+
+https://doi.org/10.1038/s41594-020-0374-z 
+
+61. Bona N, Crossan GP. Fanconi anemia DNA crosslink repair factors protect against LINE-1 retrotransposition 
+
+during mouse development. Nat Struct Mol Biol. 2023;30:1434–45. https://doi.org/10.1038/s41594-023-01067-8 
+
+62. Liu N, Lee CH, Swigut T, Grow E, Gu B, Bassik MC, et al. Selective silencing of euchromatic L1s revealed by 
+
+genome-wide screens for L1 regulators. Nature. 2018;553:228–32. https://doi.org/10.1038/nature25179 
+
+63. Miyoshi T, Makino T, Moran JV. Poly(ADP-Ribose) Polymerase 2 Recruits Replication Protein A to Sites of LINE-1 
+
+Integration to Facilitate Retrotransposition. Molecular Cell. 2019;75:1286-1298.e12. 
+
+https://doi.org/10.1016/j.molcel.2019.07.018 
+
+64. Kent WJ. BLAT —The BLAST -Like Alignment Tool. Genome Res. 2002;12:656–64. 
+
+https://doi.org/10.1101/gr.229202 
+
+65. Perez G, Barber GP, Benet-Pages A, Casper J, Clawson H, Diekhans M, et al. The UCSC Genome Browser 
+
+database: 2025 update. Nucleic Acids Research. 2025;53:D1243–9. https://doi.org/10.1093/nar/gkae974 
+
+66. Zhang Z, Schwartz S, Wagner L, Miller W. A Greedy Algorithm for Aligning DNA Sequences. Journal of 
+
+Computational Biology. 2000;7:203–14. https://doi.org/10.1089/10665270050081478 
+
+67. Hastings PJ, Ira G, Lupski JR. A Microhomology-Mediated Break-Induced Replication Model for the Origin of 
+
+Human Copy Number Variation. Matic I, editor. PLoS Genet. 2009;5:e1000327. 
+
+https://doi.org/10.1371/journal.pgen.1000327 
+
+68. McKerrow W, Fenyö D. L1EM: a tool for accurate locus specific LINE-1 RNA quantification. Kelso J, editor. 
+
+Bioinformatics. 2020;36:1167–73. https://doi.org/10.1093/bioinformatics/btz724 
+
+69. Solovyov A, Behr JM, Hoyos D, Banks E, Drong AW, Thornlow B, et al. Author Correction: Pan-cancer multi-omic 
+
+model of LINE-1 activity reveals locus heterogeneity of retrotransposition efficiency. Nat Commun. 2025;16:2870. 
+
+https://doi.org/10.1038/s41467-025-58288-2 
+
+70. Gu Z, Liu Y, Zhang Y, Cao H, Lyu J, Wang X, et al. Silencing of LINE-1 retrotransposons is a selective dependency 
+
+of myeloid leukemia. Nat Genet. 2021;53:672–82. https://doi.org/10.1038/s41588-021-00829-8 
+
+71. Mendez-Dorantes C, Kalinowski JC, Law C-T, Schofield P, Burn A, Burns KH. L1 insertion intermediates 
+
+recombine with one another or with DNA breaks to form genome rearrangements. bioRxiv. 2025;2025.09.17.676864. 
+
+https://doi.org/10.1101/2025.09.17.676864 
+
+72. Bochar DA, Wang L, Beniya H, Kinev A, Xue Y, Lane WS, et al. BRCA1 Is Associated with a Human 
+
+SWI/SNF-Related Complex. Cell. 2000;102:257–65. https://doi.org/10.1016/S0092-8674(00)00030-1 
+
+73. Min A, Im S-A, Yoon Y-K, Song S-H, Nam H-J, Hur H-S, et al. RAD51C-Deficient Cancer Cells Are Highly 
+
+Sensitive to the PARP Inhibitor Olaparib. Molecular Cancer Therapeutics. 2013;12:865–77. 
+
+https://doi.org/10.1158/1535-7163.MCT-12-0950 
+
+74. Caracciolo D, Riillo C, Arbitrio M, Di Martino MT, Tagliaferri P, Tassone P. Error ‐prone DNA repair pathways as 
+
+determinants of immunotherapy activity: an emerging scenario for cancer treatment. Intl Journal of Cancer. 
+
+2020;147:2658–68. https://doi.org/10.1002/ijc.33038 
+
+75. Liang Y, Qu X, Shah NM, Wang T. Towards targeting transposable elements for cancer therapy. Nat Rev Cancer. 
+
+2024;24:123–40. https://doi.org/10.1038/s41568-023-00653-8 
+
+30 
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 16, 2026. ;https://doi.org/10.64898/2026.07.15.738694 doi: bioRxiv preprint
+
+76. Mendez-Dorantes C, Burns KH. LINE-1 retrotransposition and its deregulation in cancers: implications for 
+
+therapeutic opportunities. Genes Dev. 2023;37:948–67. https://doi.org/10.1101/gad.351051.123 
+
+77. Fan W, Li W, Li L, Qin M, Mao C, Yuan Z, et al. Bifunctional HDAC and DNMT inhibitor induces viral mimicry 
+
+activates the innate immune response in triple-negative breast cancer. European Journal of Pharmaceutical Sciences. 
+
+2024;197:106767. https://doi.org/10.1016/j.ejps.2024.106767 
+
+78. Wang X, Jin J, Yan H, Liu J, Huang S, Bai H, et al. The mRNA export pathway licenses viral mimicry response and 
+
+antitumor immunity by actively exporting nuclear retroelement transcripts. Sci Transl Med. 2025;17:eado4370. 
+
+https://doi.org/10.1126/scitranslmed.ado4370 
+
+79. Huang W, Zhu Q, Shi Z, Tu Y, Li Q, Zheng W, et al. Dual inhibitors of DNMT and HDAC induce viral mimicry to 
+
+induce antitumour immunity in breast cancer. Cell Death Discov. 2024;10:143. 
+
+https://doi.org/10.1038/s41420-024-01895-7 
+
+80. Wang R, Dong X, Zhang X, Liao J, Cui W, Li W. Exploring viral mimicry combined with epigenetics and tumor 
+
+immunity: new perspectives in cancer therapy. Int J Biol Sci. 2025;21:958–73. https://doi.org/10.7150/ijbs.103877 
+
+81. Noordermeer SM, Adam S, Setiaputra D, Barazas M, Pettitt SJ, Ling AK, et al. The shieldin complex mediates 
+
+53BP1-dependent DNA repair. Nature. 2018;560:117–21. https://doi.org/10.1038/s41586-018-0340-7 
+
+82. Brown J, Pirrung M, McCue LA. FQC Dashboard: integrates FastQC results into a web-based, interactive, and 
+
+extensible FASTQ quality control tool. Wren J, editor. Bioinformatics. 2017;33:3137–9. 
+
+https://doi.org/10.1093/bioinformatics/btx373 
+
+83. Bray NL, Pimentel H, Melsted P, Pachter L. Near-optimal probabilistic RNA-seq quantification. Nat Biotechnol. 
+
+2016;34:525–7. https://doi.org/10.1038/nbt.3519 
+
+84. Soneson C, Love MI, Robinson MD. Differential analyses for RNA-seq: transcript-level estimates improve 
+
+gene-level inferences. F1000Res. 2015;4:1521. https://doi.org/10.12688/f1000research.7563.1 
+
+85. Love MI, Huber W, Anders S. Moderated estimation of fold change and dispersion for RNA-seq data with DESeq2. 
+
+Genome Biol. 2014;15:550. https://doi.org/10.1186/s13059-014-0550-8 
+
+86. The  Gene  Ontology  Consortium. The Gene Ontology Resource: 20 years and still GOing strong. Nucleic Acids 
+
+Research. 2019;47:D330–8. https://doi.org/10.1093/nar/gky1055 
+
+87. Sayers EW, Beck J, Bolton EE, Brister JR, Chan J, Connor R, et al. Database resources of the National Center for 
+
+Biotechnology Information in 2025. Nucleic Acids Research. 2025;53:D20–9. https://doi.org/10.1093/nar/gkae979 
+
+88. Lorenz R, Bernhart SH, Höner Zu Siederdissen C, Tafer H, Flamm C, Stadler PF, et al. ViennaRNA Package 2.0. 
+
+Algorithms Mol Biol. 2011;6:26. https://doi.org/10.1186/1748-7188-6-26 
+
+89. Groza C, Chen X, Wheeler TJ, Bourque G, Goubert C. A unified framework to analyze transposable element 
+
+insertion polymorphisms using graph genomes. Nat Commun. 2024;15:8915. 
+
+https://doi.org/10.1038/s41467-024-53294-2 
+
+90. Kopera HC, Larson PA, Moldovan JB, Richardson SR, Liu Y, Moran JV. LINE-1 Cultured Cell Retrotransposition 
+
+Assay. In: Garcia-Pérez JL, editor. Transposons and Retrotransposons [Internet]. New York, NY: Springer New York; 
+
+2016 [cited 2025 Sept 30]. p. 139–56. https://doi.org/10.1007/978-1-4939-3372-3_10 
+
+31

@@ -6,44 +6,64 @@
 </div>
 
 ## 每次日报
-- 最新运行日期：2026-07-17
-- 运行时间：2026-07-17 20:51:57 UTC
+- 最新运行日期：2026-07-18
+- 运行时间：2026-07-18 20:14:47 UTC
 - 运行状态：成功
-- 本次总论文数：8
-- 精读区：4
-- 速读区：4
+- 本次总论文数：14
+- 精读区：3
+- 速读区：11
 
 ### 今日简报（AI）
-今日精读聚焦CAR T细胞基础模型预测免疫治疗反应，速读涵盖空间转录组与肿瘤微环境分析。最值得关注的是CAR T细胞基础模型直接预测免疫疗效，以及空间代谢微环境整合解析。下一步建议：跟进该基础模型在真实临床数据中的验证，并探索空间多组学工具（如TMEformer）的实操。
-- 详情：[/202607/17/README](/202607/17/README)
+今日精读两篇免疫高分文章，速读三篇跨领域研究。  
+最值得关注：ITPKB调控NK细胞脱敏与抗肿瘤免疫，Fas-FADD-caspase-8轴决定细胞毒性淋巴细胞杀伤效率。  
+建议优先精读这两篇论文，理解免疫逃逸与杀伤机制的核心新发现。
+- 详情：[/202607/18/README](/202607/18/README)
 
 ### 精读区论文标签
-1. [CAR T cell foundation model predicts immunotherapy response](/202607/17/biorxiv-10-64898-2026-07-11-737994-v1-car-t-cell-foundation-model-predicts-immunotherapy-response)  
+1. [ITPKB is a conserved regulator of natural killer cell desensitization/education that constrains antitumor immunity](/202607/18/biorxiv-10-64898-2026-07-12-738073-v1-itpkb-is-a-conserved-regulator-of-natural-killer-cell-desensitizationeducation-that-constrains-antitumor-immunity)  
+   标签：评分：9.0/10、query:neo-resist
+   evidence：自然杀伤细胞脱敏作为免疫治疗耐药机制，转录组分析发现ITPKB是关键调控因子
+2. [The Fas-FADD-caspase-8 axis is a cancer cell-intrinsic determinant of cytotoxic lymphocyte-mediated killing](/202607/18/biorxiv-10-64898-2026-06-14-732110-v2-the-fas-fadd-caspase-8-axis-is-a-cancer-cell-intrinsic-determinant-of-cytotoxic-lymphocyte-mediated-killing)  
    标签：评分：8.0/10、query:neo-resist
-   evidence：利用单细胞转录组和超图注意力机制的基础模型预测免疫治疗反应，可用于耐药预测
-2. [CAR T cell foundation model predicts immunotherapy response](/202607/17/biorxiv-10-64898-2026-07-11-737994-v2-car-t-cell-foundation-model-predicts-immunotherapy-response)  
+   evidence：鉴定出对细胞毒性淋巴细胞杀伤的耐药机制
+3. [Textural features for pathway-level representation of omics data in biological networks](/202607/18/biorxiv-10-64898-2026-07-12-737672-v1-textural-features-for-pathway-level-representation-of-omics-data-in-biological-networks)  
    标签：评分：8.0/10、query:neo-resist
-   evidence：利用单细胞转录组和超图注意力机制的基础模型预测免疫治疗反应，可用于耐药预测
-3. [Coupled Cell-Intrinsic and Microenvironmental Heterogeneity Drives Divergent Trajectories in Castration-Resistant Prostate Cancer](/202607/17/biorxiv-10-64898-2026-07-16-738502-v1-coupled-cell-intrinsic-and-microenvironmental-heterogeneity-drives-divergent-trajectories-in-castration-resistant-prostate-cancer)  
-   标签：评分：8.0/10、query:neo-resist
-   evidence：机器学习代理模型预测前列腺癌治疗耐药
-4. [Cisplatin-Induced Plasticity Drives Cross-Resistance to CDK4/6 Inhibitors and Reveals Targetable Vulnerabilities Through HDAC Inhibition in Esophageal Squamous Cell Carcinoma.](/202607/17/biorxiv-10-64898-2026-07-17-738886-v1-cisplatin-induced-plasticity-drives-cross-resistance-to-cdk46-inhibitors-and-reveals-targetable-vulnerabilities-through-hdac-inhibition-in-esophageal-squamous-cell-carcinoma)  
-   标签：评分：8.0/10、query:neo-resist
-   evidence：食管癌中顺铂诱导交叉耐药的机制
+   evidence：用于药物反应预测的纹理特征
 
 ### 速读区论文标签
-1. [SHINE: Decoding transcriptional-metabolic microenvironments through higher-order spatial integration](/202607/17/biorxiv-10-64898-2026-07-10-737648-v1-shine-decoding-transcriptional-metabolic-microenvironments-through-higher-order-spatial-integration)  
+1. [Quantifying target antigen-dependent CAR T-cell performance against AML](/202607/18/biorxiv-10-1101-2024-12-16-628628-v3-quantifying-target-antigen-dependent-car-t-cell-performance-against-aml)  
    标签：评分：7.0/10、query:neo-resist
-   evidence：整合空间转录组和代谢组的生物信息学框架
-2. [Transcriptomic data and biomedical literature synergize in finding pharmacologic gene regulators](/202607/17/biorxiv-10-64898-2026-03-13-708862-v2-transcriptomic-data-and-biomedical-literature-synergize-in-finding-pharmacologic-gene-regulators)  
+   evidence：AML中CAR T细胞耐药的数学模型
+2. [Lemonite: identification of regulatory metabolites through data-driven, interpretable integration of transcriptomics and metabolomics data](/202607/18/biorxiv-10-64898-2026-03-27-714373-v2-lemonite-identification-of-regulatory-metabolites-through-data-driven-interpretable-integration-of-transcriptomics-and-metabolomics-data)  
+   标签：评分：7.0/10、query:neo-resist
+   evidence：数据驱动的转录组与代谢组整合方法用于调控代谢物鉴定
+3. [A High-Fidelity and Ancestrally Inclusive Patient-Derived Organoid Platform Resolves Cancer Cell Plasticity in Uterine Carcinosarcoma](/202607/18/biorxiv-10-64898-2026-04-21-720027-v2-a-high-fidelity-and-ancestrally-inclusive-patient-derived-organoid-platform-resolves-cancer-cell-plasticity-in-uterine-carcinosarcoma)  
+   标签：评分：7.0/10、query:neo-resist
+   evidence：患者来源类器官研究癌细胞可塑性与治疗耐药
+4. [PCIF1 loss licenses antitumour immunity via cholesterol biosynthesis](/202607/18/biorxiv-10-64898-2026-07-11-737975-v1-pcif1-loss-licenses-antitumour-immunity-via-cholesterol-biosynthesis)  
+   标签：评分：7.0/10、query:neo-resist
+   evidence：PCIF1缺失使免疫难治性肿瘤对免疫检查点阻断敏感，涉及肿瘤微环境和单细胞RNA测序
+5. [Pan-cancer NET-associated immunothrombosis coupling identifies a neutrophil-linked but neutrophil-irreducible tumor ecology](/202607/18/biorxiv-10-64898-2026-07-14-738403-v1-pan-cancer-net-associated-immunothrombosis-coupling-identifies-a-neutrophil-linked-but-neutrophil-irreducible-tumor-ecology)  
+   标签：评分：7.0/10、query:neo-resist
+   evidence：NETs评分分析揭示与免疫逃逸相关的中性粒细胞不可还原肿瘤生态，与微环境介导耐药相关
+6. [Mapping the Transcriptional Landscape of Drug Responses in Primary Human Cells Using High-Throughput DRUG-seq](/202607/18/biorxiv-10-1101-2025-06-03-657593-v2-mapping-the-transcriptional-landscape-of-drug-responses-in-primary-human-cells-using-high-throughput-drug-seq)  
    标签：评分：6.0/10、query:neo-resist
-   evidence：整合转录组数据用于药物靶标发现，可应用于耐药研究
-3. [Mapping Tumor-Microenvironment dependencies with TMEformer: A spatial foundation framework enabling in silico perturbation](/202607/17/biorxiv-10-64898-2026-05-17-725770-v2-mapping-tumor-microenvironment-dependencies-with-tmeformer-a-spatial-foundation-framework-enabling-in-silico-perturbation)  
+   evidence：原代细胞药物反应的转录组分析
+7. [Transcriptomic data and biomedical literature synergize in finding pharmacologic gene regulators](/202607/18/biorxiv-10-64898-2026-03-13-708862-v3-transcriptomic-data-and-biomedical-literature-synergize-in-finding-pharmacologic-gene-regulators)  
    标签：评分：6.0/10、query:neo-resist
-   evidence：肿瘤微环境空间建模
-4. [A microscopy-based readout to assess tumour-specific viability in neuroblastoma co-cultures and short-term cultured patient samples](/202607/17/biorxiv-10-64898-2026-06-24-734168-v1-a-microscopy-based-readout-to-assess-tumour-specific-viability-in-neuroblastoma-co-cultures-and-short-term-cultured-patient-samples)  
+   evidence：利用转录组数据的生物信息学方法优先排序药物靶点，可应用于耐药研究
+8. [Spatial Topology Reveals Biologically Distinct Recurrent Motifs in Colorectal Cancer](/202607/18/biorxiv-10-64898-2026-07-09-737584-v1-spatial-topology-reveals-biologically-distinct-recurrent-motifs-in-colorectal-cancer)  
    标签：评分：6.0/10、query:neo-resist
-   evidence：基于显微镜的读出方法用于评估含肿瘤微环境共培养中的肿瘤特异性活力
+   evidence：用于空间转录组学无监督图注意力变分自编码器
+9. [An immunocompetent model of MCPyV-driven Merkel cell carcinoma reveals tumor evolution under immune selection](/202607/18/biorxiv-10-64898-2026-07-10-737822-v1-an-immunocompetent-model-of-mcpyv-driven-merkel-cell-carcinoma-reveals-tumor-evolution-under-immune-selection)  
+   标签：评分：6.0/10、query:neo-resist
+   evidence：MCC免疫活性模型揭示免疫选择下的肿瘤进化
+10. [Spatial Single Cell Lipid-Transcriptomic Coupling Reveals Metabolic Niches in Glioblastoma](/202607/18/biorxiv-10-64898-2026-07-13-738204-v1-spatial-single-cell-lipid-transcriptomic-coupling-reveals-metabolic-niches-in-glioblastoma)  
+   标签：评分：6.0/10、query:neo-resist
+   evidence：单细胞空间脂质-转录组耦合揭示胶质母细胞瘤代谢微环境
+11. [Transposable elements shape olaparib response according to BRCA1 status in triple-negative breast cancer](/202607/18/biorxiv-10-64898-2026-07-15-738694-v1-transposable-elements-shape-olaparib-response-according-to-brca1-status-in-triple-negative-breast-cancer)  
+   标签：评分：6.0/10、query:neo-resist
+   evidence：使用计算分析研究转座元件在奥拉帕利反应中的作用
 
 
 <div class="dpr-home-promo-card">

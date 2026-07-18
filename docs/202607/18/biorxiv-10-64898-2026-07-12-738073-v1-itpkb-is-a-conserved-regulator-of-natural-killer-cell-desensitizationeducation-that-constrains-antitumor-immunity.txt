@@ -1,0 +1,785 @@
+Title: 69917732
+
+URL Source: https://www.biorxiv.org/content/10.64898/2026.07.12.738073v1.full.pdf
+
+Number of Pages: 68
+
+Markdown Content:
+1
+
+ITPKB is a conserved regulator of natural killer cell desensitization/education that constrains antitumor immunity Yeara Jo 1 , Alexandros Karampatzakis 1 , Seung Won Lee 1 , Alice Peng 1 , Zaina Ghouri 1 ,Monsserratt Moya 1 , Elizabeth Andrews 1 , Harrison Sudholz 1,† , Chenyu Zhang 1,‡ , Berna Bou Tayeh 2 , Alejandro N. Medina 3 , Jiucheng Ding 1,3 , Robert A. Saxton 1,3 , Ziyang Zhang 3 , Yang Shi 2 , Hideho Okada 4,5,6 , David H. Raulet 1,7* 
+
+* Correspondence: raulet@berkeley.edu  
+
+> 1
+
+Division of Immunology and Molecular Medicine, Department of Molecular and Cell Biology, University of California, Berkeley, Berkeley, CA, USA. 2 Ludwig Institute for Cancer Research, Nuffield Department of Medicine, University of Oxford, Oxford, UK. 3 Department of Chemistry, University of California, Berkeley, Berkeley, CA, USA. 4 Department of Neurological Surgery at University of California, San Francisco, San Francisco, CA, USA. 5 Parker Institute for Cancer Immunotherapy, San Francisco, CA, USA. 6 Helen Diller Family Comprehensive Cancer Center, San Francisco, CA, USA. 7 Lead Contact † Present Address: Walter and Eliza Hall Institute of Medical Research, 1G Royal Pde Parkville, Melbourne, VIC 3052, Australia. ‡ Present Address: Dynamics of Immune Responses Lab, Institut Pasteur, Paris, France. 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.12.738073 doi: bioRxiv preprint
+
+2
+
+Summary 
+
+Natural Killer (NK) cell desensitization induced by persistent stimulation limits durable antitumor immunity, yet the molecular mechanisms governing this dysfunctional state remain poorly defined. To identify conserved regulators of NK cell desensitization, we performed comparative transcriptomic analyses across multiple murine models of persistent activation and dysfunction. This approach defined a shared transcriptional program of desensitization and identified Itpkb to be upregulated across multiple distinct contexts. Genetic and pharmacological inhibition of ITPKB enhanced degranulation, cytokine production, and cytotoxicity in both murine and human NK cells under multiple desensitization settings. Mechanistically, ITPKB regulated signaling downstream of persistent activation through the IP 3 /IP 4 axis, limiting calcium mobilization and NFAT-dependent transcriptional responses in desensitized NK cells. Furthermore, inhibition or deletion of ITPKB enhanced NK-cell mediated tumor control in vivo 
+
+and improved the efficacy of adoptively transferred CAR-NK cells, underscoring the translational potential of targeting this pathway. Together, these findings identify ITPKB as a cell-intrinsic regulator of NK cell desensitization and support targeting the IP 3 /IP 4 signaling axis to enhance NK cell-mediated antitumor immunity. 
+
+Introduction 
+
+Natural killer (NK) cells are innate lymphocytes that play a crucial role in immune surveillance by eliminating transformed or infected cells through direct cytolysis and secretion of proinflammatory cytokines such as IFN-γ and TNF-α1 . NK cells rely on a repertoire of germline-encoded activating and inhibitory receptors to discriminate healthy from abnormal cells based on molecular cues such as the loss of MHC class I (“missing self”) or expression of stress ligands (“induced self”) 2,3 . Because NK cells mediate rapid cytotoxic responses without requiring substantial clonal expansion and recognize target cells independently of antigen presentation, they have emerged as promising platforms for cancer immunotherapy, particularly in tumors 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.12.738073 doi: bioRxiv preprint
+
+3with low mutational burden or poor neoantigen visibility 4 . Multiple approaches have been developed to mobilize endogenous NK cells in tumors, including engineered cytokines 5-8 ,activators of innate immunity 9-12 , blockade of inhibitory receptors 13,14 , and bispecific engagers to bridge NK cell activating receptors and tumor-specific molecules 15,16 . Adoptive NK cell therapies, including CAR-NK cells have potential for off-the-shelf applications and are showing promise in the clinic 10,17-21 . The results suggest that NK cells can reject established tumors if their effector functions can be sustained or enhanced. However, resistance to NK therapy and frequent relapse among responding patients 22,23 highlight the need for a deeper understanding of the molecular mechanisms that regulate NK cell function in tumors. NK cell education, sometimes called "licensing", “arming/disarming” or “tuning”, is a quantitative process that tunes NK cell responsiveness depending on their steady state environment 1,24-26 . Interactions of NK cell receptors with MHC and other molecules encountered on surrounding cells establish tolerance to normal 'self' cells and tunes the capacity of individual NK cells to respond to subsequent stimulation by unhealthy cells, in a manner likened to a rheostat 24-26 . The responsiveness of mature NK cells is only semi-stable, however, and can be decreased or increased when the cells are exposed to greater or lesser steady-state stimulation, respectively 27,28 . This functional plasticity of NK cells is particularly relevant in tumors. For instance, NK cells initially mount strong responses against MHC class I-deficient tumor cells but gradually lose cytotoxic capacity under persistent stimulation, becoming desensitized and unable to control large tumor burdens 5 . Similar desensitization has also been observed under conditions of prolonged engagement with NK-activating ligands 29-31 , suggesting that both “missing self” and “induced self” cues can drive this form of dysfunction. Understanding the molecular mechanisms underlying NK cell desensitization in both steady-state and tumor contexts is therefore critical for designing strategies to reprogram NK cells to sustain antitumor activity. 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.12.738073 doi: bioRxiv preprint
+
+4Analogous to NK cell desensitization, T cells progressively lose effector function upon chronic antigen exposure, entering a state of “exhaustion” 32 . Distinct exhausted T cell states have been defined, including a plastic, progenitor-like population capable of reinvigoration and a more terminally exhausted population that is epigenetically fixed and refractory to rescue 33,34 .Transcriptomic analyses across infection and tumor models have revealed a conserved molecular circuitry driven by chronic stimulation 35,36 , including inhibitory receptors such as PD-1 and LAG-3, blockade of which restores effector activity in the reprogrammable subset of exhausted CD8 ⁺ T cells 37-41 . Importantly, terminally exhausted T cells exhibit substantial differences in gene expression programs compared to the reprogrammable subset 33,36 . These studies underscore the power of transcriptional profiling to uncover mechanisms of immune dysfunction and identify therapeutic targetable states. In contrast, efforts to define the molecular underpinnings of NK cell desensitization have been more limited, in part due to the diversity of receptor inputs that govern NK cell activation and tolerance. Systematic transcriptomic profiling of NK cells rendered desensitized under distinct conditions may therefore illuminate core regulators of NK cell desensitization and reveal actionable pathways to sustain NK cell antitumor activity. Based on this rationale, we sought to delineate the transcriptional networks underlying NK cell desensitization using a series of well-controlled, tumor-free models. These reductionist systems recapitulate key features of tumor-associated dysfunction while allowing direct interrogation of intrinsic regulatory mechanisms. Comparative RNA-sequencing of NK cells across multiple desensitization contexts identified both conserved and context-specific transcriptional signatures that collectively define the molecular landscape of NK cell desensitization. Among the recurring differentially expressed genes, Itpkb , encoding inositol-trisphosphate 3-kinase B (ITPKB), emerged as a candidate regulator of NK cell desensitization. Although ITPKB has previously been implicated as a negative regulator of NK cell activation and effector function 42 , its role in chronic stimulation-induced NK cell desensitization has not been 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.12.738073 doi: bioRxiv preprint
+
+5explored. Here, we combine genetic and pharmacologic perturbation approaches to identify ITPKB as a key mediator of NK cell desensitization arising from persistent stimulation in both murine and human systems. Furthermore, we demonstrate that targeting ITPKB restores NK cell effector function and enhances NK cell-mediated antitumor immunity, including in the context of CAR-NK cell therapy. Together, these findings identify ITPKB as a targetable pathway regulating NK cell desensitization and provide a framework for therapeutically reprogramming dysfunctional NK cells in cancer. 
+
+Results Transcriptomic Profiling Identifies Candidate Regulators of NK Cell Desensitization 
+
+We set up multiple robust in vivo and in vitro conditions to compare desensitized NK cells with their functional counterparts. First, we compared functional vs. desensitized NK cells that naturally arise through NK cell education 24-26 . Normal lymphoid cells lacking MHC I are killed by NK cells, indicating that healthy cells provide stimulatory signals that are normally counterbalanced by inhibitory receptors recognizing self MHC I molecules, such as K b and D b in C57BL6/J (B6) mice. In B6 mice, these receptors include Ly49C and Ly49I (bind to K b )43 , and CD94/NKG2A (binds to a D b -derived peptide presented by the Qa-1 nonclassical MHC I molecule) 44 . Individual NK cells can express any combination of Ly49C, Ly49I or CD94/NKG2A (abbreviated C, I and N, respectively), or none of them 26,45,46 . In B6 mice, NK cells lacking all 3 receptors (C - I- N- NK cells; triple negative, TN) are inhibited the least and therefore persistently stimulated the most by neighboring cells in steady state conditions, resulting in a high degree of desensitization. NK cells expressing only one of the receptors, such as Ly49I + single positive (SP) cells, are only partially inhibited and therefore less desensitized, and triple positive (TP) NK cells are inhibited the most and therefore least desensitized. Consequently, in response to activating receptor engagement ex vivo , the degranulation and cytokine production responses follow the pattern TP>SP>TN (Figure 1A, S1A and 24-26,47,48 ). The same pattern held when we 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.12.738073 doi: bioRxiv preprint
+
+6gated on the most mature, CD27 - CD11b+ NK cell subset 49 (Figure 1B and S1B). In MHC I-deficient B2m –/– mice, all NK cells are persistently stimulated and therefore strongly desensitized, similar to TN cells in B6 mice (Figure 1A, S1A, and 24-26,47 ). To identify conserved molecular pathways associated with NK cell desensitization, we next established additional modes of desensitization, including 22-hour stimulation with ionomycin, a calcium ionophore that mimics receptor-induced Ca 2+ influx 50 and is known to induce a state of dysfunction in both T cells and NK cells 51,52 . We confirmed that a 22-hour treatment with ionomycin desensitized murine NK cells (Figure 1C and S1C). As yet another mode of desensitization, we reproduced persistent ‘induced self’ signals by simultaneously stimulating normal NK cells in vitro via engagement of multiple activating receptors for an extended period 53 
+
+> .
+
+Thus, NK cells stimulated for 48-hours with plate-bound antibodies targeting NKp46 in combination with NKG2D or DNAM-1, combinations that optimally activate NK cells 54 ,were desensitized when subsequently stimulated via a different activating receptor, NK1.1 (Figure 1D and S1D). Because transcriptional changes are readily measurable and experimentally tractable and bulk RNAseq is more quantitative than single cell RNAseq, we performed bulk RNA-seq to compare desensitized NK cells and their functional counterparts in the aforementioned conditions: 1) SP vs. TP, TN vs. TP, or TN vs. SP NK cells in B2m +/+ mice (labeled "CIN"), 2) TP NK cells from B2m –/– vs. B2m +/+ mice (B2m), 3) NK cells treated with ionomycin vs. vehicle (iono), and 4) NK cells stimulated for 48 hours with combinations of activating receptor antibodies (Ab combo). Across most conditions, differentially expressed (DE) genes significantly overlapped with literature-reported desensitization-associated transcriptional programs 52,55-57 ,supporting the validity of our approach (Figure S1E-H). In addition, gene set enrichment analysis revealed that ionomycin- and persistent activating receptor ligation-induced desensitization shared transcriptional features derived from exhausted CD8 + T cells integrated across multiple exhaustion contexts and species 58 , whereas desensitization associated with 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.12.738073 doi: bioRxiv preprint
+
+7disruption of MHC class I-mediated inhibitory signaling did not (Figure S1I-L). These findings suggest that distinct desensitization contexts engage partially overlapping molecular programs, with some forms of NK cell desensitization converging at least in part with pathways associated with T cell exhaustion, whereas others likely reflect mechanistically distinct processes. To find conserved core regulators of NK cell desensitization, we overlapped the DE genes from the 4 comparisons and focused on the genes that were commonly dysregulated in 3 or more comparisons (Figure 1E, black line; Table 1 and 2). These included genes encoding well known regulators of NK cell activity, such as TIGIT, blockade of which augments NK-mediated anti-tumor immunity 13 . However, TIGIT expression alone cannot fully account for NK cell desensitization, as desensitized NK cells show diminished responses even under stimulation conditions that bypass inhibitory interactions between TIGIT and its ligands (CD155 and CD112), such as plate-bound antibody stimulation. This observation suggests the presence of additional cell-intrinsic mechanisms underlying NK cell desensitization. In MHC I-deficient tumors, NK cells initially recognize the loss of MHC I and attack tumor cells, such that small tumor loads can be eradicated, but with larger tumor loads NK cells eventually become desensitized and lose the capacity to control the tumors 5,59 . Comparing the functional capacity of NK cells in MC38-B2m –/– colorectal tumors vs. matched spleens showed significantly compromised degranulation and IFN-γ production by tumor-infiltrating NK cells following NKp46 stimulation (Figure 1F). Gene expression profiling showed that 11 of 17 genes (64.7%) that were commonly upregulated across multiple desensitization conditions were more highly expressed in NK cells from MC38-B2m –/– tumors than those from spleens (Figure 1G). We further analyzed the expression of these 17 genes in CD56 dim CD16 high NK cell clusters from a pan-cancer atlas of human tumors 60 . 10 of the 17 genes were more highly expressed in the cluster that exhibited the weakest cytotoxicity ("c6-DNAJB1 cluster") compared to the cluster showing the highest inflammatory score among all NK cell subsets ("c4-NFKBIA cluster") (Figure S1M). Moreover, 26 of 34 genes (76.5%) that were commonly downregulated across 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.12.738073 doi: bioRxiv preprint
+
+8multiple desensitization conditions also exhibited reduced expression in desensitized tumor-infiltrating NK cells compared to functional splenic NK cells (Figure 1G). These findings underscored the strength of our approach in identifying potential core regulators of NK cell desensitization and suggest the utility of our gene set for studying NK cell desensitization in the tumor microenvironment (TME). Together, these results established a foundational gene signature of NK cell desensitization and enabled us to nominate conserved candidate regulators for functional validation in both murine and human systems. 
+
+Itpkb promotes functional desensitization in murine NK cells 
+
+Among the 17 upregulated genes in the desensitization signature (Figure 1), Itpkb was more highly expressed in desensitized NK cells under 3 of the 4 conditions tested: CIN, B2m, and iono (Figure 2A). Additionally, Itpkb expression was higher in NK cells infiltrating MC38-
+
+B2m –/– tumors compared to splenic NK cells (Figure 1G), a finding validated by quantitative(q) RT-PCR (Figure S2A). Itpkb encodes inositol-triphosphate 3-kinase B (ITPKB), which phosphorylates soluble inositol(1,4,5)-trisphosphate (IP 3 ) to generate inositol(1,3,4,5)– tetrakisphosphate (IP 4 )61 , thereby modulating signaling downstream of activating receptors. The identification of ITPKB was particularly intriguing because prior studies implicated it as a negative regulator of NK cell effector responses 42 . We therefore hypothesized that ITPKB upregulation is a mechanism that underlies NK cell desensitization and tested effects of pharmacologic and genetic perturbation of ITPKB in multiple desensitization models. To test this while avoiding the developmental defects observed in Itpkb -deficient mice, we treated desensitized NK cells and their functional counterparts with a selective and potent ITPKB inhibitor, GNF362 62 , prior to and during functional assays. In desensitized NK cells from 
+
+B2m –/– mice, GNF362 treatment resulted in dose-dependent increases in both degranulation and IFN-γ production (Figure 2B). Some enhancement was also observed in NK cells from 
+
+B2m +/+ mice, possibly reflecting the fact that many NK cells in these mice are partially 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.12.738073 doi: bioRxiv preprint
+
+9desensitized 47,48 or simply reflecting the fact that these NK cells still express some Itpkb .Importantly, GNF362 treatment did not compromise cell viability (Figure S2B). GNF362 also enhanced the degranulation responses of WT NK cells that had been desensitized for 22 hours with ionomycin in the presence of low dose IL-2 before restimulating the cells with plate-bound NKp46 antibody (Figure 2C). The inhibitor had no significant effect on NK cells treated with IL-2 alone, perhaps because IL-2 partially alleviated the baseline partial desensitization characteristic of freshly isolated NK cells, Notably, ITPKB inhibition also enhanced IFN-γ
+
+production in control NK cells and to a lesser extent in desensitized NK cells (Figure 2C). These findings suggested that ITPKB inhibition enhances the functional activity of ionomycin-desensitized NK cells with a more selective effect on control NK cells. Together, these findings support a role for ITPKB in promoting NK cell desensitization. In light of the potential off-target effects of pharmacological inhibitors, we deleted Itpkb 
+
+genetically in NK cells using CRISPR (Clustered Regularly Interspaced Short Palindromic Repeats)/Cas9 ribonucleoprotein (RNP) nucleofection. NK cells edited at Rosa26 (a neutral "safe harbor" locus) or Cd4 (a gene not expressed in NK cells) were used as controls. Editing efficiency at the Itpkb locus was approximately 60%, as determined by Tracking of Indels by Decomposition (TIDE) analysis (Figure S2C) 63 . Genetic deletion of Itpkb in NK cells increased degranulation in ionomycin-desensitized NK cells, but not in vehicle-control treated NK cells (Figure 2D, left). In addition, Itpkb -edited NK cells exhibited increased IFN-γ production in both control and desensitized conditions (Figure 2D, right) similar to the results with the ITPKB inhibitor. Notably, Itpkb -edited NK cells did not show any significant increases in the levels of granzyme A, granzyme B or perforin compared to Rosa26 - or Cd4 -edited control NK cells (Figure S2D). Together, these findings show Itpkb deletion enhances granule release and cytokine production by NK cells, rather than increasing effector molecule content, particularly under desensitizing conditions. These results establish ITPKB as a critical mediator of NK cell 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.12.738073 doi: bioRxiv preprint
+
+10 desensitization and demonstrate that disrupting its activity can partially overcome the loss of effector activity associated with desensitization in mature NK cells. 
+
+ITPKB promotes functional desensitization in a human NK cell line 
+
+We next asked whether ITPKB is upregulated in desensitized human NK cells and contributes to functional desensitization. ITPKB transcript levels were indeed increased in the NK-92 human NK cell line following ionomycin-induced desensitization (Figure 3A). Furthermore, the ITPKB inhibitor GNF362 enhanced degranulation of both desensitized and control NK-92 cells in response to NKp30 stimulation or co-culture with K562 target cells, in a dose-dependent manner (Figure S3A-B). GNF362 treatments did not induce spontaneous responses in the absence of stimulation (Figure S3C) or affect cell viability (Figure S3D). For a genetic approach, we knocked down ITPKB expression using CRISPR interference (CRISPRi) in NK-92 cells stably expressing dCas9-KRAB for transcriptional repression. The cells were transduced with a lentiviral vector encoding two gRNAs targeting 
+
+ITPKB , or two gRNAs targeting TRAC , which NK-92 cells don't express. Compared to TRAC -edited cells, ITPKB -edited NK-92 cells showed a strong reduction in ITPKB expression (Figure S3E) and an increased degranulation in response to K562 cell stimulation in both control and ionomycin-desensitized cells, with a more pronounced enhancement in the desensitized state (Figure 3B). Some impact of ITPKB knockdown in nondesensitized cells is not unexpected, because the cells still express ITPKB , albeit at lower levels than desensitized cells (Figures 2A and 3A). Degranulation following NKp30 stimulation was also increased under both conditions (Figure 3B). Consistent with enhanced degranulation, ITPKB -edited NK-92 cells also exhibited increased cytotoxicity against K562 cells under desensitizing conditions across all effector-to-target ratios tested, with no significant difference observed in control conditions (Figure 3C). Together, these findings indicate that ITPKB knockdown improves NK cell degranulation and cytotoxicity after ionomycin-induced desensitization of NK-92 cells. 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.12.738073 doi: bioRxiv preprint
+
+11 We next used two complementary approaches to confirm that the enhanced degranulation and cytotoxicity after ITPKB knockdown under desensitizing conditions resulted from specific targeting of ITPKB , rather than reflecting off-target effects. First, we desensitized both TRAC -edited and ITPKB -edited NK-92 dCas9-KRAB cells as before and treated them with GNF362 or vehicle alone prior to and during stimulation or during the cytotoxicity assay. GNF362 treatment of TRAC -edited controls restored degranulation and cytotoxicity to levels comparable to ITPKB -edited cells (Figure 3D-E). Notably, GNF362-treatments resulted in a small but significant increase in degranulation (but not cytotoxicity) even in ITPKB -edited cells (Figure 3D), which may reflect inhibition of residual ITPKB from incomplete CRISPRi-mediated knockdown (Figure S3E). As a second approach to confirm the specificity of CRISPRi-mediated ITPKB knockdown, we restored ITPKB expression by transducing the cells with a lentiviral expression vector encoding the ITPKB open reading frame. The ITPKB segment in the vector is expected to be unaffected by the CRISPRi machinery, which targets the ITPKB promoter. To validate this construct, we transduced NK-92 cells that do not express the dCas9-KRAB machinery and confirmed effective upregulation of ITPKB expression by qRT-PCR (Figure S3F) and reduced degranulation responses (S3G). In ITPKB -edited NK-92 dCas9-KRAB cells, ITPKB transduction restored high ITPKB expression (Figure 3F) and reversed the effects of ITPKB knockdown on degranulation and cytotoxicity in both desensitized and vehicle-treated NK cells (Figure 3G-H). These complementary genetic and pharmacologic approaches provide strong evidence that the enhanced degranulation and cytotoxicity observed in desensitized NK-92 cells following ITPKB 
+
+knockdown are due to loss of ITPKB activity, rather than off-target effects of CRISPRi. Next, we examined the impact of ITPKB knockdown on NK cell effector function under a more physiological desensitizing condition. We performed four rounds of repeated challenge with K562 cells, using TRAC -edited control and ITPKB -edited NK-92 dCas9-KRAB cells 64,65 (Figure 3I). During the 13-day repeated stimulation period, TRAC -edited cells began to lose the 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.12.738073 doi: bioRxiv preprint
+
+12 capacity to eliminate K562 cells after the third round of challenge on day 5, indicating the onset of desensitization, whereas ITPKB -edited cells maintained a greater capacity to eliminate K562 cells (Figure 3J), supporting a role for ITPKB in this form of desensitization. At the end of the 13-day serial co-cultures, the TRAC -edited NK cells exhibited reduced degranulation in response to either K562 or NKp30 stimulation compared to cells that were not serially stimulated, whereas 
+
+ITPKB -editing restored much of this difference, especially in K562-stimulated cells (Figure 3K). Consistent with the enhanced degranulation responses, ITPKB knockdown also substantially improved cytotoxicity of K562 target cells and Raji target cells by NK-92 cells desensitized with repeated K562 stimulations, but had little or no effect on cytotoxicity by non-desensitized NK-92 cells (Figure 3L-M). Collectively, these complementary pharmacologic and genetic approaches establish ITPKB as a regulator of human NK cell desensitization and demonstrate that its inhibition restores NK cell effector function across multiple desensitization settings. 
+
+ITPKB promotes functional desensitization in primary human NK cells 
+
+We next addressed whether ITPKB similarly promotes functional desensitization in primary human NK cells. We isolated NK cells from several peripheral blood donors and expanded them in the presence of irradiated K562 feeder cells expressing membrane-bound IL-21 and 4-1BB ligand (CSTX002) 66 . Treatments of these NK cells with ionomycin consistently induced desensitization in subsequent responses to stimulation with anti-NKp30, K562 or Raji target cells, and treatments with GNF362 in all cases restored the responses to the levels observed in vehicle-treated control NK cells (Figure 4A), with little or no effect on cell viability (Figure S4A). GNF362 treatments also enhanced the responses of control NK cells, but in most cases to a more limited degree. Notably, GNF362 treatment led to a small but significant increase, or in some cases, a strong trend toward increased IFN-γ production in desensitized NK cells across all stimulation conditions, although levels did not reach those observed in control NK cells (Figure S4B). GNF362 treatments induced little or no response in the absence 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.12.738073 doi: bioRxiv preprint
+
+13 of stimulation (Figure S4C). Ionomycin also desensitized these NK cells in cytotoxicity assays against Raji target cells (Figure 4B). Killing was partially restored by pharmacological ITPKB inhibition whereas the inhibitor had no significant effect on killing by control NK cells (Figure 4B-D). Together, these findings demonstrate that ITPKB promotes functional desensitization in primary human NK cells and that its inhibition enhances effector functions including degranulation and cytotoxicity. 
+
+Suppression of IP 4 generation and enhanced IP 3 R-mediated calcium signaling and NFAT activity restore effector function in desensitized ITPKB -deficient NK cells 
+
+We sought to define downstream signaling mechanisms through which ITPKB controls degranulation and cytotoxicity in desensitized NK cells. Although the functional effects of ITPKB perturbation extended across multiple desensitization contexts in murine and human NK cells, ionomycin-induced desensitization provides a synchronized and experimentally tractable system for mechanistic interrogation. ITPKB phosphorylates IP 3 (inositol(1,4,5)-trisphosphate at the 3-position to generate IP 4 (inositol(1,3,4,5)-tetrakisphosphate)( 61 , Figure S5A), which has been reported to limit NK cell effector activity in murine NK cells 42 . We asked whether it plays a comparable role in mediating ITPKB-dependent desensitization in human NK cells. TRAC -edited and ITPKB -edited NK-92 dCas9-KRAB cells were desensitized with ionomycin and pretreated with a cell-permeable IP 4 ester, followed by stimulation with NKp30 antibodies in the continued presence of IP 4 . Supplementation with IP ₄ decreased degranulation by ITPKB -edited and TRAC -edited NK-92 dCas9-KRAB cells under non-desensitizing conditions (Figure 5A). Notably, under desensitizing conditions, a context not examined in previous studies, IP 4treatment greatly reduced the enhanced degranulation phenotype conferred by ITPKB 
+
+knockdown, reducing responses to near those of vehicle-treated TRAC -edited controls (Figure 5A). 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.12.738073 doi: bioRxiv preprint
+
+14 Additionally, because ITPKB catalyzes the conversion of IP 3 into IP 4 , it is expected to deplete intracellular IP 3 , which engages IP 3 receptors (IP 3 Rs) on the endoplasmic reticulum to promote calcium release into the cytosol and activate multiple signaling pathways 67 . Hence, the reduced IP 3 levels resulting from increased ITPKB action may also contribute to desensitization, whereas enhanced IP 3 R-mediated calcium signaling after depleting ITPKB in desensitized NK cells may contribute to the increased effector function. To test this, TRAC -edited and ITPKB -edited NK-92 dCas9-KRAB cells were desensitized with ionomycin and pretreated with the IP 3 Rantagonist 2-APB (2-aminoethyl diphenylborinate), followed by stimulation with NKp30 antibodies in the continued presence of 2-APB. Under desensitizing conditions, 2-APB treatment abolished the enhanced degranulation observed in ITPKB -edited cells (Figure 5B). Collectively, these findings suggest that increased IP 4 generation and decreased IP 3 availability together act as key downstream mechanisms of desensitization resulting from elevated ITPKB 
+
+expression. Consistent with this model, alterations in IP 3 /IP 4 signaling would be expected to affect intracellular calcium dynamics following receptor engagement (Figure S5A). To test this, TRAC -or ITPKB -edited NK-92 cells were desensitized with ionomycin and loaded with Fluo-4 and Fura Red to track calcium responses following NKp30 stimulation. TRAC -edited cells exhibited significantly impaired calcium responses after desensitization compared with vehicle-treated controls (Figure 5C and S5B-C). In contrast, calcium responses were largely preserved following desensitization in ITPKB -edited cells and were significantly restored compared to those observed in desensitized TRAC -edited cells (Figure 5C and S5B-C). These findings identify impaired receptor-induced calcium signaling as a feature of NK cell desensitization and establish a role for ITPKB in mediating this defect. Given that calcium signaling is a major determinant of NFAT (nuclear factor of activated T cells) transcription factor activation (Figure S5A), we next assessed whether impaired calcium responses in desensitized NK cells translated into defective NFAT signaling, using NK-92 cells 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.12.738073 doi: bioRxiv preprint
+
+15 expressing a firefly luciferase reporter under the control of NFAT response elements. Cells were desensitized with ionomycin and pretreated with the ITPKB inhibitor GNF362, followed by stimulation with NKp30 antibodies in the continued presence of GNF362. The stimulation-induced change in NFAT activity was significantly reduced in desensitized NK cells (Figure 5D), largely reflecting an increase in baseline NFAT activity in those cells (Figure S5D-E). GNF362 treatment significantly enhanced NFAT inducibility (Figure 5D), largely restoring the defect observed in desensitized cells. These data suggest that ITPKB promotes NK cell desensitization at least in part by dampening calcium-dependent NFAT activation. We also examined whether additional signaling pathways downstream of NK-activating receptors were similarly affected. Phosphorylation of Akt/protein kinase B, previously reported to be suppressed by IP 4 in murine NK cells under non-desensitized conditions 42 , did not differ significantly between desensitized and non-desensitized NK cells and was not further enhanced by ITPKB knockdown (Figure S5F). In contrast, ERK phosphorylation following NKp30 stimulation was significantly reduced in desensitized NK cells (Figure S5G-H), consistent with prior observations in tumor-infiltrating NK cells 5 . However, it was not significantly restored by 
+
+ITPKB knockdown (Figure S5G-H), in agreement with previous findings in murine Itpkb -/- NK cells 42 . Collectively, these results suggest that ITPKB promotes NK cell desensitization primarily by limiting IP 3 -dependent calcium signaling rather than by broadly suppressing downstream signaling pathways. 
+
+Deletion or inhibition of ITPKB enhances NK cell-mediated tumor control in vivo 
+
+The increased Itpkb transcript levels in tumor-infiltrating mouse NK cells (Figure 1G and S2A), likely applies to NK cells in at least some human tumors. Published single-cell RNA-seq datasets using the scDVA database 60 showed enrichment of ITPKB expression in NK cells in tumors compared to matched normal tissues in colorectal cancer, breast cancer, hepatocellular carcinoma, and pancreatic cancer, whereas some other tumor types exhibited comparable or 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.12.738073 doi: bioRxiv preprint
+
+16 lower expression relative to normal tissues (Figure S6A). These findings suggested that elevated ITPKB may contribute to NK cell desensitization in several types of human cancer. To determine whether extinguishing Itpkb expression could enhance NK cell-mediated tumor control in vivo , we disrupted Itpkb in murine NK cells using CRISPR/Cas9 RNP nucleofection as described in Figure 2, and again achieved approximately 60% knockout of the 
+
+Itpkb gene. Edited NK cells were adoptively transferred to Rag2 –/– Il2rg –/– recipient mice, which lack T, B, and NK cells followed by a single injection of H9-MSA, a half-life extended IL-2 'superkine' with enhanced affinity for IL-2R β/γ complexes 10,68 . Four days after NK cell transfer, recipient mice were implanted subcutaneously (s.c.) with MHC I-deficient MC38-B2m –/– colorectal cancer cells. Itpkb -editing of NK cells significantly improved tumor control compared to editing of Rosa26 (Figure S6B-C). The effect was reproducible in independent experiments but modest, likely reflecting incomplete CRISPR editing and the fact that the NK cells were not previously desensitized. To address the role of ITPKB in a scenario where NK cells were previously desensitized, we tested pharmacologic inhibition of ITPKB on NK-mediated control of established MC38-B2m –/– tumors at a time point (day 10 after tumor implantation) when intratumoral NK cells were demonstrably desensitized (Figure 1F). Tumors were initiated in Rag2 –/– mice to exclude effects of T and B cells, and the mice were administered GNF362 or vehicle by oral gavage on days 9, 12 and 14. ITPKB inhibition significantly delayed tumor growth compared to vehicle-treated controls (Figure 6A and S6D). Notably, antibody-mediated depletion of NK cells abrogated the difference in tumor growth between GNF362- and vehicle-treated mice, confirming that the enhanced tumor control was NK cell-dependent (Figure 6A and S6D). Furthermore, NK cells in day 13 tumor dissociates from GNF362-treated mice, when tumor sizes were still comparable to control tumors, showed elevated degranulation and cytokine responses compared to NK cells in vehicle-treated tumors after ex vivo NK1.1 stimulation but not without ex vivo stimulation (Figure 6B). Elevated responses were also observed in splenic NK cells from GNF362-treated mice 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.12.738073 doi: bioRxiv preprint
+
+17 (Figure S6E). GNF362 treatment did not significantly alter the frequency or staining intensity of granzyme A-, granzyme B-, or perforin-expressing NK cells (Figure S6F-H). Together, these findings demonstrated that pharmacological inhibition of ITPKB enhances NK cell-mediated tumor control by restoring granule release and cytokine production in desensitized NK cells within the TME, rather than by increasing effector molecule content. Given that both genetic deletion and pharmacological inhibition of ITPKB enhanced NK cell effector function, we next examined whether we could harness this property to generate more effective NK cells for cellular therapies, such as chimeric antigen receptor (CAR)-NK cells. We s.c. inoculated syngeneic SB28 glioblastoma cells expressing epidermal growth factor receptor variant III (EGFRvIII) 69 into NK-DTA mice, which specifically lack NK cells 70 . C57BL/6J-background transgenic mice carrying a murinized anti-EGFRvIII CAR downstream of a Lox-Stop-Lox cassette inserted in the Rosa26 locus 69 were crossed with Vav-Cre mice to activate CAR expression in hematopoietic cells. CAR-expressing NK cells were expanded from splenocytes of these mice, purified, and nucleofected with Cas9 RNPs containing either Itpkb -or Rosa26 -targeting gRNA and adoptively transferred into tumor-bearing mice on day 13 post tumor inoculation. To ensure that any observed antitumor effects were mediated by the transferred NK cells, recipient mice were depleted of CD4 ⁺ and CD8 ⁺ T cells. Starting one day after NK cell transfer, all recipient mice received repeated doses of H9-MSA to support NK cell persistence and proliferation. In this setting, Itpkb -edited CAR NK cells conferred a substantial improvement in tumor control compared to Rosa26 -edited CAR NK cells (Figure 6C and S6I), supporting the potential of engineering ITPKB-deficient NK cells as a therapeutic strategy to achieve sustained antitumor activity. Together, these findings demonstrate that genetic deletion or pharmacological inhibition of ITPKB enhances NK cell-mediated tumor control by restoring effector function under desensitized conditions and sustaining antitumor activity, providing evidence that ITPKB 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.12.738073 doi: bioRxiv preprint
+
+18 upregulation represents a significant mechanism of NK cell desensitization, and highlighting ITPKB as a promising target for NK cell-based immunotherapy. 
+
+Discussion 
+
+Cancer remains the second leading cause of death in the United States 71 . NK cells possess potent antitumor effector functions and hold great promise for cancer immunotherapy 1 .However, NK cells frequently exhibit functional impairment within tumors, which correlates with adverse clinical outcomes 72,73 . Chronic stimulation within the TME progressively desensitizes NK cells and impairs their capacity to control tumor growth. Yet, the molecular basis of NK cell desensitization remains poorly understood and represents one of the most important unresolved questions in NK cell biology. Here, through comparative transcriptomic profiling across multiple tumor-free models of NK cell desensitization, we identified a set of conserved genes dysregulated during desensitization. Among these candidates, genetic and pharmacological suppression of ITPKB enhanced NK cell effector function and improved NK cell-mediated tumor control, particularly under desensitized conditions in murine and human NK cells. Mechanistically, ITPKB restrained NK cell activation through the IP 3 /IP 4 axis, limiting calcium flux. These findings establish ITPKB as a molecular brake that enforces NK cell desensitization and reveal a targetable pathway for enhancing NK cell-mediated antitumor immunity. Our transcriptomic profiling of across multiple tumor-free desensitization models provides a framework for identifying core regulators of NK cell dysfunction while minimizing confounding NK cell-extrinsic influences. Previous studies of NK cell education and desensitization have emphasized non-transcriptional mechanisms, including lysosomal remodeling 74 , spatial receptor organization 55 , and phosphatase localization at the immunological synapse 56 , whereas studies examining transcriptional regulators have largely focused on single experimental contexts, such as individual tumor models 75 , chronic receptor stimulation 57 , or cytokine-driven suppression 76 . Furthermore, transcriptomic analyses of tumor-
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.12.738073 doi: bioRxiv preprint
+
+19 infiltrating NK cells are often confounded by metabolic stress, hypoxia, stromal interactions, and immunosuppressive cytokines within the TME 77 , making it difficult to distinguish cell-intrinsic desensitization programs from broader environmental effects. By integrating multiple reductionist models of persistent stimulation, we identified conserved dysregulated genes associated with NK cell desensitization. Notably, several genes identified through this approach, including Tigit, S1pr5, and Ly6c2 , were also dysregulated in NK cells from an independent model of chronic myeloid leukemia 75 , supporting the broader relevance of the transcriptional programs identified here. Importantly, this approach enabled efficient perturbation-based validation and identified ITPKB as a conserved regulator of NK cell desensitization with translational relevance to anti-tumor immunity. While our analyses identified a core set of genes recurrently dysregulated across desensitization models, many transcriptional changes were context-specific, suggesting that NK cell desensitization arises through overlapping but distinct molecular programs. Consistent with this concept, transcriptional signatures associated with exhausted CD8 + T cells were enriched in NK cells desensitized by ionomycin treatment or prolonged stimulation with combinations of activating antibodies, but not in desensitization induced by altered inhibitory receptor signaling. Prior studies in the NK cell education field similarly identified elevated expression of Ptpn6 ,encoding the phosphatase SHP-1, in NK cells desensitized by chronic stimulation resulting from reduced inhibitory receptor engagement, establishing SHP-1 as a positive regulator of NK cell desensitization 56,78 . Furthermore, we found that impaired ERK activation remained largely resistant to ITPKB modulation. Together, these findings support the concept that multiple mechanisms contribute to NK cell desensitization. Importantly, our comparative transcriptomic dataset provides a resource for systematically identifying both conserved and context-specific regulators of NK cell dysfunction beyond ITPKB. It will also be important to determine whether the candidate regulators identified through this framework contribute to NK cell dysfunction 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.12.738073 doi: bioRxiv preprint
+
+20 induced by other suppressive conditions, including chronic exposure to IL-15 79 or immunosuppressive cytokines such as TGF-β80 .Our data indicate that Itpkb is upregulated under conditions of strong and chronic activation, such as ionomycin treatment or chronic stimulation in Ly49C - Ly49I - NKG2A - (TN) and 
+
+B2m –/– NK cells, but not following prolonged stimulation with combinations of activating antibodies. Given that ionomycin directly elevates intracellular Ca 2+ and TN and B2m –/– NK cells experience chronic stimulation that involves both “missing self” and “induced self” recognition, 
+
+Itpkb induction may depend on a signaling context generated by both persistent activation and diminished inhibitory signaling or may require a longer duration of stimulation than achieved in this system. This raises the possibility that Itpkb expression is part of a feedback circuit initiated by chronic calcium signaling, acting to restrain further activation and limit excessive calcium signaling. Prior studies demonstrating elevated Ca 2+ and impaired survival in ITPKB-deficient T and B cells 62,81,82 further support this possibility. Importantly, however, pharmacological inhibition or genetic deletion of ITPKB in our systems was well tolerated and enhanced NK cell effector function and antitumor responses with little or no associated cell death. Together, these findings propose a model in which chronic calcium signaling induces ITPKB expression as an adaptive negative feedback mechanism that restrains NK cell activation and contributes to NK cell desensitization. Our findings further suggest that NK cell desensitization exists along a spectrum of partially reversible dysfunctional states. Previous studies have demonstrated substantial functional plasticity of mature NK cells, as NK cells from B2m –/– donors transferred into MHC I-expressing WT hosts regain responsiveness 27,28 . Similarly, cytokine-mediated reinvigoration of desensitized tumor-infiltrating NK cells has been shown to temporarily restore effector function and confer therapeutic benefit 5,9,10 . Consistent with this concept, pharmacologic inhibition of ITPKB restored effector function even in already desensitized NK cells across multiple experimental contexts, supporting the reversibility of at least some desensitized states. Although 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.12.738073 doi: bioRxiv preprint
+
+21 the effects of ITPKB modulation were most pronounced in desensitized NK cells, more modest enhancements were observed in some non-desensitized murine and human NK cells consistent with the fact that ITPKB expression was reduced but still present in those non-desensitized cells. In experimental settings involving exposure to activating cytokines like IL-2, such as our CRISPR-mediated editing studies using Cas9 RNP nucleofection, ITPKB modulation had more limited effects on baseline NK cell function, possibly reflecting alleviated desensitization and/or reduced ITPKB expression or activity. Together, these findings suggest that NK cell desensitization encompasses variable states that differ in their dependence on ITPKB-mediated regulation and capacity for functional recovery. However, genome-wide changes in DNA methylation have been reported in dysfunctional NK cells 83 . It is plausible that, analogous to exhausted T cells, where populations defined by fixed epigenetic states are refractory to reinvigoration 34,84 , a similarly stable, less reversible desensitized state exists in NK cells, as we have proposed elsewhere 85 . This raises the possibility that more terminal or epigenetically stabilized desensitized states exist in which ITPKB inhibition alone is insufficient to fully restore NK cell function. Our findings also have important translational implications for cancer immunotherapies. While systematic inhibition of ITPKB enhanced NK cell-mediated tumor control in our models, the broader immunologic consequences of therapeutic ITPKB inhibition will require careful consideration. Notably, ITPKB confers resistance to various chemotherapies in multiple tumor models by directly acting within tumor cells 86,87 . Thus, systemic ITPKB inhibition could enhance tumor control by simultaneously augmenting NK cell activity and sensitizing tumor cells to cytotoxic therapies. However, prior studies demonstrated that ITPKB inhibition can cause activation-induced cell death of T cells and impair development of T and B cells 62,81,82 . Our in vivo studies with the inhibitor were therefore performed in Rag2 –/– mice which lack T and B cells to avoid this potential problem. In addition, ITPKB has been implicated in regulating activation 88 and CCR7 expression in dendritic cells 89 as well as longevity and function of hematopoietic 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.12.738073 doi: bioRxiv preprint
+
+22 stem cells 90 , raising the possibility that sustained systemic inhibition could produce context-dependent immunologic or hematologic toxicities. These observations suggest that strategies enabling selective or transient modulation of ITPKB in NK cells may provide a feasible therapeutic approach to enhance antitumor immunity while minimizing broader toxicities. In summary, these findings identify ITPKB as a key regulator that imparts and sustains NK cell desensitization and support efforts to target ITPKB and other negative feedback programs in NK cells for therapeutic applications. 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.12.738073 doi: bioRxiv preprint
+
+23 
+
+Figure Legends Figure 1. Transcriptomic profiling identifies conserved regulators of NK cell desensitization. 
+
+(A) Splenocytes from B2m +/+ (WT) and B2m –/– mice were isolated. Gating strategy for TP (Ly49C ⁺Ly49I ⁺NKG2A ⁺), SP (Ly49C ⁻Ly49I ⁺NKG2A ⁻), and TN (Ly49C ⁻Ly49I ⁻NKG2A ⁻) NK subsets is shown (left). TP, SP, and TN cells from WT and B2m –/– mice were evaluated for degranulation and IFN-γ production after NKp46 stimulation (right). (B) TP, SP, and TN NK subsets from the CD27 ⁻CD11b ⁺ fraction of WT mice were evaluated for degranulation and IFN-γ production after NKp46 stimulation. (C) WT splenocytes were treated with vehicle or 1 μM ionomycin for 22 hours, then evaluated for degranulation and IFN-γ production following stimulation with NKp46 antibodies. (D) WT splenocytes mice were stimulated for 48 hours with the indicated combinations of plate-bound antibodies or respective isotype controls or left unstimulated and subsequently tested for degranulation and IFN-γ production following NK1.1 stimulation. (E) RNA-seq was performed under multiple conditions: (1) union of differentially expressed genes from three pairwise comparisons among CD27 ⁻CD11b ⁺ NK cells in WT mice: SP vs. TP, TN vs. TP, or TN vs. SP (“CIN”); (2) TP CD27 ⁻CD11b ⁺ NK cells in B2m –/– vs. WT mice (“B2m”); (3) ionomycin- vs. vehicle-treated NK cells (“iono”); and (4) NK cells stimulated with anti-NKp46 plus anti-NKG2D or anti-DNAM-1 antibodies vs. medium alone (“Ab combo”). Venn diagrams show genes up- (top) or down-regulated (bottom) genes in desensitized vs. functional NK cells. Genes common to ≥3 conditions are outlined in black and listed in Tables 1 and 2. (F) B6 mice were subcutaneously injected with 4 x 10 6 MC38-B2m –/– tumor cells and analyzed 10 days later. Splenic and tumor NK cells were stimulated with NKp46 or isotype control antibodies and analyzed for degranulation and IFN-γ production. 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.12.738073 doi: bioRxiv preprint
+
+24 (G) Heatmaps show genes commonly up- (top) or down-regulated (bottom) in ≥3 desensitization conditions from (E) in the indicated splenic and tumor NK cell populations in normalized rlog-transformed expression data. Rows were centered by subtracting each gene’s mean across samples before plotting; blue indicates lower-than-average expression, white indicates approximately average expression, and red indicates higher-than-average expression. (A-D, F) Bars represent means ± SEM with each symbol representing one mouse. Data are representative of 2-3 independent experiments. Statistical significance was determined using unpaired t-tests (WT TP vs. B2m –/– TP in (A)) or paired t-tests for the other comparisons. *p < 0.05, **p < 0.01, ***p < 0.001. 
+
+Figure 2. ITPKB promotes functional desensitization in murine NK cells. 
+
+(A) RNA-seq in Fig. 1E was analyzed for differential expression using DESeq2 with count-based normalization after importing RSEM quantifications through tximport. TPM values for comparisons in approaches (1)-(2) (left) and (3) (right) are shown in plots for visualization only. (B) Splenocytes from WT or B2m –/– mice were pre-treated with vehicle or indicated concentrations of ITPKB inhibitor GNF362 for 2 hours, stimulated with NKp46 antibodies in the continued presence of inhibitor and evaluated for degranulation and IFN-γ production. (C) WT splenocytes were treated with vehicle or 1 μM ionomycin for 22 hours in the presence of 50 IU/ml IL-2, pre-treated with vehicle or 1.2 μM ITPKB inhibitor GNF362 for 2 hours, stimulated with NKp46 antibodies in the presence of inhibitor and evaluated for degranulation and IFN-γ
+
+production. (D) NK cells electroporated with CRISPR-Cas9 ribonucleoprotein complexes targeting Itpkb or, as controls, Rosa26, or Cd4 were treated with vehicle or 1 μM ionomycin for 22 hours, stimulated with NK1.1 antibodies and evaluated for degranulation and IFN-γ production. 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.12.738073 doi: bioRxiv preprint
+
+25 Error bars represent SEM. Data are representative of 2-3 independent experiments (B, D) or pooled from 2 experiments (C). Statistical significance was determined using Wald test followed by adjustment for multiple testing using the Benjamini-Hochberg method embedded in DESeq2 (A), 2-way ANOVA (WT vs. B2m –/– in (B)) or paired t-tests for the other comparisons. Each symbol represents an individual mouse. *p<0.05, **p<0.01, ***p<0.001, ****p<0.0001. 
+
+Figure 3. ITPKB promotes functional desensitization in a human NK cell line. 
+
+NK-92 dCas9-KRAB cells were transduced with lentiviruses encoding dual guide RNAs targeting ITPKB or TRAC (control), selected with puromycin, and treated with vehicle or 1 μMionomycin for 22-24 hours before functional assays. (A) ITPKB transcript levels were quantified by qRT-PCR in TRAC -edited cells. (B-C) Functional responses of control and ionomycin-desensitized cells were assessed by measuring degranulation following stimulation with K562 cells or NKp30 antibodies (B), and by 51 Cr-release cytotoxicity assays using K562 targets (C). Control cells are shown with dashed lines and desensitized cells with solid lines in (C). (D-E) Cells were pre-treated with vehicle or 1.2 μM ITPKB inhibitor GNF362 for 2 hours and functional assays were performed in the continued presence of inhibitor. Degranulation (D) and cytotoxicity (E) were assessed as in (B-C). (F-H) Cells were additionally transduced with lentiviruses encoding the ITPKB open reading frame or an empty vector control. ITPKB expression was quantified by qRT-PCR (F), followed by degranulation (G) and cytotoxicity assays (H). (I-M) Cells were desensitized by repeated stimulation with irradiated K562 cells according to the schematic in (I). Remaining K562 cells were quantified over time (J). At 13 days post culture, degranulation following stimulation with K562 cells or NKp30 antibodies (K), and cytotoxicity against K562 (L) or Raji (M) target cells were assessed. Control cells are shown with dashed 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.12.738073 doi: bioRxiv preprint
+
+26 lines and desensitized cells with solid lines in (L-M). Error bars represent SEM. Data are pooled from 2 (A) or are representative of 2-4 experiments (B-M). Statistical significance was determined using paired t-tests for (A); paired t-tests within TRAC - or ITPKB -edited cells and unpaired t-tests between TRAC - and ITPKB -edited cells (B, D, F, G, J and K); or two-way ANOVA for (C, E, H, L, M). Each symbol represents an independently transduced well. *p<0.05, **p<0.01, ***p<0.001, ****p<0.0001. 
+
+Figure 4. ITPKB promotes functional desensitization in primary human NK cells. 
+
+Primary NK cells were isolated from human peripheral blood of 10 different donors, indicated with different colors/symbols, and expanded in the presence of irradiated K562 feeder cells expressing membrane-bound IL-21 and 4-1BB ligand (CSTX002). Expanded NK cells were treated with vehicle or 1 μM ionomycin for 16 hours, then pre-treated with vehicle or the indicated concentrations of the ITPKB inhibitor GNF362 for 2 hours. (A) NK cells were stimulated with NKp30 antibodies (left), K562 cells (middle), or Raji cells (right) in the continued presence of GNF362 and analyzed for degranulation. (B-D) Cytotoxicity against Raji cells was assessed with a 51 Cr-release assay in the continued presence of GNF362. Cytotoxic activities for individual donors from (B) in control (C) or desensitizing (D) conditions are shown. Error bars represent SEM. Data are pooled from 2-3 independent experiments. Statistical significance was determined using paired t-tests (A, C, D) or two-way ANOVA (B). *p<0.05, **p<0.01, ***p<0.001, ****p<0.0001. 
+
+Figure 5. ITPKB-dependent desensitization is associated with accumulation of IP 4 and decreased IP 3 R-mediated calcium signaling. 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.12.738073 doi: bioRxiv preprint
+
+27 (A-E) NK-92 dCas9-KRAB cells were transduced with lentiviruses encoding dual guide RNAs targeting ITPKB or TRAC (control), selected with puromycin, and treated with vehicle or 1 μMionomycin for 18-24 hours. (A-B) Cells were pre-treated with vehicle or 10 μM cell-permeable IP 4 (A), or vehicle or 100 μM2-APB (B), followed by stimulation with NKp30 antibodies in the presence of treatments maintained throughout the assay and analysis of degranulation. (C) Intracellular calcium responses following NKp30 stimulation were measured by Fluo-4/Fura Red ratiometric flow cytometry in vehicle- or ionomycin-treated TRAC - or ITPKB -edited NK-92 cells. Calcium responses were quantified as the difference in area under the curve ( ΔAUC) between anti-NKp30-stimulated and medium control samples. (D) NK-92 cells expressing an NFAT-driven firefly luciferase reporter were treated with vehicle or 1 μM ionomycin for 23 hours, pre-treated with vehicle or 1.2 μM ITPKB inhibitor GNF362 for 2 hours, stimulated with NKp30 antibodies for 9 hours, and analyzed for luciferase activity relative to medium controls. Error bars represent SEM. Data are representative of 2 (A) or 4 (B) independent experiments, or pooled from 4 (C) or 2 (D) independent experiments. Statistical significance was determined using paired t-tests for all comparisons within TRAC - or ITPKB -edited cells, unpaired t-tests for other cross-group comparisons (A-B), Mann-Whitney test for comparison between TRAC - and ITPKB -edited cultures (C), or one-way ANOVA with Sidak’s multiple comparisons test (D). Each symbol represents an independently transduced, passaged, and desensitized (A-C) or treated (D) well. *p<0.05, **p<0.01, ***p<0.001, ****p<0.0001. 
+
+Figure 6. Deletion or inhibition of ITPKB enhances NK cell-mediated tumor control in vivo. 
+
+(A) Experimental schematic and tumor growth kinetics following treatments of established tumor-bearing mice with ITPKB inhibitor GNF362. 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.12.738073 doi: bioRxiv preprint
+
+28 (B) Tumor-infiltrating lymphocytes isolated on day 13 from mice treated as in (A) were stimulated ex vivo with isotype control or NK1.1 antibodies in the presence (or absence) of GNF362 and analyzed for degranulation and IFN-γ production in gated NK cells. (C) Experimental schematic and tumor growth kinetics assessing the impact of Itpkb deletion on CAR-NK cell-mediated control of subcutaneous SB28m-EGFRvIII glioma tumors. Error bars represent SEM. Data are representative of two independent experiments (A), pooled from two independent experiments (B), or from one significant experiment with a second experiment showing a p value of 0.086 (C). Statistical significance was determined by two-way ANOVA (A, C) or unpaired t-tests (B). Each symbol represents an individual mouse. *p < 0.05, **p < 0.01. 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.12.738073 doi: bioRxiv preprint
+
+29 
+
+Supplementary Figure Legends Supplementary Figure 1. Comparison of NK cell desensitization gene signatures with previously reported datasets, related to Figure 1. 
+
+(A-D) Isotype control stimulation conditions corresponding to Figure 1A-D are shown. 
+
+(E) RNA-seq analysis comparing TP (Ly49C ⁺Ly49I ⁺NKG2A ⁺) CD27 ⁻CD11b ⁺ NK cells in B2m –/– 
+
+vs. WT mice. Venn diagrams show the overlap of significantly down- or up-regulated genes identified in this study with those identified in a published microarray dataset 55 .(F) RNA-seq analysis comparing SP (Ly49C ⁻Ly49I ⁺NKG2A ⁻) vs. TP, TN (Ly49C ⁻Ly49I ⁻NKG2A ⁻)vs. TP, or TN vs. SP CD27 ⁻CD11b ⁺ NK cells in WT mice. Differentially expressed genes (DEGs) were defined as the union of DEGs from the three pairwise comparisons. Venn diagrams show overlap of significantly down- or up-regulated genes between this study and a published RNA-seq dataset 56 .(G) RNA-seq analysis comparing NK cells treated with 1 μM ionomycin or vehicle for 22 hours. Venn diagrams show overlap of down- or up-regulated genes between this study and apublished microarray dataset 52 .(H) RNA-seq analysis comparing NK cells stimulated for 48 hours with plate-bound anti-NKp46 in combination with anti-NKG2D or anti-DNAM1, vs. cells maintained in medium alone. DEGs were defined as the union of DEGs from the two antibody-combination vs. medium comparisons. Venn diagrams show overlap of down- or up-regulated genes between this study and apublished RNA-seq dataset 57 .(I-L) Gene set enrichment analysis using T cell exhaustion signatures from Zhang, et al. 2022 58 was applied to DEGs derived from ionomycin-treated versus vehicle-treated NK cells in panel G (I), anti-NKp46 + anti-NKG2D-stimulated vs. medium-treated NK cells in panel H (J), panel E (K), and the TN vs. TP comparison in panel F (L). 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.12.738073 doi: bioRxiv preprint
+
+30 (M) For the genes upregulated in ≥3 desensitization conditions, the geometric means of their expression levels in each cell of the published scRNAseq data as reported in the scDVA database (http://pan-nk.cancer-pku.cn/) were calculated and used to compute a signature score as shown in the boxplot (left); higher values indicate higher combined expression of the signature. Cluster median expression for each gene was z-scored across groups (right). Heatmap colors show z-scored cluster median expression for each gene across groups (red = z-score of 1, higher relative expression; blue = z-score of -1, lower relative expression). (A-D) Bars represent means ± SEM with each symbol representing one mouse. Data are representative of 2-3 independent experiments. Statistical significance was determined using unpaired t-tests (WT TP vs. B2m –/– TP in (A)), Fisher’s exact tests (E-H), or paired t-tests for the other comparisons. *p < 0.05, **p < 0.01. 
+
+Supplementary Figure 2. Comparison of Itpkb expression in NK cells from spleen versus tumors and assessment of CRISPR editing efficiency, related to Figure 2. 
+
+(A) C57BL/6J mice were subcutaneously injected with 4 x 10 6 MC38-B2m –/– tumor cells and analyzed 18 days post inoculation. NK cells were FACS-purified from spleens and tumors and 
+
+Itpkb expression was quantified by qPCR. Expression levels were normalized to Rpl13a (left) or 
+
+Tbp (right). (B) Splenocytes from WT or B2m –/– mice were pre-treated with vehicle or indicated concentrations of ITPKB inhibitor GNF362 for 2 hours, stimulated with NKp46 antibodies in the presence of inhibitor, and assessed for cell viability. (C-D) NK cells were electroporated with CRISPR-Cas9 ribonucleoprotein (RNP) complexes containing Itpkb- or Rosa26 -targeting gRNAs and cultured for 3 days . Genome editing efficiency was assessed using Tracking of Indels by Decomposition (TIDE) analysis 63 (C). Gated NK cells treated with vehicle or 1 μM ionomycin for 22 hours were assessed for granzyme A, granzyme B, and perforin proteins by flow cytometry. 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.12.738073 doi: bioRxiv preprint
+
+31 Error bars represent SEM. Data are pooled from 2 independent experiments (A, C) or representative of 2 independent experiments (B, D). Statistical significance was determined using paired t-tests and Wilcoxon signed rank tests (A), paired t-tests for comparisons within WT or B2m –/– cells in (B) and (D), or 2-way ANOVA for the comparison of WT vs. B2m –/– in (B). Each symbol represents an individual mouse. *p<0.05. 
+
+Supplementary Figure 3. Effects of pharmacological inhibition, CRISPRi-mediated knockdown, and overexpression of ITPKB on ITPKB expression and degranulation n a human NK cell line, related to Figure 3. 
+
+(A-D) NK-92 cells were treated with vehicle or 1 μM ionomycin for 23 hours and pre-treated with vehicle or the indicated concentrations of ITPKB inhibitor GNF362 for 2 hours. Cells were stimulated with NKp30 antibodies (A) or K562 cells (B), or cultured in medium alone (C) in the continued presence of inhibitor, and analyzed for degranulation. Cell viability under the same stimulation conditions as in (A) and (B) was assessed in (D). (E) NK92 dCas9-KRAB cells were transduced with lentiviruses encoding dual guide RNAs targeting ITPKB or TRAC (negative control), followed by puromycin selection. ITPKB transcript levels were quantified by qRT-PCR. (F-G) NK-92 cells were transduced with lentiviruses encoding the ITPKB open reading frame or an empty vector control. ITPKB transcript levels were quantified by qRT-PCR (F) and the degranulation were determined after stimulation with NKp30 antibodies or K562 target cells (G). Error bars represent SEM. Data are representative of 2-4 experiments. Statistical significance was determined using paired t-tests for (A-D) or unpaired t-tests for (E-G). Each symbol represents an independently transduced well. *p<0.05, **p<0.01, ***p<0.001. 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.12.738073 doi: bioRxiv preprint
+
+32 
+
+Supplementary Figure 4. Pharmacological inhibition of ITPKB enhances effector cytokine production and cytotoxic activity in control and desensitized primary human NK cells, with minimal effects on spontaneous activation or viability, related to Figure 4. 
+
+Primary NK cells were isolated from human peripheral blood and expanded in the presence of irradiated K562 feeder cells expressing membrane-bound IL-21 and 4-1BB ligand (CSTX002). Expanded NK cells were treated with vehicle or 1 μM ionomycin for 16 hours, then pre-treated with vehicle or the indicated concentrations of the ITPKB inhibitor GNF362 for 2 hours. NK cells were stimulated with NKp30 antibodies (left), K562 cells (middle), or Raji cells (right) and analyzed for viability (A) and IFN-γ production (B). NK cells cultured in medium alone were analyzed for spontaneous degranulation (left) and IFN-γ (right) production (C). Error bars represent SEM. Data are pooled from 2-3 independent experiments. Statistical significance was determined using paired t-tests where each symbol represents an independent blood donor. *p<0.05, **p<0.01, ***p<0.001, ****p<0.0001. 
+
+Supplementary Figure 5. Desensitized NK cells exhibit elevated baseline NFAT activity and impaired ERK activation upon stimulation independent of ITPKB perturbation, related to Figure 5. 
+
+(A) Proposed mechanism by which ITPKB promotes NK cell desensitization. (B-C) Representative intracellular calcium flux measured as the Fluo-4/Fura Red fluorescence ratio in TRAC- or ITPKB-edited NK-92 cells treated with vehicle (B; control) or ionomycin (C) to induce desensitization. Cells were stimulated with anti-NKp30 antibody (blue) or maintained in medium alone (red), and intracellular calcium responses were monitored by flow cytometry. Traces represent the median Fluo-4/Fura Red ratio over time. (D-E) NK-92 cells expressing an NFAT-driven firefly luciferase reporter were treated with vehicle or 1 μM ionomycin for 23 hours to induce desensitization, followed by pre-treatment with vehicle 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.12.738073 doi: bioRxiv preprint
+
+33 or 1.2 μM ITPKB inhibitor GNF362 for 2 hours. Cells were then left unstimulated (medium control; D) or stimulated with NKp30 antibodies (E) for 9 hours. Luciferase activity was measured. (F-H) NK92 dCas9-KRAB cells transduced with lentiviruses encoding dual guide RNAs targeting 
+
+ITPKB or TRAC (control) were treated with vehicle or 1 μM ionomycin for 22-24 hours, rested for 2 hours, and stimulated with NKp30 antibodies for 10 (F) or 30 (G-H) minutes. Akt (F) and ERK phosphorylation (G-H) were assessed by flow cytometry and fold change relative to unstimulated baseline was quantified. Representative histograms of TRAC -edited (black) or 
+
+ITPKB -edited (red) cells for ERK phosphorylation are shown in (G), with control cells indicated by solid lines and desensitized cells by shaded histograms. Error bars represent SEM. Data are pooled from 2-3 independent experiments. Each symbol represents an independently treated sample (D, E) or an independently transduced well (F, H). **p<0.01, ***p<0.001. 
+
+Supplementary Figure 6. ITPKB inhibition enhances NK cell function in the spleen but does not alter granzyme A/B or perforin expression in tumor-infiltrating NK cells, related to Figure 6. 
+
+(A) Published single cell RNA-seq datasets were analyzed using the scDVA database to compare ITPKB expression in NK cells from tumors and matched normal tissues across indicated cancer types. Violin plots depict normalized ITPKB expression in NK cells from normal tissues (red) and tumors (blue). (B) Experimental schematic and tumor growth kinetics following adoptive transfer of purified NK cells that were edited for Itpkb or Rosa26 .(C-D) Spider plots corresponding to (B) and Figure 6A, respectively. (E) Splenic lymphocytes from the experiment in Figure 6A (without NK-depletion) were isolated on day 13 after tumor inoculation, pretreated with vehicle or 1.2 μM GNF362 for 1 hour, 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.12.738073 doi: bioRxiv preprint
+
+34 stimulated with isotype control or NK1.1 antibodies for 5 hours in the continued presence of GNF362, and analyzed for degranulation (left) and IFN-γ production (right) by NK cells. (F-H) Tumor-infiltrating lymphocytes from the same experiment were isolated on day 13 after tumor inoculation, pretreated with vehicle or 1.2 μM GNF362 for 1 hour, and cultured in medium for 5 hours in the continued presence of GNF362 without additional stimulation. Frequencies of granzyme A ⁺, granzyme B ⁺, and perforin ⁺ (left) NK cells and the corresponding geometric mean fluorescence intensities (right) were quantified by flow cytometry. (I) Spider plots corresponding to Figure 6C. Error bars represent SEM. Data are representative of two independent experiments (B, F-H) or pooled from two experiments (E). Statistical significance was determined by two-way ANOVA (B) or unpaired t-tests (E-H). Each symbol represents one mouse. *p < 0.05; **p < 0.01. 
+
+Materials and Methods Mouse strains 
+
+Mice were maintained under specific pathogen–free conditions at the University of California (UC) Berkeley. C57BL/6J (B6), Rag2 −/− , and B2m −/− mice were purchased from the Jackson Laboratory. Rag2 −/− Il2rg −/− mice were purchased from Taconic Biosciences. Ncr1 iCre 
+
+mice on the B6 background were generously provided by E. Vivier. NK-DTA mice were generated by breeding Ncr1 iCre mice to B6-Rosa26 LSL-DTA mice (Jackson Laboratory). Transgenic mice carrying a knock-in chimeric antigen receptor recognizing epidermal growth receptor variant III (CAR KI mice) were provided by H. Okada. CAR KI mice were bred with the Vav iCre 
+
+mice (JAX 008610) to drive hematopoietic expression of the CAR construct. Offspring were genotyped by PCR for expression of both transgenes. For all breeding and experimental cohorts, mice were maintained hemizygous for Cre to minimize any potential effects of the Cre random insertion. Both male and female mice 8-24 weeks of age were used unless otherwise indicated. 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.12.738073 doi: bioRxiv preprint
+
+35 All animal studies were conducted in accordance with protocols approved by the UC Berkeley Institutional Animal Care and Use Committee (IACUC). 
+
+Cell lines and culture conditions 
+
+MC-38 B2m –/– cells (obtained from Dragonfly Therapeutics), SB28-mEGFRvIII cells (provided by H. Okada), and HEK293T cells (UC Berkeley Cell Culture Facility) were cultured in Dulbecco’s modified Eagle’s medium (DMEM; Thermo Fisher Scientific). NK-92 cells (American Type Culture Collection; ATCC; male origin), NK-92 dCas9-KRAB cells (Laboratory for Genomics Research, University of California, San Francisco; male origin), and NK-92 cells expressing luciferase reporter for NFAT activity (provided by Z. Zhang; male origin) were cultured in Minimum Essential Medium α (MEM α; Thermo Fisher Scientific). K562 cells (ATCC; female origin) and CSTX002 cells (provided by CYTOSEN; female origin) were cultured in Iscove's Modified Dulbecco's Medium (IMDM; Thermo Fisher Scientific), and Raji cells (UC Berkeley Cell Culture Facility; male origin) were cultured in RPMI-1640 (Thermo Fisher Scientific). Unless otherwise specified, media were supplemented with 5% fetal bovine serum (FBS; Omega Scientific) for K562, CSTX002, and Raji cells, or 10% FBS for all other cell lines, as well L-glutamine (0.2 mg/mL; Sigma-Aldrich), penicillin (100 U/L) and streptomycin (100 
+
+> μ
+
+g/mL; Thermo Fisher Scientific), gentamycin sulfate (10 μg/mL; Lonza), β-mercaptoethanol (50 
+
+> μ
+
+M; EMD Biosciences), and HEPES (20 mM; Thermo Fisher Scientific). Cells were maintained at 37°C in a humidified incubator with 5% CO ₂. NK-92 and NK-92 dCas9-KRAB cultures were additionally supplemented with recombinant human IL-2 (100 IU/mL). NK-92 dCas9-KRAB cultures were supplemented with blasticidin (10 μg/mL; InvivoGen) for 1 week of initial culture. All cell lines were routinely tested and confirmed to be negative for mycoplasma contamination. 
+
+CRISPR-mediated editing of mouse NK cells via Cas9 RNP nucleofection 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.12.738073 doi: bioRxiv preprint
+
+36 Recombinant Cas9 protein was obtained from the UC Berkeley Macro Lab Core (40 μMCas9 in 20 mM HEPES-KOH, pH 7.5, 150 mM KCl, 10% glycerol, 1 mM DTT). For in vitro 
+
+functional assays and adoptive transfer experiments, CRISPR guide RNAs (sgRNAs) targeting the murine Itpkb gene were designed using the predesigned Alt-R™ CRISPR-Cas9 guide RNA tool (Integrated DNA Technologies, IDT). Corresponding crRNAs were duplexed with tracrRNA (IDT) in duplex buffer at 37°C for 30 min to generate 80 μM sgRNA. For CAR-NK cell experiments, a pool of three sgRNAs targeting murine Itpkb was purchased from EditCo Bio and reconstituted in nuclease-free TE buffer to 80 μM. Guide RNA sequences are provided in Table 3. Splenocytes were isolated and cultured in RPMI-1640 supplemented with 10% FBS, L-glutamine (0.2 mg/mL), penicillin (100 U/mL) and streptomycin (100 μg/mL), gentamycin sulfate (10 μg/mL), β-mercaptoethanol (50 μM), HEPES (20 mM), and recombinant human IL-2 (1000 IU/mL), at a density of 15 mL per mouse. On day 3 of culture, NK cells were enriched using the MojoSort™ Mouse NK Cell Isolation Kit (BioLegend) and subsequently cultured at 2 × 10 
+
+cells/mL in the presence of 1000 IU/mL IL-2. On day 5, 5 × 10  NK cells per condition were prepared for nucleofection. 
+
+Cas9 ribonucleoprotein (RNP) complexes were assembled at a 1:2 molar ratio by combining 1.25 μL of 40 μM Cas9 with 1.25 μL of 80 μM sgRNA, supplemented with 1 μL of 125 mg/mL poly(L-glutamic acid) sodium salt (Alamanda Polymers). RNP complexes were incubated at 37°C for 15 min and transferred to a single well of a 96-well nucleofection cuvette (Lonza). NK cells were resuspended in 17.5 μL of supplemented P3 buffer from P3 Primary Cell 96-well Nucleofector Kit (Lonza), mixed with 2.5 μL of Cas9 RNP complex, and nucleofected using the CM-137 program on the 4D-Nucleofector (Lonza). Immediately following nucleofection, 80 μL of pre-warmed RPMI-1640 containing 10% FBS was added, and cells were allowed to recover at 37°C for 15 min before being returned to culture in RPMI-1640 supplemented with 10% FBS and 1000 IU/mL IL-2 at a density of 5 × 10  cells/mL. 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.12.738073 doi: bioRxiv preprint
+
+37 Edited NK cells were used for functional assays or adoptive transfer experiments 1-3 days after nucleofection. To assess genome editing efficiency, genomic DNA was extracted using QuickExtract™ DNA Extraction Solution (Biosearch Technologies) and used as atemplate for PCR amplification of the targeted locus. PCR products were subjected to Sanger sequencing at the UC Berkeley DNA Sequencing Facility, and resulting chromatograms were analyzed using TIDE 63 or ICE 91 software. 
+
+Flow cytometry 
+
+Single-cell suspensions from spleens were prepared by mechanical dissociation followed by passage through a 40-μm cell strainer. Red blood cells were lysed from splenocyte preparations using ammonium-chloride-potassium (ACK) lysis buffer (prepared in-house). Tumors were minced with a razor blade and dissociated using a gentleMACS Dissociator (Miltenyi Biotec), followed by filtration through a 70-μm cell strainer. Tumor-derived single-cell suspensions were subsequently enriched for lymphocytes using Lympholyte-M (Cedarlane) according to the manufacturer’s instructions, washed, and used for downstream flow cytometry assays. For flow cytometry, single-cell suspensions were incubated for 10-15 min with supernatant from the 2.4G2 hybridoma (produced in-house) to block Fc γRII/III, followed by staining with fluorochrome- or biotin-conjugated antibodies for 20 min at 4°C in PBS supplemented with 1% FBS (FACS buffer). Cells that were stained with biotin-conjugated antibodies were subsequently incubated with fluorophore-conjugated streptavidin (BioLegend) for 20 min at 4°C in FACS buffer. For intracellular staining, cells were fixed and permeabilized using the Cytofix/Cytoperm kit (BD Biosciences) and stained with intracellular antibodies for 30 min at 4°C in Perm/Wash buffer (BD Biosciences). For phospho-flow cytometry, cells were fixed by adding an equal volume of prewarmed Cytofix buffer (BD Biosciences) and incubating at 37°C for 10 minutes. Cells were then permeabilized with Perm Buffer III (BD Biosciences) and 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.12.738073 doi: bioRxiv preprint
+
+38 stored in Perm Buffer III at -20°C until flow cytometric analysis. On the day of analysis, cells were stained with phospho-specific antibodies for 30 min at room temperature in FACS buffer. Data were acquired on an LSR Fortessa, LSR Fortessa X20, or Symphony A3 flow cytometer (BD Biosciences) and analyzed using FlowJo software (Tree Star). Dead cells were excluded using DAPI (BioLegend) or fixable viability dyes (Thermo Fisher Scientific) according to the manufacturer’s instructions. In selected experiments, NK cells were sorted using a FACSAria Fusion cell sorter (BD Biosciences). 
+
+NK responsiveness assay 
+
+To assess NK cell responsiveness ex vivo , 96-well high-binding flat-bottom plates (Corning) were coated overnight at 4°C with PBS containing the indicated plate-bound antibodies against NK cell activating receptors. Antibodies were used at the following concentrations: anti-NK1.1 (PK136; 50 μg/mL; BioLegend), anti-NKG2D (MI-6; 5 μg/mL; Thermo Fisher Scientific), anti-NKp46 (29A1.4; 5 μg/mL; BioLegend), and anti-NKp30 (MAB18491; 10 μg/mL; R&D Systems). Plates were washed twice with PBS immediately before stimulation. Single-cell suspensions were prepared from the indicated tissues and cultured in antibody-coated wells for 4-5 hours (murine NK cells) or 6 hours (NK-92 cells and primary human NK cells) in the presence of monensin and brefeldin A (both at 1:1000; BioLegend) and fluorophore-conjugated anti-CD107a antibodies (anti-mouse CD107a, 1D4B, 1:500, BioLegend; anti-human CD107a, H4A3, 1:100, BD Pharmingen). Monensin, brefeldin A, and fluorophore-conjugated anti-CD107a antibodies were included at the start of stimulation. Cells were incubated at 37°C in 5% CO ₂ during stimulation. For murine NK cell assays, Fc γRII/III receptors were blocked by incubating cells for 15 minutes with supernatant from the 2.4G2 hybridoma (produced in-house) prior to plating. In experiments using CRISPR-edited murine NK cells generated by Cas9 RNP nucleofection or splenocytes persistently stimulated with combination of plate-bound antibodies, recombinant human IL-2 (1000 IU/mL) or mouse IL-15 (1.5 ng/mL), 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.12.738073 doi: bioRxiv preprint
+
+39 respectively, was included during stimulation. Following stimulation, cells were stained with surface markers to identify NK cells, fixed and permeabilized, and subjected to intracellular cytokine staining for IFN-γ. Samples were analyzed by flow cytometry. 
+
+Ex vivo cytotoxicity assay 
+
+Cytotoxic activity by NK-92 cells and primary human NK cells was assessed using a standard 4-hour 51 Cr-release assay. Target cells (K562 or Raji) were labeled with 51 Cr for 1 hour, washed four times with culture medium, and plated at 10 4 cells per well in 96-well V-bottom plates. Effector NK cells were added at the indicated effector-to-target (E:T) ratios in duplicate or triplicate. Plates were briefly centrifuged prior to incubation to promote effector-target contact and incubated for 4-5 hours at 37°C in cytokine-free medium. Supernatants were then harvested, and 51 Cr release was measured. Percent specific lysis was calculated as: % specific lysis = 100 × (experimental release - mean spontaneous release) / (mean maximum release -mean spontaneous release), where spontaneous release corresponds to target cells cultured in medium alone and maximum release was obtained by addition of Triton X-100 (final concentration 0.5%). 
+
+Isolation and expansion of NK cells from human peripheral blood 
+
+Buffy cones from de-identified healthy adult donors were purchased from Our Blood Institute. Buffy cones were obtained under protocols approved by the supplier. Donor sex was not available. Peripheral blood mononuclear cells (PBMCs) were isolated by density gradient centrifugation using Ficoll-Paque PLUS (GE Healthcare). NK cells were enriched from PBMCs using the EasySep Human NK cell isolation kit (STEMCELL Technologies), according to the manufacturer’s instructions. For NK cell expansion, CSTX002 feeder cells were irradiated twice with 5,000 rad prior to co-culture. Purified NK cells were co-cultured with irradiated CSTX002 cells following an established feeder-based expansion protocol 92 . Briefly, on day 0, NK cells 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.12.738073 doi: bioRxiv preprint
+
+40 were plated with CSTX002 cells at an E:T ratio of 1:2 at a density of 3.75 x 10 5 cells / mL in PBMC culture medium consisting of RPMI-1640 supplemented with 10% FBS, L-glutamine (0.2 mg/mL), penicillin (100 U/mL) and streptomycin (100 μg/mL), gentamycin sulfate (10 μg/mL), β-mercaptoethanol (50 μM), and HEPES(20 mM), in the presence of 50 IU / mL IL-2. Complete medium changes were performed on days 3 and 5 post culture. On day 7, remaining cells were counted and replated at 5 x 10 5 cells / mL in PBMC culture medium supplemented with 500 IU / mL IL-2 for an additional 2-3 days. Efficient elimination of CSTX002 feeder cells and enrichment of NK cells (> 95% CD56 + CD3 - ) were confirmed by flow cytometry prior to downstream functional assays. 
+
+Generation of lentiviral constructs and lentiviral transduction 
+
+To generate a lentiviral vector encoding dual guide RNAs targeting TRAC or ITPKB ,guide sequences were selected by using the CRISPICK platform (Broad Institute) with the human GRCh38 reference genome. Guide RNA sequences are provided in Table 3. Oligonucleotides encoding two guide RNAs per construct were assembled into lentiviral CRISPR interference (CRISPRi) backbone plasmids (pLGR134 and LGR Gibson Dual Guide Insert plasmids; Laboratory for Genomics Research) following BsmBI-v2 digestion (New England Biolabs) and NEBuilder HiFi DNA Assembly (New England Biolabs). For ITPKB 
+
+overexpression and restoration, the open reading frame sequences of human ITPKB was cloned into a pHAGE-EF1 α-IRES-Thy1.1 lentiviral backbone (modified from a construct provided by Tjian lab, UC Berkeley). The ITPKB coding sequence was amplified from PBMC-derived NK cell cDNA and assembled into the vector digested with NotI-HF and BamHI-HF (New England Biolabs) by using NEBuilder HiFi DNA Assembly. An empty vector control was generated in parallel. Lentiviral particles were produced by transfecting HEK293T cells with psPAX2, the lentiviral transfer plasmid, and a BaEV-TR baboon envelope plasmid (provided by E. Verhoygen) using TransIT-LT1 (Mirus Bio). Viral supernatants were collected 48 hours post-
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.12.738073 doi: bioRxiv preprint
+
+41 transfection, clarified by centrifugation, filtered (0.45 μm), and concentrated by PEG precipitation. Concentrated viral pellets were resuspended in Opti-MEM (Thermo Fisher Scientific). For transduction, viral supernatants were immobilized on 24-well plates coated with retronectin (10 μg/mL; Takara Bio) by spinoculation (1,000g, 32 °C, 1 hour). 3 hours later, NK-92 or NK-92 dCas9-KRAB cells (5 x 10 5 per well) were added in NK-92 medium supplemented with IL-2 (500 IU/ml) and protamine sulfate (20 μg/mL), followed by a second spinoculation (1,000g, 37 °C, 1 hour). Media were replaced the following day. For CRISPRi experiments, transduced cells were selected with puromycin (2 μg/mL; InvivoGen) starting 48 hours post transduction. For ITPKB overexpression and restoration experiments, Thy1.1-expressing cells were purified by flow cytometry and expanded in IL-2-containing medium prior to downstream functional assays. Knockdown or overexpression efficiency was confirmed by qRT-PCR. 
+
+Desensitization 
+
+To induce NK cell desensitization, multiple established models of persistent activation were used, as indicated below. 
+
+Ionomycin-induced desensitization (murine NK cells) : Splenocytes or CRISPR-edited NK cells were treated with 1 μM ionomycin for 22 hours. Cultures were maintained in the presence of IL-2 at 50 IU/mL for splenocytes or 1000 IU/mL for CRISPR-edited NK cells. Following treatment, cells were washed twice with PBS prior to downstream functional assays. 
+
+Persistent stimulation by plate-bound activating receptor ligation (murine NK cells) :Splenocytes were stimulated with plate-bound antibodies targeting NK activating receptors. Anti-NKp46 (29A1.4; 5 μg/ mL; BioLegend) was combined with either anti-NKG2D (MI-6; 5 
+
+> μ
+
+g/mL; Thermo Fisher Scientific) or anti-DNAM1 (10E5; 5 μg/mL; BioLegend), coated overnight on 96-well flat-bottom high-binding plates. Cells were plated at 1 x 10 6 cells per well in 200 μLRPMI-1640 supplemented with 5% FBS, L-glutamine(0.2 mg/mL), penicillin (100 U/ml) and 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.12.738073 doi: bioRxiv preprint
+
+42 streptomycin (100 μg/mL), gentamycin sulfate (10 μg/mL), β-mercaptoethanol(50 μM), and HEPES (20 mM), in the presence of 1.5ng/ml IL-15. Stimulation was performed for 48 hours. 
+
+Ionomycin-induced desensitization (human NK cells) : NK-92 cells were treated with 1 μMionomycin for 22 hours at a density of 2.5 x 10 5 cells/mL in the presence of 200 IU/mL IL-2. Primary human NK cells isolated from PBMCs and expanded on CSTX002 were treated with 1 
+
+> μ
+
+M ionomycin for 16 hours at 5 x 10 5 cells/mL in the presence of 500 IU/mL IL-2. Cells were washed twice with PBS prior to functional assays. 
+
+Desensitization by repeated target cell challenge (CRISPRi-edited NK-92 dCas9-KRAB cells) : To model chronic target cell engagement, NK-92 cells were subjected to repeated co-culture with irradiated K562 cells. K562 cells were irradiated twice at 5,000 rad either on the day before or the day of co-culture. CRISPRi-edited NK-92 dCas9-KRAB cells (2.5 x 10 5 ) were co-cultured with irradiated K562 cells at a 1:4 effector-to-target ratio (1 x 10 6 K562 cells). On days 2 and 4 (or 5), remaining cells were counted and up to 2.5 x 10 5 cells were re-challenged with freshly irradiated K562 cells at the same ratio. On day 7, cells were again counted and re-challenged at a 1:1 effector-to-target ratio. Co-cultures were maintained at a density of 2.5 x 10 5cells/mL in the presence of 100 IU/mL IL-2. 
+
+RNA-seq 
+
+For RNA-seq studies, FACS-purified NK cells from each condition were lysed in RLT buffer (Qiagen) supplemented with β-mercaptoethanol and stored at -80 °C until processing. 3 biological replicates per condition were analyzed. Total RNA was isolated using the miRNeasy Micro Kit (Qiagen) according to the manufacturer’s protocols. RNA integrity was assessed by using bioanalyzer prior to library preparation. mRNA-seq libraries were generated using the Kapa mRNA HyperPrep kit (Roche). Libraries from TP, SP, and TN CD27 - CD11b + NK cells isolated from B2m +/+ or B2m –/– mice were sequenced on an Illumina HiSeq 4000 platform using single-end 50bp reads. Libraries for all the other experimental conditions were sequenced on an 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.12.738073 doi: bioRxiv preprint
+
+43 Illumina NovaSeq X platform using single-end 100bp reads. Sequencing depth ranged from approximately 10-30 million reads per sample. Raw sequencing data were processed using Illumina CASAVA to generate FASTQ files. Reads were aligned to the mouse reference genome GRCm39 by using STAR aligner 93 with the following parameters: “--outFilterType BySJout --outFilterMultimapNmax 20 --alignSJoverhangMin 8 --alignSJDBoverhangMin 1 --outFilterMismatchNmax 999 --outFilterMismatchNoverReadLmax 0.04 --alignIntronMin 20 --alignIntronMax 1000000 --alignMatesGapMax 1000000”. Gene- and transcript-level quantification was performed using RSEM 94 . Downstream analyses were performed with R 4.5.2 95 using Bioconductor 3.22 96 . Genes with low expression were filtered such that only genes with normalized counts ≥5 in at least three samples, or with summed normalized counts across all samples exceeding the number of conditions, were retained for analysis. Differential gene expression analysis was performed using DESeq2 97 . For comparisons involving the CIN and B2m datasets, differentially expressed genes were defined by FDR < 0.1, reflecting increased heterogeneity and limited sample size in these conditions. For all other comparisons, FDR < 0.05 was used as the threshold. Differential expression analyses were performed only between samples generated on the same sequencing platform, with the exception of the comparison between NK cells isolated from spleen vs. tumor. Because spleen- and tumor-derived NK cell samples were sequenced on different platforms, this comparison was used for qualitative validation - specifically to assess directional consistency and enrichment of the previously defined desensitization signature - rather than for unbiased differential gene expression discovery. Gene set enrichment analysis was performed using GSEA 98 software. 
+
+Antibodies 
+
+For flow cytometry, we used the following antibodies. Mouse: Anti-CD3 ε (145-2C11), anti-CD4 (GK1.5), anti-CD8 α (53-6.7), anti-CD11b (M1/70), anti-CD19 (6D5), anti-CD27 (LG.3A10), anti-CD45 (30-F11), anti-CD49a (HM α1), anti-
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.12.738073 doi: bioRxiv preprint
+
+44 CD49b (DX5), anti-F4/80 (BM8), anti–I-A/I-E (M5/114.15.2), anti-Ly6G (1A8), anti-NK1.1 (PK136), anti-NKp46 (29A1.4), anti-Ter119 (TER-119), anti-CD107a (1D4B), anti-IFN-γ
+
+(XMG1.2), and anti-Perforin (S16009A) were purchased from BioLegend. Anti-Granzyme A (GzA-3G8.5), anti-Granzyme B (NGZB), and anti-Ly49I (YLI-90) were purchased from Thermo Fisher Scientific. Anti-NKG2A/C/E (20d5) was purchased from BD Biosciences. Ly49C antibody 4LO3311 (a gift from S. Lemieux) was purified and conjugated to biotin according to standard methods. Biotin-conjugated antibodies were detected with streptavidin (BioLegend). Human: Anti-CD56 (5.1H11), anti-CD16 (3G8), anti-CD3 (OKT3), anti-IFN-γ (4S.B3), and anti-phospho-ERK1/2 (Thr202/Tyr204) were purchased from BioLegend. Anti-CD107a (H4A3) was purchased from BD Biosciences. Anti-phospho-AKT1 (Ser473) was purchased from Thermo Scientific. All antibodies were fluorophore-conjugated unless otherwise specified. 
+
+Ca 2+ flux assay 
+
+NK-92 cells desensitized by treatment with 0.5 μM ionomycin or vehicle-treated control cells were washed twice with Hank’s Balanced Salt Solution (HBSS; Thermo Fisher Scientific) containing calcium chloride and magnesium chloride and supplemented with 1% FBS. Cells (4.5 × 10  per sample) were then loaded with Fluo-4 AM (2 μM; Thermo Fisher Scientific) and Fura Red AM (5 μM; AAT Bioquest) in 225 μL HBSS containing calcium and magnesium, supplemented with 1% FBS and probenecid (5 mM; AAT Bioquest) (referred to as calcium assay buffer), and incubated at 37°C for 40 minutes. During dye loading, cells were gently mixed once at 30 minutes by pipetting. Following dye loading, cells were washed twice with calcium assay buffer lacking dye. Cells were then pelleted and resuspended in 50 μL calcium assay buffer containing anti-NKp30 antibody (10 μg/mL; MAB18491, R&D Systems). Plates were incubated on ice for 20 minutes to allow receptor binding. Cells were washed once by addition of 150 μL calcium assay buffer, resuspended in 200 μL calcium assay buffer, and kept on ice until acquisition. Immediately prior to data acquisition, 100 μL calcium assay buffer was 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.12.738073 doi: bioRxiv preprint
+
+45 added to each well, and samples were equilibrated in a 37°C water bath for 3 minutes. Samples were acquired for a total duration of 240 seconds. Calcium flux was quantified as the ratio of Fluo-4 to Fura Red fluorescence using derived parameters and kinetic analysis. Dual-dye ratiometric analysis was used to minimize variability due to dye loading and cell size. Median fluorescence ratios were used for trace visualization. Calcium responses were quantified by calculating the area under the curve (AUC), and receptor-induced calcium responses were determined by subtracting the AUC of unstimulated (medium) control samples from that of anti-NKp30-stimulated samples. As a quality-control criterion, samples in which NKp30 stimulation failed to produce a detectable increase in AUC above the matched medium control were excluded from pooled quantification. This predefined criterion was applied uniformly across all editing conditions. 
+
+In vivo tumor growth experiments 
+
+For subcutaneous tumor implantation, MC38 B2m –/– cells, cells were washed and resuspended in PBS (Thermo Fisher Scientific) and 4 x 10 6 tumor cells in a total volume of 50 μlwere injected subcutaneously. For SB28m-EGFRvIII tumors, cells were washed and resuspended in HBSS (Thermo Fisher Scientific), mixed 1:1 with Matrigel (Corning), and 3 x 10 5cells in a total volume of 50 μL were injected subcutaneously. Tumor dimensions (length, width, and height) were measured using digital calipers, and tumor volume was calculated using the ellipsoid formula: V = ( π/6) × length × width × height. For experiments shown in Figure 6A, mice were intravenously injected with 1 × 10  CRISPR-edited NK cells 4 days prior to tumor inoculation. One day later, mice received an intraperitoneal injection of 10 μg H9-MSA. For experiments shown in Figure 6B, mice were treated with GNF362 (Axon Medchem; 200 μg per dose) or vehicle control (water supplemented with 4% Tween-80 and 5% DMSO by volume) via oral gavage every 3 days, beginning 9 days after tumor inoculation. In selected cohorts, NK cells were depleted by intraperitoneal injection of anti-NK1.1 antibody (clone PK136, Leinco 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.12.738073 doi: bioRxiv preprint
+
+46 Technologies; 200 μg per dose) on days 7 and 8 post tumor inoculation and weekly thereafter. For experiments shown in Figure 6C, mice were intravenously injected with 1.4 × 10  CRISPR-edited CAR-NK cells 13 days after tumor inoculation. Beginning the following day, mice received intraperitoneal injections of 10 μg H9-MSA every 3 days. To deplete T cells, mice were treated with anti-CD8 β (clone 53-5.8, Leinco Technologies; 200 μg) and anti-CD4 (clone GK1.5, Leinco Technologies; 200 μg) antibodies administered intraperitoneally 2 days and 1 day prior to CAR-NK cell transfer and weekly thereafter. In all experiments, prior to treatment initiation, tumor-bearing mice were stratified by tumor volume and randomly assigned to treatment groups such that mean tumor sizes were comparable across groups. Mice were euthanized upon reaching institutional humane endpoints. 
+
+RNA isolation, reverse transcription, and quantitative polymerase chain reaction 
+
+Total RNA was isolated using the TRIzol reagent (Thermo Fisher Scientific) following the manufacturer’s instructions. Complementary DNA (cDNA) was generated using the HiScript III RT SuperMix for qPCR with gDNA wiper (Vazyme). Quantitative real-time polymerase chain reaction (qRT-PCR) was performed using Taq Pro Universal SYBR qPCR Master Mix (Vazyme) in a CFX384 Thermocycler (Bio-Rad). GAPDH was used as a reference for human NK cells and 
+
+Polr2a and Tbp were used as references for murine NK cells. Primer sequences were as follows: human GAPDH , GGAGCGAGATCCCTCCAAAAT (forward) and GGCTGTTGTCATACTTCTCATGG (reverse); human ITPKB ,TCTCCTCATCCTACGAAGACTCA (forward) and GCTCACTCTAGGTTTCTGCTGG (reverse); mouse Polr2a , CTAAGGGGCAGCCAAAGAAAC (forward) and CCATTCAGCATACAACTCTAGGC (reverse); mouse Rpl13a ,CTGTGAAGGCATCAACATTTCTG (forward) and GACCACCATCCGCTTTTTCTT (reverse); mouse Itpkb , ACTTCCGTGAGAATGGAAAGAGG (forward) and TGAGGGCAGAATCATGTCCAG (reverse). 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.12.738073 doi: bioRxiv preprint
+
+47 
+
+Luciferase Assay 
+
+25,000 cells / well were lysed in 20 μL passive lysis buffer (Promega) for 15 min at room temperature with gentle rocking on an orbital shaker. The cell lysates were then added with 100 μL Luciferase Assay Reagent (Promega), and luminescence was measured on a SpectraMax L Luminescence Microplate Reader (Molecular Devices). The relative luminescence was calculated as the difference in luminescence between NKp30-stimulated wells and medium controls. 
+
+Author Contributions 
+
+Conceptualization: D.H.R. and Y.J. Methodology: Y.J., A.K., S.W.L., B.B.T., and Y.S. Investigation and experiments: Y.J., A.P., Z.G., M.M., E.A., H.S., and C.Z. Writing – original draft: Y.J. and D.H.R. Funding acquisition: D.H.R. Provided critical reagents: H.O., Z.Z., R.A.S., A.N.M., J.D. 
+
+Resource Availability Lead Contact 
+
+Requests for further information and resources should be directed to and will be fulfilled by the lead contact, David H. Raulet (raulet@berkeley.edu). 
+
+Materials availability 
+
+All unique stable cell lines generated in this study are available from the Lead Contact upon reasonable request. 
+
+Data and code availability 
+
+RNA-seq data generated in this study have been deposited in the Gene Expression Omnibus (GEO) under accession number GSE336796 and are publicly available. No custom code was generated in this study. All software used for data analysis is listed in the Materials 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.12.738073 doi: bioRxiv preprint
+
+48 and Methods. Any additional information required to reanalyze the data reported in this paper is available from the Lead Contact upon request. 
+
+Acknowledgements 
+
+We thank L. Zhang and E. Seidel for laboratory support, M. Dupage and T. Mann for providing comments on the manuscript, and the members of the Raulet and Dupage laboratories as well as the Division of Immunology and Molecular Medicine at UC Berkeley for helpful discussions. We thank K. Heydari, M. Delcroix, and H. Dhaliwal of the UC Berkeley Cancer Research Laboratory Flow Cytometry and QB3 Genomics at UC Berkeley (RRID: SCR_022170) for assistance with quality control and quantification of RNA-seq libraries as well as sequencing runs. Part of this work involving HiSeq 4000 platform was support by NIH S10 OD018174 Instrumentation Grant for QB3 Genomics. The plasmid to express dual guide RNAs and NK-92 cells expressing dCas9-KRAB machinery were generously provided by the Laboratory for Genomics Research established by GSK, UCSF, and UC Berkeley. CSTX002 cell line was kindly provided by CYTOSEN. 
+
+Funding : This research was supported by National institutes of Health grants R01CA270790 and R01CA303968 (to D.H.R.) and The Mary Jane and Carl Panattoni Charitable Foundation (D.H.R. and H.O); NIH/NINDS grant 1R35NS142982-01 (to H.O.); Cancer Research Institute / Amgen Irvington Postdoctoral Fellowship CRI3984 and Postdoctoral CIRM Training grant EDUC4-12790 (to Y.J.); Predoctoral fellowships from the National Science Foundation grant DGE1752814 and University of California Cancer Research Coordinating Committee (to C.Z.); Cancer Research Institute Irvington Postdoctoral Fellowship (to H.S.). 
+
+Declaration of interests : D.H.R. is a cofounder and holds equity in Dragonfly Therapeutics. He also serves on the SABs of Vivere Oncotherapies, Lightcast Discovery and ImmuneBridge. He 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.12.738073 doi: bioRxiv preprint
+
+49 served in the past on the scientific advisory boards of Aduro Biotech, Innate Pharma, and Ignite Immunotherapy. The rest of the authors declare that they have no competing interests. 
+
+References 
+
+1. Wolf, N.K., Kissiov, D.U., and Raulet, D.H. (2023). Roles of natural killer cells in immunity to cancer, and applications to immunotherapy. Nat Rev Immunol 23 , 90–105. 10.1038/s41577-022-00732-1. 2. Marcus, A., Gowen, B.G., Thompson, T.W., Iannello, A., Ardolino, M., Deng, W., Wang, L., Shifrin, N., and Raulet, D.H. (2014). Recognition of tumors by the innate immune system and natural killer cells. Adv Immunol 122 , 91–128. 10.1016/B978-0-12-800267-4.00003-1. 3. Raulet, D.H., Marcus, A., and Coscoy, L. (2017). Dysregulated cellular functions and cell stress pathways provide critical cues for activating and targeting natural killer cells to transformed and infected cells. Immunol Rev 280 , 93–101. 10.1111/imr.12600. 4. Huntington, N.D., Cursons, J., and Rautela, J. (2020). The cancer-natural killer cell immunity cycle. Nat Rev Cancer 20 , 437–454. 10.1038/s41568-020-0272-z. 5. Ardolino, M., Azimi, C.S., Iannello, A., Trevino, T.N., Horan, L., Zhang, L., Deng, W., Ring, A.M., Fischer, S., Garcia, K.C., and Raulet, D.H. (2014). Cytokine therapy reverses NK cell anergy in MHC-deficient tumors. J Clin Invest 124 , 4781–4794. 10.1172/JCI74337. 6. Rhode, P.R., Egan, J.O., Xu, W., Hong, H., Webb, G.M., Chen, X., Liu, B., Zhu, X., Wen, J., You, L., et al. (2016). Comparison of the Superagonist Complex, ALT-803, to IL15 as Cancer Immunotherapeutics in Animal Models. Cancer Immunol Res 4, 49–60. 10.1158/2326-6066.CIR-15-0093-T. 7. Miyazaki, T., Maiti, M., Hennessy, M., Chang, T., Kuo, P., Addepalli, M., Obalapur, P., Sheibani, S., Wilczek, J., Pena, R., et al. (2021). NKTR-255, a novel polymer-conjugated rhIL-15 with potent antitumor efficacy. J Immunother Cancer 9. 10.1136/jitc-2020-002024. 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.12.738073 doi: bioRxiv preprint
+
+50 8. Seo, H., Jeon, I., Kim, B.S., Park, M., Bae, E.A., Song, B., Koh, C.H., Shin, K.S., Kim, I.K., Choi, K., et al. (2017). IL-21-mediated reversal of NK cell exhaustion facilitates anti-tumour immunity in MHC class I-deficient tumours. Nat Commun 8, 15776. 10.1038/ncomms15776. 9. Nicolai, C.J., Wolf, N., Chang, I.C., Kirn, G., Marcus, A., Ndubaku, C.O., McWhirter, S.M., and Raulet, D.H. (2020). NK cells mediate clearance of CD8+ T cell–resistant tumors in response to STING agonists. Sci Immunol 5. 10.1126/sciimmunol.aaz2738. 10. Wolf, N.K., Blaj, C., Picton, L.K., Snyder, G., Zhang, L., Nicolai, C.J., Ndubaku, C.O., McWhirter, S.M., Garcia, K.C., and Raulet, D.H. (2022). Synergy of a STING agonist and an IL-2 superkine in cancer immunotherapy against MHC I-deficient and MHC I. Proc Natl Acad Sci U S A 119 , e2200568119. 10.1073/pnas.2200568119. 11. Park, C.G., Hartl, C.A., Schmid, D., Carmona, E.M., Kim, H.J., and Goldberg, M.S. (2018). Extended release of perioperative immunotherapy prevents tumor recurrence and eliminates metastases. Sci Transl Med 10 . 10.1126/scitranslmed.aar1916. 12. Doorduijn, E.M., Sluijter, M., Salvatori, D.C., Silvestri, S., Maas, S., Arens, R., Ossendorp, F., van der Burg, S.H., and van Hall, T. (2017). CD4 + T Cell and NK Cell Interplay Key to Regression of MHC Class Ilow Tumors upon TLR7/8 Agonist Therapy. Cancer Immunol Res 5, 642–653. 10.1158/2326-6066.CIR-16-0334. 13. Zhang, Q., Bi, J., Zheng, X., Chen, Y., Wang, H., Wu, W., Wang, Z., Wu, Q., Peng, H., Wei, H., et al. (2018). Blockade of the checkpoint receptor TIGIT prevents NK cell exhaustion and elicits potent anti-tumor immunity. Nat Immunol 19 , 723–732. 10.1038/s41590-018-0132-0. 14. André, P., Denis, C., Soulas, C., Bourbon-Caillet, C., Lopez, J., Arnoux, T., Bléry, M., Bonnafous, C., Gauthier, L., Morel, A., et al. (2018). Anti-NKG2A mAb Is a Checkpoint Inhibitor that Promotes Anti-tumor Immunity by Unleashing Both T and NK Cells. Cell 
+
+175 , 1731–1743.e1713. 10.1016/j.cell.2018.10.014. 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.12.738073 doi: bioRxiv preprint
+
+51 15. Gauthier, L., Morel, A., Anceriz, N., Rossi, B., Blanchard-Alvarez, A., Grondin, G., Trichard, S., Cesari, C., Sapet, M., Bosco, F., et al. (2019). Multifunctional Natural Killer Cell Engagers Targeting NKp46 Trigger Protective Tumor Immunity. Cell 177 , 1701– 1713.e1716. 10.1016/j.cell.2019.04.041. 16. Sarhan, D., Brandt, L., Felices, M., Guldevall, K., Lenvik, T., Hinderlie, P., Curtsinger, J., Warlick, E., Spellman, S.R., Blazar, B.R., et al. (2018). 161533 TriKE stimulates NK-cell function to overcome myeloid-derived suppressor cells in MDS. Blood Adv 2, 1459–1469. 10.1182/bloodadvances.2017012369. 17. Cichocki, F., Bjordahl, R., Goodridge, J.P., Mahmood, S., Gaidarova, S., Abujarour, R., Davis, Z.B., Merino, A., Tuininga, K., Wang, H., et al. (2022). Quadruple gene-engineered natural killer cells enable multi-antigen targeting for durable antitumor activity against multiple myeloma. Nat Commun 13 , 7341. 10.1038/s41467-022-35127-2. 18. Gang, M., Marin, N.D., Wong, P., Neal, C.C., Marsala, L., Foster, M., Schappe, T., Meng, W., Tran, J., Schaettler, M., et al. (2020). CAR-modified memory-like NK cells exhibit potent responses to NK-resistant lymphomas. Blood 136 , 2308–2318. 10.1182/blood.2020006619. 19. Ni, J., Miller, M., Stojanovic, A., Garbi, N., and Cerwenka, A. (2012). Sustained effector function of IL-12/15/18-preactivated NK cells against established tumors. J Exp Med 209 ,2351–2365. 10.1084/jem.20120944. 20. Li, Y., Basar, R., Wang, G., Liu, E., Moyes, J.S., Li, L., Kerbauy, L.N., Uprety, N., Fathi, M., Rezvan, A., et al. (2022). KIR-based inhibitory CARs overcome CAR-NK cell trogocytosis-mediated fratricide and tumor escape. Nat Med 28 , 2133–2144. 10.1038/s41591-022-02003-x. 21. Romee, R., Rosario, M., Berrien-Elliott, M.M., Wagner, J.A., Jewell, B.A., Schappe, T., Leong, J.W., Abdel-Latif, S., Schneider, S.E., Willey, S., et al. (2016). Cytokine-induced 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.12.738073 doi: bioRxiv preprint
+
+52 memory-like natural killer cells exhibit enhanced responses against myeloid leukemia. Sci Transl Med 8, 357ra123. 10.1126/scitranslmed.aaf2341. 22. Sordo-Bahamonde, C., Vitale, M., Lorenzo-Herrero, S., López-Soto, A., and Gonzalez, S. (2020). Mechanisms of Resistance to NK Cell Immunotherapy. Cancers (Basel) 12 .10.3390/cancers12040893. 23. Laskowski, T.J., Biederstädt, A., and Rezvani, K. (2022). Natural killer cells in antitumour adoptive cell immunotherapy. Nat Rev Cancer 22 , 557–575. 10.1038/s41568-022-00491-0. 24. Liao, N.S., Bix, M., Zijlstra, M., Jaenisch, R., and Raulet, D. (1991). MHC class I deficiency: susceptibility to natural killer (NK) cells and impaired NK activity. Science 253 ,199–202. 10.1126/science.1853205. 25. Kim, S., Poursine-Laurent, J., Truscott, S.M., Lybarger, L., Song, Y.J., Yang, L., French, A.R., Sunwoo, J.B., Lemieux, S., Hansen, T.H., and Yokoyama, W.M. (2005). Licensing of natural killer cells by host major histocompatibility complex class I molecules. Nature 
+
+436 , 709–713. 10.1038/nature03847. 26. Fernandez, N.C., Treiner, E., Vance, R.E., Jamieson, A.M., Lemieux, S., and Raulet, D.H. (2005). A subset of natural killer cells achieves self-tolerance without expressing inhibitory receptors specific for self-MHC molecules. Blood 105 , 4416–4423. 10.1182/blood-2004-08-3156. 27. Joncker, N.T., Shifrin, N., Delebecque, F., and Raulet, D.H. (2010). Mature natural killer cells reset their responsiveness when exposed to an altered MHC environment. J Exp Med 207 , 2065–2072. 10.1084/jem.20100570. 28. Elliott, J.M., Wahle, J.A., and Yokoyama, W.M. (2010). MHC class I-deficient natural killer cells acquire a licensed phenotype after transfer into an MHC class I-sufficient environment. J Exp Med 207 , 2073–2079. 10.1084/jem.20100986. 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.12.738073 doi: bioRxiv preprint
+
+53 29. Coudert, J.D., Scarpellino, L., Gros, F., Vivier, E., and Held, W. (2008). Sustained NKG2D engagement induces cross-tolerance of multiple distinct NK cell activation pathways. Blood 111 , 3571–3578. 10.1182/blood-2007-07-100057. 30. Oppenheim, D.E., Roberts, S.J., Clarke, S.L., Filler, R., Lewis, J.M., Tigelaar, R.E., Girardi, M., and Hayday, A.C. (2005). Sustained localized expression of ligand for the activating NKG2D receptor impairs natural cytotoxicity in vivo and reduces tumor immunosurveillance. Nat Immunol 6, 928–937. 10.1038/ni1239. 31. Tripathy, S.K., Keyel, P.A., Yang, L., Pingel, J.T., Cheng, T.P., Schneeberger, A., and Yokoyama, W.M. (2008). Continuous engagement of a self-specific activation receptor induces NK cell tolerance. J Exp Med 205 , 1829–1841. 10.1084/jem.20072446. 32. Wherry, E.J., and Kurachi, M. (2015). Molecular and cellular insights into T cell exhaustion. Nat Rev Immunol 15 , 486–499. 10.1038/nri3862. 33. Im, S.J., Hashimoto, M., Gerner, M.Y., Lee, J., Kissick, H.T., Burger, M.C., Shan, Q., Hale, J.S., Nasti, T.H., Sharpe, A.H., et al. (2016). Defining CD8+ T cells that provide the proliferative burst after PD-1 therapy. Nature 537 , 417–421. 10.1038/nature19330. 34. Philip, M., Fairchild, L., Sun, L., Horste, E.L., Camara, S., Shakiba, M., Scott, A.C., Viale, A., Lauer, P., Merghoub, T., et al. (2017). Chromatin states define tumour-specific T cell dysfunction and reprogramming. Nature 545 , 452–456. 10.1038/nature22367. 35. Wherry, E.J., Ha, S.J., Kaech, S.M., Haining, W.N., Sarkar, S., Kalia, V., Subramaniam, S., Blattman, J.N., Barber, D.L., and Ahmed, R. (2007). Molecular signature of CD8+ T cell exhaustion during chronic viral infection. Immunity 27 , 670–684. 10.1016/j.immuni.2007.09.006. 36. Schietinger, A., Philip, M., Krisnawan, V.E., Chiu, E.Y., Delrow, J.J., Basom, R.S., Lauer, P., Brockstedt, D.G., Knoblaugh, S.E., Hämmerling, G.J., et al. (2016). Tumor-Specific T Cell Dysfunction Is a Dynamic Antigen-Driven Differentiation Program Initiated Early during Tumorigenesis. Immunity 45 , 389–401. 10.1016/j.immuni.2016.07.011. 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.12.738073 doi: bioRxiv preprint
+
+54 37. Barber, D.L., Wherry, E.J., Masopust, D., Zhu, B., Allison, J.P., Sharpe, A.H., Freeman, G.J., and Ahmed, R. (2006). Restoring function in exhausted CD8 T cells during chronic viral infection. Nature 439 , 682–687. 10.1038/nature04444. 38. Blackburn, S.D., Shin, H., Haining, W.N., Zou, T., Workman, C.J., Polley, A., Betts, M.R., Freeman, G.J., Vignali, D.A., and Wherry, E.J. (2009). Coregulation of CD8+ T cell exhaustion by multiple inhibitory receptors during chronic viral infection. Nat Immunol 10 ,29–37. 10.1038/ni.1679. 39. Cillo, A.R., Cardello, C., Shan, F., Karapetyan, L., Kunning, S., Sander, C., Rush, E., Karunamurthy, A., Massa, R.C., Rohatgi, A., et al. (2024). Blockade of LAG-3 and PD-1 leads to co-expression of cytotoxic and exhaustion gene modules in CD8. Cell 187 ,4373–4388.e4315. 10.1016/j.cell.2024.06.036. 40. Hirano, F., Kaneko, K., Tamura, H., Dong, H., Wang, S., Ichikawa, M., Rietz, C., Flies, D.B., Lau, J.S., Zhu, G., et al. (2005). Blockade of B7-H1 and PD-1 by monoclonal antibodies potentiates cancer therapeutic immunity. Cancer Res 65 , 1089–1096. 41. Woo, S.R., Turnis, M.E., Goldberg, M.V., Bankoti, J., Selby, M., Nirschl, C.J., Bettini, M.L., Gravano, D.M., Vogel, P., Liu, C.L., et al. (2012). Immune inhibitory molecules LAG-3 and PD-1 synergistically regulate T-cell function to promote tumoral immune escape. Cancer Res 72 , 917–927. 10.1158/0008-5472.CAN-11-1620. 42. Sauer, K., Park, E., Siegemund, S., French, A.R., Wahle, J.A., Sternberg, L., Rigaud, S., Jonsson, A.H., Yokoyama, W.M., and Huang, Y.H. (2013). Inositol tetrakisphosphate limits NK cell effector functions by controlling PI3K signaling. Blood 121 , 286–297. 10.1182/blood-2012-05-429241. 43. Hanke, T., Takizawa, H., McMahon, C.W., Busch, D.H., Pamer, E.G., Miller, J.D., Altman, J.D., Liu, Y., Cado, D., Lemonnier, F.A., et al. (1999). Direct assessment of MHC class I binding by seven Ly49 inhibitory NK cell receptors. Immunity 11 , 67–77. 10.1016/s1074-7613(00)80082-5. 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.12.738073 doi: bioRxiv preprint
+
+55 44. Vance, R.E., Kraft, J.R., Altman, J.D., Jensen, P.E., and Raulet, D.H. (1998). Mouse CD94/NKG2A is a natural killer cell receptor for the nonclassical major histocompatibility complex (MHC) class I molecule Qa-1(b). J Exp Med 188 , 1841–1848. 10.1084/jem.188.10.1841. 45. Takei, F., Brennan, J., and Mager, D.L. (1997). The Ly-49 family: genes, proteins and recognition of class I MHC. Immunol Rev 155 , 67–77. 10.1111/j.1600-065x.1997.tb00940.x. 46. Raulet, D.H., Held, W., Correa, I., Dorfman, J.R., Wu, M.F., and Corral, L. (1997). Specificity, tolerance and developmental regulation of natural killer cells defined by expression of class I-specific Ly49 receptors. Immunol Rev 155 , 41–52. 10.1111/j.1600-065x.1997.tb00938.x. 47. Joncker, N.T., Fernandez, N.C., Treiner, E., Vivier, E., and Raulet, D.H. (2009). NK cell responsiveness is tuned commensurate with the number of inhibitory receptors for self-MHC class I: the rheostat model. J Immunol 182 , 4572–4580. 10.4049/jimmunol.0803900. 48. Brodin, P., Lakshmikanth, T., Johansson, S., Kärre, K., and Höglund, P. (2009). The strength of inhibitory input during education quantitatively tunes the functional responsiveness of individual natural killer cells. Blood 113 , 2434–2441. 10.1182/blood-2008-05-156836. 49. Chiossone, L., Chaix, J., Fuseri, N., Roth, C., Vivier, E., and Walzer, T. (2009). Maturation of mouse NK cells is a 4-stage developmental program. Blood 113 , 5488– 5496. 10.1182/blood-2008-10-187179. 50. Theorell, J., and Bryceson, Y.T. (2016). Analysis of Intracellular Ca(2+) Mobilization in Human NK Cell Subsets by Flow Cytometry. Methods Mol Biol 1441 , 117–130. 10.1007/978-1-4939-3684-7_10. 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.12.738073 doi: bioRxiv preprint
+
+56 51. Macián, F., García-Cózar, F., Im, S.H., Horton, H.F., Byrne, M.C., and Rao, A. (2002). Transcriptional mechanisms underlying lymphocyte tolerance. Cell 109 , 719–731. 10.1016/s0092-8674(02)00767-5. 52. Romera-Cárdenas, G., Thomas, L.M., Lopez-Cobo, S., García-Cuesta, E.M., Long, E.O., and Reyburn, H.T. (2016). Ionomycin Treatment Renders NK Cells Hyporesponsive. PLoS One 11 , e0150998. 10.1371/journal.pone.0150998. 53. Myers, J.A., Schirm, D., Bendzick, L., Hopps, R., Selleck, C., Hinderlie, P., Felices, M., and Miller, J.S. (2022). Balanced engagement of activating and inhibitory receptors mitigates human NK cell exhaustion. JCI Insight 7. 10.1172/jci.insight.150079. 54. Bryceson, Y.T., March, M.E., Ljunggren, H.G., and Long, E.O. (2006). Synergy among receptors on resting NK cells for the activation of natural cytotoxicity and cytokine secretion. Blood 107 , 159–166. 10.1182/blood-2005-04-1351. 55. Guia, S., Jaeger, B.N., Piatek, S., Mailfert, S., Trombik, T., Fenis, A., Chevrier, N., Walzer, T., Kerdiles, Y.M., Marguet, D., et al. (2011). Confinement of activating receptors at the plasma membrane controls natural killer cell tolerance. Sci Signal 4, ra21. 10.1126/scisignal.2001608. 56. Schmied, L., Luu, T.T., Søndergaard, J.N., Hald, S.H., Meinke, S., Mohammad, D.K., Singh, S.B., Mayer, C., Perinetti Casoni, G., Chrobok, M., et al. (2023). SHP-1 localization to the activating immune synapse promotes NK cell tolerance in MHC class I deficiency. Sci Signal 16 , eabq0752. 10.1126/scisignal.abq0752. 57. Myers, J.A., Huang, R.S., Phung, S.K., Chacón, J.M., Bendzick, L., Weis, A., Shetty, M., DePauw, T.A., Khaw, M.J., Abrahante, J.E., et al. (2025). Chronic NK cell activation results in a dysfunctional, tissue resident-like state mediated by KLF2 deficiency. Blood 
+
+146 , 3059–3071. 10.1182/blood.2024027763. 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.12.738073 doi: bioRxiv preprint
+
+57 58. Zhang, L., and Nishi, H. (2022). Transcriptome analysis of Homo sapiens and Mus musculus reveals mechanisms of CD8+ T cell exhaustion caused by different factors. PLoS One 17 , e0274494. 10.1371/journal.pone.0274494. 59. Boudreau, J.E., Liu, X.R., Zhao, Z., Zhang, A., Shultz, L.D., Greiner, D.L., Dupont, B., and Hsu, K.C. (2016). Cell-Extrinsic MHC Class I Molecule Engagement Augments Human NK Cell Education Programmed by Cell-Intrinsic MHC Class I. Immunity 45 ,280–291. 10.1016/j.immuni.2016.07.005. 60. Tang, F., Li, J., Qi, L., Liu, D., Bo, Y., Qin, S., Miao, Y., Yu, K., Hou, W., Peng, J., et al. (2023). A pan-cancer single-cell panorama of human natural killer cells. Cell 186 , 4235– 4251.e4220. 10.1016/j.cell.2023.07.034. 61. Sauer, K., and Cooke, M.P. (2010). Regulation of immune cell development through soluble inositol-1,3,4,5-tetrakisphosphate. Nat Rev Immunol 10 , 257–271. 10.1038/nri2745. 62. Miller, A.T., Dahlberg, C., Sandberg, M.L., Wen, B.G., Beisner, D.R., Hoerter, J.A., Parker, A., Schmedt, C., Stinson, M., Avis, J., et al. (2015). Inhibition of the Inositol Kinase Itpkb Augments Calcium Signaling in Lymphocytes and Reveals a Novel Strategy to Treat Autoimmune Disease. PLoS One 10 , e0131071. 10.1371/journal.pone.0131071. 63. Brinkman, E.K., Chen, T., Amendola, M., and van Steensel, B. (2014). Easy quantitative assessment of genome editing by sequence trace decomposition. Nucleic Acids Res 42 ,e168. 10.1093/nar/gku936. 64. Biederstädt, A., Basar, R., Park, J.M., Uprety, N., Shrestha, R., Reyes Silva, F., Dede, M., Watts, J., Acharya, S., Xiong, D., et al. (2025). Genome-wide CRISPR screens identify critical targets to enhance CAR-NK cell antitumor potency. Cancer Cell. 10.1016/j.ccell.2025.07.021. 65. Nikolic, I., Cursons, J., Shields, B., Chappaz, S., Sudholz, H., Meng, X., Constantinescu, P., Vijayakumaran, R., D'Angelo, M., Foroutan, M., et al. (2025). Enhancing anti-tumor 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.12.738073 doi: bioRxiv preprint
+
+58 immunity of natural killer cells through targeting IL-15R signaling. Cancer Cell. 10.1016/j.ccell.2025.05.011. 66. Moseman, J.E., Foltz, J.A., Sorathia, K., Heipertz, E.L., and Lee, D.A. (2020). Evaluation of serum-free media formulations in feeder cell-stimulated expansion of natural killer cells. Cytotherapy 22 , 322–328. 10.1016/j.jcyt.2020.02.002. 67. Schmitz, E.A., Takahashi, H., and Karakas, E. (2022). Structural basis for activation and gating of IP. Nat Commun 13 , 1408. 10.1038/s41467-022-29073-2. 68. Levin, A.M., Bates, D.L., Ring, A.M., Krieg, C., Lin, J.T., Su, L., Moraga, I., Raeber, M.E., Bowman, G.R., Novick, P., et al. (2012). Exploiting a natural conformational switch to engineer an interleukin-2 'superkine'. Nature 484 , 529–533. 10.1038/nature10975. 69. Chuntova, P., Hou, Y., Naka, R., Yamamichi, A., Chen, T., Goretsky, Y., Hatae, R., Nejo, T., Kohanbash, G., Mende, A.L., et al. (2022). Novel EGFRvIII-CAR transgenic mice for rigorous preclinical studies in syngeneic mice. Neuro Oncol 24 , 259–272. 10.1093/neuonc/noab182. 70. Narni-Mancinelli, E., Chaix, J., Fenis, A., Kerdiles, Y.M., Yessaad, N., Reynders, A., Gregoire, C., Luche, H., Ugolini, S., Tomasello, E., et al. (2011). Fate mapping analysis of lymphoid cells expressing the NKp46 cell surface receptor. Proc Natl Acad Sci U S A 
+
+108 , 18324–18329. 10.1073/pnas.1112064108. 71. Siegel, R.L., Miller, K.D., Wagle, N.S., and Jemal, A. (2023). Cancer statistics, 2023. CA Cancer J Clin 73 , 17–48. 10.3322/caac.21763. 72. Devillier, R., Chrétien, A.S., Pagliardini, T., Salem, N., Blaise, D., and Olive, D. (2021). Mechanisms of NK cell dysfunction in the tumor microenvironment and current clinical approaches to harness NK cell potential for immunotherapy. J Leukoc Biol 109 , 1071– 1088. 10.1002/JLB.5MR0920-198RR. 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.12.738073 doi: bioRxiv preprint
+
+59 73. Cózar, B., Greppi, M., Carpentier, S., Narni-Mancinelli, E., Chiossone, L., and Vivier, E. (2021). Tumor-Infiltrating Natural Killer Cells. Cancer Discov 11 , 34–44. 10.1158/2159-8290.CD-20-0655. 74. Goodridge, J.P., Jacobs, B., Saetersmoen, M.L., Clement, D., Hammer, Q., Clancy, T., Skarpen, E., Brech, A., Landskron, J., Grimm, C., et al. (2019). Remodeling of secretory lysosomes during education tunes functional potential in NK cells. Nat Commun 10 , 514. 10.1038/s41467-019-08384-x. 75. Kuznetsova, V., Krishnan, V., Costa, A., Ren, X., Ricketts, T.D., Patel, S.B., Connelly, A.N., Goel, P., Knapp, J.P., Franceski, A.M., et al. (2025). Chronic inflammation deters natural killer cell fitness and cytotoxicity in myeloid leukemia. Blood Adv 9, 759–773. 10.1182/bloodadvances.2024014592. 76. Donatelli, S.S., Zhou, J.M., Gilvary, D.L., Eksioglu, E.A., Chen, X., Cress, W.D., Haura, E.B., Schabath, M.B., Coppola, D., Wei, S., and Djeu, J.Y. (2014). TGF-β-inducible microRNA-183 silences tumor-associated natural killer cells. Proc Natl Acad Sci U S A 
+
+111 , 4203–4208. 10.1073/pnas.1319269111. 77. Domagala, J., Lachota, M., Klopotowska, M., Graczyk-Jarzynka, A., Domagala, A., Zhylko, A., Soroczynska, K., and Winiarska, M. (2020). The Tumor Microenvironment-A Metabolic Obstacle to NK Cells' Activity. Cancers (Basel) 12 . 10.3390/cancers12123542. 78. Wu, Z., Park, S., Lau, C.M., Zhong, Y., Sheppard, S., Sun, J.C., Das, J., Altan-Bonnet, G., and Hsu, K.C. (2021). Dynamic variability in SHP-1 abundance determines natural killer cell responsiveness. Sci Signal 14 , eabe5380. 10.1126/scisignal.abe5380. 79. Felices, M., Lenvik, A.J., McElmurry, R., Chu, S., Hinderlie, P., Bendzick, L., Geller, M.A., Tolar, J., Blazar, B.R., and Miller, J.S. (2018). Continuous treatment with IL-15 exhausts human NK cells via a metabolic defect. JCI Insight 3. 10.1172/jci.insight.96219. 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.12.738073 doi: bioRxiv preprint
+
+60 80. Slattery, K., Woods, E., Zaiatz-Bittencourt, V., Marks, S., Chew, S., Conroy, M., Goggin, C., MacEochagain, C., Kennedy, J., Lucas, S., et al. (2021). TGF β drives NK cell metabolic dysfunction in human metastatic breast cancer. J Immunother Cancer 9.10.1136/jitc-2020-002044. 81. Pouillon, V., Maréchal, Y., Frippiat, C., Erneux, C., and Schurmans, S. (2013). Inositol 1,4,5-trisphosphate 3-kinase B (Itpkb) controls survival, proliferation and cytokine production in mouse peripheral T cells. Adv Biol Regul 53 , 39–50. 10.1016/j.jbior.2012.08.001. 82. Maréchal, Y., Pesesse, X., Jia, Y., Pouillon, V., Pérez-Morga, D., Daniel, J., Izui, S., Cullen, P.J., Leo, O., Luo, H.R., et al. (2007). Inositol 1,3,4,5-tetrakisphosphate controls proapoptotic Bim gene expression and survival in B cells. Proc Natl Acad Sci U S A 104 ,13978–13983. 10.1073/pnas.0704312104. 83. Merino, A., Zhang, B., Dougherty, P., Luo, X., Wang, J., Blazar, B.R., Miller, J.S., and Cichocki, F. (2019). Chronic stimulation drives human NK cell dysfunction and epigenetic reprograming. J Clin Invest 129 , 3770–3785. 10.1172/JCI125916. 84. Pauken, K.E., Sammons, M.A., Odorizzi, P.M., Manne, S., Godec, J., Khan, O., Drake, A.M., Chen, Z., Sen, D.R., Kurachi, M., et al. (2016). Epigenetic stability of exhausted T cells limits durability of reinvigoration by PD-1 blockade. Science 354 , 1160–1165. 10.1126/science.aaf2807. 85. Shifrin, N.T., Kissiov, D.U., Ardolino, M., Joncker, N.T., and Raulet, D.H. (2016). Differential Role of Hematopoietic and Nonhematopoietic Cell Types in the Regulation of NK Cell Tolerance and Responsiveness. J Immunol 197 , 4127–4136. 10.4049/jimmunol.1402447. 86. Yan, Y., Zhou, S., Chen, X., Yi, Q., Feng, S., Zhao, Z., Liu, Y., Liang, Q., Xu, Z., Li, Z., and Sun, L. (2024). Suppression of ITPKB degradation by Trim25 confers TMZ 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.12.738073 doi: bioRxiv preprint
+
+61 resistance in glioblastoma through ROS homeostasis. Signal Transduct Target Ther 9,58. 10.1038/s41392-024-01763-x. 87. Pan, C., Jin, L., Wang, X., Li, Y., Chun, J., Boese, A.C., Li, D., Kang, H.B., Zhang, G., Zhou, L., et al. (2019). Inositol-triphosphate 3-kinase B confers cisplatin resistance by regulating NOX4-dependent redox balance. J Clin Invest 129 , 2431–2445. 10.1172/JCI124550. 88. Marongiu, L., Mingozzi, F., Cigni, C., Marzi, R., Di Gioia, M., Garrè, M., Parazzoli, D., Sironi, L., Collini, M., Sakaguchi, R., et al. (2021). Inositol 1,4,5-trisphosphate 3-kinase B promotes Ca. Sci Signal 14 . 10.1126/scisignal.aaz2120. 89. Vella, J.L., Wang, X., and Huang, Y.H. (2016). ItpkB regulates CCR7 expression on dendritic cells prior to lymph node trafficking. The Journal of Immunology 196 , 59.21– 59.21. 10.4049/jimmunol.196.Supp.59.21. 90. Siegemund, S., Rigaud, S., Conche, C., Broaten, B., Schaffer, L., Westernberg, L., Head, S.R., and Sauer, K. (2015). IP3 3-kinase B controls hematopoietic stem cell homeostasis and prevents lethal hematopoietic failure in mice. Blood 125 , 2786–2797. 10.1182/blood-2014-06-583187. 91. Conant, D., Hsiau, T., Rossi, N., Oki, J., Maures, T., Waite, K., Yang, J., Joshi, S., Kelso, R., Holden, K., et al. (2022). Inference of CRISPR Edits from Sanger Trace Data. CRISPR J 5, 123–130. 10.1089/crispr.2021.0113. 92. Somanchi, S.S., and Lee, D.A. (2016). Ex Vivo Expansion of Human NK Cells Using K562 Engineered to Express Membrane Bound IL21. In Natural Killer Cells: Methods and Protocols, S.S. Somanchi, ed. (Springer New York), pp. 175–193. 10.1007/978-1-4939-3684-7_15. 93. Dobin, A., Davis, C.A., Schlesinger, F., Drenkow, J., Zaleski, C., Jha, S., Batut, P., Chaisson, M., and Gingeras, T.R. (2013). STAR: ultrafast universal RNA-seq aligner. Bioinformatics 29 , 15–21. 10.1093/bioinformatics/bts635. 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.12.738073 doi: bioRxiv preprint
+
+62 94. Li, B., and Dewey, C.N. (2011). RSEM: accurate transcript quantification from RNA-Seq data with or without a reference genome. BMC Bioinformatics 12 , 323. 10.1186/1471-2105-12-323. 95. R Core Team (2018). R: A language and environment for statistical computing. (R Foundation for Statistical Computing). 96. Gentleman, R.C., Carey, V.J., Bates, D.M., Bolstad, B., Dettling, M., Dudoit, S., Ellis, B., Gautier, L., Ge, Y., Gentry, J., et al. (2004). Bioconductor: open software development for computational biology and bioinformatics. Genome Biol 5, R80. 10.1186/gb-2004-5-10-r80. 97. Love, M.I., Huber, W., and Anders, S. (2014). Moderated estimation of fold change and dispersion for RNA-seq data with DESeq2. Genome Biol 15 , 550. 10.1186/s13059-014-0550-8. 98. Subramanian, A., Tamayo, P., Mootha, V.K., Mukherjee, S., Ebert, B.L., Gillette, M.A., Paulovich, A., Pomeroy, S.L., Golub, T.R., Lander, E.S., and Mesirov, J.P. (2005). Gene set enrichment analysis: a knowledge-based approach for interpreting genome-wide expression profiles. Proc Natl Acad Sci U S A 102 , 15545–15550. 10.1073/pnas.0506580102. 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.12.738073 doi: bioRxiv preprint
+
+CIN B2m iono Ab combo 172 303 636 616 61 35 71 10 223 214 0311 Up in desensitized NK cells CIN B2m iono Ab combo 163 321 456 350 33 43 60 17 10 31 215 339
+
+Down in desensitized NK cells 
+
+# A
+
+# CDEFG
+
+# Figure 1 WT Spleen NK CD27 - CD11b +TP NK cells from MC38-B2m -/- tumors CD27 - CD11b +spleen tumor spleen tumor 010 20 30 40 % CD107a + (of NK cells) isotype anti-NKp46 spleen tumor spleen tumor 0510 15 + (of NK cells) isotype anti-NKp46 
+
+10 510 410 30-10 310 510 410 30-10 310 510 410 30-10 310 510 410 30-10 310 510 410 310 210 110 510 410 310 210 1NK1.1 Ly49C Ly49I NKG2A 18.1 13.9 38.2 29.9 C-I-N- (TN) 49.2 C+I+N+ (TP) 37.3 C-I+N- (SP) 57.9 ** *** medium isotype ab combo 010 20 30 40 50 % CD107a + (of NK cells) medium isotype ab combo 010 20 30 40 50 + (of NK cells) anti-NKp46+anti-NKG2D Desensitization: medium isotype ab combo 010 20 30 40 50 % CD107a + (of NK cells) medium isotype ab combo 010 20 30 40 50 + (of NK cells) anti-NKp46+anti-DNAM-1 % IFN-% IFN-% IFN-
+
+−2 −1 
+
+0
+
+12
+
+Mcm6 Tigit Itpkb Kcnk5 Pik3r1 Lpgat1 Tmpo Serpinb9b Nav1 Eef1g Tmcc3 S1pr5 Ly6c2 Sh2d1b1 Itgb2 Cnn2 Anxa1 Ncr1 Plekho2 Efhd2 Lfng Nhsl2 Klrg1 Rab37 Arl4c Niban1 Ifi208 Syne1 Rgs3 Arhgef2 Itgam Slfn8 Hivep3 Prex1 Gpc1 Fgl2 Hs3st3b1 
+
+row-centered expression TP SP TN TP SP TN 010 20 30 40 50 % CD107a +(of NK cells) WT B2m -/-** ** *** *** ** *TP SP TN TP SP TN 0246810 % IFN- +(of NK cells) WT B2m -/-*** *** ** *TP SP TN 020 40 60 % CD107a + (of CD27 -CD11b + NK cells)  * *P=0.0711 TP SP TN 010 20 30 40 % IFN- + (of CD27 -CD11b + NK cells)  * *P=0.0797 
+
+# B
+
+> vehicle iono
+
+020 40 60 % CD107a +(of NK cells)  *vehicle iono 010 20 30 % IFN- +(of NK cells)  *
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.12.738073 doi: bioRxiv preprint
+
+# AB CD
+
+# Figure 2 012 120 1200 012 120 1200 010 20 30 40 % CD107a +(of NK cells) WT B2m -/-* *** ***** nM GNF362: 012 120 1200 012 120 1200 0246810 +(of NK cells) ***** ** ** **** WT B2m -/-nM GNF362: - + - +020 40 60 % CD107a +(of NK cells) vehicle iono ** *** *** GNF362: - + - +010 20 30 40 50 +(of NK cells)  ****vehicle iono GNF362: % IFN-% IFN-
+
+isotype anti-NK1.1 isotype anti-NK1.1 010 20 30 % CD107a + (of NK cells)  Rosa26 
+
+Cd4 
+
+Itpkb 
+
+** ** Vehicle Ionomycin gRNA: ** *** *
+
+isotype anti-NK1.1 isotype anti-NK1.1 0510 15 20 % IFN  + (of NK cells) 
+
+Rosa26 
+
+Cd4 Itpkb 
+
+** ** *** ** Vehicle Ionomycin gRNA: ** *** TP SP TN TP SP TN 050 100 150 TPM (Transcript per million) WT B2m -/-** p=0.056073 **** **** **** **** 
+
+Itpkb 
+
+> vehicle ionomycin
+
+050 100 150 200 250 TPM (Transcript per million) 
+
+Itpkb 
+
+*
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.12.738073 doi: bioRxiv preprint
+
+# B CD EH
+
+# I K562 (irradiated 5000rad x 2) 4x target 4x target 4x target 1x target Analysis d13 d0 d2 d4-5 d7 
+
+# KL M
+
+# Figure 3 
+
+> TRAC ITPKB TRAC ITPKB
+
+010 20 30 40 50 % CD107a + (of NK92 cells) anti-NKp30 *** ** ** *Vehicle Iono 
+
+> TRAC ITPKB TRAC ITPKB
+
+0510 15 20 25 % CD107a + (of NK92 cells)  anti-NKp30 **** ** no K562 repeated K562 ** 
+
+> TRAC ITPKB TRAC ITPKB
+
+010 20 30 % CD107a  + (of NK92 cells)  K562 ** ** *** *no K562 repeated K562 
+
+> TRAC ITPKB TRAC ITPKB
+
+020 40 60 80 % CD107a + (of NK92 cells) K562 * **** **** *** ** Vehicle Iono - + - +020 40 60 80 % CD107a +(of NK92 cells) anti-NKp30 
+
+TRAC ITPKB 
+
+**** **** **** *** **** ** Vehicle Iono gRNA GNF362: - + - +020 40 60 80 % CD107a +(of NK92 cells) K562 **** *** *** ** *Vehicle Iono GNF362: gRNA: gRNA: gRNA: gRNA: 0.25 0.5 1 2020 40 60 80 E:T Ratio % Specific Lysis Effector: ionomycin-desensitized CRISPRi-edited NK-92 cells Targets: K562 *** 
+
+TRAC ITPKB TRAC 
+
+ITPKB 
+
+gRNA GNF362 
+
+-++-
+
+0.25 0.5 1 2020 40 60 80 100 E:T Ratio % Specific Lysis Effector: ionomycin-desensitized CRISPRi-edited NK-92 cells Targets: K562 *** *** 
+
+ITPKB ITPKB TRAC 
+
+TRAC 
+
+gRNA Expr. Vec. 
+
+ITPKB Empty Empty ITPKB 
+
+0.25 0.5 1 2020 40 60 80 100 E:T Ratio % Specific Lysis Effector: CRISPRi-edited NK-92 cells Targets: K562 ** ***
+
+ITPKB ITPKB TRAC 
+
+TRAC 
+
+gRNA 4x K562 
+
+-+-+
+
+0.33 1 3 9020 40 60 80 E:T Ratio % Specific Lysis Effector: CRISPRi-edited NK-92 cells Targets: Raji ** ** 
+
+ITPKB ITPKB TRAC 
+
+TRAC 
+
+gRNA 4x K562 
+
+-+-+
+
+> Vehicle Iono
+
+0.0 0.2 0.4 0.6 0.8 1.0 
+
+ITPKB 
+
+> relative expression (normalized to  IPO8 )
+
+# A
+
+Empty ITPKB 
+
+0.000 0.001 0.002 0.02 0.04 relative expression (normalized to  GAPDH ) ITPKB TRAC ITPKB 
+
+** *** gRNA F
+
+> Empty
+> ITPKB
+> Empty
+> ITPKB
+
+020 40 60 80 % CD107a + (of NK92 cells)  K562 ***** *** * ** Vehicle Iono 
+
+# GJ
+
+0 5 10 15 020 40 60 80 100 Days % K562 (in culture) 
+
+TRAC ITPKB *****gRNA 0.25 0.5 1 2 4020 40 60 80 100 E:T Ratio % Specific Lysis Effector: CRISPRi-edited NK-92 cells Targets: K562 
+
+TRAC ITPKB TRAC 
+
+ITPKB 
+
+**** ** *** gRNA Iono 
+
+-+-+
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.12.738073 doi: bioRxiv preprint
+
+# A
+
+# B
+
+# Figure 4 0 1.2 12 020 40 60 80 % CD107a +(of NK cells) 0 1.2 12 Anti-NKp30 
+
+**** **** *** ** *** μMGNF362: Vehicle Iono 
+
+0 1.2 12 020 40 60 80 100 % CD107a +(of NK cells) 0 1.2 12 K562 
+
+**** ** ** **** **** *** Vehicle Iono μMGNF362: 
+
+0 1.2 12 020 40 60 80 100 % CD107a +(of NK cells) 0 1.2 12 Raji 
+
+** ** ** **** **** *μMGNF362: Vehicle Iono 
+
+# D
+
+0 1.2 12 020 40 60 80 100 % Specific Lysis *0 1.2 12 ** *0 1.2 12 ** *0 1.2 12 **Effector: ionomycin-desensitized PBMC-NK Targets: Raji Drug: GNF362 μMGNF362 :E:T ratio: 0.167 0.5 1.5 4.5 
+
+0.167 0.5 1.5 4.5 020 40 60 80 100 E:T Ratio % Specific Lysis Effector: PBMC-NK Targets: Raji Drug: GNF362 *** * ** Iono GNF362 
+
+---+
+
+12 μM1.2 μM
+
+++
+
+0 μM1.2 μM12 μM0 μM0 1.2 12 020 40 60 80 100 120 140 % Specific Lysis *0 1.2 12 0 1.2 12 0 1.2 12 Effector: PBMC-NK Targets: Raji Drug: GNF362 μMGNF362 :E:T ratio: 0.167 0.5 1.5 4.5 
+
+# C
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.12.738073 doi: bioRxiv preprint
+
+# A
+
+# Figure 5 
+
+- + - +020 40 60 % CD107a +(of NK92 cells) anti-NKp30 
+
+TRAC ITPKB 
+
+Vehicle Iono *** ** *** *** ** *IP 4:gRNA - + - +0510 20 40 60 % CD107a +(of NK92 cells) 
+
+TRAC ITPKB 
+
+*** *** anti-NKp30 Vehicle Iono 2-APB: gRNA B
+
+- + - +02 10 64 10 66 10 6Luminescence GNF362: Vehicle Iono Luminescence (anti-NKp30-medium) 
+
+# DC
+
+***** 
+
+> TRAC ITPKB TRAC ITPKB
+
+0500 1000 AUC median of Fluo-4 / Fura red ratio gRNA: Vehicle Iono **Fluo4/Fura red AUC (anti-NKp30 - medium) 
+
+.CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 17, 2026. ;https://doi.org/10.64898/2026.07.12.738073 doi: bioRxiv preprint BC
+
+# Figure 6 
+
+Day 
+
+Rag -/-
+
+0 9 12 200 μg anti-NK1.1 (i.p.) 4E6 MC38-
+
+B2m -/- (s.c.) 15 GNF362 (200 μg) or vehicle oral gavage 7 8 14 
+
+# A
+
+Day NK-DTA 0 10 13 3E5 SB28m-EGFRvIII (s.c.) 14 CAR NK cell nucleofection with CRISPR/Cas9 ribonucleoprotein complex 
+
+- Rosa26 (control) 
+
+- Itpkb 
+
+NK cell transfer Monitor tumor growth H9-MSA (i.p.) every 3 days 11 12 200 ug anti-CD4/ anti-CD8 β
+
+(i.p.) every week Monitor tumor growth 0 10 20 30 40 50 60 0200 400 600 800 1000 1200 1400 Days post tumor inoculation Tumor size (mm 3) Rosa26 
+
+gRNA 
+
+Itpkb 
+
+gRNA *NK H9-MSA 0 5 10 15 20 0200 400 600 800 1000 Tumor size (mm 3)GNF362 GNF362+anti-NK1.1 vehicle+anti-NK1.1 vehicle GNF362 oral gavage 4E6 MC38-
+
+B2m -/- cells (s.c. right flank) Days post tumor inoculation ** - + - +020 40 60 % CD107a +(of NK cells) isotype anti-NK1.1 GNF362: - + - +010 20 30 40 % IFN  +(of NK cells) isotype anti-NK1.1 GNF362: Stimulation: Stimulation: * **
