@@ -1,0 +1,782 @@
+Title: replicateFest: An R Package and Shiny App for Analysis of T Cell Receptor Repertoire Data from the Functional Expansion
+
+URL Source: https://www.biorxiv.org/content/10.64898/2026.06.18.733036v3.full.pdf
+
+Number of Pages: 11
+
+Markdown Content:
+replicateFest: An R Package and Shiny App for Analysis of T Cell 
+
+# Receptor Repertoire Data from the Functional Expansion 
+
+Ludmila Danilova 1, 2 *, Alexander V. Favorov 1, Kellie N. Smith 1, 2 , Leslie Cope 1
+
+1
+
+> 1
+
+Department of Oncology , Sidney Kimmel Comprehensive Cancer Center, Johns Hopkins School of 2
+
+Medicine, Baltimore, MD, USA 3 
+
+> 2
+
+Bloomberg -Kimmel Institute for Cancer Immunotherapy, Johns Hopkins School of Medicine, 4
+
+Baltimore, MD, United States 5
+
+6
+
+* Correspondence: 7
+
+Ludmila Danilova 8
+
+ldanilo1@jhmi.edu 9
+
+Keywords: T cell repertoir e, R package, Functional Expansion, Cancer Immunotherapy .10 
+
+Abstract 11 
+
+Motivation : The Functional Expansion of Specific T cell (FEST )-based assays combine short -term 12 
+
+peptide stimulation with TCR sequencing to identify clonotypes that expand in response to specific 13 
+
+antigens. These approaches have proven invaluable for detecting neoantigen -specific T cell 14 
+
+responses, guiding vaccine development, and assessing checkpoint blockade efficacy. However, 15 
+
+variability introduced by biological and technical replicates poses challenges for reproducibility and 16 
+
+interpretation, and existing computational tools do not address replicate -level analysis in these 17 
+
+assays. 18 
+
+Results : We developed replicateFest, a computational framework implemented as an R package and 19 
+
+Shiny web application, to analyze FEST -based TCR -seq data with and without replicates. 20 
+
+replicateFest applies Fisher’s exact test for non -replicate datasets and negative binomial modeling for 21 
+
+replicate experiments, returning adjusted p -values and odds ratios to identify clonotypes significantly 22 
+
+expanded in antigen -stimulated conditions. The framework distinguishes FEST -expanded clonotypes 23 
+
+(relative to a no -antigen control) and FEST -positive clonotypes (expanded compared to all other 24 
+
+conditions). Validation using synthetic datasets confirmed accurate detection of antigen -specific 25 
+
+clonotypes. Application to published HIV -1 epitope stimulation data reproduced original findings 26 
+
+and demonstrated replicateFest’s utility for reproducibility assessment and quality control. 27 
+
+Availability and Implementation : replicateFest is freely available under the Apache -2.0 license as 28 
+
+an R package at  https://github.com/OncologyQS/replicateFest  and as an interactive Shiny application 29 
+
+at  http://www.stat -apps.onc.jhmi.edu/FEST/ .30 
+
+31 
+
+> .CC-BY 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 13, 2026. ;https://doi.org/10.64898/2026.06.18.733036 doi: bioRxiv preprint
+
+2
+
+1 Introduction 32 
+
+Monitoring antigen -specific T cell responses has become a cornerstone of cancer immunology and 33 
+
+immunotherapy research. The ability to detect and quantify clonal expansion of T cells in response to 34 
+
+tumor -associated or mutation -derived neoantigens provides critical insights into the dynamics of 35 
+
+antitumor immunity and the effectiveness of therapeutic interventions. Traditional approaches, such 36 
+
+as ELISPOT or intracellular cytokine staining, offer functional readouts but lack the resolution to 37 
+
+capture the full diversity and clonality of T cell responses. 38 
+
+Recent advances in high -throughput T cell receptor sequencing (TCR -seq) have transformed our 39 
+
+capacity to characterize T cell repertoires at unprecedented depth. By coupling TCR -seq with antigen 40 
+
+stimulation assays, researchers can identify clonotypes that expand in response to specific peptides, 41 
+
+enabling precise mapping of antigen -specific T cell populations. The Functional Expansion of 42 
+
+Specific T cells (FEST) family of assays exemplifies this approach by integrating short -term peptide 43 
+
+stimulation with TCR -seq to detect antigen -specific clonotypes. These assays use peptides 44 
+
+representing candidate antigens from viruses (ViraFEST), from tumors (tumor -associated antigens, 45 
+
+TAAF EST ), or from mutations (mutation -associated neoantigens, MANAFEST) . The latter was 46 
+
+previously published by our group (1) and included a bioinformatics tool for analysis of FEST -based 47 
+
+TCR -seq data without replicates. We have extended our analysis approach to include FEST designs 48 
+
+using experimental replicates. 49 
+
+Several computational tools have been developed to identify antigen‑responsive TCRs from 50 
+
+stimulation‑based assays by detecting patterns of sequence convergence and clonal enrichment. 51 
+
+ALICE (Antigen‑Led Immune Convergence Engine) (7) operates by statistically identifying TCRs 52 
+
+whose frequency exceeds what would be expected under a generative recombination model, thereby 53 
+
+detecting clonotypes that show significant local enrichment of similar sequences —a hallmark of 54 
+
+antigen‑driven expansion. In contrast, TCRNET (a TCR neighbor enrichment test) (8) employs a 55 
+
+network‑based framework in which each TCR is represented as a node connected to neighbors with 56 
+
+similar CDR3 sequences; antigen‑specific responses are inferred from subnetworks showing 57 
+
+increased connectivity and overrepresentation of related clonotypes following stimulation. 58 
+
+Complementing these approaches, the GLIPH2 algorithm (9) uses motif‑ and global similarity‑based 59 
+
+clustering to group TCRs that share conserved CDR3 patterns associated with common antigen 60 
+
+specificity, while tcrdist3 (10) applies a biologically informed distance metric to build quantitative 61 
+
+similarity maps of TCR repertoires. For single‑cell multi‑omic datasets, TCRscape (11) enables 62 
+
+integrative analysis of full‑length TCR sequences alongside transcriptomic and surface‑protein 63 
+
+profiles, thereby supporting high‑resolution identification and characterization of antigen‑responsive 64 
+
+T cell clones during stimulation assays. While these tools offer complementary strategies for 65 
+
+detecting convergent antigen‑specific TCR signatures and mapping clonal responses to stimulation, 66 
+
+none specifically address replicate -level reproducibility in antigen stimulation assays, highlighting 67 
+
+the need for solutions like replicateFest .68 
+
+In this context, we present replicateFest , a computational framework that includes a Shiny app and an 69 
+
+R package, designed to address these challenges and provide an integrated solution for analyzing data 70 
+
+with replicates in FEST -based TCR -seq studies. This approach enhances the reliability of 71 
+
+immunogenomic data and supports reproducible research in the rapidly evolving field of 72 
+
+immunology and immunotherapy. Additionally, the framework incorporates a previously developed 73 
+
+version for the analysis of FEST -based TCR -seq studies without replicates. 74 
+
+2 Methods 75 
+
+> .CC-BY 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 13, 2026. ;https://doi.org/10.64898/2026.06.18.733036 doi: bioRxiv preprint
+
+3
+
+2.1 The replicateFest framework 76 
+
+Our analysis framework is designed to analyze TCR -seq data generated from a specific experimental 77 
+
+setup. A typical experiment involved T cells obtained from a patient and cultured in vitro under 78 
+
+multiple antigen conditions. These conditions included stimulation with peptides of interest, such as 79 
+
+mutation -associated neoantigens (MANAs), viral epitopes, or other antigens, as well as a control 80 
+
+condition without peptide to evaluate non -specific T cell expansion. After several days of culture 81 
+
+(depending on the experimental design), DNA is extracted for TCR Vβ CDR3 sequencing. Such 82 
+
+experiments have been previously described in (1,12,13) .83 
+
+The replicateFest data analysis workflow consists of three main steps: importing the FEST -based 84 
+
+TCR -seq data, estimating clone abundance, and filtering the results to select significantly expanded 85 
+
+clones . Users can perform the analysis online using standardized model parameters and filtration 86 
+
+criteria , while a free R package offers the experienced user the ability to customize analysis, 87 
+
+filtration, and output formats. 88 
+
+2.1.1 Importing Data 89 
+
+By default, replicateFest accepts tab -delimited files as exported from the Adaptive Biotechnologies 90 
+
+ImmunoSEQ platform or VDJtools . For the online analysis, file names should follow the format 91 
+
+'sampleID_condition_replicate. tsv ', e .g. , 'sample1_HIV_1.t xt '. During import, templates are 92 
+
+prefiltered to include only productive clonotypes , and nu cleotide sequences translat ing into the same 93 
+
+amino acid sequence are aggregated. T he user has an option to filter out templates with low counts to 94 
+
+reduce the number of clonotypes included in downstream analysis and improve runtime. 95 
+
+2.1.2 Estimating Clone Abundance 96 
+
+Our previously published workflow for unreplicated FEST experiments used odds ratios to estimate 97 
+
+levels of clonal expansion compared to no -peptide or other control, and evaluated significance with 98 
+
+pairwise Fisher's exact test s. In case of data with experimental replicates, we fit a negative binomial 99 
+
+model for each clone to estimate the abundances for all culture conditions simultaneously . The 100 
+
+coefficients in the negative binomial model are interpreted as log odds ratios calculated relative to a 101 
+
+no -pe ptide control. The analysis return s p-values adjusted by Benjamini -Hochberg multiple test 102 
+
+correction (FDR) 103 
+
+2.1.3 Filtering for Significant and Unique Expansions 104 
+
+The software offers several criteria for selecting FEST -expanded clonotypes relative to the reference :105 
+
+(i) expanded in a condition of interest compared with the reference at an FDR less than the specified 106 
+
+threshold (<0.05; default value ), and (ii) hav ing a positive odds ratio above the specified threshold .107 
+
+We also identify a subset of FEST -expanded clonotypes that are expanded in the condition of interest 108 
+
+compared with all other conditions tested in parallel; these are designated FEST -positive clonotypes .109 
+
+Both sets (FEST -expanded and FEST -positive) are saved in output Excel tables, and FEST -positive 110 
+
+clonotypes are visualized in a heatmap. 111 
+
+2.1.4 Impl ementation and availability 112 
+
+The replicateFest computational framework is implemented as an R package (R ≥ 4.0) and a Shiny 113 
+
+application, providing an interactive interface for non -programmatic users. Both components are 114 
+
+distributed under the Apache -2.0 license and are freely available at 115 
+
+> .CC-BY 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 13, 2026. ;https://doi.org/10.64898/2026.06.18.733036 doi: bioRxiv preprint
+
+4
+
+https://github.com/OncologyQS/replicateFest , and the Shiny app lication is hosted at  http://www.stat -116 
+
+apps.onc.jhmi.edu/FEST/ .117 
+
+The R package supports large -scale analysis of multiple input datasets through two main functions: 118 
+
+runExperiment for data with replicates and runExperimentFisher for data without replicates . The 119 
+
+Shiny web application provided interactive analysis and result export to Excel, making the workflow 120 
+
+accessible to users without programming experience. 121 
+
+2.2 In silico dataset generation 122 
+
+The replicateFest R package includ es a set of standardized tests based on artific ial data, to ensure the 123 
+
+integrity of the code it self and interactions with dependencies. Briefly, synthetic T -cell receptor 124 
+
+repertoire data were generated by randomly sampling am ino acid CDR3 sequences from the 20 125 
+
+standard residues with lengths between 12 and 16, while nucleotide sequences were generated from 126 
+
+the four canonical bases with lengths between 36 and 45. The background counts of clonotypes were 127 
+
+randomly selected to be around 10 . To simulate peptide -driven clonal expansion, a single clonotype 128 
+
+in each stimulated sample was replaced with a clone that expanded about 100 times from the 129 
+
+background . Details can be found in the R package. 130 
+
+2.3 Analysis of HIV -1 data 131 
+
+We used the T cell sequencing data set with replicates that were previously published in a study of 132 
+
+HIV -1 epitope variants by Chen et al. (13) . The data were downloaded from the Adaptive 133 
+
+Biotechnologies ImmuneACCESS Database,  https://clients.adaptivebiotech.com/pub/chan -2020 -fi .134 
+
+We analyzed the dataset in the R programming environment (v4.6.0) and followed the analysis 135 
+
+performed in the Chen et al. study as closely as possible. We excluded samples with fewer than 5,000 136 
+
+productive reads , leaving 79 samples of 25 peptide conditions and the reference (no peptide) 137 
+
+condition for the downstream analysis. Then w e ran replicateFest (v0.1 .0 ) with the cross -reactive 138 
+
+option enabled, 0.01 for the FDR threshold, and 5 for the OR threshold. The output of the analysis is 139 
+
+presented in the Supplementary Table 1.140 
+
+2.4 Simulation Study 141 
+
+2.4.1 Data Generation 142 
+
+Observed T -cell clone count data were drawn from 79 samples from Chen et al. (13) . We removed 143 
+
+clones found to be FEST -expanded (Supplementary Table 1), as well as clones with fewer than 50 144 
+
+total reads, leaving 351 clones with positive counts but no significant expansion. From the dataset, 145 
+
+we selected 10 peptide conditions with three replicates and the reference (no peptide) condition (n = 146 
+
+33) . For each clone, the mean and variance of counts were calculated across all experimental 147 
+
+conditions (Figure 1), fitting a loess line to model variance as a function of mean. 148 
+
+Simulated clones were generated across a 3 × 3 factorial design defined by three starting frequency 149 
+
+levels (L1, L2, L3; corresponding to the 50th, 75th, and 95th percentiles of the empirical mean 150 
+
+distribution) and three expansion factors (E1 = 2×, E2 = 4×, E3 = 8×) that yielded nine parameter 151 
+
+combinations . The counts were drawn from a negative binomial distribution parameterized by a mean 152 
+
+(𝜇 ) and dispersion (size) parameter, where  size = 𝜇 2 /(𝜎 2 − 𝜇 ). For non -expanded replicates, the 153 
+
+dispersion was derived from the empirical mean –variance relationship at the clone's baseline mean. 154 
+
+For expanded replicates, the dispersion was interpolated using an Akima spline fit to the loess line. 155 
+
+> .CC-BY 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 13, 2026. ;https://doi.org/10.64898/2026.06.18.733036 doi: bioRxiv preprint
+
+5
+
+Each parameter combination was used to simulate 10 clones, yielding a matrix of 90 simulated clones 156 
+
+(10 clones × 9 combinations ). Each clone was expanded in three replicates of one condition. 157 
+
+Simulated clone counts were appended to the observed background count matrix to produce complete 158 
+
+count matrices. This procedure was repeated 10 times to generate 10 independent simulated datasets. 159 
+
+2.4.2 Application of replicateFest 160 
+
+Each of the 10 simulated datasets was analyzed using replicateFest (v0.1.0) , with the no -peptide 161 
+
+condition (NoPeptide) specified as the reference condition and the default threshold s (FDR < 0.05, 162 
+
+OR > 1) . For 90 simulated clones in each dataset , c lone -level results were tabulated in a 3 × 3 163 
+
+contingency table (frequency level × expansion level), allowing assessment of sensitivity across all 164 
+
+simulated datasets . Detection rates were summarized across 10 simulated datasets as the mean and 165 
+
+standard deviation of the proportion s of correctly identified FEST -expanded clones out of simulated 166 
+
+clones within each cell of the 3 × 3 factorial design (Table 1; Figure 2). 167 
+
+3 Results 168 
+
+3.1 In silico experiment al data 169 
+
+To evaluate the framework in a controlled setting, we generated in silico experimental datasets with 170 
+
+and without replicates (see details in Methods) . Each simulated experiment included five peptide 171 
+
+conditions, with only one clonotype expanded per condition, and one condition without expansion. 172 
+
+replicateFest successfully identified both FEST -expanded and FEST -positive clonotypes in 173 
+
+experiments with and without replicates. These synthetic datasets and corresponding results are 174 
+
+included as test data within the R package. Overall, these results demonstrate that replicateFest 175 
+
+reliably detects clonal expansion under well -defined conditions and provides consistent performance 176 
+
+regardless of the presence of experimental replicates. 177 
+
+3.2 Application to HIV -1 data 178 
+
+We applied our framework to previously published data that was used to identify cross -reactive recall 179 
+
+CD8⁺ T cell clonotypes that respond to autologous HIV -1 epitope variants from the study by Chen et 180 
+
+al (13) . The study demonstrated that memory CD8⁺ T cells can recognize multiple epitope variants, 181 
+
+highlighting the breadth and adaptability of antiviral T cell immunity. By leveraging TCR -seq, t he 182 
+
+authors assessed 25 peptides representing epitope variants of Gag and Nef HIV proteins to evaluate T 183 
+
+cell response to s timuli. The study adapted non -replicated version of the MANAFEST ass ay(12) to 184 
+
+the replicated dataset by applying additional filtering criteria . After applying the criteria, t he authors 185 
+
+reported n ine T cell clon es that significantly expanded in response to stimuli (three clones in 186 
+
+response to Gag epitopes and six clones in response to Nef epitopes ), where five of them were 187 
+
+reported as cross -reactive (Table 1) .188 
+
+To validate reproducibility and assess replicate -level consistency, replicateFest was applied to the 189 
+
+TCR -seq data from th e HIV -1 study , trying to recapitulate the analysis as closely as possible (see 190 
+
+details in Methods) . We ex cluded samples that were excluded in the study, and appli ed similar 191 
+
+threshold s, specifically, for FDR less than 0.01 and OR more than 5 (Supplementary Table 1). We 192 
+
+were able to successfully identify all nine clonotypes reported in the study as FEST -expanded. 193 
+
+Additionally, we identified four out of five cross -reactive clon otypes, and one cross -reactive 194 
+
+clonotype that was not reported as cross -reactive by Chen et all . These minor discrepancies were due 195 
+
+to the different methodology of calling FEST -expanded clonotypes by Chen et al . and replicateFest. 196 
+
+> .CC-BY 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 13, 2026. ;https://doi.org/10.64898/2026.06.18.733036 doi: bioRxiv preprint
+
+6
+
+Th ese results demonstrate the ability of replicateFest to reliably find antigen -specific expan ded and 197 
+
+cross -reactive clonotypes in real experimental data .198 
+
+3.3 Application to the s imulated data 199 
+
+To evaluate replicateFest performance, we simulated clones with known background levels and 200 
+
+expansion rates from a negative binomial distribution, using empirical count data as a basis for 201 
+
+realistic parameterization (see details in Methods) . We used a 3 × 3 factorial design with three 202 
+
+starting frequency levels (L1, L2, L3; corresponding to the 50th, 75th, and 95th percentiles of the 203 
+
+empirical mean distribution) and three expansion factors (E1 = 2×, E2 = 4×, E3 = 8×). We generated 204 
+
+10 simulated datasets with 90 expanded clonotypes corresponding to nine combinations of the 205 
+
+factorial design (ten clonotypes for each combination) , and analyzed these datasets with replicateFest 206 
+
+under default parameters . After that, we evaluated how many clonotypes out of 90 were FEST -207 
+
+expanded across 10 simulated datasets (Figure 2) and calculated the mean and standard deviation of 208 
+
+the detection rate . At the lowest expansion level (E1, 2×), detection was near zero across all starting 209 
+
+frequency levels, indicating that 2 -fold expansions fall below the method's detection threshold under 210 
+
+the simulated conditions. At moderate expansion (E2, 4×), sensitivity increased substantially with 211 
+
+starting clone frequency, ranging from 0.42 ± 0.10 at L1 to 0.92 ± 0.10 at L3, with the greatest 212 
+
+variability across replicates observed in this regime. At the highest expansion level (E3, 8×), 213 
+
+detection was near -perfect regardless of starting frequency (≥ 0.98 in all cases), with no variability at 214 
+
+L3. Overall, these results indicate that replicateFest exhibits a clear dependence on both clonal 215 
+
+abundance and expansion magnitude, with robust detection achieved primarily at higher expansion 216 
+
+levels and frequencies, thereby defining the practical sensitivity limits of the method under realistic 217 
+
+repertoire conditions. 218 
+
+219 
+
+4 Discussion 220 
+
+We introduce replicateFest , a computational framework comprising an R package and an interactive 221 
+
+Shiny application, designed to analyz e FEST -based TCR -seq data. By supporting both replicate and 222 
+
+non -replicate experimental designs, replicateFest provides an integrated solution for identifying 223 
+
+antigen -specific clonotype expansions with appropriate statistical methods. This framework improves 224 
+
+the reliability of immunogenomic analyses and promotes reproducible research in the rapidly 225 
+
+advancing fields of immunology and cancer immunotherapy. 226 
+
+The ability to accurately monitor antigen -specific T cell responses is critical for understanding 227 
+
+antitumor immunity and guiding immunotherapy strategies. FEST -based assays, including 228 
+
+MANAFEST, have enabled sensitive detection of clonotype expansions following antigen 229 
+
+stimulation by leveraging TCR -seq. However, the complexity of TCR repertoires and variability 230 
+
+introduced by biological and technical replicates present significant challenges for reproducibility 231 
+
+and interpretation. replicateFest addresses these challenges by providing a unified computational 232 
+
+framework for analyzing FEST -based TCR -seq data. By incorporating statistical models tailored to 233 
+
+experimental design – Fisher’s exact test for single -replicate data and negative binomial modeling for 234 
+
+replicate datasets – replicateFest ensures robust identification of antigen -specific clonotypes. 235 
+
+Successful testing on the in silico datasets and validation on the previously published HIV -1 epitope 236 
+
+stimulation data demonstrate that replicateFest reliably identifies expanded clonotypes and 237 
+
+reproduce s findings from complex experimental designs. 238 
+
+> .CC-BY 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 13, 2026. ;https://doi.org/10.64898/2026.06.18.733036 doi: bioRxiv preprint
+
+7
+
+Additionally, t he simulation results provide important insights into the sensitivity and operational 239 
+
+limits of the replicateFest framework under realistic repertoire conditions. Detection performance 240 
+
+was strongly influenced by both the baseline abundance of clonotypes and the magnitude of 241 
+
+expansion, consistent with theoretical expectations for count -based sequencing data. In particular, the 242 
+
+near absence of detection at 2 -fold expansion indicates that modest antigen -driven changes may be 243 
+
+difficult to distinguish from background variability, especially for low -frequency clones. In contrast, 244 
+
+the marked improvement at 4 -fold expansion and the near -perfect detection observed at 8 -fold 245 
+
+expansion demonstrate that replicateFest is highly effective in identifying robust antigen -specific 246 
+
+signals when clonal expansion exceeds the noise threshold inherent to TCR -seq data. The increased 247 
+
+variability observed at intermediate expansion levels further highlights the stochastic nature of 248 
+
+sampling and the importance of replicate -aware modeling. Collectively, these findings emphasize 249 
+
+that both clonal frequency and expansion magnitude are critical determinants of detection power and 250 
+
+underscore the value of incorporating experimental replicates to improve confidence in identifying 251 
+
+true antigen -responsive T cell populations. 252 
+
+Compared to existing TCR repertoire analysis tools such as MiXCR, immunarch, and tcrdist3, 253 
+
+replicateFest fills a unique gap by focusing on replicate -level concordance in antigen stimulation 254 
+
+assays. This functionality is particularly relevant for studies evaluating neoantigen -specific 255 
+
+responses, vaccine efficacy, or cross -reactivity, where reproducibility is essential for downstream 256 
+
+clinical and translational applications. 257 
+
+Future development will focus on expanding compatibility with single -cell TCR -seq data, integrating 258 
+
+paired α/β chain analysis, and implementing automated thresholds for replicate concordance. By 259 
+
+addressing these needs, replicateFest will continue to support rigorous and reproducible analysis in 260 
+
+the rapidly evolving field of cancer immunology and beyond. 261 
+
+5 Conflict of Interest 262 
+
+KNS is an inventor on a patent related to the technologies described herein and holds equity/owners’ 263 
+
+interest in Clasp Therapeutics. LD, AVF , and LC declare that the research was conducted in the 264 
+
+absence of any commercial or financial relationships that could be construed as a potential conflict of 265 
+
+interest. 266 
+
+6 Author Contributions 267 
+
+LD developed the computational framework , implemented the R package and the Shiny application ,268 
+
+conducted simulations , and validated model performance. AVF validated and optimized the 269 
+
+framework performance . KNS contributed to interpretation of results and provided domain expertise 270 
+
+in immunology. LC designed the study, developed the computational framework, and implemented 271 
+
+the algorithms. LD drafted the manuscript with input from all authors. All authors contributed to the 272 
+
+article and approved the submitted version. 273 
+
+7 Funding 274 
+
+This study was supported by grants from National Institutes of Health (NIH) P30CA006973 (AF, 275 
+
+LD , LC ), P50CA098252 (LC), R37CA251447, Swim Across America, Commonwealth Foundation, 276 
+
+and R50CA243627 (LD). 277 
+
+8 Acknowledgments 278 
+
+> .CC-BY 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 13, 2026. ;https://doi.org/10.64898/2026.06.18.733036 doi: bioRxiv preprint
+
+8
+
+The authors would like to acknowledge Dr. Dmitrijs Lvovs for the useful advice on package testing 279 
+
+and Michael Considine for the helpful discussion about the user interface . We would also like to 280 
+
+acknowledge the use of Microsoft 365 Copilot for assistance in drafting, proofreading, and editing 281 
+
+this manuscript. After using this tool, the authors reviewed and edited the content as needed and take 282 
+
+full responsibility for the content of the published article. 283 
+
+9 Data Availability Statement 284 
+
+The HIV -1 dataset was downloaded from the Adaptive Biotechnologies ImmuneACCESS Database, 285 
+
+https://clients.adaptivebiotech.com/pub/chan -2020 -fi . The in silico data is available on GitHub as a 286 
+
+part of the replicateFest package: 287 
+
+https://github.com/OncologyQS/replicateFest/tree/main/tests/testthat/testdata . The simulation data is 288 
+
+available on GitHub in the paper related repository: 289 
+
+https://github.com/OncologyQS/replicateFest_paper .290 
+
+10 Reference 291 
+
+1. Danilova L, Anagnostou V, Caushi JX, Sidhom JW, Guo H, Chan HY, et al. The Mutation -292 
+
+Associated Neoantigen Functional Expansion of Specific T Cells (MANAFEST) Assay: A 293 
+
+Sensitive Platform for Monitoring Antitumor Immunity. Cancer Immunol Res. 2018 294 
+
+Aug;6(8):888 –99. 295 
+
+2. Bolotin DA, Poslavsky S, Mitrophanov I, Shugay M, Mamedov IZ, Putintseva EV, et al. MiXCR: 296 
+
+software for comprehensive adaptive immunity profiling. Nat Methods. 2015 May;12(5):380 –1. 297 
+
+3. Home - immunomind. [Internet]. [cited 2025 Nov 21]. Available from: 298 
+
+https://immunomind.github.io/docs/ 299 
+
+4. Mangul -Lab -USC/reTCR [Internet]. Mangul Lab at USC; 2024 [cited 2025 Nov 21]. Available 300 
+
+from: https://github.com/Mangul -Lab -USC/reTCR 301 
+
+5. Yue T, Chen SY, Shen WK, Zhang ZY, Cheng L, Guo AY. TCRosetta: An Integrated Analysis 302 
+
+and Annotation Platform for T -cell Receptor Sequences. Genomics Proteomics Bioinformatics. 303 
+
+2024 Oct 15;22(4):qzae013. 304 
+
+6. Perik -Zavodskii R, Perik -Zavodskaia O, Volynets M, Alrhmoun S, Sennikov S. TCRscape: a 305 
+
+single -cell multi -omic TCR profiling toolkit. Front Bioinform [Internet]. 2025 Sep 5 [cited 2025 306 
+
+Nov 21];5. Available from: 307 
+
+https://www.frontiersin.org/journals/bioinformatics/articles/10.3389/fbinf.2025.1641491/full 308 
+
+7. Pogorelyy MV, Minervina AA, Shugay M, Chudakov DM, Lebedev YB, Mora T, et al. Detecting 309 
+
+T cell receptors involved in immune responses from single repertoire snapshots. PLOS Biology. 310 
+
+2019 Jun 13;17(6):e3000314. 311 
+
+8. Ritvo PG, Saadawi A, Barennes P, Quiniou V, Chaara W, El Soufi K, et al. High -resolution 312 
+
+repertoire analysis reveals a major bystander activation of Tfh and Tfr cells. Proceedings of the 313 
+
+National Academy of Sciences. 2018 Sep 18;115(38):9604 –9. 314 
+
+9. Wang C, Huang H, Davis MM. Grouping T -Cell Antigen Receptors by Specificity. Methods Mol 315 
+
+Biol. 2022;2574:291 –307. 316 
+
+> .CC-BY 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 13, 2026. ;https://doi.org/10.64898/2026.06.18.733036 doi: bioRxiv preprint
+
+9
+
+10. Mayer -Blackwell K, Fiore -Gartland A, Thomas PG. Flexible Distance -Based TCR Analysis 317 
+
+in Python with tcrdist3. Methods Mol Biol. 2022;2574:309 –66. 318 
+
+11. Perik -Zavodskii R, Perik -Zavodskaia O, Volynets M, Alrhmoun S, Sennikov S. TCRscape: a 319 
+
+single -cell multi -omic TCR profiling toolkit. Front Bioinform [Internet]. 2025 Sep 5 [cited 2026 320 
+
+Feb 12];5. Available from: 321 
+
+https://www.frontiersin.org/journals/bioinformatics/articles/10.3389/fbinf.2025.1641491/full 322 
+
+12. Forde PM, Chaft JE, Smith KN, Anagnostou V, Cottrell TR, Hellmann MD, et al. 323 
+
+Neoadjuvant PD -1 Blockade in Resectable Lung Cancer. New England Journal of Medicine 324 
+
+[Internet]. 2018 May 24 [cited 2025 Dec 4]; Available from: 325 
+
+https://www.nejm.org/doi/full/10.1056/NEJMoa1716078 326 
+
+13. Chan HY, Zhang J, Garliss CC, Kwaa AK, Blankson JN, Smith KN. A T Cell Receptor 327 
+
+Sequencing -Based Assay Identifies Cross -Reactive Recall CD8+ T Cell Clonotypes Against 328 
+
+Autologous HIV -1 Epitope Variants. Front Immunol [Internet]. 2020 Apr 7 [cited 2025 Nov 5];11. 329 
+
+Available from: 330 
+
+https://www.frontiersin.org/journals/immunology/articles/10.3389/fimmu.2020.00591/full 331 
+
+332 
+
+333 
+
+> .CC-BY 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 13, 2026. ;https://doi.org/10.64898/2026.06.18.733036 doi: bioRxiv preprint
+
+10 
+
+11 Tables and Figures 334 
+
+Table 1. Nine clones that are reported in the study Chen et al. 335 
+
+clone 
+
+HIV 
+
+protein  Is FEST -expanded? 
+
+Is cross -
+
+reactive? 
+
+Is repo rted as cross -
+
+reactive in Chen et a l.? 
+
+CASSPGVGNTEAFF  Gag  TRUE  TRUE  TRUE 
+
+CASSLDPGANTEAFF  Gag  TRUE  FALSE  TRUE 
+
+CASSPRQAGLVTQYF  Gag  TRUE  FALSE  FALSE 
+
+CASSPRWGDAGELFF  Nef  TRUE  TRUE  TRUE 
+
+CAWETGVRDGYTF  Nef  TRUE  FALSE  FALSE 
+
+CASSLLAGGSLDEQFF  Nef  TRUE  TRUE  TRUE 
+
+CASSLDLRTFTYEQYF  Nef  TRUE  TRUE  TRUE 
+
+CASSLERVGYNEQFF  Nef  TRUE  TRUE  FALSE 
+
+CAISLMGTEAFF  Nef  TRUE  FALSE  FALSE 
+
+336 
+
+Figure 1. The mean and variance of counts of 351 clonotypes calculated across 33 samples . A loess -337 
+
+fitted line is shown in blue. 338 
+
+339 
+
+340 
+
+341 
+
+> .CC-BY 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 13, 2026. ;https://doi.org/10.64898/2026.06.18.733036 doi: bioRxiv preprint
+
+11 
+
+Figure 2. The results of the methods sensitivity under controlled conditions. The results 342 
+
+summarized as mean detection rate ( ±SD) across 10 simulations . Each simulation contained clones 343 
+
+with three starting frequency levels ( L1, L2, L3; corresponding to the 50th, 75th, and 95th percentiles 344 
+
+of the empirical mean distribution) and three expansion factors (E1 = 2×, E2 = 4×, E3 = 8×). 345 
+
+346 
+
+347

@@ -1,0 +1,243 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-07-19T19:53:27.260911+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 1,
+    "deep_cap": 6,
+    "deep_selected": 1,
+    "quick_candidates": 4,
+    "quick_skim_target": 11,
+    "quick_selected": 4
+  },
+  "deep_dive": [
+    {
+      "id": "biorxiv-10-64898-2026-05-29-728710-v2",
+      "source": "biorxiv",
+      "title": "TIAR-dependent coordination of alternative splicing and lipid peroxidation is required for CML cell resistance to imatinib in the bone marrow stroma",
+      "abstract": "Chronic myeloid leukemia (CML) is treated with Abl1 tyrosine kinase inhibitors (TKIs). Quiescent cancer cells residing in the bone marrow (BM) can survive the treatment and cause CML relapse. We previously found that a subset of alternative splicing (AS) changes detected in CML cells surviving months of therapy are initiated within hours of treatment onset. Here, we investigated how AS in CML cells is modulated by the human BM microenvironment. By incorporating humanized BM niche models in vivo, we uncovered stroma-induced transcriptome adaptation that influences transcriptional regulation, transmembrane transport, lipid metabolism, the tricarboxylic acid cycle, and respiratory electron transport. We identified RNA-binding protein TIAR (T-cell intracellular antigen-related protein) as a key mediator of CML survival under TKI imatinib treatment. Our data show TIAR-dependent coordination of RNA processing with the metabolic program induced by stromal interaction. Quantitative nascent proteome analysis revealed that TIAR silencing affects the synthesis of metabolic enzymes and proteins involved in imatinib-induced erythroid differentiation. Besides, TIAR knockdown increased lipid peroxidation in untreated cells and decreased reduction potential in cells upon imatinib treatment. Taken together, TIAR deficiency reduces CML survival, possibly by inducing ferroptosis. These findings identify TIAR-dependent RNA processing within the BM niche as a previously unrecognized mechanism of CML therapy resistance and a potential therapeutic vulnerability.",
+      "authors": [
+        "Podszywalow-Bartnicka, P.",
+        "Kozlowska, E.",
+        "Serwa, R.",
+        "Idaszek, J.",
+        "Walejewska, E.",
+        "Kepczynska, A.",
+        "Mietelska-Porowska, A.",
+        "Pilanc-Kudlek, P.",
+        "Wolczyk, M.",
+        "Schärfen, L.",
+        "Le, B. V.",
+        "Swieszkowski, W.",
+        "Piwocka, K.",
+        "Skorski, T.",
+        "Neugebauer, K. M."
+      ],
+      "primary_category": "cancer biology",
+      "categories": [
+        "cancer biology"
+      ],
+      "published": "2026-07-15T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.05.29.728710v2.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "transcriptomics CML resistance imatinib stroma",
+      "llm_evidence_cn": "转录组学CML伊马替尼耐药骨髓基质",
+      "llm_evidence": "转录组学CML伊马替尼耐药骨髓基质",
+      "canonical_evidence": "转录组学CML伊马替尼耐药骨髓基质",
+      "llm_tldr_en": "Shows that TIAR-dependent alternative splicing and lipid peroxidation mediate CML cell resistance to imatinib in the bone marrow stroma, using transcriptomics.",
+      "llm_tldr_cn": "研究揭示骨髓微环境通过TIAR依赖的可变剪接和脂质过氧化作用促进CML细胞对伊马替尼耐药，通过转录组分析发现基质诱导的转录适应，为理解耐药机制提供了新视角。",
+      "llm_tldr": "研究揭示骨髓微环境通过TIAR依赖的可变剪接和脂质过氧化作用促进CML细胞对伊马替尼耐药，通过转录组分析发现基质诱导的转录适应，为理解耐药机制提供了新视角。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "transcriptomics tumor resistance",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "biorxiv-10-64898-2026-06-18-733036-v3",
+      "source": "biorxiv",
+      "title": "replicateFest: An R Package and Shiny App for Analysis of T Cell Receptor Repertoire Data from the Functional Expansion",
+      "abstract": "MotivationThe Functional Expansion of Specific T cell (FEST)-based assays combine short-term peptide stimulation with TCR sequencing to identify clonotypes that expand in response to specific antigens. These approaches have proven invaluable for detecting neoantigen-specific T cell responses, guiding vaccine development, and assessing checkpoint blockade efficacy. However, variability introduced by biological and technical replicates poses challenges for reproducibility and interpretation, and existing computational tools do not address replicate-level analysis in these assays.\n\nResultsWe developed replicateFest, a computational framework implemented as an R package and Shiny web application, to analyze FEST-based TCR-seq data with and without replicates. replicateFest applies Fishers exact test for non-replicate datasets and negative binomial modeling for replicate experiments, returning adjusted p-values and odds ratios to identify clonotypes significantly expanded in antigen-stimulated conditions. The framework distinguishes FEST-expanded clonotypes (relative to a no-antigen control) and FEST-positive clonotypes (expanded compared to all other conditions). Validation using synthetic datasets confirmed accurate detection of antigen-specific clonotypes. Application to published HIV-1 epitope stimulation data reproduced original findings and demonstrated replicateFests utility for reproducibility assessment and quality control.\n\nAvailability and ImplementationreplicateFest is freely available under the Apache-2.0 license as an R package at https://github.com/OncologyQS/replicateFest and as an interactive Shiny application at http://www.stat-apps.onc.jhmi.edu/FEST/.",
+      "authors": [
+        "Danilova, L.",
+        "Favorov, A.",
+        "Smith, K. N.",
+        "Cope, L."
+      ],
+      "primary_category": "immunology",
+      "categories": [
+        "immunology"
+      ],
+      "published": "2026-07-13T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.06.18.733036v3.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "TCR repertoire analysis tool for assessing immune responses, relevant to resistance mechanisms",
+      "llm_evidence_cn": "TCR库分析工具，用于评估免疫反应，与耐药机制相关",
+      "llm_evidence": "TCR库分析工具，用于评估免疫反应，与耐药机制相关",
+      "canonical_evidence": "TCR库分析工具，用于评估免疫反应，与耐药机制相关",
+      "llm_tldr_en": "replicateFest is an R package and Shiny app for analyzing replicate-level TCR repertoire data from FEST assays, enabling robust detection of antigen-specific T cell responses.",
+      "llm_tldr_cn": "本工作开发了replicateFest，一个用于分析功能性T细胞扩增（FEST）测定中重复级别TCR库数据的计算框架。该工具解决了重复变异性问题，可识别抗原特异性T细胞克隆型，对于评估免疫检查点阻断疗效和疫苗开发具有重要价值。",
+      "llm_tldr": "本工作开发了replicateFest，一个用于分析功能性T细胞扩增（FEST）测定中重复级别TCR库数据的计算框架。该工具解决了重复变异性问题，可识别抗原特异性T细胞克隆型，对于评估免疫检查点阻断疗效和疫苗开发具有重要价值。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "single cell sequencing resistance mechanism",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-07-09-737600-v1",
+      "source": "biorxiv",
+      "title": "Reproducible-by-design: Romics Processor, a FAIR ecosystem for multi-omics and spatial-omics analysis",
+      "abstract": "Multi-omics and spatial-omics technologies are exploding in use, producing increasingly complex datasets. Existing bioinformatics tools are developing rapidly but fail to fully enforce the FAIR principles, leaving the field vulnerable to escalating issues in computational reproducibility. Here, we introduce a reproducible-by-design paradigm represented in an omics data processing package, RomicsProcessor. At its core, the \"Romics_object\", which is a self-contained digital artifact that encapsulates the full history of the data from the original data to the fully processed state, capturing the details of the transformative steps and the required dependencies. This architecture ensures that computational workflows are fully portable and reproducible. In this manuscript, we demonstrate RomicProcessors computational capabilities and scalability on diverse datasets, including bulk proteomics, large-scale multiplexed immunofluorescence, and multi-batch mass spectrometry imaging. Providing a robust framework for truly FAIR Data Principles-based analysis, RomicsProcessor is a blueprint for the next generation of reproducible bioinformatics tools that can dramatically accelerate discovery in multi-omics biology in the era of artificial intelligence.",
+      "authors": [
+        "Gorman, B. L.",
+        "Bhotika, H.",
+        "Jehrio, M.",
+        "Purkerson, J. M.",
+        "Carlin, F.",
+        "Nakayasu, E. S.",
+        "Misra, R. S.",
+        "Adkins, J. N.",
+        "Anderton, C. R.",
+        "Pryhuber, G.",
+        "Clair, G. C."
+      ],
+      "primary_category": "bioinformatics",
+      "categories": [
+        "bioinformatics"
+      ],
+      "published": "2026-07-15T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.07.09.737600v1.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "bioinformatics multi-omics FAIR tools",
+      "llm_evidence_cn": "生信多组学FAIR工具",
+      "llm_evidence": "生信多组学FAIR工具",
+      "canonical_evidence": "生信多组学FAIR工具",
+      "llm_tldr_en": "Introduces RomicsProcessor, a reproducible-by-design R package for FAIR multi-omics and spatial-omics analysis.",
+      "llm_tldr_cn": "提出RomicsProcessor，一个可重复设计的R包，用于FAIR多组学和空间组学分析，封装了完整数据处理历史，解决了计算可重复性问题，可作为耐药性生信分析的基础工具。",
+      "llm_tldr": "提出RomicsProcessor，一个可重复设计的R包，用于FAIR多组学和空间组学分析，封装了完整数据处理历史，解决了计算可重复性问题，可作为耐药性生信分析的基础工具。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "bioinformatics for drug resistance",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-07-13-738221-v1",
+      "source": "biorxiv",
+      "title": "The basal cell state maintains pancreatic cancers by controlling an immunosuppressive circuit",
+      "abstract": "Intra-tumoral heterogeneity is a cardinal feature of solid tumors, yet how distinct cancer cell states functionally contribute to malignant and stromal diversity in situ remains poorly understood. Using mouse models to lineage-trace or genetically ablate the two predominant cancer cell states in autochthonous pancreatic ductal adenocarcinoma (PDAC), we discover that basal cancer cells are highly plastic, whereas classical cancer cells exhibit limited plasticity. Strikingly, ablation of the basal, but not the classical, state induced rapid and durable tumor collapse, driven by loss of immunosuppressive cancer-associated fibroblasts, macrophage repolarization, and reprogramming of the tumor cytokine milieu, culminating in tumor destruction by cytotoxic lymphocytes. Knockout of a single cytokine, GM-CSF, specifically in basal cells recapitulated macrophage repolarization and lymphocyte recruitment observed upon basal state ablation and shrank tumors. These results reveal the basal cell state controls an immunosuppressive cell circuit critical for PDAC maintenance, motivating therapeutic targeting of the basal cells.",
+      "authors": [
+        "Singhal, A.",
+        "Ryan, K.",
+        "Rose, S.",
+        "Styers, H.",
+        "Kim, J.",
+        "Pasnuri, N.",
+        "Moore, A.",
+        "Llamosas, J.",
+        "Chen, E.",
+        "Adams, J.",
+        "Nandula, A.",
+        "Sharma, R.",
+        "Li, Z.",
+        "Nawy, T.",
+        "Yan, Y.",
+        "Tezcan, N.",
+        "Basturk, O.",
+        "Sherman, M. H.",
+        "Pe'er, D.",
+        "Tammela, T."
+      ],
+      "primary_category": "cancer biology",
+      "categories": [
+        "cancer biology"
+      ],
+      "published": "2026-07-14T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.07.13.738221v1.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "basal cell state maintains immunosuppressive circuit in pancreatic cancer microenvironment",
+      "llm_evidence_cn": "基底细胞状态维持胰腺癌肿瘤微环境中的免疫抑制回路",
+      "llm_evidence": "基底细胞状态维持胰腺癌肿瘤微环境中的免疫抑制回路",
+      "canonical_evidence": "基底细胞状态维持胰腺癌肿瘤微环境中的免疫抑制回路",
+      "llm_tldr_en": "Shows that basal cancer cells in PDAC control an immunosuppressive circuit whose ablation leads to tumor collapse.",
+      "llm_tldr_cn": "该研究通过小鼠模型探索胰腺导管腺癌中两种主要癌细胞状态的功能，发现基底癌细胞具有高度可塑性，且通过控制免疫抑制性癌症相关成纤维细胞、巨噬细胞重编程和肿瘤细胞因子微环境来维持肿瘤。去除基底癌细胞可导致肿瘤快速和持久崩溃，揭示了肿瘤微环境在维持肿瘤中的关键作用，与新辅助治疗耐药中微环境调控的主题相关。",
+      "llm_tldr": "该研究通过小鼠模型探索胰腺导管腺癌中两种主要癌细胞状态的功能，发现基底癌细胞具有高度可塑性，且通过控制免疫抑制性癌症相关成纤维细胞、巨噬细胞重编程和肿瘤细胞因子微环境来维持肿瘤。去除基底癌细胞可导致肿瘤快速和持久崩溃，揭示了肿瘤微环境在维持肿瘤中的关键作用，与新辅助治疗耐药中微环境调控的主题相关。",
+      "llm_tags": [
+        "query:neo-resist:composite"
+      ],
+      "matched_query_tag": "query:neo-resist:composite",
+      "matched_query_text": "Papers central to 肿瘤新辅助治疗耐药的生信相关论文, especially work that connects or combines: resistance to neoadjuvant immunotherapy; bioinformatics for drug resistance; tumor microenvironment neoadjuvant resistance; machine learning drug resistance prediction; transcriptomics tumor resistance; single cell sequencing resistance mechanism; mechanisms of resistance to neoadjuvant therapy in tumors; role of tumor microenvironment in neoadjuvant therapy resistance; bioinformatics analysis of drug resistance in neoadjuvant therapy; multi omics characterization of tumor resistance.",
+      "matched_requirement_id": "req-composite-neo-resist",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-07-14-738446-v1",
+      "source": "biorxiv",
+      "title": "Nuclear translocation of phosphorylated YB-1 via small extracellular vesicles contributes to the malignant phenotype of triple negative breast cancer",
+      "abstract": "Despite continuous progress in diagnosis and therapy, breast carcinoma (BC) remains a major health problem. Triple-negative (Estrogen Receptor-/Progesterone Receptor-/HER2-) breast cancer (TNBC) is the most aggressive subtype due to its high metastatic potential and resistance to chemotherapy. The Y-box binding protein 1 (YB-1) transcription factor, a protein present in both cytoplasm and nucleus, is a driver of TNBC malignancy as it stimulates its cancer stem cell phenotype and disrupts cell cycle progression. Here, we hypothesized that YB-1-containing sEVs deliver YB-1 to the nuclear compartment of recipient cancer cells and play a major role in the activation of the metastatic process. We found a selective enrichment of YB-1 in sEVs from MDA and 4T1 cells, with [~]65% and 50% of all sEVs positive for YB-1 by d-STORM. Administration of sEVs from wild-type MDA and 4T1 to their YB-1 knockout counterparts resulted in nuclear translocation of sEV-associated YB-1 and increased tumorsphere formation. Pharmacological blockade of the nuclear transport machinery based on the inhibition of the formation of the \"VOR\" complex (VAP-A-ORP3-Rab7) by PRR851 impaired both nuclear translocation and the YB-1-induced increase in tumorsphere formation. YB-1 phosphorylation at S102 was required for nuclear localization. In fact, loss of YB-1 phosphorylation inhibited tumorsphere growth and stemness of cancer cells and YB-1-positive sEVs restored the oncogenic behavior of cancer cells expressing phospho-mutant YB-1. Moreover, PRR851 inhibited the nuclear translocation of the phosphorylated form of YB-1 and the oncogenic behavior of the TNBC cells. These data support the conclusion that the nuclear translocation of sEV-associated phosphorylated YB-1 is an important factor in the malignant behavior of TNBC and a potential therapeutic target.",
+      "authors": [
+        "Santos, M.",
+        "Kim, Y.",
+        "Feng, Z.",
+        "Biebighauser, T.",
+        "Lorico, A.",
+        "Sossey-Alaoui, K."
+      ],
+      "primary_category": "cancer biology",
+      "categories": [
+        "cancer biology"
+      ],
+      "published": "2026-07-15T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.07.14.738446v1.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "YB-1 extracellular vesicles contribute to chemotherapy resistance in TNBC",
+      "llm_evidence_cn": "YB-1细胞外囊泡促进三阴性乳腺癌化疗耐药",
+      "llm_evidence": "YB-1细胞外囊泡促进三阴性乳腺癌化疗耐药",
+      "canonical_evidence": "YB-1细胞外囊泡促进三阴性乳腺癌化疗耐药",
+      "llm_tldr_en": "Phosphorylated YB-1 translocates to nucleus via small extracellular vesicles, driving TNBC malignancy and chemotherapy resistance through cancer stem cell phenotype activation.",
+      "llm_tldr_cn": "三阴性乳腺癌（TNBC）因高转移和化疗耐药而预后差。该研究发现磷酸化YB-1转录因子通过小细胞外囊泡（sEVs）转运至受体癌细胞核，激活癌症干细胞表型和细胞周期失调，从而促进恶性表型和化疗耐药。该工作揭示了sEVs介导的耐药新机制，为克服TNBC化疗抵抗提供了潜在靶点。",
+      "llm_tldr": "三阴性乳腺癌（TNBC）因高转移和化疗耐药而预后差。该研究发现磷酸化YB-1转录因子通过小细胞外囊泡（sEVs）转运至受体癌细胞核，激活癌症干细胞表型和细胞周期失调，从而促进恶性表型和化疗耐药。该工作揭示了sEVs介导的耐药新机制，为克服TNBC化疗抵抗提供了潜在靶点。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "mechanisms of resistance to neoadjuvant therapy in tumors",
+      "matched_requirement_id": "req-7",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}

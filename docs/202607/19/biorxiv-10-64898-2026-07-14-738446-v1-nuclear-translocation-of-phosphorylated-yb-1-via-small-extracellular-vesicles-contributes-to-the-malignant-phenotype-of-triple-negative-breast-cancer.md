@@ -1,0 +1,24 @@
+---
+title: Nuclear translocation of phosphorylated YB-1 via small extracellular vesicles contributes to the malignant phenotype of triple negative breast cancer
+title_zh: 磷酸化YB-1通过小细胞外囊泡的核转位促进三阴性乳腺癌的恶性表型
+authors: "Santos, M., Kim, Y., Feng, Z., Biebighauser, T., Lorico, A., Sossey-Alaoui, K."
+date: 2026-07-15
+pdf: "https://www.biorxiv.org/content/10.64898/2026.07.14.738446v1.full.pdf"
+tags: ["query:neo-resist"]
+score: 6.0
+evidence: YB-1细胞外囊泡促进三阴性乳腺癌化疗耐药
+tldr: 三阴性乳腺癌(TNBC)恶性程度高且缺乏有效靶向治疗。研究发现磷酸化YB-1通过小细胞外囊泡(sEVs)向受体癌细胞核转位，增强其干细胞特征和转移能力。使用d-STORM验证sEVs中YB-1富集，YB-1敲除实验证实其功能。药物PRR851通过阻断VOR复合体抑制核转位，削弱肿瘤球形成。该机制揭示sEV介导的YB-1核转位是TNBC恶性行为的关键，为开发靶向疗法提供新思路。
+source: biorxiv
+selection_source: fresh_fetch
+figures_json: "[{\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-07-14-738446-v1/fig-001.webp\", \"caption\": \"\", \"page\": 0, \"index\": 1, \"width\": 1537, \"height\": 1206, \"label\": \"Figure\"}, {\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-07-14-738446-v1/fig-002.webp\", \"caption\": \"\", \"page\": 0, \"index\": 2, \"width\": 1539, \"height\": 726, \"label\": \"Figure\"}, {\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-07-14-738446-v1/fig-003.webp\", \"caption\": \"\", \"page\": 0, \"index\": 3, \"width\": 1541, \"height\": 814, \"label\": \"Figure\"}, {\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-07-14-738446-v1/fig-004.webp\", \"caption\": \"\", \"page\": 0, \"index\": 4, \"width\": 1525, \"height\": 823, \"label\": \"Figure\"}, {\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-07-14-738446-v1/fig-005.webp\", \"caption\": \"\", \"page\": 0, \"index\": 5, \"width\": 1535, \"height\": 984, \"label\": \"Figure\"}, {\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-07-14-738446-v1/fig-006.webp\", \"caption\": \"\", \"page\": 0, \"index\": 6, \"width\": 1506, \"height\": 1357, \"label\": \"Figure\"}, {\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-07-14-738446-v1/fig-007.webp\", \"caption\": \"\", \"page\": 0, \"index\": 7, \"width\": 1514, \"height\": 791, \"label\": \"Figure\"}]"
+motivation: 三阴性乳腺癌缺乏靶向治疗，YB-1是驱动恶性的关键因子，但其通过sEVs转导的机制未明，亟需探索。
+method: 利用d-STORM、YB-1敲除细胞和药物PRR851，研究sEVs中YB-1的核转位及其磷酸化依赖性。
+result: YB-1在sEVs中富集，磷酸化后经VOR复合体核转位促进肿瘤球形成；PRR851抑制该过程及恶性行为。
+conclusion: sEV介导的磷酸化YB-1核转位是TNBC恶性行为的重要机制，可作为潜在治疗靶点。
+---
+
+## 摘要
+尽管在诊断和治疗方面不断取得进展，乳腺癌仍然是一个主要的健康问题。三阴性（雌激素受体阴性/孕激素受体阴性/HER2阴性）乳腺癌因其高转移潜能和化疗耐药性而成为最具侵袭性的亚型。Y-box结合蛋白1转录因子是一种存在于细胞质和细胞核中的蛋白质，它通过刺激癌症干细胞表型和破坏细胞周期进程，成为三阴性乳腺癌恶性行为的驱动因子。在此，我们假设含有YB-1的小细胞外囊泡将YB-1递送至受体癌细胞的核区室，并在转移过程的激活中发挥主要作用。我们发现，来自MDA和4T1细胞的小细胞外囊泡中YB-1选择性富集，通过d-STORM检测，约65%和50%的小细胞外囊泡呈YB-1阳性。将来自野生型MDA和4T1的小细胞外囊泡给予其YB-1敲除对应细胞，导致小细胞外囊泡相关YB-1的核转位并增加肿瘤球形成。基于抑制PRR851对“VOR”复合物形成的药理学阻断，损害了核转位以及YB-1诱导的肿瘤球形成增加。YB-1在S102位点的磷酸化是核定位所必需的。事实上，YB-1磷酸化的缺失抑制了肿瘤球生长和癌细胞的干性，而YB-1阳性小细胞外囊泡恢复了表达磷酸化突变型YB-1的癌细胞的致癌行为。此外，PRR851抑制了磷酸化形式YB-1的核转位和三阴性乳腺癌细胞的致癌行为。这些数据支持以下结论：小细胞外囊泡相关的磷酸化YB-1的核转位是三阴性乳腺癌恶性行为的重要因素，也是一个潜在的治疗靶点。
+
+## Abstract
+Despite continuous progress in diagnosis and therapy, breast carcinoma (BC) remains a major health problem. Triple-negative (Estrogen Receptor-/Progesterone Receptor-/HER2-) breast cancer (TNBC) is the most aggressive subtype due to its high metastatic potential and resistance to chemotherapy. The Y-box binding protein 1 (YB-1) transcription factor, a protein present in both cytoplasm and nucleus, is a driver of TNBC malignancy as it stimulates its cancer stem cell phenotype and disrupts cell cycle progression. Here, we hypothesized that YB-1-containing sEVs deliver YB-1 to the nuclear compartment of recipient cancer cells and play a major role in the activation of the metastatic process. We found a selective enrichment of YB-1 in sEVs from MDA and 4T1 cells, with [~]65% and 50% of all sEVs positive for YB-1 by d-STORM. Administration of sEVs from wild-type MDA and 4T1 to their YB-1 knockout counterparts resulted in nuclear translocation of sEV-associated YB-1 and increased tumorsphere formation. Pharmacological blockade of the nuclear transport machinery based on the inhibition of the formation of the "VOR" complex (VAP-A-ORP3-Rab7) by PRR851 impaired both nuclear translocation and the YB-1-induced increase in tumorsphere formation. YB-1 phosphorylation at S102 was required for nuclear localization. In fact, loss of YB-1 phosphorylation inhibited tumorsphere growth and stemness of cancer cells and YB-1-positive sEVs restored the oncogenic behavior of cancer cells expressing phospho-mutant YB-1. Moreover, PRR851 inhibited the nuclear translocation of the phosphorylated form of YB-1 and the oncogenic behavior of the TNBC cells. These data support the conclusion that the nuclear translocation of sEV-associated phosphorylated YB-1 is an important factor in the malignant behavior of TNBC and a potential therapeutic target.
