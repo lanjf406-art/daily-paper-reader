@@ -1,0 +1,2813 @@
+Title: Mechanobiology-guided drug repurposing identifies budesonide as an inhibitor of stiffness-induced PDAC aggressiveness
+
+URL Source: https://www.biorxiv.org/content/10.64898/2026.07.17.739125v1.full.pdf
+
+Number of Pages: 70
+
+Markdown Content:
+1
+
+Mechanobiology -guided drug repurposing identifies budesonide as an inhibitor of 1
+
+stiffness -induced PDAC aggressiveness 2
+
+3
+
+Simone Mas 1,2* , Marco Cristiano 3,4,5* , Eduardo Ibello 1, Alessandro Avallone 3,6 , Crescenzo Frascogna 3,4,5 ,4
+
+Bruno Sainz Jr 7, Enza Lonardo 8, Lucia Altucci 9, 10 , Gilda Cobellis 9, Eduardo Jorge Patriarca 1, Paolo 5
+
+Netti 3,4,5 , Gabriella Minchiotti 1, Valeria Panzetta 3,4,5# and Cristina D’Aniello 1# 6
+
+7 1Stem Cell Fate lab, Institute of Genetics and Biophysics, 'A. Buzzati -Traverso', CNR, Naples, Italy 8 2Department of Precision Medicine in Medical, Surgical and Critic Care, University of Palermo, Palermo, 9
+
+Italy 10  3Department of Chemical, Materials and Production Engineering, University of Naples Federico II, 11 
+
+Naples, Italy 12  4Center for Advanced Biomaterials for Health Care IIT@CRIB, Istituto Italiano di Tecnologia, Naples, 13 
+
+Italy 14  5Interdisciplinary Research Centre on Biomaterials, CRIB, University of Naples  Federico  II, Naples, 15 
+
+Italy 16  6Department of Chemical Sciences, University of Naples Federico II, Naples, Italy 17  7Department of Cancer, Instituto de Investigaciones Biomedicas Sols -Morreale (IIBM), CSIC - UAM, 18 
+
+Madrid, 28029, Spain 19  8Gastrointestinal Cancer lab, Institute of Genetics and Biophysics, 'A. Buzzati -Traverso', CNR, Naples, 20 
+
+Italy 21  9Department of Precision Medicine, University of Campania Luigi Vanvitelli, Naples, Italy 22  10 BIOGEM, Ariano Irpino, Ariano Irpino, AV, 83031, Italy 23 
+
+24 
+
+*Contributed equally 25 
+
+#Contributed equally 26 
+
+27 
+
+Corresponding authors:  valeria.panzetta@unina.it , cristina.daniello@igb.cnr.it 28 
+
+29 
+
+30 
+
+31 
+
+32 
+
+33 
+
+34 
+
+Keywords:  Pancreatic ductal adenocarcinoma (PDAC); Mechanobiology; Matrix stiffness; 35 
+
+Bioengineered platforms;  Budesonide;  Glucocorticoid Receptor;  YAP/TAZ signaling 36 
+
+37 
+
+38 
+
+39 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.17.739125 doi: bioRxiv preprint
+
+2
+
+ABSTRACT 1
+
+Pancreatic ductal adenocarcinoma (PDAC) develops within a desmoplastic and stiffened 2
+
+microenvironment that critically shapes tumor progression and therapeutic resistance,  yet these  features 3
+
+are  not  reproduced  by conventional rigid plastic culture systems. Here, we leverage a  tuneable 4
+
+bioengineered platform that mimics stromal stiffening to investigate how mechanical cues regulate 5
+
+PDAC cell  behaviour  and to identify pharmacological strategies that counteract stiffness -driven 6
+
+malignancy. We show that increasing matrix stiffness promotes key hallmarks of PDAC aggressiveness, 7
+
+including enhanced cell spreading, focal adhesions maturation, and cytoskeletal tension.  Notably,  we 8
+
+identify the glucocorticoid budesonide as a selective suppressor of stiffness -induced malignant 9
+
+phenotypes. Transcriptomic profiling reveals that budesonide counteracts stiffness -associated gene 10 
+
+programs, prominently affecting pathways governing cytoskeletal dynamics, nuclear envelope 11 
+
+organization, and YAP nucleocytoplasmic transport. Consistently, budesonide reduced force 12 
+
+transmission to the nucleus, restoring nuclear wrinkling and constraining nuclear size and shape.  These 13 
+
+effects are mediated through both glucocorticoid receptor -dependent and  -independent mechanisms, 14 
+
+revealing  a previously unrecognized mode of action. Together, our findings establish mechanical context 15 
+
+as a critical determinant of PDAC vulnerability and identify budesonide as a candidate for therapeutic 16 
+
+repurposing to target stiffness –driven cancer progression. 17 
+
+18 
+
+19 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.17.739125 doi: bioRxiv preprint
+
+3
+
+INTRODUCTION 1
+
+Pancreatic ductal adenocarcinoma (PDAC) is a deadly disease that is predicted to become the second 2
+
+leading cause of cancer –related death by 2030 1. The dismal prognosis of pancreatic cancer is primarily 3
+
+caused by the fact that 90% of  tumours  are diagnosed at an advanced stage, with systemic metastases in 4
+
+over 50% of cases, compounded by the absence of effective screening methods 2. The hallmark of PDAC 5
+
+is the profoundly altered  tumour  mechanical microenvironment (TMME) 3, characterized by extensive 6
+
+collagen deposition and extracellular matrix (ECM) remodeling 4. The desmoplastic ECM, enriched in 7
+
+fibrillar collagen and glycosaminoglycans 5, evolves into a highly organized and stiff structure 5–7,8
+
+fostering physical and biochemical cell –cell and cell –matrix interactions that drive  tumour 9
+
+progression 5,7,8  and therapy resistance 6,9 –12 . Cells sense alterations in the mechanical properties of the 10 
+
+TMME and undergo coordinated structural changes 13  from focal adhesions that mediate direct 11 
+
+interactions with the ECM, to the cytoskeleton and its force –generating machinery, up to the nucleus, 12 
+
+where mechanical inputs can regulate transcriptional activity 14 –16 . As a result, these mechanical forces 13 
+
+are transduced into intracellular  signalling  programs via mechano –transduction pathways, among which 14 
+
+the YAP/TAZ complex acts as a key transcriptional effector driving proliferation, survival and therapy 15 
+
+resistance 17 –21 .16 
+
+Building on these insights, increasing efforts have been focused on the development of therapeutic 17 
+
+approaches aimed at counteracting stiffness –induced aggressive traits in cancer cells. However, 18 
+
+molecules able to avoid the influence of the TMME on cancer cells are so far not available 22 , in part due 19 
+
+to the lack of model systems that accurately mimic the TMME.  In this context, the development of 20 
+
+bioengineered platforms that  better  mimic the impact of  the  stiff  TMME on cancer cells is becoming an 21 
+
+increasing field of interest 23,24 .22 
+
+Our work presents an experimental approach to model PDAC aggressive features through 23 
+
+mechanobiology principles 18,20 , using bioengineered platforms that recreate TMME conditions with 24 
+
+controlled stiffness. Beyond providing a more physiologically relevant model, this platform also serves 25 
+
+as a predictive tool for therapeutic testing.  Among candidate compounds , the  FDA –approved 26 
+
+glucocorticoid budesonide,  widely  used  in the treatment of  asthma 25  and inflammatory diseases 26 , has 27 
+
+recently emerged as a context –dependent regulator  of  PDAC cell behavior 27 , suggesting  a previously 28 
+
+unidentified antitumor activity beyond its  well –established role as an anti –inflammatory 29 
+
+glucocorticoid 28 .30 
+
+Here, we find that budesonide antagonizes the acquisition of the stiffness –driven malignant traits in 31 
+
+PDAC by  remodelling  cytoskeletal organization and modulating nuclear architecture,  signalling 32 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.17.739125 doi: bioRxiv preprint
+
+4
+
+pathways, and transcriptional programs. This coordinated regulation suppresses aggressive PDAC cell 1
+
+features, including migration and proliferation, and identifies budesonide as a candidate therapeutic 2
+
+strategy for PDAC treatment. 3
+
+.CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.17.739125 doi: bioRxiv preprint 5
+
+RESULTS 1
+
+Stiffer substrates promote aggressive  behaviour  in pancreatic cancer cells 2
+
+To interrogate the mechanosensory capacity of pancreatic ductal adenocarcinoma (PDAC) cells, we 3
+
+engineered polyacrylamide (PAAm) hydrogels spanning a physiologically relevant stiffness range 4
+
+(Young’s moduli: 0.2, 10, and 27 kPa; Supplementary Fig. 1A). These substrates recapitulate distinct 5
+
+mechanical states of the pancreatic microenvironment, with soft matrices (0.2 kPa) reflecting 6
+
+physiological or sub –physiological tissue compliance, and intermediate (10 kPa) to stiff (27 kPa) 7
+
+matrices  modelling  progressive stromal  remodelling  associated with disease progression 29 . While prior 8
+
+studies have examined selected pancreatic cell responses to matrix stiffness, a comprehensive view of 9
+
+the coordinated biological, mechanical, and molecular adaptations elicited across defined mechanical 10 
+
+contexts is still lacking. To address this gap, we performed an integrated characterization of PDAC cell 11 
+
+responses to  tuneable  substrate stiffness. 12 
+
+PANC -1 cells were first seeded on gelatin –coated substrates (1.5 × 10⁴ cells/cm²) and, after 72 h, 13 
+
+detached and replated at low density (2.5 × 10³ cells /cm²) onto PAAm hydrogels of defined stiffness. 14 
+
+Cells were  analysed  48 h post –seeding (Supplementary Fig. 1B). To determine how substrate mechanics 15 
+
+regulate s cell –matrix interactions, we quantified focal adhesion organization and cell spreading by 16 
+
+immunofluorescence imaging of paxillin and vimentin/F –actin, respectively.  PANC -1 cells cultured on 17 
+
+soft substrates (0.2 kPa) displayed sparse and poorly developed focal adhesions, indicative of weak cell –18 
+
+matrix coupling  (Fig. 1A, B).  In contrast, increasing substrate stiffness promoted the formation of 19 
+
+elongated, well –defined adhesion complexes, accompanied by a progressive increase in focal adhesion 20 
+
+area (Fig. 1A, B), consistent with strengthened adhesive engagement.  Accordingly , cell spreading 21 
+
+progressively increased with substrate stiffness, as reflected by a marked increase in projected cell area 22 
+
+(Supplementary Fig. 1C).  This was accompanied by the emergence of prominent actin stress  fibres  and 23 
+
+a reinforced vimentin network, supporting enhanced cytoskeletal tension and mechanotransductive 24 
+
+coupling with the  ECM  (Supplementary Fig. 1C). The observed cytoskeletal  remodelling  was paralleled 25 
+
+by changes in cellular mechanics, as quantified by atomic force microscopy (AFM) –based force 26 
+
+spectroscopy (Fig. 1C). PANC -1 cells progressively increased their stiffness in response to substrate 27 
+
+rigidity (median: 0.31 kPa at 0.2 kPa; 0.62 kPa at 10 kPa; 1.01 kPa at 27 kPa), indicating adaptive 28 
+
+mechanical tuning to the extracellular environment (Fig. 1C). 29 
+
+Stiffness –dependent reinforcement of focal adhesions and cytoskeletal organization are key determinants 30 
+
+of traction force generation and cell motility 30,31 . Thus, we next investigated how substrate mechanics 31 
+
+regulate s PANC -1 cell migration. Time –lapse microscopy combined with single –cell tracking over 48 h 32 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.17.739125 doi: bioRxiv preprint
+
+6
+
+revealed that increasing substrate stiffness enhanced migratory  behaviour . Trajectories aligned to a 1
+
+common origin qualitatively demonstrated an expansion of the explored area with increasing stiffness 2
+
+(Fig. 1D). Of note, cell velocity exhibited a non –linear increase (median: 0.12 μm min⁻¹ at 0.2 kPa; 0.43 3
+
+μm min⁻¹ at 10 kPa; 0.52 μm min⁻¹ at 27 kPa; Fig. 1E), paralleled by higher mean square displacement 4
+
+(MSD), indicating greater spatial exploration (Supplementary Fig. 1E). In contrast, the slope of the MSD 5
+
+curves appeared largely independent of substrate stiffness, suggesting that migration remained 6
+
+predominantly random, consistent with the isotropic mechanical and biochemical properties of the 7
+
+substrates, which do not provide cues for directional movement. 8
+
+Given the  close interplay  between cytoskeletal tension and mechanosensitive transcriptional 9
+
+programs 32,33 , we next  investigated  the subcellular localization of the key mechanotransducers 10 
+
+YAP/TAZ 17,21 . Immunofluorescence analysis revealed a stiffness –dependent increase in YAP nuclear 11 
+
+accumulation, as reflected by a non –linear rise in the nuclear –to –cytoplasmic  (N/C)  ratio (median: 0.96 12 
+
+at 0.2 kPa; 1.16 at 10 kPa; 1.40 at 27 kPa; Fig. 1F, G). These findings were further supported by a 13 
+
+progressive increase in total YAP protein levels with substrate stiffness  (Fig. 1H) , as expected 34 –37 . Then ,14 
+
+we assessed how cell proliferation was modulated by increasing substrate stiffness. EdU incorporation 15 
+
+assays revealed a significant, stiffness –dependent increase in DNA synthesis, with a higher fraction of 16 
+
+EdU –positive cells on stiffer substrates (44 ± 1% at 0.2 kPa; 55 ± 2% at 10 kPa; 62 ± 3% at 27 kPa; Fig. 17 
+
+1I, J). Consistent with these findings, time –lapse microscopy  showed  a progressive increase in 18 
+
+proliferation rates with increasing stiffness (median: 0.20, 0.39, and 0.50 doublings /day at 0.2, 10, and 19 
+
+27 kPa , respectively; Supplementary Fig. 1F), suggesting that a mechanically rigid microenvironment 20 
+
+promotes both the mechanical adaptation and proliferative expansion of PANC -1 cells. 21 
+
+Collectively, these findings advance current understanding by providing a comprehensive, multi –scale 22 
+
+characterization of pancreatic cancer cell mechanoadaptation , highlighting how matrix stiffness 23 
+
+modulates key cellular  behaviours  associated with malignancy .24 
+
+25 
+
+Budesonide treatment counteracts the stiffness –mediated effects in pancreatic cancer cells 26 
+
+We next asked whether the  tuneable  bioengineered platforms could be exploited to identify compounds 27 
+
+that counteract stiffness –driven PDAC phenotypes. We focused on the glucocorticoid  budesonide, 28 
+
+recently proposed as a candidate for drug repurposing in PDAC 26,27 . Notably, budesonide  exerts marked 29 
+
+context –dependent  effects , suppressing PDAC cell proliferation only in  3D  models , while restraining 30 
+
+mesenchymal and invasive traits in conventional 2D cultures 26,27 . However, the mechanisms underlying 31 
+
+these responses remain  incompletely understood . Given  the  strong influenc e of  the microenvironment  on 32 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.17.739125 doi: bioRxiv preprint
+
+7
+
+budesonide activity 27 , we reasoned that bioengineered platforms recapitulating the physical and 1
+
+biochemical properties of the  tumour  microenvironment would provide a more relevant framework than 2
+
+standard rigid plastic  substrates. 3
+
+PANC -1 cells were therefore seeded as described (Supplementary  Fig. 2A), treated with budesonide or 4
+
+dexamethasone (20 μM), or left untreated (NT) as control. After three days in culture, cells (2.5×10 35
+
+cells/cm 2) in presence or absence of  budesonide or dexamethasone were replated onto stiff substrates (27 6
+
+kPa) to model the pathological PDAC microenvironment (Supplementary  Fig. 2A). NT cells cultured on 7
+
+soft substrates (0.2 kPa) served as  a reference. Immunofluorescence analysis of vimentin, F –actin and 8
+
+paxillin staining revealed that budesonide markedly attenuated stiffness –induced cytoskeletal 9
+
+remodel ling, reducing both focal adhesion area and cell spreading (Fig. 2A, B and Supplementary Fig. 10 
+
+2B, C). This was accompanied by the emergence of a cortical actin ring and a concomitant loss of internal 11 
+
+stress fibres (Supplementary Fig. 2B, C). In contrast, dexamethasone –treated cells resembled  NT  cells 12 
+
+on stiff substrates, with a comparable spreading area,  but only a modest  reduction in focal adhesions size 13 
+
+compared to budesonide –treated cells  (Fig. 2A, B and Supplementary Fig. 2B, C), thus suggesting  a14 
+
+partial  GR –independent mechanism of budesonide action  or different receptor affinities.  To address this 15 
+
+issue and assess the involvement of the GR, we generated PANC -1 cells silenced for  NR3C1 , the gene 16 
+
+encoding the GR 38 . Briefly, PANC -1 cells were infected with lentiviruses carrying either a short hairpin 17 
+
+(sh) against the  NR3C1  gene, or an empty vector as control. Western blot analysis  confirmed  an efficient 18 
+
+downregulation of  NR3C1  protein , with a  ~75% reduction  in PANC -1 cells si lenced  for  NR3C1 19 
+
+(shNR3C1 PANC -1) compared to control cells (shEmpty PANC -1; Supplementary Fig. 3A). We then 20 
+
+investigated whether GR knockdown affected the response to budesonide by culturing  shEmpty PANC -121 
+
+and  shNR3C1 PANC -1 cells with or without budesonide (20 μM). After three days in culture, cells were 22 
+
+dissociated and replated (2.5×10 3 cells/cm 2) on stiff substrates and cultured for additional two days 23 
+
+(Supplementary Fig. 3B). We first assessed the effect of GR knockdown on cell  adhesion . Focal 24 
+
+adhesions contact area measurements and cell spreading area showed that budesonide strongly affected 25 
+
+both parameters in  shEmpty PANC -1 cells (Supplementary Fig. 3C -E). Interestingly, GR silencing reduced 26 
+
+focal adhesion contact and spreading area,  while further exposure to budesonide led only to a slight 27 
+
+reduction of focal adhesion , without significantly affecting overall cell spreading  (Supplementary Fig. 28 
+
+3C -E), suggesting  that GR signalling may contribute to cytoskeletal organization .29 
+
+Consistent with these structural changes, AFM measurements showed that budesonide altered cellular 30 
+
+mechanical properties (Fig. 2C). The  observed  increase in apparent elastic modulus is largely attributable 31 
+
+to cortical actin reorganization rather than enhanced internal cytoskeletal tension typically induced by 32 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.17.739125 doi: bioRxiv preprint
+
+8
+
+stiffness. By contrast, dexamethasone did not significantly  alter PANC -1 mechanics , supporting the 1
+
+specificity of budesonide. 2
+
+Given the observed changes in adhesion dynamics, we further examined cell motility. Single –cell 3
+
+tracking revealed that budesonide significantly reduced migration on stiff substrates, both in terms of 4
+
+velocity and  the extent of  spatial exploration (Fig. 2D, E and Supplementary Fig. 2D). In contrast, 5
+
+dexamethasone  induced  only  a modest , albeit  significant, reduction of cell velocity (Fig . 2D, E). 6
+
+Consistently,  MSDs of PANC -1 cells exposed to dexamethasone  largely overlapped with those of  NT 7
+
+cells  at  the same  stiffness (Supplementary Fig. 2D). This convergence suggests that dexamethasone –8
+
+treated cells explore a larger effective area over time, comparable to  NT  cells on stiff substrates.  By 9
+
+contrast , budesonide  markedly  reduced cell displacement , reaching  levels  close to  those observed on soft 10 
+
+substrates, consistent with a more spatially confined migration pattern (Supplementary Fig. 2D). Despite 11 
+
+these  differences in displacement amplitude, migration remained predominantly random across all 12 
+
+conditions, consistent with the absence of directional cues. We next investigated the impact of GR 13 
+
+knockdown on cell motility by time –lapse analysis. As expected, budesonide was able to prevent the 14 
+
+stiffness –dependent increase of cell motion velocity and area coverage in  shEmpty PANC -1 cells compared 15 
+
+to NT (Supplementary Fig. 3F, G). Interestingly, we observed a decreased average cell velocity in 16 
+
+> shNR3C1
+
+PANC -1 cells,  not further reduced by budesonide supplementation  (Supplementary Fig. 3F, G). 17 
+
+These  findings  support  a previously unrecognized role of the GR in regulating pancreatic cancer cell 18 
+
+motility.  However, they do not allow  a clear distinction between GR –dependent and GR –independent 19 
+
+mechanisms underlying budesonide –induced cytoskeletal remodelling and migration. 20 
+
+We next assessed the effect of budesonide on YAP nuclear translocation. As expected, YAP was 21 
+
+predominantly nuclear in  NT  cells on stiff substrates. Budesonide treatment promoted YAP cytoplasmic 22 
+
+retention, reducing the  N/C  ratio to levels approaching those observed on soft substrates (Fig. 2F, G), 23 
+
+without altering total YAP protein levels (Fig. 2H) . These findings  indicate  that  budesonide primarily 24 
+
+modulates  YAP localization  rather than overall  abundance. No significant effect  on YAP  nuclear 25 
+
+translocation  was observed with dexamethasone.  Finally, we assessed the impact of budesonide on cell 26 
+
+proliferation by EdU incorporation assay. Budesonide counteracted the stiffness –induced increase in 27 
+
+EdU incorporation, restoring proliferation rates to levels comparable to those observed on soft substrates 28 
+
+(Fig. 2I, J).  Time –lapse analysis confirmed that budesonide prevented the stiffness –driven expansion of 29 
+
+PANC -1 cells, whereas dexamethasone exerted only a partial effect (Supplementary Fig. 2E ). We thus 30 
+
+compared the growth rate of  shEmpty PANC -1 and  shNR3C1 PANC -1 cells using time –lapse imaging. Both cell 31 
+
+lines exhibited similar growth rates, indicating that knockdown of GR does not impact PANC -1 cell 32 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.17.739125 doi: bioRxiv preprint
+
+9
+
+growth (Supplementary Fig. 3H). Budesonide significantly counteracted the stiffness –dependent 1
+
+proliferation induction in both  shEmpty PANC -1 and  shNR3C1 PANC -1 cells under these conditions 2
+
+(Supplementary Fig. 3H),  supporting a potential contribution of a GR –independent mechanism  in 3
+
+budesonide a ctivity .4
+
+Collectively  our data  reveal a previously unappreciated role for the GR in regulating cytoskeletal 5
+
+organization and migration in pancreatic cancer  cells and  led  us  to hypothesize  that budesonide 6
+
+counteracts  stiffness –induced proliferation through a GR –independent  mechanism . Furthermore, they 7
+
+establish budesonide as a suppressor of stiffness –driven malignancy and underscore the need for 8
+
+physiologically relevant mechanical models to uncover otherwise hidden drug responses. 9
+
+10 
+
+Budesonide treatment counteracts the stiffness –mediated effects in patient –derived PDAC cells 11 
+
+To validate our findings in clinically relevant models, we extended our analysis to patient –derived PDAC 12 
+
+cell lines  (PDAC#253 and PDAC#354 cells 39,40 ),  which more faithfully recapitulate disease –specific 13 
+
+traits.  PDAC#253 and PDAC#354 cells were seeded on gelatin –coated substrates (1.5 × 10⁴ cells/c m2)14 
+
+and treated  24 h post –plating with budesonide or dexamethasone (20  μM)  or left untreated (NT). After 15 
+
+72 h, cells were dissociated and replated at low density (2.5 × 10³ cells/c m2) onto stiff substrates and 16 
+
+cultured for additional 48 h. NT cells seeded on soft substrates  (0.2 kPa)  served as controls (Fig. 3A). 17 
+
+Consistent with  findings  in PANC -1 cells, patient –derived PDAC cells exhibited pronounced stiffness –18 
+
+dependent changes in morphology and cytoskeletal organization (Fig. 3B, C and Supplementary Fig. 4A -19 
+
+D).  On stiff substrates, NT cells appeared more elongated and with a spread morphology compared to 20 
+
+those seeded on the soft substrate. In contrast, budesonide –treated cells adopted a rounded shape, with 21 
+
+reduced focal adhesion area and a disorganized cytoskeleton, resembling cells cultured on soft substrates 22 
+
+(Fig. 3B, C and Supplementary Fig. 4A -D). These changes were accompanied by the emergence of 23 
+
+aberrant cortical actin structures (Supplementary Fig. 4A - D). In contrast, dexamethasone had minimal 24 
+
+impact on focal adhesion architecture and cytoskeletal organization, with cells largely retaining a stiff –25 
+
+like phenotype (Fig. 3B, C and Supplementary Fig. 4A -D). 26 
+
+We next assessed proliferative capacity by time –lapse imaging. Budesonide consistently  counteracted 27 
+
+the stiffness –induced increase in proliferation in both PDAC#253 and PDAC#354 cells, restoring growth 28 
+
+rates to levels comparable to those observed on soft substrates (Supplementary Fig.  4E , F). By contrast, 29 
+
+dexamethasone showed negligible or modest effects, depending on the cell line. Similarly, single –cell 30 
+
+tracking revealed that budesonide effectively suppressed the stiffness –driven increase in cell motility 31 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.17.739125 doi: bioRxiv preprint
+
+10 
+
+across both patient –derived cells (Fig. 3D, E and Supplementary Fig. 4G, H), whereas dexamethasone 1
+
+produced only partial reductions with consistent effect across cell lines. 2
+
+Finally, we examined YAP  mechanotransduction . As expected, YAP nuclear localization increased on 3
+
+stiff substrates, confirming a conserved mechanosensitive response in patient –derived PDAC cells (Fig. 4
+
+3F, G and Supplementary Fig. 4I, J). Budesonide significantly reduced YAP nuclear translocation in both 5
+
+PDAC cells, restoring  N/C  ratios towards soft –like conditions.  In contrast, dexamethasone produced 6
+
+minimal effects overall, with responses varying across patient –derived cell lines  (Fig. 3F, G and 7
+
+Supplementary Fig.  4I , J). 8
+
+Collectively, these findings demonstrate that budesonide consistently suppresses stiffness –driven 9
+
+malignant phenotypes across  different  patient –derived PDAC models, reinforcing its role as a  potent and 10 
+
+selective  inhibitor  of PDAC mechanoadaptation. 11 
+
+12 
+
+Budesonide prevents the stiffness –driven transcriptional changes and impacts nucleoskeletal 13 
+
+organization of pancreatic cancer cells 14 
+
+To gain further mechanistic insight into the effects of budesonide on stiffness –driven PDAC phenotypes, 15 
+
+we performed RNA –seq profiling of  PANC -1 cells  cultured on soft and stiff substrates, as well as 16 
+
+budesonide –treated cells  maintained  on stiff substrates (Fig. 4A). Principal component analysis revealed 17 
+
+clear segregation of the three conditions, indicating distinct transcriptional states ( Fig. 4B ).  Comparison 18 
+
+of  PANC -1 cells on stiff versus soft substrates identified 2073 differentially expressed genes 19 
+
+(Supplementary Fig. 5A ), reflecting transcriptional adaptation to increased matrix stiffness.  David g ene 20 
+
+ontology and pathway enrichment  (padj ≤0.05) analyses  of deregulated genes highlighted processes 21 
+
+linked to regulation of  metabolic process,  cytoskeletal organization,  epithelial to mesenchymal transition, 22 
+
+regulation of  cell adhesion  mediated by integrin,  migration, and intracellular  signalling , as well as 23 
+
+enrichment of Hippo  signalling  and cell cycle pathways (Fig. 4C, D ; Supplementary Fig. 5 B,  C;24 
+
+Supplementary Table 1),  consistent with the phenotypic changes observed. 25 
+
+We next compared the transcriptomic profiles of PANC -1 cells cultured on stiff substrates following 26 
+
+budesonide treatment or vehicle  control and  identified 4271 differentially expressed genes 27 
+
+(Supplementary Fig. 5A). Of note, cross –comparison with stiffness –regulated genes (2073 ;28 
+
+Supplementary Fig. 5A ) revealed that approximately 50% of the stiffness –deregulated genes were 29 
+
+inversely modulated by budesonide (Fig. 4E, F ; Supplementary Table 2),  supporting  its ability to 30 
+
+counteract stiffness –driven programs associated with malignant phenotypes. 31 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.17.739125 doi: bioRxiv preprint
+
+11 
+
+To further dissect budesonide –specific effects, we  analysed  genes uniquely altered by budesonide  (~3000 1
+
+genes) . Enrichment analyses using Reactome (Fig. 4G), BP (Supplementary Fig. 5D) and KEGG 2
+
+Pathways (Supplementary Fig. 5E) revealed modulation of pathways related to cell cycle regulation, 3
+
+consistent  with the anti –proliferative effects  of budesonide  (Supplementary Table 1).  Unexpectedly, we 4
+
+also identified a distinct enrichment in pathways related to nuclear envelope organization, nuclear pore 5
+
+complex dynamics, and nucleocytoplasmic transport (Fig.  4G, H and Supplementary Fig. 5D, E ;6
+
+Supplementary Table 2),  pointing to a previously unappreciated impact of budesonide on nuclear 7
+
+architecture. 8
+
+To validate these observations, and establish their relevance in patient –derived models, we examined 9
+
+nuclear lamina organization by immunofluorescence analysis of lamin A/C and lamin B1 in both PANC -10 
+
+1 and PDAC#253 cells.  In both models, b udesonide reduced lamin A/C levels compared to  NT  cells 11 
+
+cultured on  stiff  substrates , while lamin B1 showed a cell line –dependent response (Fig. 5A -F), 12 
+
+suggesting  mechanosensitive –dependent  regulation  of these nucleoskeleton components 41 .13 
+
+To further explore this phenotype, we next assessed nuclear membrane topology by quantifying nuclear 14 
+
+membrane wrinkling. Cells on soft substrates exhibited higher wrinkling indices than those on stiff 15 
+
+matrices  (Fig. 5 G, H, K, L) , as expected 33,41,42 . Notably, budesonide significantly increased nuclear 16 
+
+wrinkling index towards soft –like levels in both PANC -1 and PDAC#253 cells (Fig. 5 G, H, K, L), 17 
+
+consistent with reduced  transmission of cytoskeleton  mechanical force to the nucleus. 18 
+
+Alterations in the enveloping laminar structure around the nucleus  significantly  impacts nuclear size and 19 
+
+shape 33,43,44 . Consistent with  these  structural changes, budesonide significantly reduced nuclear volume 20 
+
+across the different models, restoring values comparable to those observed under soft conditions (Fig. 21 
+
+5I, M).  To further dissect these changes , we quantified nuclear height and the major and minor axes of 22 
+
+the nucle ar  midplane. Budesonide treatment significantly reduced nuclear height and major axis in both 23 
+
+PANC -1 and PDAC#253 cells, while a decrease in the minor axis was observed only in PDAC#253 cells 24 
+
+(Fig. 5 J, N  and  Supplementary  Fig.  6A -B), which may reflect a cell –line specific effect. 25 
+
+We next asked whether the impact of budesonide on nuclear organization involve s the GR. 26 
+
+Immunofluorescence analysis of nuclear lamina components showed that, as expected, budesonide 27 
+
+reduced both lamin A/C and lamin B1 expression in  shEmpty PANC -1 cells (Supplementary Fig.  6C -E).  GR 28 
+
+knockdown  itself  reduced the  levels  of both laminae and budesonide did not further reduce their 29 
+
+expression in  shNR3C1 PANC -1 cells (Supplementary Fig.  6C -E).  Similarly,  GR  loss  increased  nuclear 30 
+
+surface  wrinkling , with  no additional effect upon  budesonide  treatment , suggesting a GR involvement  in 31 
+
+this process  (Supplementary Fig. 6 F, G).  In contrast , GR  downregulation  did not  affect  nuclear volume, 32 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.17.739125 doi: bioRxiv preprint
+
+12 
+
+major and the minor axes and the nuclear height . B udesonide , however,  significantly  reduced these 1
+
+parameters in  both  shEmpty PANC -1 and  shNR3C1 PANC -1 cells, suggesting  that the effects of budesonide on 2
+
+nuclear size and shape are, at least in part,  GR –independent (Supplementary Fig.  6H -K).  Notably, despite 3
+
+recapitulating several soft –like features, including reduced adhesion,  reduced migration and 4
+
+proliferation , and altered lamina organization, GR knockdown did not affect nuclear volume. This 5
+
+suggests that global nuclear geometry is not solely dictated by lamina composition or cytoskeletal  tension 6
+
+but  instead requires coordinated changes across multiple determinants of nuclear architecture, with 7
+
+nuclear volume representing a higher –order emergent property that is not readily altered by isolated 8
+
+changes in cytoskeletal tension or lamina organization. 9
+
+Collectively, these findings provide unprecedented evidence that budesonide reverse s stiffness –driven 10 
+
+transcriptional programs associated with malignant phenotypes, and remodels nuclear architecture in 11 
+
+PDAC cells, thereby attenuating mechanotransduction at the nuclear level. 12 
+
+13 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.17.739125 doi: bioRxiv preprint
+
+13 
+
+DISCUSSION 1
+
+Matrix stiffening is a defining feature of PDAC and a key driver of malignant cell  behaviour  through 2
+
+activation of mechanotransductive pathways. Here, using  tuneable  bioengineered platforms that 3
+
+recapitulate physiologically relevant stiffness ranges, we identify the FDA –approved glucocorticoid 4
+
+budesonide as a previously unrecognized modulator of PDAC mechanobiology. Budesonide effectively 5
+
+counteracts stiffness –driven phenotypes, including enhanced cell spreading, focal adhesion maturation, 6
+
+cytoskeletal organization, migration and proliferation 7,45 –48 . These findings demonstrate that 7
+
+pharmacological targeting of mechanoadaptive programs can be achieved using an already clinically 8
+
+available compound and highlight the importance of incorporating mechanical cues into preclinical 9
+
+models. 10 
+
+While individual aspects of stiffness –induced responses, such as YAP activation 17 –21 , cytoskeletal 11 
+
+remodelling 6,7,13,14,47  and increased proliferation 45,49 , have been described in various  tumour 12 
+
+contexts 18,20,48,50 , a comprehensive and integrated characterization of these processes in PDAC has 13 
+
+remained limited. By decoupling matrix stiffness from other microenvironmental variables, our  tuneable 14 
+
+platforms enabled a multi –scale analysis linking extracellular mechanics to cytoskeletal organization, 15 
+
+nuclear architecture and transcriptional regulation. Within this framework, matrix stiffening induces a 16 
+
+coordinated phenotypic program consistent with the establishment of a self –reinforcing 17 
+
+mechanotransductive  circuitry 8,16,32,46,51 –53 .18 
+
+A central insight of this study is that budesonide disrupts stiffness –induced mechanotransductive 19 
+
+programs. Our data indicate that this occurs early at the level of cytoskeletal organization, impairing 20 
+
+force transmission toward the nucleus and selectively limiting downstream mechanoresponsive 21 
+
+signalling , including YAP activation. These effects are consistently observed in both established and 22 
+
+patient –derived PDAC models, underscoring their robustness and translational relevance. 23 
+
+Recent studies have highlighted the context –dependent activity of budesonide in PDAC, with 24 
+
+pronounced antiproliferative effects in  3D  systems but limited activity in conventional  2D  cultures 27 . Our 25 
+
+findings further suggest that this apparent context dependency may largely reflect differences in the 26 
+
+mechanical microenvironment rather than intrinsic drug efficacy, emphasizing the importance of 27 
+
+incorporating physiologically relevant stiffness cues into preclinical models.  More broadly, our results 28 
+
+support the concept that matrix mechanics is a critical determinant of drug response in PDAC 3,4,9,12,24 .29 
+
+At the nuclear level, our data  provide the first evidence, to our knowledge,  that budesonide promotes a 30 
+
+‘soft –like’ nuclear state despite persistent mechanical cues, pointing to the nucleus as a key target of its 31 
+
+activity. By weakening cytoskeletal –nucleoskeletal coupling, budesonide limits force transmission and 32 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.17.739125 doi: bioRxiv preprint
+
+14 
+
+attenuates downstream transcriptional responses 41,46,48,51,53 . Indeed, budesonide reduced lamin A/C 1
+
+abundance,  induced a higher wrinkling of the nuclear envelope , and constrained nuclear enlargement and 2
+
+deformation induced by stiff substrates. These structural changes were accompanied by cytoplasmic 3
+
+retention of YAP without changes in total protein levels, indicating selective inhibition of 4
+
+mechanoresponsive nuclear  signalling  rather than generalized protein suppression. Given the emerging 5
+
+role of the nucleus as a mechanosensitive organelle that integrates extracellular forces into transcriptional 6
+
+outputs 32,41 –44,51,54 , our findings suggest that budesonide interferes with a mechanotransduction axis 7
+
+linking matrix stiffness to the nucleus and eventually on malignant gene expression programs. 8
+
+Transcriptomic profiling strongly supports this model. Budesonide reversed a broad set of stiffness –9
+
+induced transcriptional changes associated with proliferation, migration, cytoskeletal  remodelling , and 10 
+
+aggressive cell states. Thus, the phenotypic effects observed at the cellular and nuclear levels converge 11 
+
+with genome –wide transcriptional rewiring, indicating that budesonide does not simply block isolated 12 
+
+downstream pathways but resets a broader mechanoadaptive state. This system –level reprogramming 13 
+
+may be particularly relevant in PDAC, where stromal stiffening and desmoplasia continuously reinforce 14 
+
+tumor cell plasticity and therapeutic resistance 6,7,9 –13 .15 
+
+Our findings further reveal a complex involvement of GR  signalling . Glucocorticoid  signalling 16 
+
+encompasses both canonical GR –dependent transcriptional effects and non –genomic activities 55 , and our 17 
+
+data further uncover a previously unappreciated role for GR  signalling  in regulating PDAC cell 18 
+
+mechanics, while also supporting the existence of GR –independent mechanisms underlying budesonide 19 
+
+activity. Our results therefore suggest that budesonide engages these pathways in the context of PDAC 20 
+
+mechanobiology 28 . Notably, budesonide, similarly to cholesterol, is known to modulate the structural 21 
+
+properties of lipid bilayers, including lipid order and packing 56 . By altering plasma membrane fluidity, 22 
+
+budesonide may affect membrane organization and receptor clustering, ultimately impairing cell –matrix 23 
+
+coupling and mechanosensing 57,58 . While this possibility warrants further investigation, GR  silencing 24 
+
+experiments uncovered an unappreciated role for GR  signalling  in regulating PDAC cell  behaviour , in 25 
+
+particular in cell motility . These results are also supported by the recent evidence that GR regulates 26 
+
+ovarian cancer  cell motility 59 . Moreover,  our results  suggest that the effects of budesonide on nuclear 27 
+
+organization are largely independent of GR .28 
+
+Collectively, our data identify matrix stiffness as a dominant regulator of PDAC cell phenotype and 29 
+
+establish budesonide as a pharmacological agent capable of functionally uncoupling  tumour  cells from 30 
+
+pathological mechanical cues. Rather than directly targeting oncogenic drivers, budesonide perturbs the 31 
+
+biomechanical circuitry that sustains malignant phenotypes, revealing mechanotransduction as a 32 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.17.739125 doi: bioRxiv preprint
+
+15 
+
+targetable vulnerability in PDAC. Given its established clinical use and  favourable  safety profile, 1
+
+budesonide represents a compelling candidate for therapeutic repurposing, particularly in combination 2
+
+with treatments targeting genetic or metabolic dependencies. 3
+
+Several limitations should be acknowledged. Although our platforms capture  tuneable  stiffness, they do 4
+
+not fully reproduce the multicellular and biochemical complexity of the native PDAC microenvironment. 5
+
+The precise molecular mediators linking budesonide to cytoskeletal and nuclear  remodelling  remain to 6
+
+be defined, and the relative contribution of GR –dependent versus independent pathways will require 7
+
+deeper genetic and biochemical dissection.  Nonetheless , the consistency of our findings across cell lines 8
+
+and patient –derived models underscores the robustness of the observed phenomenon. 9
+
+In summary, we identify budesonide as a suppressor of stiffness –driven malignancy in PDAC and reveal 10 
+
+nuclear mechanotransduction as a targetable vulnerability in this disease. More broadly, our work 11 
+
+demonstrates that integrating mechanobiology into cancer pharmacology can uncover actionable 12 
+
+therapeutic activities that remain hidden in conventional culture systems. 13 
+
+14 
+
+15 
+
+16 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.17.739125 doi: bioRxiv preprint
+
+16 
+
+METHODS 1
+
+Substrate preparation 2
+
+Polyacrylamide (PAAm) substrates were prepared following established protocols 60  with modifications 3
+
+to accommodate different surface areas. Glass coverslips, having a diameter of 35 and 50 mm 4
+
+respectively, were silani sed using 3 -aminopropyltriethoxysilane (APTES, Sigma -Aldrich) for 10 min 5
+
+and  glutaraldehyde  0.5% for 10 min. Every step accounted for accurate washing with double -distilled 6
+
+water to remove excess reagent. 7
+
+PAAm hydrogels were prepared by mixing acrylamide and N,N′ -methylenebisacrylamide  (Sigma -8
+
+Aldrich) in PBS 1×. The final concentrations used were 2.5% acrylamide/0.15% bis -acrylamide, 6% 9
+
+acrylamide/0.15% bis -acrylamide and 10% acrylamide/0.13% bis -acrylamide. The crosslinking was 10 
+
+triggered using ammonium persulfate (APS, Sigma -Aldrich) 10% at 1/100 final concentration and 11 
+
+N,N,N′,N′ -tetramethylethylenediamide (TEMED, Sigma -Aldrich) at 1/1000 final concentration. The 12 
+
+prepared gels were pre –tested with a stress –driven rheometer (MCR302, Anton Paar), using a parallel 13 
+
+plate geometry with an upper plate diameter of 25 mm. Dynamic strain tests at constant temperature (37 14 
+
+°C) were performed both at a constant frequency (1 Hz), applying a strain ranging from 1 to 100%, and 15 
+
+through a frequency sweep from 0.1 Hz to 10 Hz, resulting in quantification of the complex shear 16 
+
+modulus G *. Young’s modulus was then calculated as indicated in  Equation 1 .17 
+
+18 
+
+𝐸  = 2𝐺 ′(1 + 𝑣 ) (1)19 
+
+20 
+
+where  𝑣  is the Poisson’s number, assumed to be equal to 0.5 for PAAm 61 . Due to the elastic  behaviour 21 
+
+of the material and due to the negligible contributions of the loss moduli,  only the storage modulus G’ 22 
+
+was considered in the equation . Rheometer testing yielded a final stiffness of the hydrogels of 0.2, 10 23 
+
+and 27 kPa in Young Modulus respectively. Measurements to assess the consistency of the obtained 24 
+
+formulations in terms of Young’s modulus were performed at each gel preparation (Supplementary Table 25 
+
+3 and Supplementary Fig .1A). To cast the PAAm  substrates, the activated solution was applied to the 26 
+
+treated side of the coverslips mounted to the appropriate dishes and covered with a circular coverslip (10, 27 
+
+20, or 50 mm in diameter) before allowing polymerization at 37 °C for 20 min. After polymerization, the 28 
+
+top coverslips were removed, resulting in cylindrical hydrogels with an approximate thickness of 220 29 
+
+μm. The substrates were then soaked with a solution of 50% Penicillin/Streptomycin (Microgem ) and 30 
+
+10% Amphotericin -B (Sigma -Aldrich) in sterile PBS 1× for a minimum of 24 h at 4 °C, followed by 31 
+
+exposure to UV germicidal lamp (265 nm) for at least 1 h two times for complete sterilization. To allow 32 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.17.739125 doi: bioRxiv preprint
+
+17 
+
+cell culture, the substrates were functionalized with type I collagen. Specifically, a 0.2 mg/mL solution 1
+
+of bifunctional crosslinker sulfosuccinimidyl 6-(4′ -azido -2′ -nitrophenylamino) hexanoate (sulfo -2
+
+SANPAH, ThermoFisher) in sterile –filtered double –distilled water was applied to the gel surface and 3
+
+photoactivated under 365 nm UV light for 10 min. After being washed with sterile PBS, the substrates 4
+
+were coated with a 50 μg/mL collagen solution (Bovine Type I Collagen solution, Sigma -Aldrich) in 5
+
+sterile –filtered double –distilled water at 37 °C for 1 h. The substrates were then washed with sterile PBS 6
+
+and used for cell culture within 2 days. 7
+
+8
+
+Cell lines, culture conditions, and treatments 9
+
+The human pancreatic cancer cell line PANC -1 (ATCC, CRL -1469 ™) and two patient –derived PDAC 10 
+
+lines (PDAC#253 and PDAC#354), previously isolated and characterized from independent pancreatic 11 
+
+ductal adenocarcinoma samples 39,40 , were used in this study. All cultures were routinely screened to 12 
+
+confirm the absence of Mycoplasma contamination and were maintained below passage 28. 13 
+
+PANC -1 cells were grown in DMEM (Invitrogen) supplemented with 10% fetal bovine serum 14 
+
+(Invitrogen), L -Glutamine (Invitrogen), and Penicillin/Streptomycin (Invitrogen). PDAC#253 and #354 15 
+
+were maintained in a customized PDAC growth medium consisting of RPMI 1640 with GlutaMAX ™16 
+
+(Invitrogen), 10% South American FBS (Euroclone ), Penicillin/Streptomycin (Invitrogen), and 17 
+
+Normocin (InvivoGen). 18 
+
+For treatment experiments, PANC -1, PDAC#253 and PDAC#354 cells were initially seeded at 15 × 10³ 19 
+
+cells/cm² on gelatin –coated dishes, at day 0 and day  –1, respectively, and treated with budesonide (20 20 
+
+μM), dexamethasone (20 μM), or no treatment. After 3 days, cells were trypsini sed  and reseeded at 21 
+
+2.5 × 10³ cells/cm² on bioengineered substrates, with or without drugs for additional two days. Following 22 
+
+treatments, cells were either fixed with 4% paraformaldehyde (PFA) or processed for downstream 23 
+
+applications. 24 
+
+Budesonide (Sigma -Aldrich) was dissolved in DMSO, while dexamethasone (Sigma -Aldrich) was 25 
+
+dissolved in water at 10 mM. 26 
+
+27 
+
+Generation of  NR3C1  KD PANC -1 cells 28 
+
+Stable knockdown of NR3C1 in PANC -1 was achieved by transduction with lentiviral vectors encoding 29 
+
+shRNAs  targeting NR3C1 along with a puromycin resistance cassette 38 . Cells transduced with an empty 30 
+
+vector (shEmpty) served as negative control. After 48 h, puromycin selection (5 μg/ml) was applied for 31 
+
+7 days to obtain stable populations. 32 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.17.739125 doi: bioRxiv preprint
+
+18 
+
+Cell proliferation assays 1
+
+To evaluate proliferation, PANC -1 cells were treated as described above and then  labelled  using the 2
+
+Click -iT EdU Flow Cytometry Assay Kit (Invitrogen), according to the manufacturer's instructions. After 3
+
+fixation and staining, samples were  analysed  by flow cytometry (FACS -ARIAIII, Becton -Dickinson). 4
+
+The growth rate of the cells was extracted from time –lapse microscopy experiments (LEICA STED -5
+
+SP5). Cell number for each video was assessed at the starting frame (nC T0 ) and at 48 h (nC T48 ), 6
+
+determining the growth rate through  Equation 2  which describes the number of replications per day. 7
+
+8
+
+𝐺𝑟𝑜𝑤𝑡 ℎ 𝑅𝑎𝑡𝑒  =
+
+𝑙𝑜𝑔 2 (𝑛𝐶 𝑇 48 
+
+𝑛𝐶 𝑇 0
+
+)
+
+𝑡 𝑑𝑎𝑦𝑠 
+
+(2)9
+
+10 
+
+Immunostaining 11 
+
+Upon treatments, PANC1, PDAC #253 and PDAC #354 cells were fixed with PFA 4% for 10 min. For 12 
+
+analysis of cytoskeleton markers, cells were then permeabilized with TRITON 0.1% for 10 min at room 13 
+
+temperature (RT) and then incubated with a blocking solution of BSA 5%/TRITON 0.1% for 1 h. Primary 14 
+
+antibodies were incubated overnight at 4  °C, followed by the respective secondary antibodies (Alexa 15 
+
+Fluor Molecular Probes). Images were acquired with a Nikon A1 confocal microscope. The NIS Element 16 
+
+C (Nikon, Tokyo) software was used for image acquisition/elaboration. For focal adhesions’ area 17 
+
+quantification, paxillin was stained with rabbit anti –paxillin monoclonal antibody followed by incubation 18 
+
+with an appropriate secondary antibody. Cytoskeletal actin  fibres  were stained with Alexa Fluor 647 -19 
+
+conjugated phalloidin. Images were acquired using a confocal laser scanning microscope (LSM -900, 20 
+
+Carl Zeiss) equipped with two diode laser lines (green channel, λ excitation  = 488 nm, λ emission  = 500  –21 
+
+700 nm, for paxillin, and deep red channel, λ excitation  = 633 nm, λ emission  = 651  – 720 nm for phalloidin). 22 
+
+The images were collected as single snaps using a 40× C -Apochromat korr water immersion objective 23 
+
+M27 (NA = 1.2) at an image resolution of 2048 × 2048 pixels with a 2× zoom factor. 24 
+
+For YAP translocation investigations, cell membranes were stained with rhodamine –wheat germ 25 
+
+agglutinin (WGA)  before permeabilization. Then, permeabilization was achieved using a solution of 26 
+
+TRITON 0.3% in PBS 1× buffer for 15 min, followed by a blocking solution of BSA 3%/TRITON 0.1% 27 
+
+in PBS 1× buffer for 1.5 h. Cells were then incubated with rabbit anti –YAP polyclonal antibody followed 28 
+
+by incubation with an appropriate secondary antibody. Images were acquired using a confocal laser 29 
+
+scanning microscope (LSM -710, Carl Zeiss) equipped with three diode laser lines (green channel, 30 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.17.739125 doi: bioRxiv preprint
+
+19 
+
+λexcitation  = 488 nm, λ emission  = 495  – 544 nm for the nuclei, red channel, λ excitation  = 555 nm, λ emission  = 546 1
+
+– 594 nm for cellular membrane, and deep red channel λ excitation  = 647 nm, λ emission  = 651  – 720 nm for 2
+
+YAP). The images were collected at 1 μm Z -spacing using a 40× C -Apochromat korr water immersion 3
+
+objective M27 (NA = 1.2) at an image resolution of 1024 × 1024 pixels with a 2× zoom factor. 4
+
+For investigation of the nuclear laminae, cells were permeabilized with a solution of Glycine 100 5
+
+mM/TRITON 0.3% in PBS 1× buffer for 15 min, then a blocking solution of BSA 3%/TRITON 0.1% in 6
+
+PBS 1× buffer was applied for 1.5 h. Cells were then incubated with rabbit anti –lamin B1 polyclonal 7
+
+antibody and subsequently with mouse anti –lamin  A/C monoclonal antibody, followed by incubation 8
+
+with the respective secondary antibodies. Images were acquired using a confocal laser scanning 9
+
+microscope (LSM -900, Carl Zeiss) equipped with three diode laser lines (blue channel, λ excitation  = 405 nm 10 
+
+λemission  = 410  – 475 nm for the nuclei, green channel, λ excitation  = 488 nm, λ emission  = 500  – 700 nm, for 11 
+
+lamin A/C, and red channel, λ excitation  = 546 nm, λ emission  = 410  – 617 nm for lamin  B1). The images were 12 
+
+collected at 1 μm Z -spacing using a 40× C -Apochromat korr water immersion objective M27 (NA = 1.2) 13 
+
+at an image resolution of 1024 × 1024 pixels with a 2× zoom factor. The list of primary and secondary 14 
+
+antibodies with the respective dilution and incubation time is shown in Supplementary Table  4.15 
+
+16 
+
+Immunofluorescence analysis 17 
+
+For spreading area quantification, the cell area on the adhesion plane slice was directly measured using 18 
+
+FIJI ImageJ (NIH software). Focal adhesions area was calculated by isolating peripheral focal adhesion 19 
+
+from paxillin staining. Filtering of the image, based on a custom written ImageJ routine, was performed 20 
+
+prior to manual selection of isolated peripheral adhesions overlapped with phalloidin staining and 21 
+
+identified as belonging to ventral stress  fibres , which are inherently related to nucleoskeletal 22 
+
+mechanotransduction through actin cap connection. 23 
+
+YAP localization was  analysed  using IMARIS (IMARIS, Oxford Instruments) for 3D rendering and 24 
+
+quantification. 3D models of individual cells were generated using the "Surface" function on WGA and 25 
+
+SYTOX fluorescence signals obtained from confocal imaging, enabling the isolation of a nuclear and a 26 
+
+cellular compartment. Cytoplasmic volume was obtained from  Equation 3 . YAP intensity was evaluated 27 
+
+within the produced compartments and extracted as mean grey values (MGVs), which represent the 28 
+
+average concentration of YAP at each reconstructed voxel. MGV for cytoplasm was extracted from 29 
+
+Equation 4 . This representation was chosen to avoid corruption of the dataset due to the dimensional 30 
+
+heterogeneity of PANC -1 cells within the same condition. 31 
+
+32 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.17.739125 doi: bioRxiv preprint
+
+20 
+
+𝑉 𝐶𝑦𝑡𝑜  = 𝑉 𝐶𝑒𝑙𝑙  − 𝑉 𝑁𝑢𝑐𝑙𝑒𝑢𝑠  (3)1
+
+2
+
+𝑀𝐺 𝑉 𝐶𝑦𝑡𝑜  = [(𝑀𝐺 𝑉 𝐶𝑒𝑙𝑙  ·𝑉 𝐶𝑒𝑙𝑙  ) − (𝑀𝐺 𝑉 𝑁𝑢𝑐𝑙𝑒𝑢𝑠 ·𝑉 𝑁𝑢𝑐𝑙𝑒𝑢𝑠 )]
+
+𝑉 𝐶𝑦𝑡𝑜 
+
+(4)3
+
+4
+
+where V Cyto , V Cell  and V Nucleus  are the volumes of the cytoplasm, cell and nucleus respectively; and 5
+
+MGV Cyto , MGV Cell  and MGV Nucleus  are the mean grey values of YAP signal within cytoplasm, cell and 6
+
+nucleus compartments. Localization of YAP was quantified by means of  N/C  intensity ratio, as described 7
+
+in  Equation 5 .8
+
+9
+
+𝑁 
+
+𝐶  = 𝑀𝐺𝑉 𝑁𝑢𝑐𝑙𝑒𝑢𝑠 
+
+𝑀𝐺 𝑉 𝐶𝑦𝑡𝑜 
+
+(5)10 
+
+11 
+
+To extract data for lamin A/C and lamin  B1 expression, the slice containing maximal area extension for 12 
+
+the nuclei of every imaged cell was singled out from the z -stack. Then, ROIs were determined by 13 
+
+constructing a selection mask through Threshold function on the lamin B1 signal. Within the selected 14 
+
+ROIs, MGVs for the lamin A/C and lamin B1 signals were extracted. Nuclear wrinkling for lamin B1 15 
+
+was evaluated by adapting an existing protocol to the acquired images 41 . Sum projections of complete 16 
+
+nuclear z -stacks for each condition were provided to a customized ImageJ routine extracted from 17 
+
+literature 38 . A selection mask allowed for recording of mean intensity of sum images and their aspect 18 
+
+ratio. Contour tracking for the nuclei was executed using FeatureJ via a Sobel –based edge detection. 19 
+
+Quantification of wrinkling was determined through a wrinkling index, defined as the percentual area 20 
+
+coverage on the nucleus detected by the Sobel -based edge detection, visualized as the white pixels of the 21 
+
+binarized and FeatureJ –processed image. 22 
+
+23 
+
+Cell motility 24 
+
+Cell motility experiments were performed by time –lapse microscopy (LEICA, STED -SP5). 25 
+
+Transmission images were collected at 10 -11 min intervals for at least 48 h, with 254 -288 frames 26 
+
+analysed  per cell. Cell positions in each frame were manually tracked using ImageJ, via the Manual 27 
+
+Tracking plugin. After the complete positions set was obtained, the data were converted in micron and 28 
+
+cell velocity and mean –square displacement (MSD) were calculated as described in  Equation 6 -729 
+
+through a routine derived from literature 62 .30 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.17.739125 doi: bioRxiv preprint
+
+21 
+
+1
+
+𝑣  = ∑ √(𝑥 𝑖 +1 − 𝑥 𝑖  )2 + (𝑦 𝑖 +1 − 𝑦 𝑖  )2
+
+𝑁  ⋅ Δ𝑇 
+
+> 𝑁
+> 𝑖 =1
+
+(6)2
+
+3
+
+𝑀𝑆𝐷 (𝜏 ) = 〈[𝑥 (𝑡  − 𝜏 ) − 𝑥 (𝑡 )]2 + [𝑦 (𝑡  − 𝜏 ) − 𝑦 (𝑡 )]2〉 (7)4
+
+5
+
+Where x i and y i are the spatial coordinates in 2D space for each cell at the i -th frame, ΔT is the time in 6
+
+minutes occurring between two subsequent frames, N is the  total number of acquired frames , t is the time 7
+
+variable , τ is the lag time  and  〈 〉 indicates the time average operator . In principle, only isolated cells 8
+
+exhibiting single –cell migration without division or cell –cell contact were included. Due to the prominent 9
+
+replication capabilities of PANC -1, PDAC #253 and PDAC #354 cells, the selection criterion was 10 
+
+adjusted to amplify the dataset without disrupting the validity of the executed tracking. Specifically, in 11 
+
+cases where only a single division occurred in the complete timelapse acquired, tracking was continued 12 
+
+following  the first daughter cell that remained within the field of view and displayed stable substrate 13 
+
+adhesion. This allowed for the inclusion of a larger number of cells and an extended dataset. 14 
+
+15 
+
+Western blot 16 
+
+Cells were lysed in a buffer containing 20 mM Tris (pH 8), 150 mM NaCl, 10 mM EDTA, 1% Triton X -17 
+
+100, 10% glycerol, and 1 mM zinc acetate. Equal amounts of protein were separated by SDS -PAGE and 18 
+
+transferred to PVDF membranes using the  Trans -Blot SD Semi -Dry Transfer Cell 19 
+
+(BIO -RAD). Membranes were incubated overnight at 4 °C with primary antibodies (Supplementary 20 
+
+Table  4), followed by HRP -conjugated secondary antibodies. Protein detection was performed with ECL 21 
+
+reagents (EuroClone), and band intensities were quantified using ImageLab software. 22 
+
+23 
+
+AFM 24 
+
+The mechanical properties of PANC -1 cells were assessed using a JPK NanoWizard  II AFM, combined 25 
+
+with an optical microscope for precise positioning of tips and samples. Soft cantilevers (SAA -SPH -5UM, 26 
+
+spring constant 0.171 N/m) were employed to probe cell mechanics in force spectroscopy mode. For 27 
+
+each measurement, 64 force curves were collected over a 2 × 2 μm² surface area. Young’s modulus was 28 
+
+derived from each force curve within the force map using JPKSPM data processing software. The 29 
+
+Hertzian model was applied to calculate Young’s modulus for each curve, generating 64 values per map, 30 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.17.739125 doi: bioRxiv preprint
+
+22 
+
+according to the relation in  Equation 8 , which describes the relationship between the indentation δ and 1
+
+the applied force F for an infinitely hard spherical tip of radius r contacting a soft planar surface. 2
+
+3
+
+𝐹  = 4
+
+3
+
+𝐸 
+
+1 − 𝜈  √𝑟 𝛿 2 
+
+> 3
+
+(8)4
+
+5
+
+where E is Young's modulus and ν is the Poisson ratio, assumed equal to 0.5. Results showed the average 6
+
+value calculated from each force curve as a representative modulus of each measured force. 7
+
+8
+
+RNA extraction and Sequencing 9
+
+For RNA –seq  experiments, PANC -1 cells were cultured on gelatin –coated plates in the presence or 10 
+
+absence of budesonide (20 μM) for three days, then reseeded at 2.5 × 10³ cells/cm² on engineered 11 
+
+platforms and maintained for two additional days with medium refreshed ± drug. Total RNA was isolated 12 
+
+using the RNeasy kit (Zymo Research).  RNA sequencing was carried out by Genomix4Life 13 
+
+(https://www.genomix4life.com/en/bioinformatic_technologies.html ) using the Illumina NovaSeq 6000 14 
+
+platform. Raw sequencing reads were aligned to the GenCode reference genome (Release 48, 15 
+
+GRCh38.p14). Gene expression levels were quantified with FeatureCounts  (version 2.0.3). A count 16 
+
+matrix including all expressed genes across all samples was generated in R, and normalization together 17 
+
+with differential expression analysis was performed using the Bioconductor package DESeq2 18 
+
+(significance threshold p < 0.05). Normalization was achieved by dividing counts by sample –specific 19 
+
+size factors, calculated as the median ratio of each gene’s read count relative to its geometric mean. Gene 20 
+
+Ontology (GO) enrichment was performed with the DAVID tool (https://david.ncifcrf.gov/# ). 21 
+
+Furthermore, pathway analysis was carried out in R for KEGG, Biological Process (BP), and Reactome 22 
+
+pathways. KEGG enrichment was conducted using the clusterProfiler package in R, ranking genes by 23 
+
+differential expression values. For Reactome analysis, the reactome.db  package was applied to map 24 
+
+differentially expressed genes to relevant pathways. Only genes with an adjusted p -value ≤ 0.05 were 25 
+
+considered for pathway enrichment. Results from differential expression and pathway analyses (KEGG, 26 
+
+BP, and Reactome) were integrated to obtain a broader understanding of the biological processes 27 
+
+involved. 28 
+
+29 
+
+Statistical analysis 30 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.17.739125 doi: bioRxiv preprint
+
+23 
+
+The data were represented as mean ± standard deviation (SD) or ± standard error of the mean (SEM), as 1
+
+well as through boxplots or dotplots . The number of independent experiments is shown as “N=” and the 2
+
+total sample size is provided in each figure legend (n). Normality of the datasets acquired was determined 3
+
+using the Shapiro -Wilk test (<5000 datapoints) while the statistical comparisons were either performed 4
+
+with the two -tailed Student’s paired  t-test for normal distribution pairs or the Mann Whitney U -test in all 5
+
+other cases. Choice of pooled variance t -test or Welch correction t -test was determined by execution of 6
+
+an F -test on the  analysed  sample pair sets. P -values <0.05 denote statistically significant differences. 7
+
+Data derived from statistical analysis  are  explicitly  included  in Supplementary Tables  5-15 . Data 8
+
+representations, including graphs and boxplots, were generated using either Microsoft Excel, OriginPro 9
+
+or RStudio software, specifically version 1.1.463 from RStudio, Inc., accessible at 10 
+
+https://www.rstudio.com/ .11 
+
+12 
+
+13 
+
+14 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.17.739125 doi: bioRxiv preprint
+
+24 
+
+REFERENCES 1
+
+2
+
+1.  Ushio, J.  et al.  Pancreatic Ductal Adenocarcinoma: Epidemiology and Risk Factors. 3
+
+Diagnostics  11 , (2021). 4
+
+2.  Siegel, R. L., Miller, K. D. & Jemal, A. Cancer statistics, 2020.  CA. Cancer J. Clin.  70 , 7 –30 5
+
+(2020). 6
+
+3.  Neesse, A., Algül, H., Tuveson, D. A. & Gress, T. M. Stromal biology and therapy in pancreatic 7
+
+cancer: a changing paradigm.  Gut  64 , 1476 –1484 (2015). 8
+
+4.  Hosein, A. N., Brekken, R. A. & Maitra, A. Pancreatic cancer stroma: an update on therapeutic 9
+
+targeting strategies.  Nat. Rev. Gastroenterol. Hepatol.  17 , 487 –505 (2020). 10 
+
+5.  Wang, D.  et al.  The Extracellular Matrix: A Key Accomplice of Cancer Stem Cell Migration, 11 
+
+Metastasis Formation, and Drug Resistance in PDAC.  Cancers  14 , (2022). 12 
+
+6.  Rice, A. J.  et al.  Matrix stiffness induces epithelial –mesenchymal transition and promotes 13 
+
+chemoresistance in pancreatic cancer cells.  Oncogenesis  6, e352 –e352 (2017). 14 
+
+7.  Nguyen, A. V.  et al.  Stiffness of pancreatic cancer cells is associated with increased invasive 15 
+
+potential.  Integr. Biol.  8, 1232 –1245 (2016). 16 
+
+8.  Gkretsi, V. & Stylianopoulos, T. Cell Adhesion and Matrix Stiffness: Coordinating Cancer Cell 17 
+
+Invasion and Metastasis.  Front. Oncol.  8, (2018). 18 
+
+9.  LeSavage, B. L.  et al.  Engineered matrices reveal stiffness -mediated chemoresistance in 19 
+
+patient -derived pancreatic cancer organoids.  Nat. Mater.  23 , 1138 –1149 (2024). 20 
+
+10.  Gregori, A.  et al.  Prognostic Significance of Integrin Subunit Alpha 2 (ITGA2) and Role of 21 
+
+Mechanical Cues in Resistance to Gemcitabine in Pancreatic Ductal Adenocarcinoma (PDAC). 22 
+
+Cancers  15 , (2023). 23 
+
+11.  Gregori, A.  et al.  Altered Mechanobiology of PDAC Cells with Acquired Chemoresistance to 24 
+
+Gemcitabine and Paclitaxel.  Cancers  16 , (2024). 25 
+
+12.  Deng, D., Patel, R., Chiang, C. -Y. & Hou, P. Role of the Tumor Microenvironment in 26 
+
+Regulating Pancreatic Cancer Therapy Resistance.  Cells  11 , (2022). 27 
+
+13.  Stylianou, A., Voutouri, C., Mpekris, F. & Stylianopoulos, T. Pancreatic Cancer Presents 28 
+
+Distinct Nanomechanical Properties During Progression.  Ann. Biomed. Eng.  51 , 1602 –1615 (2023). 29 
+
+14.  Elosegui -Artola, A.  et al.  Mechanical regulation of a molecular clutch defines force 30 
+
+transmission and transduction in response to matrix rigidity.  Nat. Cell Biol.  18 , 540 –548 (2016). 31 
+
+15.  Mierke, C. T. Extracellular Matrix Cues Regulate Mechanosensing and Mechanotransduction of 32 
+
+Cancer Cells.  Cells  13 , (2024). 33 
+
+16.  Charras, G. & Yap, A. S. Tensile Forces and Mechanotransduction at Cell –Cell Junctions.  Curr. 34 
+
+Biol.  28 , R445 –R457 (2018). 35 
+
+17.  Dupont, S.  et al.  Role of YAP/TAZ in mechanotransduction.  Nature 474 , 179 –183 (2011). 36 
+
+18. Panciera, T. et al.  Reprogramming normal cells into tumour precursors requires ECM stiffness 37 
+
+and oncogene -mediated changes of cell mechanical properties.  Nat. Mater.  19 , 797 –806 (2020). 38 
+
+19.  Zanconato, F., Cordenonsi, M. & Piccolo, S. YAP/TAZ at the Roots of Cancer.  Cancer Cell  29 ,39 
+
+783 –803 (2016). 40 
+
+20.  Chen, W.  et al.  The migration of metastatic breast cancer cells is regulated by matrix stiffness 41 
+
+via YAP signalling.  Heliyon  7, e06252 (2021). 42 
+
+21.  Panciera, T., Azzolin, L., Cordenonsi, M. & Piccolo, S. Mechanobiology of YAP and TAZ in 43 
+
+physiology and disease.  Nat. Rev. Mol. Cell Biol.  18 , 758 –770 (2017). 44 
+
+22.  Liang, C.  et al.  Do anti -stroma therapies improve extrinsic resistance to increase the efficacy of 45 
+
+gemcitabine in pancreatic cancer?  Cell. Mol. Life Sci. 75 , 1001 –1012 (2018). 46 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.17.739125 doi: bioRxiv preprint
+
+25 
+
+23. Osuna de la Peña, D. et al.  Bioengineered 3D models of human pancreatic cancer recapitulate in 1
+
+vivo tumour biology.  Nat. Commun.  12 , 5623 (2021). 2
+
+24.  Zhang, H., Chen, J., Hu, X., Bai, J. & Yin, T. Adjustable extracellular matrix rigidity tumor 3
+
+model for studying stiffness dependent pancreatic ductal adenocarcinomas progression and tumor 4
+
+immunosuppression.  Bioeng. Transl. Med.  8, e10518 (2023). 5
+
+25.  van der Velden, V. H. J. Glucocorticoids: mechanisms of action and anti -inflammatory potential 6
+
+in asthma.  Mediators Inflamm.  7, 702547 (1998). 7
+
+26.  Patriarca, E. J., D’Aniello, C., Cesare, D. D., Cobellis, G. & Minchiotti, G. The Modulation of 8
+
+Cell Plasticity by Budesonide: Beyond the Metabolic and Anti -Inflammatory Actions of 9
+
+Glucocorticoids.  Pharmaceutics  17 , (2025). 10 
+
+27.  Ibello, E.  et al.  Three -dimensional environment sensitizes pancreatic cancer cells to the anti -11 
+
+proliferative effect of budesonide by reprogramming energy metabolism | Journal of Experimental & 12 
+
+Clinical Cancer Research. (2024). 13 
+
+28.  Gomez -Rubio, P.  et al.  Reduced risk of pancreatic cancer associated with asthma and nasal 14 
+
+allergies.  Gut  66 , 314 –322 (2017). 15 
+
+29.  Nabavizadeh, A.  et al.  Noninvasive Young’s modulus visualization of fibrosis progression and 16 
+
+delineation of pancreatic ductal adenocarcinoma (PDAC) tumors using Harmonic Motion Elastography 17 
+
+(HME)  in vivo . Theranostics  10 , 4614 –4626 (2020). 18 
+
+30.  Parsons, J. T., Horwitz, A. R. & Schwartz, M. A. Cell adhesion: integrating cytoskeletal 19 
+
+dynamics and cellular tension.  Nat. Rev. Mol. Cell Biol.  11 , 633 –643 (2010). 20 
+
+31.  Nagano, M., Hoshino, D., Koshikawa, N., Akizawa, T. & Seiki, M. Turnover of focal adhesions 21 
+
+and cancer cell migration.  Int. J. Cell Biol.  2012 , 310616 (2012). 22 
+
+32.  Maurer, M. & Lammerding, J. The Driving Force: Nuclear Mechanotransduction in Cellular 23 
+
+Function, Fate, and Disease.  Annu. Rev. Biomed. Eng.  21 , 443 –468 (2019). 24 
+
+33.  Wang, T. -C.  et al.  Matrix stiffness drives drop like nuclear deformation and lamin A/C tension -25 
+
+dependent YAP nuclear localization.  Nat. Commun.  15 , 10151 (2024). 26 
+
+34.  Cheng, B.  et al.  Predicting YAP/TAZ nuclear translocation in response to ECM 27 
+
+mechanosensing.  Biophys. J.  122 , 43 –53 (2023). 28 
+
+35.  Elosegui -Artola, A.  et al.  Force Triggers YAP Nuclear Entry by Regulating Transport across 29 
+
+Nuclear Pores.  Cell  171 , 1397 -1410.e14 (2017). 30 
+
+36.  Ma, S., Meng, Z., Chen, R. & Guan, K. -L. The Hippo Pathway: Biology and Pathophysiology. 31 
+
+Annu. Rev. Biochem.  88 , 577 –604 (2019). 32 
+
+37.  Calvo, F.  et al.  Mechanotransduction and YAP -dependent matrix remodelling is required for 33 
+
+the generation and maintenance of cancer -associated fibroblasts.  Nat. Cell Biol.  15 , 637 –646 (2013). 34 
+
+38.  Sorrentino, G.  et al.  Glucocorticoid receptor signalling activates YAP in breast cancer.  Nat 35 
+
+Commun  8, 14073 (2017). 36 
+
+39.  Cave, D. D.  et al.  TGF -beta1 secreted by pancreatic stellate cells promotes stemness and 37 
+
+tumourigenicity in pancreatic cancer cells through L1CAM downregulation.  Oncogene  39 , 4271 –4285 38 
+
+(2020). 39 
+
+40.  Lonardo, E.  et al.  Nodal/Activin Signaling Drives Self -Renewal and Tumorigenicity of 40 
+
+Pancreatic Cancer Stem Cells and Provides a Target for Combined Drug Therapy.  Cell Stem Cell  9,41 
+
+433 –446 (2011). 42 
+
+41.  Cosgrove, B. D.  et al.  Nuclear envelope wrinkling predicts mesenchymal progenitor cell 43 
+
+mechano -response in 2D and 3D microenvironments.  Biomaterials  270 , 120662 (2021). 44 
+
+42.  Swift, J. & Discher, D. E. The nuclear lamina is mechano -responsive to ECM elasticity in 45 
+
+mature tissue.  J. Cell Sci.  127 , 3005 –3015 (2014). 46 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.17.739125 doi: bioRxiv preprint
+
+26 
+
+43.  Mukherjee, R. N., Chen, P. & Levy, D. L. Recent advances in understanding nuclear size and 1
+
+shape.  Nucleus  7, 167 –186 (2016). 2
+
+44.  Jevtić, P., Edens, L. J., Vuković, L. D. & Levy, D. L. Sizing and shaping the nucleus: 3
+
+mechanisms and significance.  Curr. Opin. Cell Biol.  28 , 16 –27 (2014). 4
+
+45.  Gouirand, V. & Vasseur, S. Fountain of youth of pancreatic cancer cells: the extracellular 5
+
+matrix.  Cell Death Discov.  4, 1 (2018). 6
+
+46.  Wei, S. C.  et al.  Matrix stiffness drives epithelial -mesenchymal transition and tumour 7
+
+metastasis through a TWIST1 -G3BP2 mechanotransduction pathway.  Nat. Cell Biol.  17 , 678 –688 8
+
+(2015). 9
+
+47.  Wang, T., Hamilla, S., Cam, M., Aranda -Espinoza, H. & Mili, S. Extracellular matrix stiffness 10 
+
+and cell contractility control RNA localization to promote cell migration.  Nat. Commun.  8, 896 (2017). 11 
+
+48.  Sun, R.  et al.  Extracellular matrix stiffness in endometrial cancer: driving progression and 12 
+
+modulating treatment sensitivity via the ROCK1/YAP1 axis.  Cell Death Dis.  16 , 380 (2025). 13 
+
+49.  Grzesiak, J. J. & Bouvet, M. The α2β1 integrin mediates the malignant phenotype on type I 14 
+
+collagen in pancreatic cancer cell lines.  Br. J. Cancer  94 , 1311 –1319 (2006). 15 
+
+50.  Di Maggio, F. & El -Shakankery, K. H. Desmoplasia and Biophysics in Pancreatic Ductal 16 
+
+Adenocarcinoma: Can We Learn From Breast Cancer?  Pancreas  49 , 313 –325 (2020). 17 
+
+51.  Kalukula, Y., Stephens, A. D., Lammerding, J. & Gabriele, S. Mechanics and functional 18 
+
+consequences of nuclear deformations.  Nat. Rev. Mol. Cell Biol.  23 , 583 –602 (2022). 19 
+
+52.  Erkan, M.  et al.  The role of stroma in pancreatic cancer: diagnostic and therapeutic 20 
+
+implications.  Nat. Rev. Gastroenterol. Hepatol.  9, 454 –467 (2012). 21 
+
+53.  Ishihara, S. & Haga, H. Matrix Stiffness Contributes to Cancer Progression by Regulating 22 
+
+Transcription Factors.  Cancers  14 , (2022). 23 
+
+54.  Lammerding, J., Engler, A. J. & Kamm, R. Mechanobiology of the cell nucleus.  APL Bioeng.  6,24 
+
+040401 (2022). 25 
+
+55.  Panettieri, R. A.  et al.  Non -genomic Effects of Glucocorticoids: An Updated View.  Trends 26 
+
+Pharmacol. Sci.  40 , 38 –49 (2019). 27 
+
+56.  Dos Santos, A. G.  et al.  Changes in membrane biophysical properties induced by the 28 
+
+Budesonide/Hydroxypropyl -β-cyclodextrin complex.  Biochim. Biophys. Acta Biomembr.  1859 , 1930 –29 
+
+1940 (2017). 30 
+
+57.  Eich, C.  et al.  Changes in membrane sphingolipid composition modulate dynamics and 31 
+
+adhesion of integrin nanoclusters.  Sci. Rep.  6, 20693 (2016). 32 
+
+58.  Lietha, D. & Izard, T. Roles of Membrane Domains in Integrin -Mediated Cell Adhesion.  Int. J. 33 
+
+Mol. Sci.  21 , (2020). 34 
+
+59.  De Girolamo, M.  et al.  Context -dependent effect of glucocorticoid receptor activity shapes 35 
+
+ovarian cancer cell plasticity and therapy response.  Mol. Cancer  25 , 137 (2026). 36 
+
+60.  Frascogna, C.  et al.  Role of the mechanical microenvironment on CD -44 expression of breast 37 
+
+adenocarcinoma in response to radiotherapy.  Sci. Rep.  14 , 391 (2024). 38 
+
+61.  Smith, A. M., Inocencio, D. G., Pardi, B. M., Gopinath, A. & Andresen Eguiluz, R. C. Facile 39 
+
+Determination of the Poisson’s Ratio and Young’s Modulus of Polyacrylamide Gels and 40 
+
+Polydimethylsiloxane.  ACS Appl. Polym. Mater.  6, 2405 –2416 (2024). 41 
+
+62.  Gorelik, R. & Gautreau, A. Quantitative and unbiased analysis of directional persistence in cell 42 
+
+migration.  Nat. Protoc.  9, 1931 –1943 (2014). 43 
+
+44 
+
+45 
+
+46 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.17.739125 doi: bioRxiv preprint
+
+27 
+
+DECLARATIONS 1
+
+2
+
+Author contributions 3
+
+V.P. and C.D. conceived and designed the study.  V.P. and C.D. supervised the study.  S.M. , M.C.  and 4
+
+E.I.  performed experiments and analysed data. E.I. performed RNA sequencing analysis. A.A. prepared 5
+
+PAAm substrates and analysed migration data.  C.F. analysed focal adhesions data . B.S.  JR  and  E.L., 6
+
+provide reagents and gave conceptual advice.  L.A.  and  G. C.,  discussed and  provide  conceptual advice. 7
+
+E.J.P., G.M., P.A.N. contributed to data interpretation and scientific discussion. S.M., M.C., E.J.P., G.M., 8
+
+V.P. and C.D. wrote the manuscript with input from all authors. All authors read and approved the 9
+
+manuscript. 10 
+
+11 
+
+Conflict of Interest 12 
+
+The authors declare no competing interests. 13 
+
+14 
+
+Availability of data 15 
+
+RNA -Seq data have been deposited to GEO repository (Submission ID:  GSE330775 ). 16 
+
+Raw data and analysed data can be supplied by authors upon reasonable request. 17 
+
+18 
+
+Acknowledgments 19 
+
+We thank Salvatore Arbucci, Vincenzo Mercadante and members of the Integrated Microscopy and 20 
+
+FACS Facilities of the IGB -ABT, CNR.  We acknowledge Prof. Giannino Del Sal for kindly providing 21 
+
+the NR3C1shRNA construct.  We also acknowledge the PhD school  in Precision Medicine  of the 22 
+
+University of Palermo, Italy .23 
+
+24 
+
+Funding 25 
+
+CD discloses support for the research of this work from the Ministry of Education -University -Research 26 
+
+(MUR -PRIN 2022KME7RY , CHANCE ). VP discloses support for the research of this work from the 27 
+
+Ministry of Education -University -Research (MUR -PRIN 2022KME7RY , CHANCE ).  GM discloses 28 
+
+support for the research of this work from AIRC Foundation for Cancer Research (IG 32276) ; and co -29 
+
+funding from Next Generation EU, in the context of the National Recovery and Resilience Plan (PNRR) 30 
+
+Project D3 4 Health (PNC 0000001).  LA discloses support for the research of this work from GOAL” -31 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.17.739125 doi: bioRxiv preprint
+
+28 
+
+Prog n. F/380062/02/X77  – Mimit; Epi -MET  - Prog n. F/310034/03/X56  – MISE; and from the Ministry 1
+
+of Education -University -Research (PRIN2022 -PNRR # P2022F3YRF, Amoebo -switch). 2
+
+3
+
+4
+
+5
+
+.CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.17.739125 doi: bioRxiv preprint 29 
+
+1
+
+2
+
+3
+
+4
+
+.CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.17.739125 doi: bioRxiv preprint 30 
+
+Figure 1 .1
+
+Pancreatic cancer cells sense increasing substrate stiffness.  A-B Representative confocal images (A) and 2
+
+quantification (B) of PANC -1 cells, seeded on the bioengineered platforms at 0.2, 10 and 27 kPa, showing 3
+
+paxillin (green) and F -actin filaments (red) staining with focal adhesions highlighted in yellow ( upper ). 4
+
+The corresponding zoomed inverted contrast views with focal adhesions’ ROIs selected from paxillin 5
+
+(red) and F -actin (black) ( lower ) are shown underneath, with the corresponding focal adhesion area 6
+
+analyses plot (B, n=30).  C Young’s modulus evaluation, using AFM in force spectroscopy mode, of 7
+
+PANC -1 cells (n=15) two days after seeding on the bioengineered platforms.  D-E Plotted single -cell 8
+
+trajectories of PANC -1 cells (D) centred in the axes’ origin  and  single -cell velocity analyses in time lapse 9
+
+microscopy (E, n=100).  F-G Representative confocal images of YAP (purple) and WGA -rhodamine 10 
+
+(red) staining (F), with the corresponding YAP N/C ratio intensity analyses (G, n=30), in PANC -1 cells. 11 
+
+Nuclei were stained with SYTOX green (green).  H Representative western blot analysis ( upper ) and 12 
+
+densitometric quantification (FC vs 0.2;  lower ) of YAP in PANC -1 cells at different mechanical 13 
+
+conditions. GAPDH was used as a loading control.  I-J Representative FACS plot of  EdU incorporation 14 
+
+(I) and Box plot (J) showing percentage of EdU -positive cells cultured on 0.2, 10, and 27 kPa substrates. 15 
+
+Western blot data are shown as mean ± SEM (N=3). All other quantitative data are presented as box plots 16 
+
+(N=3 -5). Significant statistical differences are reported: * p < 0.05; ** p < 0.01; *** p < 0.001.  The 17 
+
+complete statistical analysis executed on shown datasets can be found in Supplementary  Table  5.18 
+
+19 
+
+20 
+
+21 
+
+22 
+
+23 
+
+24 
+
+25 
+
+26 
+
+27 
+
+28 
+
+29 
+
+30 
+
+31 
+
+32 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.17.739125 doi: bioRxiv preprint
+
+31 
+
+1
+
+2
+
+3
+
+.CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.17.739125 doi: bioRxiv preprint 32 
+
+Figure 2. 1
+
+Budesonide treatment counteracts the stiffness -mediated effects in PANC -1 cells.  A-B Representative 2
+
+confocal images (A) and quantification (B) of PANC -1 cells plated on 0.2 and 27 kPa substrates and 3
+
+treated  ± budesonide or dexamethasone (20  M),  showing paxillin (green) and F -actin filaments (red) 4
+
+staining with focal adhesions highlighted in yellow ( upper ) and the corresponding zoomed inverted 5
+
+contrast views with focal adhesions’ ROIs selected from paxillin (red) and F -actin (black) ( lower ). The 6
+
+quantitative dataset from focal adhesions area analyses is shown in B  (n=30).  C Young’s modulus 7
+
+evaluation of PANC -1 cells after  treatment, as  above, using AFM in force spectroscopy mode two days 8
+
+after seeding (n=15).  D-E Plotted single -cell trajectories  centred  in axes origin of treated PANC -1 cells 9
+
+(E),  and  single -cell velocity analyses in time lapse microscopy (D, n=100).  F-G Representative confocal 10 
+
+images (F) of YAP (purple) and WGA -rhodamine (red) staining, with the corresponding YAP N/C ratio 11 
+
+intensity analyses (G, n=50), in PANC -1 cells after treatment. Nuclei were stained with SYTOX green 12 
+
+(green ).  H Representative western blot analysis ( upper ) and densitometric quantification (FC vs 27 kPa 13 
+
+NT;  lower ) of YAP in treated PANC -1 cells. GAPDH was used as a loading control.  I-J Representative 14 
+
+FACS plot of EdU incorporation (I) and box plot (J) showing percentage of EdU -positive cells cultured 15 
+
+on 0.2 and 27 kPa substrates  ± budesonide or dexamethasone (20  M).  Western blot data are shown as 16 
+
+mean ± SEM (n=3). All other quantitative data are presented as box plots (N=3 -5). Significant statistical 17 
+
+differences are reported: * p < 0.05; ** p < 0.01; *** p < 0.001.  The complete statistical analysis executed 18 
+
+on shown datasets can be found in Supplementary  Table  7.19 
+
+20 
+
+21 
+
+22 
+
+23 
+
+24 
+
+25 
+
+26 
+
+27 
+
+28 
+
+29 
+
+30 
+
+31 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.17.739125 doi: bioRxiv preprint
+
+33 
+
+1
+
+2
+
+.CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.17.739125 doi: bioRxiv preprint 34 
+
+Figure 3. 1
+
+Budesonide treatment counteracts the stiffness -mediated effects in patient -derived PDAC cells.  A2
+
+Schematic representation of the experimental procedure. PDAC#253 cells were first plated on gelatin -3
+
+coated plates at 1.5×10 4 cells/cm 2 at day  –1. On day 0 cells were treated ± budesonide (20 μM) or 4
+
+dexamethasone (20 μM) for three days. Cells were then detached with trypsin and plated at 2.5×10 35
+
+cells/cm 2 on the 27 kPa substrate for two days. Control NT cells were also plated on the 0.2 kPa substrate. 6
+
+B-C Representative confocal images (B) of PDAC#253 cells treated as described in A, showing paxillin 7
+
+(green) and F -actin filaments (red) staining with focal adhesions highlighted in yellow ( upper ). The 8
+
+corresponding zoomed inverted contrast views with focal adhesions’ ROIs selected from paxillin (red) 9
+
+and F -actin (black) are shown underneath ( lower ). Focal adhesions’ area analyses highlight dimensional 10 
+
+dependency on substrate stiffness and drug treatment ( C,  n=20).  D-E Plotted single -cell trajectories 11 
+
+centred  in axes origin (D) and single -cell velocity analyses in time lapse microscopy (E, n=125) of 12 
+
+PDAC#253 cells upon treatment.  F-G Representative confocal images (F) of YAP (purple) and WGA -13 
+
+Rhodamine (red) staining , with the corresponding YAP N/C ratio intensity analyses (G, n=60), of treated 14 
+
+PDAC#253 cells. Nuclei were stained with SYTOX green ( green ). Quantitative data are presented as 15 
+
+box plots (N=3). Significant statistical differences are reported: * p < 0.05; ** p < 0.01; *** p < 0.001 .16 
+
+The complete statistical analysis executed on shown datasets can be found in Supplementary  Table  10 .17 
+
+18 
+
+19 
+
+20 
+
+21 
+
+22 
+
+23 
+
+24 
+
+25 
+
+26 
+
+27 
+
+28 
+
+29 
+
+30 
+
+31 
+
+32 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.17.739125 doi: bioRxiv preprint
+
+35 
+
+1
+
+2
+
+3
+
+4
+
+5
+
+.CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.17.739125 doi: bioRxiv preprint 36 
+
+Figure 4. 1
+
+Transcriptome profiling of PANC -1 cells plated on the bioengineered platforms and treated with 2
+
+budesonide.  A Schematic representation of the experimental procedure. PANC -1 cells were first plated 3
+
+on gelatin -coated plates at 1.5×10 4 cells/cm 2, ± budesonide (20 μM). After three days in culture, cells 4
+
+were detached with trypsin and plated at 2.5×10 3 cells/cm 2 on the stiffer 27 kPa substrate for additional 5
+
+two days, ± budesonide (20 μM). Control NT cells were also plated on the 0.2 kPa substrate.  B Principal 6
+
+component analysis (PCA) of the transcriptomic profile of PANC -1 cells in the determined mechanical 7
+
+and treatment conditions.  C-D Enrichment data analysis of differentially expressed genes for biological 8
+
+processes (C) and KEGG Pathways (D) in the comparison between NT cells plated on the 27  versus  the 9
+
+0.2 kPa substrates.  E Pie graphs showing the percentage of the deregulated genes that are inversely 10 
+
+regulated by stiffness and budesonide.  F Heatmap of 997 differentially expressed genes of PANC -1 cells 11 
+
+cultured and treated as described in A.  G Enrichment data analyses of differentially expressed genes for 12 
+
+Reactome  specifically modulated by budesonide  (~3000 genes)  in PANC -1 cells seeded on stiff 13 
+
+substrates.  H Heatmap of the deregulated genes related to nuclear envelope breakdown, nuclear pore 14 
+
+complex disassembly, nucleocytoplasmic transport in the between budesonide -treated and untreated 15 
+
+(NT) cells,  seeded on the 27 kPa substrates. 16 
+
+17 
+
+18 
+
+19 
+
+20 
+
+21 
+
+22 
+
+23 
+
+24 
+
+25 
+
+26 
+
+27 
+
+28 
+
+29 
+
+30 
+
+31 
+
+32 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.17.739125 doi: bioRxiv preprint
+
+37 
+
+1
+
+.CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.17.739125 doi: bioRxiv preprint 38 
+
+Figure 5. 1
+
+Budesonide modifies the nuclear architecture in PANC -1 and patient -derived  cells.  A-F Representative 2
+
+confocal images of lamin A/C (green) and lamin B1 (red) in PANC -1 (A) and PDAC#253 (D)  cells plated 3
+
+as described in  Supplementary  Fig. 2A. Nuclei were counterstained with HOECHST (blue). The 4
+
+orthogonal projections in the YZ and XZ planes of representative nuclei are shown (A , D ), alongside the 5
+
+quantifications of lamin A/C (B , E)  and lamin B1 (C , F)  mean fluorescence intensities.  G-I,  K-M6
+
+Representative confocal images of the sum projection, alongside the orthogonal projections in the YZ 7
+
+and XZ planes for lamin B1 (red) of PANC -1 (G) and PDAC#253  cells  (K).  The edge contour 8
+
+representation extracted through Sobel -based edge filtering with the wrinkling index corresponding to 9
+
+the representative image ( G, K ), the quantification of the wrinkling indexes ( H, L)  and the nuclear volume 10 
+
+(I, M)  are shown.  J, N  Quantitative morphometry of PANC -1 cells nuclei, obtained by measurement of 11 
+
+the bounding box encompassing the nuclear signal extracted from HOECHST staining, shown as box 12 
+
+plots.  Scale bar: 10 μm. Quantitative data are presented as box plots (n=35, N=3). Significant statistical 13 
+
+differences are reported: * p < 0.05; ** p < 0.01; *** p < 0.001.  The complete statistical analysis executed 14 
+
+on shown datasets can be found in Supplementary  Table  13 and 14 .15 
+
+16 
+
+17 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.17.739125 doi: bioRxiv preprint
+
+39 
+
+1
+
+2
+
+.CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.17.739125 doi: bioRxiv preprint 40 
+
+Supplementary Figure 1. 1
+
+PANC -1 cells adapt their mechanical and biological properties to increasing substrate stiffness.  A2
+
+Rheological properties of PAAm  substrates. Storage modulus (G′) and loss modulus (G″) are plotted as 3
+
+a function of frequency and measured at 37 °C ( left ). Corresponding damping factor (tan δ = G″/G′) is 4
+
+plotted over the same range ( right ), indicating the dominance of the elastic response in PAAm behaviour. 5
+
+B Schematic representation of the experimental procedure. PANC -1 cells were plated at day 0 on gelatin -6
+
+coated plates at 1.5×10 4 cells/cm 2. After three days in culture, cells were detached with trypsin and plated 7
+
+at 2.5×10 3 cells/cm 2 on the bioengineered platforms at different stiffness (0.2, 10, and 27 kPa) for two 8
+
+days.  C-D Representative confocal images of vimentin (green) and F -actin filaments (red) staining in 9
+
+PANC -1 cells (C), and spreading area analyses (D , n=40). Nuclei were stained with HOECHST (blue). 10 
+
+E MSDs of PANC -1 cells cultured on 0.2, 10, and 27 kPa substrates and acquired through a 48 hrs 11 
+
+timelapse.  F Quantification of cell growth rate on 0.2, 10, and 27 kPa substrates from time -lapse 12 
+
+microscopy analyses (n=20) . Quantitative data are presented as box plots (N=3). Significant statistical 13 
+
+differences are reported: * p < 0.05; ** p < 0.01; *** p < 0.001. The complete statistical analysis executed 14 
+
+on shown datasets can be found in  Supplementary Table  6.15 
+
+16 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.17.739125 doi: bioRxiv preprint
+
+41 
+
+1
+
+2
+
+.CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.17.739125 doi: bioRxiv preprint 42 
+
+Supplementary Figure 2. 1
+
+Budesonide effects on PANC -1 cell behaviour under stiff conditions . A  Schematic representation of the 2
+
+experimental procedure. PANC -1 cells were plated at day 0 on gelatin -coated plates at 1.5×10 4 cells/cm 2,3
+
+± budesonide (20 μM) or dexamethasone (20 μM). After three days in culture, cells were detached with 4
+
+trypsin and plated at 2.5×10 3 cells/cm 2 on the stiffer 27 kPa substrate for two days, ± the same treatments. 5
+
+Control NT cells were also plated on the 0.2 kPa substrate.  B-C Representative confocal images of 6
+
+vimentin (green) and F -actin filaments (red) staining in treated PANC -1 cells (B), and spreading area 7
+
+analyses (C, n=40). Nuclei were stained with HOECHST (blue).  D MSDs of PANC -1 cells under the 8
+
+indicated treatments and stiffness conditions.  E Quantification of growth rate of treated PANC -1 cells 9
+
+extracted from time -lapse microscopy (n=20). Quantitative data are presented as box plots (N=2 -3). 10 
+
+Significant statistical differences are reported: * p < 0.05; ** p < 0.01; *** p < 0.001. The complete 11 
+
+statistical analysis executed on shown datasets can be found in  Supplementary Table  8. 12 
+
+13 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.17.739125 doi: bioRxiv preprint
+
+43 
+
+1
+
+2
+
+.CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.17.739125 doi: bioRxiv preprint 44 
+
+Supplementary Figure 3. 1
+
+Study of the GR involvement into the mechanism of action of budesonide.  A Representative western blot 2
+
+analysis ( left ) and densitometric quantification (ADU;  right ) of GR level of expression in  shNR3C1 PANC -3
+
+1 cells versus  shEmpty PANC -1 cells.  B Schematic representation of the experimental procedure. PANC -14
+
+silenced cells (sh NR3C1 /shEmpty) were plated at day 0 on gelatin -coated plates at 1.5×10 4 cells/cm 2, ± 5
+
+budesonide (20 μM). After three days in culture, cells were detached with trypsin and plated at 2.5×10 36
+
+cells/cm 2 on the stiffer 27 kPa substrate for two days, ± the same treatment.  C-E Representative confocal 7
+
+images of  shEmpty PANC -1 and  shNR3C1 PANC -1 cells, showing paxillin (green) and F -actin filaments (red) 8
+
+staining with focal adhesions highlighted in yellow ( upper -C). The corresponding zoomed inverted 9
+
+contrast views with focal adhesions’ ROIs selected from paxillin (red) and F -actin (black) are shown 10 
+
+underneath ( lower -C). Focal adhesion area (D) and spreading area analyses (E) are shown (n=30).  F-G11 
+
+Plotted single -cell trajectories of  shEmpty PANC -1 and  shNR3C1 PANC -1 cells upon treatment with 12 
+
+budesonide (F) and single -cell velocity analyses in time lapse microscopy (G, n=100) with  H13 
+
+Quantification of cell growth rate  of  shEmpty PANC -1 and  shNR3C1 PANC -1 cells upon treatment with 14 
+
+budesonide (n=20). Quantitative data are presented as box plots (N=3). Significant statistical differences 15 
+
+are reported: * p < 0.05; ** p < 0.01; *** p < 0.001. The complete statistical analysis executed on shown 16 
+
+datasets can be found in  Supplementary Table  9. 17 
+
+18 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.17.739125 doi: bioRxiv preprint
+
+45 
+
+1
+
+.CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.17.739125 doi: bioRxiv preprint 46 
+
+Supplementary Figure 4. 1
+
+Budesonide reduces cytoskeletal organization, proliferation, and migration in patient -derived PDAC 2
+
+cells.  A–D Representative confocal images of vimentin (green) and F -actin filaments (red) staining in 3
+
+PDAC#253 (A) and #354 cells (B), upon culture on the bioengineered substrates (0.2 and 27 kPa) and 4
+
+treated ± budesonide or dexamethasone (20 μM). Nuclei were stained with HOECHST (blue). The 5
+
+images are shown alongside the corresponding spreading area analyses for PDAC#253 (C) and 6
+
+PDAC#354 (D, n=110/60).  E–F Quantification of cell growth rate from time -lapse microscopy analyses 7
+
+of PDAC#253 (E) and PDAC#354 (F) upon treatment (n=20).  G-H Plotted single -cell trajectories of 8
+
+PDAC#354 cells (G) and single -cell velocity analyses in time lapse microscopy (H, n=100) treated as 9
+
+described above.  I-J Representative confocal images (I) of YAP (purple) and WGA -Rhodamine (red) 10 
+
+staining ( left ), with the corresponding YAP N/C ratio intensity analyses (J, n=60), in PDAC#354 cells 11 
+
+treated as described above. Nuclei were stained with SYTOX green ( green ). Scale bar: 20 μm. 12 
+
+Quantitative data are presented as box plots (N=2). Significant statistical differences are reported: * p < 13 
+
+0.05; ** p < 0.01; *** p < 0.001. The complete statistical analysis executed on shown datasets can be 14 
+
+found in  Supplementary Table  11 and 12. 15 
+
+16 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.17.739125 doi: bioRxiv preprint
+
+47 
+
+1
+
+2
+
+.CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.17.739125 doi: bioRxiv preprint 48 
+
+Supplementary Figure 5. 1
+
+Transcriptomic analysis of stiffness - and budesonide -regulated genes in PANC -1 cells.  A Table showing 2
+
+the number of deregulated genes in the comparison between NT PANC -1 cells plated on 27  versus  0.2 3
+
+kPa substrates; and between budesonide -treated  versus  NT PANC -1 cells plated on 27 kPa substrate 4
+
+(padj< 0.05; FC < -1.5 and FC > 1.5).  B Gene Ontology GO analysis (Biological Process) of deregulated 5
+
+genes (padj < 0.05) between NT PANC -1 cells plated on 27  versus  0.2 kPa substrates  B-C Enrichment 6
+
+data analysis of differentially expressed genes for Reactome, in the comparison between NT cells plated 7
+
+at 27  versus  0.2 kPa substrates.  D-E Enrichment data analyses of differentially expressed genes for 8
+
+biological processes ( D) and KEGG pathways  (E ) specifically modulated by budesonide in PANC -19
+
+cells seeded on 27 kPa substrate. 10 
+
+11 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.17.739125 doi: bioRxiv preprint
+
+49 
+
+1
+
+.CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.17.739125 doi: bioRxiv preprint 50 
+
+Supplementary Figure 6. 1
+
+Budesonide impacts nuclear size and shape through GR -independent mechanisms in PANC -1 cells . A -2
+
+B Quantitative morphometry of PANC -1 (A) and PDAC#253 (B) cells nuclei, obtained by measurement 3
+
+of the bounding box encompassing the nuclear signal extracted from HOECHST staining, shown as box 4
+
+plots.  C-E Representative confocal images (A) of lamin A/C (green) and lamin B1 (red) in  shEmpty PANC -5
+
+1 and  shNR3C1 PANC -1 cells plated on the 27 kPa substrate and treated ± budesonide (20 μM). Nuclei were 6
+
+counterstained with HOECHST (blue). The orthogonal projections in the YZ and XZ planes of 7
+
+representative nuclei ( left ) are shown (C) alongside with the quantifications of lamin A/C (D) and lamin 8
+
+B1 (E) mean fluorescence intensities.  F-H Representative confocal images of the sum projection, 9
+
+alongside the orthogonal projections in the YZ and XZ planes for lamin B1 (F; red). The representative 10 
+
+nuclei are accompanied by edge contour representations extracted using Sobel -based edge filtering, with 11 
+
+the wrinkling index quantification (G) and the corresponding nuclear volume (H).  I-K Quantitative 12 
+
+morphometry of  shEmpty PANC -1 and  shNR3C1 PANC -1 cells nuclei, obtained by measurement of the 13 
+
+bounding box encompassing the nuclear signal extracted from HOECHST staining, shown as box plots. 14 
+
+Scale bar: 10 μm. Quantitative data are presented as box plots (n=35, N=3). Significant statistical 15 
+
+differences are reported: * p < 0.05; ** p < 0.01; *** p < 0.001. The complete statistical analysis executed 16 
+
+on shown datasets can be found in  Supplementary Table  1517 
+
+18 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.17.739125 doi: bioRxiv preprint
+
+51 
+
+## Amplitude Sweep at 1 Hz 
+
+Formulation  Storage 
+
+Modulus G’ 
+
+[Pa] 
+
+Loss 
+
+Modulus G’’ 
+
+[Pa] 
+
+Damping 
+
+Factor tanδ 
+
+[adim.] 
+
+Calculated 
+
+Young 
+
+Modulus E 
+
+[kPa] 
+
+2.5% acrylamide / 0.15% 
+
+bis -acrylamide 
+
+71.12 ± 10.62  0.60 ± 0.41  0.01 ± 4.22E -03  0.21 ± 0.03 
+
+6% acrylamide/0.15% bis -
+
+acrylamide 
+
+3457.16 ± 164.12  2.13 ± 0.34  6.15E -04 ± 
+
+7.54E -05 
+
+10.37 ± 0.50 
+
+10% acrylamide/0.13% bis -
+
+acrylamide 
+
+9044.77 ± 241.26  16.46 ± 1.67  1.82E -03 ± 
+
+1.50E -04 
+
+27.13 ± 0.72 
+
+1
+
+Supplementary Table 3. 2
+
+Rheological measurements obtained from an amplitude sweep test at fixed frequency (1 Hz).  The 3
+
+measurements were repeated at each preparation  for every  polyacrylamide  solution  formulation  and  the 4
+
+obtained values allowed for extraction of the derived Young Modulus . The damping factor <<<1 also 5
+
+allows for the fulfilment of the elastic or near -elastic hypothesis of the material used to produce the 6
+
+substrates used for mechanical conditioning. 7
+
+8
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.17.739125 doi: bioRxiv preprint
+
+52 
+
+List of primary antibodies 
+
+Antibody  Source  Catalog ue 
+
+Number 
+
+Dilution  Time 
+
+Phalloidin –Tetramethylrhodamine B
+
+isothiocyanate 
+
+Sigma  P1951 -1MG  1:100  1 hr 
+
+Glucocorticoid Receptor  Cell signaling  3660S  1:1.000  O/N 
+
+Vimentin  Cell signaling  #5741  1:100  O/N 
+
+YAP1 Polyclonal Ab  Invitrogen  PA1 -46189  1:1.000 
+
+(Wb) 
+
+1:200 (IF) 
+
+O/N 
+
+Gapdh  Abcam  ab8245  1:40.000  O/N 
+
+Rabbit Monoclonal Paxillin  Abcam  ab32115  1:200  1 hr 
+
+Rhodamine -conjugated Wheat Germ 
+
+Agglutinin (WGA) 
+
+Invitrogen  W11261  1:200  30 
+
+mins 
+
+SYTOX Green  Invitrogen  S7020  1:10000  15 
+
+mins 
+
+Mouse monoclonal Lamin A/C (E -1)  Santa Cruz 
+
+Biotechnology Inc. 
+
+Sc -376248  1:200  O/N 
+
+Lamin B1 Rabbit polyclonal Ab  Proteintech  12987 -1-AP  1:100  1 hr 
+
+HOECHST 33342  Invitrogen  H3570  1:10000  15 
+
+mins 
+
+Alexa Fluor 647 Congjugated 
+
+Phalloidin 
+
+Invitrogen  1:400  45 
+
+mins 
+
+1
+
+2
+
+List of secondary antibodies 
+
+Antibody  Source  Catalog ue 
+
+Number 
+
+Dilution  Time 
+
+Alexa Fluor 488 
+
+Goat anti -Rabbit IgG 
+
+Invitrogen  A11008  1:400 (Vim) 
+
+1:250 (Pax) 
+
+1 hr (Vim) 
+
+45 mins (Pax) 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.17.739125 doi: bioRxiv preprint
+
+53 
+
+Alexa Fluor 488 Goat anti -Mouse 
+
+IgG 
+
+Invitrogen  A11001  1:250  1.5 hrs 
+
+Alexa Fluor 546 Goat anti -Rabbit 
+
+IgG 
+
+Invitrogen  A11035  1:250  1.5 hrs 
+
+Alexa Fluor 647 Goat anti -Rabbit 
+
+IgG 
+
+Invitrogen  A21245  1:250  1.5 hrs 
+
+Polyclonal Goat anti -Rabbit IgG 
+
+HRP 
+
+Dako  P0448  1:2500  1 hr 
+
+Polyclonal Goat anti -Mouse IgG 
+
+HRP 
+
+Dako  P0447  1:5000  1 hr 
+
+1
+
+Supplementary Table 4. 2
+
+List of the primary antibodies used in IF  staining  and WB s, as well as their associated secondary 3
+
+antibodies. The table indicates the source producer of the antibodies and their corresponding catalogue 4
+
+number, as well as the protocol used to stain the samples analysed. 5
+
+6
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.17.739125 doi: bioRxiv preprint
+
+54 
+
+1
+
+Supplementary Table 5 .2
+
+Complete statistical analysis for PANC -1-related data shown in Figure 1. For each condition in all the 3
+
+experimental datasets produced (0.2 kPa, 10 kPa and 27 kPa) the normality of the distribution is verified 4
+
+through the Shapiro -Wilk test. Comparisons for each experimental pair are indicated in the lower part of 5
+
+each section, showing the obtained p -value and the test used to extract the aforementioned result. Criteria 6
+
+for test selection are indicated in the Material and Methods section. 7
+
+8
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.17.739125 doi: bioRxiv preprint
+
+55 
+
+1
+
+Supplementary Table  6.2
+
+Complete statistical analysis for PANC -1-related data shown in Supplementary Figure 1. 3
+
+For each condition in all the experimental datasets produced (0.2 kPa, 10 kPa and 27 kPa) the normality 4
+
+of the distribution is verified through the Shapiro -Wilk test. Comparisons for each experimental pair 5
+
+are indicated in the lower part of each section, showing the obtained p -value and the test used to extract 6
+
+the aforementioned result s. Criteria for test selection are indicated in the Material and Methods section. 7
+
+8
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.17.739125 doi: bioRxiv preprint
+
+56 
+
+1
+
+2
+
+3
+
+.CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.17.739125 doi: bioRxiv preprint 57 
+
+1
+
+Supplementary Table  7.2
+
+Complete statistical analysis for PANC -1-related data shown in Figure 2. For each condition in all the 3
+
+experimental datasets produced (0.2 kPa untreated, 27 kPa untreated, 27 kPa treated with budesonide 4
+
+20  μM and 27 kPa treated with dexamethasone 20  μM) the normality of the distribution is verified 5
+
+through the Shapiro -Wilk test. Comparisons for each experimental pair are indicated in the lower part 6
+
+of each section, showing the obtained p -value and the test used to extract the aforementioned result s.7
+
+Criteria for test selection are indicated in the Material and Methods section. 8
+
+9
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.17.739125 doi: bioRxiv preprint
+
+58 
+
+1
+
+Supplementary Table  8.2
+
+Complete statistical analysis for PANC -1-related data shown in Supplementary  Figure 2. 3
+
+For each condition in all the experimental datasets produced (0.2 kPa untreated, 27 kPa untreated, 27 4
+
+kPa treated with budesonide 20  μM and 27 kPa treated with dexamethasone 20  μM) the normality of 5
+
+the distribution is verified through the Shapiro -Wilk test. Comparisons for each experimental pair are 6
+
+indicated in the lower part of each section, showing the obtained p -value and the test used to extract the 7
+
+aforementioned result s. Criteria for test selection are indicated in Material and Methods section. 8
+
+9
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.17.739125 doi: bioRxiv preprint
+
+59 
+
+1
+
+Supplementary Table  9.2
+
+Complete statistical analysis for NR3C1 -silenced PANC -1-related data shown in Supplementary Figure 3
+
+3. For each condition in all the experimental datasets produced ( shEmpty PANC -1 untreated,  shEmpty PANC -4
+
+.CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.17.739125 doi: bioRxiv preprint 60 
+
+1 treated with budesonide 20 μM,  shNR3C1 PANC -1 untreated and  shNR3C1 PANC -1 treated with budesonide 1
+
+20 μM) the normality of the distribution is verified through the Shapiro -Wilk test. Comparisons for each 2
+
+experimental pair are indicated in the lower part of each section, showing the obtained pvalue and the 3
+
+test used to extract the aforementioned result s. Criteria for test selection are indicated in Material and 4
+
+Methods section. 5
+
+6
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.17.739125 doi: bioRxiv preprint
+
+61 
+
+1
+
+Supplementary Table  10 .2
+
+Complete statistical analysis for PDAC#253 -related data shown in Figure 3. For each condition in all the 3
+
+experimental datasets produced (0.2 kPa untreated, 27 kPa untreated, 27 kPa treated with budesonide 20 4
+
+μM and 27 kPa treated with dexamethasone 20 μM) the normality of the distribution is verified through 5
+
+the Shapiro -Wilk test. Comparisons for each experimental pair are indicated in the lower part of each 6
+
+section, showing the obtained p -value and the test used to extract the aforementioned results. Criteria for 7
+
+test selection are indicated in the Material and Methods section. 8
+
+9
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.17.739125 doi: bioRxiv preprint
+
+62 
+
+1
+
+Supplementary Table  11 .2
+
+Complete statistical analysis for PDAC#253 -related data shown in Supplementary Figure 4. For each 3
+
+condition in all the experimental datasets produced (0.2 kPa untreated, 27 kPa untreated, 27 kPa treated 4
+
+with budesonide 20 μM and 27 kPa treated with dexamethasone 20 μM) the normality of the distribution 5
+
+is verified through the Shapiro -Wilk test. Comparisons for each experimental pair are indicated in the 6
+
+lower part of each section, showing the obtained p -value and the test used to extract the aforementioned 7
+
+result s. Criteria for test selection are indicated in the Material and Methods section. 8
+
+9
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.17.739125 doi: bioRxiv preprint
+
+63 
+
+1
+
+Supplementary Table  12 .2
+
+Complete statistical analysis for PDAC#354 -related data shown in Supplementary Figure 4. For each 3
+
+condition in all the experimental datasets produced (0.2 kPa untreated, 27 kPa untreated, 27 kPa treated 4
+
+with budesonide 20 μM and 27 kPa treated with dexamethasone 20 μM) the normality of the distribution 5
+
+is verified through the Shapiro -Wilk test. Comparisons for each experimental pair are indicated in the 6
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.17.739125 doi: bioRxiv preprint
+
+64 
+
+lower part of each section, showing the obtained p -value and the test used to extract the aforementioned 1
+
+result s. Criteria for test selection are indicated in the Material and Methods section. 2
+
+3
+
+.CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.17.739125 doi: bioRxiv preprint 65 
+
+.CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.17.739125 doi: bioRxiv preprint 66 
+
+Supplementary Table  13 .1
+
+Complete statistical analysis for PANC -1 nuclear and nucleoskeletal  morphometry data shown in Figure 2
+
+5 and Supplementary Figure 6. For each condition in all the experimental datasets produced (0.2 kPa 3
+
+untreated, 27 kPa untreated and 27 kPa treated with budesonide 20μM) the normality of the distribution 4
+
+is verified through the Shapiro -Wilk test. Comparisons for each experimental pair are indicated in the 5
+
+lower part of each section, showing the obtained p -value and the test used to extract the aforementioned 6
+
+result s. Criteria for test selection are indicated in the Material and Methods section. 7
+
+8
+
+9
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.17.739125 doi: bioRxiv preprint
+
+67 
+
+1
+
+.CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.17.739125 doi: bioRxiv preprint 68 
+
+Supplementary Table  14 .1
+
+Complete statistical analysis for PDAC #253 nuclear and nucleoskeletal  morphometry data shown in 2
+
+Figure 5 and Supplementary Figure 6. For each condition in all the experimental datasets produced (0.2 3
+
+kPa untreated, 27 kPa untreated and 27 kPa treated with budesonide 20μM) the normality of the 4
+
+distribution is verified through the Shapiro -Wilk test. Comparisons for each experimental pair are 5
+
+indicated in the lower part of each section, showing the obtained p -value and the test used to extract the 6
+
+aforementioned result. Criteria for test selection are indicated in the Material and Methods section. 7
+
+8
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.17.739125 doi: bioRxiv preprint
+
+69 
+
+1
+
+.CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.17.739125 doi: bioRxiv preprint 70 
+
+1
+
+Supplementary Table  15. 2
+
+Complete statistical analysis for silenced PANC -1 nuclear and nucleoskeletal  morphometry data shown 3
+
+in Supplementary Figure 6. For each condition in all the experimental datasets produced (shEmpty -4
+
+PANC -1 untreated, shEmpty -PANC -1 treated with budesonide 20 μM, shNR3C1 -PANC -1 untreated and 5
+
+shNR3C1 -PANC -1 treated with budesonide 20 μM) the normality of the distribution is verified through 6
+
+the Shapiro -Wilk test. Comparisons for each experimental pair are indicated in the lower part of each 7
+
+section, showing the obtained p -value and the test used to extract the aforementioned result. Criteria for 8
+
+test selection are indicated in the Material and Methods section. 9

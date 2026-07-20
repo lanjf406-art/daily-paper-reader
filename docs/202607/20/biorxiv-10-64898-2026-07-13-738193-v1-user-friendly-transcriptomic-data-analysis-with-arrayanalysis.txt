@@ -1,0 +1,1052 @@
+Title: User-friendly transcriptomic data analysis with ArrayAnalysis
+
+URL Source: https://www.biorxiv.org/content/10.64898/2026.07.13.738193v1.full.pdf
+
+Number of Pages: 18
+
+Markdown Content:
+1
+
+# User -friendly transcriptomic data analysis with ArrayAnalysis 1
+
+Jarno Koetsier 1,2,* , Ozan Cinar 3, Egon L. Willighagen 3, Ammar Ammar 4, Vishnu Karthik 3, Danyel 2
+
+Jennen 5, Chris T. Evelo 3, Leopold M.G. Curfs 2, Chris P. Reutelingsperger 1,2 , Nasim Bahram 3
+
+Sangani 1,2 , Lars M.T. Eijssen 6,7 
+
+4
+
+5 
+
+> 1
+
+Department of Biochemistry, Cardiovascular Research Institute Maastricht (CARIM), Maastricht 6
+
+University, Maastricht, The Netherlands 7 
+
+> 2
+
+GKC, Maastricht University Medical Centre, Maastricht, The Netherlands 8 
+
+> 3
+
+Department of Translational Genomics, Institute of Nutrition and Translational Research in 9
+
+Metabolism (NUTRIM), Maastricht University, Maastricht, The Netherlands 10  
+
+> 4
+
+The Hyve, Utrecht, The Netherlands 11  
+
+> 5
+
+Department of Translational Genomics, Research Institute for Oncology and Reproduction (GROW), 12 
+
+Maastricht University, Maastricht, The Netherlands 13  
+
+> 6
+
+Department of Translational Genomics, Mental Health and Neuroscience Research Institute (MHeNs), 14 
+
+Maastricht University, Maastricht, The Netherlands 15  
+
+> 7
+
+Department of Psychiatry and Neuropsychology, Mental Health and Neuroscience Research Institute 16 
+
+(MHeNs), Maastricht University, Maastricht, The Netherlands 17 
+
+* To whom correspondence should be addressed . E mail : jarno.koetsier@maastrichtuniversity.nl 18 
+
+19 
+
+# GRAPHICAL ABSTRACT 20 
+
+21 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 18, 2026. ;https://doi.org/10.64898/2026.07.13.738193 doi: bioRxiv preprint
+
+2
+
+# ABSTRACT 22 
+
+Transcriptomic profiling has become a cornerstone of modern biomedical research. To make 23 
+
+transcriptomic analyses accessible to a broader scientific community, specifically including 24 
+
+researchers with limited bioinformatics expertise, we introduced ArrayAnalysis in 2013 as a 25 
+
+user -friendly web -based application for microarray data analysis. We now present a major 26 
+
+update ( https://arrayanalysis.org ), introduc ing a strongly interactive platform that facilitates 27 
+
+the dedicated exploration and analysis of both microarray and RNA -seq data, and allows for 28 
+
+the generation of publication -ready outputs. Users can perform key analysis steps, including 29 
+
+data pre -processing and quality control, differential expression analysis, and gene set analysis, 30 
+
+via a sequential, interactive workflow . At each step, the application provides interactive 31 
+
+visualizations accompanied by information pages to support interpretation. Users can 32 
+
+dynamically adjust figure layouts and colour palettes and export figures as vector graphics and 33 
+
+high -resolution raster images. For non -expert users, ArrayAnalysis offers step -by -step 34 
+
+guidance to support correct usage and facilitate learning, while for experienced 35 
+
+bioinformaticians, it provides a streamlined and flexible workflow ideal for large -scale analyses 36 
+
+requiring efficient and consistent processing. ArrayAnalysis is available both as a web 37 
+
+application and for local deployment as a desktop application, Docker image, or R package, 38 
+
+making it suitable for diverse computational environments, user groups, and analytical 39 
+
+purposes. Together, ArrayAnalysis empowers a broad community of biomedical researchers to 40 
+
+unlock the full potential of transcriptomic data. 41 
+
+42 
+
+Keywords : Transcriptomics, RNA sequencing, microarray , quality control and visualization, 43 
+
+differential gene expression analysis, pathway analysis 44 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 18, 2026. ;https://doi.org/10.64898/2026.07.13.738193 doi: bioRxiv preprint
+
+3
+
+# BACKGROUND 45 
+
+Gene expression profiling, through microarray or RNA sequencing (RNA -seq ) technologies, 46 
+
+has become an indispensable tool in biomedical research for uncovering molecular 47 
+
+mechanisms and identifying biomarkers. However, the analysis of transcriptomic data remains 48 
+
+challenging for many researchers, especially for those without formal training in bioinformatics. 49 
+
+To bridge this gap, several applications have been developed that offer a user -friendly 50 
+
+interface to the analysis of transcriptomic data. As one of these initiatives, we introduced 51 
+
+ArrayAnalysis , in 2013 as a web -based application designed as a user -friendly solution for 52 
+
+microarray data analysis [1] . While this earlier version helped many researchers analyse 53 
+
+microarray experiments more easily, it did not support RNA -seq data and lacked more 54 
+
+advanced interactive features. More recently, other applications have been developed for the 55 
+
+analysis of RNA -seq data [2 -5] .56 
+
+57 
+
+Although these applications lower the barrier to entry, they still have important limitations. 58 
+
+Many provide little guidance to help users navigate the analysis workflow, making them less 59 
+
+suitable for researchers inexperienced with gene expression profiling. In addition, the output 60 
+
+of such tools is often rigid, with limited options to support interactive data exploration and to 61 
+
+customi se figures for publication -quality presentation. To address these limitations, we 62 
+
+developed a new version of ArrayAnalysis , a web -based application that provides a63 
+
+streamlined and accessible workflow for the analysis of both microarray and RNA -seq data. 64 
+
+ArrayAnalysis offers several innovations, including enhanced user guidance throughout the 65 
+
+analysis steps, interactive outputs that facilitate data exploration, and customi sable figures 66 
+
+tailored for use in scientific publications. With these features, ArrayAnalysis aims to make 67 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 18, 2026. ;https://doi.org/10.64898/2026.07.13.738193 doi: bioRxiv preprint
+
+4
+
+transcriptomic data analysis more approachable and effective for a broad audience of 68 
+
+biomedical researchers. 69 
+
+70 
+
+# IMPLEMENTATION 71 
+
+We developed ArrayAnalysis ( https://arrayanalysis.org ) as a tool for user -friendly analysis of 72 
+
+transcriptomic data. The platform is built with the Shiny framework in the R programming 73 
+
+language ( http://www.r -project.org ) and integrates more than 30 packages from CRAN [6 -28] 74 
+
+and Bioconductor [29 -43] (Table 1 ). ArrayAnalysis is made available as a web application and 75 
+
+for local installation as a desktop app, Docker image, and R package. 76 
+
+77 
+
+Input 78 
+
+In the first step of the ArrayAnalysis app, users can upload expression data and associated 79 
+
+metadata. Microarray data can be provided as a zipped folder containing CEL files, as an 80 
+
+expression matrix (.tsv/.csv/.txt), or as a GEO series matrix file. RNA -seq data can be uploaded 81 
+
+as a matrix of raw or normalized counts (.tsv/.csv/.txt). The metadata, which contains 82 
+
+information about the samples such as the experimental group and age, can be provided as a 83 
+
+table (.tsv/.csv/.txt) or as a GEO series matrix file. Upon uploading the data, a preview of both 84 
+
+the expression data and metadata is displayed, allowing users to verify that the files have been 85 
+
+correctly loaded. If necessary, the metadata can be modified within the application. 86 
+
+87 
+
+ArrayAnalysis includes two demo datasets from the Gene Expression Omnibus (GEO) [44] that 88 
+
+can be directly loaded within the app: GSE6955 [45] (microarray data) and GSE128380 [46] 89 
+
+(RNA -seq data). Both datasets comprise gene expression profil es of post -mortem brain tissue 90 
+
+from Rett syndrome patients and age -matched controls. The GSE6955 and GSE128380 91 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 18, 2026. ;https://doi.org/10.64898/2026.07.13.738193 doi: bioRxiv preprint
+
+5
+
+datasets use the Affymetrix Human Genome U95 v2 array and Illumina HiSeq 2000 platforms, 92 
+
+respectively. The GSE128380 dataset is used to generate the figures in this manuscript. 93 
+
+94 
+
+Table 1. CRAN and Bioconductor packages used by ArrayAnalysis. 95 
+
+CRAN  Bioconductor 
+
+Data upload  data.table [6]  GEOquery [29] , affy [30] 
+
+Pre -processing and statistical 
+
+analysis 
+
+- DESeq2 [31] , apeglm [32] , limma 
+
+[33] , affy [30] , oligo [34] .
+
+Makecdfenv [35] , gcrma [36] , plier 
+
+[37] , bioDist [38] 
+
+Gene set analysis  - clusterProfiler [39] 
+
+Gene annotation  - biomaRt [40] , org.Xx.eg.db [41] 
+
+Figures  Heatmaply [7] , gplots [8] , plotly [9] ,
+
+ggplot2 [10] , colorspace [11] ,
+
+igraph [12] , ggraph [13] ,
+
+html widgets [14] , circlize [15] 
+
+ComplexHeatmap [42] 
+
+Data manipulation  dplyr [16] , stringr [17] , purrr [18] ,
+
+magrittr [19] 
+
+pwalign [43] 
+
+Shiny elements  shiny [20] , DT [21] , shinycssloaders 
+
+[22] , shinybusy [23] , prompter [24] ,
+
+shinyj qui [25] , colourpicker [26] 
+
+-
+
+Interactive report  knitr [27] , rmarkdown [28]  -
+
+96 
+
+Output 97 
+
+Following the data upload, users can perform pre -processing and quality control, differential 98 
+
+gene expression analysis, and gene set analysis. To ensure users follow the correct workflow, 99 
+
+modules become accessible sequentially —each step must be completed before proceeding 100 
+
+to the next. Additionally, to guide users through the analysis, each module includes 101 
+
+explanations of the analysis settings ( e.g., Figure 1A ) and of all provided figures and tables. 102 
+
+ArrayAnalysis is designed to generate outputs that are 1) interactive and facilitate data 103 
+
+exploration as well as 2) downloadable as publication -ready figures. The latter is achieved by 104 
+
+making all figures customi sable, including options for changing the layout and colour palettes 105 
+
+(Figure 1B ). Figures can be exported as vector graphics (PDF) or high -resolution raster images 106 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 18, 2026. ;https://doi.org/10.64898/2026.07.13.738193 doi: bioRxiv preprint
+
+6
+
+(PNG, TIF at 300 dpi). Interactive plots can also be saved as a standalone HTML file. Finally, 107 
+
+each module offers the option to download an interactive report summari sing the analysis. 108 
+
+109 
+
+Figure 1. User -guidance and figure custom is ation in ArrayAnalysis. A) Each module includes in -app 110 
+
+information boxes with explanations of the analysis settings. B) Each figure can be interactively 111 
+
+customi sed by the user. 112 
+
+113 
+
+# RESULTS 114 
+
+We propose ArrayAnalysis as a user -friendly solution for transcriptomic data analysis. 115 
+
+Following data upload, users can analyse their data in three sequential steps: 1) pre -processing 116 
+
+and quality control, 2) differential gene expression analysis, and 3) gene set analysis. In the 117 
+
+following sections, we provide a detailed description of these three functionalities and perform 118 
+
+a comparison with other existing transcriptomics data analysis tools. 119 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 18, 2026. ;https://doi.org/10.64898/2026.07.13.738193 doi: bioRxiv preprint
+
+7
+
+Pre -processing and quality control 120 
+
+In the pre -processing and quality control module, the user can prepare the data for 121 
+
+downstream analysis, including interactive filtering of genes and samples as well as 122 
+
+normalization and transformation of expression data. In addition, the data are automatically 123 
+
+screened for potential outlying samples. If potential outliers are detected, a warning message 124 
+
+is displayed to alert the user. An outlier warning is provided when there is at least one sample 125 
+
+that deviates by more than six median absolute deviations from the median on at least one 126 
+
+principal component that explains ≥10% of the total variance. 127 
+
+128 
+
+Several quality control outputs are generated to assist users in evaluating the data quality and 129 
+
+identifying potential outliers. These include boxplots of gene expression distributions, density 130 
+
+plots, sample –sample correlation heatmaps, and principal component analysis (PCA) plots 131 
+
+(Figure 2 ). Furthermore, an interactive gene expression matrix is provided that allows users to 132 
+
+query specific genes and visualize their expression patterns across experimental groups. For 133 
+
+analyses starting from a raw RNA -seq count matrix, an additional bar chart depicting total read 134 
+
+counts per sample is included to help identify discrepancies in sequencing depth. 135 
+
+136 
+
+Differential gene expression analysis 137 
+
+In the differential gene expression analysis module, users can select the statistical 138 
+
+comparison(s) of interest, select covariates, and map between gene identifier types . The 139 
+
+DESeq2 R/Bioconductor package [31] is used for the differential gene expression analysis of 140 
+
+raw RNA -seq counts. For other input data, the limma R/Bioconductor package [33] is applied. 141 
+
+The gene identifier mappings are extracted from the Ensembl database using the biomaRt 142 
+
+R/Bioconductor package [40] . If the connection to the Ensembl database fails (e.g., due to 143 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 18, 2026. ;https://doi.org/10.64898/2026.07.13.738193 doi: bioRxiv preprint
+
+8
+
+server unavailability or no internet connection ), gene mapping will be performing using the 144 
+
+relevant Bioconductor annotation package (org.Xx.eg.db). The provided outputs include an 145 
+
+interactive statistics table, histogram of p -values and log 2 fold changes ( log 2FCs ), and 146 
+
+interactive volcano and MA plots ( Figure 3 ). 147 
+
+148 
+
+149 
+
+.CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 18, 2026. ;https://doi.org/10.64898/2026.07.13.738193 doi: bioRxiv preprint 9
+
+Figure 2. Quality control plots provided by ArrayAnalysis. A) Sample -wise expression boxplot. B) 150 
+
+Sample -wise density plot. C) Expression boxplot of a user -selected gene . D) Bar chart of total raw read 151 
+
+counts; this plot is only provided when analy sing raw RNA -seq count data. E) Heatmap of sample -152 
+
+sample correlations. F) PCA score plot. The density plot, heatmap, and PCA score plot are interactive 153 
+
+and support zooming and on -hover data display. Detailed information about these plots can be found 154 
+
+at  https://arrayanalysis.org/explain .155 
+
+156 
+
+157 
+
+158 
+
+Figure 3. Differential gene expression analysis plots provided by ArrayAnalysis. A) Volcano plot. B) p-159 
+
+value histogram. C) MA plot. D) log 2FC histogram. All four plots have zooming and on -hover data 160 
+
+display functionalities. Detailed information about these plots can be found at 161 
+
+https://arrayanalysis.org/explain .162 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 18, 2026. ;https://doi.org/10.64898/2026.07.13.738193 doi: bioRxiv preprint
+
+10 
+
+Gene set analysis 163 
+
+Following the differential gene expression analysis, ArrayAnalysis uses the clusterProfiler 164 
+
+R/Bioconductor package [39] to support two types of gene set analysis: overrepresentation 165 
+
+analysis and gene set enrichment analysis. These analyses can be performed on gene 166 
+
+ontologies (GO -BP, GO -MF, and GO -CC) [47] , KEGG [48] , and WikiPathways [49] gene sets. In 167 
+
+this module, an interactive statistics table, bar chart, and gene set similarity network are 168 
+
+provided ( Figure 4 ). 169 
+
+170 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 18, 2026. ;https://doi.org/10.64898/2026.07.13.738193 doi: bioRxiv preprint
+
+11 
+
+Figure 4. Gene set analysis plots provided by ArrayAnalysis. A) Interactive g ene set analysis bar chart. 171 
+
+B) Gene set similarity network. Detailed information about these plots can be found at 172 
+
+https://arrayanalysis.org/explain .173 
+
+174 
+
+Comparison with other tools 175 
+
+We compared ArrayAnalysis with other existing web applications for transcriptomic analysis 176 
+
+[2 -5] (Table 2 ). Relative to these tools, the new version of ArrayAnalysis offers a broader range 177 
+
+of options for local installation and supports a more diverse set of input data. Furthermore, 178 
+
+the application has several unique features, including automatic outlier detection, in -app 179 
+
+sample removal and metadata editing, and customi sation of all figures. Finally, compared to 180 
+
+other web applications , ArrayAnalysis provides a wider range of figure export formats .181 
+
+182 
+
+Table 2. Comparison of ArrayAnalysis with other web applications for transcriptomic analysis. 183 
+
+ArrayAnalysis 
+
+(2026) 
+
+STAGEs (2023)  GeneCloud -
+
+Omics (2021) 
+
+GENAVi (2019)  iDEP 
+
+(2018) 
+
+ArrayAnalysis 
+
+(2013) 
+
+Availability  Web app, Docker 
+
+image, desktop 
+
+app, R package 
+
+Web app, Docker 
+
+image 
+
+Web app, Docker 
+
+image 
+
+Web app, Docker 
+
+image 
+
+Web app, Docker 
+
+image, R 
+
+package 
+
+Web app 
+
+Accepted 
+
+microarray data 
+
+CEL files, raw and 
+
+normalized 
+
+intensity table 
+
+Normalized 
+
+intensity table 
+
+CEL files  N/A  Normalized 
+
+intensity table 
+
+CEL files, 
+
+intensity table 
+
+Accepted RNA -
+
+seq data 
+
+Raw and 
+
+normalized 
+
+count table 
+
+Raw and 
+
+normalized 
+
+count table 
+
+Raw and 
+
+normalized 
+
+count table 
+
+Raw count table  Raw and 
+
+normalized 
+
+count table 
+
+N/A 
+
+Automated 
+
+outlier detection 
+
+Yes  No  No  No  No  No 
+
+In -app sample 
+
+removal 
+
+Yes  No  No  No  No  No 
+
+In -app metadata 
+
+editing 
+
+Yes  No  No  No  No  No 
+
+Figure 
+
+customi sation 
+
+Yes  No  No  No  Some figures  No 
+
+Figure export 
+
+format 
+
+Vector (PDF), 
+
+raster (PNG/TIF), 
+
+and interactive 
+
+(HTML) 
+
+Raster (PNG, 
+
+< 300 dpi) 
+
+Vector (PDF) and 
+
+raster (PNG) 
+
+Raster (PNG, 
+
+< 300 dpi) 
+
+Vector (PDF/SVG) 
+
+and raster (PNG) 
+
+Vector (PDF) and 
+
+raster (PNG) 
+
+184 
+
+.CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 18, 2026. ;https://doi.org/10.64898/2026.07.13.738193 doi: bioRxiv preprint 12 
+
+# DISCUSSION 185 
+
+We developed a new version of ArrayAnalysis ( https://arrayanalysis.org ) as a user -friendly 186 
+
+solution for transcriptomic data analysis. Compared to the first release in 2013 [1] , the current 187 
+
+version has been substantially updated ; besides offering support for RNA -seq data, it 188 
+
+introduces a strongly interactive analysis workflow that facilitates efficient data exploration 189 
+
+and analysis. It further addresses key limitations of existing tools by providing extensive user -190 
+
+guidance and customi sable, publication -ready outputs. Finally, in addition to the web 191 
+
+application, ArrayAnalysis can be r un locally as an R package, desktop app lication , and Docker 192 
+
+image, enabling secure in -house processing of sensitive data. 193 
+
+194 
+
+A central aim of ArrayAnalysis is to support a broad community of users, ranging from 195 
+
+biomedical researchers without prior bioinformatics training to experienced data analysts. For 196 
+
+users with less bioinformatics experience , the platform offers elaborate guidance features, 197 
+
+including in -app information boxes, tutorials, FAQs, and extensive documentation. In addition, 198 
+
+automated outlier detection helps users recognize potential issues in their data. 199 
+
+200 
+
+For expert users, ArrayAnalysis provides a streamlined and flexible workflow. Options such as 201 
+
+sample exclusion, metadata editing, and figure customi sation can be applied directly within 202 
+
+the application, reducing the need to alternate between multiple tools. The strength of 203 
+
+ArrayAnalysis lies in providing a streamlined and robust workflow for core transcriptomic data 204 
+
+analysis functions. Moreover, to support the use of more specialized tools for advanced 205 
+
+downstream tasks, results can be downloaded at each step and are designed to ensure 206 
+
+interoperability with other applications. For example, differential expression statistics are 207 
+
+provided in a consistent tabular format across different input data types and include standard 208 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 18, 2026. ;https://doi.org/10.64898/2026.07.13.738193 doi: bioRxiv preprint
+
+13 
+
+error estimates of log 2 fold changes, enabling integration into subsequent analytical pipelines. 209 
+
+Moreover, the semi -automatic and interactive workflow enables users to perform core 210 
+
+transcriptomic analysis tasks reliably within very limited time , including the detect ion and 211 
+
+remov al of outliers without the need to re -upload data. These features make ArrayAnalysis 212 
+
+particularly well -suited for systematic (re)processing or large -scale , transcriptome -wide meta -213 
+
+analyses that require efficient and consistent processing of dozens of dataset s.214 
+
+215 
+
+The ability to generate publication -ready visualizations is a core feature that benefits both 216 
+
+novice and experienced bioinformatics researchers. Figures can be customi sed in terms of 217 
+
+colour palettes and various other layout elements as well as exported in different aspect ratios 218 
+
+and file formats, including high -resolution raster images and vector graphics that meet journal 219 
+
+requirements. The option to export session information and user -selected analysis settings 220 
+
+ensures transparency and reproducibility, as well as aiding manuscript preparation. 221 
+
+222 
+
+# CONCLUSIONS 223 
+
+In conclusion, ArrayAnalysis provides both wet -lab scientists and bioinformaticians with a 224 
+
+powerful, intuitive, and freely available tool for transcriptomic data analysis. By lowering 225 
+
+barriers to entry while also supporting expert -level workflows, ArrayAnalysis contributes to 226 
+
+more widespread, reproducible, and effective use of transcriptomics in biomedical research. 227 
+
+228 
+
+# AVAILABILITY AND REQUIREMENTS 229 
+
+Project name: ArrayAnalysis 230 
+
+Project home page:  https://arrayanalysis.org/ 231 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 18, 2026. ;https://doi.org/10.64898/2026.07.13.738193 doi: bioRxiv preprint
+
+14 
+
+Operating system(s): Platform independent 232 
+
+Programming language: R233 
+
+License: CC -BY -4.0 234 
+
+Any restrictions to use by non -academics: None 235 
+
+236 
+
+# LIST OF ABBREVIATIONS 237 
+
+RNA -seq RNA sequencing 238 
+
+log 2FC log 2 fold change 239 
+
+240 
+
+# DECLARATIONS 241 
+
+Ethics approval and consent to participate 242 
+
+Not applicable .243 
+
+244 
+
+Consent for publication 245 
+
+Not applicable .246 
+
+247 
+
+Availability of data and materials 248 
+
+ArrayAnalysis is freely available for all users at  https://arrayanalysis.org  under the Creative 249 
+
+Commons Attribution 4.0 International (CC BY 4.0) license. The source code is available at 250 
+
+https://doi.org/10.5281/zenodo.19957055 .251 
+
+252 
+
+Competing interests 253 
+
+Not applicable. 254 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 18, 2026. ;https://doi.org/10.64898/2026.07.13.738193 doi: bioRxiv preprint
+
+15 
+
+255 
+
+Funding 256 
+
+This work was supported by Stichting Terre – The Dutch Rett Syndrome foundation and the 257 
+
+Virtual Human Platform for Safety Assessment project, which is funded by the Netherlands 258 
+
+Research Council (NWO) ‘Netherlands Research Agenda: Research on Routes by Consortia’ 259 
+
+[NWA -ORC 1292.19.272] 260 
+
+261 
+
+Authors’ contributions 262 
+
+Jarno Koetsier: Conceptualization, Software, Project administration, Visualization, Writing —263 
+
+original draft. Ozan Cinar: Software, Writing —review & editing. Egon L. Willighagen: Resources, 264 
+
+Writing —review & editing. Ammar Ammar : Software, Writing —review & editing. Vishnu 265 
+
+Karthik: Software, Writing —review & editing. Denyel Jennen: Validation, Writing —review & 266 
+
+editing. Chris T. Evelo: Writing —review & editing. Leopold M.G. Curfs: Funding acquisition, 267 
+
+Writing —review & editing. Chris P. Reutelingsperger: Funding acquisition, Writing —review & 268 
+
+editing. Nasim Bahram Sangani: Resources, Writing —review & editing. Lars M.T. Eijssen: 269 
+
+Conceptualization, Supervision, Project administration, Writing —original draft. 270 
+
+271 
+
+Acknowledgements 272 
+
+Not applicable. 273 
+
+274 
+
+275 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 18, 2026. ;https://doi.org/10.64898/2026.07.13.738193 doi: bioRxiv preprint
+
+16 
+
+# REFERENCES 276 
+
+1.  Eijssen LM, Jaillard M, Adriaens ME, Gaj S, de Groot PJ, Müller M, et al.  User -friendly solutions 277 
+
+for microarray quality control and pre -processing on ArrayAnalysis.org. Nucleic Acids Res. 2013;41(Web 278 
+
+Server issue):W71 -6. doi: 10.1093/nar/gkt293 279 
+
+2.  Koh CWT, Ooi JSG, Ong EZ, Chan KR.  STAGEs: A web -based tool that integrates data 280 
+
+visualization and pathway enrichment analysis for gene expression studies. Sci Rep. 2023;13(1):7135. doi: 281 
+
+10.1038/s41598 -023 -34163 -2282 
+
+3. Helmy M, Agrawal R, Ali J, Soudy M, Bui TT, Selvarajoo K. GeneCloudOmics: A Data Analytic 283 
+
+Cloud Platform for High -Throughput Gene Expression Analysis. Front Bioinform. 2021;1:693836. doi: 284 
+
+10.3389/fbinf.2021.693836 285 
+
+4. Reyes ALP, Silva TC, Coetzee SG, Plummer JT, Davis BD, Chen S, et al. GENAVi: a shiny web 286 
+
+application for gene expression normalization, analysis and visualization. BMC Genomics. 2019;20(1):745. 287 
+
+doi: 10.1186/s12864 -019 -6073 -7288 
+
+5. Ge SX, Son EW, Yao R. iDEP: an integrated web application for differential expression and 289 
+
+pathway analysis of RNA -Seq data. BMC Bioinformatics. 2018;19(1):534. doi: 10.1186/s12859 -018 -2486 -290 
+
+6291 
+
+6. Barrett T, Dowle M, Srinivasan A, Gorecki J, Chirico M, Hocking T, et al. data.table: Extension of 292 
+
+`data.frame`. 2026. doi: 10.32614/CRAN.package.data.table 293 
+
+7. Galili T, O'Callaghan A, Sidi J, Sievert C. heatmaply: an R package for creating interactive cluster 294 
+
+heatmaps for online publishing. Bioinformatics. 2018;34(9):1600 -2. doi: 10.1093/bioinformatics/btx657 295 
+
+8. Warnes GR, Bolker B, Bonebakker L, Gentleman R, Huber W, Liaw A, et al. gplots: Various R 296 
+
+Programming Tools for Plotting Data. 2025. doi: 10.32614/CRAN.package.gplots 297 
+
+9. Sievert C. Interactive Web -Based Data Visualization with R, plotly, and shiny: Chapman and 298 
+
+Hall/CRC; 2020. 299 
+
+10. Wickham H. ggplot2: Elegant Graphics for Data Analysis}: Springer -Verlag New York; 2016. 300 
+
+11. Zeileis A, Fisher JC, Hornik K, Ihaka R, McWhite CD, Murrell P, et al. colorspace: A toolbox for 301 
+
+manipulating and assessing colors and palettes. Journal of Statistical Software. 2020;96:1 -49. doi: 302 
+
+12. Csardi G, Nepusz T. The igraph software. Complex syst. 2006;1695:1 -9. doi: 303 
+
+13. Pedersen TL. ggraph: An Implementation of Grammar of Graphics for Graphs and Networks. 304 
+
+2025. doi: 10.32614/CRAN.package.ggraph 305 
+
+14. Vaidyanathan R, Xie Y, Allaire J, Cheng J, Sievert C, Russell K. htmlwidgets: HTML Widgets for R. 306 
+
+2023. doi: 10.32614/CRAN.package.htmlwidgets 307 
+
+15. Gu Z, Gu L, Eils R, Schlesner M, Brors B. circlize Implements and enhances circular visualization 308 
+
+in R. Bioinformatics. 2014;30(19):2811 -2. doi: 10.1093/bioinformatics/btu393 309 
+
+16. Wickham H, François R, Henry L, Müller K, Vaughan D. dplyr: A Grammar of Data Manipulation. 310 
+
+2026. doi: 10.32614/CRAN.package.dplyr 311 
+
+17. Wickham H. stringr: Simple, Consistent Wrappers for Common String Operations. 2025. doi: 312 
+
+10.32614/CRAN.package.stringr 313 
+
+18. Wickham H, Henry L. purrr: Functional Programming Tools. 2026. doi: 314 
+
+10.32614/CRAN.package.purrr 315 
+
+19. Bache SM, Wickham H. magrittr: A Forward -Pipe Operator for R. 2026. doi: 316 
+
+10.32614/CRAN.package.magrittr 317 
+
+20. Chang W, Cheng J, Allaire J, Sievert C, Schloerke B, Aden -Buie G, et al. shiny: Web Application 318 
+
+Framework for R. 2026. doi: 10.32614/CRAN.package.shiny 319 
+
+21. Xie Y, Cheng J, Tan X, Aden -Buie G. DT: A Wrapper of the JavaScript Library 'DataTables'. 2025. 320 
+
+doi: 10.32614/CRAN.package.DT 321 
+
+22. Attali D, Sali A. shinycssloaders: Add Loading Animations to a 'shiny' Output While It's 322 
+
+Recalculating. 2024. doi: 10.32614/CRAN.package.shinycssloaders 323 
+
+23. Meyer F, Perrier V. shinybusy: Busy Indicators and Notifications for 'Shiny' Applications. 2024. 324 
+
+doi: 10.32614/CRAN.package.shinybusy 325 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 18, 2026. ;https://doi.org/10.64898/2026.07.13.738193 doi: bioRxiv preprint
+
+17 
+
+24. Bacher E. prompter: Add Tooltips in 'Shiny' Apps with 'Hint.css'. 2025. doi: 326 
+
+10.32614/CRAN.package.prompter 327 
+
+25. Tang Y. shinyjqui: 'jQuery UI' Interactions and Effects for Shiny. 2022. doi: 328 
+
+10.32614/CRAN.package.shinyjqui 329 
+
+26. Attali D. colourpicker: A Colour Picker Tool for Shiny and for Selecting Colours in Plots. 2023. 330 
+
+doi: 10.32614/CRAN.package.colourpicker 331 
+
+27. Xie Y. knitr: a comprehensive tool for reproducible research in R. Implementing reproducible 332 
+
+research: Chapman and Hall/CRC; 2018. p. 3 -31. 333 
+
+28. Xie Y, Dervieux C, Riederer E. R Markdown Cookbook: Chapman and Hall/CRC; 2020. 334 
+
+29. Davis S, Meltzer PS. GEOquery: a bridge between the Gene Expression Omnibus (GEO) and 335 
+
+BioConductor. Bioinformatics. 2007;23(14):1846 -7. doi: 10.1093/bioinformatics/btm254 336 
+
+30. Gautier L, Cope L, Bolstad BM, Irizarry RA. affy --analysis of Affymetrix GeneChip data at the 337 
+
+probe level. Bioinformatics. 2004;20(3):307 -15. doi: 10.1093/bioinformatics/btg405 338 
+
+31. Love MI, Huber W, Anders S. Moderated estimation of fold change and dispersion for RNA -seq 339 
+
+data with DESeq2. Genome Biol. 2014;15(12):550. doi: 10.1186/s13059 -014 -0550 -8340 
+
+32. Zhu A, Ibrahim JG, Love MI. Heavy -tailed prior distributions for sequence count data: removing 341 
+
+the noise and preserving large differences. Bioinformatics. 2019;35(12):2084 -92. doi: 342 
+
+10.1093/bioinformatics/bty895 343 
+
+33. Ritchie ME, Phipson B, Wu D, Hu Y, Law CW, Shi W, et al. limma powers differential expression 344 
+
+analyses for RNA -sequencing and microarray studies. Nucleic Acids Res. 2015;43(7):e47. doi: 345 
+
+10.1093/nar/gkv007 346 
+
+34. Carvalho BS, Irizarry RA. A framework for oligonucleotide microarray preprocessing. 347 
+
+Bioinformatics. 2010;26(19):2363 -7. doi: 10.1093/bioinformatics/btq431 348 
+
+35. Irizarry RA, Gautier L, Huber W, Bolstad B. makecdfenv: CDF Environment Maker. 2025. doi: 349 
+
+10.18129/B9.bioc.makecdfenv 350 
+
+36. Wu J, Irizarry R, MacDonald J, Gentry J. gcrma: Background Adjustment Using Sequence 351 
+
+Information. 2025. doi: 0.18129/B9.bioc.gcrma 352 
+
+37. Affymetrix, Miller CJ. plier: Implements the Affymetrix PLIER algorithm. 2025. doi: 353 
+
+10.18129/B9.bioc.plier 354 
+
+38. Ding B, Gentleman R, Carey V. bioDist: Different distance measures.  2025. doi: 355 
+
+39.  Xu S, Hu E, Cai Y, Xie Z, Luo X, Zhan L, et al.  Using clusterProfiler to characterize multiomics data. 356 
+
+Nat Protoc. 2024;19(11):3292 -320. doi: 10.1038/s41596 -024 -01020 -z357 
+
+40. Durinck S, Spellman PT, Birney E, Huber W. Mapping identifiers for the integration of genomic 358 
+
+datasets with the R/Bioconductor package biomaRt. Nat Protoc. 2009;4(8):1184 -91. doi: 359 
+
+10.1038/nprot.2009.97 360 
+
+41. Carlson M. org.Hs.eg.db: Genome wide annotation for Human. 2026. doi: 361 
+
+10.18129/B9.bioc.org.Hs.eg.db 362 
+
+42. Gu Z, Eils R, Schlesner M. Complex heatmaps reveal patterns and correlations in 363 
+
+multidimensional genomic data. Bioinformatics. 2016;32(18):2847 -9. doi: 364 
+
+10.1093/bioinformatics/btw313 365 
+
+43. Aboyoun P, Gentleman R. pwalign: Perform pairwise sequence alignments. 2026. doi: 366 
+
+10.18129/B9.bioc.pwalign 367 
+
+44. Barrett T, Wilhite SE, Ledoux P, Evangelista C, Kim IF, Tomashevsky M, et al. NCBI GEO: archive 368 
+
+for functional genomics data sets --update. Nucleic Acids Res. 2013;41(Database issue):D991 -5. doi: 369 
+
+10.1093/nar/gks1193 370 
+
+45. Deng V, Matagne V, Banine F, Frerking M, Ohliger P, Budden S, et al. FXYD1 is an MeCP2 target 371 
+
+gene overexpressed in the brains of Rett syndrome patients and Mecp2 -null mice. Hum Mol Genet. 372 
+
+2007;16(6):640 -50. doi: 10.1093/hmg/ddm007 373 
+
+46. Aldinger KA, Timms AE, MacDonald JW, McNamara HK, Herstein JS, Bammler TK, et al. 374 
+
+Transcriptome data of temporal and cingulate cortex in the Rett syndrome brain. Sci Data. 2020;7(1):192. 375 
+
+doi: 10.1038/s41597 -020 -0527 -2376 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 18, 2026. ;https://doi.org/10.64898/2026.07.13.738193 doi: bioRxiv preprint
+
+18 
+
+47. Aleksander SA, Balhoff J, Carbon S, Cherry JM, Drabkin HJ, Ebert D, et al. The Gene Ontology 377 
+
+knowledgebase in 2023. Genetics. 2023;224(1). doi: 10.1093/genetics/iyad031 378 
+
+48. Kanehisa M, Furumichi M, Sato Y, Matsuura Y, Ishiguro -Watanabe M. KEGG: biological systems 379 
+
+database as a model of the real world. Nucleic Acids Res. 2025;53(D1):D672 -d7. doi: 380 
+
+10.1093/nar/gkae909 381 
+
+49. Agrawal A, Balcı H, Hanspers K, Coort SL, Martens M, Slenter DN, et al. WikiPathways 2024: next 382 
+
+generation pathway database. Nucleic Acids Res. 2024;52(D1):D679 -d89. doi: 10.1093/nar/gkad960 383 
+
+384

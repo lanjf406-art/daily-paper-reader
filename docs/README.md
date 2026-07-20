@@ -6,35 +6,40 @@
 </div>
 
 ## 每次日报
-- 最新运行日期：2026-07-19
-- 运行时间：2026-07-19 19:58:55 UTC
+- 最新运行日期：2026-07-20
+- 运行时间：2026-07-20 21:14:08 UTC
 - 运行状态：成功
-- 本次总论文数：5
+- 本次总论文数：6
 - 精读区：1
-- 速读区：4
+- 速读区：5
 
 ### 今日简报（AI）
-今日聚焦慢性粒细胞白血病耐药新机制与胰腺癌免疫抑制回路，并介绍多项生物信息学工具。最值得关注的是TIAR介导的可变剪接与脂质过氧化协同驱动CML耐药的发现，以及基础细胞状态通过免疫抑制回路维持胰腺癌的结论。建议后续关注耐药机制与肿瘤微环境免疫调控的交叉研究，并尝试应用TCR分析及多组学可重复性工具。
-- 详情：[/202607/19/README](/202607/19/README)
+今日推荐6篇论文，聚焦癌症机制、药物重定位与多组学预测。  
+精读发现布地奈德能抑制基质刚度驱动的胰腺癌侵袭性；速读中多组学机器学习模型利用表观遗传谱精准预测乳腺癌生存。  
+建议优先关注精读的药物重定位思路，可延伸至其他实体瘤研究。
+- 详情：[/202607/20/README](/202607/20/README)
 
 ### 精读区论文标签
-1. [TIAR-dependent coordination of alternative splicing and lipid peroxidation is required for CML cell resistance to imatinib in the bone marrow stroma](/202607/19/biorxiv-10-64898-2026-05-29-728710-v2-tiar-dependent-coordination-of-alternative-splicing-and-lipid-peroxidation-is-required-for-cml-cell-resistance-to-imatinib-in-the-bone-marrow-stroma)  
-   标签：评分：9.0/10、query:neo-resist
-   evidence：转录组学CML伊马替尼耐药骨髓基质
+1. [Mechanobiology-guided drug repurposing identifies budesonide as an inhibitor of stiffness-induced PDAC aggressiveness](/202607/20/biorxiv-10-64898-2026-07-17-739125-v1-mechanobiology-guided-drug-repurposing-identifies-budesonide-as-an-inhibitor-of-stiffness-induced-pdac-aggressiveness)  
+   标签：评分：8.0/10、query:neo-resist
+   evidence：研究肿瘤微环境刚度驱动治疗耐药，在PDAC中鉴定候选药物
 
 ### 速读区论文标签
-1. [replicateFest: An R Package and Shiny App for Analysis of T Cell Receptor Repertoire Data from the Functional Expansion](/202607/19/biorxiv-10-64898-2026-06-18-733036-v3-replicatefest-an-r-package-and-shiny-app-for-analysis-of-t-cell-receptor-repertoire-data-from-the-functional-expansion)  
+1. [Epigenetic profile drives accurate survival prediction in breast cancer via a multi-omics machine learning model](/202607/20/biorxiv-10-1101-2025-07-31-667894-v6-epigenetic-profile-drives-accurate-survival-prediction-in-breast-cancer-via-a-multi-omics-machine-learning-model)  
+   标签：评分：7.0/10、query:neo-resist
+   evidence：多组学机器学习预后预测
+2. [SMART: A Somatic Mutation Annotation and Reporting Tool for cancer genomics](/202607/20/biorxiv-10-64898-2026-07-15-738659-v1-smart-a-somatic-mutation-annotation-and-reporting-tool-for-cancer-genomics)  
+   标签：评分：7.0/10、query:neo-resist
+   evidence：用于耐药突变注释的生物信息学工具
+3. [Transcriptomic data and biomedical literature synergize in finding pharmacologic gene regulators](/202607/20/biorxiv-10-64898-2026-03-13-708862-v4-transcriptomic-data-and-biomedical-literature-synergize-in-finding-pharmacologic-gene-regulators)  
    标签：评分：6.0/10、query:neo-resist
-   evidence：TCR库分析工具，用于评估免疫反应，与耐药机制相关
-2. [Reproducible-by-design: Romics Processor, a FAIR ecosystem for multi-omics and spatial-omics analysis](/202607/19/biorxiv-10-64898-2026-07-09-737600-v1-reproducible-by-design-romics-processor-a-fair-ecosystem-for-multi-omics-and-spatial-omics-analysis)  
+   evidence：转录组数据和文献挖掘用于药物靶点发现
+4. [LeafRank: A phylodynamic framework for inferring relative fitness from single-cell phylogenies in chromosomally unstable tumors](/202607/20/biorxiv-10-64898-2026-07-06-736651-v3-leafrank-a-phylodynamic-framework-for-inferring-relative-fitness-from-single-cell-phylogenies-in-chromosomally-unstable-tumors)  
    标签：评分：6.0/10、query:neo-resist
-   evidence：生信多组学FAIR工具
-3. [The basal cell state maintains pancreatic cancers by controlling an immunosuppressive circuit](/202607/19/biorxiv-10-64898-2026-07-13-738221-v1-the-basal-cell-state-maintains-pancreatic-cancers-by-controlling-an-immunosuppressive-circuit)  
+   evidence：单细胞系统发育框架推断肿瘤适合度，可应用于耐药机制研究
+5. [User-friendly transcriptomic data analysis with ArrayAnalysis](/202607/20/biorxiv-10-64898-2026-07-13-738193-v1-user-friendly-transcriptomic-data-analysis-with-arrayanalysis)  
    标签：评分：6.0/10、query:neo-resist
-   evidence：基底细胞状态维持胰腺癌肿瘤微环境中的免疫抑制回路
-4. [Nuclear translocation of phosphorylated YB-1 via small extracellular vesicles contributes to the malignant phenotype of triple negative breast cancer](/202607/19/biorxiv-10-64898-2026-07-14-738446-v1-nuclear-translocation-of-phosphorylated-yb-1-via-small-extracellular-vesicles-contributes-to-the-malignant-phenotype-of-triple-negative-breast-cancer)  
-   标签：评分：6.0/10、query:neo-resist
-   evidence：YB-1细胞外囊泡促进三阴性乳腺癌化疗耐药
+   evidence：用户友好的转录组分析工具，支持耐药研究
 
 
 <div class="dpr-home-promo-card">
