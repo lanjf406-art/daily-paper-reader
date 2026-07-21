@@ -1,0 +1,1852 @@
+Title: Engineering Oncolytic Measles Virus with MG53 Couples Pyroptotic Tumor Killing with Immune Microenvironment Remodeling to Enhance Checkpoint Immunotherapy in Non-small Cell Lung Cancer
+
+URL Source: https://www.biorxiv.org/content/10.64898/2026.07.15.738733v1.full.pdf
+
+Number of Pages: 34
+
+Markdown Content:
+1
+
+Engineering Oncolytic Measles Virus with MG53 Couples Pyroptotic Tumor Killing with Immune 1
+
+Microenvironment Remodeling to Enhance Checkpoint Immunotherapy in N on -small Cell Lung Cancer 2
+
+3
+
+Zhongguang Li 1, 2 , *, Cheng Chih Hsu 1, *, Fei Jiang 1, Matthew Bu 1, Umme Lubaba 1,2 , Sally L. Li 1, Serena li Zhao 2, 3,4
+
+Pei -Hui Lin 4, Hunter J. Piego ls5, Xuefeng Liu 2,6 , Jianrong Li 1, 7, and Haichang Li 1, 2 , #
+
+5
+
+6
+
+> 1
+
+Department of Veterinary Biosciences , The Ohio State University, Columbus, OH 43210 USA .7
+
+> 2
+
+The Ohio State University Comprehensive Cancer Center , Columbus, OH 43210 USA. 8
+
+> 3
+
+Division of Medicinal Chemistry and Pharmacognosy, The Ohio State University, Columbus, OH 43210 USA. 9
+
+> 4
+
+Department of Internal Medicine, The Ohio State University, Columbus, OH 43210, USA 10 
+
+> 5
+
+Department of Clinic al Sciences , The Ohio State University , Columbus, OH 43210 USA. 11 
+
+> 6
+
+Departments of Pathology, Urology and Radiation Oncology, The Ohio State University, Columbus, OH 43210 12 
+
+USA. 13  
+
+> 7
+
+Infectious Disease Institute, The Ohio State University, Columbus, OH 43210 USA. 14 
+
+*These authors contributed equally to this work. 15 
+
+16  
+
+> #
+
+Corresponding: Haichang Li (H.L.) 17 
+
+Department of Veterinary Biosciences 18 
+
+The Ohio State University 19 
+
+20 
+
+1900 Coffey Road, 21 
+
+Columbus, Ohio 43210 22 
+
+Phone : (614 )-247 -5703 23 
+
+Email:  li.3714@osu.edu 24 
+
+25 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted July 21, 2026. ;https://doi.org/10.64898/2026.07.15.738733 doi: bioRxiv preprint
+
+2
+
+Abstract 26 
+
+Lung cancer is the leading cause of cancer -related mortality worldwide, with only approximately 30% of patients 27 
+
+benefiting from current immune checkpoint immunotherapy. Oncolytic virotherapy offers a promising strategy to 28 
+
+overcome this resistance ; however, achieving both potent tumor cytotoxicity and robust antitumor immun e29 
+
+activation remains a major challenge. Here, we engineered oncolytic measles virus expressing the tumor 30 
+
+suppressor MG53 (TRIM72) , designated rMeV -MG 53, and evaluated its therapeutic potential against non -small 31 
+
+cell lung cancer (NSCLC). rMeV -MG53 retained replication kinetics comparable to parental MeV while driving 32 
+
+significantly greater cytotoxicity than an unarmed control in NSCLC cell s. Mechanistically, MG53 arming 33 
+
+amplified caspase -3–dependent apoptosis and potentiated Gasdermin E (GSDME) cleavage, engaging 34 
+
+GSDME -mediated pyroptosis as a key tumor -killing mechanism ; pharmacological inhibition confirmed caspase -35 
+
+dependent apoptosis as the initiating event leading to pyroptosis, while excluding necroptosis and ferroptosis as 36 
+
+significant contributors to rMeV -MG53 -induced cytotoxicity . MG53 overexpression induced an intrinsic pro -37 
+
+inflammatory transcriptional signature enriched for TNF, NF -κB, and IL -17 signaling, and rMeV -MG53 elicited 38 
+
+significantly stronger type I interferon and pro -inflammatory cytokine induction than the unarmed control. In a n39 
+
+immunocompetent , MeV -permissive syngeneic NSCLC model, intratumoral rMeV -MG53 achieved superior 40 
+
+tumor growth inhibition, amplified caspase -3/GSDME pyroptosis, selectively upregulated Cxcl10 , Ifng , and Il1b ,41 
+
+and drove robust CD8 ⁺ T-cell and Granzyme B ⁺ effector infiltration. This immune remodeling was accompanied 42 
+
+by compensatory PD -L1 upregulation, and combining rMeV -MG53 with anti -PD -L1 blockade achieved the 43 
+
+strongest tumor suppression of all treatment groups. These findings establish MG53 -armed oncolytic MeV as a 44 
+
+strategy coupling GSDME -mediated pyroptosis with antitumor immune remodeling to sensitize immune -resistant 45 
+
+NSCLC to checkpoint immunotherapy. 46 
+
+47 
+
+Keywords: Onco lytic virotherapy, MG53 (TRIM72), Measles virus, Gasdermin E, P yroptosis, PD -L1 blockade, 48 
+
+Tumor immune microenvironment .49 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted July 21, 2026. ;https://doi.org/10.64898/2026.07.15.738733 doi: bioRxiv preprint
+
+3
+
+Introduction 50 
+
+Lung cancer remains the leading cause of cancer -related mortality worldwide, responsible for approximately 2.5 51 
+
+million new diagnoses and 1.8 million deaths annually as of 2022 (1) . Non -small cell lung cancer (NSCLC) 52 
+
+accounts for approximately 85% of all lung cancer cases, encompassing adenocarcinoma, squamous cell 53 
+
+carcinoma, and large cell carcinoma as major histological subtypes (2) . Despite considerable advances in 54 
+
+targeted therapy and immunotherapy, the five -year overall survival rate for lung cancer remains approximately 55 
+
+25%, underscoring the persistent need for novel therapeutic strategies (3) . The advent of immunotherapy such 56 
+
+as immune checkpoint inhibitors (IC Is) has revolutionized the treatment landscape for advanced NSCLC, with 57 
+
+response rates of 10% -25% (4, 5) . Patient s responsive to IC I commonly harbor an immune -infiltrated (hot) tumor 58 
+
+microenvironment (TME ), characterized by pre -existing anti -tumor immunity and abundant immune cell 59 
+
+infiltration. However, the remaining 75% - 90% of patients do not respond owing to the immun osuppressive 60 
+
+properties (cold) of TME characterized by limited immune cell infiltration into the TME (6 -8) . Consequently, 61 
+
+developing safe and efficacious strategies to reprogram the immunosuppressive TME and enhance anti -tumor 62 
+
+immune response s remains a critical unmet medical need. 63 
+
+MG53 (also known as TRIM72 ) is a member of the tripartite motif (TRIM) protein family that was originally 64 
+
+characterized as a key molecule in cell membrane repair (9) . Our group and others have extensively 65 
+
+demonstrated that recombinant human MG53 (rhMG53) protein exert s broad therapeutic activity across multiple 66 
+
+organ systems, including muscular dystrophy (9, 10) , lung injury (11, 12) , myocardial infarction (13) , kidney 67 
+
+injury (14, 15) , and wound healing (16, 17) . Beyond its membrane repair function, accumulating evidence has 68 
+
+established MG53 as a critical regulator of cellular homeostasis by modulating oxidative stress, autophagy, and 69 
+
+inflammation (18, 19) . Importantly, w e recently uncovered an antitumor function of MG53 in lung cancer (20) . We70 
+
+also demonstrated that rhMG53 acts synergistically with chemotherapeutic agents to promote death of lung 71 
+
+cancer cells and suppress tumor growth of drug -resistant cancers in colorectal carcinoma (21) . Several 72 
+
+subsequent studies further support the function for MG53 as an antitumor therapeutic agent (22 -24) . The dual 73 
+
+properties —tumor suppression and immune modulation —make MG53 an attractive candidate payload for 74 
+
+arming an oncolytic virus, potentially coupling enhanced cytotoxic with a more immunogenic mode of tumor cell 75 
+
+death. 76 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted July 21, 2026. ;https://doi.org/10.64898/2026.07.15.738733 doi: bioRxiv preprint
+
+4
+
+Oncolytic virotherapy (OV) has emerged as a safe and promising platform in cancer immunotherapy ,77 
+
+distinguished by its capacity to selectively lyse tumor cells while spar ing normal cells , and to simultaneously 78 
+
+reprogram the antitumor immune response state (25 -27) . The T -Vec (Talimogene laherparepvec) is an attenuated 79 
+
+herpes simplex virus ty pe 1 (HSV -1) engineered to encode granulocyte -macrophage colony -stimulating factor 80 
+
+(GM -CSF) . It received FDA approv al in the USA for intratumoral treatment of advanced melanoma and 81 
+
+demonstrated synergistic antitumor efficacy when combined with immune checkpoint inhibitors (28) . Measles 82 
+
+virus ( MeV) is a paramyxovirus and another attractive oncolytic virus. Using reverse genetics system, MeV can 83 
+
+be engineered to express therapeutic transgene s insertion (27) . MeV exhibits inherent tumor tropism mediated 84 
+
+by the overexpression of CD46, a complement regulatory protein uniformly upregulated on human tumor cells 85 
+
+relative to normal tissues (29, 30) . Attenuated vaccine strain of MeV is an attractive oncolytic backbone due to its 86 
+
+established clinical safety record, natural tropism for tumor cells overexpressing the viral entry receptor CD46, 87 
+
+and capacity to induce immunogenic cell death . Critically , engineering MeV to express therapeutic transgenes —88 
+
+a strategy already validated for cytokines, suicide genes, and immune -stimulatory payloads —offers a modular 89 
+
+approach to enhance oncolytic potency and reshape the tumor immune microenvironment . However, the optimal 90 
+
+transgene cargo for maximizing both direct cytotoxicity and immunogenicity in NSCLC remains an active area of 91 
+
+investigation. 92 
+
+A mechanistica lly critical modality by which oncolytic viruses potentiate antitumor immunity is through the 93 
+
+induction of Gasdermin -mediated pyroptosis (31) . Unlike classical apoptosis, which is generally considered 94 
+
+immunologically silent, pyroptosis is a lytic, inflammatory form of cell death characterized by membrane pore 95 
+
+formation, releas e of damage -associated molecular patterns (DAMPs), and robust recruitment of immune 96 
+
+effector cells (32, 33) . GSDME, a key member of the Gasdermin protein family, is specifically cleaved and 97 
+
+activated by caspase -3, thereby converting conventional apoptotic signaling into immunogenic pyroptotic cell 98 
+
+death (32) . GSDME -mediated pyroptosis has been demonstrated to profoundly reshape the TME, converting 99 
+
+immunologically "cold" tumors into "hot," immune -infiltrated states and potentiating the efficacy of immune 100 
+
+checkpoint blockade across multiple cancer models (33) . The caspase -3/GSDME pyroptosis axis thus represents 101 
+
+an attractive target for enhancing antitumor immunotherapeutic efficacy .102 
+
+In this study, we engineered oncolytic MeV expressing antitumor MG53 (rMeV -MG53) and evaluated its 103 
+
+therapeutic potential against NSCLC . We hypothesized that MG53 arming would not only preserve the oncolytic 104 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted July 21, 2026. ;https://doi.org/10.64898/2026.07.15.738733 doi: bioRxiv preprint
+
+5
+
+activity of MeV but also potentiate caspase -3/GSDME -dependent pyroptosis, thereby converting tumor cell death 105 
+
+into a more immunogenic event capable of remodeling the TME . Using a panel of human NSCLC cell lines and 106 
+
+a novel immunocompetent, MeV -permissive syngeneic mouse model (LL/2 -hCD46), we demonstrate that rMeV -107 
+
+MG53 enhances tumor cell killing through coordinated activation of apoptosis and GSDME -mediated pyroptosis, 108 
+
+amplifies antiviral and pro -inflammatory cytokine responses, and drives strong CD8 ⁺ T-cell and Granzyme B ⁺109 
+
+infiltration into tumors in vivo . We further show that this immune remodeling is accompanied by compensatory 110 
+
+PD -L1 upregulation, and that combining rMeV -MG53 with anti -PD -L1 blockade achieves superior tumor control 111 
+
+compared to either monotherapy. Together, these findings establish MG53 as a rationally designed oncolytic 112 
+
+payload that couples enhanced direct cytotoxicity with immune sensitization, supporting a combinatorial strategy 113 
+
+to overcome resistance to checkpoint immunotherapy in NSCLC. 114 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted July 21, 2026. ;https://doi.org/10.64898/2026.07.15.738733 doi: bioRxiv preprint
+
+6
+
+Materials and Methods 115 
+
+Chemicals, Cell s, and Cell Culture 116 
+
+All chemicals were obtained from Sigma -Aldrich unless otherwise indicated . Human cell line A549, H460, H1299, 117 
+
+H1975, HEK293T, H Ep-2, African green monkey Vero CCL -81, and Murine Le wis lung ca rcin oma LL/2 cells were 118 
+
+purchased from ATCC and maintained at 37°C in a humidified 5% CO ₂ incubator. All cells were cultured in RPMI -119 
+
+1640 or DMEM supplemented with 10% fetal bovine serum (FBS) , 100 U/ml penicillin and 100 μg/ml 120 
+
+streptomycin .121 
+
+Engineering and Recovery of Recombina nt Oncolytic MeV 122 
+
+All measles viruses used in this study are derived from the attenuat ed oncolytic MeV Edmonston vaccine 123 
+
+strain (34) . Plasmids encoding the full -length antigenomic cDNA of MeV with insertion of MG53 or mCherry at 124 
+
+the P /M junction was constructed using a yeast -based recombination system described previously (34 -38) . The 125 
+
+MG53 gene was synthesized by GenScript (Piscataway, NJ). In the yeast -derived plasmids, the insertion regions 126 
+
+were amplified by PCR. Positive plasmids were subsequently transformed into DH10B E. coli for further 127 
+
+amplification. Plasmid DNA was initially screened by restriction enzyme (HindIII) digestion and confirmed by full -128 
+
+length plasmid DNA sequencing to ensure that no additional mutations were introduced during the process .129 
+
+Recovery of recombinant MeV (rMeV) from the infectious cDNA clones was described previously (35, 36) . Briefly, 130 
+
+HEp-2 cells were infected with recombinant modified vaccinia Ankara virus (MVA -T7) expressing T7 RNA 131 
+
+polymerase at 37 oC for 1 h our . The plasmid encoding the full -length antigenomic cDNA of MeV with insertion of 132 
+
+the MG53 or mCherry w as co -transfect ed with plasmids expressing MeV nucleocapsid complex (pN, pL, and pP) 133 
+
+using Lipofectamine 3000 ( Thermo Fisher Scientific, Cat. No. L3000015 ). Four days after transfection, H Ep-2134 
+
+cells were scraped from the plates with a cell scraper and transferred to Vero CCL -81 cells at 90% confluence 135 
+
+and co -cultured for 4 -7 days to amplify the recombinant virus. Syncytia formation -the characteristic cytopathic 136 
+
+effects (CPE) of M eV infection, w as observed following co -culture , confirming successful viral recovery . A plaque 137 
+
+assay was subsequently performed, and individual plaque s were picked and seeded onto fresh Vero CCL -81 138 
+
+cells to eliminate the helper virus (MVA -T7). Purified viruses were titrated by plaque assay on Vero CCL -81 cells 139 
+
+and stored at −80°C until use. The resulting recombinant viruses were des ignated rMeV -MG53 and rMeV -140 
+
+mCherry. 141 
+
+Preparation of Concentrated rMeV Stocks 142 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted July 21, 2026. ;https://doi.org/10.64898/2026.07.15.738733 doi: bioRxiv preprint
+
+7
+
+Eight T175 flasks of Vero CCL -81 cells were grown to approximately 95% confluency and then infected with 143 
+
+indicated recombinant MeV at a multiplicity of infection (MOI) of 0.1. When substantial CPE was observed on 144 
+
+days 2 or 3 post -infection, viral supernatant and cell lysates were collected using a cell scraper and centrifuged 145 
+
+at 300 × g for 5 min at 4°C. The supernatant was collected and kept on ice, while cell pellets were subjected to 146 
+
+three freeze -thaw cycles in fresh DMEM containing 10% trehalose, followed by centrifugation at 300 × g for 5 147 
+
+min at 4°C. The two supernatant fractions were then combined. A 20% sucrose cushion was prepared in 1× NTE 148 
+
+buffer. For ultracentrifugation, 20 –25 mL of virus -containing supernatant was carefully loaded into ultracentrifuge 149 
+
+tubes, and 5 mL of 20% sucrose solution was gently layered beneath the sample using a syringe fitted with a 150 
+
+long needle. The virus was pelleted through the sucrose cushion by ultracentrifugation at 25,000 rpm for 2 hours 151 
+
+at 4°C. Following centrifugation, the supernatant was discarded, and the viral pellet was resuspended in 200 μL152 
+
+of 10% trehalose by gentle pipetting. The concentrated virus stocks were aliquoted and stored at −80°C until 153 
+
+titration. 154 
+
+MeV Plaque Assay 155 
+
+Vero CCL -81 cells in 12 -well plates were used for infection with recombinant MeV. The virus was serially diluted 156 
+
+10 -fold and adsorbed onto the cells for 1 hour at 37°C . Cells were then overlaid with 1 mL of DMEM containing 157 
+
+0.25% (w/v) low -melting agarose, 0.12% (w/v) NaHCO 3, 2% (w/v) FBS, 25 mM HEPES, 2 mM L -Glutamine, 100 158 
+
+U/ml penicillin, and 100 μg/ml of streptomycin, and incubated at 37°C for 4 days. Cells were then fixed with 4% 159 
+
+paraformaldehyde for 1 hour, then agarose overlay was removed, and viral plaques were visualized by staining 160 
+
+with 0.05% (w/v) crystal violet in 10% ethanol. 161 
+
+MeV Growth Curve Assay 162 
+
+Confluent Vero CCL -81 cells in 12 -well plates were inoculated with each recombinant virus at a n MOI of 0.1. 163 
+
+After 1 hour of infection, the inoculum was removed, the cells were washed twice with DMEM, and 1 m L of fresh 164 
+
+DMEM with 2% FBS was added. Infected cells were grown at 32 ℃ incubators with 5% CO 2. At the indicated time 165 
+
+points , cell culture supernatant was collected, and the cell lysate s was subjected to three freeze -thaw cycles .166 
+
+The supernatant and cell lysates were then combined , clarified by centrifugation at 3 00 × g for 2 min utes , and 167 
+
+the resulting supernatant was used for virus titration by plaque assay on Vero CCL -81 cells. 168 
+
+Generation of Stable LL/2 -hCD46 Cells 169 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted July 21, 2026. ;https://doi.org/10.64898/2026.07.15.738733 doi: bioRxiv preprint
+
+8
+
+To establish the stable LL/2 -hCD46 cell line, the hCD46 -T2A -GFP fragment (Addgene #205457) was 170 
+
+direct ionally assembled into the PCR -linearized, GFP -excised pLenti -CMV -Puro backbone (Addgene #17448) 171 
+
+using the In -Fusion Cloning Kit (Takara Bio, Cat . No. 638951). Following sequence verification, the recombinant 172 
+
+plasmid was co -transfected with the lentiviral packaging plasmid psPAX2 and envelope plasmid pMD2.G into 173 
+
+HEK293T cells using Lipofectamine 3000 to produce lentiviral particles. Viral supernatants were harvested at 48 174 
+
+and 72 hours post -transfection, pooled, and clarified by centrifugation at 300 × g for 10 minutes to remove cellular 175 
+
+debris. LL/2 cells were then transduced with the clarified viral supernatant in the presence of 8 μg/mL polybrene 176 
+
+(Sigma -Aldrich , Cat . No. TR -1003 -50UL). At 48 hours post -infection (48 hpi) , stably transduced cells were 177 
+
+selected using 2 μg/mL puromycin (Thermo Fisher Scientific, Cat . No. A1113803) until all non -transduced cells 178 
+
+ha d been eliminated . Stable integration and expression of hCD46 and GFP were subsequently confirmed by 179 
+
+fluorescence microscopy and Western blot analysis .180 
+
+Cell Viability Assay 181 
+
+Cell viability was assessed using the Cell Counting Kit -8 (CCK -8; Dojindo Molecular Technologies, Cat. No. 182 
+
+CK04) according to the manufacturer’s instructions. Briefly , cells were seeded into 96 -well plates at a density of 183 
+
+2×10 4 cells per well. After 24 hours of incubation, cells were infected with the rMeV -mCherry or rMeV -MG53 at 184 
+
+an MOI of 1.0 for 24h, 48h and 72h . For pathway -dependency experiments, cells were infected at a n MOI of 1 .0 185 
+
+for 24 h post -infection , and subsequently treated with DMSO (vehicle contro l), the pan -caspase inhibitor Z -VAD -186 
+
+FMK (Z -VAD, 20 μM), the necroptosis inhibitor necrostatin -1 (Nec -1, 20 μM), or the ferroptosis inhibitor 187 
+
+ferrostatin -1 (Fer -1, 10 μM) , all from MedChemExpress; and cell viability was then assessed at 48 hpi .188 
+
+Absorbance was measured at 450 nm using a microplate reader , and viability was normalized to mock -treated 189 
+
+controls. 190 
+
+Western Blot Analysis 191 
+
+Cells and tumor tissues were lysed on ice for 20 minutes in RIPA buffer supplemented with protease and 192 
+
+phosphatase inhibitors. Following centrifugation (15,000 × g, 10 min , 4°C), protein concentrations were 193 
+
+determined by bicinchoninic acid assay ( Thermo Fisher Scientific , Cat . No. 23225) . Equal amounts of protein 194 
+
+were denatured at 100 °C for 5 minutes in standard SDS sample loading buffer, resolved by SDS -PAGE, and 195 
+
+transferred to PVDF membranes. Membranes were blocked with 5% non -fat dry milk in Tris -buffered saline 196 
+
+containing 0.1% Tween -20 (TBST) for 1 h our at room temperature then incubated overnight at 4°C with the 197 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted July 21, 2026. ;https://doi.org/10.64898/2026.07.15.738733 doi: bioRxiv preprint
+
+9
+
+following primary antibodies: anti -cleaved caspase -3 (Cell Signaling Technology , Cat . No. 9661S), anti -GSDME 198 
+
+(Abcam, Cat . No. ab215191), anti -GAPDH (Proteintech, Cat . No. 60004 -1-Ig), anti -CD46 ( Proteintech, Cat No. 199 
+
+12494 -1-AP ), and a homemade anti -MG53 antibody (9) . After three washes with TBST , membranes were 200 
+
+incubated with HRP -conjugated anti -rabbit IgG secondary antibody (Cell Signaling Technology , Cat . No. 7074) 201 
+
+for 1 h our at room temperature. Protein bands were visualized using enhanced chemiluminescence (ECL) 202 
+
+substrate (Thermo Fisher Scientific, Cat . No. 34095) and quantified using ImageJ software (NIH, Bethesda, MD, 203 
+
+USA; version 1.5 4p ).204 
+
+Immunofluorescence Staining (IF) 205 
+
+Cells were washed with PBS, fixed with 4% paraformaldehyde for 10 min, and permeabilized with 0.5% Triton 206 
+
+X-100 for 5 min. Following blocking in 3% bovine serum albumin (BSA) for 1 hour at room temperature, cells 207 
+
+were incubated with anti -MG53 antibody (1:400) overnight at 4°C. Cells were then washed three times with PBS 208 
+
+and incubated with an Alexa Fluor 488 -conjugated goat anti -rabbit secondary antibody (1:500; Thermo Fisher 209 
+
+Scientific, Cat. No. A -11008) for 1 hour at room temperature. Nuclei were counterstained with DAPI, and 210 
+
+coverslips were mounted using an antifade mounting medium. Images were captured and analyzed using a 211 
+
+Nikon ECLIPSE Ti2 confocal microscope. 212 
+
+RNA Sequencing and Transcriptomic Analysis 213 
+
+Total RNA was extracted from A549 and H460 cells stably overexpressing MG53 and their respective empty 214 
+
+vector controls using TRIzol reagent (Invitrogen, Cat . No. 15596026 ) according to the manufacturer's instructions. 215 
+
+RNA quantity and integrity were assessed, and the qualified samples were submitted to Innomics Inc . for library 216 
+
+preparation, high -throughput sequencing, and bioinformatic analysis. Briefly, mRNA was enriched from total RNA 217 
+
+using oligo(dT) magnetic beads, fragmented, and reverse -transcribed into cDNA to construct sequencing 218 
+
+libraries. Libraries were then sequenced on an Illumina NovaSeq platform to generate paired -end reads. 219 
+
+For bioinformatic analysis, raw reads were filtered to remove adapters and low -quality sequences. The resulting 220 
+
+clean reads were mapped to the human reference genome using HISAT2 (v2.2.1) . Read counts for each gene 221 
+
+were quantified, and differential expression analysis between MG53 -overexpression and control groups was 222 
+
+performed using the DESeq2 (v1.4.5) R package. Genes meeting the criteria of an adjusted p-value ≤ 0.05 and 223 
+
+absolute log ₂ fold change > 1 were defined as significantly differentially expressed genes (DEGs). Functional 224 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted July 21, 2026. ;https://doi.org/10.64898/2026.07.15.738733 doi: bioRxiv preprint
+
+10 
+
+enrichment analysis of DEGs, including Gene Ontology (GO) and Kyoto Encyclopedia of Genes and Genomes 225 
+
+(KEGG) pathways analysis , was subsequently performed to determine the primary biological functions and 226 
+
+pathways regulated by MG53 overexpression . Results were visualized as bubble plots, in which bubble size 227 
+
+represents the number of enriched genes within each pathway and color intensity reflects the adjusted p-value 228 
+
+(Q-value ).229 
+
+Reverse Transcription Quantitative Real -Time PCR (RT -qPCR) 230 
+
+H460 cells were infected with rMeV -mCherry or rMeV -MG53 at MOIs of 1 .0 and 2.0 for 48 h ours . Total RNA from 231 
+
+cells and mouse tumor tissues was isolated using TRIzol re agent (Invitrogen , Cat. No. 15596026 ) according to 232 
+
+the manufactur er’s instructions . 1μg of total RNA was reverse -transcribed into cDNA using the Radiant ™ cDNA 233 
+
+Synthesis Kit, 1 -Step (Alkali Scientific, Cat . No. QC1155). RT -qPCR was performed using the Radiant ™ Green 234 
+
+qPCR Master Mix (Alkali Scientific, Cat No. QS1005) on a QuantStudio 3 Real -Time PCR System (Applied 235 
+
+Biosystems, Thermo Fisher Scientific) . Relative mRNA expression levels of IFNB1 , IL6 , and IL1B (in H460 cells) 236 
+
+and Cxcl 10 , Ifng , Tnf , and Il1b (in mouse tumors) were quantified using the 2 −ΔΔ Ct method and normalized to 237 
+
+GAPDH (human) or Actb (mouse) as reference genes . Primer sequences are listed in Table 1 .238 
+
+Gene  Species  Forward Primer (5′→3′)  Reverse Primer (5′→3′) 
+
+IFNB1  Human  ACGCCGCATTGACCATCTAT  GTCTCATTCCAGCCAGTGCTA 
+
+IL6  Human  GAGTAGTGAGGAACAAGCCAG  GTTGGGTCAGGGGTGGTTAT 
+
+IL1B  Human  CCTGAGCTCGCCAGTGAAAT  AAGCCCTTGCTGTAGTGGTG 
+
+GAPDH  Human  CCATGGGGAAGGTGAAGGTC  TGGAATTTGCCATGGGTGGA 
+
+Il1b  Mouse  GCCACCTTTTGACAGTGATGAG  TGATGTGCTGCTGCGAGATT 
+
+Ifng  Mouse  AGACAATCAGGCCATCAGCAA  CTCATTGAATGCTTGGCGCT 
+
+Cxcl10  Mouse  TGCCGTCATTTTCTGCCTCA  AGGCTCGCAGGGATGATTTC 
+
+Tnf  Mouse  ACTGAACTTCGGGGTGATCG  TGGTGGTTTGTGAGTGTGAGG 
+
+Actb  Mouse  AGAGGCATACAGGGACAGCA  CTAAGGCCAACCGTGAAAAGA 
+
+239 
+
+Syngeneic Tumor Models and In Vivo Treatment 240 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted July 21, 2026. ;https://doi.org/10.64898/2026.07.15.738733 doi: bioRxiv preprint
+
+11 
+
+All animal care and us e procedures were performed in accordance with NIH guidelines and approval by the 241 
+
+Institutional Animal Care and Use Committee (IACUC) of The Ohio State University. MG53 knockout (KO, MG53 -/-)242 
+
+mice and their wild type littermates were bred and generated as previously described (9) .243 
+
+To evaluat e the tumor -suppressive role of endogenous MG53 , C57BL/6 wild -type (WT) and MG53 -/- mice (8 -10 244 
+
+weeks old) were subcutaneously inoculated with 5 ×10 5 LL/2 cells into the right flank. Tumor volumes were measured 245 
+
+every other day using digital calipers and calculated using the standard formula: Tumor size = (length × width²) / 2. 246 
+
+On day 16 post -implantation, mice were humanely euthanized , and tumors were excised and weighed. 247 
+
+For the monotherapy efficacy cohort ( Figure 4F –I), LL/2 -hCD46 cells (5 × 10⁵ cells) were subcutaneously implanted 248 
+
+into the right flank of C57BL/6 WT mice. When tumors reached a palpable size on day 7 post -implantation , mice 249 
+
+were randomly divided into three groups (mock , rMeV -mCherry, and rMeV -MG53 ) and received intratumoral 250 
+
+injections of recombinant virus (1 × 10⁶ plaque -forming units [ PFU ] in 100 μL per dose) once daily on days 7–14 251 
+
+post -implantation; tumor growth was monitored to day 1 5. For the combination cohort ( Figure 6 ), performed 252 
+
+independently, established LL/2 -hCD46 tumors were randomly assigned to five groups —mock , anti -PD -L1, rMeV -253 
+
+mCherry, rMeV -MG53, and rMeV -MG53 plus anti -PD -L1 ( n =6-10 per group). Recombinant virus (1 × 10⁶ PFU in 254 
+
+100 μL per dose) and anti -PD -L1 antibody (clone 10F.9G2, Bio X Cell, Lebanon, NH, USA; 5 mg/kg) were co -255 
+
+administered intratumorally once daily on days 7–14 post -implantation. In both cohorts, tumor volume was 256 
+
+measured every other day with digital calipers and calculated as (length × width²)/2. 257 
+
+At the end of the experiment, all mice were euthanized . Tumors were excised and divided into two portions: one 258 
+
+was snap -frozen at −80°C for protein and RNA extraction, and the other was fixed in 4% paraformaldehyde for 24 259 
+
+hours and processed for paraffin embedding and sectioning. Major organs including heart, liver, spleen, lungs, 260 
+
+kidneys, and brain , were also collected, fixed in 4% paraformaldehyde for 24 hours , and subjected to hematoxylin 261 
+
+and eosin (H&E) staining to assess potential systemic toxicity. 262 
+
+Histological Staining and Immunohistochemistry (IHC) 263 
+
+Histology staining and immunohistochemistry (IHC) were performed as previously described (16) . Briefly, tissue 264 
+
+samples were fixed in 4% paraformaldehyde for 24 hours , dehydrated, embedded in paraffin, and sectioned at 265 
+
+5 μ m thickness . Prior to staining, all sections were deparaffinized in xylene and rehydrated through a graded 266 
+
+ethanol series. For histological evaluation, sections were routinely stained with H&E. For IHC staining, 267 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted July 21, 2026. ;https://doi.org/10.64898/2026.07.15.738733 doi: bioRxiv preprint
+
+12 
+
+rehydrated sections underwent heat -induced antigen retrieval in EDTA buffer (pH 9.0) for 20 minutes .268 
+
+Endogenous peroxidase activity was quenched with 3% H 2O2 for 10 min utes , followed by blocking with 5% BSA 269 
+
+in PBS for 1 h our at room temperature. Sections were then incubated overnight at 4°C with the following primary 270 
+
+antibodies (All from Cell Signaling Technology, 1:300 dilution) : anti -CD8 a (Cat . No. 98941S), anti -Ki67 ( Cat . No. 271 
+
+12202S), anti -Granzyme B (Cat No. 44153S), and anti -PD -L1 ( Cat . No. 80517S). After washing with PBST , slides 272 
+
+were incubated with the SignalStain® Boost IHC Detection Reagent (HRP, Rabbit; Cell Signaling Technology, 273 
+
+Cat . No. 8114 P) for 30 minutes at room temperature. Immunoreactivity was visualized using a DAB substrate kit 274 
+
+(Cell Signaling Technology , Cat. No. 8059S ), and nuclei were counterstained with hematoxylin. All H&E and IHC 275 
+
+slides were dehydrated, cleared in xylene, coverslip -mounted, and imaged using an Olympus BX43 upright 276 
+
+microscope. Quantitative analysis of the images was performed using ImageJ software (NIH, Bethesda, MD, 277 
+
+USA; version 1.54p ).278 
+
+Statistical Analysis 279 
+
+All data were analyzed using GraphPad Prism (version 1 0.0, GraphPad Software, La Jolla, CA, USA) and are 280 
+
+presented as mean ± standard deviation ( SD ). For comparisons between two groups, statistical significance was 281 
+
+determined using unpaired two -tailed Student’s t-test. For multiple group comparisons, one -way or two -way 282 
+
+ANOVA followed by Tu key’s multiple -comparison s post -hoc test or Dunnett's T3 post hoc test was applied as 283 
+
+appropriate . A p-value < 0.05 was considered sta tistically significant. Statis tical significance is denoted as *p <284 
+
+0.05 ; ** p < 0.01 ; *** p < 0.001 ; and **** p < 0.0001 ; ns, not significant .285 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted July 21, 2026. ;https://doi.org/10.64898/2026.07.15.738733 doi: bioRxiv preprint
+
+13 
+
+Results 286 
+
+Recovery and characterization of recombinant measles virus express ing full -length MG53 (rMeV -MG53) 287 
+
+MG53 (TRIM72) contains conserved RING, B -box, coiled -coil, and C -terminal PRY -SPRY domains ( Figure 1A ).288 
+
+MeV is a non -segmented negative -sense RNA virus encoding six genes in the order 3′ -Leader -N-P-M-F-H-L-289 
+
+Trailer 5′ ( Figure 1B ). First, we engineer ed MeV to express tumor -suppressive MG53 . We chose to insert MG53 290 
+
+gene into the junction between the P and M genes in MeV genome because foreign gene inserted at this position 291 
+
+achieved high protein expression without significantly disturbing virus replication (34, 37) . Briefly, the full -length 292 
+
+human MG53 coding sequence or mCherry gene was amplified by PCR and inserted into the junction between 293 
+
+P and M genes in the genome of the attenuated MeV Edmonston vaccine strain using a yeast -based 294 
+
+recombination system (38, 39) . Using reverse genetic system, recombinant MeV expressing MG53 or mCherry 295 
+
+was rescued from infectious cDNA clones, plaque purified, and designated rMeV -MG53 and rMeV -mCherry, 296 
+
+respectively. Subsequently, the entire genome of each recombinant virus was sequenced to confirm that it 297 
+
+contained the desired gene insertion, and no additional mutations had been introduced. Plaque assay showed 298 
+
+that plaque morphology formed by these two recombinant viruses was comparable to the parental wild -type virus 299 
+
+(MeV -WT) (Figure 1C ), suggesting that insertion of MG53 or mCherry does not significantly disturb virus spread. 300 
+
+To evaluate replication kinetics, Vero CCL -81 cells were infected with MeV -WT, rMeV -MG53, or rMeV -mCherry ,301 
+
+cytopathic effects (CPE) were monitored, and cell culture supernatant and lysate were collected for virus titration. 302 
+
+Similar to MeV -WT and rMeV -mCherry, rMeV -MG53 productively infected Vero CCL -81 cells, inducing 303 
+
+characteristic CPE including syncytia formation that expanded progressively at 24, 48, and 72 h post -infection 304 
+
+(Figure 1D ). Multi -step growth curves showed that all three viruses replicated to comparably high titers and 305 
+
+reached peak titers at 72 h post -infection ( Figure 1E ). Although rMeV -MG53 and rMeV -mCherry showed 306 
+
+modestly lower titers than MeV -WT at early time points (day 1, p < 0.05 and p < 0.01, respectively) and rMeV -307 
+
+MG53 a transient difference at day 3 ( p < 0.01), the three viruses converged to equivalent peak titers by 72 h, 308 
+
+with no significant differences at later time points (days 2 and 4; ns). These results indicate that insertion of 309 
+
+MG53 or mCherry causes at most a minor, transient kinetic lag without compromising overall replication 310 
+
+competence or peak viral yield. 311 
+
+To confirm MG53 protein expression, Vero CCL -81 cells were infected with MeV -WT, rMeV -MG53, or rMeV -312 
+
+mCherry, and MG53 protein was assessed by Western blot. Robust MG53 protein was detected in rMeV -MG53 –313 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted July 21, 2026. ;https://doi.org/10.64898/2026.07.15.738733 doi: bioRxiv preprint
+
+14 
+
+infected cells but not in the cells infected with rMeV -mCherry or MeV -WT ( Figure 1F ). These data demonstrate 314 
+
+that MG53 is highly expressed by MeV vector. 315 
+
+rMeV -MG53 induces significant cell death in NSCLC cells through activation of apoptosis and GSDME -316 
+
+mediated pyroptosis 317 
+
+We next evaluate d the oncolytic activity of rMeV -MG53 against human lung cancer cells . A panel of NSCLC cell 318 
+
+lines (A549, H460, H1299, and H1975) were infected with rMeV -mCherry or rMeV -MG53. Infection in the rMeV -319 
+
+mCherry group was tracked by mCherry fluorescence, whereas productive rMeV -MG53 infection was confirmed 320 
+
+by MG53 immunofluorescence together with the progression of CPE (syncytia formation) of MeV replication .321 
+
+Productive viral infection and replication were confirmed across all tested NSCLC cell lines, as evidenced by 322 
+
+widespread mCherry fluorescence signals detected as early as 24 hpi . Over the course of infection, mCherry 323 
+
+fluorescence intensity increased dramatically, culminating in extensive cell -cell fusion and syncytia formation 324 
+
+followed by massive cell death at 72 hpi — hallmarks of productive oncolytic MeV replication (Figure 2A ).325 
+
+Successful MG53 delivery was verified by immunofluorescence, which showed strong MG53 signals in rMeV -326 
+
+MG53 –infected cells (Figure 2B ), and by Western blotting confirming MG53 expression across all four lines 327 
+
+(Figure 2C ). Importantly, rMeV -MG53 reduced cell viability more effectively than the vector control (rMeV -328 
+
+mCherry) . While cell viability remained comparable at 24 hpi, the rMeV -MG53 virus showed significantly lower 329 
+
+viability than rMeV -mCherry in all four lines by 48 hpi (A549, p < 0.001; H460, p < 0.001; H1299, p < 0.01; H1975, 330 
+
+p < 0.001). This enhanced oncolytic activity persisted at 72 hpi in A549 ( p < 0.05) and H1975 ( p < 0.001), whereas 331 
+
+H460 and H1299 cells reached similarly low viability in both virus groups (Figure 2D ). In summary, MG53 arming 332 
+
+preserves MeV infectivity and enhances its oncolytic activity across a diverse panel of NSCLC cell lines .333 
+
+To delineate the mechanistic basis of this enhanced cytotoxicity, we examined the cell death modalities engaged 334 
+
+following infection. Phase -contrast microscopy revealed that rMeV -MG53 –infected NSCLC cells exhibited 335 
+
+prominent cellular swelling and large membrane ballooning at 48 and 72 hpi ( Figure 2A ), the cardinal 336 
+
+morphological hallmarks of pyroptosis that are distinct from classical apoptotic morphology (32) , suggesting that 337 
+
+rMeV -MG53 engages an inflammatory cell death program beyond conventional apoptosis. To characterize the 338 
+
+relative contributions of apoptosis and pyroptosis, we assessed key molecular markers of both pathways by 339 
+
+Western blot. rMeV -mCherry alone induced apoptosis, as evidenced by detectable cleavage of caspase -3, and 340 
+
+rMeV -MG53 infection further increased cleaved caspase -3 levels relative to rMeV -mCherry, indicating that MG53 341 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted July 21, 2026. ;https://doi.org/10.64898/2026.07.15.738733 doi: bioRxiv preprint
+
+15 
+
+expression amplifies apoptotic signaling during oncolytic MeV infection ( Figure 3A ). Concurrent assessment of 342 
+
+pyroptosis markers showed that both viruses induced cleavage of GSDME, generating the pore -forming N -343 
+
+terminal fragment (GSDME -N) . Importantly, GSDME -N was markedly elevated in rMeV -MG53 –infected NSCLC 344 
+
+cells relative to the rMeV -mCherry –infected controls ( Figure 3A ), indicating that MG53 potentiates the caspase -345 
+
+3/GSDME pyroptotic axis during oncolytic MeV infection. Together, these findings indicate that rMeV -MG53 346 
+
+simultaneously amplifies caspase -3–dependent apoptosis and GSDME -mediated pyroptosis, providing a347 
+
+coherent mechanistic basis for its enhanced cytotoxic activity over the rMeV -mCherry vector control and 348 
+
+supporting the caspase -3/GSDME axis as a key driver of rMeV -MG53 antitumor activity in lung cancer. 349 
+
+To pharmacologically define the death pathway engaged, we treated the infected NSCLC cells at 24 h pi with the 350 
+
+pan -caspase inhibitor Z -VAD -FMK, the necroptosis inhibitor necrostatin -1 (Nec -1), or the ferroptosis inhibitor 351 
+
+ferrostatin -1 (Fer -1), and assessed cell viability at 48 hpi. Only Z -VAD -FMK significantly rescued cell viability in 352 
+
+both rMeV -mCherry – and rMeV -MG53 –infected cells, while Nec -1 and Fer -1 had no appreciable effect s (Figure 353 
+
+3B ). These results pharmacologically confirm that rMeV -mCherry and rMeV -MG53 induce caspase -dependent 354 
+
+cell death as the dominant cytotoxic mechanism and exclude necroptosis and ferroptosis as significant 355 
+
+contributors to rMeV -MG53 –mediated tumor cell killing. 356 
+
+MG53 arming engages intrinsic inflammatory programs and amplifies antiviral cytokine output 357 
+
+To determine whether MG53 intrinsically modulates inflammatory signaling independent of viral infection, we 358 
+
+profiled the transcriptomes of A549 and H460 cells overexpressing MG53 alone. KEGG pathway enrichment 359 
+
+analysis revealed enrichment of immune and inflammatory networks in both cell lines, with TNF α, NF -κB, and 360 
+
+IL -17 signaling among the top -ranked pathways (Figure 3C and D ). Because this transcriptomic signature was 361 
+
+generated in the absence of virus infection , it reflects an MG53 -intrinsic effect rather than a virus infection -driven 362 
+
+response, indicating that MG53 is not transcriptionally inert but instead actively primes cells toward a pro -363 
+
+inflammatory state. 364 
+
+We next investigated whether this intrinsic property translates into amplified cytokine induction during active 365 
+
+infection. Briefly, cells were infected by rMeV -MG53 or rMeV -mCherry at MOI s of 1 .0 and 2 .0, cytokine s mRNA 366 
+
+expression w ere quantified by RT -qPCR. We observed that both recombinant viruses induced a high level of 367 
+
+expression of type I interferon ( IFNB1 ) and pro -inflammatory cytokines ( IL6 and IL1B ) compared to the mock -368 
+
+infected cells . Notably, rMeV -MG53 elicited a significantly more potent induction than rMeV -mCherry at an MOI 369 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted July 21, 2026. ;https://doi.org/10.64898/2026.07.15.738733 doi: bioRxiv preprint
+
+16 
+
+of 2.0 across all three cytokines (IFNB1 , p < 0.01; IL6 , p < 0.01; IL1B , p < 0.01). At an MOI of 1.0, IL6 induction 370 
+
+was also significantly higher in the rMeV -MG53 group ( p < 0.05), whereas differences for IFNB1 and IL1B were 371 
+
+not statistically significant (Figure 3E ). Collectively, these two independent lines of evidence — an MG53 -driven 372 
+
+inflammatory transcriptional signature and potentiated induction of antiviral and pro -inflammatory cytokines 373 
+
+during infection — demonstrate that MG53 arming reinforces the immunogenic profile of oncolytic MeV. 374 
+
+Intratumoral rMeV -MG53 enhances oncolytic virotherapy and inhibits tumorigenesis in an 375 
+
+immunocompetent lung cancer mouse model 376 
+
+Evaluating oncolytic MeV in vivo requires an immunocompetent, virus -permissive model, but murine cells lack 377 
+
+human CD46 (hCD46) , the entry receptor for MeV . As expected, murine lung cancer cell s LL/2 were resistant to 378 
+
+rMeV -mCherry infection, showing no fluorescent signal while maintaining normal cell morphology ( Figure 4A ). 379 
+
+To establish viral susceptibility , w e generated LL/2 cells by expressing hCD46 ( LL/2 -hCD46 ) using lentiviral 380 
+
+transduction with the hCD46 -T2A -GFP plasmid . Ectopic hCD46 expression was confirmed via immunoblotting 381 
+
+(Figure 4B ). Crucially, the resulting hCD46 -GFP ⁺ cells successfully supported viral entry and replication, as 382 
+
+evidenced by the robust co -localization of rMeV -mCherry fluorescence within hCD46 -GFP -expressing cells 383 
+
+(Figure 4C ). Thus, this engineered LL/2 -hCD46 line establishes a critical syngeneic, MeV -permissive platform 384 
+
+for evaluating MG53 -armed virotherapy within fully immunocompetent hosts. 385 
+
+Before testing therapeutic MG53 delivery, we asked whether endogenous MG53 limits tumor growth in our model. 386 
+
+We implanted LL/ 2 cells (5 × 10⁵ cells) into wild -type (WT) and MG53 -knockout (KO) mice. Tumors in MG53 -KO 387 
+
+mice grew significantly larger and heavier than those in WT mice (tumor weight and volume, both p < 0.05) 388 
+
+(Figure 4D and E ). This demonstrates that host MG53 possesses intrinsic tumor -suppressive properties in this 389 
+
+NSCLC model, providing a clear biological rationale for using an MG53 armed oncolytic virus to amplify 390 
+
+intratumoral MG53. Although this host -derived MG53 effect is mechanistically distinct from the virus -delivered 391 
+
+therapy tested below, both support the premise that increasing MG53 in TME suppresses tumorigenesis. 392 
+
+Next, we evaluated therapeutic efficacy in an independent animal cohort. Mice with established LL/2 -hCD46 393 
+
+tumors received daily intratumoral injections (1 × 10⁶ PFU in 100 μL per dose, days 7–14) and were monitored 394 
+
+until day 1 5 (Figure 4F). Both viruses effectively inhibited tumor growth compared to the mock group, but rMeV -395 
+
+MG53 yielded the most pronounced tumor suppression. Excised tumors were smallest in the rMeV -MG53 group 396 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted July 21, 2026. ;https://doi.org/10.64898/2026.07.15.738733 doi: bioRxiv preprint
+
+17 
+
+(Figure 4 F). Tumor -volume curves clearly diverged over time: mock tumors grew the fastest; rMeV -mCherry 397 
+
+showed intermediate growth ; and rMeV -MG53 grew the slowest ( Figure 4 G). Between -group differences were 398 
+
+highly significant ( mock vs. rMeV -mCherry, p < 0.05; mock vs. rMeV -MG53, p < 0.01; rMeV -mCherry vs. rMeV -399 
+
+MG53, p < 0.05), indicating that MG53 arming significantly enhances the intrinsic oncolytic capacity of the MeV 400 
+
+vector. Endpoint tumor weights mirrored these results, with rMeV -MG53 achieving the lowest tumor burden 401 
+
+(mock vs. rMeV -mCherry, p < 0.01; mock vs. rMeV -MG53, p < 0.001; rMeV -mCherry vs. rMeV -MG53, p < 0.05) 402 
+
+(Figure 4H ). 403 
+
+Finally, we assessed systemic tolerability by histologically examining major organs at the endpoint. H&E staining 404 
+
+of the heart, lungs, liver, kidneys, spleen, and brain showed no obvious treatment -related pathology in the virus -405 
+
+treated mice relative to the mock controls ( Figure 4I ), suggesting that intratumoral administration restricts virus -406 
+
+mediated effects largely to the tumor site without detectable systemic toxicity, although formal viral biodistribution 407 
+
+was not assessed. Overall, these findings indicate that MG53 -armed oncolytic MeV achieves greater local tumor 408 
+
+control with no apparent systemic toxicity, supporting its use in combination therapies. 409 
+
+rMeV -MG53 drives in vivo pyroptosis and remodels the tumor immune microenvironment 410 
+
+We next investigated whether the pyroptotic and immunogenic mechanisms defined in vitro operate within the 411 
+
+TME in vivo . Immunoblotting of LL/2 -hCD46 tumor lysates confirmed that MG53 was exclusively detected in the 412 
+
+rMeV -MG53 group. This group also exhibited the most pronounced caspase -3 cleavage and subsequent 413 
+
+GSDME -FL to GSDME -N conversion, followed by rMeV -mCherry, with the mock group showing basal levels 414 
+
+(Figure 5 A). Densitometric quantification confirmed that both GSDME -N and cleaved -caspase -3 (normalized to 415 
+
+GAPDH) were significantly elevated by either virus compared to mock (p < 0.0001), and were further potentiated 416 
+
+by MG53 arming relative to the parental rMeV -mCherry ( p < 0.01) ( Figure 5B ). These data establish that MG53 417 
+
+intrinsically amplifies caspase -3/GSDME -dependent pyroptosis within the solid tumor. 418 
+
+Consistent with this enhanced tumor -cell killing, Ki67 immunohistochemistry revealed a progressive decline in 419 
+
+proliferating cells from mock to rMeV -mCherry to rMeV -MG53, with the rMeV -MG53 group showing significantly 420 
+
+lower proliferation than both mock (p < 0.0001) and rMeV -mCherry ( p < 0.0 01) ( Figure 5C and D ). 421 
+
+Next, we performed RT -qPCR profiling of the tumor tissue to understand the cytokine transcripts . rMeV -MG53 422 
+
+induced the most potent upregulation of Cxcl 10 , Ifng , and Il1b . Specifically, Cxcl 10 and Ifng transcripts were 423 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted July 21, 2026. ;https://doi.org/10.64898/2026.07.15.738733 doi: bioRxiv preprint
+
+18 
+
+significantly elevated by rMeV -MG53 compared to both mock (Cxcl 10 : p < 0.001; Ifng : p < 0.001) and rMeV -424 
+
+mCherry ( Cxcl 10 : p < 0.05; Ifng : p < 0.001). While Il1b induction by rMeV -mCherry was not statistically significant 425 
+
+relative to mock , rMeV -MG53 drove a profound increase in Il1b over both mock (p < 0.001) and rMeV -mCherry 426 
+
+(p < 0.001). In contrast , TNF was significantly upregulated by both viruses ( p < 0.01 vs. mock ), but no difference 427 
+
+was observed between the two viral groups. This indicates that MG53 -mediated cytokine amplification is 428 
+
+selective —predominantly enhancing Cxcl 10 , Ifng , and Il1b —rather than representing a global transcriptional 429 
+
+surge ( Figure 5E ). 430 
+
+This pronounced chemokine and interferon signature suggested enhanced recruitment of cytotoxic lymphocytes, 431 
+
+which was subsequently verified via IHC. The density of CD8a ⁺ T cells and the Granzyme B -positive area 432 
+
+increased progressively across the mock , rMeV -mCherry, and rMeV -MG53 groups. rMeV -MG53 achieved the 433 
+
+highest infiltration metrics for both markers (CD8a: p < 0.05 for mock vs. rMeV -mCherry, p < 0.0001 for mock vs. 434 
+
+rMeV -MG53, p < 0.01 for rMeV -mCherry vs. rMeV -MG53; Granzyme B: p < 0.05, p < 0.0001, and p < 0.001, 435 
+
+respectively). These findings demonstrate that MG53 -armed virotherapy drives effector T -cell infiltration into the 436 
+
+tumor TME (Figure 5F and G ). 437 
+
+In parallel, we observed a compensatory upregulation of the PD -L1 immune checkpoint. Tumor PD -L1 protein 438 
+
+levels rose significantly following either viral treatment compared to mock (mock vs. rMeV -mCherry, p < 0.05; 439 
+
+mock vs. rMeV -MG53, p < 0.01 ) but did not differ between the two virus groups (Figure 5F and G ). Therefore, 440 
+
+PD -L1 upregulation represents a general adaptive response to oncolytic MeV infection rather than an MG53 -441 
+
+specific effect . Recognizing that this adaptive resistance could attenuate the T -cell response elicited by the MG53 442 
+
+armed virus, we reasoned that combining rMeV -MG53 with PD -L1 blockade might translate this immune 443 
+
+infiltration into improved tumor control. 444 
+
+rMeV -MG53 combined with anti -PD -L1 therapy improves outcomes in an immunocompetent lung cancer 445 
+
+model 446 
+
+To test this, tumor -bearing mice were divided into five groups : mock , anti -PD -L1 alone, rMeV -mCherry, rMeV -447 
+
+MG53, and rMeV -MG53 + anti -PD -L1. Recombinant virus (1 × 10⁶ PFU in 100 μL per dose) and anti -PD -L1 448 
+
+antibody were co -administered intratumorally daily from day 7 through day 14 (Figure 6A ). At endpoint, excised 449 
+
+tumors were smallest in the rMeV -MG53 + anti -PD -L1 group ( Figure 6A ). Tumor growth curves separated by 450 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted July 21, 2026. ;https://doi.org/10.64898/2026.07.15.738733 doi: bioRxiv preprint
+
+19 
+
+treatment intensity: Mock grew fastest; anti -PD -L1 and rMeV -mCherry produced only modest inhibition; rMeV -451 
+
+MG53 alone was more effective; and the combination achieved the strongest suppression ( Figure 6B ). This 452 
+
+combination was significantly superior to mock (p < 0.01 ) and to rMeV -mCherry ( p < 0.001 ), and showed a trend 453 
+
+toward greater suppression than rMeV -MG53 monotherapy although they did not reach statistical significance 454 
+
+(p = 0.059). Furthermore, rMeV -MG53 alone remained superior to rMeV -mCherry ( p < 0.05) ( Figure 6B ). The 455 
+
+final tumor weights validated the observed differences in growth kinetics. The combination therapy resulted in 456 
+
+the lowest overall tumor burden, significantly lighter than mock (p < 0.0001), anti -PD -L1 ( p < 0.01), rMeV -457 
+
+mCherry ( p < 0.0001), and rMeV -MG53 alone ( p < 0.01). rMeV -MG53 monotherapy was also significantly lighter 458 
+
+than mock (p < 0.0001) and rMeV -mCherry ( p < 0.05) ( Figure 6C ). As e xpected, anti -PD -L1 alone did not 459 
+
+significantly alter tumor weight compared to mock , reflecting the limited efficacy of checkpoint inhibitors as single 460 
+
+agents in this model .461 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted July 21, 2026. ;https://doi.org/10.64898/2026.07.15.738733 doi: bioRxiv preprint
+
+20 
+
+Discussion 462 
+
+In this study, we demonstrate that engineering oncolytic MeV with the tumor suppressor MG53 (rMeV -MG53) 463 
+
+enhances both direct cytotoxicity and antitumor immunity in NSCLC, converging on activation of the caspase -464 
+
+3/GSDME pyroptotic axis. rMeV -MG53 preserved the replication competence of the parental MeV vector while 465 
+
+significantly exceeding an unarmed control in killing NSCLC cells, amplified pro -inflammatory cytokine signaling 466 
+
+both intrinsically and during infection, drove robust effector T -cell infiltration in vivo , and sensitized tumors to PD -467 
+
+L1 blockade. Together, these findings establish MG53 as a mechanistically distinct and therapeutically attractive 468 
+
+payload for oncolytic virus engineering for the treatment of lung cancer. 469 
+
+The attenuated MeV Edmonston vaccine strain has been extensively investigated as an oncolytic platform across 470 
+
+multiple cancer types, with favorable safety profiles documented in early -phase clinical trials (25, 29, 30, 40) . The 471 
+
+tractable MeV reverse genetics system enables insertion of therapeutic transgenes as additional transcription 472 
+
+units, a strategy that has been exploited to arm MeV with a range of immunomodulatory payloads including GM -473 
+
+CSF, IL -12, anti -PD -L1 antibody fragments, and sodium iodide symporter (25, 30, 40) . To our knowledge, this is 474 
+
+the first study to employ MG53 as a therapeutic transgene in an oncolytic virus platform, thereby expanding the 475 
+
+repertoire of therapeutic payloads available for armed oncolytic virotherapy. MeV infects cells using 476 
+
+CD150/SLAM, nectin -4, and the complement regulator CD46, the last of which is commonly overexpressed on 477 
+
+the surface of tumor cells as a mechanism to evade complement -mediated lysis (29, 41) . However, the murine 478 
+
+orthologs of these receptors do not support efficient MeV entry, precluding viral replication in murine tumor cells. 479 
+
+To circumvent receptor restriction barriers, we engineered murine cells with stable expression of hCD46, 480 
+
+establishing a syngeneic, MeV -permissive model that —unlike immunodeficient xenografts —permits 481 
+
+comprehensive assessment of virus -induced immune responses and their interaction with checkpoint blockade 482 
+
+in an immunocompetent host. Importantly, the viral delivery strategy employed here directly addresses a critical 483 
+
+pharmacokinetic limitation of systemically administered recombinant MG53 protein, which exhibits a circulating 484 
+
+half -life of approximately 1.5 h in preclinical models (10, 14) . By encoding MG53 within the replicating viral 485 
+
+genome, rMeV -MG53 achieves continuous, tumor -localized MG53 production throughout the course of viral 486 
+
+replication, enabling sustained intratumoral MG53 exposure that is fundamentally unattainable through 487 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted July 21, 2026. ;https://doi.org/10.64898/2026.07.15.738733 doi: bioRxiv preprint
+
+21 
+
+conventional protein -based delivery. This pharmacokinetic rationale represents a key translational advantage of 488 
+
+the rMeV -MG53 platform over direct rhMG53 administration. 489 
+
+A central finding of this work is that MG53 potentiates GSDME -mediated pyroptosis rather than simply 490 
+
+augmenting apoptosis. While oncolytic viruses, including MeV, have long been appreciated for their capacity to 491 
+
+induce immunogenic cell death through multiple pathways (42) , the specific contribution of gasdermin -mediated 492 
+
+pyroptosis to oncolytic virotherapy efficacy has only recently gained attention (31, 43) . Our data show that rMeV -493 
+
+mCherry alone was sufficient to induce detectable caspase -3 activation and GSDME cleavage, consistent with 494 
+
+reports that MeV infection engages apoptotic and pyroptotic machinery as part of its native cytopathic 495 
+
+program (31, 43) . However, MG53 arming substantially amplified this response, suggesting that MG53 acts 496 
+
+upstream or in parallel with viral -intrinsic death signaling to lower the threshold for pyroptotic execution. Critically, 497 
+
+the pan -caspase inhibitor Z -VAD -FMK, but not the necroptosis inhibitor Necrostatin -1 or the ferroptosis inhibitor 498 
+
+Ferrostatin -1, rescued cell viability following rMeV -MG53 infection, supporting a model in which caspase -3499 
+
+serves as the convergence point for both apoptotic and pyroptotic death following infection, consistent with 500 
+
+established GSDME biology in which caspase -3 cleavage acts as a switch between non -lytic apoptosis and lytic 501 
+
+pyroptosis depending on GSDME expression level (32, 33) . The mechanism by which MG53 potentiates this axis 502 
+
+remains to be fully defined; given MG53's known functions as an E3 ubiquitin ligase and membrane -associated 503 
+
+protein (9, 22) . It is plausible that MG53 modulates GSDME stability, caspase -3 activity, or membrane dynamics 504 
+
+required for pore formation, and this represents an important direction for future mechanistic study. 505 
+
+A second key finding is that MG53 is not merely a cytotoxic payload but an intrinsically immunomodulatory one. 506 
+
+Transcriptomic profiling of MG53 -overexpressing cells in the absence of virus revealed enrichment of TNF, NF -507 
+
+κB, and IL -17 signaling, indicating that MG53 primes a pro -inflammatory cellular state independent of infection. 508 
+
+This intrinsic property translated into amplified type I interferon and pro -inflammatory cytokine induction during 509 
+
+active infection in vitro , and into a more selective but pronounced chemokine and cytokine signature in vivo , with 510 
+
+rMeV -MG53 preferentially upregulating Cxcl10, Ifng, and Il1b without a global, non -specific transcriptional surge. 511 
+
+CXCL10 in particular is a well -established chemoattractant for CXCR3 ⁺ effector T cells (44) , and its selective 512 
+
+induction likely contributes mechanistically to the enhanced CD8 ⁺ T-cell and Granzyme B ⁺ infiltration we 513 
+
+observed in rMeV -MG53 –treated tumors. Our RT -qPCR data, which demonstrate marked upregulation of pro -514 
+
+inflammatory cytokines ( IFNB1 , IL6 , CXCL10 , IFNG , TNF , and IL1B ) in rMeV -MG53 –infected cells and tumors, 515 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted July 21, 2026. ;https://doi.org/10.64898/2026.07.15.738733 doi: bioRxiv preprint
+
+22 
+
+provide direct molecular evidence of this TME reprogramming. Together with the pyroptosis data, these findings 516 
+
+support a model in which MG53 arming engages two complementary, mutually reinforcing mechanisms —lytic, 517 
+
+DAMP -releasing pyroptotic cell death and chemokine -driven lymphocyte recruitment —to convert tumors from an 518 
+
+immunologically quiescent state toward one more conducive to checkpoint immunotherapy. 519 
+
+The superior antitumor activity observed with rMeV -MG53 plus anti -PD -L1 combination therapy in the 520 
+
+immunocompetent LL/2 -hCD46 syngeneic model, provides compelling in vivo validation that pyroptosis -driven 521 
+
+TME reprogramming sensitizes lung tumors to immune checkpoint blockade. These findings are consistent with 522 
+
+accumulating evidence that OV -induced immunogenic cell death synergizes with ICI across multiple cancer 523 
+
+types (40) , and position rMeV -MG53 as a particularly potent immunogenic cell death -inducing OV platform due 524 
+
+to the dual apoptosis/pyroptosis mechanism of tumor cell killing. By converting an immunologically excluded 525 
+
+tumor into an inflamed, T cell -infiltrated one, rMeV -MG53 creates a favorable context for anti -PD -L1 therapy to 526 
+
+exert its full activity. 527 
+
+This immune remodeling, however, was accompanied by compensatory PD -L1 upregulation following viral 528 
+
+treatment, consistent with the well -described phenomenon of adaptive immune resistance, whereby interferon -529 
+
+driven T -cell infiltration triggers PD -L1 induction as a tumor -intrinsic feedback mechanism (45) . Notably, PD -L1 530 
+
+upregulation did not differ between rMeV -mCherry and rMeV -MG53 groups despite their markedly different 531 
+
+degrees of T -cell infiltration, suggesting that PD -L1 induction in this model may be driven largely by general 532 
+
+interferon signaling associated with viral infection rather than scaling proportionally with the magnitude of 533 
+
+immune infiltration. This finding reinforces the rationale for combining rMeV -MG53 with PD -L1 blockade, as it 534 
+
+indicates that even modest oncolytic -virus -induced interferon signaling can establish an adaptive resistance 535 
+
+checkpoint that single -agent virotherapy alone is unlikely to overcome. Indeed, the combination of rMeV -MG53 536 
+
+with anti -PD -L1 antibody achieved the strongest tumor control among all treatment groups, while anti -PD -L1 537 
+
+monotherapy showed minimal efficacy —consistent with the limited single -agent activity of checkpoint inhibitors 538 
+
+in poorly infiltrated NSCLC and underscoring the value of oncolytic priming to unlock checkpoint blockade 539 
+
+responsiveness (46) .540 
+
+MG53's E3 ubiquitin ligase activity has been shown to suppress tumor growth through ubiquitination -dependent 541 
+
+degradation of multiple oncogenic substrates, including G3BP2, RAC1, and cyclin D1 across diverse cancer 542 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted July 21, 2026. ;https://doi.org/10.64898/2026.07.15.738733 doi: bioRxiv preprint
+
+23 
+
+types including NSCLC, hepatocellular carcinoma, and colorectal cancer (20, 22, 47) . In the context of rMeV -543 
+
+MG53, intratumoral MG53 expression is anticipated to simultaneously suppress oncogenic signaling pathways, 544 
+
+enhance apoptotic sensitivity, and amplify the caspase -3/GSDME pyroptotic axis — a multifaceted antitumor 545 
+
+activity that is mechanistically complementary to, and synergistic with, MeV -mediated direct oncolysis. The 546 
+
+observation that rMeV -MG53 consistently outperforms parental rMeV in cytotoxicity assays across multiple 547 
+
+NSCLC cell lines supports the conclusion that MG53 transgene expression provides meaningful additive 548 
+
+antitumor activity beyond viral oncolysis alone. 549 
+
+Several limitations of this study merit mention: First, as MeV is a primate -adapted pathogen with limited 550 
+
+replication in immunocompetent rodents, the LL/2 syngeneic model used here does not fully recapitulate human 551 
+
+MeV replication kinetics and spread. This is a well -recognized challenge in the preclinical development of 552 
+
+oncolytic MeV and argues for future validation in hCD46 -transgenic mouse models or non -human primate 553 
+
+systems that better approximate MeV biology in humans (48) . Alternatively, a comparative medicine approach 554 
+
+using canine pulmonary adenocarcinoma could be considered. Canine pulmonary adenocarcinoma has been 555 
+
+proposed as a model for NSCLC (49) . Studies have also demonstrated that MeV lacking its binding affinity for 556 
+
+SLAM has an antitumor effect on canine lung cancer cell line (50) . Translation of our work to canine pulmonary 557 
+
+adenocarcinoma may facilitate investigation in an immunocompetent spontaneous disease model that may more 558 
+
+accurately reflect NSCLC. Second, while our data demonstrate GSDME -N generation and morphological 559 
+
+features of pyroptosis in vitro , direct quantification of pyroptosis -associated DAMP release - including HMGB1, 560 
+
+ATP, and IL -1β —and genetic validation using GSDME -deficient cells would further strengthen the mechanistic 561 
+
+link between GSDME -mediated pyroptosis and the enhanced antitumor activity of rMeV -MG53. In addition, 562 
+
+although increased CD8 ⁺ T-cell infiltration and granzyme B expression support enhanced antitumor immunity, 563 
+
+comprehensive profiling of the tumor immune microenvironment, including macrophages, NK cells, dendritic 564 
+
+cells, regulatory T cells, and myeloid -derived suppressor cells in tumors following rMeV -MG53 treatment in vivo 565 
+
+would further strengthen the mechanistic link between pyroptotic cell death and the observed anti -PD -L1 synergy. 566 
+
+These analyses represent important objectives for future studies. Third, the potential contribution of MG53 -567 
+
+mediated E3 ligase activity to the enhanced caspase -3/GSDME signaling observed requires further mechanistic 568 
+
+dissection, including assessment of key MG53 ubiquitination substrates in the context of viral infection. Finally, 569 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted July 21, 2026. ;https://doi.org/10.64898/2026.07.15.738733 doi: bioRxiv preprint
+
+24 
+
+the optimal dosing regimen, scheduling, and route of administration for rMeV -MG53 and anti -PD -L1 combination 570 
+
+therapy will require systematic optimization in future preclinical studies prior to clinical translation. 571 
+
+Based on our collective findings, we propose the following working model ( Figure 6D ). Upon intratumoral delivery, 572 
+
+rMeV -MG53 infects NSCLC cells via hCD46 or other related receptors, achieving sustained MG53 expression 573 
+
+through viral replication. Virus -delivered MG53 amplifies caspase -3 cleavage, triggering dual apoptosis and 574 
+
+GSDME -mediated pyroptosis, driving release of TNF -α, IL -6, IL -1β, and IFN -β and converting an 575 
+
+immunologically “cold” TME into an immune -infiltrated “hot” TME. CXCL10 induction recruits CD8 ⁺ effector T 576 
+
+cells, which exert cytotoxicity via Granzyme B and IFN -γ. However, this immune activation simultaneously 577 
+
+induces compensatory PD -L1 upregulation on tumor cells, establishing an adaptive resistance checkpoint that 578 
+
+constrains single -agent virotherapy efficacy. Combining rMeV -MG53 with anti -PD -L1 blockade relieves this 579 
+
+checkpoint, fully unleashing infiltrating CD8 ⁺ T-cell cytotoxicity and achieving the strongest antitumor control 580 
+
+observed across all treatment conditions. This working model positions rMeV -MG53 + anti -PD -L1 as a 581 
+
+mechanistically rational combination strategy to sensitize immune -excluded NSCLC to checkpoint 582 
+
+immunotherapy. 583 
+
+In conclusion, this study establishes MG53 as a rationally designed payload for oncolytic MeV that 584 
+
+simultaneously enhances direct tumor cytotoxicity through GSDME -mediated pyroptosis and remodels the tumor 585 
+
+immune microenvironment to favor effector T -cell infiltration. By coupling this dual mechanism with PD -L1 586 
+
+blockade, rMeV -MG53 achieved superior tumor control in an immunocompetent NSCLC model, offering a 587 
+
+promising combinatorial strategy to sensitize immunologically cold or checkpoint -resistant lung tumors to 588 
+
+immunotherapy. These findings provide a strong mechanistic and preclinical foundation for the further 589 
+
+development of rMeV -MG53 as a novel therapeutic strategy for lung cancer. 590 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted July 21, 2026. ;https://doi.org/10.64898/2026.07.15.738733 doi: bioRxiv preprint
+
+25 
+
+Figure 1 591 
+
+592 
+
+Figure 1. Recovery and characterization of rMeV -MG53, an MG53 -armed recombinant oncolytic measles 593 
+
+virus. 594 
+
+(A)  Schematic representation of the human MG53 (TRIM72) protein domain structure , showing the RING, B -595 
+
+box, Coiled -Coil, PRY, and SPRY domains. (B) Genome organization of MeV Edmonston vaccine strain. The 596 
+
+MG53 or mCherry transcription unit was inserted into the junction between the phosphoprotein (P) and matrix 597 
+
+(M) genes in MeV genome to generate rMeV -MG53 and rMeV -mCherry, respectively. (C) Representative 598 
+
+plaque morphology of MeV -WT, rMeV -MG53, and rMeV -mCherry in Vero CCL -81 cells. Plaques were 599 
+
+developed at day 4 after virus infection and visualized by crystal violet staining . (D) Representative bright -field 600 
+
+and fluorescence images showing CPE induced by MeV -WT, rMeV -MG53, and rMeV -mCherry in Vero CCL -81 601 
+
+cells at 24, 48, and 72 h post -infection (hpi). mCherry fluorescence confirms transgene expression from the 602 
+
+recombinant virus. Scale bar, 100 μm. (E) Multi -step growth kinetics of MeV -WT, rMeV -MG53, and rMeV -603 
+
+mCherry in Vero CCL -81 cells. Cells were infected at an MOI of 0.1, and viral titers (log ₁₀ PFU/mL) were 604 
+
+determined by plaque assay. Data are presented as mean ± SD from three independent experiments. 605 
+
+Statistical significance was determined by two -way ANOVA with Geisser –Greenhouse correction followed by 606 
+
+Tukey's multiple -comparisons test. Red asterisks indicate comparisons between rMeV -MG53 and MeV -WT, 607 
+
+blue asterisks indicate comparisons between rMeV -mCherry and MeV -WT. * p < 0.05, ** p < 0.01; ns, not 608 
+
+significant. (F) Immunoblot analysis confirming MG53 expression . Vero CCL -81 cells were infected with rMeV -609 
+
+MG53, rMeV -mCherry, or MeV -WT at an MOI of 1 .0 , and cell lysates were collected at 48 and 72 hpi for 610 
+
+Western blot . β-actin served as a loading control 611 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted July 21, 2026. ;https://doi.org/10.64898/2026.07.15.738733 doi: bioRxiv preprint
+
+26 
+
+Figure 2 612 
+
+613 
+
+Figure 2. rMeV -MG53 productively infects NSCLC cells and delivers functional MG53 to enhance 614 
+
+oncolytic cytotoxicity .615 
+
+(A) Representative bright -field and fluorescence images of A549, H460, H1299, and H1975 cells mock -treated 616 
+
+or infected with rMeV -mCherry or rMeV -MG53 at a n MOI of 1 .0 , acquired at 24, 48, and 72 h post -infection (hpi). 617 
+
+mCherry fluorescence was used to monitor viral infection and replication . Scale bar, 50 μm. (B) 618 
+
+Immunofluorescence staining of MG53 (green) in A549 cells infected with rMeV -mCherry or rMeV -MG53 at 24 619 
+
+hpi . Nuclei were counterstained with DAPI (blue). Scale bar, 50 μm. (C) Immunoblot analysis of MG53 protein 620 
+
+expression in A549, H460, H1299, and H1975 cells infected with rMeV -mCherry or rMeV -MG53 at 24 hpi .621 
+
+GAPDH served as a loading control. (D) Cell viability of A549, H460, H1299, and H1975 cells following infection 622 
+
+with rMeV -mCherry or rMeV -MG53 at the indicated time points. Cell viability was measured using the CCK -8623 
+
+assay and normalized to mock -infect ed controls. Data are presented as mean ± SD (n=4 per group) . Statistical 624 
+
+significance was determined by two -tailed unpaired Student’s t-test comparing the rMeV -MG53 and rMeV -625 
+
+mCherry groups at each time point. *p < 0.05 ; **p < 0.01 ; ** *p < 0.001; ns, not significant. 626 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted July 21, 2026. ;https://doi.org/10.64898/2026.07.15.738733 doi: bioRxiv preprint
+
+27 
+
+Figure 3 627 
+
+628 
+
+Figure 3. rMeV -MG53 potentiates caspase -3/GSDME -mediated pyroptosis and pro -inflammatory cytokine 629 
+
+induction in NSCLC cells .630 
+
+(A) Immunoblot analysis of MG53 expression and pyroptosis -related proteins in H1299, H460, and H1975 cells 631 
+
+infected with rMeV -mCherry or rMeV -MG53 at the indicated MOI for 48 h pi . Full -length GSDME (GSDME -FL), 632 
+
+the cleaved GSDME N -terminal fragment (GSDME -N), and cleaved caspase -3 (Cleaved -Cas p3) were examined. 633 
+
+GAPDH served as a loading control. (B) Cell viability of H1299, H460, and H1975 cells infected with rMeV -634 
+
+mCherry or rMeV -MG53 in the presence of DMSO (vehicle control) , Z -VAD -FMK ( Z-VAD, pan -caspase inhibitor ), 635 
+
+necrostatin -1 (Nec -1, necroptosis inhibitor ), or ferrostatin -1 (Fer -1, ferroptosis inhibitor ) at 48h pi . Data are 636 
+
+presented as mean ± SD (n=3 per group) . *** p < 0.001. (C, D) KEGG pathway enrichment analysis of 637 
+
+differentially expressed genes identified by RNA sequencing in MG53 -overexpressing H460 (C) and A549 (D) 638 
+
+cells in the absence of vir al infection . Selected immune - and inflammation -related pathways are highlighted in 639 
+
+red. Bubble size represents the number of enriched gene s; and bubble color indicates adjusted P value (Q value). 640 
+
+(E) RT -qPCR analysis of IFNB1 , IL6 , and IL1B mRNA expression in H460 cells infected with rMeV -mCherry or 641 
+
+rMeV -MG53 at the indicated MOIs for 48 h pi . Gene expression levels were normalized to the internal reference 642 
+
+gene (GAPDH ) and expressed as fold change relative to the mock -infected controls. Data are presented as 643 
+
+mean ± SD (n=3 per group) . Statistical significance was determined by two -tailed unpaired Student’s t-test 644 
+
+comparing rMeV -MG53 and rMeV -mCherry groups at each MOI. * p < 0.05 ; ** p < 0.01; ns, not significant. 645 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted July 21, 2026. ;https://doi.org/10.64898/2026.07.15.738733 doi: bioRxiv preprint
+
+28 
+
+Figure 4 646 
+
+647 
+
+Figure 4. Host MG53 suppresses tumorigenesis and rMeV -MG53 achieves superior tumor control in a648 
+
+MeV -permissive syngeneic NSCLC model. 649 
+
+(A) Representative bright -field and fluorescence images of parental LL/2 cells following infection with rMeV -650 
+
+mCherry . No mCherry was detected at 72hpi , demonstrating resistance to MeV infection. Scale bar, 50 μm. (B) 651 
+
+Immunoblot analysis confirming stable expression of hCD46 in LL/2 cells transduced with a hCD46 expression al 652 
+
+lentiviral vector. GAPDH served as a loading control. (C) Representative bright -field, hCD46 -GFP fluorescence, 653 
+
+rMeV -mCherry fluorescence, and merged images of LL/2 -hCD46 cells following viral infection. Co -localization of 654 
+
+mCherry signal with hCD46 -GFP -positive cells confirmed efficient MeV entry and replication in hCD46 -655 
+
+expressing cells. Scale bar, 50 μm. (D, E) LL/2 cells (5 × 10⁵ cells per mouse) were subcutaneously implanted 656 
+
+into wild -type (WT) or MG53 -knockout (MG53 KO) mice. Representative excised tumors at endpoint (D) and 657 
+
+quantification of tumor weight and volume (E) are shown. Data are presented as mean ± SD (n = 6 mice per 658 
+
+group ). Statistical significance was determined by unpaired two -tailed Student's t-test . *p < 0.05. (F –H) 659 
+
+Therapeutic efficacy of rMeV -MG53 in the LL/2 -hCD46 syngeneic tumor model. Mice bearing established LL/2 -660 
+
+hCD46 tumors received intratumoral injections of mock, rMeV -mCherry or rMeV -MG53 (1 × 10⁶ PFU per dose ,661 
+
+daily from day 7 through day 14 post tumor implantation ). Representative excised tumors at endpoint (day 15 )662 
+
+(F) , tumor growth curves (G), and tumor weights (H) are shown. (I) Representative H&E stainings of heart, lung, 663 
+
+liver, kidney, spleen, and brain from virus -treated and mock -treated mice at endpoint , assessing systemic toxicity .664 
+
+Scale bar, 40 μm. Data are presented as mean ± SD (Mock, n = 6; rMeV -MG53, n = 6; rMeV -mCherry, n = 5. ).665 
+
+Tumor growth curves were analyzed by two -way repeated -measures ANOVA (treatment × time) with Geisser –666 
+
+Greenhouse correction and Tukey's multiple -comparisons test. Endpoint tumor weight was analyzed by Brown –667 
+
+Forsythe and Welch ANOVA with Dunnett's T3 post hoc test. *p < 0.05 ; ** p < 0.01 ; *** p < 0.001 .668 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted July 21, 2026. ;https://doi.org/10.64898/2026.07.15.738733 doi: bioRxiv preprint
+
+29 
+
+Figure 5669 
+
+670 
+
+Figure 5. rMeV -MG53 drives in vivo pyroptosis, suppresses tumor proliferation, and remodels the tumor 671 
+
+immune microenvironment. 672 
+
+(A) Immunoblot analysis of MG53, GSDME -FL, GSDME -N, and cleaved caspase -3 in LL/2 -hCD46 tumor lysates 673 
+
+from mice treated with mock , rMeV -mCherry, or rMeV -MG53. GAPDH served as a loading control. (B) 674 
+
+Densitometric quantification of GSDME -N and cleaved caspase -3 protein levels normalized to GAPDH , Data are 675 
+
+presented as mean ± SD ( n=3 per group ). Representative H&E and Ki67 immunohistochemical staining of LL/2 -676 
+
+hCD46 tumors from mock , rMeV -mCherry, and rMeV -MG53 groups (C) , with corresponding quantification of the 677 
+
+percentage of Ki67 ⁺ cells (D). Scale bar, 40 μm (n=5 per group ). (E) RT -qPCR analysis of Cxcl 10 , Ifng , Il1b , and 678 
+
+Tnf expression in tumor tissues from the indicated treatment groups. Gene expression levels were normalized 679 
+
+to the internal reference gene Actb and expressed as fold change relative to the mock group. Data are presented 680 
+
+as mean ± SD ( n=4 per group) . (F) Representative immunohistochemi cal staining of CD8a, Granzyme B, and 681 
+
+PD -L1. Scale bar, 40 μm. (G) Quantification of CD8a ⁺ T-cells density per field (cells per field) , Granzyme B –682 
+
+positive area (%), and relative PD -L1 expression level (A.U.) in tumors from the indicated treatment groups . Data 683 
+
+are presented as mean ± SD (n=5 per group) . Statistical significance was determined by one -way ANOVA 684 
+
+followed by Tukey’s multiple -comparison s test. *p < 0.05 ; ** p < 0.01 ; *** p < 0.001 ; **** p < 0.0001 .685 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted July 21, 2026. ;https://doi.org/10.64898/2026.07.15.738733 doi: bioRxiv preprint
+
+30 
+
+Figure 6 686 
+
+687 
+
+688 
+
+Figure 6. rMeV -MG53 combined with anti -PD -L1 blockade achieves superior tumor suppression in an 689 
+
+immunocompetent syngeneic NSCLC model .690 
+
+(A) Treatment schematic and representative excised tumors from the five treatment groups cohort. Mice bearing 691 
+
+LL/2 -hCD46 tumors were treated with daily intratumoral viral injections (1 × 10⁶ PFU in 100 μL per dose ) from 692 
+
+days 7 through 14, with anti -PD -L1 antibody co -administered intratumorally in the combination group. (B) 693 
+
+Longitudinal tumor volume growth curves for all five treatment groups . (C) Endpoint tumor weight s presented as 694 
+
+violin plots. Data are presented as mean ± S D (n = 6 for anti -PD -L1 group ; n = 10 for all other groups). Tumor 695 
+
+growth curves were analyzed by two -way repeated -measures ANOVA with Geisser –Greenhouse correction and 696 
+
+Tukey's multiple -comparisons test . Endpoint tumor weight was analyzed by Brown –Forsythe and Welch ANOVA 697 
+
+with Dunnett's T3 post hoc test . *p < 0.05 ; ** p < 0.01 ; *** p < 0.001 ; **** p < 0.0001; ns, not significant. (D) Working 698 
+
+model of rMeV -MG53 antitumor mechanism and synergy with PD -L1 blockade in NSCLC . rMeV -MG53 infects 699 
+
+NSCLC cells via hCD46, driving viral replication and sustained MG53 expression. MG53 amplifies caspase -3700 
+
+cleavage, triggering dual activation of apoptosis and GSDME -N–mediated pyroptosis, releasing pro -701 
+
+inflammatory mediators -including TNF -α, IL -6, IL -1β, IFN -β- that convert an immunologically cold TME into an 702 
+
+immune -infiltrated hot TME. This drives CXCL10 -mediated CD8 ⁺ T-cell recruitment and Granzyme B/IFN -γ–703 
+
+dependent cytotoxic tumor killing. Compensatory PD -L1 upregulation limits single -agent efficacy; combining 704 
+
+rMeV -MG53 with anti -PD -L1 antibody relieves this adaptive checkpoint, unleashing full CD8 ⁺ T-cell cytotoxicity 705 
+
+and enhanced antitumor control. 706 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted July 21, 2026. ;https://doi.org/10.64898/2026.07.15.738733 doi: bioRxiv preprint
+
+31 
+
+Acknowledgements 707 
+
+This research project has been supported by the American Lung Association Innovation Award (IA -1613730); 708 
+
+The Ohio State University Comprehensive Cancer Center Startup Fund, Internal funds from the Ohio State 709 
+
+University: Infectious Diseases Institute (IDI) Interdisciplinary Seed Fund, and Integrated Oncology Fund to H.L. 710 
+
+This research is also partially supported by an NIH/NIAID award (1R01AI183671 -01A1) and an NIH/NCI award 711 
+
+(5U01CA294881) to J. L. This study used the Shared Resources and Core Facilities at The Ohio State University 712 
+
+Comprehensive Cancer Center for Microscopy, Flow Cytometry, and Pathology and Imaging that are supported 713 
+
+in part by the NIH CCSG P30 grant (P30CA016058). 714 
+
+715 
+
+Author contributions 716 
+
+H.L., J. L., and Z. L. designed the studies. Z.L., C.H., F.J., M.B., U.L., S.L., S. Z., P.L., H. P., and X. L. conducted 717 
+
+experiments and data analysis. Z.L., J.L., and H.L. prepared and revised the manuscript. All authors have read 718 
+
+and agreed to the published version of the manuscript. 719 
+
+720 
+
+Data Availability 721 
+
+The datasets for this study are available from the corresponding author on reasonable requests. 722 
+
+723 
+
+Conflicts of Interest 724 
+
+All authors have declared that no conflict of interest exists. 725 
+
+726 
+
+Artificial Intelligence Tools Use Statement: The authors utilized Claude (Anthropic, San Francisco, CA, USA), 727 
+
+a large language model AI assistant, to assist with grammar checking, proofreading, and language editing of this 728 
+
+manuscript. All scientific content, data, interpretation, and conclusions were generated and verified solely by the 729 
+
+authors. 730 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted July 21, 2026. ;https://doi.org/10.64898/2026.07.15.738733 doi: bioRxiv preprint
+
+32 
+
+References 731 
+
+1. F. Bray et al. , Global cancer statistics 2022: GLOBOCAN estimates of incidence and mortality 732 
+
+worldwide for 36 cancers in 185 countries. CA Cancer J Clin 74 , 229 -263 (2024). 733 
+
+2. C. Li et al. , Global burden and trends of lung cancer incidence and mortality. Chin Med J (Engl) 136 ,734 
+
+1583 -1590 (2023). 735 
+
+3. R. L. Siegel, T. B. Kratzer, N. S. Wagle, H. Sung, A. Jemal, Cancer statistics, 2026. CA: a cancer journal 736 
+
+for clinicians 76 , e70043 (2026). 737 
+
+4. J. Brahmer et al. , Nivolumab versus Docetaxel in Advanced Squamous -Cell Non -Small -Cell Lung 738 
+
+Cancer. The New England journal of medicine 373 , 123 -135 (2015). 739 
+
+5. H. Borghaei et al. , Nivolumab versus Docetaxel in Advanced Nonsquamous Non -Small -Cell Lung 740 
+
+Cancer. The New England journal of medicine 373 , 1627 -1639 (2015). 741 
+
+6. J. Y. Sun et al. , Resistance to PD -1/PD -L1 blockade cancer immunotherapy: mechanisms, predictive 742 
+
+factors, and future perspectives. Biomark Res 8, 35 (2020). 743 
+
+7. J. M. Pitt et al. , Resistance Mechanisms to Immune -Checkpoint Blockade in Cancer: Tumor -744 
+
+Intrinsic and -Extrinsic Factors. Immunity 44 , 1255 -1269 (2016). 745 
+
+8. J. S. O'Donnell, G. V. Long, R. A. Scolyer, M. W. Teng, M. J. Smyth, Resistance to PD1/PDL1 746 
+
+checkpoint inhibition. Cancer Treat Rev 52 , 71 -81 (2017). 747 
+
+9. C. Cai et al. , MG53 nucleates assembly of cell membrane repair machinery. Nat Cell Biol 11 , 56 -64 748 
+
+(2009). 749 
+
+10. N. Weisleder et al. , Recombinant MG53 protein modulates therapeutic cell membrane repair in 750 
+
+treatment of muscular dystrophy. Sci Transl Med 4, 139ra185 (2012). 751 
+
+11. Y. Jia et al. , Treatment of acute lung injury by targeting MG53 -mediated cell membrane repair. Nat 752 
+
+Commun 5, 4387 (2014). 753 
+
+12. H. Li et al. , MG53 attenuates nitrogen mustard -induced acute lung injury. J Cell Mol Med 26 , 1886 -754 
+
+1895 (2022). 755 
+
+13. J. Liu et al. , Cardioprotection of recombinant human MG53 protein in a porcine model of ischemia 756 
+
+and reperfusion injury. J Mol Cell Cardiol 80 , 10 -19 (2015). 757 
+
+14. P. Duann et al. , MG53 -mediated cell membrane repair protects against acute kidney injury. Sci 758 
+
+Transl Med 7, 279ra236 (2015). 759 
+
+15. H. Li et al. , The cell membrane repair protein MG53 modulates transcription factor NF -kappaB 760 
+
+signaling to control kidney fibrosis. Kidney Int 101 , 119 -130 (2022). 761 
+
+16. H. Li et al. , Modulation of wound healing and scar formation by MG53 protein -mediated cell 762 
+
+membrane repair. J Biol Chem 290 , 24592 -24603 (2015). 763 
+
+17. H. Li et al. , MG53 Mitigates Nitrogen Mustard -Induced Skin Injury. Cells 12 (2023). 764 
+
+18. Z. Li et al. , MG53 protects against intestinal inflammation by inhibiting NLRP3 inflammasome 765 
+
+activation. Front Pharmacol 17 , 1791509 (2026). 766 
+
+19. Z. Li et al. , MG53, A Tissue Repair Protein with Broad Applications in Regenerative Medicine. Cells 767 
+
+10 (2021). 768 
+
+20. H. Li et al. , MG53 suppresses tumor progression and stress granule formation by modulating G3BP2 769 
+
+activity in non -small cell lung cancer. Mol Cancer 20 , 118 (2021). 770 
+
+21. P. Gupta et al. , MG53 inhibits cellular proliferation and tumor progression in colorectal carcinoma. 771 
+
+Int J Biol Sci 18 , 5221 -5229 (2022). 772 
+
+22. M. Fang et al. , E3 ligase MG53 suppresses tumor growth by degrading cyclin D1. Signal Transduct 773 
+
+Target Ther 8, 263 (2023). 774 
+
+23. X. L. Wang et al. , MG53 suppresses tumor growth via transcriptional inhibition of KIF11 in pancreatic 775 
+
+cancer. Transl Oncol 50 , 102118 (2024). 776 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted July 21, 2026. ;https://doi.org/10.64898/2026.07.15.738733 doi: bioRxiv preprint
+
+33 
+
+24. W. Yin, Y. Liu, Z. Bian, MG53 Inhibits the Progression of Tongue Cancer Cells through Regulating 777 
+
+PI3K -AKT Signaling Pathway: Evidence from 3D Cell Culture and Animal Model. Small 15 , e1805492 778 
+
+(2019). 779 
+
+25. G. Pidelaserra -Marti, C. E. Engeland, Mechanisms of measles virus oncolytic immunotherapy. 780 
+
+Cytokine Growth Factor Rev 56 , 28 -38 (2020). 781 
+
+26. S. R. Volovat et al. , Oncolytic Virotherapy: A New Paradigm in Cancer Immunotherapy. Int J Mol Sci 782 
+
+25 (2024). 783 
+
+27. J. Wang, T. Liu, J. Chen, Oncolytic Measles Virus Encoding Interleukin -12 Mediated Antitumor 784 
+
+Activity and Immunologic Control of Colon Cancer In Vivo and Ex Vivo. Cancer Biother Radiopharm 785 
+
+36 , 774 -782 (2021). 786 
+
+28. I. Puzanov et al. , Talimogene Laherparepvec in Combination With Ipilimumab in Previously 787 
+
+Untreated, Unresectable Stage IIIB -IV Melanoma. J Clin Oncol 34 , 2619 -2626 (2016). 788 
+
+29. P. Msaouel, A. Dispenzieri, E. Galanis, Clinical testing of engineered oncolytic measles virus strains 789 
+
+in the treatment of cancer: an overview. Curr Opin Mol Ther 11 , 43 -53 (2009). 790 
+
+30. C. E. Engeland, G. Ungerechts, Measles Virus as an Oncolytic Immunotherapy. Cancers (Basel) 13 791 
+
+(2021). 792 
+
+31. A. Wu et al. , Recombinant measles virus vaccine rMV -Hu191 exerts an oncolytic effect on 793 
+
+esophageal squamous cell carcinoma via caspase -3/GSDME -mediated pyroptosis. Cell Death 794 
+
+Discov 9, 171 (2023). 795 
+
+32. Y. Wang et al. , Chemotherapy drugs induce pyroptosis through caspase -3 cleavage of a gasdermin. 796 
+
+Nature 547 , 99 -103 (2017). 797 
+
+33. Z. Zhang et al. , Gasdermin E suppresses tumour growth by activating anti -tumour immunity. Nature 798 
+
+579 , 415 -420 (2020). 799 
+
+34. M. Lu et al. , A safe and highly efficacious measles virus -based vaccine expressing SARS -CoV -2800 
+
+stabilized prefusion spike. Proc Natl Acad Sci U S A 118 (2021). 801 
+
+35. J. Xu et al. , A next -generation intranasal trivalent MMS vaccine induces durable and broad 802 
+
+protection against SARS -CoV -2 variants of concern. Proceedings of the National Academy of 803 
+
+Sciences of the United States of America 120 , e2220403120 (2023). 804 
+
+36. Y. Zhang et al. , A highly efficacious live attenuated mumps virus -based SARS -CoV -2 vaccine 805 
+
+candidate expressing a six -proline stabilized prefusion spike. Proceedings of the National Academy 806 
+
+of Sciences of the United States of America 119 , e2201616119 (2022). 807 
+
+37. Y. Zhang et al. , Recombinant measles virus expressing prefusion spike protein stabilized by six 808 
+
+rather than two prolines is more efficacious against SARS -CoV -2 infection. J Med Virol 95 , e28687 809 
+
+(2023). 810 
+
+38. C. C. Hsu et al. , Intranasal measles virus - and mumps virus -based SARS -CoV -2 vaccine candidates 811 
+
+prevent SARS -CoV -2 infection and transmission. Proc Natl Acad Sci U S A 122 , e2506821122 (2025). 812 
+
+39. Y. Zhang et al. , Three SARS -CoV -2 spike protein variants delivered intranasally by measles and 813 
+
+mumps vaccines are broadly protective. Nat Commun 15 , 5589 (2024). 814 
+
+40. K. Twumasi -Boateng, J. L. Pettigrew, Y. Y. E. Kwok, J. C. Bell, B. H. Nelson, Oncolytic viruses as 815 
+
+engineering platforms for combination immunotherapy. Nat Rev Cancer 18 , 419 -432 (2018). 816 
+
+41. B. D. Anderson, T. Nakamura, S. J. Russell, K. W. Peng, High CD46 receptor density determines 817 
+
+preferential killing of tumor cells by oncolytic measles virus. Cancer Res 64 , 4919 -4926 (2004). 818 
+
+42. C. M. Bourne, C. Y. Taabazuing, Harnessing Pyroptosis for Cancer Immunotherapy. Cells 13 (2024). 819 
+
+43. J. Lin et al. , Vesicular stomatitis virus sensitizes immunologically cold tumors to checkpoint 820 
+
+blockade by inducing pyroptosis. Biochim Biophys Acta Mol Basis Dis 1868 , 166538 (2022). 821 
+
+44. R. Tokunaga et al. , CXCL9, CXCL10, CXCL11/CXCR3 axis for immune activation - A target for novel 822 
+
+cancer therapy. Cancer Treat Rev 63 , 40 -47 (2018). 823 
+
+45. A. Ribas, Adaptive Immune Resistance: How Cancer Protects from Immune Attack. Cancer Discov 824 
+
+5, 915 -919 (2015). 825 
+
+> (which was not certified by peer review) is the author/funder. All rights reserved. No reuse allowed without permission. The copyright holder for this preprint this version posted July 21, 2026. ;https://doi.org/10.64898/2026.07.15.738733 doi: bioRxiv preprint
+
+34 
+
+46. N. A. Rizvi et al. , Cancer immunology. Mutational landscape determines sensitivity to PD -1826 
+
+blockade in non -small cell lung cancer. Science 348 , 124 -128 (2015). 827 
+
+47. X. Ma et al. , The E3 ubiquitin ligase MG53 inhibits hepatocellular carcinoma by targeting RAC1 828 
+
+signaling. Oncogenesis 11 , 40 (2022). 829 
+
+48. B. Mrkic et al. , Measles virus spread and pathogenesis in genetically modified mice. J Virol 72 , 7420 -830 
+
+7427 (1998). 831 
+
+49. F. Clemente -Vicario et al. , Human Genetic Relevance and Potent Antitumor Activity of Heat Shock 832 
+
+Protein 90 Inhibition in Canine Lung Adenocarcinoma Cell Lines. PLoS One 10 , e0142007 (2015). 833 
+
+50. K. Tamura et al. , Anti -tumor activity of a recombinant measles virus against canine lung cancer cells. 834 
+
+Sci Rep 13 , 18168 (2023). 835 
+
+836 
+
+837

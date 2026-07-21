@@ -1,0 +1,4318 @@
+Title: FloREN: Decoding Immune Regulatory Networks through Interpretable Graph Transformer Patient Representations.
+
+URL Source: https://www.biorxiv.org/content/10.64898/2026.07.12.738088v1.full.pdf
+
+Number of Pages: 36
+
+Markdown Content:
+FloREN: Decoding Immune Regulatory Networks through Interpretable Graph 1
+
+Transformer Patient Representations. 2
+
+> 3
+
+Iñigo CLEMENTE-LARRAMENDI 1† , Sophie HILLION 1,2 , Divi CORNEC 1,2 , Christophe JAMIN 1,2 , Nathan 4
+
+FOULQUIER 1,2  
+
+> 5
+> 6
+> 1
+
+LBAI, UMR1227, Univ Brest, Inserm, Brest, France 7 
+
+> 2
+
+CHU de Brest, Brest, France 8 
+
+> 9
+> †
+
+Corresponding author. Email: inigo.clementelarramendi@univ-brest.fr 10 
+
+> 11
+> 12
+> 13
+
+Summary 14 
+
+> 15
+
+Single-cell RNA sequencing (scRNA-seq) enables detailed characterization of cellular heterogeneity, 16 
+
+yet understanding the full cellular and regulatory environment of complex tissues remains 17 
+
+challenging. In the era of large single-cell atlases, this technology has become increasingly 18 
+
+accessible, and datasets have grown in scale and statistical power. As a result, sample 19 
+
+representation methods have emerged as a promising strategy to summarize patient-level 20 
+
+biological variation. However, most existing approaches rely on unsupervised learning frameworks 21 
+
+with ambiguous biological interpretability. 22 
+
+> 23
+
+Here we present a Framework for Learning Over REgulatory-Embedding Networks (FloREN), a 24 
+
+supervised and interpretable sample representation method. FloREN models single-cell data as a 25 
+
+heterogeneous network integrating cells and genes together with gene regulatory and cell-cell 26 
+
+communication relationships. Through condition-aware embeddings and interpretable attention 27 
+
+networks, FloREN enables improved sample stratification and biomarker discovery. In addition, the 28 
+
+framework supports downstream analyses that found specific immune network mechanisms in 29 
+
+immune-mediated inflammatory diseases (IMIDs). 30 
+
+> 31
+> 32
+
+Keywords: Single-cell RNA sequencing (scRNA-seq), Sample representation learning, Graph neural 33 
+
+networks (GNNs), Heterogeneous graph transformers, Self-supervised contrastive learning, 34 
+
+Attention-based interpretability, Systems immunology, Disease stratification. 35 
+
+> 36
+> 37
+> 38
+> 39
+> 40
+> 41
+> 42
+> 43
+> 44
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.12.738088 doi: bioRxiv preprint
+
+Introduction 45 
+
+> 46
+
+Advances in high-throughput technologies over the past decade have enabled the generation of 47 
+
+increasingly large and complex biological datasets, transforming our ability to study human disease 48 
+
+at unprecedented resolution 1-4 . Among these technologies, single-cell RNA sequencing (scRNA-seq) 49 
+
+has emerged as a cornerstone for dissecting cellular heterogeneity. Profiling hundreds of millions of 50 
+
+cells across diverse tissues and disease contexts has revealed novel cell types 5, context-specific 51 
+
+marker genes 6,7 , gene programs linked to therapeutic response, and clinically relevant patient 52 
+
+subpopulations 8,9 . As scRNA-seq studies expand toward cohort-scale analyses, methods that 53 
+
+summarize each sample as a single vector, commonly termed sample representation methods, have 54 
+
+become increasingly important. These approaches capture coordinated changes across tissue 55 
+
+ecosystems and enable direct linkage between sample-level phenotypes and their underlying 56 
+
+cellular and molecular composition 10,11 .57 
+
+> 58
+
+Existing methods can be broadly divided into unsupervised and supervised approaches. 59 
+
+Unsupervised methods aim to capture global similarities between samples without relying on 60 
+
+labeled outcomes, and are effective for sample stratification, batch correction, and exploratory 61 
+
+analysis. Supervised methods instead learn embeddings optimized for downstream tasks such as 62 
+
+disease classification or outcome prediction, where interpretability becomes essential for 63 
+
+translating learned representations into candidate biomarkers or drug targets. 64 
+
+> 65
+
+The simplest strategy is pseudobulk aggregation, which averages gene expression across cells within 66 
+
+each sample. Although pseudobulk profiles retain substantial biological information and support 67 
+
+accurate patient classification 12 , they are difficult to relate back to cell-type-specific or single-cell-68 
+
+resolved patterns. Compositional approaches instead represent samples through the distribution of 69 
+
+cell states: GloScope 13 models each sample as a distribution over cell annotations using Gaussian 70 
+
+mixture models (GMMs) on PCA embeddings in an unsupervised setting, while CloudPred 14 trains a 71 
+
+supervised classifier on similar GMM-based representations; both, however, remain difficult to 72 
+
+interpret at the level of individual genes or pathways. An alternative strategy represents each 73 
+
+sample using a broad panel of precomputed single-cell statistics (differential abundance (DA), 74 
+
+differential gene expression (DGE), gene set enrichment analysis (GSEA), and cell-cell 75 
+
+communication scores) as implemented in scFeatures 15 . More recently, the machine learning 76 
+
+community has developed foundation models for single-cell cohorts, including PaSCient 11 and 77 
+
+PULSAR 17 , which aim to disentangle biological from technical variation in an unsupervised setting, 78 
+
+and mcBERT 16 , which leverages large-scale pretraining to improve supervised predictive 79 
+
+performance; several of these incorporate learned attention weights in an effort to improve 80 
+
+interpretability of cell- and gene-level contributions. SampleCLR 18 combines contrastive self-81 
+
+supervised and supervised objectives over PCA embeddings and outperforms earlier foundation 82 
+
+models showing that the potential of this techniques, though its interpretability remains limited to 83 
+
+cell-level weights. MrVI 10 , which relies on an unsupervised variational inference framework, extends 84 
+
+interpretability further by linking sample representations to DGE and DA analyses. Collectively, 85 
+
+these approaches reveal a persistent trade-off: no existing method combines a clearly supervised 86 
+
+objective with interpretability across multiple biological levels: cells, genes, and their interactions. 87 
+
+> 88
+
+To address this gap, we introduce FloREN (Framework for Learning Over REgulatory-Embedding 89 
+
+Networks), a graph neural network (GNN)-based method that models sample-level single-cell data 90 
+
+as biological networks and leverages attention-based interpretability to advance the state of the art 91 
+
+in sample representation learning. 92 
+
+> 93
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.12.738088 doi: bioRxiv preprint
+
+Biological systems are inherently networked, with genes, proteins, and cells interacting in 94 
+
+coordinated ways; these relationships can be naturally represented as graphs, in which nodes 95 
+
+denote biological entities and edges encode their interactions 19,20 . As datasets grow in scale and 96 
+
+complexity, graph-based modeling has emerged as a powerful framework for integrating and 97 
+
+analyzing high-dimensional biological data 20 . Accordingly, GNNs have been widely adopted in single-98 
+
+cell analysis, enabling applications such as data imputation 21–25 , clustering 26–32 , and cell-type 99 
+
+annotation 33–38 . Despite this progress, most GNN-based approaches rely on homogeneous graphs 100 
+
+that typically represent only cells and their transcriptomic similarity 39 , overlooking the inherent 101 
+
+heterogeneity of biological systems, a limitation that is especially consequential for sample-level 102 
+
+inference. Only a handful of methods move beyond this paradigm: DeepMAPS 40 and Segger 41 
+
+> 103
+
+incorporate heterogeneous graphs but are designed for clustering and segmentation tasks, 104 
+
+respectively, while Cellograph 42 and OmicsGAT 43 use more limited graph structures for differential 105 
+
+expression or outcome prediction. There thus remains a clear need for models that fully exploit 106 
+
+biological heterogeneity to generate interpretable, patient-level representations. 107 
+
+> 108
+
+This challenge is especially relevant to immune-mediated inflammatory diseases (IMIDs), where 109 
+
+pathology arises from system-wide dysregulation of the immune response 44 . These diseases, 110 
+
+including rheumatoid arthritis (RA), systemic lupus erythematosus (SLE), and multiple sclerosis (MS), 111 
+
+involve complex interactions among diverse immune cell populations, and their pathology reflects 112 
+
+coordinated network-level alterations rather than isolated cellular changes, making IMIDs a 113 
+
+stringent benchmark for evaluating sample representation methods 45 .114 
+
+> 115
+
+That’s why we propose FloREN, an interpretable sample representation framework that models 116 
+
+single-cell data as heterogeneous biological networks. From SampleCLR contrastive self-supervised 117 
+
+and supervised promising combination, FloREN combines heterogeneous graph transformers, graph 118 
+
+self-supervised learning, and supervised optimization to generate biologically informed patient 119 
+
+embeddings while preserving interpretability through attention-based prioritization of cells, genes, 120 
+
+and regulatory interactions. By jointly integrating cellular composition, gene regulation, and 121 
+
+intercellular communication within a unified graph representation, FloREN enables both accurate 122 
+
+patient stratification and mechanistic discovery from single-cell datasets. 123 
+
+> 124
+> 125
+> 126
+> 127
+> 128
+> 129
+> 130
+> 131
+> 132
+> 133
+> 134
+> 135
+> 136
+> 137
+> 138
+> 139
+> 140
+> 141
+> 142
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.12.738088 doi: bioRxiv preprint
+
+Results 143 
+
+The architecture of FloREN. 144 
+
+> 145
+
+FloREN is a graph neural network (GNN) framework designed to extract biologically meaningful 146 
+
+patterns from scRNA-seq data by jointly modeling multi-layered relationships within heterogeneous 147 
+
+graphs, gene expression, regulatory interactions, and intercellular communication ( Fig. 1a ). FloREN 148 
+
+takes as input a single-cell expression object with log-normalized counts, restricted to a defined 149 
+
+gene set for the analysis (typically highly variable genes, HVGs). Beyond gene expression, FloREN 150 
+
+can also operate directly on transcription factor (TF) activity scores derived from tools such as 151 
+
+DecoupleR 63 , allowing the framework to model regulatory state rather than expression alone when 152 
+
+desired. FloREN first projects cells and genes into a shared latent space using paired autoencoders. 153 
+
+This denoising step generates comparable low-dimensional representations that enable robust 154 
+
+inference of heterogeneous biological interactions while reducing the impact of sparse single-cell 155 
+
+measurements. 156 
+
+> 157
+
+The core of FloREN is to use this same dimensionality space to construct a heterogeneous graph for 158 
+
+each sample, in which nodes correspond to cells and genes (or TFs), and node features correspond 159 
+
+to their learned embeddings. Edges are defined across three biologically motivated interaction 160 
+
+layers. First, gene-cell edges link each gene to the cells expressing it. Second, gene-gene edges 161 
+
+capture regulatory relationships inferred through a Bayesian scoring strategy (see Methods ) that 162 
+
+integrates curated immune interaction databases with correlation estimates, enabling detection of 163 
+
+both known and novel regulatory associations. Third, optional cell-cell communication edges can be 164 
+
+incorporated using curated ligand-receptor interaction networks, for example via CellChat 66 . This 165 
+
+modular design gives FloREN substantial flexibility in graph construction, allowing users to include 166 
+
+or omit interaction layers depending on data availability and biological question. 167 
+
+> 168
+
+These heterogeneous graphs are processed using our Heterogeneous Graph Transformer 169 
+
+Contrastive Learning (HGTCL) architecture ( Fig. 1b ) which combines the Heterogeneous Graph 170 
+
+Transformer (HGT) 71 with graph Contrastive Learning (graphCL) 67 . Because biological graphs derived 171 
+
+from single-cell data are inherently noisy and sensitive to graph construction, HGTCL first learns 172 
+
+robust sample representations in a self-supervised manner by maximizing agreement between two 173 
+
+stochastic augmentations of the same graph generated through node dropping. Within each HGT 174 
+
+layer, relation-specific attention propagates information across cells, genes, and biological 175 
+
+interactions, enabling context-aware integration of heterogeneous signals while remaining invariant 176 
+
+to minor perturbations of the graph. Following the HGT layers, node embeddings are aggregated by 177 
+
+mean pooling into a single fixed-dimensional sample representation. Although contrastive learning 178 
+
+produces robust graph representations, it does not ensure that they capture disease-relevant 179 
+
+variation. FloREN therefore introduces a supervised multilayer perceptron (MLP) operating on the 180 
+
+learned sample embeddings. This objective steer representation learning toward phenotype-181 
+
+associated biological differences while preserving the structural information captured during self-182 
+
+supervised training, enabling both multitask and multiclass prediction (see Methods )46,47 .183 
+
+> 184
+
+Together, these components allow FloREN to produce, from a single training pass, three 185 
+
+complementary outputs: supervised sample-level embeddings from the MLP classifier, condition-186 
+
+aware cell, and gene embeddings from the HGT encoder, and an interpretable attention network 187 
+
+describing cell-, gene-, and interaction-level contributions to each sample's representation, enabling 188 
+
+a range of downstream analyses discussed below. 189 
+
+> 190
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.12.738088 doi: bioRxiv preprint 191
+> 192
+> 193
+> 194
+> 195
+> 196
+> 197
+> 198
+> 199
+> 200
+> 201
+> 202
+> 203
+> 204
+> 205
+> 206
+> 207
+> 208
+> 209
+> 210
+> 211
+> 212
+> 213
+> 214
+> 215
+
+Fig. 1: Overview of the FloREN architecture . a, The overall FloREN pipeline. Starting from scRNA-216 
+
+seq normalized expression matrices, the workflow includes six major steps and two learning layers: 217 
+
+an Autoencoder (AE) for dimensionality reduction and the novel Heterogenous Graph Transformer 218 
+
+Contrastive Learning (HGTCL) module for sample representation learning. Graph construction 219 
+
+incorporates biological priors such as gene expression, transcription factor activity, cell-cell 220 
+
+communication (via CellChat ), and gene-gene correlations (via a Bayesian scoring scheme combining 221 
+
+correlations and prior knowledge). b, Illustration of the HGTCL classifier process for extracting 222 
+
+sample-level embeddings. From each sample graph, two augmentations are generated by node 223 
+
+dropping. Both pass through a HGT encoder, and their mean-pooled node embeddings are used as 224 
+
+graph-level representations. These embeddings are trained to both (1) maximize agreement 225 
+
+between augmentations (contrastive loss), and (2) classify sample labels (supervised loss), enabling 226 
+
+robust and interpretable feature extraction. 227 
+
+> 228
+> 229
+> 230
+> 231
+> 232
+> 233
+> 234
+> 235
+> 236
+> 237
+> 238
+> 239
+
+ba FloREN design HGTCL architecture 
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.12.738088 doi: bioRxiv preprint
+
+FloREN demonstrates superior performance across diverse single-cell studies. 240 
+
+> 241
+
+To evaluate FloREN's generalizability, we applied it to five independent IMIDs scRNA-seq datasets 242 
+
+spanning diverse immunological contexts, experimental designs, and patient cohorts ( Fig. 2a ; see 243 
+
+Methods )48-52 . For each dataset, we constructed patient-level heterogeneous graphs reflecting the 244 
+
+specific structure of that study; together, these five scenarios also serve as an ablation test of 245 
+
+FloREN's performance across varying graph compositions and data regimes. 246 
+
+> 247
+
+We benchmarked FloREN against a panel of leading, widely used methods spanning the main 248 
+
+strategies described above. As baselines for gene-expression information retention, we used 249 
+
+sample-level pseudobulk profiles and a k-nearest-neighbors (kNN) classifier applied to pseudobulk 250 
+
+embeddings. As baselines for cell-composition information retention, we used GloScope, which 251 
+
+models a Gaussian mixture model (GMM) over cells' PCA embeddings in an unsupervised setting, 252 
+
+and its supervised counterpart CloudPred, which fits a patient classifier using the same GMM-based 253 
+
+representation. We additionally included scFeatures, an algorithmic approach that computes a 254 
+
+comprehensive panel of single-cell summary statistics per patient, to assess whether learned 255 
+
+representations capture information beyond what these hand-crafted statistics already provide. We 256 
+
+further benchmarked against both unsupervised and supervised variants of SampleCLR; making us 257 
+
+exclude PULSAR, PaSCient, or mcBERT, as these were benchmarked and proved substantially more 258 
+
+difficult to adapt to our datasets. Finally, we included MrVI as a representative of variational-259 
+
+inference-based single-cell (scVI-family) approaches, an increasingly prominent strategy in this field. 260 
+
+All baselines were compared against two FloREN outputs: the self-supervised contrastive 261 
+
+embeddings, and the final layer of the supervised FloREN classifier. 262 
+
+> 263
+
+Across all five datasets, FloREN embeddings outperformed alternative sample-level representation 264 
+
+methods according to the Sample Preservation and Representation Evaluation (SPARE) metrics 53 
+
+> 265
+
+(see Methods ). FloREN achieved the highest overall SPARE score ( Fig. 2b ), driven primarily by 266 
+
+superior disease-information retention, while remaining competitive in batch-effect removal, age-267 
+
+trajectory conservation, and robustness to sex. Self-supervised FloREN embeddings performed 268 
+
+comparably to other unsupervised methods, including unsupervised SampleCLR, scFeatures, and 269 
+
+GloScope, but fell behind MrVI in this setting ( Fig. 2c ). In contrast, the supervised FloREN classifier's 270 
+
+final-layer embeddings consistently outperformed all supervised and unsupervised baselines across 271 
+
+SPARE metrics. The FloREN classifier's advantage was most pronounced for disease-information 272 
+
+retention, where it obtained the highest scores across unsupervised clustering metrics (Average 273 
+
+Silhouette Width [ASW], inverse Davies-Bouldin score [−DBS], and Calinski-Harabasz index [CH]), 274 
+
+supervised clustering metrics (Adjusted Mutual Information [AMI] and Adjusted Rand Index [ARI]), 275 
+
+and predictive-performance metrics (5-fold cross-validated F1 score, area under the receiver 276 
+
+operating characteristic curve [AUC], and balanced accuracy) ( Fig. 2d ). For batch- and sex-277 
+
+information removal, FloREN's performance was comparable to the top baselines, with the kNN 278 
+
+classifier on pseudobulk embeddings and CloudPred achieving the best scores on these specific 279 
+
+tasks ( Fig. 2e,f ). The combined evaluation of supervised and unsupervised disease metrics, together 280 
+
+with the agreement between SPARE and AUC scores, confirms the robustness of these results ( Fig. 281 
+
+2g ). 282 
+
+> 283
+
+Finally, in terms of computational performance, FloREN required longer runtimes than PCA-based 284 
+
+methods such as SampleCLR but was comparable to more computationally demanding approaches 285 
+
+such as GloScope (GMM fitting) and MrVI (variational inference over the full count matrix) ( Fig. 2h ). 286 
+
+FloREN's memory usage was higher than that of SampleCLR or MrVI, but remained comparable to 287 
+
+scFeatures, which computes thousands of statistics per patient ( Fig. 2i ). 288 
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.12.738088 doi: bioRxiv preprint
+
+289 
+
+290 
+
+291 
+
+292 
+
+293 
+
+294 
+
+295 
+
+296 
+
+297 
+
+298 
+
+299 
+
+300 
+
+301 
+
+302 
+
+303 
+
+304 
+
+305 
+
+306 
+
+307 
+
+308 
+
+309 
+
+310 
+
+311 
+
+312 
+
+313 
+
+314 
+
+315 
+
+316 
+
+317 
+
+318 
+
+319 
+
+320 
+
+321 
+
+322 
+
+323 
+
+324 
+
+325 
+
+326 
+
+327 
+
+328 
+
+329 
+
+330 
+
+331 
+
+332 
+
+333 
+
+334 
+
+335 
+
+336 
+
+> ASW −DBS CH AMI ARI F1 AUC Bal.Acc
+
+P9-u,6bu32 P9-u,6bu32 (KNN) G36Sc67-C36u,P8-, 9cF-)tu8-9 S)473-C R (u59u7.) S)473-C R (9u7.) M8VI F36REN (SS -4b-,.) F36REN (96.t4)x) 
+
+0.03 -4.88 14.02 0.06 0.01 0.61 0.71 0.65 0.45 -12463.57 116.55 0.33 0.38 0.72 0.76 0.73 0.03 -4.97 14.33 0.05 0.03 0.56 0.71 0.60 -0.01 -5.46 0.84 0.01 -0.02 0.48 0.56 0.56 0.01 -6.22 1.22 -0.01 -0.03 0.51 0.59 0.56 0.02 -4.95 11.51 0.07 0.01 0.56 0.60 0.59 0.06 -4.45 19.01 0.08 0.03 0.59 0.67 0.63 0.07 -3.48 12.95 0.11 0.10 0.65 0.75 0.67 0.08 -3.95 5.89 0.12 0.12 0.68 0.70 0.69 0.64 -0.49 2873.04 0.60 0.60 0.87 0.92 0.88 
+
+ADisease metrics 
+
+> 1−ASW DBS max−CH 1−AMI 1−ARI 1−F1 1−AUC 1−BalAcc
+
+0.97 3.22 61.43 0.69 0.76 0.47 0.23 0.44 1.31 3894.32 79.41 0.98 0.98 0.74 0.45 0.69 1.06 5.37 79.37 0.86 0.90 0.59 0.30 0.56 1.36 7.24 86.42 1.03 1.01 0.81 0.49 0.75 1.01 4.51 82.76 0.81 0.86 0.56 0.33 0.55 1.17 6.15 82.79 0.93 0.96 0.65 0.39 0.61 1.16 5.46 81.77 0.94 0.97 0.68 0.40 0.64 1.08 4.60 84.08 0.95 0.97 0.70 0.43 0.66 1.01 3.34 80.81 0.88 0.92 0.48 0.20 0.45 1.27 35.17 82.13 0.96 0.98 0.70 0.39 0.65 
+
+Not : −DBS = ) gat d DBS (lo1 r DBS = b tt r - paratio) → 1ar( r i- -till b tt r); (ax−CH = (ax(CH)−CH /- d -i)c CH i- /)bo/)d d; batch AMI/ARI/F1/AUC/BalAcc = 1−val/ 
+
+Batch metrics (higher = better rem(.al) 
+
+> ASW DBS max-CH 1-AMI 1-ARI 1-F1 1-AUC 1-Bal.Acc
+
+-0.08 3.63 5.09 -0.01 -0.03 -0.46 -0.60 -0.51 0.05 8793.59 6.78 0.02 0.01 -0.46 -0.40 -0.50 -0.05 3.79 5.26 -0.03 -0.05 -0.49 -0.46 -0.54 -0.01 2.84 5.82 -0.02 -0.04 -0.48 -0.54 -0.52 -0.05 4.89 5.76 -0.02 -0.02 -0.48 -0.59 -0.52 -0.08 7.35 6.07 0.00 -0.04 -0.50 -0.49 -0.53 -0.04 9.33 6.79 0.02 0.01 -0.49 -0.40 -0.53 -0.03 4.33 5.93 -0.01 -0.05 -0.45 -0.50 -0.49 0.01 5.36 6.57 0.00 0.03 -0.50 -0.53 -0.53 -0.00 26.22 5.66 -0.00 -0.02 -0.46 -0.47 -0.51 
+
+Sex metrics 
+
+> P9-u,6bu32 P9-u,6bu32 (KNN) G36Sc67-C36u,P8-, 9cF-)tu8-9 S)473-C R (u59u7.) S)473-C R (9u7.) M8VI F36REN (SS  -4b-,.) F36REN (96.t4)x)
+
+0.0 0.2 0.4 0.6 0.8 1.0 M-)5 AUC (ASE) 
+
+B B KNN classi icati(n AUC by label 
+
+D19-)9- AUC B)tc0 1BAUC S-x AUC 
+
+0.0 0.2 0.4 0.6 0.8 1.0 D19-)9- AS( (u59u7-8<19-,) 0.4 0.5 0.6 0.7 0.8 0.9 1.0 1.1 D19-)9- AUC (KNN) 
+
+8 = 0.61 7 = <0.001 
+
+C C Uns-)er.ised .s s-)er.ised (disease) 
+
+M-t06, P9-u,6bu32 P9-u,6bu32 (KNN) G36Sc67-C36u,P8-, 9cF-)tu8-9 S)473-C R (u59u7.) S)473-C R (9u7.) M8VI F36REN (SS -4b-,.) F36REN (96.t4)x) D)t)9-t B15<1/5)t Sc0)..31c2 St8)-t-5 N-0)8 P-8-z 
+
+> P9-u,6bu32 P9-u,6bu32 (KNN) G36Sc67-C36u,P8-, 9cF-)tu8-9 S)473-C R (u59u7.) S)473-C R (9u7.) M8VI F36REN (SS  -4b-,.) F36REN (96.t4)x)
+
+0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0 D19-)9- AUC (KNN, 5-.63, CV) 
+
+D D Disease AUC distrib-ti(n 
+
+> ASW DBS CH AMI ARI F1 AUC Bal.Acc
+
+AS( DBS CH AMI ARI F1 AUC B)3.Acc 
+
+1.00 -0.11 0.53 0.93 0.96 0.70 0.61 0.71 -0.11 1.00 -0.02 -0.10 -0.08 -0.20 -0.18 -0.22 0.53 -0.02 1.00 0.57 0.55 0.32 0.26 0.33 0.93 -0.10 0.57 1.00 0.96 0.80 0.72 0.82 0.96 -0.08 0.55 0.96 1.00 0.72 0.61 0.73 0.70 -0.20 0.32 0.80 0.72 1.00 0.91 0.98 0.61 -0.18 0.26 0.72 0.61 0.91 1.00 0.92 0.71 -0.22 0.33 0.82 0.73 0.98 0.92 1.00 
+
+E E Disease metric c(rrelati(ns (all meth(d 1 dataset )airs) 
+
+P9-u,6bu32 P9-u,6bu32 (KNN) G36Sc67-C36u,P8-, 9cF-)tu8-9 S)473-C R (u59u7.) S)473-C R (9u7.) M8VI F36REN (SS -4b-,.) F36REN (96.t4)x) 
+
+237.7 103.7 43.3 95.5 1284 237.7 103.7 43.3 95.5 1284 840.0 2620 950.5 1140 3017 4.38 4.44 4.39 4.44 4.19 15.62 23.32 1810 3591 5954 46.9 480.9 45.2 150.5 510.9 94.5 487.8 46.4 153.7 521.4 55.4 59.2 35.0 65.4 102.1 2310 1060 1210 2270 2500 2310 1060 1210 2270 2500 0.41 0.90 0.91 4.33 7.96 1.02 3.41 3.35 7.45 10.5 14.62 10.52 9503 29.42 84.72 164.5 2213 230.9 536.1 1296 2452 1939 1590 1672 4107 53.1 101.3 25.7 91.5 449.0 79.7 105.0 29.2 116.6 631.4 9116 80.62 15.02 94.92 92.42 9768 37.42 33.42 48.52 90.02 9768 37.42 33.42 48.52 90.02 
+
+F
+
+Colo/r -cal : log-)or(ali- d 1ithi) ach block i)d p )d )tly; 1ar( (r d) = lo1 -t RAM / fa-t -t; cool (bl/ ) = high -t RAM / -lo1 -t 
+
+F C(m)-tati(nal c(st: Peak RAM and R-ntime )er meth(d 1 dataset 
+
+0.0 0.2 0.4 0.6 0.8 1.0 R-3)t1<- 9c68- (c63-5684)319-,) 
+
+B1.00 B0.75 B0.50 B0.25 0.00 0.25 0.50 0.75 1.00 P-)8965 8 
+
+0.0 0.2 0.4 0.6 0.8 1.0 R-3)t1<- -..1c1-5cy (=)84 = .)9t-8 / c0-)7-8) 
+
+Classi icati(n and cl-stering metrics acr(ss label ty)es 
+
+ASW = -ilho/ tt 1idth · −DBS = ) gat d Davi -5Bo/ldi) · (ax−CH = (ax(CH)−CH · AMI = adj/-t d (/t/al i)fo · ARI = adj/-t d Ra)d · F1/AUC/BalAcc = 5-fold KNN CV 
+
+> ASW −DBS CH AMI ARI F1 AUC Bal.Acc
+
+P9-u,6bu32 P9-u,6bu32 (KNN) G36Sc67-C36u,P8-, 9cF-)tu8-9 S)473-C R (u59u7.) S)473-C R (9u7.) M8VI F36REN (SS -4b-,.) F36REN (96.t4)x) 
+
+0.03 -4.88 14.02 0.06 0.01 0.61 0.71 0.65 0.45 -12463.57 116.55 0.33 0.38 0.72 0.76 0.73 0.03 -4.97 14.33 0.05 0.03 0.56 0.71 0.60 -0.01 -5.46 0.84 0.01 -0.02 0.48 0.56 0.56 0.01 -6.22 1.22 -0.01 -0.03 0.51 0.59 0.56 0.02 -4.95 11.51 0.07 0.01 0.56 0.60 0.59 0.06 -4.45 19.01 0.08 0.03 0.59 0.67 0.63 0.07 -3.48 12.95 0.11 0.10 0.65 0.75 0.67 0.08 -3.95 5.89 0.12 0.12 0.68 0.70 0.69 0.64 -0.49 2873.04 0.60 0.60 0.87 0.92 0.88 
+
+ADisease metrics 
+
+> 1−ASW DBS max−CH 1−AMI 1−ARI 1−F1 1−AUC 1−BalAcc
+
+0.97 3.22 61.43 0.69 0.76 0.47 0.23 0.44 1.31 3894.32 79.41 0.98 0.98 0.74 0.45 0.69 1.06 5.37 79.37 0.86 0.90 0.59 0.30 0.56 1.36 7.24 86.42 1.03 1.01 0.81 0.49 0.75 1.01 4.51 82.76 0.81 0.86 0.56 0.33 0.55 1.17 6.15 82.79 0.93 0.96 0.65 0.39 0.61 1.16 5.46 81.77 0.94 0.97 0.68 0.40 0.64 1.08 4.60 84.08 0.95 0.97 0.70 0.43 0.66 1.01 3.34 80.81 0.88 0.92 0.48 0.20 0.45 1.27 35.17 82.13 0.96 0.98 0.70 0.39 0.65 
+
+Not : −DBS = ) gat d DBS (lo1 r DBS = b tt r - paratio) → 1ar( r i- -till b tt r); (ax−CH = (ax(CH)−CH /- d -i)c CH i- /)bo/)d d; batch AMI/ARI/F1/AUC/BalAcc = 1−val/ 
+
+Batch metrics (higher = better rem(.al) 
+
+> ASW DBS max-CH 1-AMI 1-ARI 1-F1 1-AUC 1-Bal.Acc
+
+-0.08 3.63 5.09 -0.01 -0.03 -0.46 -0.60 -0.51 0.05 8793.59 6.78 0.02 0.01 -0.46 -0.40 -0.50 -0.05 3.79 5.26 -0.03 -0.05 -0.49 -0.46 -0.54 -0.01 2.84 5.82 -0.02 -0.04 -0.48 -0.54 -0.52 -0.05 4.89 5.76 -0.02 -0.02 -0.48 -0.59 -0.52 -0.08 7.35 6.07 0.00 -0.04 -0.50 -0.49 -0.53 -0.04 9.33 6.79 0.02 0.01 -0.49 -0.40 -0.53 -0.03 4.33 5.93 -0.01 -0.05 -0.45 -0.50 -0.49 0.01 5.36 6.57 0.00 0.03 -0.50 -0.53 -0.53 -0.00 26.22 5.66 -0.00 -0.02 -0.46 -0.47 -0.51 
+
+Sex metrics 
+
+> P9-u,6bu32 P9-u,6bu32 (KNN) G36Sc67-C36u,P8-, 9cF-)tu8-9 S)473-C R (u59u7.) S)473-C R (9u7.) M8VI F36REN (SS  -4b-,.) F36REN (96.t4)x)
+
+0.0 0.2 0.4 0.6 0.8 1.0 M-)5 AUC (ASE) 
+
+B B KNN classi icati(n AUC by label 
+
+D19-)9- AUC B)tc0 1BAUC S-x AUC 
+
+0.0 0.2 0.4 0.6 0.8 1.0 D19-)9- AS( (u59u7-8<19-,) 0.4 0.5 0.6 0.7 0.8 0.9 1.0 1.1 D19-)9- AUC (KNN) 
+
+8 = 0.61 7 = <0.001 
+
+C C Uns-)er.ised .s s-)er.ised (disease) 
+
+M-t06, P9-u,6bu32 P9-u,6bu32 (KNN) G36Sc67-C36u,P8-, 9cF-)tu8-9 S)473-C R (u59u7.) S)473-C R (9u7.) M8VI F36REN (SS -4b-,.) F36REN (96.t4)x) D)t)9-t B15<1/5)t Sc0)..31c2 St8)-t-5 N-0)8 P-8-z 
+
+> P9-u,6bu32 P9-u,6bu32 (KNN) G36Sc67-C36u,P8-, 9cF-)tu8-9 S)473-C R (u59u7.) S)473-C R (9u7.) M8VI F36REN (SS  -4b-,.) F36REN (96.t4)x)
+
+0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0 D19-)9- AUC (KNN, 5-.63, CV) 
+
+D D Disease AUC distrib-ti(n 
+
+> ASW DBS CH AMI ARI F1 AUC Bal.Acc
+
+AS( DBS CH AMI ARI F1 AUC B)3.Acc 
+
+1.00 -0.11 0.53 0.93 0.96 0.70 0.61 0.71 -0.11 1.00 -0.02 -0.10 -0.08 -0.20 -0.18 -0.22 0.53 -0.02 1.00 0.57 0.55 0.32 0.26 0.33 0.93 -0.10 0.57 1.00 0.96 0.80 0.72 0.82 0.96 -0.08 0.55 0.96 1.00 0.72 0.61 0.73 0.70 -0.20 0.32 0.80 0.72 1.00 0.91 0.98 0.61 -0.18 0.26 0.72 0.61 0.91 1.00 0.92 0.71 -0.22 0.33 0.82 0.73 0.98 0.92 1.00 
+
+E E Disease metric c(rrelati(ns (all meth(d 1 dataset )airs) 
+
+P9-u,6bu32 P9-u,6bu32 (KNN) G36Sc67-C36u,P8-, 9cF-)tu8-9 S)473-C R (u59u7.) S)473-C R (9u7.) M8VI F36REN (SS -4b-,.) F36REN (96.t4)x) 
+
+237.7 103.7 43.3 95.5 1284 237.7 103.7 43.3 95.5 1284 840.0 2620 950.5 1140 3017 4.38 4.44 4.39 4.44 4.19 15.62 23.32 1810 3591 5954 46.9 480.9 45.2 150.5 510.9 94.5 487.8 46.4 153.7 521.4 55.4 59.2 35.0 65.4 102.1 2310 1060 1210 2270 2500 2310 1060 1210 2270 2500 0.41 0.90 0.91 4.33 7.96 1.02 3.41 3.35 7.45 10.5 14.62 10.52 9503 29.42 84.72 164.5 2213 230.9 536.1 1296 2452 1939 1590 1672 4107 53.1 101.3 25.7 91.5 449.0 79.7 105.0 29.2 116.6 631.4 9116 80.62 15.02 94.92 92.42 9768 37.42 33.42 48.52 90.02 9768 37.42 33.42 48.52 90.02 
+
+F
+
+Colo/r -cal : log-)or(ali- d 1ithi) ach block i)d p )d )tly; 1ar( (r d) = lo1 -t RAM / fa-t -t; cool (bl/ ) = high -t RAM / -lo1 -t 
+
+F C(m)-tati(nal c(st: Peak RAM and R-ntime )er meth(d 1 dataset 
+
+0.0 0.2 0.4 0.6 0.8 1.0 R-3)t1<- 9c68- (c63-5684)319-,) 
+
+B1.00 B0.75 B0.50 B0.25 0.00 0.25 0.50 0.75 1.00 P-)8965 8 
+
+0.0 0.2 0.4 0.6 0.8 1.0 R-3)t1<- -..1c1-5cy (=)84 = .)9t-8 / c0-)7-8) 
+
+Classi icati(n and cl-stering metrics acr(ss label ty)es 
+
+ASW = -ilho/ tt 1idth · −DBS = ) gat d Davi -5Bo/ldi) · (ax−CH = (ax(CH)−CH · AMI = adj/-t d (/t/al i)fo · ARI = adj/-t d Ra)d · F1/AUC/BalAcc = 5-fold KNN CV 
+
+> P9-u,6bu32 P9-u,6bu32 (KNN) G36Sc67-C36u,P8-, 9cF-)tu8-9 S)473-C R (u59u7.) S)473-C R (9u7.) M8(I F36REN (SS  -4b-,.) F36REN (96.t4)x)
+
+0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 SPARE 9c68-
+
+A A SPARE -co,e pe, (e.ho 
+
+D)t)9-t B15<1/5)t (RA) Sc0)..31c2 (MS/PT) St8)-t-5 (MS) N-0)8 (S E/HD) P-8-z (S E/HC) Bubb3- 91z-AUC 0.6 AUC 0.8 AUC 1.0 
+
+0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0 M-)5 ,19-)9- AUC F36REN (96.t4)x) P9-u,6bu32 (KNN) M8(I G36Sc67-P9-u,6bu32 F36REN (SS -4b-,.) S)473-C R (9u7.) S)473-C R (u59u7.) 9cF-)tu8-9 C36u,P8-, 
+
+0.92 0.76 0.75 0.71 0.71 0.70 0.67 0.60 0.59 0.56 
+
+B B Di-ea-e AUC (KNN, 5-fol CV) 
+
+0.4 0.5 0.6 0.7 0.8 0.9 1.0 D19-)9- AUC (KNN) 0.2 0.3 0.4 0.5 0.6 0.7 0.8 SPARE 9c68-
+
+8 = 0.73, 7 = <0.001 
+
+C C SPARE v-. cla--ifica.io) AUC 
+
+M-t06, P9-u,6bu32 P9-u,6bu32 (KNN) G36Sc67-C36u,P8-, 9cF-)tu8-9 S)473-C R (u59u7.) S)473-C R (9u7.) M8(I F36REN (SS -4b-,.) F36REN (96.t4)x) 
+
+SPARE I ( i-ea-e) B (ba.ch) TS (age) RS (-e1) Di-ea-e F1 Di-ea-e AUC Bal. Acc. 
+
+P9-u,6bu32 P9-u,6bu32 (KNN) G36Sc67-C36u,P8-, 9cF-)tu8-9 S)473-C R (u59u7.) S)473-C R (9u7.) M8(I F36REN (SS -4b-,.) F36REN (96.t4)x) 
+
+0.44 0.38 0.62 0.29 0.51 0.61 0.71 0.65 0.47 0.44 0.97 0.14 0.50 0.72 0.76 0.73 0.36 0.19 0.64 0.17 0.51 0.56 0.71 0.60 0.32 0.11 0.96 0.09 0.41 0.48 0.56 0.56 0.33 0.19 0.59 0.11 0.50 0.51 0.59 0.56 0.39 0.23 0.82 0.17 0.50 0.56 0.60 0.59 0.45 0.33 0.82 0.28 0.50 0.59 0.67 0.63 0.45 0.35 0.87 0.23 0.51 0.65 0.75 0.67 0.36 0.28 0.57 0.10 0.50 0.68 0.70 0.69 0.58 0.72 0.92 0.22 0.50 0.87 0.92 0.88 
+
+D D Me.,ic hea.(ap ((ea) ac,o-- a.a-e.- · colu()-)o,(ali-e colou,) 
+
+> P9-u,6bu32 P9-u,6bu32 (KNN) G36Sc67-C36u,P8-, 9cF-)tu8-9 S)473-C R (u59u7.) S)473-C R (9u7.) M8(I F36REN (SS  -4b-,.) F36REN (96.t4)x)
+
+0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 SPARE 9c68-
+
+E E SPARE i-.,ibu.io) 
+
+0 2 4 6 8M-)5 8)52 (36=-8 = b-tt-8) F36REN (96.t4)x) P9-u,6bu32 (KNN) M8(I S)473-C R (9u7.) P9-u,6bu32 F36REN (SS -4b-,.) G36Sc67-C36u,P8-, S)473-C R (u59u7.) 9cF-)tu8-9 
+
+2.8 3.9 4.0 5.0 5.2 5.8 6.7 6.8 7.0 8.0 
+
+G G Ove,all (e.ho ,a)ki)g 
+
+0.0 0.2 0.4 0.6 0.8 1.0 R-3)t1<- 9c68-(c63-5684)319-,) 
+
+I (,19-)9-) 
+
+B (b)tc0) 
+
+TS ()/-) 
+
+RS (9-x) 
+
+D19. AUC 
+
+0.25 
+
+0.5 
+
+0.75 
+
+1.0 
+
+F F SPARE co(po)e). p,ofile ((ea) ac,o-- a.a-e.-) 
+
+M-t06, P9-u,6bu32 P9-u,6bu32 (KNN) G36Sc67-C36u,P8-, 9cF-)tu8-9 S)473-C R (u59u7.) S)473-C R (9u7.) M8(I F36REN (SS -4b-,.) F36REN (96.t4)x) 
+
+Be)ch(a,ki)g -a(ple e(be i)g (e.ho - fo, -i)gle-cell i((u)ological a.a 
+
+SPARE met ics and supe vised classification pe fo mance ac oss five datasets · FloREN (SSL embed.) = emb_128 laye · FloREN (softmax) = class p obabilities 
+
+> P9-u,6bu32 P9-u,6bu32 (KNN) G36Sc67-C36u,P8-, 9cF-)tu8-9 S)473-C R (u59u7.) S)473-C R (9u7.) M8(I F36REN (SS  -4b-,.) F36REN (96.t4)x)
+
+0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 SPARE 9c68-
+
+A A SPARE -co,e pe, (e.ho 
+
+D)t)9-t B15<1/5)t (RA) Sc0)..31c2 (MS/PT) St8)-t-5 (MS) N-0)8 (S E/HD) P-8-z (S E/HC) Bubb3- 91z-AUC 0.6 AUC 0.8 AUC 1.0 
+
+0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0 M-)5 ,19-)9- AUC F36REN (96.t4)x) P9-u,6bu32 (KNN) M8(I G36Sc67-P9-u,6bu32 F36REN (SS -4b-,.) S)473-C R (9u7.) S)473-C R (u59u7.) 9cF-)tu8-9 C36u,P8-, 
+
+0.92 0.76 0.75 0.71 0.71 0.70 0.67 0.60 0.59 0.56 
+
+B B Di-ea-e AUC (KNN, 5-fol CV) 
+
+0.4 0.5 0.6 0.7 0.8 0.9 1.0 D19-)9- AUC (KNN) 0.2 0.3 0.4 0.5 0.6 0.7 0.8 SPARE 9c68-
+
+8 = 0.73, 7 = <0.001 
+
+C C SPARE v-. cla--ifica.io) AUC 
+
+M-t06, P9-u,6bu32 P9-u,6bu32 (KNN) G36Sc67-C36u,P8-, 9cF-)tu8-9 S)473-C R (u59u7.) S)473-C R (9u7.) M8(I F36REN (SS -4b-,.) F36REN (96.t4)x) 
+
+SPARE I ( i-ea-e) B (ba.ch) TS (age) RS (-e1) Di-ea-e F1 Di-ea-e AUC Bal. Acc. 
+
+P9-u,6bu32 u,6bu32 (KNN) G36Sc67-C36u,P8-, 9cF-)tu8-9 -C R (u59u7.) 73-C R (9u7.) M8(I (SS -4b-,.) REN (96.t4)x) 
+
+0.44 0.38 0.62 0.29 0.51 0.61 0.71 0.65 0.47 0.44 0.97 0.14 0.50 0.72 0.76 0.73 0.36 0.19 0.64 0.17 0.51 0.56 0.71 0.60 0.32 0.11 0.96 0.09 0.41 0.48 0.56 0.56 0.33 0.19 0.59 0.11 0.50 0.51 0.59 0.56 0.39 0.23 0.82 0.17 0.50 0.56 0.60 0.59 0.45 0.33 0.82 0.28 0.50 0.59 0.67 0.63 0.45 0.35 0.87 0.23 0.51 0.65 0.75 0.67 0.36 0.28 0.57 0.10 0.50 0.68 0.70 0.69 0.58 0.72 0.92 0.22 0.50 0.87 0.92 0.88 
+
+D D Me.,ic hea.(ap ((ea) ac,o-- a.a-e.- · colu()-)o,(ali-e colou,) 
+
+> P9-u,6bu32 P9-u,6bu32 (KNN) G36Sc67-C36u,P8-, 9cF-)tu8-9 S)473-C R (u59u7.) S)473-C R (9u7.) M8(I F36REN (SS  -4b-,.) F36REN (96.t4)x)
+
+0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 SPARE 9c68-
+
+E E SPARE i-.,ibu.io) 
+
+0 2 4 6 8M-)5 8)52 (36=-8 = b-tt-8) F36REN (96.t4)x) P9-u,6bu32 (KNN) M8(I S)473-C R (9u7.) P9-u,6bu32 F36REN (SS -4b-,.) G36Sc67-C36u,P8-, S)473-C R (u59u7.) 9cF-)tu8-9 
+
+2.8 3.9 4.0 5.0 5.2 5.8 6.7 6.8 7.0 8.0 
+
+G G Ove,all (e.ho ,a)ki)g 
+
+0.0 0.2 0.4 0.6 0.8 1.0 R-3)t1<- 9c68-(c63-5684)319-,) 
+
+I (,19-)9-) 
+
+B (b)tc0) 
+
+TS ()/-) 
+
+RS (9-x) 
+
+D19. AUC 
+
+0.25 
+
+0.5 
+
+0.75 
+
+1.0 
+
+F F SPARE co(po)e). p,ofile ((ea) ac,o-- a.a-e.-) 
+
+M-t06, P9-u,6bu32 P9-u,6bu32 (KNN) G36Sc67-C36u,P8-, 9cF-)tu8-9 S)473-C R (u59u7.) S)473-C R (9u7.) M8(I F36REN (SS -4b-,.) F36REN (96.t4)x) 
+
+Be)ch(a,ki)g -a(ple e(be i)g (e.ho - fo, -i)gle-cell i((u)ological a.a 
+
+SPARE met ics and supe vised classification pe fo mance ac oss five datasets · FloREN (SSL embed.) = emb_128 laye · FloREN (softmax) = class p obabilities 
+
+> P9-u,6bu32 P9-u,6bu32 (KNN) G36Sc67-C36u,P8-, 9cF-)tu8-9 S)473-C R (u59u7.) S)473-C R (9u7.) M8(I F36REN (SS  -4b-,.) F36REN (96.t4)x)
+
+0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 SPARE 9c68-
+
+A A SPARE -co,e pe, (e.ho 
+
+D)t)9-t B15<1/5)t (RA) Sc0)..31c2 (MS/PT) St8)-t-5 (MS) N-0)8 (S E/HD) P-8-z (S E/HC) Bubb3- 91z-AUC 0.6 AUC 0.8 AUC 1.0 
+
+F36REN (96.t4) P9-u,6bu32 (KN MG36Sc6 P9-u,6b F36REN (SS -4b-S)473-C R (9u S)473-C R (u59u 9cF-)tu8 C36u,P8 
+
+B
+
+SPARE I ( i-ea-e) B (ba.ch) 
+
+P9-u,6bu32 P9-u,6bu32 (KNN) G36Sc67-C36u,P8-, 9cF-)tu8-9 S)473-C R (u59u7.) S)473-C R (9u7.) M8(I F36REN (SS -4b-,.) F36REN (96.t4)x) 
+
+0.44 0.38 0.62 0.47 0.44 0.97 0.36 0.19 0.64 0.32 0.11 0.96 0.33 0.19 0.59 0.39 0.23 0.82 0.45 0.33 0.82 0.45 0.35 0.87 0.36 0.28 0.57 0.58 0.72 0.92 
+
+D D Me.,ic hea.(ap ((ea) ac,o-- a.a-e.- · colu()-)o,(ali-e colou,) 
+
+> P9-u,6bu32 P9-u,6bu32 (KNN) G36Sc67-C36u,P8-, 9cF-)tu8-9 S)473-C R (u59u7.) S)473-C R (9u7.) M8(I F36REN (SS  -4b-,.) F36REN (96.t4)x)
+
+0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 SPARE 9c68-
+
+E E SPARE i-.,ibu.io) 
+
+MP9-u, P9-u, G36Sc C36u, 9cF-) S)47 S)47 M8(I F36RE F36RE 
+
+Be)ch(a,ki)g -a(ple e 
+
+SPARE met ics and supe vised classification pe fo manc 
+
+cd e fg
+
+> ASW −DBS CH AMI ARI F1 AUC Bal.Acc
+
+P9-u,6bu32 P9-u,6bu32 (KNN) G36Sc67-C36u,P8-, 9cF-)tu8-9 S)473-C R (u59u7.) S)473-C R (9u7.) M8VI F36REN (SS -4b-,.) F36REN (96.t4)x) 
+
+0.03 -4.88 14.02 0.06 0.01 0.61 0.71 0.65 0.45 -12463.57 116.55 0.33 0.38 0.72 0.76 0.73 0.03 -4.97 14.33 0.05 0.03 0.56 0.71 0.60 -0.01 -5.46 0.84 0.01 -0.02 0.48 0.56 0.56 0.01 -6.22 1.22 -0.01 -0.03 0.51 0.59 0.56 0.02 -4.95 11.51 0.07 0.01 0.56 0.60 0.59 0.06 -4.45 19.01 0.08 0.03 0.59 0.67 0.63 0.07 -3.48 12.95 0.11 0.10 0.65 0.75 0.67 0.08 -3.95 5.89 0.12 0.12 0.68 0.70 0.69 0.64 -0.49 2873.04 0.60 0.60 0.87 0.92 0.88 
+
+ADisease metrics 
+
+> 1−ASW DBS max−CH 1−AMI 1−ARI 1−F1 1−AUC 1−BalAcc
+
+0.97 3.22 61.43 0.69 0.76 0.47 0.23 0.44 1.31 3894.32 79.41 0.98 0.98 0.74 0.45 0.69 1.06 5.37 79.37 0.86 0.90 0.59 0.30 0.56 1.36 7.24 86.42 1.03 1.01 0.81 0.49 0.75 1.01 4.51 82.76 0.81 0.86 0.56 0.33 0.55 1.17 6.15 82.79 0.93 0.96 0.65 0.39 0.61 1.16 5.46 81.77 0.94 0.97 0.68 0.40 0.64 1.08 4.60 84.08 0.95 0.97 0.70 0.43 0.66 1.01 3.34 80.81 0.88 0.92 0.48 0.20 0.45 1.27 35.17 82.13 0.96 0.98 0.70 0.39 0.65 
+
+Not : −DBS = ) gat d DBS (lo1 r DBS = b tt r - paratio) → 1ar( r i- -till b tt r); (ax−CH = (ax(CH)−CH /- d -i)c CH i- /)bo/)d d; batch AMI/ARI/F1/AUC/BalAcc = 1−val/ 
+
+Batch metrics (higher = better rem(.al) 
+
+> ASW DBS max-CH 1-AMI 1-ARI 1-F1 1-AUC 1-Bal.Acc
+
+-0.08 3.63 5.09 -0.01 -0.03 -0.46 -0.60 -0.51 0.05 8793.59 6.78 0.02 0.01 -0.46 -0.40 -0.50 -0.05 3.79 5.26 -0.03 -0.05 -0.49 -0.46 -0.54 -0.01 2.84 5.82 -0.02 -0.04 -0.48 -0.54 -0.52 -0.05 4.89 5.76 -0.02 -0.02 -0.48 -0.59 -0.52 -0.08 7.35 6.07 0.00 -0.04 -0.50 -0.49 -0.53 -0.04 9.33 6.79 0.02 0.01 -0.49 -0.40 -0.53 -0.03 4.33 5.93 -0.01 -0.05 -0.45 -0.50 -0.49 0.01 5.36 6.57 0.00 0.03 -0.50 -0.53 -0.53 -0.00 26.22 5.66 -0.00 -0.02 -0.46 -0.47 -0.51 
+
+Sex metrics 
+
+> P9-u,6bu32 P9-u,6bu32 (KNN) G36Sc67-C36u,P8-, 9cF-)tu8-9 S)473-C R (u59u7.) S)473-C R (9u7.) M8VI F36REN (SS  -4b-,.) F36REN (96.t4)x)
+
+0.0 0.2 0.4 0.6 0.8 1.0 M-)5 AUC (ASE) 
+
+B B KNN classi icati(n AUC by label 
+
+D19-)9- AUC B)tc0 1BAUC S-x AUC 
+
+0.0 0.2 0.4 0.6 0.8 1.0 D19-)9- AS( (u59u7-8<19-,) 0.4 0.5 0.6 0.7 0.8 0.9 1.0 1.1 D19-)9- AUC (KNN) 
+
+8 = 0.61 7 = <0.001 
+
+C C Uns-)er.ised .s s-)er.ised (disease) 
+
+M-t06, P9-u,6bu32 P9-u,6bu32 (KNN) G36Sc67-C36u,P8-, 9cF-)tu8-9 S)473-C R (u59u7.) S)473-C R (9u7.) M8VI F36REN (SS -4b-,.) F36REN (96.t4)x) D)t)9-t B15<1/5)t Sc0)..31c2 St8)-t-5 N-0)8 P-8-z 
+
+> P9-u,6bu32 P9-u,6bu32 (KNN) G36Sc67-C36u,P8-, 9cF-)tu8-9 S)473-C R (u59u7.) S)473-C R (9u7.) M8VI F36REN (SS  -4b-,.) F36REN (96.t4)x)
+
+0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0 D19-)9- AUC (KNN, 5-.63, CV) 
+
+D D Disease AUC distrib-ti(n 
+
+> ASW DBS CH AMI ARI F1 AUC Bal.Acc
+
+AS( DBS CH AMI ARI F1 AUC B)3.Acc 
+
+1.00 -0.11 0.53 0.93 0.96 0.70 0.61 0.71 -0.11 1.00 -0.02 -0.10 -0.08 -0.20 -0.18 -0.22 0.53 -0.02 1.00 0.57 0.55 0.32 0.26 0.33 0.93 -0.10 0.57 1.00 0.96 0.80 0.72 0.82 0.96 -0.08 0.55 0.96 1.00 0.72 0.61 0.73 0.70 -0.20 0.32 0.80 0.72 1.00 0.91 0.98 0.61 -0.18 0.26 0.72 0.61 0.91 1.00 0.92 0.71 -0.22 0.33 0.82 0.73 0.98 0.92 1.00 
+
+E E Disease metric c(rrelati(ns (all meth(d 1 dataset )airs) 
+
+P9-u,6bu32 P9-u,6bu32 (KNN) G36Sc67-C36u,P8-, 9cF-)tu8-9 S)473-C R (u59u7.) S)473-C R (9u7.) M8VI F36REN (SS -4b-,.) F36REN (96.t4)x) 
+
+237.7 103.7 43.3 95.5 1284 237.7 103.7 43.3 95.5 1284 840.0 2620 950.5 1140 3017 4.38 4.44 4.39 4.44 4.19 15.62 23.32 1810 3591 5954 46.9 480.9 45.2 150.5 510.9 94.5 487.8 46.4 153.7 521.4 55.4 59.2 35.0 65.4 102.1 2310 1060 1210 2270 2500 2310 1060 1210 2270 2500 0.41 0.90 0.91 4.33 7.96 1.02 3.41 3.35 7.45 10.5 14.62 10.52 9503 29.42 84.72 164.5 2213 230.9 536.1 1296 2452 1939 1590 1672 4107 53.1 101.3 25.7 91.5 449.0 79.7 105.0 29.2 116.6 631.4 9116 80.62 15.02 94.92 92.42 9768 37.42 33.42 48.52 90.02 9768 37.42 33.42 48.52 90.02 
+
+F
+
+Colo/r -cal : log-)or(ali- d 1ithi) ach block i)d p )d )tly; 1ar( (r d) = lo1 -t RAM / fa-t -t; cool (bl/ ) = high -t RAM / -lo1 -t 
+
+F C(m)-tati(nal c(st: Peak RAM and R-ntime )er meth(d 1 dataset 
+
+0.0 0.2 0.4 0.6 0.8 1.0 R-3)t1<- 9c68- (c63-5684)319-,) 
+
+B1.00 B0.75 B0.50 B0.25 0.00 0.25 0.50 0.75 1.00 P-)8965 8 
+
+0.0 0.2 0.4 0.6 0.8 1.0 R-3)t1<- -..1c1-5cy (=)84 = .)9t-8 / c0-)7-8) 
+
+Classi icati(n and cl-stering metrics acr(ss label ty)es 
+
+ASW = -ilho/ tt 1idth · −DBS = ) gat d Davi -5Bo/ldi) · (ax−CH = (ax(CH)−CH · AMI = adj/-t d (/t/al i)fo · ARI = adj/-t d Ra)d · F1/AUC/BalAcc = 5-fold KNN CV 
+
+> ASW −DBS CH AMI ARI F1 AUC Bal.Acc
+
+P9-u,6bu32 P9-u,6bu32 (KNN) G36Sc67-C36u,P8-, 9cF-)tu8-9 S)473-C R (u59u7.) S)473-C R (9u7.) M8VI F36REN (SS -4b-,.) F36REN (96.t4)x) 
+
+0.03 -4.88 14.02 0.06 0.01 0.61 0.71 0.65 0.45 -12463.57 116.55 0.33 0.38 0.72 0.76 0.73 0.03 -4.97 14.33 0.05 0.03 0.56 0.71 0.60 -0.01 -5.46 0.84 0.01 -0.02 0.48 0.56 0.56 0.01 -6.22 1.22 -0.01 -0.03 0.51 0.59 0.56 0.02 -4.95 11.51 0.07 0.01 0.56 0.60 0.59 0.06 -4.45 19.01 0.08 0.03 0.59 0.67 0.63 0.07 -3.48 12.95 0.11 0.10 0.65 0.75 0.67 0.08 -3.95 5.89 0.12 0.12 0.68 0.70 0.69 0.64 -0.49 2873.04 0.60 0.60 0.87 0.92 0.88 
+
+ADisease metrics 
+
+> 1−ASW DBS max−CH 1−AMI 1−ARI 1−F1 1−AUC 1−BalAcc
+
+0.97 3.22 61.43 0.69 0.76 0.47 0.23 0.44 1.31 3894.32 79.41 0.98 0.98 0.74 0.45 0.69 1.06 5.37 79.37 0.86 0.90 0.59 0.30 0.56 1.36 7.24 86.42 1.03 1.01 0.81 0.49 0.75 1.01 4.51 82.76 0.81 0.86 0.56 0.33 0.55 1.17 6.15 82.79 0.93 0.96 0.65 0.39 0.61 1.16 5.46 81.77 0.94 0.97 0.68 0.40 0.64 1.08 4.60 84.08 0.95 0.97 0.70 0.43 0.66 1.01 3.34 80.81 0.88 0.92 0.48 0.20 0.45 1.27 35.17 82.13 0.96 0.98 0.70 0.39 0.65 
+
+Not : −DBS = ) gat d DBS (lo1 r DBS = b tt r - paratio) → 1ar( r i- -till b tt r); (ax−CH = (ax(CH)−CH /- d -i)c CH i- /)bo/)d d; batch AMI/ARI/F1/AUC/BalAcc = 1−val/ 
+
+Batch metrics (higher = better rem(.al) 
+
+> ASW DBS max-CH 1-AMI 1-ARI 1-F1 1-AUC 1-Bal.Acc
+
+-0.08 3.63 5.09 -0.01 -0.03 -0.46 -0.60 -0.51 0.05 8793.59 6.78 0.02 0.01 -0.46 -0.40 -0.50 -0.05 3.79 5.26 -0.03 -0.05 -0.49 -0.46 -0.54 -0.01 2.84 5.82 -0.02 -0.04 -0.48 -0.54 -0.52 -0.05 4.89 5.76 -0.02 -0.02 -0.48 -0.59 -0.52 -0.08 7.35 6.07 0.00 -0.04 -0.50 -0.49 -0.53 -0.04 9.33 6.79 0.02 0.01 -0.49 -0.40 -0.53 -0.03 4.33 5.93 -0.01 -0.05 -0.45 -0.50 -0.49 0.01 5.36 6.57 0.00 0.03 -0.50 -0.53 -0.53 -0.00 26.22 5.66 -0.00 -0.02 -0.46 -0.47 -0.51 
+
+Sex metrics 
+
+> P9-u,6bu32 P9-u,6bu32 (KNN) G36Sc67-C36u,P8-, 9cF-)tu8-9 S)473-C R (u59u7.) S)473-C R (9u7.) M8VI F36REN (SS  -4b-,.) F36REN (96.t4)x)
+
+0.0 0.2 0.4 0.6 0.8 1.0 M-)5 AUC (ASE) 
+
+B B KNN classi icati(n AUC by label 
+
+D19-)9- AUC B)tc0 1BAUC S-x AUC 
+
+0.0 0.2 0.4 0.6 0.8 1.0 D19-)9- AS( (u59u7-8<19-,) 0.4 0.5 0.6 0.7 0.8 0.9 1.0 1.1 D19-)9- AUC (KNN) 
+
+8 = 0.61 7 = <0.001 
+
+C C Uns-)er.ised .s s-)er.ised (disease) 
+
+M-t06, P9-u,6bu32 P9-u,6bu32 (KNN) G36Sc67-C36u,P8-, 9cF-)tu8-9 S)473-C R (u59u7.) S)473-C R (9u7.) M8VI F36REN (SS -4b-,.) F36REN (96.t4)x) D)t)9-t B15<1/5)t Sc0)..31c2 St8)-t-5 N-0)8 P-8-z 
+
+> P9-u,6bu32 P9-u,6bu32 (KNN) G36Sc67-C36u,P8-, 9cF-)tu8-9 S)473-C R (u59u7.) S)473-C R (9u7.) M8VI F36REN (SS  -4b-,.) F36REN (96.t4)x)
+
+0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0 D19-)9- AUC (KNN, 5-.63, CV) 
+
+D D Disease AUC distrib-ti(n 
+
+> ASW DBS CH AMI ARI F1 AUC Bal.Acc
+
+AS( DBS CH AMI ARI F1 AUC B)3.Acc 
+
+1.00 -0.11 0.53 0.93 0.96 0.70 0.61 0.71 -0.11 1.00 -0.02 -0.10 -0.08 -0.20 -0.18 -0.22 0.53 -0.02 1.00 0.57 0.55 0.32 0.26 0.33 0.93 -0.10 0.57 1.00 0.96 0.80 0.72 0.82 0.96 -0.08 0.55 0.96 1.00 0.72 0.61 0.73 0.70 -0.20 0.32 0.80 0.72 1.00 0.91 0.98 0.61 -0.18 0.26 0.72 0.61 0.91 1.00 0.92 0.71 -0.22 0.33 0.82 0.73 0.98 0.92 1.00 
+
+E E Disease metric c(rrelati(ns (all meth(d 1 dataset )airs) 
+
+P9-u,6bu32 P9-u,6bu32 (KNN) G36Sc67-C36u,P8-, 9cF-)tu8-9 S)473-C R (u59u7.) S)473-C R (9u7.) M8VI F36REN (SS -4b-,.) F36REN (96.t4)x) 
+
+237.7 103.7 43.3 95.5 1284 237.7 103.7 43.3 95.5 1284 840.0 2620 950.5 1140 3017 4.38 4.44 4.39 4.44 4.19 15.62 23.32 1810 3591 5954 46.9 480.9 45.2 150.5 510.9 94.5 487.8 46.4 153.7 521.4 55.4 59.2 35.0 65.4 102.1 2310 1060 1210 2270 2500 2310 1060 1210 2270 2500 0.41 0.90 0.91 4.33 7.96 1.02 3.41 3.35 7.45 10.5 14.62 10.52 9503 29.42 84.72 164.5 2213 230.9 536.1 1296 2452 1939 1590 1672 4107 53.1 101.3 25.7 91.5 449.0 79.7 105.0 29.2 116.6 631.4 9116 80.62 15.02 94.92 92.42 9768 37.42 33.42 48.52 90.02 9768 37.42 33.42 48.52 90.02 
+
+F
+
+Colo/r -cal : log-)or(ali- d 1ithi) ach block i)d p )d )tly; 1ar( (r d) = lo1 -t RAM / fa-t -t; cool (bl/ ) = high -t RAM / -lo1 -t 
+
+F C(m)-tati(nal c(st: Peak RAM and R-ntime )er meth(d 1 dataset 
+
+0.0 0.2 0.4 0.6 0.8 1.0 R-3)t1<- 9c68- (c63-5684)319-,) 
+
+B1.00 B0.75 B0.50 B0.25 0.00 0.25 0.50 0.75 1.00 P-)8965 8 
+
+0.0 0.2 0.4 0.6 0.8 1.0 R-3)t1<- -..1c1-5cy (=)84 = .)9t-8 / c0-)7-8) 
+
+Classi icati(n and cl-stering metrics acr(ss label ty)es 
+
+ASW = -ilho/ tt 1idth · −DBS = ) gat d Davi -5Bo/ldi) · (ax−CH = (ax(CH)−CH · AMI = adj/-t d (/t/al i)fo · ARI = adj/-t d Ra)d · F1/AUC/BalAcc = 5-fold KNN CV 
+
+min max min max 
+
+Peak RAM (MB) Runtime (s) SPARE metrics evaluation 
+
+i
+
+> P9-u,6bu32 P9-u,6bu32 (KNN) G36Sc67-C36u,P8-, 9cF-)tu8-9 S)473-C R (u59u7.) S)473-C R (9u7.) M8(I F36REN (SS  -4b-,.) F36REN (96.t4)x)
+
+0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 SPARE 9c68-
+
+A A SPARE -co,e pe, (e.ho 
+
+D)t)9-t B15<1/5)t (RA) Sc0)..31c2 (MS/PT) St8)-t-5 (MS) N-0)8 (S E/HD) P-8-z (S E/HC) Bubb3- 91z-AUC 0.6 AUC 0.8 AUC 1.0 
+
+PF36R SS)4 
+
+SPARE I ( i-ea-e) B (ba.ch) 
+
+P9-u,6bu32 P9-u,6bu32 (KNN) G36Sc67-C36u,P8-, 9cF-)tu8-9 S)473-C R (u59u7.) S)473-C R (9u7.) M8(I F36REN (SS -4b-,.) F36REN (96.t4)x) 
+
+0.44 0.38 0.62 0.47 0.44 0.97 0.36 0.19 0.64 0.32 0.11 0.96 0.33 0.19 0.59 0.39 0.23 0.82 0.45 0.33 0.82 0.45 0.35 0.87 0.36 0.28 0.57 0.58 0.72 0.92 
+
+D D Me.,ic hea.(ap ((ea) ac,o-- a.a-e.- · colu()-)o,(ali-e colou,) 
+
+> P9-u,6bu32 P9-u,6bu32 (KNN) G36Sc67-C36u,P8-, 9cF-)tu8-9 S)473-C R (u59u7.) S)473-C R (9u7.) M8(I F36REN (SS  -4b-,.) F36REN (96.t4)x)
+
+0.0 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 SPARE 9c68-
+
+E E SPARE i-.,ibu.io) 
+
+Be)ch(a,ki)g 
+
+SPARE met ics and supe vised classification 
+
+Binvignat Schafflick Straeten Nehar Perez Binvignat Schafflick Straeten Nehar Perez 
+
+h
+
+> AUC Bal.Acc
+
+0.71 0.65 0.76 0.73 0.71 0.60 0.56 0.56 0.59 0.56 0.60 0.59 0.67 0.63 0.75 0.67 0.70 0.69 0.92 0.88 
+
+> 1−ASW DBS max−CH 1−AMI 1−ARI 1−F1 1−AUC 1−BalAcc
+
+0.97 3.22 61.43 0.69 0.76 0.47 0.23 0.44 1.31 3894.32 79.41 0.98 0.98 0.74 0.45 0.69 1.06 5.37 79.37 0.86 0.90 0.59 0.30 0.56 1.36 7.24 86.42 1.03 1.01 0.81 0.49 0.75 1.01 4.51 82.76 0.81 0.86 0.56 0.33 0.55 1.17 6.15 82.79 0.93 0.96 0.65 0.39 0.61 1.16 5.46 81.77 0.94 0.97 0.68 0.40 0.64 1.08 4.60 84.08 0.95 0.97 0.70 0.43 0.66 1.01 3.34 80.81 0.88 0.92 0.48 0.20 0.45 1.27 35.17 82.13 0.96 0.98 0.70 0.39 0.65 
+
+Not : −DBS = ) gat d DBS (lo1 r DBS = b tt r - paratio) → 1ar( r i- -till b tt r); (ax−CH = (ax(CH)−CH /- d -i)c CH i- /)bo/)d d; batch AMI/ARI/F1/AUC/BalAcc = 1−val/ 
+
+Batch metrics (higher = better rem(.al) 
+
+> ASW DBS max-CH 1-AMI 1-ARI 1-F1 1-AUC 1-Bal.Acc
+
+-0.08 3.63 5.09 -0.01 -0.03 -0.46 -0.60 -0.51 0.05 8793.59 6.78 0.02 0.01 -0.46 -0.40 -0.50 -0.05 3.79 5.26 -0.03 -0.05 -0.49 -0.46 -0.54 -0.01 2.84 5.82 -0.02 -0.04 -0.48 -0.54 -0.52 -0.05 4.89 5.76 -0.02 -0.02 -0.48 -0.59 -0.52 -0.08 7.35 6.07 0.00 -0.04 -0.50 -0.49 -0.53 -0.04 9.33 6.79 0.02 0.01 -0.49 -0.40 -0.53 -0.03 4.33 5.93 -0.01 -0.05 -0.45 -0.50 -0.49 0.01 5.36 6.57 0.00 0.03 -0.50 -0.53 -0.53 -0.00 26.22 5.66 -0.00 -0.02 -0.46 -0.47 -0.51 
+
+Sex metrics 
+
+> 8VI REN (SS  -4b-,.) F36REN (96.t4)x)
+
+D19-)9- AUC B)tc0 1BAUC S-x AUC 
+
+0.0 0.2 0.4 0.6 0.8 1.0 D19-)9- AS( (u59u7-8<19-,) 0.4 0.5 0.6 0.7 0.8 0.9 1.0 1.1 D19-)9- AUC (KNN) 
+
+8 = 0.61 7 = <0.001 
+
+C C Uns-)er.ised .s s-)er.ised (disease) 
+
+M-t06, P9-u,6bu32 P9-u,6bu32 (KNN) G36Sc67-C36u,P8-, 9cF-)tu8-9 S)473-C R (u59u7.) S)473-C R (9u7.) M8VI F36REN (SS -4b-,.) F36REN (96.t4)x) D)t)9-t B15<1/5)t Sc0)..31c2 St8)-t-5 N-0)8 P-8-z 
+
+> P9-u,6bu32 P9-u,6bu32 (KNN) G36Sc67-C36u,P8-, 9cF-)tu8-9 S)473-C R (u59u7.) S)473-C R (9u7.) M8VI F36REN (SS  -4b-,.) F36REN (96.t4)x)
+
+0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0 D19-)9- AUC (KNN, 5-.63, CV) 
+
+D D Disease AUC distrib-ti(n 
+
+> AUC Bal.Acc
+
+0.61 0.71 -0.18 -0.22 0.26 0.33 0.72 0.82 0.61 0.73 0.91 0.98 1.00 0.92 0.92 1.00 
+
+P9-u,6bu32 P9-u,6bu32 (KNN) G36Sc67-C36u,P8-, 9cF-)tu8-9 S)473-C R (u59u7.) S)473-C R (9u7.) M8VI F36REN (SS -4b-,.) F36REN (96.t4)x) 
+
+237.7 103.7 43.3 95.5 1284 237.7 103.7 43.3 95.5 1284 840.0 2620 950.5 1140 3017 4.38 4.44 4.39 4.44 4.19 15.62 23.32 1810 3591 5954 46.9 480.9 45.2 150.5 510.9 94.5 487.8 46.4 153.7 521.4 55.4 59.2 35.0 65.4 102.1 2310 1060 1210 2270 2500 2310 1060 1210 2270 2500 0.41 0.90 0.91 4.33 7.96 1.02 3.41 3.35 7.45 10.5 14.62 10.52 9503 29.42 84.72 164.5 2213 230.9 536.1 1296 2452 1939 1590 1672 4107 53.1 101.3 25.7 91.5 449.0 79.7 105.0 29.2 116.6 631.4 9116 80.62 15.02 94.92 92.42 9768 37.42 33.42 48.52 90.02 9768 37.42 33.42 48.52 90.02 
+
+F
+
+Colo/r -cal : log-)or(ali- d 1ithi) ach block i)d p )d )tly; 1ar( (r d) = lo1 -t RAM / fa-t -t; cool (bl/ ) = high -t RAM / -lo1 -t 
+
+F C(m)-tati(nal c(st: Peak RAM and R-ntime )er meth(d 1 dataset 
+
+0.0 0.2 0.4 0.6 0.8 1.0 R-3)t1<- 9c68- (c63-5684)319-,) 
+
+B1.00 B0.75 B0.50 B0.25 0.00 0.25 0.50 0.75 1.00 P-)8965 8 
+
+0.0 0.2 0.4 0.6 0.8 1.0 R-3)t1<- -..1c1-5cy (=)84 = .)9t-8 / c0-)7-8) 
+
+Classi icati(n and cl-stering metrics acr(ss label ty)es 
+
+ASW = -ilho/ tt 1idth · −DBS = ) gat d Davi -5Bo/ldi) · (ax−CH = (ax(CH)−CH · AMI = adj/-t d (/t/al i)fo · ARI = adj/-t d Ra)d · F1/AUC/BalAcc = 5-fold KNN CV 
+
+ba
+
+.CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.12.738088 doi: bioRxiv preprint Fig. 2: FloREN improves predictive performance while comparable computational effort. a, 337 
+
+Overview of the five independent datasets used to evaluate FloREN, covering diverse sample 338 
+
+sources (blood, CSF, or both), disease states (rheumatoid arthritis RA, multiple sclerosis MS, 339 
+
+systemic lupus erythematosus SLE, control CNT), and graph construction approaches b, Comparison 340 
+
+of SPARE metrics between sample pseudobulk (“Pseudobulk”), kNN classifier on the pseudobulk 341 
+
+embeddings (“Pseudobulk (KNN)”), GloScope, Cloudpred, scFeatures, unsupervised (“SampleCLR 342 
+
+(unsup.)”) and supervised (“SampleCLR (sup.)”) SampleCLR, MrVI, FloREN’s self-supervised (“FloREN 343 
+
+(SSL embed.)”) and final classfier (“FloREN (softmax)”) embeddings across aggregated score 344 
+
+(“SPARE”), disease information retention (“I (disease)”), batch information removal (“B (batch)”), 345 
+
+age trajectory conservation (“TS (age)”) and sex robustness (“RS (sex)”). c, Aggregated SPARE score 346 
+
+across datasets for each method. d, Extended disease information retention for each method based 347 
+
+in unsupervised clustering metrics (Average Silhouette Width (ASW), inverse Davies-Bouldin Score 348 
+
+(−DBS), and Calinski-Harabasz Index (CH)), supervised clustering metrics (Adjusted Mutual 349 
+
+Information (AMI) and Adjusted Rand Index (ARI)), and predictive performance metrics (5-fold 350 
+
+cross-validation F1 score (F1), Area Under the Receiver Operating Characteristic Curve (AUC), and 351 
+
+Balanced Accuracy (BalAcc)). Higher the better. e, Same extended analysis for each method but on 352 
+
+batch information removal (inverse of the original scores). Higher the better. f, Same extended 353 
+
+analysis for each method but on sex information removal (inverse of the original scores). Higher the 354 
+
+better. g, Correlation between the disease AUC score and the disease ASW for every method and 355 
+
+every dataset. h, Peak RAM used in megabytes (MB) per method per dataset. i, Time used in second 356 
+
+(s) per method per dataset. 357 
+
+> 358
+> 359
+> 360
+> 361
+> 362
+> 363
+> 364
+> 365
+> 366
+> 367
+> 368
+> 369
+> 370
+> 371
+> 372
+> 373
+> 374
+> 375
+> 376
+> 377
+> 378
+> 379
+> 380
+> 381
+> 382
+> 383
+> 384
+> 385
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.12.738088 doi: bioRxiv preprint
+
+FloREN generates patient-level representations that reveal disease trajectories and intermediate 386 
+
+SLE states. 387 
+
+> 388
+
+We used the Perez dataset 52 , originally designed to train supervised models distinguishing SLE 389 
+
+patients from healthy donors, to evaluate whether supervised and unsupervised sample 390 
+
+representation methods could additionally distinguish SLE patients experiencing disease flares 391 
+
+(FLARE) from non-flaring SLE patients, a substantially higher disease-activity state. 392 
+
+> 393
+
+We found this to be a considerably harder task: no clear separation between flare and non-flare 394 
+
+status emerged in UMAP, t-SNE, PCA, or PHATE visualizations for any method, with the exception 395 
+
+of GloScope, which we instead visualized using UMAP, MDS, Isomap, and spectral embedding, 396 
+
+reflecting its distributional (GMM-based) representation. Despite the absence of clear visual 397 
+
+separation, FloREN's self-supervised embeddings ranked among the top-performing methods, 398 
+
+alongside pseudobulk, the kNN classifier on pseudobulk embeddings, MrVI, and both unsupervised 399 
+
+and supervised SampleCLR, based on 5-fold cross-validated F1, AUC, and balanced accuracy scores 400 
+
+(Fig. 3a ). 401 
+
+> 402
+
+Hierarchical clustering based on Euclidean distance between condition-mean cell embeddings 403 
+
+showed that SLE and healthy donor (HD) samples were related but not fully aligned, with distinct 404 
+
+cellular niches emerging within each condition ( Fig. 3b ). Plasmablasts and progenitor cells showed 405 
+
+clear separation between SLE and HD samples, consistent with their high importance in the 406 
+
+attention-based analysis. Within-condition clustering further identified a distinct activation substate 407 
+
+specific to these two populations, alongside a broadly connected cluster comprising CD4+ and CD8+ 408 
+
+T cells, classical and non-classical monocytes (cM/ncM), natural killer (NK) cells, and B cells. 409 
+
+Proliferative cells, conventional dendritic cells (cDCs), and plasmacytoid dendritic cells (pDCs) 410 
+
+formed a shared niche in HD samples, whereas pDCs separated from this niche in SLE patients, 411 
+
+consistent with their established role as the primary source of type I interferon in autoimmune 412 
+
+disease 54 .413 
+
+> 414
+
+To further assess whether FloREN embeddings capture continuous disease progression, we 415 
+
+analyzed the Nehar-Belaid dataset 51 , in which patients are annotated with discrete SLE disease 416 
+
+stages. FloREN distinguished SLE patients from healthy donors with high accuracy (F1 = 0.85, ROC-417 
+
+AUC = 0.80), and the position of intermediate-stage patients within the embedding space tracked 418 
+
+with their annotated disease progression ( Fig. 3c ). A lower-dimensional projection of the FloREN 419 
+
+embedding space further separated SLE patients from HDs ( Fig. 3d ) and revealed three distinct 420 
+
+subgroups: SLE-control-like, canonical SLE, and SLE-aggressive. Trajectory inference using 421 
+
+Slingshot 55 recapitulated a continuous progression from HDs through these intermediate states to 422 
+
+SLE-aggressive. This stratification was independent of batch, age, and sex effects. 423 
+
+> 424
+> 425
+> 426
+> 427
+> 428
+> 429
+> 430
+> 431
+> 432
+> 433
+> 434
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.12.738088 doi: bioRxiv preprint
+
+435 
+
+436 
+
+437 
+
+438 
+
+439 
+
+440 
+
+441 
+
+442 
+
+443 
+
+444 
+
+445 
+
+446 
+
+447 
+
+448 
+
+449 
+
+450 
+
+451 
+
+452 
+
+453 
+
+454 
+
+455 
+
+456 
+
+457 
+
+458 
+
+459 
+
+460 
+
+461 
+
+462 
+
+463 
+
+464 
+
+465 
+
+466 
+
+467 
+
+468 
+
+469 
+
+470 
+
+471 
+
+472 
+
+473 
+
+474 
+
+475 
+
+476 
+
+477 
+
+478 
+
+479 
+
+480 
+
+481 
+
+482 
+
+>        
+
+        
+
+ 
+
+>        
+
+        
+
+ 
+
+>        
+
+        
+
+ 
+
+     
+
+>         
+
+         
+
+## dc
+
+Euclidean distance heatmap of condition-mean cell embeddings 
+
+min max 
+
+Cell Niches analysis 
+
+    
+
+  
+
+      
+
+ (( 
+
+5)7(2&7/. 5)7(2&7/.$ %03/)$573 %03/)$71573 4" 5')%674)5 /2$)0&$ /2$'/%55$52*60%9 /2$+ /2$/ /2$'/%55$/2+-65 /2$/  /2$/ /27(4)( /2$+ /2$+  /2'23) 
+
+      
+
+ (( 
+
+5)7(2&7/. 5)7(2&7/.$ %03/)$573 %03/)$71573 4" 5')%674)5 /2$)0&$ /2$'/%55$52*60%9 /2$+ /2$/ /2$'/%55$/2+-65 /2$/  /2$/ /27(4)( /2$+ /2$+  /2'23) 
+
+    
+
+ (( "  
+
+      
+
+ ((  
+
+5)7(2&7/. 5)7(2&7/.$ %03/)$573 %03/)$71573 4" 5')%674)5 /2$)0&$ /2$'/%55$52*60%9 /2$+ /2$/ /2$'/%55$/2+-65 /2$/  /2$/ /27(4)( /2$+ /2$+  /2'23) 
+
+      
+
+ ((  
+
+5)7(2&7/. 5)7(2&7/.$ %03/)$573 %03/)$71573 4" 5')%674)5 /2$)0&$ /2$'/%55$52*60%9 /2$+ /2$/ /2$'/%55$/2+-65 /2$/  /2$/ /27(4)( /2$+ /2$+  /2'23) 
+
+'- +(+( $#'!%#&' (%$'%((#)%( 
+
+    
+
+  
+
+      
+
+ (( 
+
+5)7(2&7/. 5)7(2&7/.$ %03/)$573 %03/)$71573 4" 5')%674)5 /2$)0&$ /2$'/%55$52*60%9 /2$+ /2$/ /2$'/%55$/2+-65 /2$/  /2$/ /27(4)( /2$+ /2$+  /2'23) 
+
+      
+
+ (( 
+
+5)7(2&7/. 5)7(2&7/.$ %03/)$573 %03/)$71573 4" 5')%674)5 /2$)0&$ /2$'/%55$52*60%9 /2$+ /2$/ /2$'/%55$/2+-65 /2$/  /2$/ /27(4)( /2$+ /2$+  /2'23) 
+
+    
+
+ (( "  
+
+      
+
+ ((  
+
+5)7(2&7/. 5)7(2&7/.$ %03/)$573 %03/)$71573 4" 5')%674)5 /2$)0&$ /2$'/%55$52*60%9 /2$+ /2$/ /2$'/%55$/2+-65 /2$/  /2$/ /27(4)( /2$+ /2$+  /2'23) 
+
+      
+
+ ((  
+
+5)7(2&7/. 5)7(2&7/.$ %03/)$573 %03/)$71573 4" 5')%674)5 /2$)0&$ /2$'/%55$52*60%9 /2$+ /2$/ /2$'/%55$/2+-65 /2$/  /2$/ /27(4)( /2$+ /2$+  /2'23) 
+
+'- +(+( $#'!%#&' (%$'%((#)%(       
+
+  
+
+4" 5')%674)5 /2$)0&$ /2$'/%55$52*60%9 /2$+ /2$/ /2$'/%55$/2+-65 /2$/  /2$/ /27(4)( /2$+ /2$+  /2'23) 
+
+   
+
+ ( 
+
+4" 5')%674)5 /2$)0&$ /2$'/%55$52*60%9 /2$+ /2$/ /2$'/%55$/2+-65 /2$/  /2$/ /27(4)( /2$+ /2$+  /2'23) 
+
+      
+
+ (( "  
+
+5)7(2&7/. 5)7(2&7/.$ %03/)$573 %03/)$71573 4" 5')%674)5 /2$)0&$ /2$'/%55$52*60%9 /2$+ /2$/ /2$'/%55$/2+-65 /2$/  /2$/ /27(4)( /2$+ /2$+  /2'23) 
+
+   
+
+ ( 
+
+5)7(2&7/. 5)7(2&7/.$ %03/)$573 %03/)$71573 4" 5')%674)5 /2$)0&$ /2$'/%55$52*60%9 /2$+ /2$/ /2$'/%55$/2+-65 /2$/  /2$/ /27(4)( /2$+ /2$+  /2'23) 
+
+## ab
+
+.CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.12.738088 doi: bioRxiv preprint Fig. 3: FloREN reveals disease trajectories and intermediate SLE states at the patient level. a, 483 
+
+Predictive performance metrics (5-fold cross-validation F1 score (F1), Area Under the Receiver 484 
+
+Operating Characteristic Curve (AUC), and Balanced Accuracy (BalAcc)) between methods towards 485 
+
+HD, SLE and FLARE patients. Methods shown are sample pseudobulk (“Pseudobulk”), kNN classifier 486 
+
+on the pseudobulk embeddings (“Pseudobulk (KNN)”), GloScope, Cloudpred, scFeatures, 487 
+
+unsupervised (“SampleCLR (unsup.)”) and supervised (“SampleCLR (sup.)”) SampleCLR, MrVI and 488 
+
+the different FloREN’s MLP layers: from FloREN’s self-supervised (“FloREN_embed_128)”), FloREN’s 489 
+
+linear 128d layer (“FloREN_l128”), FloREN’s GELU activated 128d layer (“FloREN_g128”), FloREN’s 490 
+
+linear 64d layer (“FloREN_l64”), FloREN’s GELU activated 64d layer (“FloREN_g64”), FloREN’s linear 491 
+
+32d layer (“FloREN_l32”), FloREN’s GELU activated 32d layer (“FloREN_g32”), FloREN’s linear 2d 492 
+
+layer (“FloREN_class_logits”) and final classfier (“FloREN_class_softmax)”) b, Hierarchical clustering 493 
+
+heatmaps based on Euclidean distances between condition-mean cell embeddings. c, UMAP 494 
+
+visualization of sequential FloREN patient embeddings for the Nehar-Belaid dataset, showing the 495 
+
+progression from unsupervised to fully supervised representation layers. d, UMAP visualization of 496 
+
+the FloREN 128-dimensional patient embedding, colored by (1) original condition labels, (2) three 497 
+
+SLE subgroups, an SLE-control-like cluster proximal to HDs, a canonical SLE cluster, and a distinct 498 
+
+SLE-aggressive cluster, and (3) trajectory inference projected onto the embedding space using 499 
+
+Slingshot. 500 
+
+> 501
+> 502
+> 503
+> 504
+> 505
+> 506
+> 507
+> 508
+> 509
+> 510
+> 511
+> 512
+> 513
+> 514
+> 515
+> 516
+> 517
+> 518
+> 519
+> 520
+> 521
+> 522
+> 523
+> 524
+> 525
+> 526
+> 527
+> 528
+> 529
+> 530
+> 531
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.12.738088 doi: bioRxiv preprint
+
+FloREN identifies disease-relevant cellular populations and gene signatures in multiple sclerosis. 532 
+
+> 533
+
+We next applied FloREN in a top-down analytical setting, using it as a first-line strategy for 534 
+
+identifying key cellular and molecular drivers of disease directly from patient cohorts. We analyzed 535 
+
+the Straeten dataset 49 , an integrated CSF and PBMC scRNA-seq compendium comprising 17 multiple 536 
+
+sclerosis (MS) patients and 11 healthy donors (HD). The cell-type annotation performed by the 537 
+
+original authors procedure 49,56 yielded cell-type predictions at two levels of granularity: Level 1 538 
+
+(major cell types) and Level 2 (fine-grained subtypes). 539 
+
+> 540
+
+Using the same dimensionality-reduction panel applied to the Perez dataset, we first confirmed that 541 
+
+FloREN achieves the highest separation of MS patients from HDs among all benchmarked methods 542 
+
+(Fig. 4a ) and that this separation emerges progressively over the course of classifier training. We 543 
+
+then computed the mean attention score for each cell type across patients to prioritize populations 544 
+
+for downstream analysis. Monocytes emerged as the most influential cell type at Level 1 ( Fig. 4b ). 545 
+
+At Level 2, CD14⁺ and CD16⁺ monocytes remained among the top-ranked populations, while 546 
+
+AXL⁺SIGLEC6⁺ dendritic cells (ASDCs) showed the strongest attention signal. ASDCs represent a 547 
+
+transitional population between plasmacytoid and conventional dendritic cells with strong T-cell-548 
+
+activating and migratory capacity 57,58 ; their prominence in our analysis suggests a previously 549 
+
+underappreciated role in shaping the neuroinflammatory environment in MS. FloREN also assigned 550 
+
+high attention to several poorly defined clusters ("Un_assigned," "other," and "other_T"), 551 
+
+suggesting that their original annotation may warrant reevaluation. Consistent with the attention-552 
+
+based prioritization, the relevance of key CD4⁺ subtypes was independently confirmed through 553 
+
+UMAP visualization ( Fig. 4d ). 554 
+
+> 555
+
+We then examined gene-level attention within each cell type ( Fig. 4c ), which revealed a shared 556 
+
+inflammatory signature spanning multiple immune populations: complement activation 557 
+
+(C1QA/B/C), citrullination (PADI2), type I interferon signaling (ISG15, IFI6), costimulatory receptors 558 
+
+(TNFRSF4, TNFRSF9, TNFRSF18), and tissue-residency factors (ZNF683, RUNX3). The prioritization of 559 
+
+CHI3L2, a known MS biomarker 59 , further supports the biological relevance of FloREN's attention-560 
+
+based rankings. To resolve cell-type-specific programs within monocytes, the most influential 561 
+
+population identified above, we applied gene program decomposition (see Methods ), uncovering a 562 
+
+distinct monocyte-enriched program ( Fig. 4e ) centered on IL10 as a hub gene. Notably, this program 563 
+
+also included markers typically associated with lymphoid lineages, such as ZAP70, FCRL5, and 564 
+
+BANK1. We interpret this as more consistent with a hybrid activation state or strong intercellular 565 
+
+communication signaling between myeloid and lymphoid compartments than with simple 566 
+
+misannotation 49 , though we cannot fully exclude residual annotation noise. Additionally, the 567 
+
+prominence of SATB1, A1CF, HLA-DRB1, and S100A12 suggests a broader molecular reprogramming 568 
+
+of the myeloid lineage in MS. 569 
+
+> 570
+
+Finally, we performed a differential abundance (DA) analysis using FloREN's attention scores. 571 
+
+Because FloREN assigns an attention score to each cell, cumulative attention per cell type can be 572 
+
+computed for each patient; under the assumption of comparable per-cell attention contributions 573 
+
+across conditions, a higher cumulative attention score for a given cell type reflects its increased 574 
+
+relative representation in that condition. Using this approach, we observed increased attention-575 
+
+based representation of CD4⁺ T cells, CD8⁺ T cells, B cells, and NK cells in MS relative to HD ( Fig. 4f ). 576 
+
+These findings agree with MrVI's DA analysis for B cells, dendritic cells, and monocytes, but diverge 577 
+
+for NK, CD4⁺, and CD8⁺ T cells ( Fig. 4f ). 578 
+
+> 579
+> 580
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.12.738088 doi: bioRxiv preprint
+
+581 
+
+582 
+
+583 
+
+584 
+
+585 
+
+586 
+
+587 
+
+588 
+
+589 
+
+590 
+
+591 
+
+592 
+
+593 
+
+594 
+
+595 
+
+596 
+
+597 
+
+598 
+
+599 
+
+600 
+
+601 
+
+602 
+
+603 
+
+604 
+
+605 
+
+606 
+
+607 
+
+608 
+
+609 
+
+610 
+
+611 
+
+612 
+
+613 
+
+614 
+
+615 
+
+616 
+
+617 
+
+618 
+
+619 
+
+620 
+
+621 
+
+622 
+
+623 
+
+624 
+
+625 
+
+626 
+
+627 
+
+628 
+
+ 
+
+        
+
+       
+
+!" !  "# ! " "  $ %  "  %! "!  # !  &   !"  12,  #  ! !     '   $   % !  " 
+
+!(0.+*+0+"(/-+0)3 
+
+## ac
+
+>  ! #$  $"# #" $"#  ! ! # $"# #  "%' "  $"# "   "#   %'  (  # " &     $%$    " " # #   $#$ %          "   "    #  "     
+
+$56 .4.8"*42.-+:.*499.49154 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 99.49154#,57. 
+
+.339:6.99.49154,7588$56.4.8 .339:6.  $ $ 545 %4)*881/4.- 590.7$ 590.7  
+
+Supervised embeddings 
+
+## be
+
+      
+
+        
+
+$"   $" ##    
+
+ %!% Ranked Cell Type Aggregated Attention Score across all samples Mean Gene Attention Score 
+
+> Unique Gene Attention Score
+
+Ranked Gene Aggregated Unique Attention Score 
+
+## d
+
+Mean Cell Type Attention Score 
+
+5 
+
+log 2 -*$(",'%+%$)",+%$)", 
+
+
+
+11%,1)-,#-/% 
+
+>     -,- ,!"00)',%$ -1(%/ -1(%/
+
+-*#",-*-1%**3.%11%,1)-,20%$)",-*$(",'% )',)&)#",1,#/%"0% )',)&)#",1%#/%"0% -1)',)&)#",1 
+
+FloREN 
+
+Z-scored log fold change FloREN Mean log density ratio MrVI 
+
+## f Differential Abundance analysis 
+
+        
+
+       
+
+!" !  "# ! " "  $ %  "  %! "!  # !  &   !"  12,  #  ! !     '   $   % !  " !(0.+*+0+"(/-+0)3 
+
+  
+
+%'"' 
+
+!  !   
+
+  
+
+       
+
+%'"'  
+
+  
+
+""# 
+
+    
+
+! ! 
+
+  
+
+"'$ % &'$%  #'!%'# 
+
+&$&! 
+
+!  
+
+% &'$%  #'!%'#  #%'# $ "   " %"& ) 
+
+&$&! 
+
+!  
+
+.CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.12.738088 doi: bioRxiv preprint Fig. 4: FloREN identifies disease-relevant cellular populations and gene signatures in multiple 629 
+
+sclerosis. a, UMAP visualization of sample embeddings applied to Straeten dataset 45 obtained from 630 
+
+sample pseudobulk (“Pseudobulk”), kNN classifier on the pseudobulk embeddings (“Pseudobulk 631 
+
+(KNN)”), GloScope, Cloudpred, scFeatures, unsupervised (“SampleCLR (unsup.)”) and supervised 632 
+
+(“SampleCLR (sup.)”) SampleCLR, MrVI, FloREN’s self-supervised (“FloREN (SSL embed.)”) and final 633 
+
+classfier (“FloREN (softmax)”). b, Bubble plot showing Level 1 cell types ranked by their mean 634 
+
+attention score. c, Ranked genes according to their mean attention score across cell types. d, UMAP 635 
+
+of cells colored by disease, Level 1 annotation, Level 2 annotation and FloREN attention. e, Bubble 636 
+
+plot of genes ranked by their monocyte-enriched attention score. f, FloREN Differential Abundance 637 
+
+(DA) analysis results volcano plot with log Fold Change and attention score. Agreement DA analysis 638 
+
+between FloREN log Fold Change and MrVI Log Density Ratio. 639 
+
+> 640
+> 641
+> 642
+> 643
+> 644
+> 645
+> 646
+> 647
+> 648
+> 649
+> 650
+> 651
+> 652
+> 653
+> 654
+> 655
+> 656
+> 657
+> 658
+> 659
+> 660
+> 661
+> 662
+> 663
+> 664
+> 665
+> 666
+> 667
+> 668
+> 669
+> 670
+> 671
+> 672
+> 673
+> 674
+> 675
+> 676
+> 677
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.12.738088 doi: bioRxiv preprint
+
+FloREN reveals regulatory gene programs and immune cell drivers of rheumatoid arthritis. 678 
+
+> 679
+
+We next applied FloREN as a bottom-up analytical framework, in contrast to the top-down approach 680 
+
+used for MS, to the Binvignat dataset 48 , comprising PBMC samples from 18 rheumatoid arthritis (RA) 681 
+
+patients and 18 matched healthy controls (HC). To capture intercellular interactions in this analysis, 682 
+
+we incorporated CellChat-derived communication edges into the FloREN graph. 683 
+
+> 684
+
+We confirmed that FloREN achieves the highest separation of RA patients from HCs among all 685 
+
+benchmarked methods ( Fig. 5a ), with this separation emerging progressively over the course of 686 
+
+classifier training. Attention-based ranking of cell populations identified plasmablasts, γδ T cells, 687 
+
+effector memory CD4⁺ αβ T cells, NK cells, and central memory CD4⁺ αβ T cells as the most 688 
+
+informative populations ( Fig. 5b ). Analysis of attention-weighted cell-cell communication further 689 
+
+revealed a global reduction in intercellular signaling in RA relative to HC (see Methods ). From these 690 
+
+top-ranked cell types, we derived gene-attention scores and their associated signatures ( Fig. 5c ), 691 
+
+capturing key RA-relevant mechanisms including citrullination (PADI2/4), type I interferon signaling 692 
+
+(ISG15, IFI6), and metabolic regulation (SLC2A1, PGD). To further characterize disease-associated 693 
+
+genes, we compared gene embeddings between conditions. Aggregating gene embeddings by 694 
+
+condition enabled a differential analysis that identified 99 genes significantly separating RA from HC 695 
+
+(FDR<0.05) ( Fig. 5d ). These genes formed a metabolic and structural effector module enriched for 696 
+
+mitochondrial transcripts (MT-CO1/2/3, MT-ATP6) and matrix-remodeling components (COL6A2, 697 
+
+PACSIN2). While this module partially overlapped with attention-derived signatures, it primarily 698 
+
+reflected downstream effector processes rather than upstream regulatory activity. By contrast, 699 
+
+FloREN's attention scores highlighted regulatory hubs integrating citrullination (PADI2/4), interferon 700 
+
+signaling (ISG15, IFI6), and complement initiation (C1QA), underscoring the complementary 701 
+
+information captured by differential expression versus model-derived attention. 702 
+
+> 703
+
+To place these findings in a functional context, we performed community detection on the 704 
+
+combined set of top attention-ranked and differentially expressed genes. This identified nine gene 705 
+
+programs, annotated via Fisher's exact test (see Methods ), representing coordinated immune states 706 
+
+including interferon signaling, inflammatory monocyte priming, metabolic reprogramming, and 707 
+
+complement activation. Notably, we observed condition-associated shifts in antigen-processing and 708 
+
+B-cell activation programs. Increased activity of the B-cell activation program mapped specifically 709 
+
+to memory B cells, naive B cells, and plasmablasts, refining the cell populations implicated by our 710 
+
+earlier attention-based ranking ( Fig. 5e ). The co-regulation of FCRL1 with metabolic (GLUL) and cell-711 
+
+cycle (G0S2) genes further suggests a coordinated, system-wide activation state extending beyond 712 
+
+the B-cell compartment alone. 713 
+
+> 714
+
+By prioritizing key cell populations, identifying disease-relevant genes, and organizing them into 715 
+
+coherent regulatory programs, FloREN reveals a coordinated immune network in RA ( Fig. 5f ) in 716 
+
+which citrullination and interferon signaling act as central hubs orchestrating systemic 717 
+
+inflammation, advancing the identification of network-level biomarkers beyond single-cell-type 718 
+
+markers alone. 719 
+
+> 720
+> 721
+> 722
+> 723
+> 724
+> 725
+> 726
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.12.738088 doi: bioRxiv preprint
+
+727 
+
+728 
+
+729 
+
+730 
+
+731 
+
+732 
+
+733 
+
+734 
+
+735 
+
+736 
+
+737 
+
+738 
+
+739 
+
+740 
+
+741 
+
+742 
+
+743 
+
+744 
+
+745 
+
+746 
+
+747 
+
+748 
+
+749 
+
+750 
+
+751 
+
+752 
+
+753 
+
+754 
+
+755 
+
+756 
+
+757 
+
+758 
+
+759 
+
+760 
+
+761 
+
+762 
+
+763 
+
+764 
+
+765 
+
+766 
+
+767 
+
+768 
+
+769 
+
+770 
+
+771 
+
+772 
+
+773 
+
+774 
+
+775 
+
+beta T cell 
+
+CD4 −positive, alpha −beta T cell 
+
+positive, alpha −beta T cell 
+
+−positive, alpha −beta T cell 
+
+CD8 −positive, alpha −beta T cell 
+
+−positive, alpha −beta T cell, terminally differentiated 
+
+beta memory T cell 
+
+te 
+
+0510 0 5 10 UMAP_1 UMAP_2 
+
+0100 200 
+
+RA −GP −2
+
+0510 0 4 8 12 UMAP_1 UMAP_2 rheumatoid arthritis normal 
+
+Disease 
+
+0510 0 4 8 12 UMAP_1 UMAP_2 CD4 −positive, alpha −beta T cell naive thymus −derived CD4 −positive, alpha −beta T cell central memory CD4 −positive, alpha −beta T cell effector memory CD4 −positive, alpha −beta T cell naive thymus −derived CD8 −positive, alpha −beta T cell effector memory CD8 −positive, alpha −beta T cell, terminally differentiated classical monocyte CD8 −positive, alpha −beta memory T cell memory B cell myeloid dendritic cell natural killer cell naive B cell non −classical monocyte plasmablast gamma −delta T cell 
+
+Cell Type 
+
+0510 0 5 10 UMAP_1 UMAP_2 
+
+0100 200 
+
+RA −GP −2
+
+0510 0 4 8 12 UMAP_1 UMAP_2 rheumatoid arthritis normal 
+
+Disease 
+
+0510 0 4 8 12 UMAP_1 UMAP_2 CD4 −positive, alpha −beta T cell naive thymus −derived CD4 −positive, alpha −beta T cell central memory CD4 −positive, alpha −beta T cell effector memory CD4 −positive, alpha −beta T cell naive thymus −derived CD8 −positive, alpha −beta T cell effector memory CD8 −positive, alpha −beta T cell, terminally differentiated classical monocyte CD8 −positive, alpha −beta memory T cell memory B cell myeloid dendritic cell natural killer cell naive B cell non −classical monocyte plasmablast gamma −delta T cell 
+
+Cell Type 
+
+0510 0 5 10 UMAP_1 UMAP_2 
+
+0100 200 
+
+RA −GP −2
+
+   
+
+           
+
+>        
+
+  "#% # &!# !&  #!!&   "#% ##!&!## ""&# ""&# %#&$"!%   "#% #   "#% #!& %  %#&$"!%   "#% # #!!&   "#% # #$!! #!!&   "#% # # ""# 
+
+ & & 
+
+         
+
+( $#!"%#&'% " )& 
+
+           
+
+> −log 10  (pext −value )
+>          
+
+   
+
+> $ $  %#$  %#$ (#! ! ! #!  %#! %#$   $! ) %!  ! ! # !  %&   "     #&) !"# $   # $      $% + #! %$  $ # # !%#   +* $$  $ # $  #!$ * + %!' 
+
+%9: 080<#,850/-@0,8==08=498 
+
+
+
+
+
+ 
+
+ 
+
+
+
+
+
+==08=498$.9;0 
+
+066=@:0==08=498.;9<<%9:080< 066=@:0 :6,<7,-6,<= 2,77,/06=,%.066 0110.=9;7079;@ :9<4=4?0,6:3,-0=,%.066 8,=>;,654660;.066 .08=;,67079;@ :9<4=4?0,6:3,-0=,%.066 8,4?0=3@7></0;4?0/ :9<4=4?0,6:3,-0=,%.066 8,4?0.066 :9<4=4?0,6:3,-0=,7079;@%.066 8,4?0=3@7></0;4?0/:9<4=4?0,6:3,-0=,%.066 .6,<<4.,67989.@=0 898.6,<<4.,67989.@=0 0110.=9;7079;@:9<4=4?0,6:3,-0=,%.066=0;748,66@/4110;08=4, 7079;@.066 7@0694//08/;4=4..066  :9<4=4?0,6:3,-0=,%.066 
+
+b cd
+
+Ranked Cell Type Aggregated Attention Score across all samples 
+
+Mean Cell Type Attention Score 
+
+Gene Embedding RA vs HC Shift Significance 
+
+Euclidean Distance -log10(pvalue) 
+
+FloREN attention RA Immune Network in Binvignat Dataset 
+
+TRMU ETS2 IGLC3 
+
+12 rheumatoid arthritis normal 
+
+0510 0 4 8 12 UMAP_1 UMAP_2 CD4 −positive, alpha −beta T cell naive thymus −derived CD4 −positive, alpha −beta T cell central memory CD4 −positive, alpha −beta T cell effector memory CD4 −positive, alpha −beta T cell naive thymus −derived CD8 −positive, alpha −beta T cell effector memory CD8 −positive, alpha −beta T cell, terminally differentiated classical monocyte CD8 −positive, alpha −beta memory T cell memory B cell myeloid dendritic cell natural killer cell naive B cell non −classical monocyte plasmablast gamma −delta T cell 
+
+Cell Type 
+
+0510 0 5 10 UMAP_1 UMAP_2 
+
+0100 200 
+
+RA −GP −2Cell type B cell activation and quiescence program 
+
+min max 
+
+> $ $  %#$  %#$ (#! ! ! #!  %#! %#$   $! ) %!  ! ! # !  %&   "     #&) !"# $   # $      $% + #! %$  $ # # !%#   +* $$  $ # $  #!$ * + %!' 
+
+%9: 080<#,850/-@0,8==08=498 
+
+
+
+
+
+ 
+
+ 
+
+
+
+
+
+==08=498$.9;0 
+
+066=@:0==08=498.;9<<%9:080< 066=@:0 :6,<7,-6,<= 2,77,/06=,%.066 0110.=9;7079;@ :9<4=4?0,6:3,-0=,%.066 8,=>;,654660;.066 .08=;,67079;@ :9<4=4?0,6:3,-0=,%.066 8,4?0=3@7></0;4?0/ :9<4=4?0,6:3,-0=,%.066 8,4?0.066 :9<4=4?0,6:3,-0=,7079;@%.066 8,4?0=3@7></0;4?0/:9<4=4?0,6:3,-0=,%.066 .6,<<4.,67989.@=0 898.6,<<4.,67989.@=0 0110.=9;7079;@:9<4=4?0,6:3,-0=,%.066=0;748,66@/4110;08=4,=0/ 7079;@.066 7@0694//08/;4=4..066  :9<4=4?0,6:3,-0=,%.066 
+
+Differential Gene Expression analysis 
+
+> $ $  %#$  %#$ (#! ! ! #!  %#! %#$   $! ) %!  ! ! # !  %&   "     #&) !"# $   # $      $% + #! %$  $ # # !%#   +* $$  $ # $  #!$ * + %!' 
+
+%9: 080<#,850/-@0,8==08=498 
+
+
+
+
+
+ 
+
+ 
+
+
+
+
+
+==08=498$.9;0 
+
+066=@:0==08=498.;9<<%9:080< 066=@:0 :6,<7,-6,<= 2,77,/06=,%.066 0110.=9;7079;@ :9<4=4?0,6:3,-0=,%.066 8,=>;,654660;.066 .08=;,67079;@ :9<4=4?0,6:3,-0=,%.066 8,4?0=3@7></0;4?0/ :9<4=4?0,6:3,-0=,%.066 8,4?0.066 :9<4=4?0,6:3,-0=,7079;@%.066 8,4?0=3@7></0;4?0/:9<4=4?0,6:3,-0=,%.066 .6,<<4.,67989.@=0 898.6,<<4.,67989.@=0 0110.=9;7079;@:9<4=4?0,6:3,-0=,%.066=0;748,66@/4110;08=4,=0/ 7079;@.066 7@0694//08/;4=4..066  :9<4=4?0,6:3,-0=,%.066 
+
+ICAM4 GART MT-CO2 MAFF 
+
+fe
+
+  
+
+%'"' 
+
+!  !   
+
+  
+
+       
+
+%'"'  
+
+  
+
+""# 
+
+    
+
+! ! 
+
+  
+
+"'$ % &'$%  #'!%'#  #
+
+!(!& 
+
+ "!!! 
+
+% &'$%  #'!%'#  #%'# $ "   " %"& ) 
+
+!(!& 
+
+ "!!! 
+
+a
+
+.CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.12.738088 doi: bioRxiv preprint Fig. 5: FloREN prioritizes disease-associated cell types and gene programs in rheumatoid arthritis .776 
+
+a, UMAP visualization of sample embeddings applied to the Nehar-Belaid dataset 44 obtained from 777 
+
+sample pseudobulk (“Pseudobulk”), kNN classifier on the pseudobulk embeddings (“Pseudobulk 778 
+
+(KNN)”), GloScope, Cloudpred, scFeatures, unsupervised (“SampleCLR (unsup.)”) and supervised 779 
+
+(“SampleCLR (sup.)”) SampleCLR, MrVI, FloREN’s self-supervised (“FloREN (SSL embed.)”) and final 780 
+
+classfier (“FloREN (softmax)”). b, Bubble plot showing cell types ranked by their mean attention 781 
+
+score across patients. c, Ranked genes according to their mean attention score across cell types. d, 782 
+
+Violin plot of Euclidean distance and -log10(pvalue) showing signifcant genes on gene embeddings 783 
+
+analysis. e, UMAP of cells colored by disease, cell type annotation and FloREN B cell activation and 784 
+
+quiescence program activity. f, FloREN attention immune network visualization. 785 
+
+> 786
+> 787
+> 788
+> 789
+> 790
+> 791
+> 792
+> 793
+> 794
+> 795
+> 796
+> 797
+> 798
+> 799
+> 800
+> 801
+> 802
+> 803
+> 804
+> 805
+> 806
+> 807
+> 808
+> 809
+> 810
+> 811
+> 812
+> 813
+> 814
+> 815
+> 816
+> 817
+> 818
+> 819
+> 820
+> 821
+> 822
+> 823
+> 824
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.12.738088 doi: bioRxiv preprint
+
+Discussion 825 
+
+> 826
+
+Single-cell RNA sequencing has transformed our understanding of cellular heterogeneity in human 827 
+
+disease. Standard analyses typically characterize differences at the level of individual cell types 828 
+
+between conditions, relying on expert interpretation to integrate these findings into a coherent, 829 
+
+system-level view of the cellular environment. As single-cell atlases have grown in scale, sample 830 
+
+representation methods have emerged as a promising strategy for summarizing this complexity into 831 
+
+patient-level signatures. Yet even in the era of foundation models, most such methods remain either 832 
+
+unsupervised, offering no direct link to phenotypes of interest, or supervised without 833 
+
+interpretability, leaving the biological basis of their predictions opaque. This trade-off has confined 834 
+
+sample representation largely to exploratory analysis, short of its potential as a tool for hypothesis-835 
+
+driven discovery. 836 
+
+> 837
+
+FloREN (Framework for Learning Over REgulatory-Embedding Networks) addresses this gap directly. 838 
+
+Rather than treating supervision and interpretability as competing design goals, FloREN unifies them 839 
+
+within a single graph-based architecture: single-cell data is modeled as a heterogeneous biological 840 
+
+network of cells and genes linked through regulatory and communicative relationships, and a 841 
+
+combination of self-supervised and supervised objectives learns condition-relevant sample 842 
+
+embeddings through this network via the HGTCL architecture. Because attention is computed 843 
+
+natively over this biological graph, every prediction FloREN makes is traceable back to the specific 844 
+
+cells, genes, and interactions that support it, turning sample representation from a black-box 845 
+
+summarization step into a transparent, task-driven analysis in its own right. 846 
+
+> 847
+
+Across five independent immunological datasets spanning RA, MS, and SLE, FloREN consistently 848 
+
+outperformed existing sample representation approaches while preserving this interpretability at 849 
+
+every stage of the pipeline. The framework yields three complementary outputs from a single 850 
+
+model: supervised sample-level embeddings optimized for classification, condition-aware cell and 851 
+
+gene embeddings that capture disease-relevant structure, and an attention network that assigns 852 
+
+interpretable scores to nodes and interactions across the biological graph. In SLE, these sample 853 
+
+embeddings captured not only overall disease status but also continuous disease trajectories, 854 
+
+resolving intermediate and aggressive states consistent with independent pseudotime inference. 855 
+
+FloREN's cell embeddings further revealed condition-specific cellular niches, including a shift in 856 
+
+plasmacytoid dendritic cell association consistent with their established role in type I interferon-857 
+
+driven autoimmunity. In MS, attention-based differential abundance analysis highlighted a distinct 858 
+
+inflammatory and reprogramming program within monocytes, converging on regulatory hubs, 859 
+
+including interferon-stimulated genes and complement components, that mirrored mechanisms 860 
+
+independently identified in SLE and RA. In RA, gene embeddings enabled differential expression 861 
+
+analysis alongside attention-based prioritization of a B-cell activation program centered on 862 
+
+plasmablasts, which emerged as a core hub within a broader systemic inflammation network. 863 
+
+Notably, the recurrence of type I interferon and complement-related signatures across all three, 864 
+
+biologically and etiologically distinct diseases suggests that FloREN is not merely fitting dataset-865 
+
+specific noise but recovering a shared regulatory architecture underlying immune-mediated 866 
+
+inflammation, precisely the kind of network-level convergence that motivated our use of IMIDs as 867 
+
+a stringent evaluation setting. 868 
+
+> 869
+
+These results illustrate the central contribution of this work: FloREN demonstrates that supervision 870 
+
+and interpretability need not be in tension in sample representation learning. Where prior 871 
+
+unsupervised methods offer interpretability without a clear predictive objective, and prior 872 
+
+supervised methods offer strong predictive performance with limited mechanistic insight, FloREN's 873 
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.12.738088 doi: bioRxiv preprint
+
+graph-native attention mechanism ties both together. Every embedding dimension and every 874 
+
+attention score is grounded in an explicit biological entity or interaction, rather than an abstract 875 
+
+latent coordinate. In this sense, FloREN aims to mark a step forward for sample representation 876 
+
+methods: moving the field toward approaches that combine a clearly defined, task-relevant learning 877 
+
+objective with biologically interpretable network modeling, rather than requiring a trade-off 878 
+
+between the two. 879 
+
+> 880
+
+Despite its strengths, several limitations should be considered. First, FloREN’s computational 881 
+
+complexity scales with both the number of samples and the density of graph edges, making training 882 
+
+on large-scale datasets resource intensive. Future work could mitigate this through graph 883 
+
+sparsification, subgraph sampling, or more efficient mini-batch training strategies for 884 
+
+heterogeneous graphs. Incorporating pretrained or foundation models to initialize cell and gene 885 
+
+embeddings represents a promising direction to further improve performance and scalability. 886 
+
+Second, the framework might rely on curated prior knowledge (e.g., gene-gene interactions and 887 
+
+cell-cell communication databases) and preprocessing choices such as gene selection and cell type 888 
+
+annotation. Variability or bias in these inputs may influence downstream representations and 889 
+
+interpretability. Applications outside the immune system will require new prior knowledge 890 
+
+generation if it wants to be used. Third, while attention scores highlight statistical importance within 891 
+
+the model, they do not by themselves establish causal or mechanistic roles; complementary 892 
+
+perturbation-based validation will be necessary to confirm the functional relevance of prioritized 893 
+
+genes and populations, such as CHI3L2 in MS or the FCRL1-centered program in RA. Finally, our 894 
+
+evaluation focused on IMIDs, chosen for their network-level pathology; extending FloREN to other 895 
+
+disease contexts, including solid tumors and neurodegenerative disease, will be important to 896 
+
+establish the generality of this approach. 897 
+
+> 898
+
+Looking forward, FloREN's modular graph construction makes it well suited to increasingly complex 899 
+
+experimental designs. Extensions to longitudinal cohorts could enable direct modeling of temporal 900 
+
+disease dynamics rather than the cross-sectional trajectory inference used here, while integration 901 
+
+with spatial transcriptomics or additional omics layers may yield richer, tissue-resolved 902 
+
+representations of cellular organization and regulation. 903 
+
+> 904
+
+In summary, FloREN establishes a supervised, interpretable framework for sample representation 905 
+
+in single-cell analysis. By uniting biologically informed graph modeling with attention-based 906 
+
+interpretability, FloREN reframes sample representation as a mechanistically grounded discovery 907 
+
+task, enabling scalable identification of the cellular programs and regulatory networks that underlie 908 
+
+complex human diseases. 909 
+
+> 910
+> 911
+> 912
+> 913
+> 914
+> 915
+> 916
+> 917
+> 918
+> 919
+> 920
+> 921
+> 922
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.12.738088 doi: bioRxiv preprint
+
+Data and code availability 923 
+
+> 924
+
+This paper analyzes existing, publicly available data, accessible at GEO and CELLxGENE through the 925 
+
+accession numbers in Methods. 926 
+
+All code, installation instructions, and usage tutorials for FloREN are publicly available at 927 
+
+https://github.com/iclemente99/FloREN. 928 
+
+> 929
+
+Acknowledgements 930 
+
+> 931
+
+This work was supported by the European Union’s Horizon Europe research and innovation 932 
+
+programme. We thank Dr. Yvan Saeys (VIB-UGent Center for Inflammation Research) and Dr. Mikel 933 
+
+Hernaez (CIMA, University of Navarra) for their valuable input on framework construction and 934 
+
+validation. We also acknowledge the 3TR (grant agreement No 831434) and PRECISESADS (grant 935 
+
+agreement No 115565) consortium, which guaranteed the data used in the prior knowledge gene 936 
+
+associations. We also thank Dr. Alexandra-Chloé Villani and Dr. Gary Reynolds and all the Villani-937 
+
+Reynolds Lab (Massachusetts General Hospital, Broad Institute Harvard-MIT and Harvard Medical 938 
+
+School), especially Dr. Sergio Aguilar-Fernandez, for their continues feedback and suggestions for 939 
+
+improvements. We finally want to also thank Dr. Francesco Craighero at Holger Heyn’s lab in Centro 940 
+
+Nacional de Análisis Genómico for the machine learning feedback recieved. Some figures were 941 
+
+created with BioRender.com. 942 
+
+> 943
+
+Author contributions 944 
+
+> 945
+
+ICL, CJ and NF designed the study. ICL developed FloREN, performed the analyses and drafted the 946 
+
+manuscript. ICL, CJ and NF participated in the writing of the article, SH and DC revised it intellectually 947 
+
+critically, and all authors approved the submitted version. 948 
+
+> 949
+
+Funding 950 
+
+> 951
+
+This project has received funding from the European Union’s Horizon Europe research and 952 
+
+innovation programme under the Marie Skłodowska-Curie grant agreement No 101072891. 953 
+
+> 954
+
+Declaration of interests 955 
+
+> 956
+
+The authors declare no competing interests. 957 
+
+> 958
+> 959
+
+Declaration of generative AI and AI-assisted technologies 960 
+
+> 961
+
+During the preparation of this work, the author(s) used ChatGPT and Gemini in order to improve 962 
+
+English writing and clarify figures. After using these tools, the author(s) reviewed and edited the 963 
+
+content as needed and take(s) full responsibility for the content of the publication. 964 
+
+> 965
+> 966
+> 967
+> 968
+> 969
+> 970
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.12.738088 doi: bioRxiv preprint
+
+Methods 971 
+
+> 972
+
+Data collection 973 
+
+> 974
+
+Data used was collected from public databases: GSE135779, GSE138266, GSE133028, GSE163005, 975 
+
+GSE174188 and https://cellxgene.cziscience.com/collections/e1a9ca56-f2ee-435d-980a-976 
+
+4f49ab7a952b. 977 
+
+> 978
+
+Data preprocessing and normalization 979 
+
+> 980
+
+Datasets GSE174188 and https://cellxgene.cziscience.com/collections/e1a9ca56-f2ee-435d-980a-981 
+
+4f49ab7a952b were already preprocessed. Databases not preprocessed were loaded into a Seurat 982 
+
+R package 60 object using ensemble id gene names. All of them were filtered under the same 983 
+
+conditions: Number of unique genes per cell between 200 and 2500, and mitochondrial RNA below 984 
+
+10 percent. Percentage of mitochondrial RNA filtering ensures that cells sequenced are living 985 
+
+healthy cells and was calculated with the collection of human mitochondrial RNA from scCustomize 986 
+
+package 61 . Then, datasets were processed independently following the standard Seurat protocol 62 
+
+> 987
+
+with log-normalization and scale it to allow further analysis on them. Transformation of genes to 988 
+
+TFs was done with DecoupleR R package 63 trough Area Under the recovery curve for each Cell 989 
+
+(AUCell) score. 990 
+
+> 991
+
+The Binvignat dataset 48 includes peripheral blood mononuclear cell (PBMC) samples from 18 992 
+
+rheumatoid arthritis (RA) patients and 18 matched healthy controls. For each sample, we built a 993 
+
+heterogeneous graph using the 2000 most variable genes. Cell-gene edges were inferred from 994 
+
+expression counts, gene-gene edges from known interactions, and cell-cell connections from 995 
+
+communication scores. The Straeten dataset 49 contains cerebrospinal fluid (CSF) samples from 17 996 
+
+multiple sclerosis (MS) patients and 11 controls. Graphs were constructed using variable genes and 997 
+
+included cell-gene and gene-gene interactions. The Schafflick dataset 50 extends this design by 998 
+
+incorporating both PBMC and CSF samples (6 MS and 5 controls per compartment), and we used all 999 
+
+preprocessed genes to assess FloREN’s capacity to handle broader expression variability. The Nehar-1000 
+
+Belaid dataset 51 includes 40 SLE patients (7 adults and 33 children) and 16 healthy controls. To 1001 
+
+emphasize regulatory context, we converted the gene matrix to TF activity profiles and constructed 1002 
+
+graphs with TF-cell and TF-TF edges. The Perez dataset 52 consists of 162 SLE and 99 control PBMC 1003 
+
+samples. Due to its larger scale, we optimized computational efficiency by using only TFs derived 1004 
+
+from the 2000 most variable genes, constructing TF-cell and TF-TF graphs per patient. 1005 
+
+> 1006
+
+Autoencoder (AE) 1007 
+
+> 1008
+
+The Autoencoder (AE) layer serves to unify representations of cells and genes, producing 256-1009 
+
+dimensional embeddings for both entities. These embeddings provide a well-defined node 1010 
+
+representation when constructing graphs. 1011 
+
+> 1012
+
+The input of the Autoencoder is the matrix 𝑋 ! = {𝑖 = 1,2, … 𝐼; 𝑗 = 1,2, … 𝐽} where I denote the 1013 
+
+number of genes and J the number of cells. Each element 𝑥 "# represents the normalized expression 1014 
+
+level of gene 𝑖 and cell 𝑗 from single-cell RNA sequencing (scRNA-seq) data. 1015 
+
+> 1016
+
+We implement two separate autoencoders to generate initial embeddings: 1017 
+
+> 1018
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.12.738088 doi: bioRxiv preprint
+
+● Cell Autoencoder: Reduces the gene-dimensional representation of each cell from 𝐼 to 512 1019 
+
+and then to 256 dimensions. 1020 
+
+> 1021
+
+● Gene Autoencoder: Reduces the cell-dimensional representation of each gene from 𝐽 to 512 1022 
+
+and then to 256 dimensions. 1023 
+
+> 1024
+
+Thus, every cell and gene are assigned an initial 256-dimensional representation. The number of 1025 
+
+reduced dimensions is optimized as a hyperparameter, varying based on dataset characteristics. The 1026 
+
+final output is a reconstructed matrix 𝑋 / that retains the same dimensions as the original 𝑋 .1027 
+
+> 1028
+
+The loss function for the cell autoencoder is defined as the Mean Squared Error (MSE) between 𝑋 1029 
+
+and its reconstruction 𝑋 /:1030 
+
+> 1031
+
+𝑙𝑜𝑠𝑠 $% = 𝑀𝑆𝐸 6𝑋, 𝑋 /7 = 86𝑋 − 𝑋 /7 &
+
+> "
+> 1032
+> 1033
+
+Similarly, the gene autoencoder extracts low-dimensional gene features across all cells. It follows 1034 
+
+the same structure as the cell autoencoder but operates on the transposed input matrix 𝑋 '.The 1035 
+
+corresponding loss function is: 1036 
+
+> 1037
+
+𝑙𝑜𝑠𝑠 $% ! = 𝑀𝑆𝐸 6𝑋 ', 𝑋 ': 7 = 86𝑋 ' − 𝑋 ': 7&
+
+> "
+> 1038
+> 1039
+
+By constructing cell and gene embeddings independently, this autoencoder-based representation 1040 
+
+enhances graph structure robustness when integrated into downstream tasks. 1041 
+
+> 1042
+
+Cell-feature graph construction 1043 
+
+> 1044
+
+A graph is a mathematical structure represented as 𝐺 = (𝑉, 𝐸) , where 𝑉 is the set of nodes (the 1045 
+
+elements that form the graph) and 𝐸 the set of edges connecting them. In this work, we construct 1046 
+
+a heterogeneous graph, incorporating various node and edge types to capture biological 1047 
+
+interactions comprehensively. 1048 
+
+> 1049
+
+● Heterogeneous graph : A graph containing multiple types of nodes and/or edges. We define 1050 
+
+it as 𝐺 = (𝑉, 𝐸, 𝐴, 𝑅) , where we have the 𝑉 represents nodes, 𝐸 represents edges, 𝐴 1051 
+
+represents the node type union, and 𝑅 represents the edge type union. 1052 
+
+> 1053
+
+● Node and edge type mapping functions : We define 𝜏 (𝑣): 𝑉 → 𝐴 and 𝜙 (𝑒): 𝐸 → 𝑅 as the 1054 
+
+mapping function for node types and edge types, respectively. 1055 
+
+> 1056
+
+● Node meta relation: For a node pair of 𝑣 ( and 𝑣 & linked by an edge 𝑒 (,&, the meta relation 1057 
+
+between 𝑣 " and 𝑣 # is denoted as 〈𝜏 (𝑣 "), 𝜙6𝑒 "# 7, 𝜏6𝑣 # 7〉 .1058 
+
+> 1059
+
+Our approach constructs an Undirected Binary Heterogeneous Graph with at least two hierarchical 1060 
+
+levels: cells and features (can be genes or TFs). The methodology is extendable to more complex 1061 
+
+structures, such as cells-TFs-genes interactions. 1062 
+
+> 1063
+
+Gene-cell connections . We define a bipartite gene-cell heterogeneous graph based on the input 1064 
+
+expression matrix 𝑋 ! = {𝑖 = 1,2, … 𝐼; 𝑗 = 1,2, … 𝐽} , where 𝐼 is the number of genes and 𝐽 is the 1065 
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.12.738088 doi: bioRxiv preprint
+
+number of cells and each 𝑥 "# represents the normalized expression of gene 𝑖 with cell 𝑗 . The graph 1066 
+
+consists of two node types (genes and cells) and one edge type (gene-cell). Nodes are defined as: 1067 
+
+𝑉 = 𝑉 * ∪ 𝑉 ! where 𝑉 ! = {𝑖 = 1,2, … 𝐼} denotes all genes, and 𝑉 * = {𝑗 = 1,2, … 𝐽} denotes all 1068 
+
+cells. Edges 𝐸 = J𝑒 "# K exist if 𝑥 "# > 0, assigned weight 𝜔 6𝑒 "# 7 = 1 , otherwise, 𝜔 6𝑒 "# 7 = 0 .1069 
+
+> 1070
+
+Tf-cell connections. Using the TF activity matrix 𝑋 +, , derived from DecoupleR R package 63 , we 1071 
+
+construct a TF-cell bipartite graph with TFs and cells as node types and TF-cell as edges. The graph 1072 
+
+is defined as: 𝑉 = 𝑉 * ∪ 𝑉 +, , where 𝑉 +, = {𝑖 = 1,2, … 𝐼} denotes all TFs, and 𝑉 * = {𝑗 = 1,2, … 𝐽} 1073 
+
+denotes all cells. Edges 𝐸 = J𝑒 "# K exist if 𝑥 "# > 0, assigned weight 𝜔 6𝑒 "# 7 = 1 , otherwise, 𝜔 6𝑒 "# 7 = 1074 
+
+0.1075 
+
+> 1076
+
+Gene Regulatory Network (GRN) inference. For gene-gene relationships, we construct a1077 
+
+homogeneous gene-gene graph based on the input matrix 𝑋 ! = {𝑖 = 1,2, … 𝐼; 𝑗 = 1,2, … 𝐽} with I 1078 
+
+genes and J cells. The gene-gene graph is defined as 𝑉 = 𝑉 -, where 𝑉 - = {𝑖 = 1,2, … 𝐼} , and 𝐸 =1079 
+
+J𝑒 "# K represents gene-gene associations. Edges are assigned using a custom-designed score: 1080 
+
+> 1081
+
+𝐸 "# = 𝑃𝐾 "# + 𝑑𝑐 "# ∙ 𝐵𝐶 "# 1082 
+
+> 1083
+
+𝐸 "# = 𝑃𝐾 "# + 𝑑𝑐 "# ∙ X 60.01 + 𝑑𝑐 "# 760.01 + 𝑑𝑐 "# + 𝛴𝑑𝑐 ". 7[1084 
+
+> 1085
+
+Where 𝑃𝐾 "# represents prior biological knowledge, obtained via STRING ( stringdb Python module 64 )1086 
+
+and INNATEDB ( PSIQUIC REST API), 𝑑𝑐 "# can be classical linear Pearson correlation or the distance 1087 
+
+correlation capturing both linear and nonlinear associations with dcor R package 65 and the final term 1088 
+
+is a Bayesian probability, estimating the likelihood that an observed data-driven association is 1089 
+
+biologically causal. The constant 0.01 is introduced for numerical stability (More details in another 1090 
+
+section). 1091 
+
+> 1092
+
+An explicit threshold was applied to filter gene-gene associations. Specifically, edges were retained 1093 
+
+only when the score satisfied 𝐸 "# ≥ 0.7; in such cases, the weight of the corresponding edge was 1094 
+
+set to 𝜔 6𝑒 "# 7 = 1 , otherwise, 𝜔 6𝑒 "# 7 = 0 . For TF-TF graphs, edges were computed analogously, by 1095 
+
+aggregating gene-level connections for the transcription factors they regulate. 1096 
+
+> 1097
+
+Cell-cell connections. To capture cellular communication, we construct a cell-cell homogeneous 1098 
+
+graph from the matrix 𝑋 * = {𝑖 = 1,2, … 𝐽; 𝑗 = 1,2, … 𝐽} with J cells derived using the CellChat R1099 
+
+package (version 1.6.0) 66 . The cell-cell graph is defined as 𝑉 = 𝑉 * , where 𝑉 * = {𝑖 = 1,2, … 𝐽} 1100 
+
+denotes all cells, and 𝐸 = J𝑒 "# K represents cell-cell interactions. 1101 
+
+> 1102
+
+CellChat infers communication probabilities based on: (1) Ligand-receptor interactions from a 1103 
+
+curated database, (2) average ligand expression in one cell type and receptor expression in another 1104 
+
+and (3) heteromeric complexes and cell-type proportions. 1105 
+
+> 1106
+
+Again, arbitrary threshold can be used to filter cell-cell associations. For example, if 𝑥 "# ∈ 𝑋 * > 0.5,1107 
+
+the weight of the corresponding edge 𝜔 6𝑒 "# 7 = 1 , otherwise, 𝜔 6𝑒 "# 7 = 0 .1108 
+
+> 1109
+
+Single Cell Graph Contrastive Learning 1110 
+
+> 1111
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.12.738088 doi: bioRxiv preprint
+
+We introduce a self-supervised architecture designed to discern specific patterns within the 1112 
+
+informative Heterogenous Graphs applied to single-cell networks. Building upon the Graph 1113 
+
+Contrastive Learning ( GraphCL ) framework 67 , we modified the GNN-based encoder with an HGT-1114 
+
+based encoder and incorporate a classification loss function to enhance performance. Recognizing 1115 
+
+the limitations observed when employing GSSL solely for pretraining followed by secondary multi-1116 
+
+task learning finetuning, we have restructured the standard architecture to address these 1117 
+
+challenges (More details in another section). 1118 
+
+> 1119
+
+In this modified approach, pretraining is conducted by maximizing the agreement between two 1120 
+
+augmented views of the same graph using a contrastive loss in the latent space. Here, an augmented 1121 
+
+view refers to a transformed version of the input graph, generated through operations such as 1122 
+
+randomly dropping nodes, masking node features or dropping edges, while preserving the overall 1123 
+
+biological semantics. Additionally, a Multi-Layer Perceptron (MLP) is employed to classify the latent 1124 
+
+representations via a classification loss. The framework comprises six key components: 1125 
+
+> 1126
+
+Graph data augmentation. This process generates novel and semantically consistent data by 1127 
+
+applying specific transformations that preserve the original semantic labels. Each graph 𝐺 1128 
+
+undergoes graph data augmentations to obtain two correlated views 𝐺 /", 𝐺 /# . In the results section 1129 
+
+we only used node dropping augmentations. 1130 
+
+> 1131
+
+HGT-based encoder. A HGT encoder, referred to as 𝐻𝐺𝑇 /0123 extracts graph-level representation 1132 
+
+vectors ℎ", ℎ# from the augmented graphs 𝐺 /", 𝐺 /#. In our implementation, this encoder is a one-layer 1133 
+
+HGT with no activation function. The representation ℎ" is computed as the mean of the output 1134 
+
+nodes from 𝐻𝐺𝑇 "6𝐺 /" 7. The dimensionality of ℎ", ℎ# is treated as a hyperparameter, optimized based 1135 
+
+on the dataset and training objectives; in our standard approach, we set this dimension to 128. 1136 
+
+> 1137
+
+MLP classifier. A four-layer MLP with GeLU activation functions is applied to the mean of ℎ" and ℎ#,1138 
+
+producing an output vector of size 𝑛 , where 𝑛 corresponds to the number of classification labels. 1139 
+
+The architecture of this MLP can be adapted to suit specific goals and datasets. 1140 
+
+> 1141
+
+Contrastive loss function. The contrastive loss function 𝐿 456 aims to maximize the consistency 1142 
+
+between positive pairs ℎ", ℎ# while distinguishing them from negative pairs. We employ the 1143 
+
+normalized temperature-scaled cross-entropy loss (NTXent) for this purpose 68-69 .1144 
+
+> 1145
+
+Classification loss function . The classification loss function 𝐿 4/077 to ensure the learning of 1146 
+
+condition-based patterns from the mean of the graph-level representation vectors ℎ", ℎ#, we utilize 1147 
+
+the cross-entropy loss (CE). 1148 
+
+> 1149
+
+Dynamic Multitask Learning. We implement a dynamic multitask learning approach by adjusting 1150 
+
+the weighted loss, defined as: 1151 
+
+> 1152
+
+𝑙𝑜𝑠𝑠 8!*9 = 𝑤 ( ∙ 𝐿 456 + 𝑤 & ∙ 𝐿 4/077 1153 
+
+> 1154
+
+𝑙𝑜𝑠𝑠 8!*9 = 𝑤 ( ∙ 𝑁𝑇𝑋𝑒𝑛𝑡 + 𝑤 & ∙ 𝐶𝐸 1155 
+
+> 1156
+
+where 𝑤 ( and 𝑤 & are weights that balance the contributions of the contrastive and classification 1157 
+
+loss components, respectively. 1158 
+
+> 1159
+
+Thus, the 𝑙𝑜𝑠𝑠 !30. :*9 𝑛 th graph is defined as: 1160 
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.12.738088 doi: bioRxiv preprint 1161
+
+𝑙𝑜𝑠𝑠 !"#$ %&' = 𝑤 ( '−𝑙𝑜𝑔 𝑒𝑥𝑝-𝑠𝑖𝑚-ℎ ),+, ℎ ),,2 ∕ 𝜏2 ∑ 𝑒𝑥𝑝-𝑠𝑖𝑚-ℎ ),+, ℎ ),,2 ∕ 𝜏2 -
+
+> )!.(,)!/)
+
+6 + 𝑤 0 89 𝑝(𝑥)𝑙𝑜𝑔 0𝑞(𝑥) 
+
+> 1
+
+=1162 
+
+> 1163
+
+Where, 𝑠𝑖𝑚 6ℎ 6,", ℎ 6,# 7 = ℎ 6,"'ℎ6,# ∕ ‖ℎ 6,"‖‖ℎ 6,#‖ , denotes the cosine similarity function, 1164 
+
+calculated as: 1165 
+
+> 1166
+
+𝑠𝑖𝑚 6ℎ 6,", ℎ 6,#7 = ℎ6,"'ℎ6,#
+
+‖ℎ 6,"‖‖ℎ 6,#‖
+
+> 1167
+> 1168
+
+The parameter τ represents the temperature parameter, and 𝑥 defines the different label outcomes 1169 
+
+for the patients. 1170 
+
+> 1171
+
+For each patient graph, we generate two augmented versions and apply the HGT-based encoder to 1172 
+
+both, extracting representation vectors. The contrastive loss is applied to these vectors, and their 1173 
+
+mean is fed into the MLP classifier to compute the classification loss. 1174 
+
+> 1175
+
+Heterogeneous Graph Transformer 1176 
+
+> 1177
+
+We propose the HGT model 71 for the GNN-encoder head. The HGT is employed to learn expressive 1178 
+
+embeddings for both genes and cells, and to estimate their mutual influence via attention 1179 
+
+mechanisms. Its input is the augmented heterogenous graphs. Its output is refined embeddings and 1180 
+
+attention scores that reflect biological relevance. 1181 
+
+> 1182
+
+● Target node and source node: In the context of HGT, a target node 𝑣 + is the node currently 1183 
+
+being updated, while a source node 𝑣 7 is any neighbor connected to it via an edge 𝑒 7,+. These 1184 
+
+roles are crucial for directed attention and message passing. 1185 
+
+> 1186
+
+● Neighborhood graph of target node : For each 𝑣 +, a local subgraph 𝐺 ′ = (𝑉′, 𝐸′, 𝐴′, 𝑅′) is 1187 
+
+created, which includes the target, its neighbors 𝑁 (𝑣 +), and associated node types 𝐴 ′ and 1188 
+
+edge types 𝑅 ′. This local structure allows the transformer to focus on relevant context. 1189 
+
+> 1190
+
+Multi-head attention mechanism and linear mapping of vectors. Each HGT 𝑙 +: layer uses multi-1191 
+
+head attention to learn relationships across different embedding subspaces. The embedding of 𝑣 +1192 
+
+and 𝑣 7 on the 𝑙 +: layer are denoted as 𝐻 /[𝑣 +] and 𝐻 /[𝑣 7]. Each head ℎ learns: 1193 
+
+> 1194
+
+● A query vector: 𝑄 :(𝑣 +) = 𝑄 ;(= "): (𝐻 /?([𝑣 +]) 1195 
+
+> 1196
+
+● A key vector: 𝐾 :(𝑣 +) = 𝐾 ;(= "): (𝐻 /?([𝑣 +]) 1197 
+
+> 1198
+
+● A value vector: 𝑉 : (𝑣 + ) = 𝑉 ;(= "): (𝐻 /?([𝑣 +]) 1199 
+
+> 1200
+
+Each node type has its own linear projection layers to adapt to structural heterogeneity. 1201 
+
+> 1202
+
+Heterogeneous mutual attention. The mutual attention between 𝑣 + and 𝑣 7 is calculated with a 1203 
+
+specialized attention operator: 1204 
+
+> 1205
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.12.738088 doi: bioRxiv preprint
+
+𝐴𝑡𝑡𝑒𝑛𝑡𝑖𝑜𝑛 6𝑣 7, 𝑒 7,+, 𝑣 +7 = 𝑆𝑜𝑓𝑡𝑚𝑎𝑥 ∀=∈B(= ") q|| :C( 
+
+> D
+
+s𝐴𝑇𝑇 : 6𝑣 7, 𝑒 7,+, 𝑣 +7tu 1206 
+
+> 1207
+
+𝐴𝑇𝑇 :6𝑣 7, 𝑒 7,+, 𝑣 + 7 = s𝐾 :(𝑣 7)𝑊 EF2 #,"G$'' 𝑄 : (𝑣 +)'t ∙ 𝜇 〈𝜏(𝑣 "), 𝜙6𝑒 "# 7, 𝜏6𝑣 # 7〉 √𝑑 
+
+> 1208
+> 1209
+
+Here, 𝜇 is a learnable scalar denoting the importance of the meta-relation (node-type, edge-type, 1210 
+
+node-type). 1211 
+
+> 1212
+
+Heterogenous message passing. Each source node passes a message to the target node: 1213 
+
+> 1214
+
+𝑀𝑆𝐺 : 6𝑣 7, 𝑒 7,+, 𝑣 +7 = 𝑉 :(𝑣 7)𝑊 EF2 #,"GHI! 
+
+> 1215
+> 1216
+
+These are concatenated across all heads: 1217 
+
+> 1218
+
+𝑀𝑒𝑠𝑠𝑎𝑔𝑒 6𝑣 7, 𝑒 7,+, 𝑣 +7 = || :C( 
+
+> D
+
+s𝑀𝑆𝐺 :6𝑣 7, 𝑒 7,+, 𝑣 +7t 1219 
+
+> 1220
+> 1221
+
+Target specific aggregation. The new embedding of 𝑣 + at 𝑙 +: layer is obtained by aggregating all 1222 
+
+messages weighted by attention: 1223 
+
+> 1224
+
+𝐻 /z[𝑣 +] = 𝐴𝑔𝑔𝑟𝑒𝑔𝑎𝑡𝑒 ∀=∈B(= ") s𝐴𝑡𝑡𝑒𝑛𝑡𝑖𝑜𝑛6𝑣 7, 𝑒 7,+, 𝑣 +7 ∙ 𝑀𝑒𝑠𝑠𝑎𝑔𝑒6𝑣 7, 𝑒 7,+, 𝑣 +7t 1225 
+
+> 1226
+
+𝐻 /[𝑣 +] = 𝜃 s𝑅𝑒𝐿𝑈6𝐻 /z[𝑣 +]7t + (𝜃 − 1)𝐻 /?([𝑣 +]1227 
+
+> 1228
+
+θ is a trainable parameter controlling residual blending. 1229 
+
+> 1230
+
+Determination of edges attention. After the final HGT layer, we obtain edges attention scores: 1231 
+
+> 1232
+
+𝒶 "# = 8 𝐴𝑇𝑇_ℎ𝑒𝑎𝑑 :(𝑖, 𝑗) &
+
+> :
+> 1233
+> 1234
+
+These values reflect how important a node 𝑖 is to the identity of node 𝑗 , which can later inform 1235 
+
+downstream biological interpretation. 1236 
+
+> 1237
+
+HGT training on subgraph. As HGT trains on how to weight the different types of edges. HGT can 1238 
+
+train on the augmented subgraphs and apply the learned weights to the full graph. 1239 
+
+> 1240
+
+Sample Representations Evaluation Settings 1241 
+
+> 1242
+
+The SPARE metrics (Sample Preservation and Representation Evaluation) 53 are a set of three 1243 
+
+complementary scores designed to quantitatively assess how well a low-dimensional sample 1244 
+
+embedding preserves biologically meaningful structure while removing unwanted technical 1245 
+
+variation. 1246 
+
+> 1247
+
+Information retention & batch effect removal measures how strongly relevant biological/clinical 1248 
+
+covariates (e.g., disease status) are preserved in the embedding and how completely technical 1249 
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.12.738088 doi: bioRxiv preprint
+
+covariates (e.g., batch) are removed. It uses k=3 nearest-neighbor classification/regression to 1250 
+
+predict each sample’s covariate value from its neighbors in embedding space, then computes a 1251 
+
+corrected macro-F1 score (clipped at 0) for categorical variables or absolute Spearman correlation 1252 
+
+for continuous/ordinal ones; relevant scores are averaged directly, while technical (batch) scores 1253 
+
+are inverted (1 – retention) so higher values mean better removal. 1254 
+
+> 1255
+
+Biological trajectory preservation evaluates whether continuous processes (e.g., age) are correctly 1256 
+
+ordered in the embedding. It computes diffusion pseudotime starting from the sample with the 1257 
+
+minimal value of the trajectory covariate (assumed earliest point), then reports the absolute 1258 
+
+Spearman correlation between this pseudotime and the true covariate value. 1259 
+
+> 1260
+
+Replicate robustness checks whether biologically replicate samples (e.g., multiple samples from the 1261 
+
+same patient/individual) are placed closer to each other in the embedding than to non-replicates. 1262 
+
+For each replicate pair, it calculates the fraction of all other samples that are farther from one 1263 
+
+replicate than its pair partner is, averages over both directions of the pair, and finally averages 1264 
+
+across all such pairs. 1265 
+
+> 1266
+
+These three components are combined into a single aggregated SPARE score using a weighted 1267 
+
+average (information retention and trajectory preservation at weight 1, replicate robustness at 1268 
+
+weight 1, batch removal at weight 0.5 to avoid biasing toward random-like embeddings), normalized 1269 
+
+by the total weight (3.5) to produce a final value in [0,1], where higher is better. 1270 
+
+> 1271
+
+For the results, we used Disease as relevant information retention, we used Batch for irrelevant 1272 
+
+information removal, we used Age for trajectory conservation, and we used Sex replicate 1273 
+
+robustness. 1274 
+
+> 1275
+
+Predictive Evaluation Settings 1276 
+
+> 1277
+
+To assess the predictive performance of sample representation methods, we benchmarked based 1278 
+
+on 5-fold cross-validation kNN classifier performed on the output sample representation 1279 
+
+embeddings of each method. We calculated the F1 score, Area Under the Receiver Operating 1280 
+
+Characteristic Curve (AUC), and Balanced Accuracy (BalAcc). All metrics were calculated using 1281 
+
+sklearn Python module 72 .1282 
+
+> 1283
+
+Clustering Statistics on Sample Embeddings 1284 
+
+> 1285
+
+Patients level spaces were also evaluated with both unsupervised and supervised clustering scores. 1286 
+
+We used the following unsupervised clustering score: Calinski-Harabasz Index (CH), Average 1287 
+
+Silhouette Score (AWS) and Davies-Bouldin Index (DB). On the other hand, we used also three other 1288 
+
+supervised clustering score: Adjusted Rank Index (ARI) and Adjusted Mutual Information (AMI). All 1289 
+
+metrics were calculated using sklearn Python module 72 .1290 
+
+> 1291
+
+Clustering for the supervised metrics was performed using the KMeans function from the sklearn 1292 
+
+module in Python 72 . To infer trajectories within the learned patient spaces, we used the slingshot 1293 
+
+package from R 55 .1294 
+
+> 1295
+
+Cell niche analysis 1296 
+
+> 1297
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.12.738088 doi: bioRxiv preprint
+
+FloREN generates a 128-dimensional embedding vector for each cell, representing its learned 1298 
+
+biological state within the heterogeneous graph. To obtain condition-specific representations, cell 1299 
+
+embeddings were first grouped by annotated cell type and averaged across all cells belonging to 1300 
+
+that cell type within each patient. Subsequently, patient-level cell type embeddings were averaged 1301 
+
+across all patients from the same condition, yielding a single representative embedding for each cell 1302 
+
+type in each condition. 1303 
+
+> 1304
+
+To quantify relationships between cell types, we computed the Euclidean distance between all pairs 1305 
+
+of condition-specific cell type embeddings, 1306 
+
+> 1307
+
+𝑑 "# = 𝑧 " − 𝑧 # &
+
+> 1308
+> 1309
+
+Where 𝑧 " and 𝑧 # denote the mean embedding vectors of cell types i and j, respectively. The resulting 1310 
+
+pairwise distance matrix was visualized by hierarchical clustering using average linkage. 1311 
+
+> 1312
+
+The underlying assumption is that FloREN embeds cell types participating in coordinated biological 1313 
+
+programs into nearby regions of the latent space. Consequently, cell types with smaller Euclidean 1314 
+
+distances are interpreted as belonging to the same functional cellular niche, whereas increased 1315 
+
+distances indicate distinct or condition-specific cellular states. Comparing the distance matrices 1316 
+
+between conditions therefore enables the identification of niche reorganization associated with 1317 
+
+disease. 1318 
+
+> 1319
+
+Differential Abundance Analysis 1320 
+
+> 1321
+
+The FloREN attention network assigns an attention score to each edge in the heterogeneous graph 1322 
+
+constructed for every patient. For each node (cell) in the graph, a node-level attention score was 1323 
+
+obtained by aggregating the attention scores of all edges connected to that node. Formally, if 𝑒 "# 1324 
+
+denotes the edge between nodes 𝑖 and 𝑗 with attention weight 𝑎 "# , the attention score for node 𝑖 1325 
+
+is computed as: 1326 
+
+𝐴 " = 8 𝑎 "# 
+
+> #∈𝒩 (")
+> 1327
+> 1328
+
+where 𝒩 (𝑖) is the set of neighboring nodes connected to node 𝑖 .1329 
+
+> 1330
+
+Once a cell-level attention score 𝐴 4 
+
+> .
+
+was obtained for every cell 𝑐 in patient 𝑝 , the total attention 1331 
+
+score for each cell type 𝑡 in patient 𝑝 was calculated by summing the attention scores of all cells 1332 
+
+belonging to that cell type: 1333 
+
+> 1334
+
+𝑆 + 
+
+> .
+
+= 8 𝐴 4
+
+> .
+> 4∈*"
+> %
+> 1335
+> 1336
+
+where 𝐶 + 
+
+> .
+
+represents the set of all cells of type 𝑡 in patient 𝑝 .1337 
+
+> 1338
+
+Under the null hypothesis that a given cell type 𝑡 has the same biological importance (as captured 1339 
+
+by the attention mechanism) across two conditions (e.g., disease vs. control), the total attention 1340 
+
+sums 𝑆 +
+
+> .
+
+are expected to follow the same distribution in both groups. A significant difference in the 1341 
+
+distribution of 𝑆 +
+
+> .
+
+between the two conditions indicates differential abundance or differential 1342 
+
+importance of that cell type. 1343 
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.12.738088 doi: bioRxiv preprint 1344
+
+To test this hypothesis, a non-parametric two-sided Mann-Whitney U test was performed to 1345 
+
+compare the total FloREN attention sums 𝑆 +
+
+> .
+
+for each cell type 𝑡 between the two patient groups. 1346 
+
+The resulting p-values were adjusted for multiple testing using the Benjamini-Hochberg false 1347 
+
+discovery rate (FDR) correction. Cell types with an FDR-adjusted p-value below a predefined 1348 
+
+significance threshold (typically 0.05) were considered differentially abundant between the 1349 
+
+conditions. 1350 
+
+> 1351
+
+Differential Gene Expression Analysis 1352 
+
+> 1353
+
+The FloREN model produces a 128-dimensional gene embedding vector for each gene in every 1354 
+
+patient. To obtain a condition-specific representation, the gene embeddings were first averaged 1355 
+
+across all patients within each condition. Formally, for a given gene 𝑡 , the condition-specific 1356 
+
+embedding for condition 𝑐 is defined as: 1357 
+
+> 1358
+
+𝑒 K 
+
+> 4
+
+= 1
+
+𝑁 4
+
+8 𝑒 K
+
+> .
+> .∈L&
+> 1359
+> 1360
+
+where 𝑒 K 
+
+> 4
+
+∈ ℝ(&M is the embedding vector of gene 𝑔 in patient 𝑝 , 𝑃 4 is the set of all patients 1361 
+
+belonging to condition 𝑐 , and 𝑁 4 = |𝑃 4| is the number of patients in that condition. 1362 
+
+> 1363
+
+Under the assumption that these embeddings capture condition-aware biological information, the 1364 
+
+difference between the embeddings of the same gene across the two conditions reflects differential 1365 
+
+gene relevance or activity. For each gene g, the distance between its two condition-specific 1366 
+
+embeddings was computed as: 1367 
+
+> 1368
+
+𝑑 K = 𝑒 K 
+
+> 4'
+
+− 𝑒 K 
+
+> 4(
+
+&
+
+> 1369
+> 1370
+
+where ‖∙‖ &denotes the Euclidean (L2) norm. 1371 
+
+> 1372
+
+To assess statistical significance, an empirical p-value was calculated for each gene based on the null 1373 
+
+distribution of distances across all genes. Specifically, the p-value represents the probability of 1374 
+
+observing a distance at least as large as 𝑑 Kunder the null hypothesis that the observed distance is 1375 
+
+due to random variation. The empirical p-value is given by: 1376 
+
+> 1377
+
+𝑝 K = ∑ 𝕀6𝑑 " − 𝑑 K7 + 1 B
+
+> "C(
+
+𝑁 + 1 
+
+> 1378
+> 1379
+
+where 𝑑 " is the distance for the 𝑖 -th gene, 𝑁 is the total number of genes, and 𝕀 (∙) is the indicator 1380 
+
+function. This formulation corresponds to the standard rank-based empirical p-value with continuity 1381 
+
+correction (adding 1 to both numerator and denominator to avoid p = 0). 1382 
+
+> 1383
+
+Genes with a small empirical p-value indicate a significantly larger embedding distance between 1384 
+
+conditions compared to the background distribution of all genes, and were therefore considered 1385 
+
+differentially expressed. This approach provides a differential gene expression analysis that is robust 1386 
+
+to technical noise such as batch effects, as the condition-aware embeddings are learned directly 1387 
+
+from the graph attention mechanism. 1388 
+
+> 1389
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.12.738088 doi: bioRxiv preprint
+
+Cell-cell communication profiling 1390 
+
+> 1391
+
+FloREN learns an attention score for every edge in the heterogeneous graph of each patient, 1392 
+
+including cell-cell, gene-cell, and gene-gene interactions. To characterize cell-cell communication, 1393 
+
+we isolated the attention scores corresponding to cell-cell edges. Using the cell type annotations, 1394 
+
+we then aggregated the attention scores of all interactions between each pair of annotated cell 1395 
+
+types, yielding a cell type-cell type interaction matrix for every patient. 1396 
+
+> 1397
+
+The resulting matrix represents the relative importance assigned by FloREN to communication 1398 
+
+between cell populations, where higher attention scores indicate interactions that contribute more 1399 
+
+strongly to the learned disease representation. Finally, interaction matrices were averaged across 1400 
+
+patients within each condition to generate condition-specific cell-cell communication profiles, 1401 
+
+enabling qualitative comparison of communication patterns between disease states. 1402 
+
+> 1403
+
+Unique Cell Type Gene Signature Decomposition 1404 
+
+> 1405
+
+To derive cell type-specific gene signatures, we adapted the gene program scoring strategy 1406 
+
+described by Hachonen et al. 73 . Starting from FloREN’s attention-weighted edge matrix (edges 1407 
+
+defined as ⟨source, target, attention ⟩), we first isolated edges involving cell type-specific nodes. 1408 
+
+Gene-level attention scores were then aggregated per cell type, resulting in a matrix of dimensions 1409 
+
+(cell types × genes), where each entry represents the aggregated attention weight of a gene within 1410 
+
+a given cell type. This matrix is conceptually analogous to the (gene programs × genes) matrix 1411 
+
+obtained from non-negative matrix factorization (NMF) in the original framework. 1412 
+
+> 1413
+
+To characterize cell type-specific gene signatures, we ranked genes within each cell type using a 1414 
+
+scaled weighting scheme designed to prioritize both high relevance and uniqueness. For gene 𝑖 and 1415 
+
+cell type 𝑗 , the scaled weight 𝑊𝑆 "# was defined as: 1416 
+
+> 1417
+
+𝑊𝑆 "# = 𝑊 "# ∙ 𝑚𝑎𝑥 qlog q 𝑊 "# + 1 𝑊 "N + 1 u , 0u 1418 
+
+> 1419
+
+Where 𝑊 "# denotes the aggregated attention weight of gene 𝑖 in cell type 𝑗 , and 𝑊 "N is the maximum 1420 
+
+aggregated weight of gene 𝑖 across all other cell types 𝑘 ≠ 𝑗 . This formulation emphasizes genes 1421 
+
+with high attention within a given cell type (first term) while penalizing genes that are broadly 1422 
+
+shared across cell types (second term). 1423 
+
+> 1424
+
+We calculated the cumulative sum of 𝑊𝑆 "# and select the genes that explain 99% of each Gene 1425 
+
+Program. This way we obtained of around 250 genes that are unique for each Gene Program. 1426 
+
+> 1427
+
+Gene program calculation 1428 
+
+> 1429
+
+To identify disease-associated gene programs, we leveraged FloREN’s attention scores to construct 1430 
+
+condition-specific gene regulatory networks. For each dataset, we first selected the top five cell 1431 
+
+types based on their aggregated cell-level attention scores. Within these cell types, we further 1432 
+
+selected the top 250 genes ranked by gene-level attention. 1433 
+
+> 1434
+
+Using the attention-weighted gene-gene edges, we extracted gene regulatory networks (GRNs) for 1435 
+
+each patient, restricted to the selected genes. These patient-level GRNs were then aggregated by 1436 
+
+disease condition, resulting in one condition-specific GRN per group. In these networks, both nodes 1437 
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.12.738088 doi: bioRxiv preprint
+
+and edges were weighted according to their corresponding FloREN attention scores, thereby 1438 
+
+preserving the relative importance learned by the model. 1439 
+
+> 1440
+
+To identify coherent gene programs, we applied the Leiden community detection algorithm 74 to 1441 
+
+each condition specific GRN. Gene programs were defined as communities containing at least four 1442 
+
+genes. Using this approach, we identified six rheumatoid arthritis (RA) gene programs and seven 1443 
+
+healthy donor (HD) gene programs. 1444 
+
+> 1445
+
+Annotation target enrichment in gene expression programs 1446 
+
+> 1447
+
+Transcription factor targets, immune hallmark gene sets, and pathway annotations were obtained 1448 
+
+from the Molecular Signatures Database (MSigDB; http://www.gsea-msigdb.org/gsea/msigdb/ , 1449 
+
+accessed February 2026) 77 . For each gene program, enrichment of these target sets was assessed 1450 
+
+using a Fisher’s exact test applied to the overlap between the program’s top-ranked genes and each 1451 
+
+reference gene set. 1452 
+
+> 1453
+
+A target set was considered significantly associated with a given gene program if it satisfied both 1454 
+
+criteria: (i) a false discovery rate (FDR) below 0.1 after multiple testing correction, and (ii) a minimum 1455 
+
+overlap of three genes between the gene program and the target set. 1456 
+
+> 1457
+> 1458
+> 1459
+> 1460
+> 1461
+> 1462
+> 1463
+> 1464
+> 1465
+> 1466
+> 1467
+> 1468
+> 1469
+> 1470
+> 1471
+> 1472
+> 1473
+> 1474
+> 1475
+> 1476
+> 1477
+> 1478
+> 1479
+> 1480
+> 1481
+> 1482
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.12.738088 doi: bioRxiv preprint
+
+References 1483 
+
+> 1484
+> 1485
+
+1. Arowoogun, J. O. et al. A comprehensive review of data analytics in healthcare management: 1486 
+
+Leveraging big data for decision-making. World J. Adv. Res. Rev. 21, 1810-1821 (2024). 1487 
+
+> 1488
+
+2. Dash, S., Shakyawar, S. K., Sharma, M. & Kaushik, S. Big data in healthcare: management, 1489 
+
+analysis and future prospects. J. Big Data 6, 1-25 (2019). 1490 
+
+> 1491
+
+3. Marx, V. The big challenges of big data. Nature 498, 255-260 (2013). 1492 
+
+> 1493
+
+4. Obermeyer, Z. & Emanuel, E. J. Predicting the future-big data, machine learning, and clinical 1494 
+
+medicine. N. Engl. J. Med. 375, 1216-1219 (2016). 1495 
+
+> 1496
+
+5. Jindal, A., Gupta, P., Jayadeva & Sengupta, D. Discovery of rare cells from voluminous single-1497 
+
+cell expression data. Nat. Commun. 9, 4719 (2018). 1498 
+
+> 1499
+
+6. Liu, T. et al. Cosgenegate selects multi-functional and credible biomarkers for single-cell 1500 
+
+analysis. bioRxiv (2024). 1501 
+
+> 1502
+
+7. Pullin, J. M. & McCarthy, D. J. A comparison of marker gene selection methods for single-cell 1503 
+
+RNA sequencing data. Genome Biol. 25, 56 (2024). 1504 
+
+> 1505
+
+8. Rood, J. E. et al. Impact of the Human Cell Atlas on medicine. Nat. Med. 28, 2486-2496 1506 
+
+(2022). 1507 
+
+> 1508
+
+9. Suv√†, M. L. et al. Reconstructing and reprogramming the tumor-propagating potential of 1509 
+
+glioblastoma stem-like cells. Cell 157, 580-594 (2014). 1510 
+
+> 1511
+
+10. Boyeau, P., Hong, J., Gayoso, A. et al. Deep generative modeling of sample-level 1512 
+
+heterogeneity in single-cell genomics. Nat. Methods 22, 2264-2274 (2025). 1513 
+
+> 1514
+
+11. Liu, T., De Brouwer, E., Kuo, T. et al. Learning multi-cellular representations of single-cell 1515 
+
+transcriptomics data enables characterization of patient-level disease states. bioRxiv (2025). 1516 
+
+> 1517
+
+12. Jiménez-Gracia, L. et al. Interpretable inflammation landscape of circulating immune cells. 1518 
+
+Nat. Med. 32, 633-644 (2026). 1519 
+
+> 1520
+
+13. Wang, H., Torous, W., Gong, B. et al. Visualizing scRNA-seq data at population scale with 1521 
+
+GloScope. Genome Biol. 25, 259 (2024). 1522 
+
+> 1523
+
+14. He, B., Thomson, M., Subramaniam, M., Perez, R., Ye, C. J. & Zou, J. CloudPred: predicting 1524 
+
+patient phenotypes from single-cell RNA-seq. Pac. Symp. Biocomput. 27, 337-348 (2022). 1525 
+
+> 1526
+
+15. Cao, Y., Lin, Y., Patrick, E., Yang, P. & Yang, J. Y. H. scFeatures: multi-view representations of 1527 
+
+single-cell and spatial data for disease outcome prediction. Bioinformatics 38, 4745-4753 1528 
+
+(2022). 1529 
+
+> 1530
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.12.738088 doi: bioRxiv preprint
+
+16. von Querfurth, B., Lohm√∂ller, J., Pennekamp, J. et al. mcBERT: patient-level single-cell 1531 
+
+transcriptomics data representation. bioRxiv (2024). 1532 
+
+> 1533
+
+17. Pang, K. et al. PULSAR: a foundation model for multi-scale and multicellular biology. bioRxiv 1534 
+
+(2025). 1535 
+
+> 1536
+
+18. Shitov, V., Moghareh Dehkordi, M., Frey, B. M., Richter, T., Sch√∂nner, E. M., Naciri Zerta, Y. 1537 
+
+& Luecken, M. D. Great patients embed alike: contrastive learning for sample representation 1538 
+
+from single-cell data. Preprint at https://openreview.net/forum?id=0eenZ5FvH1 (2025). 1539 
+
+> 1540
+
+19. Blencowe, M. et al. Network modeling of single-cell omics data: challenges, opportunities, 1541 
+
+and progresses. Emerg. Top. Life Sci. 3, 379-398 (2019). 1542 
+
+> 1543
+
+20. Valous, N. A. et al. Graph machine learning for integrated multi-omics analysis. Br. J. Cancer 1544 
+
+131, 205-211 (2024). 1545 
+
+> 1546
+
+21. Feng, X. et al. Single-cell RNA-seq data analysis using graph autoencoders and graph 1547 
+
+attention networks. Front. Genet. 13, 1003711 (2022). 1548 
+
+> 1549
+
+22. Xu, C., Cai, L. & Gao, J. An efficient scRNA-seq dropout imputation method using graph 1550 
+
+attention network. BMC Bioinformatics 22, 1-18 (2021). 1551 
+
+> 1552
+
+23. Feng, X., Zhang, H., Lin, H. & Long, H. Single-cell RNA-seq data analysis based on directed 1553 
+
+graph neural network. Methods 211, 48-60 (2023). 1554 
+
+> 1555
+
+24. Gu, H. et al. scGNN 2.0: a graph neural network tool for imputation and clustering of single-1556 
+
+cell RNA-seq data. Bioinformatics 38, 5322-5325 (2022). 1557 
+
+> 1558
+
+25. Wu, X. & Zhou, Y. GE-impute: graph embedding-based imputation for single-cell RNA-seq 1559 
+
+data. Brief. Bioinform. 23, bbac313 (2022). 1560 
+
+> 1561
+
+26. Cheng, Y. & Ma, X. scGAC: a graph attentional architecture for clustering single-cell RNA-seq 1562 
+
+data. Bioinformatics 38, 2187-2193 (2022). 1563 
+
+> 1564
+
+27. Huo, Y. et al. Integrating multi-modal information to detect spatial domains of spatial 1565 
+
+transcriptomics by graph attention network. J. Genet. Genomics (2023). 1566 
+
+> 1567
+
+28. Wang, S. et al. scASGC: an adaptive simplified graph convolution model for clustering single-1568 
+
+cell RNA-seq data. Comput. Biol. Med. 169, 107152 (2023). 1569 
+
+> 1570
+
+29. Shan, Y. et al. GLAE: a graph-learnable autoencoder for single-cell RNA-seq analysis. Inf. Sci. 1571 
+
+621, 88-103 (2023). 1572 
+
+> 1573
+
+30. Yu, Z. et al. ZINB-based graph embedding autoencoder for single-cell RNA-seq 1574 
+
+interpretations. Proc. AAAI Conf. Artif. Intell. 36, 4671-4679 (2022). 1575 
+
+> 1576
+
+31. Lee, J. et al. Deep single-cell RNA-seq data clustering with graph prototypical contrastive 1577 
+
+learning. Bioinformatics 39, btad342 (2023). 1578 
+
+> 1579
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.12.738088 doi: bioRxiv preprint
+
+32. Lin, E. et al. scGMM-VGAE: a Gaussian mixture model-based variational graph autoencoder 1580 
+
+algorithm for clustering single-cell RNA-seq data. Mach. Learn. Sci. Technol. (2023). 1581 
+
+> 1582
+
+33. Abadi, S. A. R., Laghaee, S. P. & Koohi, S. An optimized graph-based structure for single-cell 1583 
+
+RNA-seq cell-type classification based on non-linear dimension reduction. BMC Genomics 1584 
+
+24, 1-13 (2023). 1585 
+
+> 1586
+
+34. Wang, K. et al. Adversarial dense graph convolutional networks for single-cell classification. 1587 
+
+Bioinformatics 39, btad043 (2023). 1588 
+
+> 1589
+
+35. Shao, X. et al. Reference-free cell-type annotation for single-cell transcriptomics using deep 1590 
+
+learning with a weighted graph neural network. bioRxiv (2020) 1591 
+
+> 1592
+
+36. Bhadani, R., Chen, Z. & An, L. Attention-based graph neural network for label propagation in 1593 
+
+single-cell omics. Genes 14, 506 (2023). 1594 
+
+> 1595
+
+37. Yuan, M., Chen, L. & Deng, M. scMRA: a robust deep learning method to annotate scRNA-1596 
+
+seq data with multiple reference datasets. Bioinformatics 38, 738-745 (2022). 1597 
+
+> 1598
+
+38. Yin, Q. et al. scGraph: a graph neural network-based approach to automatically identify cell 1599 
+
+types. Bioinformatics 38, 2996-3003 (2022). 1600 
+
+> 1601
+
+39. Lazaros, K., Koumadorakis, D., Vlamos, P. & Vrahatis, G. Graph neural network approaches 1602 
+
+for single-cell data: a recent overview. arXiv:2310.09561 (2023). 1603 
+
+> 1604
+
+40. Ma, A. et al. Single-cell biological network inference using a heterogeneous graph 1605 
+
+transformer. Nat. Commun. 14, 964 (2023). 1606 
+
+> 1607
+
+41. Heidari, E. et al. Segger: fast and accurate cell segmentation of imaging-based spatial 1608 
+
+transcriptomics data. bioRxiv https://doi.org/10.1101/2025.03.14.643160 (2025). 1609 
+
+> 1610
+
+42. Shahir, J. A., Stanley, N. & Purvis, J. E. Cellograph: a semi-supervised approach to analyzing 1611 
+
+multi-condition single-cell RNA-sequencing data using graph neural networks. BMC 1612 
+
+Bioinformatics 25, 25 (2024). 1613 
+
+> 1614
+
+43. Baul, S., Ahmed, K. T., Filipek, J. & Zhang, W. OmicsGAT: graph attention network for cancer 1615 
+
+subtype analyses. Int. J. Mol. Sci. 23, 10220 (2022).lllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll 1616 
+
+> 1617
+
+44. McInnes, I. B. & Gravallese, E. M. Immune-mediated inflammatory disease therapeutics: 1618 
+
+past, present and future. Nat. Rev. Immunol. 21, 680-686 (2021).lllllllllllllllllllllllllllllllllllllllllllllllll 1619 
+
+> 1620
+
+45. Rahman, P., Inman, R. D., El-Gabalawy, H. & Krause, D. O. Pathophysiology and pathogenesis 1621 
+
+of immune-mediated inflammatory diseases: commonalities and differences. J. Rheumatol. 1622 
+
+Suppl. 85, 11-26 (2010). 1623 
+
+> 1624
+
+46. Wu, L., Lin, H., Gao, Z., Tan, C. & Li, S.Z. Self-supervised learning on graphs: Contrastive, 1625 
+
+generative or predictive. arXiv 2105.07342 (2021). 1626 
+
+> 1627
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.12.738088 doi: bioRxiv preprint
+
+47. You, Y., Chen, T., Wang, Z. & Shen, Y. When does self-supervision help graph convolutional 1628 
+
+networks? arXiv 2006.09136 (2020). 1629 
+
+> 1630
+
+48. Binvignat, M. et al. Single-cell RNA-Seq analysis reveals cell subsets and gene signatures 1631 
+
+associated with rheumatoid arthritis disease activity. JCI Insight 9, e178499 (2024). 1632 
+
+> 1633
+
+49. Straeten, F. et al. Integrated single-cell transcriptomics of cerebrospinal fluid cells in 1634 
+
+treatment-naïve multiple sclerosis. J. Neuroinflamm. 19, 306 (2022). 1635 
+
+> 1636
+
+50. Schafflick, D. et al. Integrated single-cell analysis of blood and cerebrospinal fluid leukocytes 1637 
+
+in multiple sclerosis. Nat. Commun. 11, 247 (2020). 1638 
+
+> 1639
+
+51. Nehar-Belaid, D. et al. Mapping systemic lupus erythematosus heterogeneity at the single-1640 
+
+cell level. Nat. Immunol. 21, 1094-1106 (2020). 1641 
+
+> 1642
+
+52. Perez, R.K. et al. Single-cell RNA-seq reveals cell type-specific molecular and genetic 1643 
+
+associations to lupus. Science 376, eabf1970 (2022). 1644 
+
+> 1645
+
+53. Shitov, V. A., Dehkordi, M. & Luecken, M. D. Benchmarking sample representations from 1646 
+
+single-cell data: metrics for biologically meaningful embeddings. Preprint at arXiv (2025). 1647 
+
+> 1648
+
+54. Ronnblom, L., & Alm, G. V. (2001). A pivotal role for the plasmacytoid dendritic cell as a 1649 
+
+producer of interferon-alpha in systemic lupus erythematosus. Journal of Experimental 1650 
+
+Medicine, 194(12), F59-F63. 1651 
+
+> 1652
+
+55. Street, K. et al. Slingshot: cell lineage and pseudotime inference for single-cell 1653 
+
+transcriptomics. BMC Genomics 19, 477 (2018). 1654 
+
+> 1655
+
+56. Hao, Y. et al. Integrated analysis of multimodal single-cell data. Cell 184, 3573-3587 (2021). 1656 
+
+> 1657
+
+57. Villani, A. C., et al. Single-cell RNA-seq reveals new types of human blood dendritic cells, 1658 
+
+monocytes, and progenitors. Science 356, 6335 (2017). 1659 
+
+> 1660
+
+58. See, P., et al. Mapping the human DC lineage through the integration of high-dimensional 1661 
+
+techniques. Science 356, 6342 (2017). 1662 
+
+> 1663
+
+59. Fissolo, N., et al. CSF Chitinase 3-Like 2 Is Associated With Long-term Disability Progression 1664 
+
+in Patients With Progressive Multiple Sclerosis. Neurology: Neuroimmunology &1665 
+
+Neuroinflammation 8, 6, (2021). 1666 
+
+> 1667
+
+60. Satija, R. et al. Spatial reconstruction of single-cell gene expression data. Nat. Biotechnol. 33, 1668 
+
+495-502 (2015). 1669 
+
+> 1670
+
+61. Marsh, S.E. scCustomize: Custom visualizations & functions for streamlined analyses of 1671 
+
+single-cell sequencing. Zenodo (2021). 1672 
+
+> 1673
+
+62. Butler, A. et al. Integrating single-cell transcriptomic data across different conditions, 1674 
+
+technologies, and species. Nat. Biotechnol. 36, 411-420 (2018). 1675 
+
+> 1676
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.07.12.738088 doi: bioRxiv preprint
+
+63. Badia-i-Mompel, P. et al. decoupleR: Ensemble of computational methods to infer biological 1677 
+
+activities from omics data. Bioinformatics Adv. 2, vbac016 (2022). 1678 
+
+> 1679
+
+64. DeWeirdt, P.C. stringdb: Python client for the STRING database. PyPI (2020). 1680 
+
+> 1681
+
+65. Székely, G.J., Rizzo, M.L. & Bakirov, N.K. Measuring and testing dependence by correlation 1682 
+
+of distances. Ann. Stat. 35, 2769-2794 (2007). 1683 
+
+> 1684
+
+66. Jin, S. et al. Inference and analysis of cell-cell communication using CellChat. Nat. Commun. 1685 
+
+12, 1088 (2021). 1686 
+
+> 1687
+
+67. You, Y., Chen, T., Sui, Y., Chen, T., Wang, Z. & Shen, Y. Graph contrastive learning with 1688 
+
+augmentations. Preprint at arXiv:2010.13902 (2020). 1689 
+
+> 1690
+
+68. Wang, X. et al. Proceedings of The World Wide Web Conference, 2022-2032 (Association for 1691 
+
+Computing Machinery, 2019). 1692 
+
+> 1693
+
+69. Sohn, K. Improved deep metric learning with multi-class n-pair loss objective. Adv. Neural 1694 
+
+Inf. Process. Syst. 1857-1865 (2016). 1695 
+
+> 1696
+
+70. Wu, Z., Xiong, Y., Yu, S.X. & Lin, D. Unsupervised feature learning via nonparametric instance 1697 
+
+discrimination. Proc. IEEE Conf. Comput. Vis. Pattern Recognit. 3733-3742 (2018). 1698 
+
+> 1699
+
+71. Hu, Z., Dong, Y., Wang, K. & Sun, Y. Proceedings of The Web Conference 2020, 2704-2710 1700 
+
+(Association for Computing Machinery, 2020). 1701 
+
+> 1702
+
+72. Pedregosa, F. et al. Scikit-learn: Machine learning in Python. J. Mach. Learn. Res. 12, 2825-1703 
+
+2830 (2011). 1704 
+
+> 1705
+
+73. Pelka, K., Hofree, M., Chen, J. H., Sarkizova, S., Pirl, J. D., Jorgji, R. et al. Spatially organized 1706 
+
+multicellular immune hubs in human colorectal cancer. Cell (2021). 1707 
+
+> 1708
+
+74. Traag, V.A., Waltman, L. & van Eck, N.J. From Louvain to Leiden: guaranteeing well-1709 
+
+connected communities. Sci Rep 9, 5233 (2019)llllllllllllllllllllllllllllllllllllll 1710 
+
+> 1711
+
+75. Barturen, G. et al. Integrative analysis reveals a molecular stratification of systemic 1712 
+
+autoimmune diseases. Arthritis Rheumatol. 73, 1073-1085 (2021).lllllllllllllllllllllllllllllllllllllllllllll 1713 
+
+> 1714
+
+76. Fernández-Ochoa, Á. et al. Metabolic disturbances in urinary and plasma samples from 1715 
+
+seven different systemic autoimmune diseases detected by HPLC–ESI–QTOF–MS. J. 1716 
+
+Proteome Res. 19, 3220-3229 (2020).llllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll 1717 
+
+> 1718
+
+77. Liberzon, A. et al. The Molecular Signatures Database (MSigDB) hallmark gene set collection. 1719 
+
+Cell Syst. 1, 417-425 (2015). 1720

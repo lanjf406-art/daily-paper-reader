@@ -1,0 +1,25 @@
+---
+title: Functional Data Analysis of Spatial Clustering Identifies Prognostic T Cell Patterns in Ovarian Cancer
+title_zh: 空间聚类的功能数据分析识别卵巢癌预后T细胞模式
+authors: "Sakitis, C. J., Liao, D., Reid, B. M., Townsend, M. K., Schildkraut, J. M., Lawson, A. B., Tworoger, S. S., Terry, K. L., Peres, L. C., Wrobel, J., Soupir, A. C., Fridley, B. L."
+date: 2026-07-20
+pdf: "https://www.biorxiv.org/content/10.64898/2026.07.02.735980v2.full.pdf"
+tags: ["query:neo-resist"]
+score: 6.0
+evidence: 肿瘤微环境中T细胞空间模式的功能数据分析，与肿瘤微环境耐药相关
+tldr: 传统空间聚类分析依赖固定半径，可能遗漏跨尺度模式。本研究提出功能数据分析框架，通过连续半径上的聚类轨迹建模，利用FPCA提取主要空间变异，并纳入Cox模型。在773例卵巢癌样本中，发现CD8+ T细胞空间分布模式独立于丰度预测预后，高丰度低聚集的弥散浸润与最佳生存相关。该方法提供了超越丰度的补充预后信息。
+source: biorxiv
+selection_source: fresh_fetch
+figures_json: "[{\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-07-02-735980-v2/fig-001.webp\", \"caption\": \"\", \"page\": 0, \"index\": 1, \"width\": 1565, \"height\": 1918, \"label\": \"Figure\"}, {\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-07-02-735980-v2/fig-002.webp\", \"caption\": \"\", \"page\": 0, \"index\": 2, \"width\": 1444, \"height\": 1571, \"label\": \"Figure\"}, {\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-07-02-735980-v2/fig-003.webp\", \"caption\": \"\", \"page\": 0, \"index\": 3, \"width\": 1458, \"height\": 1578, \"label\": \"Figure\"}, {\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-07-02-735980-v2/fig-004.webp\", \"caption\": \"\", \"page\": 0, \"index\": 4, \"width\": 1312, \"height\": 763, \"label\": \"Figure\"}, {\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-07-02-735980-v2/fig-005.webp\", \"caption\": \"\", \"page\": 0, \"index\": 5, \"width\": 1314, \"height\": 761, \"label\": \"Figure\"}]"
+tables_json: "[{\"url\": \"assets/tables/biorxiv/biorxiv-10-64898-2026-07-02-735980-v2/table-001.webp\", \"caption\": \"\", \"page\": 0, \"index\": 1, \"width\": 1716, \"height\": 1310, \"label\": \"Table\"}, {\"url\": \"assets/tables/biorxiv/biorxiv-10-64898-2026-07-02-735980-v2/table-002.webp\", \"caption\": \"\", \"page\": 0, \"index\": 2, \"width\": 1711, \"height\": 699, \"label\": \"Table\"}]"
+motivation: 传统固定半径的空间聚类指标可能忽略跨尺度的生物学模式，需要更灵活的分析方法。
+method: 对连续半径上的空间聚类轨迹进行FPCA，将主成分得分作为Cox模型的主效应和与丰度的交互项。
+result: CD8+ T细胞的空间模式独立于丰度与生存相关，高丰度低聚集组预后最佳。
+conclusion: 功能数据分析可揭示传统方法遗漏的空间预后特征，提示弥散免疫浸润更有抗肿瘤活性。
+---
+
+## 摘要
+空间蛋白质组成像技术能够同时评估肿瘤微环境中免疫细胞的丰度和空间组织。空间聚类通常通过固定半径下的Ripley's K或最近邻G函数等指标进行总结。然而，这些方法依赖于尺度选择，并且可能掩盖跨空间范围出现的生物学相关模式。我们提出了一个功能数据分析（FDA）框架，用于建模在连续半径范围内导出的空间聚类轨迹。使用功能主成分分析（FPCA）总结空间变化的主要模式，并将所得分数作为主效应以及与免疫细胞丰度的交互作用纳入Cox比例风险模型。该方法应用于来自五项卵巢癌研究的多重免疫荧光数据，包括773例高级别卵巢浆液性肿瘤。分析聚焦于组织肿瘤区内的CD3+和CD8+ T细胞群体，并根据诊断年龄和癌症分期进行调整，使用随机效应荟萃分析合并研究特异性估计。两种T细胞和CD8+ T细胞的更高丰度一致地与改善的总生存期相关。除丰度外，由主要功能主成分捕获的空间特征独立地与生存相关，特别是对于CD8+ T细胞。交互模型进一步显示，免疫浸润的预后效应取决于空间聚类，以高丰度和低空间聚类为特征的肿瘤表现出最有利的结果。这些发现表明，空间组织提供了超越丰度本身的补充预后信息，并提示更弥散的免疫浸润可能反映了卵巢癌中更有效的抗肿瘤活性。总体而言，FDA为跨尺度建模空间聚类以及识别固定半径或距离分析未捕获的预后空间特征提供了一个灵活且可解释的框架。
+
+## Abstract
+Spatial proteomic imaging technologies enable the simultaneous assessment of immune cell abundance and spatial organization within the tumor microenvironment. Spatial clustering is commonly summarized using measures such as Ripleys K or nearest-neighbor G-functions at a fixed radius. However, these approaches depend on scale selection and may obscure biologically relevant patterns occurring across spatial ranges. We propose a functional data analysis (FDA) framework to model spatial clustering trajectories derived across a continuum of radii. Functional principal component analysis (FPCA) was used to summarize dominant modes of spatial variation, and resulting scores were incorporated into Cox proportional hazards models as both main effects and interaction with immune cell abundance. The approach was applied to multiplex immunofluorescence data from five ovarian cancer studies, comprising 773 high-grade ovarian serous tumors. Analyses focused on CD3+ and CD8+ T cell populations within the tumor compartment of the tissue, adjusting for age at diagnosis and cancer stage, with study-specific estimates combined using random-effects meta-analysis. Higher abundance of both T cells and CD8+ T cells was consistently associated with improved overall survival. Beyond abundance, spatial features captured by the leading functional principal component were independently associated with survival, particularly for CD8+ T cells. Interaction models further showed that the prognostic effect of immune infiltration depended on spatial clustering, with tumors characterized by high abundance and low spatial clustering exhibiting the most favorable outcomes. These findings indicate that spatial organization provides complementary prognostic information beyond abundance alone and suggests that more diffuse immune infiltration may reflect more effective anti-tumor activity in ovarian cancer. Overall, FDA offers a flexible and interpretable framework for modeling spatial clustering across scales and identifying prognostic spatial features not captured by fixed-radius or distance analyses.

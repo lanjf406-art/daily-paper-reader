@@ -1,0 +1,1624 @@
+Title: 70714420
+
+URL Source: https://www.biorxiv.org/content/10.64898/2026.01.12.698824v2.full.pdf
+
+Number of Pages: 40
+
+Markdown Content:
+1
+
+# MicroRNA spatial profiling for assessing drug efficacy in 
+
+# BRCA1 -related triple -negative breast tumors 
+
+Omar N. Mohd ¶,1 , Lin Wang ¶,3 , Brian R. Sardella 2, David Jou 2, Gerburg M. Wulf 3, Frank J. 
+
+Slack 2,4 , Yujing J. Heng *,2,4 and Patrick S. Doyle *,4,5 .
+
+Keywords: Spatial microRNA profiling , multiplexed nucleic acid detection , hydrogel 
+
+sensors, tumor microenvironment , Breast Cancer, PARP inhibit ion , LDA, SSIM 
+
+> ¶
+
+Co -first authors 
+
+> *
+
+Co -corresponding authors 
+
+E-mail:  yheng@bidmc.harvard.edu 
+
+E-mail:  pdoyle@mit.edu  
+
+> 1
+
+Department of Electrical Engineering and Computer Science, Massachusetts Institute of 
+
+Technology, Cambridge, Massachusetts 02139, United States  
+
+> 2
+
+Department of Pathology, Beth Israel Deaconess Medical Center, Boston, Massachusetts 
+
+02215, United States  
+
+> 3
+
+Department of Medicine, Beth Israel Deaconess Medical Center, Boston, Massachusetts 
+
+02215, United States  
+
+> 4
+
+Harvard Medical School Initiative for RNA Medicine, Beth Israel Deaconess Medical 
+
+Center, Boston, Massachusetts 02215, United States  
+
+> 5
+
+Department of Chemical Engineering, Massachusetts Institute of Technology, Cambridge, 
+
+Massachusetts 02139, United States 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.01.12.698824 doi: bioRxiv preprint
+
+2
+
+# Abstract 
+
+BRCA1/2 -mutated breast cancers exhibit homologous recombination deficiency (HRD) and 
+
+are initially sensitive to poly(ADP -ribose) polymerase (PARP) inhibitors, but 40 -70% of 
+
+patients develop resistance, creating a need for predictive biomarkers that capture treatment -
+
+associated spatial heterogeneity. Using the K14 -Cre Brca1 f/f Trp53 f/f model with tumors that 
+
+acquired PARP inhibitor resistance, we evaluated PARP inhibitor combinations with either 
+
+PI3K inhibition or Poly(I:C) in vivo . To determine how treatment altered tumor spatial 
+
+microRNA (miRNA) profiles, we applied our hydrogel -based, nanoliter well array in situ 
+
+miRNA assay to quantify and spatially profile miRNAs on FFPE sections from tumors treated 
+
+for 10 days and developed spatial miRNA analysis frameworks integrating latent Dirichlet 
+
+allocation (LDA) and principal component analysis (PCA). We also incorporate d immune 
+
+architecture using Structural Similarity Index Measure (SSIM) maps to assess co -localization 
+
+of immune infiltration and miRNA topics. Both combinations improved antitumor activity 
+
+compared to PARP inhibition alone. The resulting spatial miRNA topi cs stratified early 
+
+tumors according to subsequent PARP inhibitor sensitivity or resistance and distinguished 
+
+their treatment regimens, while SSIM analysis revealed co -localization of immune infiltration 
+
+and miRNA topics. This integrative spatial miRNA ass ay and analysis identified a let -7a -
+
+dominant topic associated with PARP inhibitor resistance, indicating that spatial miRNA 
+
+profiling may inform therapeutic stratification in BRCA1/2 -related breast cancers. 
+
+# Introduction 
+
+Breast tumors with a germline BRCA1/2 mutation have a defective homologous 
+
+recombination DNA double -strand break repair pathway. [1] Poly(ADP -ribose) polymerase 
+
+(PARP) inhibitors are FDA -approved to treat advanced BRCA1/2 -related breast cancers. [2] 
+
+PARP inhibitors work by stalling and collapsing replication forks thereby stopping DNA 
+
+repair and eventual cell death. [3,4] Nevertheless, about 40% to 70% of patients fail to respond 
+
+or will develop resistance to PARP inhibitors over time. [5 –7] The high rate of resistance has 
+
+driven efforts to develop combination therapies that enhance the effectiveness of PARP 
+
+inhibitors, as well as to identify biomarkers to predict which patients are most likely to 
+
+benefit. 
+
+MicroRNAs (miRNAs) are small (~20 nucleotides), non -coding RNAs that have 
+
+emerged as useful biomarkers for the detection of early cancers, including breast cancer. [8 –
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.01.12.698824 doi: bioRxiv preprint
+
+3
+
+12] As such , miRNAs may provide informative molecular readouts of PARP inhibitor 
+
+response and resistance in breast tumors. However, miRNA measurements are often 
+
+performed in bulk tissue, which obscures intratumoral heterogeneity and removes spatial 
+
+information .[13] We previously showed that integrated analysis of expression and spatial 
+
+localization of seven miRNAs in endpoint murine breast tumors following a full treatment 
+
+course discriminated PARP inhibitor -sensitive from -resistant tumors .[14] These findings 
+
+suggest that spatially resolved miRNA measurements can capture treatment -associated tumor 
+
+states that are not readily accessible from bulk assays. 
+
+One strategy to overcome PARP inhibitor resistance involves co -targeting PARP and 
+
+the PI3 -kinase (PI3K) pathway. PI3K inhibitors can suppress the growth of tumors with 
+
+PIK3CA mutations, [15] and are also effective in tumors with wild -type PIK3CA .[16] In 
+
+addition to their role in tumor proliferation, PI3K enzymes contribute to the DNA damage 
+
+response: PIK3CB is required for double -strand break sensing by regulating NBN recruitment 
+
+to damaged DNA. [17] Building on this mechanistic rationale, we and others have 
+
+demonstrated that combining a PARP inhibitor with a PI3K inhibitor produces significant 
+
+preclinical and clinical activity in BRCA1/2 -related cancers. [18 –21] We have also previously 
+
+published that the effectiveness of PARP inhibition depends on the tumor immune 
+
+microenvironment (TME). [22 –24] Olaparib increased infiltration and activation of CD8 + T-
+
+cells [23] and tumor -associated macrophages. [22] Therefore, another potential combination 
+
+therapy could be combining PARP with an immune stimulant such as 
+
+polyinosinic:polycytidylic acid (Poly(I:C)). Poly(I:C) activat es dendritic cells by binding to 
+
+various surface receptors such as toll -like receptor 3 which in turn activates CD8 + T-cells. [25] 
+
+These mechanistically distinct treatment conditions provide a biologically relevant setting in 
+
+which to evaluate spatial molecular readouts of treatment response and resistance. 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.01.12.698824 doi: bioRxiv preprint
+
+4
+
+In this work , we used our previously described hydrogel -based, nanoliter well array in 
+
+situ miRNA technology [14,26] to assess tumor spatial miRNA profiles in FFPE sections after 
+
+10 days of treatment . To interpret this high -dimensional spatial readout, we developed an 
+
+analytical framework integrating latent Dirichlet allocation (LDA) and principal component 
+
+analysis (PCA) to identify early, spatially resolved miRNA profiles associated with treatment 
+
+resp onse. We further developed a specialized, priming -based LDA analysis to improve 
+
+differentiation between treatment regimens among PARP inhibitor -sensitive tumors. Finally, 
+
+we evaluated whether incorporating intratumoral immune composition, by computing 
+
+Structural Similarity Index Measure (SSIM) [27] maps between immune cell infiltration and 
+
+miRNA topics, could enhance interpretation of the LDA -derived spatial topics by relating 
+
+them to underlying cellular architecture and highlighting regions where immune patterns and 
+
+miRNA distributions co -localize. This integrative spatial miRNA assay and analysis provides 
+
+a framework for linking treatment -associated miRNA patterns to tumor and immune 
+
+architecture and may inform prognostic or predictive biomarker development in BRCA1/2 -
+
+related breast cancers. 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.01.12.698824 doi: bioRxiv preprint
+
+5
+
+# Results 
+
+Combination therapies produced promising therapeutic effects in PARP inhibitor -resistant 
+
+tumors 
+
+We used the K14 -Cre Brca1 f/f Trp53 f/f mouse tumor model to investigate the effects of 
+
+combining a PARP inhibitor, olaparib, with either a PI3K inhibitor (i.e., alpelisib) or 
+
+Poly(I:C) ( Fig 1A ). This BRCA1 -related triple -negative breast cancer (TNBC) model is 
+
+known to be sensitive to PARP inhibition [28] , as well as in combination with alpelisib. [18] 
+
+Our current results using orthotopic xenotransplanted tumor fragments from this model were 
+
+consistent with prior findings: olaparib significantly lengthened the median time taken to 
+
+reach study endpoint of 20 mm compared to control (75 -78 days versus 19 -23 days, p<0.001; 
+
+Fig 1B.i ). Combination therapies further lengthened the time to reach 20 mm when compared 
+
+to olaparib alone (olaparib+alpelisib 115 days versus 75 days, p<0.001, Fig 1B.i ;
+
+olaparib+Poly(I:C) 120 days versus 78 days, p<0.001, Fig 1B.ii and S1 Fig ). This study 
+
+demonstrated for the first time that Poly(I:C) enhanced PARP inhibition, with an effect size 
+
+similar to alpelisib in olaparib -sensitive tumors. 
+
+We derived olaparib -resistant tumors from initially sensitive tumors grown 
+
+orthotopically under constant olaparib treatment. [29] Median survival was shorter in mice 
+
+with resistant tumors compared to those with sensitive tumors (resistant 23 -24 days versus 
+
+sensitive 75 -58 days ; Fig 1B ). Olaparib+alpelisib but not olaparib+Poly(I:C) improved the 
+
+outcome in resistant tumors when compared to olaparib alone (olaparib+alpelisib 39 days 
+
+versus 23 days, p=0.018, Fig 1B.iii ; olaparib+Poly(I:C) 30 days versus 24 days, p=0.567, Fig 
+
+1B.iv and S1 Fig ). This means that alpelisib but not Poly(I:C) was able to at least partially 
+
+overcome PARP -inhibitor resistance. 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.01.12.698824 doi: bioRxiv preprint
+
+6
+
+Fig 1. Evaluating combination therapies in a murine BRCA1 -related TNBC model. (A.) 
+
+The schematic illustrates the in vivo study design. Syngeneic olaparib -sensitive or -resistant 
+
+tumors were implanted into FVB/NJ mice and treated with olaparib alone or in combination 
+
+with alpelisib or Poly(I:C) once tumors reached a diameter of 5 mm. (B.) Kaplan -Meier 
+
+curves illustrate time taken for tumors to reach study endpoint of 20 mm. i. Olaparib -sensitive 
+
+tumors were treated with olaparib, alpelisib , or the combination of both. ii. Olaparib -sensitive 
+
+tumors were treated with olaparib or a combination of olaparib and Poly(I:C). Similarly, 
+
+olaparib -resistant tumors were treated with olaparib alone or in combination with iii. alpelisib 
+
+or iv. Poly(I:C). * p<0.05, ** p<0.01, *** p<0.001. 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.01.12.698824 doi: bioRxiv preprint
+
+7
+
+Spatial miRNA analysis 
+
+Given that the combination therapies improved treatment outcomes, we investigated the 
+
+extent to which different treatments altered the spatial miRNA profiles of the tumors. We 
+
+performed our previously described hydrogel -based, nanoliter -well in situ miRNA assay 
+
+[14,26,30 –32] on tumors ( n=21) harvested 10 days after treatment when the TME remodeling 
+
+and transcriptional reprogramming are likely to be complete but not yet confounded by 
+
+extensive necrosis ( Fig 2A ). 
+
+Our in situ miRNA assay simultaneously quantified seven miRNAs commonly studied 
+
+in breast cancer ( Fig 2B, S2 Fig ). [33 –37] MiR -21 -5p, let -7a -5p, and miR -19a -3p were highly 
+
+abundant in these K14 -Cre Brca1 f/f Trp53 f/f tumors ( S3 Fig ). Cursory univariate analyses 
+
+determined that both sensitive and resistant tumors treated with olaparib+Poly(I:C) had lower 
+
+let -7a expression compared to olaparib alone (both adj. p=0.01; S3 Fig ). The expression of the 
+
+other six miRNAs did not differ between treatment groups or sensitive/resistant tumors in this 
+
+bulk analysis ( S3 Fig ). 
+
+Since analysis of individual miRNA expression levels was insufficient to inform 
+
+tumor phenotype or capture tumor -level miRNA organization, we hypothesized that a 
+
+spatially informed assessment of the tumors may reveal underlying trends, as evidenced by 
+
+our prior work. [14] We applied a “naïve” implementation of an LDA -based framework, 
+
+whereby we trained an LDA model on all the 10 -day treated tumors (over 115,248 data 
+
+points), where each point correspond ed to a miRNA amount per unit of space in a tumor 
+
+section. Th is case -study -wide LDA model learn ed underlying features in the form of “topics ”
+
+that were themselves composed of miRNA probabilities, which could be visualized as word 
+
+cloud s (Fig 2D .i ). 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.01.12.698824 doi: bioRxiv preprint
+
+8
+
+Fig 2. Spatial miRNA analysis overview. (A.) Schematic of the miRNA assay used to obtain 
+
+spatially -resolved miRNA data. (B.) Characteristic 7 -plex spatial miRNA output. (C.) Case -
+
+study -wide LDA pipeline for assessing treatment resistance. (D.) i. LDA topic results from 
+
+the case -study -wide LDA model in the form of a word cloud where the font size of each 
+
+miRNA corresponds to its relative weighting for that topic and the orange font signifies a 
+
+relatively greater weight within a topic as well. ii. The spatial assignment of the LDA topics 
+
+to a tumor sample; the color of each well corresponds to the color of the topic borders in i. iii. 
+
+The percentage of each tissue assigned to each topic. The first letter on the left corresponds to 
+
+whether a tumor was known a priori to be olaparib -resistant (R) or -sensitive (S), followed by 
+
+treatment group: olaparib -only (O), olaparib+alpelisib (OA), or olaparib+Poly(I:C) (OP); the 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.01.12.698824 doi: bioRxiv preprint
+
+9
+
+color of the bars corresponds to the topic border colors. iv. PCA of all the tumor samples’ 
+
+topic percentages. The samples in green correspond to tumors that were known to be sensitive 
+
+to treatment, while the red denote resistant samples; the black colored text corresponds to 
+
+control tumor samples. Topic 2 positivel y contributed towards PC1, while topic 1 contributed 
+
+negatively. 
+
+The power of the LDA topics is in the method of application ; the associated word 
+
+probabilities can be leveraged as weights that can be applied sequentially to each spatial unit 
+
+on any given sample (explained in S4 Fig ) such that each pixel is effectively associated with 
+
+the topic that corresponds to the highest weighted value. This can be visualized 
+
+colorimetrically by associating topics with colors that can be assigned spatially, allowing for 
+
+further examination ( Fig 2D .ii, S4 Fig ). A more holistic analysis can be applied by 
+
+summarizing the associated topic percentages within all tumor sections ( Fig 2D .iii ) which not 
+
+only allows easier viewing of topic trends across all samples but can also be used to stratify 
+
+the data via PCA ( Fig 2D .i v). The resultant PCA showed that the tumors mostly stratified 
+
+along the first principal component (PC1, 96% variance explained ; Fig 2D.iv ). Olaparib -
+
+sensitive tumors occupied the positive PC1 region, with significantly higher PC1 scores than 
+
+resistant tumors ( median PC1 0.42 vs -0.083; Mann -Whitney U test, p <0.001 ; Fig 2D.iv ). 
+
+Topic 2 , dominated by miR -21, was found to contribute positively to PC1, while 
+
+Topic 1 , dominated by let -7a, contributed negatively (Fig 2D.iv ). This means that miR -21 was 
+
+associated with olaparib sensitivity while let -7a was associated with resistance. Notably, the 
+
+tumor -specific survival trends in Fig 1 were foreshadowed by spatial miRNA patterns 
+
+observed in day 10 tumors (Fig 2D.ii , S5 Fig ).
+
+Within olaparib -resistant tumors, the case -study -wide LDA model stratified tumors 
+
+that received olaparib alone and those receiving combination therapies ( Fig 2D .iv ). 
+
+Combination treatments altered the miRNA profiles of resistant tumors, shifting them toward 
+
+the profiles of sensitive tumors , specifically by increasing the proportion of the miR -21 -
+
+dominated topic within the tumors (Fig 2D .iii ). Within the olaparib -sensitive tumors, there 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.01.12.698824 doi: bioRxiv preprint
+
+10 
+
+was little stratification between olaparib -only and combination treatment regimens (Fig 
+
+2D.iv ), despite the survival study demonstrating an approximately two -fold increase in 
+
+survival with combination therapies compared with olaparib alone (Fig 1B ). Together, these 
+
+data indicate that the miRNA profiles distinguishing olaparib -sensitive from -resistant tumors 
+
+reflect underlying functionally ‘sensitive’ and ‘resistant’ cell state rather than a simple 
+
+pharmacodynamic response to treatment. 
+
+Refined spatial miRNA analysis of PARP inhibitor -sensitive tumors 
+
+Since t he case -study -wide spatial LDA analysis ( Fig 2C ) did not provide pharmacodynamic 
+
+information specific for mono - or combination therapy in olaparib -sensitive tumors as shown 
+
+in Fig 1B , we performed a specialized analysis to improve the stratification of olaparib -
+
+sensitive tumors and investigate whether early spatial miRNA profiles could differentiate 
+
+tumors that received combination therapy versus olaparib -only treatment (Fig 3A ). 
+
+Specifically, we examined whether this early stratification could reflect the greater efficacy of 
+
+the combination regimens observed in Fig 1 .
+
+The core of this specialized analysis lies in isolating the sensitive tumor samples and 
+
+examining how their LDA -derived miRNA probabilities differ from those learned from all the 
+
+tumors. First, we trained an independent LDA model using only olaparib -sensitive tumors to 
+
+obtain miRNA probabilities ( S2 Table ), which were subsequently used to prime the spatial 
+
+miRNA input for olaparib -sensitive tumors ( Fig 3A ). The highest miRNA probabilities from 
+
+the learned topics ( S2 Table ) were used mathematically as weights that were reapplied to the 
+
+raw miRNA input values, thus biasing the spatial miRNA data with respect to the learned 
+
+miRNA probabilities ( Fig 3A ). The primed data was input into the original case -study -wide 
+
+LDA model ( Fig 2C ), and similar downstream visualization techniques and PCA were 
+
+performed. 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.01.12.698824 doi: bioRxiv preprint
+
+11 
+
+Fig 3. Treatment -sensitive tumor analysis. (A.) Schematic of the specialized miRNA 
+
+analysis of the sensitive -only tumors. i. First , the miRNA data of olaparib -sensitive tumors are 
+
+selected. ii. The miRNA data is then used to train an independent LDA model. iii. The highest 
+
+miRNA probabilities from that model were extracted. iv. The extracted miRNA probabilities 
+
+were then used as weights and are multiplied to the input miRNA data, thus “priming” the 
+
+data. v. The case -study -wide LDA model from Fig 2C was applied to the primed miRNA 
+
+data. vi. Downstream analysis was performed to stratify the olaparib -sensitive tumors. (B.) i. 
+
+The spatial assignment of the case -study -wide LDA topics to the sensitive tumor samples 
+
+after being primed by the specialized LDA model miRNA probabilities. The assigned topics 
+
+were as in Fig 2D , where the blue corresponds to the let -7a -dominated topic (topic 1) and 
+
+orange corresponds to the miR -21 -dominated topic (topic 2). ii. The percentage of each tissue 
+
+assigned to each topic. iii. PCA of the sensitive tumor samples’ topic percentages. The 
+
+samples in green correspond to the tumors that received the combination therapies, while the 
+
+red denote olaparib -only treated samples. Topic 1 was found to contribute positively to PC1, 
+
+while topic 2 contributed negatively. 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.01.12.698824 doi: bioRxiv preprint
+
+12 
+
+The specialized analysis stratified olaparib -sensitive tumors almost exclusively along 
+
+PC1, with the let -7a -dominated topic 1 now having a greater allocation in tumors treated with 
+
+olaparib alone, and the miR -21 -dominated topic 2 having a greater allocation in tumors that 
+
+received the combination therapies ( Fig 3B ). This pattern aligns with the improved survival 
+
+among sensitive tumors receiving combination therapy ( Fig 1B ) and mirrors the trend seen in 
+
+olaparib -resistant tumors in which combination treatment similarly shifted the spatial miRNA 
+
+profile toward the miR -21 -dominant topic ( Fig 2D.iii ). 
+
+While successful, this stratification still relied on our a priori knowledge that the 
+
+tumors were sensitive and cannot be accurately described as fully prognostic, even though the 
+
+final topic assignments were allocated by applying the same case -study -wide LDA model as 
+
+in the naïve analysis to the newly primed miRNA data. What can be gleaned from this 
+
+specialized analysis, however, is what it reveals about the nature of the spatial miRNA 
+
+expression that was impacted by the priming and contributed to the successful stratification of 
+
+the samples by treatment type. In other w ords, the value of this analysis is not so much that it 
+
+provides a standalone prognostic classifier as that it reveals which spatial miRNA patterns 
+
+distinguished olaparib -only from combination therapy within sensitive tumors. 
+
+Given that LDA models produce a set of miRNA probabilities that are referred to as 
+
+“topics,” examining the change between the miRNA probabilities that constitute these topics 
+
+across both the case -study -wide and the sensitive -only analyses can help explain the change in 
+
+topic allocation. The highest -probability miRNAs across both LDA models are let -7a and 
+
+miR -21 ( S2 Table ), which also correspond to the miRNAs that dominate the main topics 
+
+responsible for stratifying the tumors. Our priming technique utilizes these probabilities as 
+
+weights applied to the inputs, which results in what effectively amounts to a contrasting eff ect 
+
+that is applied spatially across the miRNA data. 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.01.12.698824 doi: bioRxiv preprint
+
+13 
+
+In the specialized LDA model, the weights for let -7a and miR -21 are 0.92 and 0.88, 
+
+respectively ( S2 Table ), while the remaining miRNAs have lower weights. It is those 
+
+miRNAs with the highest weights that are impacted relatively less than the rest when the LDA 
+
+model seeks to allocate topics using this newly primed data, such that topics dominated by the 
+
+reduce d miRNAs will have relatively lower values than the topics dominated by heavily 
+
+weighted miRNAs and can be overtaken by new topic allocations. With respect to our two 
+
+dominant topics, we notice that, specifically in the olaparib -only treated samples, some of the 
+
+formerly allocated topic 2 tumor regions, which were miR -21 -dominated, are now being 
+
+assigned to topic 1, which was let -7a -dominated, as can be seen in the spatial annotation maps 
+
+in Fig 3B and S6 Fig . Given that the learned let -7a weighting was only ~4% greater than that 
+
+of miR -21, this means that, for the olaparib -only treated samples, the base amounts of miR -21 
+
+and let -7a across the parts of the tumor region that switched topics were already close i n
+
+value, as opposed to those regions that maintained their original topic assignment. Thus, the 
+
+ability to stratify the samples by treatment type was dependent primarily on examining the 
+
+tumor regions where the miR -21 and let -7a amounts were most similar, which are the same 
+
+regions that change d topic under priming. 
+
+Spatial associations between miRNAs and tumor cellular composition 
+
+Although spatial miRNA profiling stratified tumors by olaparib sensitivity and improved our 
+
+understanding of how relative miRNA abundance related to treatment type, limitations in the 
+
+current analytical approach remain . The spatial information gleaned from the miRNA data 
+
+and represented by spatially allocated miRNA -informed topics ( Fig 2D.ii ) was effectively 
+
+reduced to a summary statistic and further processed via PCA in order to answer a higher -
+
+level question : to what extent was a tumor likely to be sensitive or resistant to treatment. By
+
+stratifying the tumor samples along a PCA with known miRNA topic contributions ( Fig 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.01.12.698824 doi: bioRxiv preprint
+
+14 
+
+2D .iv ), we developed a miRNA classifier that distinguish ed between sensitive and resistant 
+
+state s. To further characterize these states , we considered that the effectiveness of olaparib 
+
+depends on the TME [22 –24] and that Poly(I:C) is an immune stimulant [25] . We therefore 
+
+related miRNA expression patterns to the immune composition of the TME. 
+
+We performed an automated H&E image analysis to classify cells as tumor or stromal. 
+
+We then quantified tumor -infiltrating immune cells by stain ing for CD45 on the next serial 
+
+tumor section cut immediately after the section used for in situ miRNA analysis. We extended 
+
+our case -study -wide LDA analysis pipeline to include an SSIM assessment (Fig 4A )[27] . We 
+
+used t he top two miRNA topic s dominated by let -7a and miR -21 and the normalized ratio of 
+
+the spatial distributions of immune cells to tumor cells as input to generate SSIM maps, 
+
+whereby the structural similarity of each spatial unit within the tumor is assessed by 
+
+examining its local neighborhood and then calculating the local SSIM between the miRNA 
+
+topics and cell ratio maps for that neighborhood ( Fig 4A ). 
+
+To simplify the multiple per -miRNA -topic SSIM maps into a more interpretable form, we 
+
+trained a 3 -topic LDA model whereby each topic is informed by the miRNA -cell SSIM data. 
+
+In this model, topic 1 is dominated by the let -7a -immune SSIM, and topic 2 is dominated by 
+
+the miR -21 -immune SSIM ( Fig 4B.i ). This allow ed us to determine whether the immune cell 
+
+infiltration in any given part of the tissue was more similar to the spatial distribution of one 
+
+miRNA topic as opposed to the other. The 3-topic LDA model was applied to the tumor SSIM 
+
+maps and the tumors’ topic percentages were calculated ( Fig 4B.ii ). A new variation of the 
+
+spatial topic map was developed, where we added an intensity scaling to the topic maps to 
+
+indicate not only which miRNA spatial distributions were more similar to the immune cell 
+
+infiltration, but also the strength of that similarity via incorporating the per -pixel SSIM scores 
+
+into the topic map ( Fig 4B.iii, iv ). 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.01.12.698824 doi: bioRxiv preprint
+
+15 
+
+Fig 4. Spatial LDA -SSIM analysis. (A.) Schematic of the spatial LDA -SSIM analysis 
+
+pipeline. i. The pre -processed inputs of the analysis pipeline consist of the spatial miRNA 
+
+.CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.01.12.698824 doi: bioRxiv preprint 16 
+
+data and spatial immune cell counts derived from CD45 immunostaining ii. Both the cells and 
+
+spatial miRNA data were processed prior to input into the SSIM. The miRNAs were 
+
+processed through the case -study -wide LDA analysis pipeline, and only the top 2 dominant 
+
+spatial topics were input into SSIM ( Fig 2D.ii ). Cell counts were processed by calculating the 
+
+ratio of immune cells to tumor cells, with appropriate normalization applied, to represent 
+
+spatial immune cell infiltration within each tumor. iii. The resulting heatmap representation of 
+
+the SSIM maps showing the structural similarity between the immune cell infiltration and 
+
+spatial miRNA topic assignments (B.) i. LDA topic results from training an LDA model on 
+
+the miRNA topic -immune infiltration SSIM maps ii. The percentage of each tissue assigned 
+
+to each SSIM topic. iii. The spatial assignment of the SSIM LDA topics to the sensitive 
+
+samples iv. The spatial assignment of the SSIM LDA topics to the resistant samples; the color 
+
+of each well corresponds to the color of the SSIM LDA topic borders in i. while the intensity 
+
+of the color corresponds to the intensity of the dominant SSIM maps that inform the topic. 
+
+Most tumors, regardless of whether they were olaparib -sensitive or -resistant, had a 
+
+greater spatial similarity between the immune cell infiltration and the let -7a miRNA topic 
+
+than that of miR -21 ( Fig 4B.ii ). The exception to this observation was found among sensitive 
+
+tumors that received the combination olaparib+Poly(I:C) treatment, where immune cell 
+
+infiltration was more spatially similar to the miR -21 -dominated topic. Given that Poly(I:C) 
+
+modulates the immune response in tumors [38] , increased immune cell activity was expected 
+
+in tumors receiving olaparib+Poly(I:C). Further examination of the topic maps revealed a 
+
+notable pattern in olaparib -sensitive tumors treated with the olaparib + Poly(I:C) combination: 
+
+miR -21 -immune regions appeared non -uniform, with brighter (higher -similarity) signal 
+
+concentrated near boundari es with let -7a -immune regions and dimmer signal toward the 
+
+center (e.g. SOP3 in Fig 4B.iii ). Thus, incorporating SSIM into the LDA miRNA analysis 
+
+pipeline enabled the assessment of spatial similarity between miRNAs and the underlying 
+
+biology. Given the complexity of the spatial analysis, these maps also highlight specific 
+
+regions that warrant examination in the future .
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.01.12.698824 doi: bioRxiv preprint
+
+17 
+
+# Discussion 
+
+This study investigated therapeutic strategies combining PARP inhibitors with PI3K 
+
+inhibitors or the immune -stimulant Poly(I:C) to overcome drug resistance in BRCA1 -related 
+
+breast cancers. Both combinations delayed tumor progression, especially in olaparib -sensitive 
+
+tumors, but that benefit was modest in tumors that had acquired resistance. To evaluate these 
+
+treatments, we applied our spatial miRNA in situ profiling technology to FFPE t umors 
+
+collected after 10 days of therapy and developed novel computational frameworks to analyze 
+
+those early -stage tumors. Our LDA -based analyses demonstrated that early, spatially resolved 
+
+miRNA profiles distinguished olaparib -sensitive from -resistant tumors, and revealed how 
+
+combination therapies reshaped resistant tumors toward a functionally sensitive state. Two 
+
+spatial miRNA topics, dominated by miR -21 and let -7a, stratified the tumors as olaparib -
+
+sensitive or -resistant. By integrating SSIM into the analysis pipeline , we bridged the gap 
+
+between high -dimensional molecular signatures and the physical tumor cellular composition, 
+
+enabling interpretation of the spatial biology and immune -regulatory landscapes underlying 
+
+drug response. Our miRNA -based spatial analysis shows potential as a useful tool for 
+
+predicting therapy response and biomarker discovery , and may provide a clinical window to 
+
+adjust therapeutic strategies before tumor progression occurs. 
+
+While both PI3K inhibition and Poly(I:C) enhanced olaparib efficacy in sensitive 
+
+tumors in vivo , only PI3K inhibition at least partially reversed acquired PARP inhibitor 
+
+resistance. Our SSIM analysis of tumors after 10 days of treatment showed that, in resistant 
+
+tumors, there was little difference in the spatial similarity between immune infiltration and the 
+
+let‑7a miRNA topic when comparing olaparib+Poly (I:C) with olaparib alone, indicating a 
+
+failure of Poly(I:C) in modulating the gross composition of the TME. Direct inhibition of the 
+
+PI3K/AKT pathway overcame cell -intrinsic survival mechanisms in resistant tumors. These 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.01.12.698824 doi: bioRxiv preprint
+
+18 
+
+findings highlight that spatial miRNA profiling can potentially identify tumors that are 
+
+sensitive to PARP inhibitors and may benefit from additional immunomodulatory therapies, 
+
+whereas tumors likely resistant to PARP inhibitors may benefit from the additi on of other 
+
+targeted agents, such as PI3K inhibitors. 
+
+We developed a case -study -wide LDA analysis framework that distinguished olaparib -
+
+sensitive and -resistant tumors. Among resistant tumors, our initial analysis was able to 
+
+further distinguish olaparib -only treated tumors and those that had received the combination 
+
+therapies. The lack of treatment -group separation among olaparib -sensitive tumors prompted 
+
+us to implement a priming -based, specialized analysis to successfully resolve therapy -
+
+associated spatial miRNA profiles. This specialized approach highlighted how targeted 
+
+prim ing of spatial miRNA data can reveal subtle stratification patterns that were missed by 
+
+the case -study -wide LDA analysis. 
+
+To understand how priming influenced topic composition, we compared the miRNA 
+
+probability distributions between the case -study -wide LDA topics and the sensitive -only 
+
+models . T reatment -specific differences within olaparib -sensitive tumors were encoded in 
+
+relatively subtle, locally balanced patterns between miR -21 and let -7a, rather than in large 
+
+global shifts. In both models, the highest -probability miRNAs were let -7a and miR -21 ( S2 
+
+Table ), which was consistent with their dominance in the main topics responsible for 
+
+stratifying the tumors. In the sensitive -only LDA model, the weights for let -7a and miR -21 
+
+were 0.92 and 0.88, respectively, while the other miRNAs had lower weights. As a resu lt, 
+
+those lower -weight miRNAs were reduced more strongly when priming was applied, and 
+
+topics dominated by the reduced miRNAs lost relative influence during topic assignment 
+
+compared to topics dominated by the two heavily weighted miRNAs. In olaparib -only treated 
+
+samples, some of the formerly allocated topic 2 tumor regions (miR -21 -dominated) were re -
+
+assigned to topic 1 (let -7a -dominated) ( Fig 3B.i vs S5 Fig and S6 Fig ). Given that the learned 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.01.12.698824 doi: bioRxiv preprint
+
+19 
+
+let -7a weighting was only ~4% greater than that of miR -21, this indicated that, in the regions 
+
+that switched topics, the base amounts of miR -21 and let -7a were already close in value, as 
+
+opposed to regions that maintained their original topic assignment. T his explained why 
+
+priming was able to expose treatment -associated separation within the sensitive tumors even 
+
+when global shifts appeared modest. 
+
+Finally, by integrating SSIM with miRNA topic maps and immune cell infiltration, we 
+
+not only established a proof -of -concept framework for relating miRNA -defined spatial 
+
+patterns to cellular architecture, but also found that, whereas most tumors showed grea ter 
+
+spatial similarity between immune infiltration and the let -7a -dominated topic, 
+
+olaparib+Poly (I:C) -treated sensitive tumors instead showed stronger immune -miR -21 spatial 
+
+similarity. The SSIM -LDA maps showed that immune localization was differentially aligned 
+
+with distinct miRNA patterns across treatment groups and highlighted specific micro region s
+
+where those patterns intersect, providing targets for more detailed pathological and 
+
+mechanistic follow -up in the future. 
+
+The study design should also be considered when interpreting these findings. We 
+
+focused on a single BRCA1 -related TNBC mouse model and profiled tumors after 10 days of 
+
+treatment to capture early spatial miRNA differences before endpoint -associated tissue 
+
+changes became dominant. Additional treatment stages and BRCA1/2 -related tumor models 
+
+would help test whet her the same spatial topics persist beyond this setting. The let -7a - and 
+
+miR -21 -dominated topics were associated with olaparib resistance and sensitivity, 
+
+respectively, but these associations do not by themselves explain the biology underlying those 
+
+spatial patterns. Future studies incorporating additional spatial biomarkers and histological 
+
+analysis of the miRNA -defined regions could help clarify the cellular and molecular features 
+
+associated with these topics. 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.01.12.698824 doi: bioRxiv preprint
+
+20 
+
+Looking forward, these results suggest that spatial miRNA profiling could potentially 
+
+be leveraged to assess whether a tumor is likely to be responsive to PARP inhibition. 
+
+Applying our analytical framework to larger preclinical studies and, ultimately, to clinical 
+
+BRCA1/2 -mutant breast cancer cohorts would enable the evaluation of the robustness and 
+
+generalizability of our identified spatial miRNA topics and stratifications, and could facilitate 
+
+their translation from prognostic separations into formal predictive classification models. In 
+
+parallel, SSIM -based spatial correlations could be extended beyond miRNA -only data to 
+
+incorporate additional spatially resolved modalities, suc h as IHC markers and mRNA, and to 
+
+explore alternative topic models or more complex spatial similarity measures within the same 
+
+analytical framework, further enriching the biological and translational insight that can be 
+
+extracted. In the context of PARP in hibitor -based therapy, integrating spatial miRNA readouts 
+
+with survival outcomes and immune measurements may ultimately help refine patient 
+
+selection and guide combination therapy choice. 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.01.12.698824 doi: bioRxiv preprint
+
+21 
+
+# Methods 
+
+Animal experiments and analysis 
+
+All animal experiments were performed in accordance with protocols approved by the 
+
+Institutional Animal Care and Use Committee at Beth Israel Deaconess Medical Center 
+
+(protocol number 052 -2020 -23). Breast tumors generated in K14 -Cre Brca1 f/f Trp53 f/f female 
+
+mice were dissected into small fragments and transplanted into the mammary fat pad of 
+
+female FVB/NJ recipient mice aged ≥6 weeks. Olaparib -resistant tumors were obtained from 
+
+mice that initially bore olaparib -sensitive tumors and were treated continuously with olaparib 
+
+until resistance was acquired. [29] For treatment efficacy studies, mice were randomized into 
+
+treatment groups once tumors reached ~5 mm in diameter. Treatments continued until tumors 
+
+reached 20 mm in their longest dimension, which was defined as the experimental endpoint; 
+
+mice were euthani zed at this point. For the 10 -day studies, tumors were randomized into 
+
+treatment groups once they reached 8 mm in size. After 10 days of treatment, tumors were 
+
+harvested, fixed in formalin, and processed into FFPE sections. A vehicle -only control group 
+
+was included for the 10 -day olaparib -sensitive tumor cohort. A matched 10 -day vehicle -only 
+
+resistant tumor cohort was not included because, when untreated, olaparib -sensitive and 
+
+olaparib -resistant tumors followed a similar end point trajectory, with tumors reaching 
+
+endpoint within approximately 14 -17 days. 
+
+Olaparib was reconstituted in DMSO, diluted in PBS immediately prior to 
+
+intraperitoneal injection, and administered daily at 50 mg/kg. Alpelisib was administered 
+
+orally at 24 mg/kg daily. Poly(I:C) was delivered intratumorally at 1 mg/kg, three times per 
+
+week. Tumor dimensions were measured every 2 -3 days using electronic calipers, and tumor 
+
+volumes were calculated using the ellipsoid formula: Vol ume=L×W 2/2, where L is the longest 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.01.12.698824 doi: bioRxiv preprint
+
+22 
+
+dimension and W is the shortest dimension. The log -rank test compared the survival curves 
+
+between the study arms. Statistical analyses were performed using GraphPad Prism. Growth 
+
+curves and Kaplan -Meier curves of survival were plotted. Survival between cohorts was 
+
+compar ed using log -rank tests. 
+
+H&E and immunohistochemistry (IHC) staining, and automated image analyses 
+
+Tumors were harvested and fixed in Rapid -Fixx (Fisher Scientific, Hampton, NH), then 
+
+submitted to the BIDMC histology core facility (RRID:SCR_009669) for paraffin embedding, 
+
+sectioning, H&E staining, and performing CD45 IHC using their standard protocol. C D45 
+
+IHC was performed using a rat anti -mouse CD45 monoclonal antibody clone 30 -F11 at 1:250 
+
+dilution (#14 -0451 -82, ThermoFisher Scientific, Waltham, MA) and a goat anti -rat IgG 
+
+horseradish peroxidase polymer secondary antibody at 1:1 dilution (# ab214882, Abcam Inc, 
+
+Waltham, MA). QuPath software was used to segment and classify cells as tumor or stromal 
+
+on H&E images, and quantify CD45+ cells on IHC images. [39,40] 
+
+Spatially resolved miRNA assay 
+
+A spatially resolved miRNA assay is applied to tumor samples treated for 10 days to attain the 
+
+spatial miRNA data. Assay device fabrication and the assay process were performed using 
+
+methods as described in prior work. [14] The assay device consists of a nanoliter well array 
+
+with hydrogel posts embedded within each well. The hydrogels were functionalized with 
+
+DNA probes that had complementary sequences to the miRNAs in our panel ( S1 Table ). The 
+
+relative positioning of the hydrogel posts within each well was designed such that each post in 
+
+that position would target the same miRNA sequence. The miRNA assay with Rolling Circle 
+
+Amplification (RCA) was applied to each sample as previously desc ribed, and the bound 
+
+miRNA/DNA complexes were fluorescently labeled which allowed for quantitation. [14] 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.01.12.698824 doi: bioRxiv preprint
+
+23 
+
+Spatial miRNA data pre -processing 
+
+The spatial miRNA data acquired from the assay required pre -processing prior to any 
+
+subsequent analysis (LDA, SSIM, etc.). Utilizing microscope images of the samples during 
+
+the assay ( S7 Fig ), the portion of the array that was overlapped by tissue, as opposed to the 
+
+surrounding area outside the sample, was manually outlined and used as a tissue mask so that 
+
+only miRNA values within the tissue region were retained. The bulk miRNA expression pe r
+
+tumor was compared between the groups using two -way ANOVA using GraphPad Prism. 
+
+Šídák's multiple comparisons test was used to compare between two groups, and comparisons 
+
+that achieved adjusted p<0.05 were reported. 
+
+For LDA model training, the masked spatial miRNA data were processed further in 
+
+order to ensure optimal performance. First, pixels outside the tissue mask were assigned a 
+
+value of 0, and an alternate dataset was created in which these masked -out pixels were instead 
+
+assigned a small positive constant (ε), to provide a safe variant of the data for any logarithmic 
+
+analyses downstream in the pipeline. Training the LDA model in MATLAB (MathWorks, 
+
+Natick, MA) required restructuring the miRNA data so that the preserved 2D spatial 
+
+information was linearized by row for all samples and concatenated into a single array for 
+
+LDA model training. Given this systematic linearization of the data, we were able to 
+
+transform the results back into the original spatial configuration for visualization and 
+
+subsequent analysis. 
+
+Case -study -wide spatial LDA implementation 
+
+Given the efficacy of the LDA training hyperparameters in prior work [14] , an initial 4 -topic 
+
+LDA model was trained on the entirety of the miRNA data derived from all the 10 -day treated 
+
+tumors. Collapsed Gibbs Sampling was used as the inference algorithm, as it has been shown 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.01.12.698824 doi: bioRxiv preprint
+
+24 
+
+to yield more accurate topic discovery despite taking longer to train (training time is 
+
+negligible, approximately ~21 minutes). [41] As opposed to utilizing word frequencies when 
+
+training the LDA model, we used scaled word counts. The quantified miRNA values per well 
+
+were on the order of 3 -4 attomoles at most and LDA requires integer word counts, so we 
+
+scaled the values by multiplying every miRNA count by 10 4 to preserve as much of the data 
+
+as possible prior to conversion. Once the LDA model was trained, we used the topic word 
+
+probabilities to visualize the contribution of each miRNA to each topic via word clouds. 
+
+Applying the trained LDA model on all samples spatially yielded the colored topic maps ( S5 
+
+Fig ). The relative abundance of each color -defined topic was then calculated per tumor 
+
+section to obtain the topic -tumor percentages. Ultimately the LDA output was used to stratify 
+
+the tumor samples by using the topic -tumor percentages as observations in a cas e-study -wide 
+
+PCA, whereby the contribution of the topics (PCA variables) could be noted for each 
+
+principal component to enable trend interpretation. 
+
+PCA statistical methods 
+
+To assess separation between treatment response groups (resistant versus sensitive), we 
+
+compared the scores along the first principal component (PC1) for treated tumors that were 
+
+ultimately classified as olaparib -sensitive versus olaparib -resistant ( n=9 per group). PC1 
+
+scores between these two groups were compared using a two -sided Mann -Whitney U test. A 
+
+p-value<0.05 was considered statistically significant. 
+
+Priming -based specialized LDA analysis for treatment -sensitive tumors 
+
+In addition to the case -study -wide LDA workflow, a data priming technique was applied to 
+
+the sensitive tumors in order to bias the model to stratify them along treatment type, a use that 
+
+is conceptually consistent with other priming methods in computer vis ion and other machine 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.01.12.698824 doi: bioRxiv preprint
+
+25 
+
+learning applications [42 –45] . We initially examined all the miRNA probabilities associated 
+
+with all the LDA topics, then for each miRNA we noted the highest probabilities found across 
+
+all the topics ( S2 Table ). The miRNA probabilities were then stored in a vector and treated as 
+
+a form of weights whose values were multiplied to all the spatial miRNA input values for our 
+
+sensitive tumors. The primed input was then passed through the case -study -wide LDA model 
+
+and the LDA topics were reassigned and used to stratify olaparib -sensitive samples by 
+
+treatment type. 
+
+Tumor and immune cell data processing 
+
+Tumor and stromal cell count data were obtained from Qu Path and by noting the position and 
+
+orientation of the tumor sections as they were superimposed on our spatial miRNA 
+
+quantification device while being assayed ( S7 Fig ). Using MATLAB, we quantified the 
+
+amount of tumor, stroma, and immune cells that occupy the same position as the miRNAs. 
+
+We defined immune cell infiltration as the normalized ratio of immune cells to tumor cells. 
+
+First, we defined a tissue mask such that all locations containing immune or tumor cells are 
+
+included; we then log -transformed the ratio at all locations (x,y) while adding a small positive 
+
+constant ε and where r(x,y) represents the new ratio ( Equation 1 ): 
+
+𝑟 (𝑥 , 𝑦 ) = log (𝐼𝑚𝑢𝑛𝑒 (𝑥 , 𝑦 ) + 𝜀 
+
+𝑇𝑢𝑚𝑜𝑟 (𝑥 , 𝑦 ) + 𝜀 ) (1)
+
+We then remapped the ratios from zero to one via a logistic transform such that values below 
+
+0.5 correspond to relatively immune -deficient regions and values above 0.5 correspond to 
+
+relatively immune -enriched regions (Equation 2): 
+
+Remapped (𝑥 , 𝑦 ) = 1
+
+1 + 𝑒 −𝑟 (𝑥 ,𝑦 ) (2)
+
+Pixels outside the tissue mask were excluded from downstream normalization. Next, we re -
+
+normalized the ratio on a per tumor basis such that the maximum ratio was set to one and the 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.01.12.698824 doi: bioRxiv preprint
+
+26 
+
+lowest to zero. Lastly, we clipped the values at the median (50 th percentile) within the tissue 
+
+mask and renormalized the clipped values to [0,1]. The reasoning behind the renormalization 
+
+is to make the final ratio compatible for use with SSIM. Since our second data type (miRNA 
+
+topic maps) being input to the SSIM pipelin e are effectively binarized masks and the spatial 
+
+similarity between these masks and a ratio where most values are close to zero (given the 
+
+large difference in immune cell vs tumor cell count), we needed to highlight the significance 
+
+of the immune cell inf iltration via remapping and signal normalization. 
+
+SSIM map formulation 
+
+SSIM maps were created in order to encapsulate the structural similarity between our spatial 
+
+immune cell infiltration ratios and the case -study -wide LDA -derived miRNA topic maps. In 
+
+essence, SSIM compares two images within a local neighborhood around each pixel by 
+
+evaluating agreement in l ocal mean intensity, local contrast (variance), and local structure 
+
+(covariance). This yields a so -called structural similarity index that ranges from -1 to 1, where 
+
+1 indicates high local structural similarity, 0 indicates no detectable structural correla tion, and 
+
+-1 indicates strong local anti -correlation (i.e., the structures being compared are inverted 
+
+relative to one another). We used the built -in SSIM function in MATLAB to formulate the 
+
+maps where an approximately ~7 x7 pixel neighborhood was chosen given the total 28x28 
+
+tumor map size. 
+
+LDA -SSIM implementation 
+
+An LDA model was trained on the SSIM maps between the immune cell infiltration ratio 
+
+maps and the top two miRNA topic maps (let -7a - and miR -21 -dominated) in the same manner 
+
+described for the case -study -wide LDA implementation. The 3 LDA topics learned consisted 
+
+of probabilities of the two SSIM map types (let -7a -immune SSIM and miR -21 -immune 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.01.12.698824 doi: bioRxiv preprint
+
+27 
+
+SSIM) and were applied spatially and statistically summarized into topic percentages within 
+
+each tumor and represented via color. The spatial topic assignment was done similarly to the 
+
+miRNA LDA model but with the added complexity of adding a color depth e lement to the 
+
+maps such that the level of structural similarity can be gleaned in addition to which SSIM was 
+
+most similar for any given region in the tumor. 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.01.12.698824 doi: bioRxiv preprint
+
+28 
+
+Acknowledgements 
+
+We gratefully acknowledge funding from the National Institute s of Health (NIH) 
+
+R01CA235740 to PSD and FJS, R35CA232105 to FJS, R01CA226776 to GMW, 
+
+R21CA267088 to YJH and GMW. GMW is also supported by the Breast Cancer Research 
+
+Foundation 24 -177. This work was supported in part by the Koch Institute Support (core) 
+
+Gra nt P30 -CA14051 from the National Cancer Institute. We thank the Koch Institute's Robert 
+
+A. Swanson (1969) Biotechnology Center for technical support, specifically the microscopy 
+
+core. This work was in part supported by a graduate fellowship to ONM from the Ludwig 
+
+Center at MIT’s Koch Institute for Integrative Cancer Research. This work was in part 
+
+supported by the Takeda pharmaceutical graduate fellowship to ONM. Fig 1A was partially 
+
+created with BioRender.com. 
+
+Data Availability Statement 
+
+All data and code are publicly available and can be accessed via Zenodo repository :
+
+https://doi.org/10.5281/zenodo.18499891 
+
+Conflicts of Interest 
+
+GMW declares associated, institutional research funding from Mersana, Gilead, Seagen, 
+
+Celcuity, Totus Medicines, Pfizer, and Genentech but declares no non -financial competing 
+
+interests. The other authors declare no competing financial or non -financial inte rests. 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.01.12.698824 doi: bioRxiv preprint
+
+29 
+
+# References 
+
+1. Scully R, Livingston DM. In search of the tumour -suppressor functions of BRCA1 and 
+
+BRCA2. Nature. 2000;408: 429 –432. doi:10.1038/35044000 
+
+2. Robson M, Im S -A, Senkus E, Xu B, Domchek SM, Masuda N, et al. Olaparib for 
+
+Metastatic Breast Cancer in Patients with a Germline BRCA Mutation. N Engl J Med. 
+
+2017;377: 523 –533. doi:10.1056/NEJMoa1706450 
+
+3. McCabe N, Turner NC, Lord CJ, Kluzek K, Białkowska A, Swift S, et al. Deficiency in 
+
+the Repair of DNA Damage by Homologous Recombination and Sensitivity to 
+
+Poly( ADP -Ribose) Polymerase Inhibition. Cancer Res. 2006;66: 8109 –8115. 
+
+doi:10.1158/0008 -5472.CAN -06 -0140 
+
+4. Hopkins TA, Shi Y, Rodriguez LE, Solomon LR, Donawho CK, DiGiammarino EL, et 
+
+al. Mechanistic Dissection of PARP1 Trapping and the Impact on In Vivo Tolerability 
+
+and Efficacy of PARP Inhibitors. Mol Cancer Res. 2015;13: 1465 –1477. 
+
+doi:10.1158/1541 -7786.MCR -15 -0191 -T
+
+5. Gelmon KA, Tischkowitz M, Mackay H, Swenerton K, Robidoux A, Tonkin K, et al. 
+
+Olaparib in patients with recurrent high -grade serous or poorly differentiated ovarian 
+
+carcinoma or triple -negative breast cancer: a phase 2, multicentre, open -label, non -
+
+randomised study. Lancet Oncol. 2011;12: 852 –861. do i:10.1016/S1470 -
+
+2045(11)70214 -5
+
+6. Fong PC, Yap TA, Boss DS, Carden CP, Mergui -Roelvink M, Gourley C, et al. 
+
+Poly(ADP) -Ribose Polymerase Inhibition: Frequent Durable Responses in BRCA 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.01.12.698824 doi: bioRxiv preprint
+
+30 
+
+Carrier Ovarian Cancer Correlating With Platinum -Free Interval. J Clin Oncol. 2010;28: 
+
+2512 –2519. doi:10.1200/JCO.2009.26.9589 
+
+7. Sandhu SK, Schelman WR, Wilding G, Moreno V, Baird RD, Miranda S, et al. The 
+
+poly(ADP -ribose) polymerase inhibitor niraparib (MK4827) in BRCA mutation carriers 
+
+and patients with sporadic cancer: a phase 1 dose -escalation trial. Lancet Oncol. 
+
+2013;14: 882 –892. doi:10.1016/S1470 -2045(13)70240 -7
+
+8. Stenvold H, Donnem T, Andersen S, Al -Saad S, Valkov A, Pedersen MI, et al. High 
+
+tumor cell expression of microRNA -21 in node positive non -small cell lung cancer 
+
+predicts a favorable clinical outcome. BMC Clin Pathol. 2014;14: 1 –9. 
+
+doi:10.1186/1472 -6890 -14 -9
+
+9. Tang W, Zhu J, Su S, Wu W, Liu Q, Su F, et al. MiR -27 as a Prognostic Marker for 
+
+Breast Cancer Progression and Patient Survival. PLOS ONE. 2012;7: e51702. 
+
+doi:10.1371/JOURNAL.PONE.0051702 
+
+10. Eilertsen M, Andersen S, Al -Saad S, Richardsen E, Stenvold H, Hald SM, et al. Positive 
+
+prognostic impact of miR -210 in non -small cell lung cancer. Lung Cancer. 2014;83: 
+
+272 –278. doi:10.1016/J.LUNGCAN.2013.11.005 
+
+11. Nielsen BS, Jørgensen S, Fog JU, Søkilde R, Christensen IJ, Hansen U, et al. High levels 
+
+of microRNA -21 in the stroma of colorectal cancers predict short disease -free survival in 
+
+stage II colon cancer patients. Clin Exp Metastasis. 2011;28: 27 –38. 
+
+doi:10. 1007/S10585 -010 -9355 -7
+
+12. Quesne JL, Jones J, Warren J, Dawson SJ, Ali HR, Bardwell H, et al. Biological and 
+
+prognostic associations of miR -205 and let -7b in breast cancer revealed by in situ 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.01.12.698824 doi: bioRxiv preprint
+
+31 
+
+hybridization analysis of micro -RNA expression in arrays of archival tumour tissue. J 
+
+Pathol. 2012;227: 306 –314. doi:10.1002/PATH.3983 
+
+13. Hanna JA, Wimberly H, Kumar S, Slack F, Agarwal S, Rimm DL. Quantitative analysis 
+
+of microRNAs in tissue microarrays by in situ hybridization. BioTechniques. 2012;52: 
+
+235 –245. doi:10.2144/000113837 
+
+14. Mohd ON, Heng YJ, Wang L, Thavamani A, Massicott ES, Wulf GM, et al. Sensitive 
+
+Multiplexed MicroRNA Spatial Profiling and Data Classification Framework Applied to 
+
+Murine Breast Tumors. Anal Chem. 2024;96: 12729 –12738. 
+
+doi:10.1021/acs.analchem.4c01773 
+
+15. Fritsch C, Huang A, Chatenay -Rivauday C, Schnell C, Reddy A, Liu M, et al. 
+
+Characterization of the Novel and Specific PI3Kα Inhibitor NVP -BYL719 and 
+
+Development of the Patient Stratification Strategy for Clinical Trials. Mol Cancer Ther. 
+
+2014;13: 1117 –1129. doi:10.1158/1535 -7163.MCT -13 -0865 
+
+16. Von Hoff DD, Wagner AJ, LoRusso PM, Tibes R, Jin J, Ware JA, et al. 1205 A first -in -
+
+human Phase I study to evaluate the pan -PI3K inhibitor GDC -0941 administered QD or 
+
+BID in patients with advanced solid tumours. Eur J Cancer Suppl. 2009;7: 122. 
+
+doi:10.1016/S1359 -6349(09)70417 -3
+
+17. Kumar A, Fernandez -Capetillo O, Carrera AC. Nuclear phosphoinositide 3 -kinase beta 
+
+controls double -strand break DNA repair. Proc Natl Acad Sci U S A. 2010;107: 7491 –
+
+7496. doi:10.1073/pnas.0914242107 
+
+18. Juvekar A, Burga LN, Hu H, Lunsford EP, Ibrahim YH, Balmañà J, et al. Combining a 
+
+PI3K Inhibitor with a PARP Inhibitor Provides an Effective Therapy for BRCA1 -
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.01.12.698824 doi: bioRxiv preprint
+
+32 
+
+Related Breast Cancer. Cancer Discov . 2012;2: 1048 –1063. doi:10.1158/2159 -8290.CD -
+
+11 -0336 
+
+19. Wang D, Wang M, Jiang N, Zhang Y, Bian X, Wang X, et al. Effective use of PI3K 
+
+inhibitor BKM120 and PARP inhibitor Olaparib to treat PIK3CA mutant ovarian cancer. 
+
+Oncotarget. 2016;7: 13153 –13166. doi:10.18632/oncotarget.7549 
+
+20. Matulonis UA, Wulf GM, Barry WT, Birrer M, Westin SN, Farooq S, et al. Phase I dose 
+
+escalation study of the PI3kinase pathway inhibitor BKM120 and the oral poly (ADP 
+
+ribose) polymerase (PARP) inhibitor olaparib for the treatment of high -grade serous 
+
+ovaria n and breast cancer. Ann Oncol. 2017;28: 512 –518. doi:10.1093/annonc/mdw672 
+
+21. Konstantinopoulos PA, Barry WT, Birrer M, Westin SN, Cadoo KA, Shapiro GI, et al. 
+
+Olaparib and α -specific PI3K inhibitor alpelisib for patients with epithelial ovarian 
+
+cancer: a dose -escalation and dose -expansion phase 1b trial. Lancet Oncol. 2019;20: 
+
+570 –580. doi:10.1016/S1470 -2045(18)30905 -7
+
+22. Wang L, Wang D, Sonzogni O, Ke S, Wang Q, Thavamani A, et al. PARP -inhibition 
+
+reprograms macrophages toward an anti -tumor phenotype. Cell Rep. 2022;41: 111462. 
+
+doi:10.1016/j.celrep.2022.111462 
+
+23. Pantelidou C, Sonzogni O, De Oliveria Taveira M, Mehta AK, Kothari A, Wang D, et al. 
+
+PARP Inhibitor Efficacy Depends on CD8+ T -cell Recruitment via Intratumoral STING 
+
+Pathway Activation in BRCA -Deficient Models of Triple -Negative Breast Cancer. 
+
+Cancer Disc ov. 2019;9: 722 –737. doi:10.1158/2159 -8290.CD -18 -1218 
+
+24. Pantelidou C, Jadhav H, Kothari A, Liu R, Wulf GM, Guerriero JL, et al. STING 
+
+agonism enhances anti -tumor immune responses and therapeutic efficacy of PARP 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.01.12.698824 doi: bioRxiv preprint
+
+33 
+
+inhibition in BRCA -associated breast cancer. NPJ Breast Cancer. 2022;8: 102. 
+
+doi:10.1038/s41523 -022 -00471 -5
+
+25. Salem ML, Diaz -Montero CM, EL -Naggar SA, Chen Y, Moussa O, Cole DJ. The TLR3 
+
+agonist poly(I:C) targets CD8+ T cells and augments their antigen -specific responses 
+
+upon their adoptive transfer into naïve recipient mice. Vaccine. 2009;27: 549 –557. 
+
+doi:10.101 6/j.vaccine.2008.11.013 
+
+26. Nagarajan MB, Tentori AM, Zhang WC, Slack FJ, Doyle PS. Spatially resolved and 
+
+multiplexed MicroRNA quantification from tissue using nanoliter well arrays. Microsyst 
+
+Nanoeng 2020 61. 2020;6: 1 –9. doi:10.1038/s41378 -020 -0169 -8
+
+27. Wang Z, Bovik AC, Sheikh HR, Simoncelli EP. Image quality assessment: from error 
+
+visibility to structural similarity. IEEE Trans Image Process. 2004;13: 600 –612. 
+
+doi:10.1109/TIP.2003.819861 
+
+28. Wang L, Sardella BR, Aronson EK, Liu Z, Li X, Wulf GM, et al. Simultaneous 
+
+inhibition of PARP/AKT to intercept nascent BRCA1/2mut breast tumors. Npj Breast 
+
+Cancer. 2026. doi:10.1038/s41523 -026 -00892 -6
+
+29. Juvekar A, Hu H, Yadegarynia S, Lyssiotis CA, Ullas S, Lien EC, et al. 
+
+Phosphoinositide 3 -kinase inhibitors induce DNA damage through nucleoside depletion. 
+
+Proc Natl Acad Sci. 2016;113: E4338 –E4347. doi:10.1073/pnas.1522223113 
+
+30. Tentori AM, Nagarajan MB, Kim JJ, Zhang WC, Slack FJ, Doyle PS. Quantitative and 
+
+multiplex microRNA assays from unprocessed cells in isolated nanoliter well arrays. 
+
+Lab Chip. 2018;18: 2410 –2424. doi:10.1039/C8LC00498F 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.01.12.698824 doi: bioRxiv preprint
+
+34 
+
+31. Chapin SC, Doyle PS. Ultrasensitive multiplexed microRNA quantification on encoded 
+
+gel microparticles using rolling circle amplification. Anal Chem. 2011;83: 7179 –7185. 
+
+doi:10.1021/AC201618K/SUPPL_FILE/AC201618K_SI_002.AVI 
+
+32. Al Sulaiman D, Juthani N, Doyle PS. Quantitative and Multiplex Detection of 
+
+Extracellular Vesicle -Derived MicroRNA via Rolling Circle Amplification within 
+
+Encoded Hydrogel Microparticles. Adv Healthc Mater. 2022;11: 4 –6. 
+
+doi:10.1002/ADHM.202102332 
+
+33. Yu F, Yao H, Zhu P, Zhang X, Pan Q, Gong C, et al. let -7 Regulates Self Renewal and 
+
+Tumorigenicity of Breast Cancer Cells. Cell. 2007;131: 1109 –1123. 
+
+doi:10.1016/j.cell.2007.10.054 
+
+34. Dangi -Garimella S, Yun J, Eves EM, Newman M, Erkeland SJ, Hammond SM, et al. 
+
+Raf kinase inhibitory protein suppresses a metastasis signalling cascade involving LIN28 
+
+and let -7. EMBO J. 2009;28: 347 –358. 
+
+doi:10.1038/EMBOJ.2008.294/SUPPL_FILE/EMBJ2008294 -SUP -0002.DOC 
+
+35. Corney DC, Hwang CI, Matoso A, Vogt M, Flesken -Nikitin A, Godwin AK, et al. 
+
+Frequent downregulation of miR -34 family in human ovarian cancers. Clin Cancer Res. 
+
+2010;16: 1119 –1128. doi:10.1158/1078 -0432.CCR -09 -2642/351747/P/FREQUENT -
+
+DOWNREGULATION -OF -MIR -34-FAMILY -IN -HUMAN 
+
+36. Lujambio A, Calin GA, Villanueva A, Ropero S, Sánchez -Céspedes M, Blanco D, et al. 
+
+A microRNA DNA methylation signature for human cancer metastasis. Proc Natl Acad 
+
+Sci U S A. 2008;105: 13556 –13561. 
+
+doi:10.1073/PNAS.0803055105/SUPPL_FILE/0803055105SI.PDF 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.01.12.698824 doi: bioRxiv preprint
+
+35 
+
+37. Wang H, Tan Z, Hu H, Liu H, Wu T, Zheng C, et al. microRNA -21 promotes breast 
+
+cancer proliferation and metastasis by targeting LZTFL1. BMC Cancer. 2019;19: 738. 
+
+doi:10.1186/s12885 -019 -5951 -3
+
+38. Takemura R, Takaki H, Okada S, Shime H, Akazawa T, Oshiumi H, et al. PolyI:C –
+
+Induced, TLR3/RIP3 -Dependent Necroptosis Backs Up Immune Effector –Mediated 
+
+Tumor Elimination In Vivo. Cancer Immunol Res. 2015;3: 902 –914. doi:10.1158/2326 -
+
+6066.CIR -14 -0219 
+
+39. Bankhead P, Loughrey MB, Fernández JA, Dombrowski Y, McArt DG, Dunne PD, et 
+
+al. QuPath: Open source software for digital pathology image analysis. Sci Rep. 2017;7: 
+
+16878. doi:10.1038/s41598 -017 -17204 -5
+
+40. Baker GM, Bret -Mounet VC, Wang T, Veta M, Zheng H, Collins LC, et al. 
+
+Immunohistochemistry scoring of breast tumor tissue microarrays: A comparison study 
+
+across three software applications. J Pathol Inform. 2022;13: 100118. 
+
+doi:10.1016/j.jpi.2022.100118 
+
+41. Griffiths TL, Steyvers M. Finding scientific topics. Proc Natl Acad Sci. 2004;101: 5228 –
+
+5235. doi:10.1073/pnas.0307752101 
+
+42. Ajjour Y, Wachsmuth H. Exploring LLM Priming Strategies for Few -Shot Stance 
+
+Classification. In: Chistova E, Cimiano P, Haddadan S, Lapesa G, Ruiz -Dolz R, editors. 
+
+Proceedings of the 12th Argument mining Workshop. Vienna, Austria: Association for 
+
+Computational Linguistics; 2025. pp. 11 –23. doi:10.18653/v1/2025.argmining -1.2 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.01.12.698824 doi: bioRxiv preprint
+
+36 
+
+43. Ren M, Zeng W, Yang B, Urtasun R. Learning to Reweight Examples for Robust Deep 
+
+Learning. Proceedings of the 35th International Conference on Machine Learning. 
+
+PMLR; 2018. pp. 4334 –4343. Available: https://proceedings.mlr.press/v80/ren18a.html 
+
+44. Kimura M, Hino H. A Short Survey on Importance Weighting for Machine Learning. 
+
+Trans Mach Learn Res. 2024 [cited 6 Feb 2026]. Available: 
+
+https://openreview.net/forum?id=IhXM3g2gxg 
+
+45. Fincke S, Agarwal S, Miller S, Boschee E. Language Model Priming for Cross -Lingual 
+
+Event Extraction. Proc AAAI Conf Artif Intell. 2022;36: 10627 –10635. 
+
+doi:10.1609/aaai.v36i10.21307 
+
+> .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.01.12.698824 doi: bioRxiv preprint
+
+.CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.01.12.698824 doi: bioRxiv preprint .CC-BY 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 20, 2026. ;https://doi.org/10.64898/2026.01.12.698824 doi: bioRxiv preprint

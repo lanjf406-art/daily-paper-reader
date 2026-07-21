@@ -1,0 +1,2302 @@
+Title: Cancer persister cells activate NMDARs to survive ferroptosis
+
+URL Source: https://www.biorxiv.org/content/10.64898/2026.07.13.738168v1.full.pdf
+
+Number of Pages: 54
+
+Markdown Content:
+1
+
+Cancer persister cells activate NMDARs to survive ferroptosis 
+
+Simona Punzi 1,2 *§ , Ilaria Villanti 1,2* , Guido Gatti 1, Davide Cittaro 3, Gemma Crupi 1, Michela Prunella 4, Nicola Altini 4, Elisa Guerrera 1,2 , Giulia Casaroli 1, Giovanni Filippo Marco Gallo 1,Claudia Felici 1, Oronza A. Botrugno 1,2 , Emanuele Tanzi 5, Vitoantonio Bevilacqua 4, Antonella Nai 5,Laura Silvestri 5, Giovanni Tonon 1,2,3§ 
+
+> 1
+
+Functional Genomics of Cancer Unit, Comprehensive Cancer Center, IRCCS San Raffaele Scientific Institute, Milan Italy; 2Università Vita-Salute San Raffaele, Milan, Italy; 3Center for Omics Sciences, IRCCS San Raffaele Scientific Institute, Milan, Italy; 4Department of Electrical and Information Engineering (DEI), Polytechnic University of Bari, Bari, Italy; 5Regulation of Iron Metabolism Unit, Division of Genetics and Cell Biology, IRCCS San Raffaele Scientific Institute, Milan Italy. *: These Authors contributed equally to the work §: Corresponding Authors: punzi.simona@hsr.it; tonon.giovanni@hsr.it. 
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.13.738168 doi: bioRxiv preprint
+
+2
+
+• Persister cells induced by FOLFOX are sensitive to ferroptosis while resistant upon FOLFIRI treatment 
+
+• Increased extracellular glutamate activates a NMDAR/NFE2L2 axis 
+
+• NFE2L2 copes with oxidative stress by inhibiting juxtaposition between ER and mitochondria 
+
+• Inhibition of Xc - antiporter alongside NMDAR/NFE2L2 is required to trigger ferroptosis in FOLFIRI persister cells 
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.13.738168 doi: bioRxiv preprint
+
+3
+
+Abstract 1
+
+Upon treatment, cancer cells engage non-genetic adaptations, including tolerance and subsequent 2
+
+persistence, to survive therapy. Eliciting programmed cancer cell death in these persister cells (PCs) 3
+
+remains a primary goal in oncology. We found that ferroptosis is the programmed cell death 4
+
+mechanism most deregulated in persisters by some of the most widely used therapeutic regimens, 5
+
+including platinum-based therapies, which combined with ferroptosis inducers ablate persister 6
+
+colorectal cancer cells. Conversely, persisters emerging from topoisomerase inhibitor regimens 7
+
+withstand ferroptosis and ferroptotic inducers, increasing instead intracellular iron concentration. We 8
+
+found that topoisomerase inhibitors trigger the Xc - antiporter axis ( via SLC7A11 and CD44) 9
+
+increasing both intracellular cystine, to activate GPX4, and extracellular glutamate. Glutamate then 10 
+
+engages the NMDA receptors (NMDARs), which are essential in neurotransmission but recently 11 
+
+reported to be deregulated also in cancer cells. In PCs, NMDARs stimulate intracellular Ca 2+ uptake 12 
+
+and trigger the AKT/NFE2L2 axis, thereby engaging a cytoprotective program to cope with oxidative 13 
+
+stress. Furthermore, we found that NFE2L2 increases the distance between the endoplasmic reticulum 14 
+
+and mitochondria while reducing mitochondrial ROS in PCs. The synergistic inhibition of both the 15 
+
+standard (Xc - antiporter) and this novel NMDAR/NFE2L2 axis resensitizes PCs to ferroptosis. These 16 
+
+data provide new opportunities to improve the efficacy of widely used therapeutic regimens. 17 
+
+18 
+
+Key words: Persistence, Ferroptosis, Topoisomerase Inhibitors, NMDAR, Iron 19 
+
+20 
+
+21 
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.13.738168 doi: bioRxiv preprint
+
+4
+
+Introduction 22 
+
+Cancer cells exposed to chemotherapy enter in a state of tolerance, a response driven by 23 
+
+autophagy that allows them to withstand even exceedingly high drug concentrations 1. Upon 24 
+
+prolonged drug exposure, tolerance morphs into a persistence state, an alternative form of non-genetic 25 
+
+adaptation contributing to the emergence of resistance 1. Persister cells (PCs) are slow-cycling and 26 
+
+undergo specific metabolic and epigenetic reprogramming to survive therapy, which includes 27 
+
+chromatin remodelling 2, aldehyde dehydrogenase (ALDH) activity or fatty acid oxidation 28 
+
+enhancement 3-4 and maintenance of mitochondrial fitness through PINK1-dependent mitophagy 1.29 
+
+The eradication of PCs remains one of the main aims in cancer therapy 5. Cells may undergo 30 
+
+regulated cell death (RCD) through several pathways, including apoptosis, necroptosis, autophagy, 31 
+
+pyroptosis, ferroptosis, and cuproptosis 6. However, PCs manage to evade these regulated 32 
+
+mechanisms. For example, following targeted and conventional cancer therapies, PCs elude both 33 
+
+intrinsic and extrinsic pathways of apoptosis 7-8 . As a result, there is growing interest in triggering 34 
+
+and exploiting alternative RCD mechanisms to eliminate PCs in cancer 9.35 
+
+Ferroptosis is a form of RCD elicited by the accumulation of intracellular free iron, which 36 
+
+activates pro-oxidative enzymes, alters mitochondrial activity and tilt the balance from 37 
+
+monounsaturated (MUFA) towards polyunsaturated fatty acid (PUFA). The net result is the 38 
+
+peroxidation of lipids on the plasma membrane followed by cellular demise 10 . Compounds eliciting 39 
+
+ferroptosis have been devised that overcome resistance to traditional therapies and enhance the impact 40 
+
+of radiotherapy and immunotherapy 11 . However, cancer cells mitigate the threat of overwhelming 41 
+
+membrane lipid peroxidation leveraging the concerted activity of several enzymes and metabolites. 42 
+
+These strategies involve various antioxidant defence mechanisms, including cystine-GPX4 (Xc -
+
+43 
+
+antiporter system), FSP1-CoQ 10 and GTP-BH2/4 detoxification reactions 12 . Specifically, the Xc -
+
+44 
+
+antiporter system combines the entrance into the cell of cystine with the ejection of glutamate across 45 
+
+the plasma membrane. Cystine then increases the synthesis of glutathione (GSH), a reducing agent 46 
+
+used by glutathione peroxidase 4 (GPX4) to convert toxic phospholipid hydroperoxides into non-47 
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.13.738168 doi: bioRxiv preprint
+
+5
+
+toxic lipid alcohols, thus protecting the cell from oxidative stress 13 . While high extracellular 48 
+
+glutamate inhibits Xc − antiporter and induces ferroptosis 14 , it remains unclear whether it exerts 49 
+
+alternative role in controlling ferroptosis, beyond the Xc - system. 50 
+
+Here, we explored which RCD path is triggered in PCs following chemotherapy, which 51 
+
+remains the most widely used cancer therapy, with the goal to unravel potential resistance 52 
+
+mechanisms implemented by PCs to withstand RCD. 53 
+
+Results 54 
+
+FOLFOX- but not FOLFIRI-PCs are susceptible to ferroptosis induction 55 
+
+We focused on colorectal cancer (CRC), a major cancer type with limited therapeutic 56 
+
+strategies, where cells enter a persistence state following chemotherapy 1,15-16 . To determine whether 57 
+
+CRC PCs are susceptible to any form of RCD after treatment with standard of care, we probed the 58 
+
+pathways responsible for the various forms of cell death in PCs derived from the CRC cell line 59 
+
+HCT116 treated with the two standard-of care treatments for CRC 17 , FOLFOX (5-fluorouracil + 60 
+
+oxaliplatin) or FOLFIRI (5-fluorouracil + SN38). We assessed the variation in gene expression on 61 
+
+pathways associated with the different forms of RCD, leveraging our recently published single cell 62 
+
+RNA-seq (scRNA-seq) data 1. With the prominent exception of ferroptosis, we did not detect any 63 
+
+deregulation in gene expression of various RCD programs in PCs, including apoptosis, which was 64 
+
+also assessed via Annexin V labelling (Fig.1 a, Suppl. Fig. 1a-b) 1. Instead, we found a strong increase 65 
+
+in the expression of ferroptosis-related genes (Fig. 1a). Prompted by these findings, we anticipated a 66 
+
+strong synergistic response between standard chemotherapy treatments and ferroptosis inducers such 67 
+
+as Erastin and RSL3, which respectively inhibit the cystine-glutamate antiporter system Xc − and 68 
+
+glutathione peroxidase 4 (GPX4) 18-19 . Both Erastin and RSL3 almost eliminated PCs after FOLFOX 69 
+
+treatment (Fig. 1b), suggesting that indeed this treatment is associated with an enhanced, potentially 70 
+
+exploitable vulnerability to ferroptosis. 71 
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.13.738168 doi: bioRxiv preprint
+
+6
+
+Despite a similar increase in ferroptosis-related genes (Fig. 1a), FOLFIRI treatment associated 72 
+
+with ferroptosis inducers failed to show any effect (Fig. 1b). Since iron (Fe 2+ ) levels are directly 73 
+
+linked to the induction of ferroptosis, we anticipated that FOLFIRI treatment would be associated 74 
+
+with reduced intracellular Fe 2+ levels. Surprisingly, however, labile Fe 2+ content was significantly 75 
+
+higher in PCs treated with FOLFIRI than with FOLFOX (Fig. 1c and Suppl. Fig. 1c). Additionally, 76 
+
+in FOLFIRI-treated cells, this accumulation of Fe 2+ was associated with a significantly more 77 
+
+pronounced increase in ferritin (FTH1), and curiously in transferrin receptor (TFRC), markers of Fe 2+ 
+
+78 
+
+storage and uptake, respectively (Suppl. Fig. 1d), when compared with FOLFOX-treated cells. Taken 79 
+
+together, these data demonstrate that FOLFIRI treatment confers resistance to ferroptosis even in the 80 
+
+presence of a robust increase in cellular Fe 2+ . This accumulation, likely mediated by deregulated 81 
+
+TFRC-driven extracellular transport, highlights a clear uncoupling of Fe 2+ , FTH1, and TFRC within 82 
+
+the homeostatic regulatory network 20 .83 
+
+Previous evidence has suggested that Fe 2+ may be required for cancer stem-like cells and 84 
+
+tumour-initiating cells survival 21 . Nevertheless, how Fe 2+ functionally contributes to the maintenance 85 
+
+of a treatment-resistant phenotype is still not fully elucidated. We then hypothesized that to withstand 86 
+
+FOLFIRI, PCs rely on Fe 2+ accumulation. FOLFIRI-pretreated cells were challenged with the potent 87 
+
+Fe 2+ chelator deferoxamine (DFO), which acts by sequestering intracellular iron 22 . Treatment with 88 
+
+DFO markedly impaired the viability of PCs while promoting an increase in Propidium Iodide (PI)-89 
+
+positive cells (Fig. 1d and Suppl. Fig. 1e), thus validating the hypothesis that Fe 2+ , despite its role in 90 
+
+triggering ferroptosis, in FOLFIRI-PCs exerts nonetheless a pro-survival function. 91 
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.13.738168 doi: bioRxiv preprint
+
+7
+
+92 
+
+Figure 1. FOLFOX- but not FOLFIRI-PCs are susceptible to ferroptosis induction 93 
+
+a. Single cell RNA sequencing analysis of main programmed cell death mechanisms in HCT116 PCs and parental CTRL. 94 
+
+b. Relative cell viability of HCT116 PCs obtained upon FOLFOX (n=5 biological replicates; mean±SD) or FOLFIRI 95 
+
+(n=3 biological replicates; mean±SD) administration and then treated with ferroptosis inducers Erastin and RSL3. 96 
+
+Significant differences among groups calculated by one way ANOVA followed by Dunnett’s post-test (****: P<0.0001; 97 
+
+ns: not significant). c. Labile iron content quantification by flow cytometry analysis upon calcein administration in 98 
+
+parental CTRL and FOLFOX- and FOLFIRI-PCs. Significant differences among groups calculated by ANOVA followed 99 
+
+by Tukey post-test. Significant differences among groups calculated by one way ANOVA followed by Dunnett’s post-test 100 
+
+(n=3 biological replicates; mean±SD; ****: P<0.0001). d. Relative cell viability of HCT116 PCs obtained upon FOLFIRI 101 
+
+(n=3 biological replicates; mean±SD) and then treated with deferoxamine (DFO). Significant differences among groups 102 
+
+calculated by Student’s t-test (***: P<0.001). 103 
+
+104 
+
+FOLFIRI hyper-activates the Xc - antiporter system through CD44 105 
+
+During cell death triggered by ferroptosis, Fe 2+ overload stimulates oxidation of membrane 106 
+
+phospholipids, thereby initiating peroxidation 10 . We then determined the levels of lipid peroxidation 107 
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.13.738168 doi: bioRxiv preprint
+
+8
+
+after both treatments. FOLFIRI-PCs exhibited lipid peroxidation levels comparable to those observed 108 
+
+in control cells, in contrast to the substantial increase seen in FOLFOX- PCs (Fig. 2a). This reinforces 109 
+
+the notion that FOLFIRI-PCs activate protective mechanisms to prevent the onset of ferroptosis, 110 
+
+despite elevated Fe 2+ levels. The Xc - cystine/glutamate antiporter system plays a central role in 111 
+
+inhibiting ferroptosis through the increase of intracellular cystine followed by the synthesis of GSH 13 .112 
+
+We hence explored whether the resistance towards ferroptosis in FOLFIRI-PCs might be related to 113 
+
+an increased activity of this system. Indeed, FOLFIRI-PCs showed a robust increase of both NADPH, 114 
+
+which provides reducing equivalents to regenerate GSH 23 , and GSH per se , which were instead not 115 
+
+enhanced in FOLFOX-PCs (Fig. 2b-c). Also GPX4, a powerful antioxidant enzyme belonging to the 116 
+
+glutathione peroxidase family 24 , was strongly upregulated in FOLFIRI- but not in FOLFOX-PCs (Fig. 117 
+
+2d), in line with previous observation that Xc --mediated cystine uptake promotes not only GSH, but 118 
+
+also GPX4 protein synthesis 25 .119 
+
+In all, these results suggest that, despite a strong increase in cellular Fe 2+ , FOLFIRI-PCs 120 
+
+manage to bypass ferroptosis through the activation of the Xc - antiporter system, leading to the 121 
+
+increase of GSH biosynthesis and of GPX4 26 .122 
+
+Unlike FOLFOX, the FOLFIRI regimen includes SN38, the active metabolite of the 123 
+
+topoisomerase inhibitor irinotecan. Treating cancer cells with SN38 alone had similar effects than 124 
+
+FOLFIRI (Suppl. Fig. 2a). Furthermore, the co-treatment of SN38 and ferroptosis inducers failed to 125 
+
+alter the survival of PCs, consistent with the results obtained using FOLFIRI (Suppl. Fig 2b). SN38 126 
+
+interferes with DNA unwinding and induces DNA double strand breaks. Accordingly, cancer cells 127 
+
+resistant to topoisomerase inhibition often exhibit alterations in DNA remodelling and chromatin 128 
+
+accessibility 27 . We wanted to determine first whether PCs treated with FOLFIRI demonstrated a 129 
+
+different level of chromatin compaction, and next if the expression of specific genes was associated 130 
+
+with the treatment. To this end, we exploited single cell GET-Seq (scGET-Seq), a technology that 131 
+
+probes both open and closed chromatin, at the single cell level 28 . We have previously shown that upon 132 
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.13.738168 doi: bioRxiv preprint
+
+9
+
+chemotherapy, chromatin becomes more compact in PCs 1. However, comparing chromatin status 133 
+
+between the two treatments, revealed that chromatin remains more accessible in FOLFIRI-PCs than 134 
+
+in FOLFOX-PCs (Suppl. Fig. 2c). We next sought to identify the subset of expressed genes located 135 
+
+within these regions specifically open in FOLFIRI- PCs. Integration of scGET-seq with scRNA-seq 136 
+
+data showed that CD44, a gene residing within one of these selectively open loci, is also 137 
+
+overexpressed (Suppl. Fig. 2d). CD44 is a multifunctional cell surface protein that stabilizes the 138 
+
+SLC7A11 subunit of the Xc - antiporter system via its chaperone CD98hc at the plasma membrane, 139 
+
+leading to increased resistance to ferroptosis 29 . We found that both the transcription and the surface 140 
+
+protein levels of CD44 were significantly higher in FOLFIRI- than in FOLFOX-PCs (Fig. 2e and 141 
+
+Suppl. Fig. 2e). In addition, confocal microscopy and a proximity ligation assay (PLA) confirmed the 142 
+
+colocalization of CD44 and SLC7A11 (Fig. 2f and Suppl. Fig 2f-g). To verify that CD44 was 143 
+
+functionally involved in SLC7A11 activity, we measured the change in intracellular cystine uptake in 144 
+
+response to FOLFIRI and CD44 knockdown (Suppl. Fig. 2h). FOLFIRI-PCs robustly increased the 145 
+
+intake of a cystine analogue, which was abrogated by CD44 silencing (Suppl. Fig. 2i), suggesting that 146 
+
+FOLFIRI increases the expression of CD44, which in turn cooperates with SLC7A11 to increase the 147 
+
+influx of cystine and activate anti-ferroptosis responses. 148 
+
+As detailed above, FOLFIRI treatment increases both GSH and GPX4 in PCs cells. Curiously, 149 
+
+the inhibition of the Xc - antiporter obtained by Erastin, CD44 or SLC7A11 knockdown (Suppl. Fig. 150 
+
+2j-k), as well as the inhibition of GPX4 by RSL3, were all unable to elicit ferroptosis in these cells, 151 
+
+unlike in other persistence models 30 . As a matter of fact, the combination of Erastin with FOLFIRI 152 
+
+brought back GPX4 to the levels seen in untreated cells (Fig. 2g). This suggests that, in conjunction 153 
+
+with GSH and GPX4 increase, additional mechanisms elicit ferroptosis resistance in FOLFIRI-PCs. 154 
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.13.738168 doi: bioRxiv preprint
+
+10 
+
+155 
+
+Figure 2. FOLFIRI hyper-activates SCL7A11 axis through CD44 regulation 156 
+
+a. Lipid peroxidation levels quantified as percentage positivity (%) in PCs and parental CTRL by flow cytometry analysis. 157 
+
+Significant differences among groups calculated by ANOVA followed by Tukey post-test (n=3 biological replicates; 158 
+
+mean±SD; ****: P<0.0001; ns: not significant). b-c. NADPH ( b) and Glutathione (GSH) ( c) cellular content in PCs 159 
+
+compared to the parental CTRL. Significant differences among groups calculated by ANOVA followed by Tukey post-160 
+
+test (n=3 biological replicates; mean±SD; ***: P<0.001; ****: P<0.0001). d. Western blot analysis of GPX4 levels and 161 
+
+its quantification in PCs compared to the parental CTRL. GAPDH was used for normalization. Significant differences 162 
+
+among groups calculated by ANOVA followed by Tukey post-test (n=3 biological replicates; mean±SD; ***: P<0.001). 163 
+
+e. Transcription levels of CD44 in FOLFOX- and FOLFIRI-PCs at single cell level. Significant differences among groups 164 
+
+calculated by a Student t-test (****: P<0.0001). f. Immunofluorescence analysis probing co-localization of CD44 and 165 
+
+SLC7A11 in CTRL, FOLFOX- or FOLFIRI-PCs. Significant differences among groups calculated by ANOVA followed 166 
+
+by Tukey post-test (n=3 biological replicates biological replicas and 20 cells analysed; mean±SD; ***: P<0.001; ****: 167 
+
+P<0.0001). g. Western blot analysis of GPX4 levels and its quantification in FOLFIRI-PCs compared to the parental 168 
+
+CTRL and in presence of Erastin. GAPDH was used for normalization. Significant differences among groups calculated 169 
+
+by ANOVA followed by Tukey post-test (n=3 biological replicates; mean±SD; **: P<0.01; ns: not significant). 170 
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.13.738168 doi: bioRxiv preprint
+
+11 
+
+Glutamate activates NMDAR and induces cytoprotection 171 
+
+Since the Xc - antiporter couples cystine uptake with glutamate efflux, we investigated whether 172 
+
+glutamate extruded via this axis could protect PCs from ferroptosis. Consistent with this hypothesis, 173 
+
+we observed a substantial increase in extracellular glutamate levels in FOLFIRI-PCs relative to 174 
+
+untreated cells and FOLFOX-PCs. (Fig. 3a). 175 
+
+Glutamate is an excitatory neurotransmitter that triggers the activation of N-methyl-D-176 
+
+aspartate receptors (NMDARs), ushering calcium (Ca 2+ ) from the extracellular milieu to the 177 
+
+cytoplasm 31 . NMDARs are expressed not only in the central nervous system (CNS) cells, but have 178 
+
+been reported also in several cancer types, where their role remains poorly understood 32 . In fact, based 179 
+
+on the Human Protein Atlas (https://www.proteinatlas.org), NMDARs (GRIN1, GRIN2B, C, D, 180 
+
+GRIN3B and GRINA) are expressed also in colon cancer and in the HCT116 CRC cells. As a proxy 181 
+
+of the NMDAR activity, we quantified the intracellular Ca 2+ content by flow cytometry analysis 33 ,182 
+
+in the presence of the NMDARs inhibitors Memantine or Dizocilpine. FOLFIRI-PCs presented a 183 
+
+higher content of Ca 2+ than parental cells and FOLFOX-PCs (Fig. 3b). This increase was blunted by 184 
+
+the treatment with both inhibitors (Fig. 3c), suggesting that FOLFIRI increases Ca 2+ flux through the 185 
+
+engagement of NMDARs. 186 
+
+We next asked which might be the consequences of the increase in Ca 2+ in FOLFIRI-PCs. The 187 
+
+concentration of Ca²⁺ in the cytoplasm is tightly regulated, and changes in Ca²⁺ concentration activate 188 
+
+signalling events, including Protein kinase C (PKC), mitogen-activated MAPK kinases (p38 and 189 
+
+p42/44-MAPK), and the phosphatidylinositol 3-kinase (PI3K)/AKT axis 34 . To gain insights on which 190 
+
+pathways may be triggered by the increased intracellular Ca 2+ , we explored bulk RNA-seq data, 191 
+
+surveying the genes specifically upregulated upon FOLFIRI treatment in PCs (Suppl. Table 1). 192 
+
+Among the 708 genes emerging from this analysis, several downstream targets of the PI3K/AKT 193 
+
+pathway appeared (Fig. 3d). The activation of the PI3K/AKT pathway was confirmed in our previous 194 
+
+FOLFIRI-PCs single-cell RNA-seq data 1 (Fig. 3e). This was further validated by western blot 195 
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.13.738168 doi: bioRxiv preprint
+
+12 
+
+analysis, which revealed increased detection of both AKT phosphorylation (p-AKT) at the Ser347 196 
+
+residue and its downstream target, the cyclin-dependent kinase inhibitor p21, which acts as a 197 
+
+competitor of KEAP1 for NFE2L2 binding 35 (Fig. 3f). 198 
+
+Activated PI3K may prevent ferroptosis through various nodes, including mTOR, FTH1 and 199 
+
+VDAC1 36 . However, among the pathways mostly increased upon FOLFIRI treatment, there were 200 
+
+genes associated with the anti-ferroptotic transcription factor NFE2L2 37 (Fig. 3d), which has been 201 
+
+reported as a downstream target of PI3K/AKT 38 . We hence assessed whether the inhibition of 202 
+
+PI3K/AKT may impact on NFE2L2 levels in FOLFIRI-PCs, using the specific PI3K inhibitor 203 
+
+Alpelisib. This compound significantly reduced both AKT phosphorylation and NFE2L2 levels, thus 204 
+
+confirming that AKT promotes the accumulation of NFE2L2 (Fig. 3f). 205 
+
+Our results suggest a model where, during the persistence state, glutamate binding to 206 
+
+NMDARs increases Ca 2+ uptake, which in turn triggers PI3K/AKT and the ferroptosis inhibitor 207 
+
+NFE2L2 39 . To substantiate this model, we treated PCs with the NMDARs inhibitors and assessed the 208 
+
+levels of p-AKT and NFE2L2 proteins. Indeed, both inhibitors reduced pAKT and NFE2L2 levels 209 
+
+(Fig. 3g). Moreover, the combination of NMDARs inhibitors with FOLFIRI increased lipid 210 
+
+peroxidation (Fig. 3h) but had no effect on cell viability (Fig. 3i). These results reinforce the notion 211 
+
+that multiple anti-oxidative mechanisms cooperate after FOLFIRI exposure; consequently, alternative 212 
+
+or combined approaches are necessary to trigger ferroptosis in FOLFIRI-PCs. 213 
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.13.738168 doi: bioRxiv preprint
+
+13 214 
+
+Figure 3. Glutamate activates NMDAR and induces cytoprotection 215 
+
+a. Glutamate secretion detected in PCs and parental CTRL. Significant differences among groups calculated by ANOVA 216 
+
+followed by Tukey post-test (n=3 biological replicates; mean±SD; **: P<0.01; ***: P<0.001). b. Intracellular Ca 2+ content 217 
+
+quantification (expressed as MFI) in PCs and parental CTRL by flow cytometry analysis. Significant differences among 218 
+
+groups calculated by ANOVA followed by Tukey post-test (n=3 biological replicates; mean±SD; ****: P<0.0001). c. 219 
+
+Intracellular Ca 2+ content quantification (expressed as MFI) in FOLFIRI-PCs treated with NMDAR inhibitors Memantine 220 
+
+or Dizocilpine by flow cytometry analysis. Significant differences among groups calculated by ANOVA followed by 221 
+
+Dunnett post-test (n=3 biological replicates; mean±SD; **: P<0.01; ***: P<0.001). d. Reactome analysis of genes 222 
+
+exclusively upregulated in FOLFIRI-PCs related to PI3K/AKT and its downstream targets. e. UMAP embedding of sc-223 
+
+RNA sequencing in HCT116 PCs representing drugs and PI3K/AKT pathway for two experimental replicas. f. Western 224 
+
+blot analysis and respective quantification of protein levels in parental HCT116 or PCs treated with PI3K inhibitor 225 
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.13.738168 doi: bioRxiv preprint
+
+14 
+
+Alpelisib. GAPDH was used as a normalizer. Significant differences among groups calculated by ANOVA followed by 226 
+
+Tukey post-test (n=3 biological replicates; mean±SD; **: P<0.01; ****: P<0.0001; ns: not significant). g. Western blot 227 
+
+analysis of NFE2L2 and total (T-) or phosphorylated (p-) AKT in FOLFIRI-PCs treated with NMDAR inhibitors 228 
+
+Memantine or Dizocilpine and their quantification. Significant differences among groups calculated by ANOVA followed 229 
+
+by Dunnett post-test (n=3 biological replicates; mean±SD; ****: P<0.0001). GAPDH was used as a normalizer. h. Lipid 230 
+
+peroxidation levels in FOLFIRI-PCs treated with NMDAR inhibitors Memantine or Dizocilpine. (Significant differences 231 
+
+among groups calculated by one way ANOVA followed by Dunnett’s post-test; ****: P<0.0001). i. Relative cell viability 232 
+
+of FOLFIRI-PCs treated with NMDAR inhibitors Memantine or Dizocilpine (n=3 biological replicates; mean±SD). 233 
+
+234 
+
+NFE2L2 inhibition resensitizes PCs to ferroptosis 235 
+
+How does NFE2L2 drive an antioxidant effect to protect PCs from peroxidation-dependent 236 
+
+cell death? To answer this question, we performed an RNA-seq analysis in NFE2L2 silencing 237 
+
+conditions. Beyond the significant down regulation of known target genes, such as NQO1 (NADPH 238 
+
+quinone dehydrogenase 1) and genes involved in pentose phosphate pathway (i.e. TKT, TALDO1 and 239 
+
+G6PD) 40 (Suppl. Fig. 3a), we were surprised to find the upregulation of Endoplasmic Reticulum (ER) 240 
+
+stress and Unfolded Protein Response (UPR – PERK/ATF4) genes (Suppl. Fig. 3b). 241 
+
+It has been recently reported that the junction between ER and mitochondria (M), namely EM 242 
+
+Contact (EMC), modulates lipid peroxidation and ferroptosis and that ER stress and UPR are tightly 243 
+
+involved in EMCs regulation 41 . The close proximity between ER and M (thus, reduced distance) 244 
+
+favours ferroptosis, while an increased space between these two compartments protects cells 41 . The 245 
+
+molecular mechanism regulating EMC remains elusive. 246 
+
+We analysed transmitted electron microscopy (TEM) images in PCs and measured ER-M 247 
+
+distance. FOLFOX treatment profoundly reduced ER-M distance, much more than FOLFIRI, as the 248 
+
+gap separating the ER and mitochondria shortened from an average of 17 nm in untreated cells to 249 
+
+6 nm in response to FOLFOX and only to 12 nm in FOLFIRI-PCs (Suppl. Fig. 3c). 250 
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.13.738168 doi: bioRxiv preprint
+
+15 
+
+We wondered whether NFE2L2 may exert a role in modulating EMC. We found that NFE2L2 251 
+
+silencing alone halved the ER-M distance in FOLFIRI-PCs (Fig. 4a-b). Notably, Erastin by itself did 252 
+
+not affect EMC, while the combinatorial treatment of shNFE2L2 and Erastin greatly increased EMC 253 
+
+(Fig. 4a-b). 254 
+
+The proximity between ER and mitochondria leads to the expansion of mitochondrial lipid 255 
+
+peroxidation, inducing mitochondrial ROS (mROS) production 41 . We thus explored whether 256 
+
+increased EMC in PCs is associated with mROS production. Consistent with the closer contact 257 
+
+between the ER and mitochondria, the elevation of mROS was significant in FOLFOX-PCs but not 258 
+
+in FOLFIRI-PCs (Suppl. Fig. 3d), thereby supporting the hypothesis of the lower susceptibility of 259 
+
+FOLFIRI-PCs to mitochondrial oxidative stress. To validate the involvement of NFE2L2 in 260 
+
+modulating this intricated cellular mechanism, based on EMC regulation and mROS expansion, we 261 
+
+knocked down NFE2L2 in FOLFIRI-PCs and measured mROS levels, normalized to mitochondrial 262 
+
+mass. Notably, while mROS were only moderately elevated by either shNFE2L2 or Erastin alone, the 263 
+
+combined treatment triggered a dramatic mROS surge (Fig. 4c), likely overcoming cellular 264 
+
+detoxifying defences and precipitating irreversible PCs damage and cell death. 265 
+
+Considering that the mitochondrion operates as both a major driver (through mROS 266 
+
+generation) and a casualty of the ferroptotic cascade, we explored mitochondrial function in these 267 
+
+cells after genetic knockdown of NFE2L2 and Erastin. During ferroptosis, mitochondria undergo 268 
+
+distinct morphological shifts, such as condensed inner membranes, outer mitochondrial membrane 269 
+
+blistering, and cristae depletion 42-43 . We determined that a significant loss of mitochondrial cristae 270 
+
+was detected specifically upon the concomitant administration of Erastin and NFE2L2 knockdown 271 
+
+(Fig. 4d), reinforcing the notion that only this combinatorial approach potently induces ferroptotic 272 
+
+cell death. 273 
+
+We next explored whether the inhibition of NFE2L2 may reduce cell viability. Despite the 274 
+
+effect of NFE2L2 knockdown on EMC, no reduction in cell viability was evident (Fig. 4e). We have 275 
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.13.738168 doi: bioRxiv preprint
+
+16 
+
+shown that interfering with the Xc - antiporter (using Erastin) and GPX4 (with RSL3), despite the 276 
+
+activation of some pro-ferroptotic markers (Fig. 1a) had no impact on cell survival (Fig.1b). We next 277 
+
+explored the possibility that targeting both paths (the Xc - antiporter or GPX4 on one side, and EMC 278 
+
+controlled by NFE2L2 on the other) may affect cell viability. The combined knockdown of NFE2L2 279 
+
+with either Erastin or RSL3 deeply reduced cell survival (Fig. 4e). Of note, this combined effect was 280 
+
+not observed in FOLFOX-PCs, where the single administration of RSL3 or Erastin was sufficient to 281 
+
+reduce viability, with no additive effect seen with NFE2L2 knockdown (Suppl. Fig. 3e). We 282 
+
+confirmed these results also with ML385, a compound which blocks heterodimerization of NFE2L2 283 
+
+with small Maf proteins 44 (Fig 4f). 284 
+
+To broaden the translational potential of these findings, we evaluated the combination of 285 
+
+Erastin with NMDARs inhibitors (Memantine or Dizocilpine); as a control, we also tested the genetic 286 
+
+silencing of GRIN1, the critical subunit of NMDARs. FOLFIRI treatment increased GRIN1 protein 287 
+
+levels (Suppl. Fig. 3f), further supporting the model whereby cancer cells exposed to FOLFIRI 288 
+
+treatment relies on NMDARs to prevent ferroptosis and survive. As seen with NMDARs inhibitors, 289 
+
+also GRIN1 silencing significantly reduced NFE2L2 levels (Suppl. Fig. 3f). Importantly, while 290 
+
+neither NMDAR inhibition (Fig. 3i) nor GRIN1 genetic silencing (Suppl. Fig. 3g) alone was sufficient 291 
+
+to reduce the viability of PCs, the combination with Erastin or RSL3, triggered cell death in FOLFIRI-292 
+
+PCs (Fig. 4g). This effect was observed exclusively following persistence, and not in the parental 293 
+
+cells (Suppl. Fig. 3h), sustaining the hypothesis that this phenotype is specifically induced by 294 
+
+FOLFIRI treatment. 295 
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.13.738168 doi: bioRxiv preprint
+
+17 296 
+
+297 
+
+298 
+
+Figure 4. NFE2L2 regulates ER-M distance and resensitize PCs to ferroptosis 299 
+
+a-b. Representative TEM images ( a) and corresponding quantification ( b) of mitochondria/endoplasmic reticulum 300 
+
+distance expressed in nm. Scale bar: 500 nm. (n=20 cells; median, first and third quartile are shown). c. Mitochondrial 301 
+
+ROS quantification in CTRL cells or FOLFIRI-PCs treated with Erastin and in shNFE2L2 condition. Significant 302 
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.13.738168 doi: bioRxiv preprint
+
+18 
+
+differences among groups calculated by ANOVA followed by Tukey post-test (n=3 biological replicates; mean±SD; ****: 303 
+
+P<0.0001). d. Number of cristae quantification (n=20 cells; median, first and third quartile are shown). e-f. Relative cell 304 
+
+viability of FOLFIRI-PCs genetically silenced for NFE2L2 ( d) or treated with NFE2L2 inhibitor (ML385) ( e) and treated 305 
+
+with ferroptosis inducers Erastin and RSL3. Significant differences among groups calculated by ANOVA followed by 306 
+
+Tukey post-test (n=3 biological replicates; mean±SD; *: P<0.05; **: P<0.01; ***: P<0.001; ****: P<0.0001). g. Relative 307 
+
+cell viability of FOLFIRI-PCs treated with NMDAR inhibitors Memantine or Dizocilpine and ferroptosis inducers Erastin 308 
+
+and RSL3. Significant differences among groups calculated by ANOVA followed by Tukey post-test (n=3 biological 309 
+
+replicates; mean±SD; ****: P<0.0001). 310 
+
+311 
+
+Mitochondrial ROS precipitate ferroptosis induced by Xc - antiporter inhibition 312 
+
+Our findings demonstrate that FOLFIRI-PCs trigger two anti-ferroptotic programs. One 313 
+
+pathway depends on the recruitment of the cystine-glutamate antiporter Xc - which activates the 314 
+
+GSH/GPX4 cascade. However, targeting this system alone fails to sensitize cells to ferroptosis 315 
+
+because of the parallel NMDARs/NFE2L2/mitochondria axis. Through NFE2L2 regulation, 316 
+
+FOLFIRI-PCs restrict mitochondrial impairment and control oxidative stress to support survival. 317 
+
+Iron is a vital catalyst in this process. Free intracellular iron both reacts with hydrogen 318 
+
+peroxides via the Fenton reaction to generate highly reactive hydroxyl radicals, which rapidly 319 
+
+accelerate the oxidation of lipids 45 and plays a critical role serving as a fundamental component in 320 
+
+the biosynthesis of heme and iron−sulfur (Fe−S) clusters, which serve as crucial cofactors within the 321 
+
+mitochondrial respiratory chain 46 . Nonetheless, a striking accumulation of Fe 2+ was observed in 322 
+
+FOLFIRI-PCs and this increase promoted survival rather than cell death (Fig. 1d). We hypothesized 323 
+
+that in FOLFIRI-PCs, most of the Fe 2+ is directed toward mitochondria to sustain organelles fitness, 324 
+
+essential for cell survival. To test this hypothesis, we first evaluated mitochondrial Fe 2+ levels using 325 
+
+Mito-FerroGreen, a fluorescent probe that detects Fe 2+ , co-stained with MitoBright, a mitochondria-326 
+
+retained dye. We confirmed that FOLFIRI-PCs exhibited a marked increase in mitochondrial Fe 2+ 
+
+327 
+
+compared to both control and FOLFOX-PCs (Fig. 5a-b) which is prevented by DFO, that severely 328 
+
+impaired PC survival (Fig. 1d). Moreover, Rotenone (RTN), a potent mitochondrial complex I 329 
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.13.738168 doi: bioRxiv preprint
+
+19 
+
+inhibitor, significantly decreased FOLFIRI-PC viability and elevated lipid peroxidation, consistent 330 
+
+with the effects due to DFO (Fig. 5c-d). These findings suggest that the increase in Fe 2+ detected in 331 
+
+FOLFIRI-PCs is mostly directed to the mitochondria machinery, thus preserving its function and 332 
+
+protecting PCs from peroxidation of the lipid membranes. 333 
+
+Conversely, the restriction of mitochondrial Fe 2+ (Fig. 5a-b), alongside Xc - activity blockade 334 
+
+and impaired NADPH synthesis (Fig. 2b-c), corroborates the idea that Fe 2+ is mostly funnelled into 335 
+
+the pro-ferroptotic oxidative pathway within FOLFOX-PCs. To confirm the central role of the mROS 336 
+
+in the ferroptosis induction, FOLFOX-PCs were treated with the specific mROS scavenger 337 
+
+Mitotempo. This treatment mitigated both lipid peroxidation and mROS levels, thereby rescuing cell 338 
+
+viability during ferroptotic challenge (Suppl. Fig. 5b-d). Overall, these findings underscore the central 339 
+
+role of mitochondrial ROS generation in ferroptotic sensitization. During FOLFIRI exposure, 340 
+
+NFE2L2 acts as a detoxification gatekeeper by maintaining mitochondrial distance and mitigating 341 
+
+mROS production. In turn, accumulated mROS drive membrane lipid peroxidation, counteract the 342 
+
+Xc - antioxidant defence, and precipitate ferroptosis. Consequently, the simultaneous inhibition of 343 
+
+both the Xc - system and NFE2L2-mediated mitochondrial regulation is strictly required to restore 344 
+
+ferroptotic sensitivity and trigger irreversible cellular destruction in FOLFIRI-PCs. 345 
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.13.738168 doi: bioRxiv preprint
+
+20 346 
+
+347 
+
+Figure 5. Mitochondrial ROS precipitate ferroptosis induced by Xc - antiporter inhibition 348 
+
+a-b. Representative images and fluorescent microscopy analysis at confocal resolution of CTRL, FOLFOX- or FOLFIRI-349 
+
+and FOLFIRI+DFO-PCs ( a) for the detection of Fe 2+ (Mito-FerroGreen) or mitochondrial compartment (Mito-Bright). 350 
+
+Significant differences among groups ( b) calculated by ANOVA followed by Tukey post-test (n=3 biological replicates 351 
+
+biological replicas and 10 cells per condition analysed; mean±SD; ***: P<0.001; ****: P<0.0001). c-d. Relative cell 352 
+
+viability ( c) and lipid peroxidation quantification ( d) of FOLFIRI-PCs treated with Rotenone. Significant differences 353 
+
+among groups calculated by Student’s t-test (n=3 biological replicates; mean±SD; ***: P<0.001; ****: P<0.0001). e. 354 
+
+Lipid peroxidation levels quantified as percentage positivity (%) in PCs or parental CTRL treated with Mitotempo. 355 
+
+Significant differences among groups calculated by ANOVA followed by Tukey post-test (n=3 biological replicates; 356 
+
+mean±SD; ****: P<0.0001). 357 
+
+358 
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.13.738168 doi: bioRxiv preprint
+
+21 
+
+Sulfasalazine in combination with NFE2L2 inhibition ablates FOLFIRI-PCs 359 
+
+Although Erastin and RSL3 have been used to study the induction of ferroptosis in vitro and 360 
+
+in vivo , they never reached the clinics, due to toxic effects recorded in preclinical studies 47-48 .361 
+
+We then evaluated Sulfasalazine, an anti-inflammatory and immunomodulatory agent 362 
+
+approved for chronic inflammatory diseases 49 and recently investigated in clinical trials for metastatic 363 
+
+colorectal cancer, glioblastoma, and acute leukaemia. Furthermore, Sulfasalazine has been 364 
+
+repurposed as an inhibitor of the Xc - antiporter system to trigger ferroptosis 50-51 . Sulfasalazine, at a 365 
+
+dose reducing survival by 30% of HCT116 parental cell, effectively increased lipid peroxidation 366 
+
+(Suppl. Fig. 5a). We then tested the effect of sulfasalazine in the context of CRC persistence. In line 367 
+
+with the results obtained with Erastin and RSL3, Sulfasalazine was effective in ablating FOLFOX-368 
+
+PCs (Fig. 6a), while having no effect in FOLFIRI-PCs (Fig. 6b). The combination of sulfasalazine 369 
+
+with the specific NFE2L2 inhibitor ML385 resensitized FOLFIRI-PCs and strongly reduced cell 370 
+
+viability (Fig. 6c). 371 
+
+To extend these observations to an experimental setting closer to the clinic, we used a CRC 372 
+
+patient-derived organoid (PDO) derived from a patient affected by metastatic CRC to the liver, 373 
+
+exposed for two weeks to either FOLFOX or FOLFIRI to induce persistence. Also, in this PDO, 374 
+
+FOLFOX, but not FOLFIRI, increased lipid peroxidation in PCs (Fig. 6d), with the combination of 375 
+
+FOLFOX with Sulfasalazine reducing PDOs area (Suppl. Fig. 5b-c). Conversely, the combination of 376 
+
+Sulfasalazine (as Xc - antiporter system inhibitor) and ML385 (NFE2L2 inhibitor), was required to 377 
+
+significantly affect FOLFIRI-PCs (Suppl. Fig. 5b-d). To confirm the effect on cell death, we applied 378 
+
+a deep-learning pipeline extracting representative phenotypic states from PDOs 52 . Unsupervised 379 
+
+clustering analysis revealed four clusters in FOLFIRI- and three clusters in FOLFOX-based therapies 380 
+
+(Suppl. Fig. 5e-f). Ferroptosis-based treatments in FOLFIRI-PCs altered clusters abundance, leading 381 
+
+to a widespread reduction in Clusters 1 and 2 (highly structured and regular organoid architectures) 382 
+
+and an increase in Cluster 4 (intermediate phenotype). Notably, Cluster 3, the most extreme 383 
+
+degenerate and 'sprouting', enriched significantly only following doublet pro-ferroptosis therapies 384 
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.13.738168 doi: bioRxiv preprint
+
+22 
+
+(Fig. 6e-f). Similar results were obtained in the FOLFOX-based treatments, with a prevalence of the 385 
+
+deranged cluster phenotypes in the combination (Fig. 6g). Altogether, these findings demonstrate a 386 
+
+significant disruption of the organoids architectural structure, thus supporting a potent cell death 387 
+
+phenotype following combinatorial treatments against both Xc - antiporter and NFE2L2. 388 
+
+Topoisomerase inhibitors are widely used in oncology, for the treatment of colorectal 53 ,389 
+
+pancreatic 54 , ovarian 55 , osteosarcoma 56 and bladder cancer 57 , among the others, as first line therapy 390 
+
+for metastatic disease or in case of resistance to previous regimens. We then assessed whether other 391 
+
+topoisomerase inhibitors displayed the same phenotype seen with SN38, in cell lines derived from 392 
+
+tumour types where these compounds are routinely used, including the SW780 bladder cancer cell 393 
+
+line and the U2OS osteosarcoma model using Etoposide and Doxorubicin, respectively. Both cell 394 
+
+lines were treated with Erastin, RSL3 and Sulfasalazine at dosages able to reduce viability in the 395 
+
+parental counterpart (Suppl. Fig. 5g-h). None of the combinations was able to reduce cell viability on 396 
+
+itself in PCs (Suppl. Fig. 5i-j) while the combination with NFE2L2 inhibitor ML385 was able to 397 
+
+reduce viability (Fig. 6h-i), as showed for the CRC cancer models. These results suggest that 398 
+
+resistance to ferroptosis induction is specific of topoisomerases inhibition and provides guidance to 399 
+
+ameliorate patients’ response to standard treatments. 400 
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.13.738168 doi: bioRxiv preprint
+
+23 401 
+
+402 
+
+Figure 6. Sulfasalazine recapitulates ferroptosis induction and inhibits PCs 403 
+
+a-b. Relative cell viability of FOLFOX-( a) or FOLFIRI-PCs ( b) upon Sulfasalazine treatment. Significant differences 404 
+
+among groups calculated by two-tailed Student’s t-test (n=4 for b biological replicates; mean±SD; ****: P<0.0001; ns: 405 
+
+not significant). c. Relative cell viability of FOLFIRI-PCs treated with NFE2L2 inhibitor ML385 and sulfasalazine. 406 
+
+Significant differences among groups calculated by ANOVA followed by Tukey post-test (n=3 biological replicates; 407 
+
+mean±SD; *: P<0.05; ***: P<0.001). d. Lipid peroxidation levels quantified as percentage positivity (%) in parental 408 
+
+patient-derived organoids (PDOs) CTRL or PCs obtained by chemotherapy exposure by flow cytometry analysis. 409 
+
+Significant differences among groups calculated by ANOVA followed by Tukey post-test (n=3 biological replicates; 410 
+
+mean±SD; ***: P<0.001; ns: not significant). e-g. Abundance of phenotypic clusters and respective significance obtained 411 
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.13.738168 doi: bioRxiv preprint
+
+24 
+
+by PDOs segmentation upon FOLFIRI-based (e-f) or FOLFOX-based treatments quantified and visualized via a stacked 412 
+
+barplot. Adjusted BH 𝑝 -values and Cramer’s V effect size are reported. h-i. Relative cell viability of SW780 ( h) and 413 
+
+U2OS ( i) PCs treated with etoposide or doxorubicin, respectively, ferroptosis inducers and ML385. Significant differences 414 
+
+among groups calculated by ANOVA followed by Tukey post-test (n=3 biological replicates; mean±SD; ***: P<0.001; 415 
+
+****: P<0.0001). 416 
+
+417 
+
+Discussion 418 
+
+Tumour cell death is the main goal of most anti-cancer therapies 58 , as well as eradication of 419 
+
+tumour reservoirs, such as persister cells 59 . In this study, we show that ferroptosis is strongly activated 420 
+
+during chemotherapy-induced persistence of colorectal cancer cells, with platinum-based 421 
+
+combination sensitizing persister cells to ferroptosis induction. Surprisingly, following 422 
+
+topoisomerase inhibition, persister cells were instead resistant to the induction of ferroptosis. In these 423 
+
+cells, CD44 cooperates with SLC7A11, the main subunit of the Xc - antiporter system, increasing 424 
+
+cystine uptake and activating the GPX4 antioxidant pathway. Notably, blocking the Xc - system, by 425 
+
+Erastin or the GPX4 inhibitor RSL3, was not sufficient to sensitize cells to ferroptosis, suggesting the 426 
+
+involvement of an additional mechanism triggering resistance. We found an increase of the 427 
+
+extracellular glutamate which, in turn, stimulates the NMDARs to activate the downstream NFE2L2 428 
+
+signalling axis which, by directly maintaining ER-mitochondrial distance, mitigates oxidative stress. 429 
+
+Ultimately, targeting both axes simultaneously is essential to overcome this defence mechanism, 430 
+
+induce ferroptosis, and clear the persister cell population. 431 
+
+The role of the synaptic plasticity receptors NMDARs in cancer is starting to emerge. 432 
+
+NMDARs exert a central role in the synaptic transmission and plasticity 60 . However, recent evidence 433 
+
+suggests that these receptors are expressed in tissues of different tumour types, such as pancreatic 61-
+
+434 
+
+> 62
+
+, small cell lung 63 and breast cancer 64 . Aberrant accumulation of glutamate in the extracellular 435 
+
+compartment activates glutamate receptors on cancer cells, promoting malignant growth 65 . NMDARs 436 
+
+stimulate several tumorigenic pathways, such as mTOR, ERK1/2, and CREB through Ca 2+ uptake 32 .437 
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.13.738168 doi: bioRxiv preprint
+
+25 
+
+We propose that NMDARs, when activated by glutamate binding, mediate ferroptosis resistance in 438 
+
+response to topoisomerase inhibitor treatments. Our finding is consistent with existing data that 439 
+
+correlate these classical synaptic receptors with rituximab resistance in neurological disorders such 440 
+
+as autoimmune encephalitis or Ca 2+ -dependent excitotoxicity in epilepsy 66-67 . In addition, NMDARs 441 
+
+have been associated with refractory to temozolomide chemotherapy in glioblastoma patients, due to 442 
+
+the increase of the DNA repair enzyme, O6-methylguanine DNA methyltransferase 68 . Our data 443 
+
+demonstrate that NMDARs, by activating the Ca 2+ -dependent survival signals, such as AKT 444 
+
+phosphorylation, trigger the NFE2L2 transcription factor in the context of cancer persistence. 445 
+
+Endoplasmic reticulum-mitochondria contact (EMC) is emerging as the central hub in 446 
+
+mitochondrial ROS production and for the oxidative ferroptotic hotspot 41 . Several proteins, by acting 447 
+
+as membrane tethers, have been described to maintain EMC 69 . However, the driving factors behind 448 
+
+this regulation remain poorly defined. Our finding sheds light on the role of NFE2L2 in triggering 449 
+
+this process. We hypothesize that NFE2L2 controls ER stress and the unfolded protein response and, 450 
+
+by maintaining the distance among organelles, halts both lipid peroxidation and mitochondrial 451 
+
+damage. Such a complex regulation confers resistance to ferroptosis and opens new avenues for the 452 
+
+characterization of the mechanisms governing EMC, also beyond the setting of persistence. 453 
+
+Targeting iron metabolism, either through Fe 2+ deprivation or by leveraging Fe 2+ accumulation 454 
+
+to trigger ferroptosis, represents a promising therapeutic strategy in oncology 70 . As such, increasing 455 
+
+cellular Fe 2+ uptake is a well-established strategy to induce ferroptosis, also in persister cells 30,71 .456 
+
+Conversely, the potential protective role of Fe 2+ in PCs has not been previously investigated to the 457 
+
+best of our knowledge. Indeed, despite its role in driving ferroptosis, Fe 2+ could alternatively promote 458 
+
+cancer cell growth, a phenomenon already documented in signalling pathways associated with other 459 
+
+forms of programmed cell death 72-73 . Here, we demonstrate that following FOLFIRI treatment, Fe 2+ 
+
+460 
+
+chelation ablates PCs. In several settings Fe 2+ chelation has been proposed as a strategy to treat 461 
+
+cancers, for example in colorectal, ovarian and hepatocellular carcinoma, glioblastoma and 462 
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.13.738168 doi: bioRxiv preprint
+
+26 
+
+leukemia 70 . We herein propose that Fe 2+ chelation may be exploited to interfere with the survival of 463 
+
+PCs arising from topoisomerase treatments. 464 
+
+Why do these PCs require iron? We argue that Fe 2+ in this setting is required for mitochondrial 465 
+
+fitness. In particular, we delineate the role of Fe 2+ in maintaining mitochondrial homeostasis, which 466 
+
+is critical for tumour initiation and growth 74 . Indeed, beyond the classical role in the Fenton reaction, 467 
+
+which generates highly reactive hydroxyl radicals and drives lipid peroxidation 75 , Fe 2+ can be 468 
+
+exploited by cancer cells to sustain mitochondrial Fe-S cluster and heme synthesis 76 . In this study, we 469 
+
+propose that this distinctive mitochondrial mechanism acts as an essential player in sustaining cell 470 
+
+survival during treatment and cancer persistence. To support this hypothesis, we speculate that 471 
+
+NFE2L2, by modulating the labile Fe 2+ pool via FTH1 regulation, ensures an adequate iron supply 472 
+
+while preventing excess Fe 2+ from initiating detrimental Fenton reactions 77 . Conversely, an inability 473 
+
+of cancer cells to compartmentalize Fe 2+ triggers a massive surge in mitochondrial reactive oxygen 474 
+
+species. Consequently, employing an inhibitor of Fe 2+ transport to mitochondria, or utilizing a 475 
+
+combination of drugs that deprives the cancer cell of mitochondria protective mechanisms, forces it 476 
+
+into rapid, catastrophic, iron-dependent cell death. 477 
+
+Exploiting the mechanistic links between chemotherapy and iron-dependent pathways during 478 
+
+the persistent state provides a promising framework for developing synergistic combination regimens. 479 
+
+Accordingly, we suggest that ferroptotic induction could represent a successful strategy in 480 
+
+combination with FOLFOX. Conversely, exploiting the ferroptotic pathway after topoisomerase 481 
+
+inhibitor treatments is more challenging, as it requires the simultaneous inhibition of both antioxidant 482 
+
+strategies, namely the Xc - antiporter system and the NMDAR/NFE2L2 axis, to dismantle the 483 
+
+antioxidant response and eradicate FOLFIRI persister cells. 484 
+
+How to safely induce ferroptosis for cancer treatment remains a critical question, as the 485 
+
+primary challenge lies in developing a therapeutic strategy that protects healthy cells while selectively 486 
+
+targeting tumour cells, alongside identifying patients who would most benefit from ferroptosis-based 487 
+
+interventions 78 . To address this, we successfully utilized Sulfasalazine, an FDA-approved anti-488 
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.13.738168 doi: bioRxiv preprint
+
+27 
+
+inflammatory drug, which possesses well-characterized pro-ferroptotic properties 51 . Although several 489 
+
+studies have already evaluated its efficacy as an antitumor agent, including in colorectal cancer 79 , our 490 
+
+data repurpose its application to the context of cancer persistence. Specifically, we combine it with a 491 
+
+targeted therapy against NFE2L2 to overcome drug resistance, validating these findings in a highly 492 
+
+clinically relevant model, such as colorectal cancer patient-derived organoids that recapitulate the 493 
+
+FOLFIRI-induced activation of the antioxidant response. 494 
+
+In conclusion, we propose exploiting iron-dependent mechanisms to eradicate persister cells 495 
+
+in colorectal cancer, while also accounting for the diversity of the plastic response to therapy as an 496 
+
+intrinsic property of these cells. Alternative approaches must be tailored to successfully target survival 497 
+
+machineries during the persistent state. Furthermore, additional analyses are required to develop 498 
+
+patient stratification strategies, identifying individuals who would benefit most from ferroptosis 499 
+
+induction versus those who could alternatively receive combination therapies designed to disrupt the 500 
+
+redox balance and halt tumour progression. 501 
+
+502 
+
+Methods 503 
+
+Cell line and Patient derived organoids 504 
+
+Experiments were performed in CRC HCT116, SW780 AND U2OS cell lines, maintained in media 505 
+
+composed by DMEM, 10% FBS and 1% Penicillin-Streptomycin, as recommended by supplier. Cell 506 
+
+line authentication was performed by Thermo Fisher, AmpFlSTR® Identifiler® Plus PCR 507 
+
+Amplification Kit. All cell lines were tested for mycoplasma and resulted negative. 508 
+
+Samples from liver metastatic gastrointestinal cancers were obtained from San Raffaele Hospital 509 
+
+(Milan, Italy). Patient Derived Organoids (PDO) cultures were established as previously reported 28 .510 
+
+Briefly, fresh tissues were minced immediately after surgery, conditioned in PBS with 5 mM EDTA, 511 
+
+and digested for 1 hour at 37°C in a solution containing 2× TrypLE Select Enzyme (ThermoFisher) 512 
+
+in PBS with 1 mM EDTA and DNAse I (Merck). Cell release was facilitated by pipetting. The 513 
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.13.738168 doi: bioRxiv preprint
+
+28 
+
+dissociated cells were then collected, suspended in 120 μl of growth factor-reduced Matrigel (Corning 514 
+
+356231, Fisher Scientific), and seeded in single domes in a 24-well flat-bottom cell culture plate 515 
+
+(Corning). After the domes solidified, they were covered with 1 ml of complete human organoid 516 
+
+medium. The medium was replaced every 2–3 days. 517 
+
+Persister cells derivation and treatments 518 
+
+To obtain persister cells, 1.2x10 6 HCT116 cells were plated on a 6 cm plate and continuously exposed 519 
+
+for two weeks to FOLFOX: 5-FU 10 μM and oxaliplatin 1 μM or FOLFIRI: 5-FU 10 μM and SN38 520 
+
+10 nM. Medium and drugs were refreshed every four days. HCT116 Persister cells were treated for 521 
+
+72 hours with Erastin (SelleckChem S7242), RSL3 (SelleckChem S8155) or Sulfasalazine 522 
+
+(SelleckChem S1576) at respective concentrations of 5 μM, 2.5 μM and 500 μM. SW780 cells were 523 
+
+treated once week with 10 μM Etoposide (SelleckChem S1225); SW780 persister cells were treated 524 
+
+for 72 hours with 500 nM Erastin, 25 nM RSL3 or 50 μM Sulfasalazine. Doses for treatments were 525 
+
+chosen based on the half-maximal inhibitory concentration (IC50) at 72h. U2OS cells were treated 526 
+
+twice a week with 10 nM Doxorubicin (SelleckChem E2516). U2OS persister cells were treated for 527 
+
+72 hours with 500 nM Erastin, 250 nM RSL3 or 50 μM Sulfasalazine. Chemonaive cells were used 528 
+
+as a control group. ML385 (SelleckChem S8790) was used at a final concentration of 1 μM for 72 529 
+
+hours. Persister cells maintained in culture for 72 hours with complete medium were used as control. 530 
+
+Mitotempo (MedChemExpress HY-112879) or Rotenone (R8875; Merck) were used for 48h at 10 531 
+
+μM and 1 μM concentrations, respectively. Deferoxamine (MedChemExpress HY-B1625) was used 532 
+
+for 48h hours at 1 μM concentration. Alpelisib (MedChemExpress HY-15244) was used at 5 μM 533 
+
+concentration for 16h. Memantine (MedChemExpress HY-B0591) and Dizocilpine 534 
+
+(MedChemExpress HY-15084B) were used at 10 μM for 72h. 535 
+
+PDOs drug treatment and segmentations 536 
+
+PDOs were treated for two weeks with FOLFOX: 10 μM 5-FU and 10 μM of oxaliplatin or FOLFIRI: 537 
+
+10 μM 5-FU and 10 nM SN38. Medium and drugs were refreshed every four days. After induction 538 
+
+of persistence, PDOs were treated with sulfasalazine (500 μM) and ML385 (1 μM). Images of the 539 
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.13.738168 doi: bioRxiv preprint
+
+29 
+
+PDOs were acquired at the inverted microscope and were analysed using ImageJ. Briefly, three to 540 
+
+five fields per well were acquired and the area of each organoid was measured. In addition, 74 images 541 
+
+(1.02 μm/px, 8-bit, 1338 x 1040px-sized images, acquired through AxioCamMR3) encompassing 542 
+
+FOLFIRI- and FOLFOX-based treated PDOs were processed through Napari Organoid Analyzer, a 543 
+
+deep learning pretrained model consisting of Yolov3+ and SAM network for the automatic 544 
+
+segmentation of single PDO instances in the image 52 . An expert-led quality check was performed on 545 
+
+automated segmentation masks. According to the therapy delivered, the number of PDO instances 546 
+
+segmented resulted in: FOLFIRI (n=101, 14 images), FOLFIRI+ML385 (n=80, 15 images), 547 
+
+FOLFIRI+SULFASALAZINE (n=51, 11 images), FOLFIRI+COMBO (n=63, 14 images), FOLFOX 548 
+
+(n=54, 13 images), and FOLFOX+SULFASALAZINE (n=46, 7 images). For each PDO instance, 549 
+
+automatic feature extraction was performed through convolutional deep neural networks, namely 550 
+
+ConvNeXt-tiny and DenseNet-121 80-81 . Subsequently, an Autoencoder was trained to compress 551 
+
+feature space while minimizing reconstruction loss. On the generated latent space, the number of 552 
+
+clusters was selected among k = {3,4,5} through Consensus Clustering implemented in Bioconductor 553 
+
+ConsensusClusterPlusR package, by using Gaussian Mixture Model and Partitioning Around 554 
+
+Medoids (PAM) as independent estimators. Upon establishing the optimal 𝑘 , the PAM algorithm was 555 
+
+deployed to identify the 𝑘 -medoids and assign definitive cluster labels to all individual PDO instances 556 
+
+across the entire dataset. A global contingency table ( 𝑐𝑙𝑢𝑠𝑡𝑒𝑟𝑠 × 𝑡 ℎ𝑒𝑟𝑎𝑝𝑖𝑒𝑠 ) was constructed to map 557 
+
+the occurrence of phenotypic clusters across all therapeutic conditions, and global statistical 558 
+
+association was assessed using the Chi-squared ( 𝜒 2) test. To dissect specific treatment effects, 559 
+
+therapies were further compared via pairwise 𝜒 2 analyses using reduced ( 𝑐𝑙𝑢𝑠𝑡𝑒𝑟𝑠 ×2) contingency 560 
+
+frameworks by reporting 𝑝 -values and Cramer’s V effect size. 561 
+
+Cell viability assay 562 
+
+Cell viability was assessed using crystal violet staining. Briefly, after removing the supernatant, the 563 
+
+cells were washed with PBS. Crystal violet was then added to live cells and incubated for 15 minutes. 564 
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.13.738168 doi: bioRxiv preprint
+
+30 
+
+Images were captured using an inverted microscope and analysed with ImageJ software to quantify 565 
+
+cell viability. 566 
+
+Labile Iron quantification 567 
+
+To detect the Labile Iron Pool (LIP) 1,5x10 5 PCs were plated in 6 wells and then incubated with PBS 568 
+
+and Calcein AM (acetoxymethyl ester) 50 nM at 37°C for 30’ in the dark. Mean fluorescence intensity 569 
+
+(MFI) of 20'000 acquired events was detected with CytoFLEX S (Beckman Coulter) and analysed 570 
+
+with FlowJo (Becton Coulter) (Ex/Em:495/521 nm). The MFIs were then normalized to the unstained 571 
+
+samples to account for autofluorescence. LIP was calculated as -log (Calcein Fluorescence Intensity) 572 
+
+related to control. FerroOrange (Cell Signaling #36104) was also used for labile Fe 2+ quantification 573 
+
+as reported by manufactures. Briefly, cells were incubated with 1 μmol/L FerroOrange working 574 
+
+solution for 30 min. Then, cells were harvested and 20'000 acquired events were detected with 575 
+
+CytoFLEX S (Beckman Coulter) and analysed with FlowJo (Becton Coulter) (Ex/Em: 543 /580 nm). 576 
+
+Mitochondrial ROS, Mitochondrial Mass and Mitochondrial Fe 2+ 
+
+577 
+
+HCT116 cells were treated for two weeks with FOLFOX and FOLFIRI as previously specified. Then, 578 
+
+cells were incubated with MitoSOX™ Red (Invitrogen M36008; 5 μM) resuspended in HBSS for 10 579 
+
+min for mitochondrial ROS detection or MitoTracker Green (Invitrogen M7514; 100nM) for 20 min 580 
+
+at 37° C in the dark. MFI of 20’000 acquired events was detected at CytoFLEX LX (Beckman 581 
+
+Coulter) and analysed by FlowJo (Becton Dickinson v10.8.1) (MitoSOX™ Red at Ex/Em: 510/580 582 
+
+nm). For mitochondrial Fe 2+ detection cell were incubated with Mito-FerroGreen (5 μmol/l; M489 583 
+
+Dojindo) or MitoBright (200 nmol/l; MT12-12 Dojindo) for 30 minutes at 37 °C. The cells were 584 
+
+observed by confocal fluorescence microscopy (TCS SP5 Laser Scanning Confocal Microscope 585 
+
+Leica × 63 magnification). 586 
+
+Lipid peroxidation 587 
+
+BODIPY™ 581/591 C11 (Invitrogen) was used to detect lipid peroxidation in persister cells. PBS 588 
+
+containing BODIPY at a final concentration of 2 μM was substituted to the cell culture medium, and 589 
+
+the cells were incubated in the dark for 15 minutes at 37°C. MFI of 20’000 acquired events was 590 
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.13.738168 doi: bioRxiv preprint
+
+31 
+
+detected using the CytoFLEX S (Beckman Coulter) and analysed with FlowJo (Becton Dickinson 591 
+
+v10.8.1). In the reduced state, the excitation and emission maxima of BODIPY 581/591 C11 are 592 
+
+581/591 nm; after oxidation, the probe shifts the excitation and emission to 488/510 nm. Lipid 593 
+
+peroxidation was calculated as the ratio of oxidized to non-oxidized form. 594 
+
+Glutathione, NADPH, glutamate and cystine measurement 595 
+
+NADP+/NADPH-Glo and GSH-Glo kits (Promega) were used to measure intracellular levels of 596 
+
+NADPH and GSH levels as reported by the manufacturer after two weeks of treatment. Glutamate 597 
+
+secretion was quantified in the medium harvested after two weeks of treatment by using 598 
+
+Glutamine/Glutamate-Glo (Promega). Cystine Uptake Assay Kit (UP05 Dojindo) was used for 599 
+
+cystine quantification. Luminescence and fluorescence levels were recorded using a plate-reading 600 
+
+luminometer (Mithras LB940) as directed by the manufacturer and normalized on cells number. 601 
+
+Ca 2+ quantification 602 
+
+Intracellular calcium uptake was performed by incubating 2x10 5 persister cells with 1 μM Fluo-4 603 
+
+(MedChemExpress HY-101896) diluted in HHBS (without Ca and Mg) containing 0.04% Poloxamer 604 
+
+(MedChemExpress HY-D1005) for 1hour at 37 °C. Then, cells were acquired by flow cytometry and 605 
+
+MFI of 20’000 acquired events was detected at CytoFLEX LX (Beckman Coulter) and analysed by 606 
+
+FlowJo (Becton Dickinson v10.8.1) (Ex/Em: 485/526 nm). 607 
+
+Transmitted Electron Microscopy (TEM) assay 608 
+
+For TEM analysis, PCs cells were treated and acquired as previously reported 1. Then, for 609 
+
+measurement of ER/mitochondria distance, images acquired at Ceta CCD camera (FEI, Thermo 610 
+
+Fisher Scientific) were analysed using ImageJ software. 611 
+
+Western Blot 612 
+
+Samples were collected as pellets and then lysed using a lysis buffer (1M Tris-HCl, pH 6.8, and 10% 613 
+
+SDS in H ₂O) at 95°C for 10 minutes. Afterwards, the samples were sonicated (12% amplification) 614 
+
+for 12 seconds and ultracentrifuged for 10 minutes at 13’000 rpm. Membranes were probed with 615 
+
+following antibodies: GAPDH (GT239; GeneTex), TFRC (D7G9X #13113 Cell Signaling), FTH1 616 
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.13.738168 doi: bioRxiv preprint
+
+32 
+
+(#3998 Cell Signaling); GPX4 (#52455 Cell Signaling); NFE2L2 (E3J1V; #33649 Cell Signaling); 617 
+
+AKT (pan; 11E7; #4685 Cell Signaling); Phospho-AKT(Ser473)(D9E XP #4060 Cell Signaling); p21 618 
+
+Waf/Cip1 (12D1; #2947 Cell Signaling); CD44 (E7K2Y; #37259 Cell Signaling); SLC7A11(A7C6-619 
+
+R; MA5-44922 Invitrogen); GRIN1 (D65B7; #5704 Cell Signaling). The membranes were then 620 
+
+incubated with an appropriate secondary antibody for 1 hour. Signals were detected by using 621 
+
+ChemiDoc Imaging Systems after 5 min of incubation with ECL™ Prime Western Blotting Detection 622 
+
+Reagent (Sigma-Aldrich). 623 
+
+Immunofluorescence 624 
+
+HT116 PCs cells were plated on slides as follows: 300’000 cells were plated on slides previously 625 
+
+coated with Cell-Tak (Merck CLS354240) dissolved in 0.1 M NaHCO 3. Then, cells were fixed with 626 
+
+4% paraformaldehyde for 10 min, permeabilized with 0.5% Triton-X, and blocked for 1 h with 5% 627 
+
+bovine serum albumin. The primary antibodies against CD44 (1M7.8.1; GTX15834 GeneTex), 628 
+
+SLC7A11 (A7C6-R; MA5-44922 Invitrogen) were incubated overnight at 4 °C and then for 1 h with 629 
+
+the secondary antibody at room temperature. Slides were counterstained with 4′,6-diamidino-2-630 
+
+phenylindole (DAPI) for nuclei labelling and mounted on glass slides with ProLong Gold antifade 631 
+
+reagent. Images were collected by TCS SP5 Laser Scanning Confocal Microscope (Leica) × 63 632 
+
+magnification. 633 
+
+Proximity Ligation Assay (PLA) 634 
+
+300’000 cells as control or treated with FOLFIRI were infected to silence CD44 or a SCR control and 635 
+
+then plated on slides previously coated with Cell-Tak as above. After fixing and permeabilization, 636 
+
+cells were incubated with the primary antibodies against CD44 (E7K2Y; #37259 Cell Signaling) and 637 
+
+SLC7A11(A7C6-R; MA5-44922 Invitrogen) overnight at 4 °C. After incubation with the probes and 638 
+
+ligation and amplification, slides were mounted by using in situ mounting media with DAPI and 639 
+
+acquired at 100x magnification by Axio Imager A2 fluorescence microscope (Zeiss). ImageJ was used 640 
+
+to process images. The PLA puncta were isolated from the background and then counted. The results 641 
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.13.738168 doi: bioRxiv preprint
+
+33 
+
+were expressed as PLA puncta/nuclei. Significant differences among groups were calculated by 642 
+
+applying ANOVA followed by Tukey post-test. 643 
+
+Apoptosis evaluation 644 
+
+HCT116 PCs were harvested and stained with ANNEXIN V-FITC (Invitrogen - eBioscience Annexin 645 
+
+V-FITC Apop kit; BMS500FI) as recommended by the supplier. Cells were acquired at CytoFLEX 646 
+
+LX (Beckman Coulter) and analysed by FlowJo (Becton Dickinson v10.8.1). 647 
+
+RNA interference 648 
+
+For genetic silencing, HCT116 cells were infected with specific inducible small hairpin RNA 649 
+
+(shRNA) targeting NFE2L2 (Addgene plasmid # 136584; http://n2t.net/addgene:136584; RRID: 650 
+
+Addgene136584) cloned into PLK0 vector. As a control we used shRNA targeting luciferase, shLuc 651 
+
+(Addgene plasmid # 136587; http://n2t.net/addgene:136587; RRID: Addgene136587) cloned into 652 
+
+PLK0 vector. Lentiviral particles were added to HCT116 cells, together with 4 μg/mL polybrene 653 
+
+(Sigma) for 16 hours. After 48 hours medium was replaced and 2μg/mL of puromycin was added and 654 
+
+maintained along chemotherapy treatments. After the cells were treated to induce persistence as 655 
+
+explained above, they were treated with 2 μg/mL doxycycline for 72 hours needed to induce about 656 
+
+70% of NFE2L2 silencing. Alternatively, HCT116 cells were infected with specific shRNA targeting 657 
+
+CD44 (TRCN0000057564; Merck), SLC7A11 (TRCN0000043126; Merck) and GRIN1 658 
+
+(TRCN0000063369; Merck), selected by puromycin and then treated with FOLFIRI as mentioned 659 
+
+above. 660 
+
+In bulk RNA-seq 661 
+
+Total RNA was extracted by using Qiagen RNeasy® Mini Kit and concentration and quality was 662 
+
+evaluated by Nanodrop 8000 spectrophotometer (Thermofisher scientific). mRNA purification and 663 
+
+NGS libraries were obtained following Illumina instruction (TruSeq RNA Sample Preparation) and 664 
+
+sequenced on Illumina Platform (Paired End/2x100; 5 million reads for each sample). Read tags were 665 
+
+analysed with kallisto 82 v0.50.1, utilizing gencode v45 83 as the gene model. Gene-level transcript 666 
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.13.738168 doi: bioRxiv preprint
+
+34 
+
+summaries were generated using txImport 84 . Differential expression was assessed through linear 667 
+
+models in edgeR 85 .668 
+
+Enrichment analysis 669 
+
+Enrichment analysis was performed considering only significantly differentially expressed genes 670 
+
+(DEGs) with an FDR < 0.01. The tool used is the Database for Annotation, Visualization, and 671 
+
+Integrated Discovery (DAVID) 86 . Enriched pathways derived from Gene Ontology (GO) databases. 672 
+
+The results returned from the analysis were filtered to consider only those with a p-value < 0.05. 673 
+
+Statistical analysis 674 
+
+Data are represented as mean ± SD (if not diversely indicated). Comparisons between two groups 675 
+
+were assessed by using two-tailed Student’s t-test. Comparison between more groups were assessed 676 
+
+by using the one-way ANOVA followed by Dunnett post-test or Tukey post-test for multiple 677 
+
+comparisons, as indicated in figure legend. P ≤ 0.05 and lower were considered significant. **** 678 
+
+p£0.0001; *** p £0.001; ** p £0.01; * p £ 0.05. 679 
+
+Data availability 680 
+
+Bulk RNA-seq and single cell RNA-seq analysis were performed on data previously deposited at the 681 
+
+following accession numbers in the ArrayExpress: E-MTAB-12948, E-MTAB-12949, E-MTAB-682 
+
+12950, E-MTAB-12951. Data have been processed as previously reported 1.683 
+
+The data sets generated in this study for RNA-seq studies have been deposited at the following 684 
+
+accession number E-MTAB-16489. Correspondence and requests for materials should be addressed 685 
+
+to Giovanni Tonon and Simona Punzi. 686 
+
+687 
+
+References 688 
+
+1. Punzi, S. et al. Early tolerance and late persistence as alternative drug responses in cancer. Nat 689 
+
+Commun 16 , (2025). 690 
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.13.738168 doi: bioRxiv preprint
+
+35 
+
+2. Sharma, S. V. et al. A Chromatin-Mediated Reversible Drug-Tolerant State in Cancer Cell 691 
+
+Subpopulations. Cell 141 , 69–80 (2010). 692 
+
+3. Raha, D. et al. The Cancer Stem Cell Marker Aldehyde Dehydrogenase Is Required to 693 
+
+Maintain a Drug-Tolerant Tumor Cell Subpopulation. Cancer Research 74 , 3579–3590 (2014). 694 
+
+4. Shen, S. et al. Melanoma Persister Cells Are Tolerant to BRAF/MEK Inhibitors via ACOX1-695 
+
+Mediated Fatty Acid Oxidation. Cell Reports 33 , 108421 (2020). 696 
+
+5. Marine, J.-C., Dawson, S.-J. & Dawson, M. A. Non-genetic mechanisms of therapeutic 697 
+
+resistance in cancer. Nat Rev Cancer 20 , 743–756 (2020). 698 
+
+6. Peng, F. et al. Regulated cell death (RCD) in cancer: key pathways and targeted therapies. Sig 699 
+
+Transduct Target Ther 7, 286 (2022). 700 
+
+7. Lee, H. et al. DR4-Ser424 O -GlcNAcylation Promotes Sensitization of TRAIL-Tolerant 701 
+
+Persisters and TRAIL-Resistant Cancer Cells to Death. Cancer Research 79 , 2839–2852 (2019). 702 
+
+8. Kalkavan, H. et al. Sublethal cytochrome c release generates drug-tolerant persister cells. Cell 703 
+
+185 , 3356-3374.e22 (2022). 704 
+
+9. Maremonti, F. & Linkermann, A. What does not kill you makes you Weaker! Cell Death Differ 705 
+
+s41418-025-01658–6 (2026) doi:10.1038/s41418-025-01658-6. 706 
+
+10. Jin, X. et al. Ferroptosis: Emerging mechanisms, biological function, and therapeutic potential 707 
+
+in cancer and inflammation. Cell Death Discov. 10 , 45 (2024). 708 
+
+11. Chen, X., Kang, R., Kroemer, G. & Tang, D. Broadening horizons: the role of ferroptosis in 709 
+
+cancer. Nat Rev Clin Oncol 18 , 280–296 (2021). 710 
+
+12. Lee, W. C. & Dixon, S. J. Mechanisms of ferroptosis sensitization and resistance. 711 
+
+Developmental Cell 60 , 982–993 (2025). 712 
+
+13. Jyotsana, N., Ta, K. T. & DelGiorno, K. E. The Role of Cystine/Glutamate Antiporter 713 
+
+SLC7A11/xCT in the Pathophysiology of Cancer. Front. Oncol. 12 , 858462 (2022). 714 
+
+14. Stockwell, B. R. et al. Ferroptosis: A Regulated Cell Death Nexus Linking Metabolism, Redox 715 
+
+Biology, and Disease. Cell 171 , 273–285 (2017). 716 
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.13.738168 doi: bioRxiv preprint
+
+36 
+
+15. Rehman, S. K. et al. Colorectal Cancer Cells Enter a Diapause-like DTP State to Survive 717 
+
+Chemotherapy. Cell 184 , 226-242.e21 (2021). 718 
+
+16. Guler, G. D. et al. Repression of Stress-Induced LINE-1 Expression Protects Cancer Cell 719 
+
+Subpopulations from Lethal Drug Exposure. Cancer Cell 32 , 221-237.e13 (2017). 720 
+
+17. Gustavsson, B. et al. A Review of the Evolution of Systemic Chemotherapy in the 721 
+
+Management of Colorectal Cancer. Clinical Colorectal Cancer 14 , 1–10 (2015). 722 
+
+18. Dolma, S., Lessnick, S. L., Hahn, W. C. & Stockwell, B. R. Identification of genotype-723 
+
+selective antitumor agents using synthetic lethal chemical screening in engineered human tumor cells. 724 
+
+Cancer Cell 3, 285–296 (2003). 725 
+
+19. Yang, W. S. & Stockwell, B. R. Synthetic Lethal Screening Identifies Compounds Activating 726 
+
+Iron-Dependent, Nonapoptotic Cell Death in Oncogenic-RAS-Harboring Cancer Cells. Chemistry & 727 
+
+Biology 15 , 234–245 (2008). 728 
+
+20. Shirakihara, T., Yamaguchi, H., Kondo, T., Yashiro, M. & Sakai, R. Transferrin receptor 1 729 
+
+promotes the fibroblast growth factor receptor-mediated oncogenic potential of diffused-type gastric 730 
+
+cancer. Oncogene 41 , 2587–2596 (2022). 731 
+
+21. Rodriguez, R., Schreiber, S. L. & Conrad, M. Persister cancer cells: Iron addiction and 732 
+
+vulnerability to ferroptosis. Molecular Cell 82 , 728–740 (2022). 733 
+
+22. Hershko, C. et al. ICL670A: a new synthetic oral chelator: evaluation in hypertransfused rats 734 
+
+with selective radioiron probes of hepatocellular and reticuloendothelial iron stores and in iron-loaded 735 
+
+rat heart cells in culture. Blood 97 , 1115–1122 (2001). 736 
+
+23. Ju, H.-Q., Lin, J.-F., Tian, T., Xie, D. & Xu, R.-H. NADPH homeostasis in cancer: functions, 737 
+
+mechanisms and therapeutic implications. Sig Transduct Target Ther 5, 231 (2020). 738 
+
+24. Yang, W. S. et al. Regulation of Ferroptotic Cancer Cell Death by GPX4. Cell 156 , 317–331 739 
+
+(2014). 740 
+
+25. Zhang, Y. et al. mTORC1 couples cyst(e)ine availability with GPX4 protein synthesis and 741 
+
+ferroptosis regulation. Nat Commun 12 , 1589 (2021). 742 
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.13.738168 doi: bioRxiv preprint
+
+37 
+
+26. Li, F.-J. et al. System Xc−/GSH/GPX4 axis: An important antioxidant system for the 743 
+
+ferroptosis in drug-resistant solid tumor therapy. Front. Pharmacol. 13 , 910292 (2022). 744 
+
+27. Cameron, D. P. et al. Coinhibition of topoisomerase 1 and BRD4-mediated pause release 745 
+
+selectively kills pancreatic cancer via readthrough transcription. Sci. Adv. 9, eadg5109 (2023). 746 
+
+28. Tedesco, M. et al. Chromatin Velocity reveals epigenetic dynamics by single-cell profiling of 747 
+
+heterochromatin and euchromatin. Nat Biotechnol 40 , 235–244 (2022). 748 
+
+29. Ishimoto, T. et al. CD44 Variant Regulates Redox Status in Cancer Cells by Stabilizing the 749 
+
+xCT Subunit of System xc− and Thereby Promotes Tumor Growth. Cancer Cell 19 , 387–400 (2011). 750 
+
+30. Hangauer, M. J. et al. Drug-tolerant persister cancer cells are vulnerable to GPX4 inhibition. 751 
+
+Nature 551 , 247–250 (2017). 752 
+
+31. MacDermott, A. B., Mayer, M. L., Westbrook, G. L., Smith, S. J. & Barker, J. L. NMDA-753 
+
+receptor activation increases cytoplasmic calcium concentration in cultured spinal cord neurones. 754 
+
+Nature 321 , 519–522 (1986). 755 
+
+32. Gallo, S., Vitacolonna, A. & Crepaldi, T. NMDA Receptor and Its Emerging Role in Cancer. 756 
+
+IJMS 24 , 2540 (2023). 757 
+
+33. Guo, H. et al. A NMDA-receptor calcium influx assay sensitive to stimulation by glutamate 758 
+
+and glycine/D-serine. Sci Rep 7, 11608 (2017). 759 
+
+34. Oh, B.-C. Phosphoinositides and intracellular calcium signaling: novel insights into 760 
+
+phosphoinositides and calcium coupling as negative regulators of cellular signaling. Exp Mol Med 761 
+
+55 , 1702–1712 (2023). 762 
+
+35. Toledano, M. B. The Guardian Recruits Cops: The p53-p21 Axis Delegates Prosurvival Duties 763 
+
+to the Keap1-Nrf2 Stress Pathway. Molecular Cell 34 , 637–639 (2009). 764 
+
+36. Su, H., Peng, C. & Liu, Y. Regulation of ferroptosis by PI3K/Akt signaling pathway: a 765 
+
+promising therapeutic axis in cancer. Front. Cell Dev. Biol. 12 , 1372330 (2024). 766 
+
+37. Pillai, R., Hayashi, M., Zavitsanou, A.-M. & Papagiannakopoulos, T. NRF2: KEAPing 767 
+
+Tumors Protected. Cancer Discovery 12 , 625–643 (2022). 768 
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.13.738168 doi: bioRxiv preprint
+
+38 
+
+38. Nakaso, K. et al. PI3K is a key molecule in the Nrf2‐mediated regulation of antioxidative 769 
+
+proteins by hemin in human neuroblastoma cells. FEBS Letters 546 , 181–184 (2003). 770 
+
+39. Bozulic, L., Surucu, B., Hynx, D. & Hemmings, B. A. PKBα/Akt1 Acts Downstream of DNA-771 
+
+PK in the DNA Double-Strand Break Response and Promotes Survival. Molecular Cell 30 , 203–213 772 
+
+(2008). 773 
+
+40. He, F., Ru, X. & Wen, T. NRF2, a Transcription Factor for Stress Response and Beyond. IJMS 774 
+
+21 , 4777 (2020). 775 
+
+41. Sassano, M. L. et al. Endoplasmic reticulum–mitochondria contacts are prime hotspots of 776 
+
+phospholipid peroxidation driving ferroptosis. Nat Cell Biol 27 , 902–917 (2025). 777 
+
+42. Liu, Y. et al. The diversified role of mitochondria in ferroptosis in cancer. Cell Death Dis 14 ,778 
+
+519 (2023). 779 
+
+43. Dixon, S. J. et al. Ferroptosis: An Iron-Dependent Form of Nonapoptotic Cell Death. Cell 149 ,780 
+
+1060–1072 (2012). 781 
+
+44. Singh, A. et al. Small Molecule Inhibitor of NRF2 Selectively Intervenes Therapeutic 782 
+
+Resistance in KEAP1-Deficient NSCLC Tumors. ACS Chem. Biol. 11 , 3214–3225 (2016). 783 
+
+45. Rochette, L. et al. Lipid Peroxidation and Iron Metabolism: Two Corner Stones in the 784 
+
+Homeostasis Control of Ferroptosis. IJMS 24 , 449 (2022). 785 
+
+46. Read, A. D., Bentley, R. Et., Archer, S. L. & Dunham-Snary, K. J. Mitochondrial iron–sulfur 786 
+
+clusters: Structure, function, and an emerging role in vascular biology. Redox Biology 47 , 102164 787 
+
+(2021). 788 
+
+47. Zhao, J., Xu, B., Xiong, Q., Feng, Y. & Du, H. Erastin‑induced ferroptosis causes 789 
+
+physiological and pathological changes in healthy tissues of mice. Mol Med Rep 24 , 713 (2021). 790 
+
+48. Diao, J. et al. Ferroptotic therapy in cancer: benefits, side effects, and risks. Mol Cancer 23 ,791 
+
+89 (2024). 792 
+
+49. Zhao, C. et al. Sulfasalazine promotes ferroptosis through AKT-ERK1/2 and P53-SLC7A11 793 
+
+in rheumatoid arthritis. Inflammopharmacol 32 , 1277–1294 (2024). 794 
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.13.738168 doi: bioRxiv preprint
+
+39 
+
+50. Ma, M. et al. Xc− inhibitor sulfasalazine sensitizes colorectal cancer to cisplatin by a GSH-795 
+
+dependent mechanism. Cancer Letters 368 , 88–96 (2015). 796 
+
+51. Qin, Q. et al. Sulfasalazine induces ferroptosis in osteosarcomas by regulating 797 
+
+Nrf2/SLC7A11/GPX4 signaling axis. Sci Rep 15 , 30197 (2025). 798 
+
+52. Konov, M., Gleiter, L. J., Co, K., Yabal, M. & Peng, T. NOA: a versatile, extensible tool for 799 
+
+AI-based organoid analysis. Preprint at https://doi.org/10.48550/ARXIV.2511.01549 (2025). 800 
+
+53. Douillard, J. et al. Irinotecan combined with fluorouracil compared with fluorouracil alone as 801 
+
+first-line treatment for metastatic colorectal cancer: a multicentre randomised trial. The Lancet 355 ,802 
+
+1041–1047 (2000). 803 
+
+54. Wainberg, Z. A. et al. NALIRIFOX versus nab-paclitaxel and gemcitabine in treatment-naive 804 
+
+patients with metastatic pancreatic ductal adenocarcinoma (NAPOLI 3): a randomised, open-label, 805 
+
+phase 3 trial. The Lancet 402 , 1272–1281 (2023). 806 
+
+55. Gore, M. et al. Clinical Evidence for Topotecan-Paclitaxel Non–Cross-Resistance in Ovarian 807 
+
+Cancer. JCO 19 , 1893–1900 (2001). 808 
+
+56. Sternberg, C. N. et al. Randomized Phase III Trial of High–Dose-Intensity Methotrexate, 809 
+
+Vinblastine, Doxorubicin, and Cisplatin (MVAC) Chemotherapy and Recombinant Human 810 
+
+Granulocyte Colony-Stimulating Factor Versus Classic MVAC in Advanced Urothelial Tract Tumors: 811 
+
+European Organization for Research and Treatment of Cancer Protocol No. 30924. JCO 19 , 2638– 812 
+
+2646 (2001). 813 
+
+57. Bielack, S. S. et al. Methotrexate, Doxorubicin, and Cisplatin (MAP) Plus Maintenance 814 
+
+Pegylated Interferon Alfa-2b Versus MAP Alone in Patients With Resectable High-Grade 815 
+
+Osteosarcoma and Good Histologic Response to Preoperative MAP: First Results of the EURAMOS-816 
+
+1 Good Response Randomized Controlled Trial. JCO 33 , 2279–2287 (2015). 817 
+
+58. Hänggi, K. & Ruffell, B. Cell death, therapeutics, and the immune response in cancer. Trends 818 
+
+in Cancer 9, 381–396 (2023). 819 
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.13.738168 doi: bioRxiv preprint
+
+40 
+
+59. He, J. et al. Drug tolerant persister cell plasticity in cancer: a revolutionary strategy for more 820 
+
+effective anticancer therapies. Sig Transduct Target Ther 9, 209 (2024). 821 
+
+60. Paoletti, P., Bellone, C. & Zhou, Q. NMDA receptor subunit diversity: impact on receptor 822 
+
+properties, synaptic plasticity and disease. Nat Rev Neurosci 14 , 383–400 (2013). 823 
+
+61. Li, L. et al. GKAP Acts as a Genetic Modulator of NMDAR Signaling to Govern Invasive 824 
+
+Tumor Growth. Cancer Cell 33 , 736-751.e5 (2018). 825 
+
+62. Li, L. & Hanahan, D. Hijacking the Neuronal NMDAR Signaling Circuit to Promote Tumor 826 
+
+Growth and Invasion. Cell 153 , 86–100 (2013). 827 
+
+63. Stepulak, A. et al. NMDA antagonist inhibits the extracellular signal-regulated kinase pathway 828 
+
+and suppresses cancer growth. Proc. Natl. Acad. Sci. U.S.A. 102 , 15605–15610 (2005). 829 
+
+64. Kleeman, S. O. et al. Ectopic NMDAR expression in cancer unmasks germline-encoded 830 
+
+autoimmunity. Nature 653 , 1216–1228 (2026). 831 
+
+65. Yi, H., Talmon, G. & Wang, J. Glutamate in cancers: from metabolism to signaling. J Biomed 832 
+
+Res 34 , 260 (2020). 833 
+
+66. Wang, T. et al. Efficacy and safety of bortezomib in rituximab-resistant anti-N-methyl-d-834 
+
+aspartate receptor (anti-NMDAR) encephalitis as well as the clinical characteristics: An observational 835 
+
+study. Journal of Neuroimmunology 354 , 577527 (2021). 836 
+
+67. Chen, S. et al. Roles of N-Methyl-D-Aspartate Receptors (NMDARs) in Epilepsy. Front. Mol. 837 
+
+Neurosci. 14 , 797253 (2022). 838 
+
+68. Tsuji, S. et al. NMDA receptor signaling induces the chemoresistance of temozolomide via 839 
+
+upregulation of MGMT expression in glioblastoma cells. J Neurooncol 160 , 375–388 (2022). 840 
+
+69. Larrañaga-SanMiguel, A., Bengoa-Vergniory, N. & Flores-Romero, H. Crosstalk between 841 
+
+mitochondria–ER contact sites and the apoptotic machinery as a novel health meter. Trends in Cell 842 
+
+Biology 35 , 33–45 (2025). 843 
+
+70. Ciscar, M., Rodríguez-Santana, C. & Santana-Codina, N. Iron and metabolic rewiring in 844 
+
+cancer. Oncogenesis 15 , 1 (2026). 845 
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.13.738168 doi: bioRxiv preprint
+
+41 
+
+71. Viswanathan, V. S. et al. Dependency of a therapy-resistant state of cancer cells on a lipid 846 
+
+peroxidase pathway. Nature 547 , 453–457 (2017). 847 
+
+72. Fuchs, Y. & Steller, H. Live to die another way: modes of programmed cell death and the 848 
+
+signals emanating from dying cells. Nat Rev Mol Cell Biol 16 , 329–344 (2015). 849 
+
+73. Vucur, M. et al. Sublethal necroptosis signaling promotes inflammation and liver cancer. 850 
+
+Immunity 56 , 1578-1595.e8 (2023). 851 
+
+74. Santana-Codina, N. et al. NCOA4-Mediated Ferritinophagy Is a Pancreatic Cancer 852 
+
+Dependency via Maintenance of Iron Bioavailability for Iron–Sulfur Cluster Proteins. Cancer 853 
+
+Discovery 12 , 2180–2197 (2022). 854 
+
+75. Winterbourn, C. C. Toxicity of iron and hydrogen peroxide: the Fenton reaction. Toxicology 855 
+
+Letters 82–83 , 969–974 (1995). 856 
+
+76. Liu, Y. et al. The diversified role of mitochondria in ferroptosis in cancer. Cell Death Dis 14 ,857 
+
+519 (2023). 858 
+
+77. Shakya, A., McKee, N. W., Dodson, M., Chapman, E. & Zhang, D. D. Anti-Ferroptotic Effects 859 
+
+of Nrf2: Beyond the Antioxidant Response. Molecules and Cells 46 , 165–175 (2023). 860 
+
+78. Kang, R., Liu, J., Wang, J., Kroemer, G. & Tang, D. Translating ferroptosis into oncology: 861 
+
+challenges, opportunities and future directions. Nat Rev Clin Oncol 23 , 401–424 (2026). 862 
+
+79. Ma, M. et al. Xc− inhibitor sulfasalazine sensitizes colorectal cancer to cisplatin by a GSH-863 
+
+dependent mechanism. Cancer Letters 368 , 88–96 (2015). 864 
+
+80. Huang, G., Liu, Z., Van Der Maaten, L. & Weinberger, K. Q. Densely Connected 865 
+
+Convolutional Networks. in 2017 IEEE Conference on Computer Vision and Pattern Recognition 866 
+
+(CVPR) 2261–2269 (IEEE, Honolulu, HI, 2017). doi:10.1109/CVPR.2017.243. 867 
+
+81. Solano-Rojas, B., Villalón-Fonseca, R. & Marín-Raventós, G. Alzheimer’s Disease Early 868 
+
+Detection Using a Low Cost Three-Dimensional Densenet-121 Architecture. in The Impact of Digital 869 
+
+Technologies on Public Health in Developed and Developing Countries (eds Jmaiel, M., Mokhtari, 870 
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.13.738168 doi: bioRxiv preprint
+
+42 
+
+M., Abdulrazak, B., Aloulou, H. & Kallel, S.) vol. 12157 3–15 (Springer International Publishing, 871 
+
+Cham, 2020). 872 
+
+82. Bray, N. L., Pimentel, H., Melsted, P. & Pachter, L. Near-optimal probabilistic RNA-seq 873 
+
+quantification. Nat Biotechnol 34 , 525–527 (2016). 874 
+
+83. Harrow, J. et al. GENCODE: The reference human genome annotation for The ENCODE 875 
+
+Project. Genome Res. 22 , 1760–1774 (2012). 876 
+
+84. Soneson, C., Love, M. I. & Robinson, M. D. Differential analyses for RNA-seq: transcript-877 
+
+level estimates improve gene-level inferences. F1000Res 4, 1521 (2016). 878 
+
+85. Robinson, M. D., McCarthy, D. J. & Smyth, G. K. edgeR : a Bioconductor package for 879 
+
+differential expression analysis of digital gene expression data. Bioinformatics 26 , 139–140 (2010). 880 
+
+86. Dennis, G. et al. DAVID: Database for Annotation, Visualization, and Integrated Discovery. 881 
+
+Genome Biol 4, R60 (2003). 882 
+
+883 
+
+Acknowledgments 884 
+
+We thank all the members of the Tonon laboratory for the discussions, support and for critical reading 885 
+
+of the manuscript. We are grateful to the Flow cytometry Resource, Advanced Cytometry Technical 886 
+
+Applications Laboratory (FRACTAL), the Electron Microscopy BioImaging Centre (ALEMBIC) and 887 
+
+the Experimental Imaging Centre (CIS) at Ospedale San Raffaele IRCCS. Graphical abstract was 888 
+
+created with BioRender.com. This work was supported by Fondazione AIRC (AIRC, Investigator 889 
+
+Grant # 28987 (to G.T.)). S.P. was supported by the grant from the Italian Ministry of Education, 890 
+
+University and Research, project PNC0000001 D34 Health—Digital Driven Diagnostics, prognostics 891 
+
+and therapeutics for sustainable Health care “CUP” B53C22006090001; G.G. was supported by the 892 
+
+Italian Ministry of Health grant (RF-2021–12374586); C.F. was supported by the grant from the 893 
+
+European Union - Next Generation EU - NRRP M6C2 - Investment 2.1 Enhancement and 894 
+
+strengthening of biomedical research in the NHS" PNRR-MCNT1-2023-12378347 “CUP” 895 
+
+C43C24000220007. 896 
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.13.738168 doi: bioRxiv preprint
+
+43 897 
+
+Author contributions 898 
+
+S.P. and I.V. performed in vitro treatments on HCT116; S.P. and Gi.C. performed in vitro treatment 899 
+
+on SW780 and U2OS; G.C. and E.G. assisted with the experiments; G.C., G.F.M.G., O.A.B. and C.F. 900 
+
+performed experiments on organoids; I.V. performed cell transduction and prepared cells for RNA 901 
+
+sequencing; S.P. and I.V. analysed experimental data and applied statistics; D.C. analysed RNA 902 
+
+sequencing and single cell sequencing data; S.P. and G.G. performed flow cytometry and imaging 903 
+
+experiments; M.P. and N.A. performed deep-learning analysis on organoids revised by V.B.; E.T. and 904 
+
+A.N. provided reagents and protocols; A.N. and L.S. revised the manuscript; S.P. and G.T. conceived 905 
+
+the project and designed the experiments; S.P. and G.T. wrote the manuscript with input from all 906 
+
+authors. 907 
+
+Declaration of interests 908 
+
+G.T. and D.C. have submitted a patent application covering TnH and GET-seq. The remaining authors 909 
+
+declare no competing interest. 910 
+
+Ethic 911 
+
+Investigations have been conducted in accordance with ethical standards and according to national 912 
+
+and international guidelines. Human Tissue biopsies were collected from patients whose informed 913 
+
+consent was obtained in writing according to the policies of the Ethics Committee of the San Raffaele 914 
+
+Hospital and the regulations of the Italian Ministry of Health. The studies were conducted in full 915 
+
+compliance with the Declaration of Helsinki. 916 
+
+Correspondence and requests for materials should be addressed to Simona Punzi and Giovanni 917 
+
+Tonon. 918 
+
+919 
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.13.738168 doi: bioRxiv preprint
+
+44 
+
+Supplementary material 920 
+
+Supplementary Figures 921 
+
+Suppl. Fig.1. CRC PCs inhibit programmed cell death mechanisms to survive chemotherapy 922 
+
+a-b. Annexin V positivity expressed as percentage (%) of positive cells quantified at flow cytometry 923 
+
+evaluated upon 72h of FOLFOX or FOLFIRI treatments ( a) or in PCs upon 2 weeks administration 924 
+
+(b). Significant differences among groups calculated by ANOVA followed by Dunnett post-test (n=3 925 
+
+biological replicates; mean±SD; *:P<0.05; ***: P<0.001; ns: not significant). c. Labile iron content 926 
+
+in PCs and parental CTRL quantified by FerroOrange assay by flow cytometry analysis (n=2 927 
+
+biological replicates; mean). d. Western blot analysis and respective relative quantification of TFRC 928 
+
+and FTH1 protein levels in parental HCT116 CTRL and PCs. GAPDH was used as a normalizer. 929 
+
+Significant differences among groups calculated by ANOVA followed by Dunnett post-test (n=3 930 
+
+biological replicates; mean±SD; *:P<0.05; **: P<0.01). e. Propidium iodide positive cells in 931 
+
+FOLFIRI-PCs treated with DFO. Significant differences calculated by Student’s t-test (n=3 biological 932 
+
+replicates; mean±SD; **: P<0.01). 933 
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.13.738168 doi: bioRxiv preprint
+
+45 934 
+
+935 
+
+936 
+
+937 
+
+938 
+
+939 
+
+940 
+
+941 
+
+942 
+
+943 
+
+.CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.13.738168 doi: bioRxiv preprint 46 
+
+Suppl. Fig.2. FOLFIRI-PCs activate Xc - antiporter system 944 
+
+a. Relative cell viability of HCT116 cells treated with SN38 or FOLFIRI for 72h. Significant 945 
+
+differences among groups calculated by ANOVA followed by Tukey post-test (n=3 biological 946 
+
+replicates; mean±SD; **: P<0.01; ****: P<0.0001). b. Relative cell viability of PCs obtained upon 947 
+
+two weeks of SN38 treatment and Erastin or RSL3 administration. Significant differences among 948 
+
+groups calculated by ANOVA followed by Dunnett post-test (n=3 biological replicates; mean±SD). 949 
+
+c-d. Single cell Get-sequencing analysis of global chromatin accessibility state ( c) in PCs or related 950 
+
+to tn5 of CD44 specific regions ( d). Differences among the two groups were calculated by Student t-951 
+
+test (FOLFOX vs FOLFIRI - c: P=0.00325; d: P= 0.00415). e. Flow cytometry analysis of CD44 952 
+
+levels in CTRL, FOLFOX- or FOLFIRI-PCs. Significant differences among groups calculated by 953 
+
+ANOVA followed by Tukey post-test (n=3 biological replicates; mean±SD). f. Immunofluorescence 954 
+
+analysis of CD44 and SLC7A11 in CTRL, FOLFOX- or FOLFIRI-PCs. Significant differences 955 
+
+among groups calculated by ANOVA followed by Tukey post-test (n=3 biological replicates 956 
+
+biological replicas and 20 cells analysed; mean±SD; *: P<0.05; ***: P<0.001; ****: P<0.0001). g. 957 
+
+Proximity Ligation Assay (PLA) foci quantified as PLA puncta/nuclei in cells treated with FOLFIRI 958 
+
+or after CD44 silencing (scale bar: 10 μm). Significant differences among group calculated by 959 
+
+ANOVA followed by Tukey post-test (n=3 biological replicates biological replicas; 10 cells per 960 
+
+condition: ****: P<0.0001). h. Representative western blot of CD44 levels in control or shCD44 961 
+
+cells. Significant differences were calculated on density levels of CD44v on GAPDH, used as 962 
+
+normalizer (mean of n=3 biological replicates biological replicas; Student t-test; ****: P<0.0001). i. 963 
+
+Relative cystine uptake in FOLFIRI and CD44 silenced cells (shCD44). Significant differences 964 
+
+among groups calculated by ANOVA followed by Tukey post-test (n=3 biological replicates; 965 
+
+mean±SD; ****: P<0.0001). j. Representative western blot of SLC7A11 levels in control or 966 
+
+shSLC7A11 cells. Significant differences were calculated on density levels of SLC7A11 on GAPDH, 967 
+
+used as normalizer (mean of n=3 biological replicates biological replicas; Student t-test; ****: 968 
+
+P<0.0001). k. Relative cell viability of FOLFIRI treated cells infected to silence CD44 or SLC7A11. 969 
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.13.738168 doi: bioRxiv preprint
+
+47 
+
+Significant differences among groups calculated by ANOVA followed by Tukey post-test (n=3 970 
+
+biological replicates; mean±SD; ns: not significant). 971 
+
+972 
+
+.CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.13.738168 doi: bioRxiv preprint 48 973 
+
+974 
+
+975 
+
+976 
+
+.CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.13.738168 doi: bioRxiv preprint 49 
+
+Suppl. Figure 3. NMDAR-NFE2L2 axis inhibition resensitizes PCs to ferroptosis 977 
+
+a-b. Volcano plot representing LOG2 fold change (FC) and corresponding -LOG10(p-value) of genes 978 
+
+upon NFE2L2 genetic silencing (shNFE2L2). Known downregulated direct targets ( a) or upregulated 979 
+
+genes related to PERK/ATF4, or ER ( b) were highlighted. c. Representative TEM images and 980 
+
+corresponding quantification of mitochondria/endoplasmic reticulum distance expressed in nm. Scale 981 
+
+bar: 500nm. Significant differences among groups calculated by ANOVA followed by Tukey post-982 
+
+test (median, first and third quartile are shown; ****: P<0.0001). d. Representative histograms and 983 
+
+corresponding values quantifying mitochondrial ROS content (MFI; n=3 biological replicates; 984 
+
+mean±SD) by flow cytometry analysis. Statistical differences among CTRL and PCs were calculated 985 
+
+by applying an ANOVA followed by Dunnett post-test. e. Relative cell viability of FOLFOX-PCs in 986 
+
+shLuc or shNFE2L2 conditions treated with Erastin or RSL3. Significant differences among groups 987 
+
+calculated by ANOVA followed by Tukey post-test (n=3 biological replicates; mean±SD; ns: not 988 
+
+significant). f. Representative western blot of NFE2L2 and GRIN1 levels in cells treated with 989 
+
+FOLFIRI or in shGRIN1 condition. Significant differences were calculated on density levels of 990 
+
+NFE2L2 or GRIN1 on GAPDH, used as normalizer (mean n=3 biological replicates biological 991 
+
+replicas; Student t-test; ****: P<0.0001). g. Relative cell viability of FOLFIRI-PCs in shGRIN1 992 
+
+conditions treated with Erastin. Significant differences among groups calculated by ANOVA followed 993 
+
+by Tukey post-test (n=3 biological replicates; mean±SD; ****: P<0.0001). h. Relative cell viability 994 
+
+of HCT116 parental cells treated with Memantine or Dizocilpine, in presence or Erastin or RSL3. 995 
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.13.738168 doi: bioRxiv preprint
+
+50 996 
+
+997 
+
+998 
+
+999 
+
+.CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.13.738168 doi: bioRxiv preprint 51 
+
+Suppl. Fig. 4: mROS drive ferroptosis in PCs 1000 
+
+a. Mitochondrial ROS quantified in FOLFOX-PCs and after Mitotempo treatment detected by flow 1001 
+
+cytometry. Significant differences among groups calculated by ANOVA followed by Tukey post-test 1002 
+
+(n=3 biological replicates; mean±SD; *:P<0.05; **: P<0.01). b. Relative cell viability of FOLFOX-1003 
+
+PCs treated with ferroptosis inducers Erastin and RSL3 and Mitotempo. Significant differences 1004 
+
+among groups calculated by ANOVA followed by Tukey post-test (n=3 biological replicates; 1005 
+
+mean±SD; *: P<0.05; **: P<0.01; ***: P<0.001; ****: P<0.0001) 1006 
+
+1007 
+
+1008 
+
+1009 
+
+1010 
+
+1011 
+
+1012 
+
+1013 
+
+1014 
+
+1015 
+
+1016 
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.13.738168 doi: bioRxiv preprint
+
+52 
+
+Suppl. Fig. 5. Topoisomerase inhibition in several cancer models 1017 
+
+a. Lipid peroxidation levels quantified as percentage positivity (%) in parental HCT116 upon 1018 
+
+Sulfasalazine treatment by flow cytometry analysis. Significant differences among groups calculated 1019 
+
+by two-tailed Student’s t-test (n=3 biological replicates; mean±SD; ***: P<0.001). b. Representative 1020 
+
+images of PDOs treated with chemotherapies, sulfasalazine, ML385 and their combination. Scale bar: 1021 
+
+100 μm. c. Persister PDOs viability upon treatment with FOLFOX and sulfasalazine. Significant 1022 
+
+differences among groups calculated by two-tailed Student’s t-test (mean±SD; ***: P<0.001). d. 1023 
+
+Persister PDOs viability upon treatment with FOLFIRI, sulfasalazine and ML385. Significant 1024 
+
+differences among groups calculated by ANOVA followed by Tukey post-test (mean±SD; ****: 1025 
+
+P<0.0001). e-f. Cluster medoids obtained by the global feature-architecture of PDOs upon FOLFIRI-1026 
+
+(e) or FOLFOX- ( f) based treatments. UMAP projection of labeled instance embeddings and 1027 
+
+representative cluster medoids. g-j. Relative cell viability of parental ( g-h ) or persisters ( i-j ) SW780 1028 
+
+bladder cancer and U2OS osteosarcoma cells treated with Erastin, RSL3 or Sulfasalazine for 72h. 1029 
+
+Significant differences among groups calculated by ANOVA followed by Dunnett post-test (n=3 1030 
+
+biological replicates; mean±SD; **: P<0.01; ****: P<0.0001). 1031 
+
+> .CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.13.738168 doi: bioRxiv preprint
+
+53 1032 
+
+1033 
+
+1034 
+
+1035 
+
+1036 
+
+.CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.13.738168 doi: bioRxiv preprint 54 
+
+Supplementary Table 1037 
+
+Suppl. Table 1 . Reactome analysis of 708 upregulated genes in FOLFIRI-PCs. P-value <0.05. 1038 
+
+.CC-BY-NC-ND 4.0 International license made available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is The copyright holder for this preprint this version posted July 14, 2026. ;https://doi.org/10.64898/2026.07.13.738168 doi: bioRxiv preprint
