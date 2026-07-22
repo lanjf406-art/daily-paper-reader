@@ -1,0 +1,1977 @@
+Title: Distinct Effects of the Extracellular Matrix on Tumor Organization and Response to Cancer Virotherapy
+
+URL Source: https://www.biorxiv.org/content/10.64898/2026.07.20.739578v1.full.pdf
+
+Number of Pages: 35
+
+Markdown Content:
+Title: Distinct Effects of the Extracellular Matrix on Tumor Organization and Response to Cancer 1
+
+Virotherapy 2
+
+Authors 3
+
+Ilaria Supino 1, Frederique Visscher 1, Annemarie Boerma 1, Anne K. Wouters 2, Manas Joshi 1,4
+
+Mirjam H.M. Heemskerk 2, Darshak K. Bhatt 1
+
+5
+
+1. Department of Medical Microbiology and Infection Prevention, Virology and Immunology 6
+
+Research Group, University Medical Center Groningen, Groningen, The Netherlands 7
+
+2. Department of Hematology, Leiden University Medical Center, Albinusdreef 2, 2333 ZA 8
+
+Leid en, the Netherlands. 9
+
+10 
+
+Keywords 11 
+
+Collagen, Basement membrane, tumor microenvironment, cancer immunotherapy, viral infection, 12 
+
+immune activation 13 
+
+14 
+
+Abstract 15 
+
+Extracellular matrix (ECM) regulates tumor architecture and immune accessibility, but its impact 16 
+
+on virus -based anti cancer therapies is not well understood. In particular, ECM modulation leads 17 
+
+to both enhanced and impaired therapeutic outcomes in vivo , reflecting the complexity of matrix -18 
+
+immune -vi rus interactions. Here , we combine computational modeling with empirical 3D tumor 19 
+
+spheroid -immune in vitro co -cultures to examine how ECM composition and abundance shape an 20 
+
+Alphavirus replicon -based therapy. We show that ECM -induced changes in tumor sphero id 21 
+
+architecture vary by cell -adhesion phenotype but higher matrix abundance consistently reduces 22 
+
+cellular density. Notably , increasing abundance of basement membrane extract or Collagen ‑I23 
+
+reduce d tumor spheroid cell density, which generally enhance d viral infection, T cell activation, 24 
+
+and IFNγ production. However, reduced immune accessibility in collagen -rich environments 25 
+
+suppresse d immune responses despite improved infection, highlighting matrix -specific effects. 26 
+
+Our findings provide insights into E CM's role in virus -based therapies and propose a bottom -up 27 
+
+framework for systematically evaluating its influence on therapeutic efficacy. 28 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 21, 2026. ;https://doi.org/10.64898/2026.07.20.739578 doi: bioRxiv preprint
+
+Introduction 29 
+
+Virus -based therapies show promise in cancer treatment by infecting tumor cells and stimulating 30 
+
+antitumo r immune response s. However, their efficacy depends on optimal function within a tumor 31 
+
+microenvironment shaped by extensive extracellular matrix (ECM) remodeling 1,2 . The specific 32 
+
+ways in which EC M properties influence viral infection and immune activation remain insufficiently 33 
+
+defined .34 
+
+The ECM is an important acellular component of the tumor microenvironment , providing 35 
+
+mechanical support while contributing to biochemical signaling that drives can cer progression 3,4 .36 
+
+In tumor s, the ECM undergoes struc tural and compositional changes, including increased 37 
+
+deposition and cross -linking of fibrillar proteins such as Collagen ‑I and fibronectin. These changes 38 
+
+generate a matrix that is stiffer, denser , with marked region -to -region heterogeneity. Such 39 
+
+variabilit y leads to formation of micro -niches that differently influence immune evasion and tumor 40 
+
+progression. These ECM -related features have direct implication s for virus -based therap ies since 41 
+
+its efficacy depends on effective viral infection and subsequent immune activation. In addition to 42 
+
+structural effects, ECM components and associated signaling pathways can directly influence viral 43 
+
+infection and tumor cell behavior, including integri n-mediated viral entry and matrix -regulated 44 
+
+signaling cascades 5,6 . Studies so far have demonstrated that a dens e or highly cross -linked matrix 45 
+
+can act as a physical barrier, limiting viral penetration into the tumor core and restricting immune 46 
+
+cell access to infected regions 7,8 . Moreover, ECM composition can modulate antigen presentation 47 
+
+and immune signaling, thereby influencing the magnitude and quality of anti tumor immunity. For 48 
+
+example, collagen -rich tumor s have been sho wn to hinder T -cell migration, while altered ECM 49 
+
+organization can reshape dendritic cell activation and cytokine production 9,10 .50 
+
+Despite these observations, much of the current understanding o f ECM -virotherapy 51 
+
+interaction derives from in vivo tumor models, where ECM properties are difficult to control or 52 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 21, 2026. ;https://doi.org/10.64898/2026.07.20.739578 doi: bioRxiv preprint
+
+isolate. Studies using oncolytic herpes simplex virus 8,11 , adenovirus 12 –14 , and other viral 53 
+
+platforms 1,7,15 have demonstrated that matrix density and immune context influence therapeutic 54 
+
+outcomes, yet these systems inherently couple ECM remodeling with c hanges in vasculature, 55 
+
+stromal composition, and inflammatory signaling. As a result, it is challenging to understand the 56 
+
+specific contributions of composition, abundance, or cross ‑linking to viral infection dynamics or 57 
+
+immune activation. In contrast , ECM ‑targeting strategies, such as overexpression of matrix 58 
+
+metalloproteinases, co ‑delivery of hyaluronidase, or engineering viruses to express 59 
+
+ECM ‑degrading proteins , have improved viral spread in dense tumor s11 –22 . However, these 60 
+
+interventions simultaneously perturb multiple components of the TME, complicating mechanistic 61 
+
+interpretation. 62 
+
+In this study , we employed an integrated bottom -up in vitro approach (Fig1A -C) combined 63 
+
+with computational modeling (Fig1 D) to investigate how ECM properties regulate the efficacy of 64 
+
+virus -based therapies. This combined strategy allows controlled experimental perturbations 65 
+
+alongside mechanistic in silico modeling , and is increasingl y used to resolve complexity in 66 
+
+therapeutic responses 23 –30 . As a proof -of -concept, we tested the efficacy of recombinant Semliki 67 
+
+Forest virus (rSFV) -based replicons that allow for a single round of virus infection, and encoding 68 
+
+a fluorescent reporter to quantify viral infection kinetics and subsequent immune activation. rSFV 69 
+
+is of particular therapeutic interest because it can be readily adapted to express immunogenic 70 
+
+molecules 31 , and our laboratory is actively exploring rSFV ‑based strategies for cancer 71 
+
+immunotherapy 25,32 . Using well -defined and human -based in vitro tumor -immune co -culture 72 
+
+models 31 , we first systematically modulate ECM composition and stiffness by varying 73 
+
+concentrations of Collagen ‑I and basement membrane extract, enabling controlled reconstitution 74 
+
+of diverse matrix environments. Using this platform, we studied how matrix features influence the 75 
+
+efficiency of both viral infection and T -cell activation. To complement mechanistic interpretation of 76 
+
+the experimental findings , we developed a computational model simulating complex virus -tumor -77 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 21, 2026. ;https://doi.org/10.64898/2026.07.20.739578 doi: bioRxiv preprint
+
+immune interaction and assessed the effect of factors , such as cancer cell organization and T -cell 78 
+
+mobility in matrix -specific microenvironments. 79 
+
+80 
+
+Figure 1: Bottom -up in vitro and in silico workflow to study the effect of extracellular matrix 81 
+
+on cancer virotherapy. (A) Experimental setup to culture matrix -embedded t umor spheroid s82 
+
+using a 96 -well U -bottom plate. (B) Infection of tumor spheroids with rSFV -EGFP virotherapy and 83 
+
+time -lapse microscopy to follow infection and EGFP expression kinetics ove r 24 hours. (C) Co -84 
+
+culture of infected tumor spheroids with PBMCs or TCR -T cells for 24 hours followed by analysis 85 
+
+of T-cell activation. (D) An overview of the agent -based computational model simulating anticancer 86 
+
+virotherapy. In a spatially explicit organization of the 3D tumor spheroid , we model two cellular 87 
+
+dynamics (i) where cancer cells express rSFV -transgenes (e.g. EGFP or antigen) upon infection 88 
+
+and are (ii) attacked by anticancer T -cells upon anti gen expression. 89 Cancer cells 
+
+(10 4)
+
+rSFV -GFP 
+
+(MOI 10) 
+
+PBMCs 
+
+(10 5)
+
+TCR -T cells 
+
+(3x10 4)
+
+24hrs 24hrs 
+
+Flow 
+
+cytometry 
+
+ELISpot 
+
+assay 
+
+Incucyte 
+
+Real -time 
+
+imaging 
+
+24hrs 
+
+24hrs 
+
+A B
+
+C
+
+Matrix 
+
+variation 
+
+T
+
+(ii) Anticancer 
+
+T-cell activity 
+
+(i) rSFV -EGFP 
+
+expression 
+
+3D tumor 
+
+spheroid model 
+
+D Model dynamics 
+
+(i) 
+
+(ii) +
+
++ ∞
+
+rSFV -EGFP 
+
+T
+
+T-cells Cancer cells Cell death 
+
+Infection Cancer cells 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 21, 2026. ;https://doi.org/10.64898/2026.07.20.739578 doi: bioRxiv preprint
+
+Methods 90 
+
+Cell culture : 22Rv1 (human prostate epithelial carcinoma), C4 -2B4 (human prostate cancer), Ca -91 
+
+Ski (human cervical epidermoid carcinoma) and PANC -1 (human pancreatic carcinoma) cells 92 
+
+were cultivated in RPMI complete medium (Gibco TM ) supplemented with 10% (v/v) fetal bovine 93 
+
+serum and 100 U/ml penicillin and streptomycin (Thermo Scientific). Cells were cultured in T25 94 
+
+flasks and passed twice a week using PBS (Thermo Fisher) for wash and 1% v/v Trypsin for cell 95 
+
+detachment. PBMCs were thawed from liquid nitrogen in RPMI complete medium and viable cells 96 
+
+were stained and counted using Trypan Blue . For cryopreservation , cells were frozen using fetal 97 
+
+bovine serum supplemented with 10% DMSO (Thermo Fis her). All cultures were maintained at 98 
+
+37°C with 5% CO 2.99 
+
+Analysis of gene expression: Gene expression data (calculated RNA expression) were obtained 100 
+
+from the GSE36133 and Sanger Cell Line Project datasets. Genes are categorized into three 101 
+
+functional groups based on their described role in cellular adhesion: cell -to -cell adhesion, cell -to -102 
+
+ma trix adhesion, and multiple interactions. Fold -change differences between the PANC -1 and 103 
+
+22Rv1 cell lines in expression levels of various genes were calculated to generate the plot. 104 
+
+Tumor spheroid culture in ECM : Cancer cells ( 22Rv1 , C4 -2B4, Ca -Ski , PANC -1) were counted 105 
+
+and seeded at 10000 cells per well in a 96 well NuncSphera U-bottom plate (Corning). To generate 106 
+
+spheroids embedded in ECM (Fig1A ), cells were mixed with different dilutions (range 0 to10%) of 107 
+
+either Cultrex Reduced Growth Factor Basement Membrane Extract (RGF BME, Type 2, R&D 108 
+
+Systems, Bio -techne) or rat tail Collagen ‑I (Corning). Collagen ‑I consists of a single type of 109 
+
+polymer, whereas BME contains a mixture of laminin, glycoprotein, Collagen ‑IV and heparan 110 
+
+sulfate proteoglycan. To promote cell aggregation and tumor spheroid formation, cells were 111 
+
+centrifuged at 1500 RPM for 10 minutes at 4°C , followed by overnight incubation. 112 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 21, 2026. ;https://doi.org/10.64898/2026.07.20.739578 doi: bioRxiv preprint
+
+Design of rSFV -particles : Recombinant Semliki Forest virus (rSFV) -based replicon particles were 113 
+
+generated using the system developed by Smerdou and Liljestrom 33 , enabling expressi on of 114 
+
+enhanced green fluorescent protein (EGFP) via a single round of infection. The EGF P coding 115 
+
+sequence (Eurofins Genomics) was cloned into the pSFV replicon backbone using PspOMI and 116 
+
+XmaI restriction sites and propagated in E. coli JM110. Constructs were validated by Sanger 117 
+
+sequencing (Eurofins Genomics). 118 
+
+Production and titration of rSFV -EGFP viral particles: rSF V-EGFP particles were produced by 119 
+
+linearizing pSFV -EGFP and SFV ‑Helper2 plasmids with SpeI (Life Technologies), followed by in 120 
+
+vitro transcription using SP6 polymerase (Amersham Pharmacia Biotech) and a capping analogue 121 
+
+(Life Technologies). BHK ‑21 cells were co ‑transfected with replicon and helper RNA at a 2:1 ratio 122 
+
+by electroporation (BioRad G ene Pulser II; 2 pulses, 850 V / 25 μF). Cells were cultured in RPMI 123 
+
+with 5% FCS and antibiotics at 30°C for 48 h. Viral particles were purified by discontinuous sucrose 124 
+
+gradient ultracentrifugation and stored in TNE buffer at −80°C. Titration was performe d by infecting 125 
+
+BHK ‑21 monolayers, fixing after 24 h ours with 10% acetone, staining for nsP3 (rabbit anti ‑nsP3, 126 
+
+1:2000; Cy3 ‑anti ‑rabbit, 1:200), and counting positive cells by fluorescence microscopy. 127 
+
+Tumor spheroid infection : Before infection, rSFV ‑GFP par ticles were activated using 128 
+
+α‑chymotrypsin (10 mg/mL, 1:20 volume; Sigma) and 2 mM CaCl ₂ for 30 min, followed by inhibition 129 
+
+with aprotinin (2 mg/mL, 1:2 volume). Spheroids were infected at MOI 10 and incubated for 24 130 
+
+hours (Fig1B ).131 
+
+Tumor -immune cocultures : Infected tumor spheroid s were cocultured with HLA -A*02 -typed 132 
+
+PBMCs (1E5 per well) and incubated for 24 hours. In parallel , we used CD8+ TCR -T cells, 133 
+
+expressing MAGE A1 -antigen -specific HLA -A*02:01 restricted TCR( -4F7) , engineered at the 134 
+
+Heemsker k lab at LUMC, Netherlands 34 . 3x10 4 TCR -T cells were added per well and left in 135 
+
+incubation for 24 hours (Fig1C ).136 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 21, 2026. ;https://doi.org/10.64898/2026.07.20.739578 doi: bioRxiv preprint
+
+Infection analysis: Fluorescent signal of infected cancer cells ( EGFP+ cells) was monitored over 137 
+
+24 hours of incubation using Incucyte -based time lapse microscopy. Brightfield and fluorescence 138 
+
+images were used respectively to assess tumor spheroid area and the magnitude of EGFP 139 
+
+expression. Cell density of each tumor sphe roid was calculated by taking the ratio of number of 140 
+
+cells and the spheroid volume. 141 
+
+Quantification of T cells activation : After the coculture of HLA -matched PBMCs with infected tumor 142 
+
+spheroid s, samples were transferred to 96 -well v -bottom plate (Corning) washed with 2% FBS in 143 
+
+PBS and stained for surface activation markers . Flow cytometry was used to quantify CD4+ and 144 
+
+CD8+ T cell activation based on CD69 and CD107a expression. Relevant antibodies a re listed in 145 
+
+Table 1 .146 
+
+Table 1: Antibod ies used for flow cytometry 147 
+
+Antibody target  Company  Catalog #  Antibody target  Company  Catalog 
+
+#
+
+FITC anti -human CD4 
+
+OKT4 
+
+Biolegend  317408  CXCR5 -
+
+BUV563 
+
+BD  741316 
+
+APC/Cyanine7 anti -
+
+human CD8 SK11 
+
+Biolegend  344714  TIGIT -BV711  BD  747839 
+
+APC anti -human CD69 
+
+FN50 
+
+Biolegend  310910  CD24 -BV480  BD  746278 
+
+PE anti -human CD107a 
+
+H4A3 
+
+Biolegend  328608  CD56 -BUV395  BD  740299 
+
+Fixable Viability stain 780  BD  565388  CD28 -BUV496  BD  741168 
+
+CD3 -SparkBlue550  Biolegend  344852  CD19 -Pacblue  Biolegend  302232 
+
+CD4 -cFluorYG584  Cytek  R7 -20041  CTLA4 -BV421  Biolegend  369606 
+
+CD8 -BUV805  BD  612889  OX40 -BV605  BD  745217 
+
+CD45RA -Sparknir 685  Biolegend  304168  CD69 -BV650  Biolegend  310934 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 21, 2026. ;https://doi.org/10.64898/2026.07.20.739578 doi: bioRxiv preprint
+
+CD95 -BB700  BD  566542  CCR7 -BV786  BD  566758 
+
+HLA -DR -BV570  Biolegend  307638  CD137 -PE  Miltenyi  130 -119 -
+
+885 
+
+CD38 -APC -fire810  Biolegend  303550  CD40L -PE -
+
+Dazzle594 
+
+Biolegend  310840 
+
+CD27 -Viobright FITC  Milteny  130 -113 -
+
+634 
+
+IgD -PerCP -fire -
+
+806 
+
+Biolegend  307818 
+
+PD1 -BV750  BD  566758  CD160 -Pe -Cy7  Biolegend  341212 
+
+Tim3 -BUV737  BD  748820  ydTCR -RB744  BD  570495 
+
+CD127 -APC -R700  BD  565185  TruStain Mono 
+
+blocker 
+
+Biolegend  426103 
+
+148 
+
+Quantification of IFNγ production : ELISpot assays were performed using ethanol ‑activated 149 
+
+MultiScreen HTS ‑IP plates (Millipore, MSIPS4510). Plates were coated overnight at 4°C with 150 
+
+anti ‑human IFNγ (Mabtech, 3420 ‑3‑1000; 5 μg/mL) and blocked with X ‑VIVO + 2% human serum 151 
+
+for 1 h at 37°C. Cells from TCR ‑T cocultures were plated and incubated for 24 hours. Spots were 152 
+
+develo ped using biotinylated anti ‑IFNγ (Mabtech, 3420 -6-1000; 1 μg/mL), streptavidin ‑poly ‑HRP 153 
+
+(Sanquin, M2051), and TMB substrate (Mabtech, 2651 -10). 154 
+
+Flow cytometry based deep T cell phenotyping: Spectral flow cytometry was performed to 155 
+
+characterize T cell populations using a multi -parameter antibody panel targeting surface markers. 156 
+
+Single -cell data were exported from cytometry acquisition software as CSV files and analyzed in 157 
+
+R (v4.3.0). Individua l sample files were imported and merged into a single dataset, with sample 158 
+
+identifiers retained. Non -informative parameters (e.g., time, autofluorescence, event metadata) 159 
+
+were excluded, and marker expression values were retained for downstream analysis. To reduce 160 
+
+computational burden while preserving population structure, a random subset of 25% of total 161 
+
+events was selected. Marker expression values were z -score scaled, followed by dimensionality 162 
+
+reduction using principal component analysis (PCA). The top pr incipal components (up to 30) were 163 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 21, 2026. ;https://doi.org/10.64898/2026.07.20.739578 doi: bioRxiv preprint
+
+used as input for Uniform Manifold Approximation and Projection (UMAP) to generate a two -164 
+
+dimensional embedding of single -cell data. Unsupervised clustering of UMAP coordinates was 165 
+
+performed using k -means clustering (k = 5) to define phenotypically distinct T cell populations. 166 
+
+Cluster frequencies were calculated per experimental condition and expressed as fractions of total 167 
+
+cells. Marker expression patterns were analyzed at single -cell resolution by transforming the 168 
+
+dataset into long format and calculating z -score –normalized expression per marker. Mean marker 169 
+
+expression per cluster and condition was computed and visualized using heatmaps. Additionally, 170 
+
+population distributions and marker expression patterns were visualized o n UMAP embeddings 171 
+
+using density plots and binned expression maps. 172 
+
+Computational model overview: We developed a stochastic agent -based model , called sa -mRNA 173 
+
+Immunotherapy Model (SAMI), implemented in R (v4.3.0) 35  to simulate the interaction between 174 
+
+rSFV -viral infection (modeled as self -amplifying sa -mRNA expression) , cancer cells and T cell 175 
+
+responses (See Fig1D for an illustrated overview of the model ). In particular, we modelled viral 176 
+
+gene (e.g. EGFP or an antigen ) expression in tumor spheroids and activation of cytotoxic T cells 177 
+
+leading to tumor -killing. Each simulation tracked EGFP expression at a single -cell resolution, its 178 
+
+modulation by microenviro nmental factors, and T cell -mediated cytotoxicity. Simulations were run 179 
+
+with hourly timesteps covering a 24 hour s window to capture EGFP kinetics and immune 180 
+
+interactions over time. Please refer to Supplementary table 1 for model parameters and details 181 
+
+of t he simulations. 182 
+
+Tumor spheroids were generated by uniformly seeding 10 ,000 cells in a sphere with a 183 
+
+range of 50 to 500 spheroid radius (R) cell units , allowing us to systematically modulate global 184 
+
+tumor organization and density ranging from 10 -3 to 10 -6 cells per spheroid . ECM -driven changes 185 
+
+in tissue architecture were captured through variations in both spheroid size and local cellular 186 
+
+crowding. For each cell (𝑖 ), spatial coordinates 𝑥 𝑖 = (𝑥 𝑖 , 𝑦 𝑖 , 𝑧 𝑖 ) were sample d such that ||𝑥 𝑖 || ≤ 𝑅 .187 
+
+Local crowding was quantified as the weighted density of neighboring cells within a 10 -unit radius 188 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 21, 2026. ;https://doi.org/10.64898/2026.07.20.739578 doi: bioRxiv preprint
+
+using a Gaussian -weighted crowding density, defined as 𝜌 ᵢ = 𝛴 𝑗 ≠𝑖 𝑒𝑥𝑝 (−𝑑 𝑖𝑗  
+
+> 2
+
+/(2𝜎 2)), with 𝜎 =189 
+
+𝑟 𝑐 / 2, where 𝑑 𝑖𝑗 = ‖𝑥 ᵢ − 𝑥ⱼ ‖ and 𝑟 𝑐 denotes the crowding radius. This density was converted into 190 
+
+a crowding factor (𝐶 𝑖 ) that inhibited EGFP expression, such that cells in densely packed regions 191 
+
+exhibited reduced expression compared with those at the periphery. Here, 𝐶 ᵢ = 1/ (1 +192 
+
+𝛽 (𝜌 ᵢ/𝜌 𝑟𝑒𝑓 )), and 𝜌 𝑟𝑒𝑓 is the median crowding across cells and β controls the strength of ECM -193 
+
+induced inhibition. 194 
+
+Viral infection was initiated by assigning each cell a stochastic input of sa -mRNA, modeled 195 
+
+as a Poisson process with effective dose 𝐷 ᵢ = 𝐷 · 𝑓 𝑑𝑒𝑙𝑖𝑣𝑒𝑟𝑦 (𝑥 ᵢ) · 𝐶 ᵢ, such that infection probability 196 
+
+depends on both spatial delivery and local crowding. Subs equent intracellular dynamics were 197 
+
+governed by two principal kinetic parameters: the genomic replication rate k ₁ and the subgenomic 198 
+
+transcription rate k₂. These processes were modeled as 𝛥𝑅 ᵢ(𝑡 )~𝑃𝑜𝑖𝑠𝑠𝑜𝑛 (𝑘 1 · 𝑚 ᵢ),199 
+
+𝛥𝑠 ᵢ(𝑡 )~𝑃𝑜𝑖𝑠𝑠𝑜𝑛 (𝑘 2 · 𝑅 ᵢ), linking viral replication to downstream protein production. EGFP 200 
+
+accumulation followed saturating kinetics as 𝛥𝑃 ᵢ(𝑡 )~𝑃𝑜𝑖𝑠𝑠𝑜𝑛 (𝑠 ᵢ · (1 − 𝑃 ᵢ/𝑃 ᵢ𝑚𝑎𝑥 ) · 𝛾 ᵢ · 𝐼 ᵢ · 𝐶 ᵢ). H ere 201 
+
+𝑃 ᵢ, 𝑚𝑎𝑥 represents the maximum protein capacity of a cell and γᵢ captures intrinsic variability in 202 
+
+translational efficiency .203 
+
+To evaluate how ECM -driven organization affects immune responses, T cell -mediated 204 
+
+cytotoxicity was incorporated explicitly. T cells were seeded randomly within the spheroid and 205 
+
+could only interact with target cells within a finite spatial radius defined by 𝑑 𝑖𝑘 ≤ 𝑝 𝑘𝑖𝑙𝑙 ,𝑖 making 206 
+
+spatial proximity a critical determinant of immune activity. Killing probability depended on 207 
+
+intracellular antigen levels relative to a stochastic recognition threshold, 𝜃 ᵢ~𝑈𝑛𝑖𝑓𝑜 𝑟 𝑚 (𝜃 (1 −208 
+
+𝜀 ), 𝜃 (1 + 𝜀 )), and was further modulated by microenvironmental constraints such that 𝑝 𝑘𝑖𝑙𝑙 ,𝑖 ∝ 𝑃 ᵢ ·209 
+
+𝐶 ᵢ. Thus, regions of high crowding not only suppress viral expression but also reduce effective T -210 
+
+cell killing, linking ECM structure to immune regul ation .211 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 21, 2026. ;https://doi.org/10.64898/2026.07.20.739578 doi: bioRxiv preprint
+
+Each T cell was limited to a maximum number of killing events ( 𝐾 𝑚𝑎𝑥 = 5), representing 212 
+
+finite cytotoxic capacity 36,37 . This constraint becomes particularly important in densely packed 213 
+
+tumors, where restricted access (low 𝑝 𝑘𝑖𝑙𝑙 effectiveness due to crowding) and reduced a ntigen 214 
+
+expression jointly limit immune -mediated clearance. 215 
+
+A total of 100 replicate spheroids were simulated to account for stochastic variability. 216 
+
+Outputs included single -cell EGFP expression levels, spatial distributions of expression, and cell -217 
+
+survival status at each time point. Effects of cellular –crowding and ischemia on EGFP expression 218 
+
+were quantified using LOESS regression. T cell activity was measured as the number of kills per 219 
+
+T cell, and overall tumor cytotoxicity was calculated as the fraction o f cells killed at endpoint (at 220 
+
+24 hours), stratified by density of neighboring cancer cells. Data compilation and visualization 221 
+
+were performed using the R packages ggplot2 and patchwork. 222 
+
+Statistical analysis : Incucyte image data were analyzed using the Inc uCyte Live ‑Cell Analysis 223 
+
+software (Sartorius). Cell density values were calculated and log ₁₀‑ transformed prior to analysis. 224 
+
+Flow cytometry data were processed in FlowJo (FlowJo LLC). All plots and statistical analyses 225 
+
+were generated in GraphPad Prism 9 (GraphPad Software) and RStudio. Bivariate linear 226 
+
+regression with 95% confidence intervals was used to assess correlations, with correlation 227 
+
+coefficients (r) and p ‑values reported in each plot. Comparisons between two independent groups 228 
+
+were performed using two ‑tailed unpaired t‑tests, while multiple ‑group comparisons were 229 
+
+evaluated using one ‑way ANOVA. Statistical significance was defined as p < 0.05. 230 
+
+Data and code availability : The SAMI model code for a terminal based version and an executable 231 
+
+SHINY version are available on  www.github.com/d -bhatt/SAMI .232 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 21, 2026. ;https://doi.org/10.64898/2026.07.20.739578 doi: bioRxiv preprint
+
+Results 233 
+
+Modeling cancer cell organization in the presence of extracellular matrix 234 
+
+We studied how the presence, abundance and type of extracellular matrix (ECM) changes 235 
+
+organization of cancer cells in three dimensional space using spheroid -based culture system 236 
+
+(Fig2A) . Cultivation of 22Rv1 cancer cells in basement me mbrane extract (BME) or Collagen -I237 
+
+matrix led to decrease in spheroid density with increasing matrix abundance (Fig2B -C) . The 238 
+
+density remained unchanged over the observed time -period of 24 hours (Fig2D) . Of note, ECM -239 
+
+driven reduction in cell density was mo re pronounced in BME -embedded cultures compared to 240 
+
+those in Collagen ‑I. Cells in BME formed sparsely organized clumps, whereas Collagen ‑I241 
+
+supported the formation of a larger, though less dense spheroid structure ( Fig2B ). 242 
+
+A cell -type dependent effect was o bserved at lower matrix abundance (1%), with an 243 
+
+increase in cancer cell density for PANC -1 and Ca -Ski tumor spheroids (Fig2E and 244 
+
+Supplementary FigS1 ). However, higher matrix abundance (10%) generally decreases density 245 
+
+across multiple cancer cel l lines ( Fig 2E and Supplementary FigS1 ). To explore why 22RV1 and 246 
+
+PANC ‑1 cells display distinct cell -organization and density patterns, we assessed differences in 247 
+
+adhesion ‑related gene expression patterns. Expression of adhesion molecules differed between 248 
+
+cell types a t baseline, where PANC -1 cells expressed more cell -to -matrix adhesion related 249 
+
+molecules, whereas 22Rv1 expressed more cell -to -cell adhesion related molecules (Fig2F) . Using 250 
+
+these insights, we employed an agent -based modeling approach to simulate virtual tu mor 251 
+
+spheroids of different densities (Fig2G) maintaining their density over time (Fig2H) .252 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 21, 2026. ;https://doi.org/10.64898/2026.07.20.739578 doi: bioRxiv preprint
+
+253 Cancer 
+
+cells (10 4)
+
+24hrs 
+
+Spheroids embedded 
+
+in matrix 
+
+Matrix 
+
+A B
+
+C D
+
+F
+
+0% 1% 10% 
+
+0% 1% 10% 
+
+22Rv1 
+
+> BME Col -I
+
+0 6 12 18 24 10 -6 
+
+10 -5 
+
+10 -4 
+
+10 -3 
+
+Time (hrs) Density (cells/ m3)0 1 2 5 7 10 10 -6  10 -5  10 -4  10 -3 
+
+%ECM(v/v) Density (cells/ m3)
+
+BME Medium Col-I -- 1 10 10 -6  10 -5  10 -4  10 -3 
+
+%BME(v/v) Density (cells/ m3)
+
+> <0.0001
+
+<0.0001 
+
+PANC -1
+
+22Rv1 22Rv1 
+
+Multiple interactions 
+
+Cell -to -cell , Cell -to -matrix 
+
+LGALS3 
+
+ICAM1 
+
+CADM2 
+
+CDH1 
+
+DSG2 
+
+DSC1 
+
+DSG4 
+
+CDH3 
+
+ITGA6 
+
+ITGA3 
+
+L1CAM 
+
+ITGA2 
+
+CD44 
+
+SPARC 
+
+ITGAM 
+
+ITGA5 
+
+ITGA1 
+
+EPCAM 
+
+GP6 
+
+MMP1 
+
+-0.5 
+
+0.0 
+
+0.5 
+
+1.0 
+
+> mRNA expression
+
+10 −3 10 −3 10 −3 10 −3
+
+10 −4 10 −4 10 −4 10 −4
+
+10 −6 10 −5 10 −5 10 −5
+
+> -250
+> 0
+> 250
+> -250
+> 0
+> 250
+> -250
+> 0
+> 250
+> -250
+> 0
+> 250
+
+-250 
+
+0
+
+250 
+
+-250 
+
+0
+
+250 
+
+-250 
+
+0
+
+250 
+
+X-plane 
+
+> Y-plane
+
+Density (cells / μm³) 
+
+E
+
+G
+
+10 -5
+
+10 -4
+
+10 -3
+
+10 -2
+
+0 6 12 18 24 
+
+Time ( hrs )
+
+> Density (cells / μm³)
+
+H
+
+.CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 21, 2026. ;https://doi.org/10.64898/2026.07.20.739578 doi: bioRxiv preprint Figure 2: Effect of extracellular matrix on cancer cell organization and density. (A)254 
+
+Schematic experimental setup to culture tumor spheroid s in different matrices over 24 h, resulting 255 
+
+in spheroids of different cell densities. (B) Live -cell imaging of 22Rv1 tumor spheroids embedded 256 
+
+in 0 %, 1 % and 10% BME or Collagen -I. ( C) Effect of BME or Collagen -I embedding (matrix 257 
+
+abundance 0 -10%) on 22Rv1 spheroid cell density. ( D) Kinetics of spheroid cell density over 24 258 
+
+hours of culture . ( E) Effect of BME embedding on PANC -1 spheroids cell density. ( F) Gene 259 
+
+expression profile comparison between PANC -1 and 22Rv1 cancer cell lines using data from 260 
+
+CellExpress database 38 . Genes are colored by interaction type: multiple interactions (green), cell -261 
+
+cell interaction (orange), cell -matrix interaction (purple). (G) Spheroids of different densit ies 262 
+
+simulated in silico using a computational model. ( H) Kinetics of spheroid density o ver 24 hours in 263 
+
+simulated spheroid models . Replicate number varied by condition across plots; all conditions had 264 
+
+n> 8, and some conditions used n> 15 . In (E) statistical analysis was performed using ordinary one -265 
+
+way ANOVA followed by multiple comparisons usi ng the two -stage linear step -up procedure of 266 
+
+Benjamini, Krieger and Yekutieli. Statistical significance was defined as p < 0.05. 267 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 21, 2026. ;https://doi.org/10.64898/2026.07.20.739578 doi: bioRxiv preprint
+
+Modeling cancer cell infection in the presence of extracellular matrix 268 
+
+Using rSFV -EGFP as a model virotherapy (Fig3A) , we tes ted the effect of ECM -mediated changes 269 
+
+in cell organization on viral infection in the spheroid -based culture system. Cancer cells embedded 270 
+
+in different matrix abundances were infected and EGFP expression per cell was quantified using 271 
+
+Incucyte -based real -time microscopy imaging ( Fig3B ). An i ncrease in the frequency of EGFP+ 272 
+
+cells was observed in 22Rv1 tumor spheroids with lower density ( Fig3C -D). Presence of either 273 
+
+BME or Collagen -I matrix led to an increase in viral infection compared to spheroids wi thout matrix -274 
+
+embedding (Fig3 D).275 
+
+A similar trend of increasing infection with lower cell density was observed in simulati on s276 
+
+using the in silico model (Fig3 E-F), when considering crowding radius of 3-5 cell units 277 
+
+(Supplementary FigS 2). At a single -cell resolution in silico , we observed that cells with more 278 
+
+neighbors were frequently found in dense spheroids (Fig3 G) which in turn correlated to a reduction 279 
+
+in EGFP expression (Fig3 H). Of note, EGFP levels per cell were highly heterogeneous, shape d280 
+
+by spatial crowding and ischemia ‑like gradients, where larger tumor spheroids and regions with 281 
+
+higher local neighbor density accumulated EGFP more rapidly over time. Spatial visualization at 282 
+
+24 hours revealed that peripheral cells consistently reached hi gher EGFP levels than core cells 283 
+
+(see Supplementary Fig S2 for representative images ).284 
+
+285 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 21, 2026. ;https://doi.org/10.64898/2026.07.20.739578 doi: bioRxiv preprint
+
+286 Incucyte 
+
+imaging 
+
+rSFV -EGFP 
+
+MOI 10 Infected tumor 
+
+spheroid 
+
+Matrix 
+
+embedding 
+
+24hrs 
+
+rSFV 
+
+Non -structural 
+
+genes 
+
+EGFP 
+
+Sub -genomic 
+
+promoter 
+
+5’ 3’ 10 -6 10 -5 10 -4 
+
+> 0 1000  2000
+
+Density (cells/ m3)EGFP+ cells/spheroid 
+
+p <0.0001 --BME Col-I 0 1000  2000 
+
+> EGFP+ cells/spheroid
+> <0.0001 <0.0001
+
+A B
+
+C D
+
+E F
+
+0
+
+1000 
+
+2000 
+
+0 6 12 18 24 
+
+Time ( hrs )
+
+> EGFP+ cells/spheroid
+
+10 -4
+
+10 -5
+
+3x10 -4
+
+Density (cells/um 3)
+
+0
+
+500 
+
+1000 
+
+1500 
+
+2000 
+
+2500 
+
+10 -5 10 -4 10 -3 10 -2
+
+Density (cells / μm³) 
+
+> EGFP+ Cells/ Spheroid
+
+0
+
+500 
+
+1000 
+
+1500 
+
+2000 
+
+0 6 12 18 24 
+
+Time ( hrs )
+
+> EGFP+ Cells / Spheroid
+
+10 -3
+
+10 -4
+
+10 -5
+
+Density (cells/um 3)
+
+> Cell frequency
+
+2
+
+1
+
+0
+
+Neighbors/Cell 
+
+0 5 10 
+
+Density (cells/um 3)
+
+10 -4
+
+10 -6
+
+10 -2
+
+> EGFP/Cell (MFI)
+
+Time ( hrs )
+
+Neighbors/Cell 
+
+10 
+
+5
+
+0
+
+G H
+
+-
+
+BME 
+
+Col -I
+
+0
+
+2000 
+
+4000 
+
+6000 
+
+8000 
+
+0 24 12 
+
+p < 0.0001 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 21, 2026. ;https://doi.org/10.64898/2026.07.20.739578 doi: bioRxiv preprint
+
+Figure 3: Effect of cancer cell -density and extracellular matrix on virotherapy infection 287 
+
+kinetics . (A) Illustration of rSFV replicon encoding EGFP and capable of a single round of 288 
+
+infection. ( B) Schematic experimental setup to culture tumor spheroids embedded in matrices 289 
+
+followed by infection with rSFV -EGFP virus particles. ( C) Number of EGFP positive cells per 290 
+
+spheroid over 24 hours of infection, where spheroid density is indicated by a color gradient. (D)291 
+
+Correlation between rSFV -infection and spheroids density along with a comparison of spheroids 292 
+
+with or without matrix embedding. Figures E-F show results from c omputational m odel simulation. 293 
+
+(E) Number of EGFP positive cells per spheroid over 24 hours of infection , where spheroid density 294 
+
+is indicated by a color gradient . ( F) Correlation between rSFV -infection and spheroid density after 295 
+
+24 hours of simulation. ( G) Neighbor ing -cell frequency distribution across spheroid s of different 296 
+
+cell densit ies . ( I) Level of EGFP expression per cell with color gradient showing number of 297 
+
+neighbor cells. Replicate number varied by condition across plots; all conditions had n> 8, and 298 
+
+some conditions used n> 15 . In (D) statistical analysis was performed using linear regression. Plot 299 
+
+(E) was analyzed using ordinary one -way ANOVA followed by multiple comparisons using the 300 
+
+two -stage linear step -up procedure of Benjamini, Krieger and Yekuti eli. Statistical significance was 301 
+
+defined as p < 0.05. 302 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 21, 2026. ;https://doi.org/10.64898/2026.07.20.739578 doi: bioRxiv preprint
+
+Quantifying T-cell activation in the presence of extracellular matrix 303 
+
+We cocultured rSFV -EGFP -infected cancer cells embedded in BME and Collagen ‑I matrices with 304 
+
+HLA -matched PBMCs for 24 hours and quantified T cell activation through flow cytometry (Fig 4A) .305 
+
+Activation was defined as expression of both CD69 and CD107a by helper (CD4+) and cytotoxic 306 
+
+(CD8+) T cells. CD4+T cell activation did not correl ate with changes in cell density, whereas 307 
+
+CD8+T cell activation increased significantly as density decreased (Fig4B) . Cocultures in 308 
+
+presence of 10% BME showed higher CD4+ and CD8+ T cell activation than non ‑embedded 309 
+
+controls. In contrast, embedding in 10% Collagen ‑I produced fewer or no changes in CD4+ T cell -310 
+
+activation and a significant reduction in CD8+ T cell -activation (Fig4C) . These results were 311 
+
+observed across different target tumor cells (Supplementary Fig S3) and were independent of the 312 
+
+rSFV -infectio n or transgene expression (Fig4D and Supplementary FigS3 ), suggesting direct 313 
+
+ECM -mediated effects. 314 
+
+To study antigen ‑specific T cell responses, we cocultured infected ECM ‑embedded cancer 315 
+
+cells expressing MAGE antigen along with CD8+ T cells expressing the corresponding cognate -316 
+
+TCR ‑4F7 receptor (Fig4E) . IFN γ spot ‑forming units, as a measure of T cell activation, increased 317 
+
+as cell density decreased (Fig4F) . Embedding in 10% BME enhanced IFNγ secretion relative to 318 
+
+non ‑embedded cocultures, whereas embedding in 10% Collagen ‑I markedly reduced cytokine 319 
+
+production compared to BME ‑embedded samples (Fig4G) . Again, these effects were independent 320 
+
+of rSFV -infection and were observed across different target tumor cells (Fig4H) .321 
+
+322 
+
+Changes in overall T -cell ph enotype in the presence of extracellular matrix 323 
+
+To understand why BME and Collagen ‑I differentially modulate T ‑cell activation, we analyzed 324 
+
+T‑cell phenotypes after coculturing PBMCs with tumor spheroids embedded in each matrix type. 325 
+
+Using a panel of surfac e markers (Supplementary FigS4,5), we identified five distinct T ‑cell 326 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 21, 2026. ;https://doi.org/10.64898/2026.07.20.739578 doi: bioRxiv preprint
+
+populations across embedded and non ‑embedded conditions (Fig 5A) . Supp Fig S3 illustrates the 327 
+
+expression of each surface marker at a single cell resolution. Matrix embedding, regardless of 328 
+
+type, altered markers associated with motility (CCR7, CXCR5) and activation (OX40, CD24, 329 
+
+CD107a, CD38, CD95). However, the two matrices produced divergent effects on exhaustion and 330 
+
+differentiation. Collagen ‑I abundance correlated with increased expression of exhaustion markers 331 
+
+(CTLA 4) and terminal differentiation markers (CD45RA, CD160), whereas BME embedding was 332 
+
+associated with reduced expression of exhaustion markers (TIGIT, PD1) (Fig 5B) . Furthermore, 333 
+
+these observations were independent of rSFV -infection of the spheroids (Sup plementary Fig S4).334 
+
+These differences suggest that matrix composition, not just matrix presence, plays a key role in 335 
+
+shaping T ‑cell functional states. 336 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 21, 2026. ;https://doi.org/10.64898/2026.07.20.739578 doi: bioRxiv preprint
+
+337 PBMCs 
+
+(10 5)
+
+24hrs 
+
+Infected tumor 
+
+spheroid 
+
+Immune 
+
+co -culture 
+
+Flow 
+
+cytometry 10 -6 10 -5 10 -4 10 -3 
+
+010 20 30 
+
+Density (cells/ m3)%CD4++ CD69/CD107a 
+
+p = 0.32 0 1 2 5 7 10 0 1×10 -4  2×10 -4 
+
+%ECM(v/v) Density (cells/ m3, log 10 ) 
+
+> BME Medium Col-I
+
+10 -6 10 -5 10 -4 10 -3 
+
+020 40 60 
+
+Density (cells/ m3)
+
+> %CD8++ CD69/CD107a
+
+p = 0.045 0 1 2 5 7 10 0 1×10 -4  2×10 -4 
+
+%ECM(v/v) Density (cells/ m3, log 10 ) 
+
+> BME Medium Col-I
+
+A B
+
+CD8+ 
+
+TCR -T-cells 
+
+Tumor 
+
+cells 
+
+TCR 4F7 
+
+MAGE 
+
+Antigen 
+
+recognition 10 -6 10 -5 10 -4 
+
+050 100 150 
+
+Density (cells/ m3)
+
+> IFN + SFU/3x10 4
+> TCR-Tcells
+
+p = 0.0368 -- BMECol-I 050 100 150 
+
+> IFN + SFU/3x10 4
+> TCR-Tcells
+
+<0.0001 0.0382 <0.0001 
+
+E F G-- BMECol-I 010 20 30 
+
+> %CD4++CD69/CD107a
+> 0.0028 0.0026
+
+-- BMECol-I 020 40 60 
+
+> %CD8++CD69/CD107a
+> 0.0097 <0.0001 <0.0001
+
+C D-- BME Col-I 010 20 30 % of CD38+CD69+CD107a+ (CD4+ T cells) 
+
+> 0.0447 0.0447 0.0042
+
+-- BME Col-I 010 20 30 % of CD38+CD69+CD107a+ (CD8+ T cells)  
+
+> <0.0001 <0.0001
+
+NT, rSFV -EGFP, rSFV -IFN γ0 1 2 3 4010 20 30 
+
+22Rv1 cells 
+
+Effector : Target ratio IFN γ SFU/10 3 TCR-T cells 0 1 2 3 4050 100 150 
+
+C4-2B4 cells 
+
+Effector : Target ratio IFN γ SFU/10 3 TCR-T cells NT rSFV-EGFP 
+
+H
+
+.CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 21, 2026. ;https://doi.org/10.64898/2026.07.20.739578 doi: bioRxiv preprint Figure 4: Effect of cell density and extracellular matrix on T cells activation and cytokine 338 
+
+secretion. (A) Schematic of the experimental setup to co -culture rSFV -infected spheroids with 339 
+
+HLA -matched PBMCs and Flow cytometry analysis. ( B) Correlation of 22R v1 tumor spheroids cell 340 
+
+density with percentage of CD4 + or CD8 + T cells expressing CD69 and CD107a. ( C) Comparison 341 
+
+of CD4 + and CD8 + T cell activation upon co -culture with 22Rv1 spheroids in presence of BME or 342 
+
+Collagen -I matrix . ( D) Percentage of CD4 + or CD8 + T cells expressing CD38, CD69 and CD107a 343 
+
+upon co -culture with 22Rv1 spheroids in presence of BME and Collagen -I matrix . Colors indicate 344 
+
+spheroid status: un infected (NT , grey ), rSFV -EGFP -infected (green), or rSFV -IFNγ -infected (red) .345 
+
+(E) Schematic of the experimental co -culture of tumor spheroids with CD8 
+
+⁺ TCR -T cells 346 
+
+recognizing the MAGEA1 antigen expressed by 22Rv1 cells. ( F) ELISpot assay performed 24 h 347 
+
+after co -culture, showing IFNγ spot -forming units (SFUs) of T cells as a function of 22Rv1 tumor 348 
+
+spheroid cell density. ( G) Comparison of IFNγ SFUs of T cells co -cultured with 22Rv1 spheroids 349 
+
+without matrix or embedded in BME or Collagen I. ( H) IFNγ SFUs of T cells co -cultured with 22Rv1 350 
+
+and C4 -2B4 tumor spheroids at increasing effector -to -targe t ratios, comparing uninfected 351 
+
+spheroids with those infected with rSFV -EGFP. Replicate number varied by condition across plots; 352 
+
+all conditions had n> 6, and some conditions used n> 10 . Plots ( B and F) were analyzed using 353 
+
+linear regression. Plots ( C, D and G) were analyzed using ordinary one way ANOVA followed by 354 
+
+multiple comparisons using the two -stage linear step -up procedure of Benjamini, Krieger and 355 
+
+Yekutieli. Statistical significance was defined as p < 0.05. 356 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 21, 2026. ;https://doi.org/10.64898/2026.07.20.739578 doi: bioRxiv preprint
+
+357 
+
+Figure 5: Changes in overall T -cell phenotype in the presence of extracellular matrix. Co -culture of 358 
+
+rSFV -infected 22Rv1 tumor spheroids with HLA -matched PBMCs for 24 hours. ( A) Comparison of UMAP 359 
+
+cluster populations of CD4+ and CD8+ T cells between sample s without matrix embedding, with BME matrix 360 
+
+embedding and with Collagen 
+
+‑I matrix embedding. ( B) Normalized expression (MFI , z -score ) of selected 361 
+
+markers involved in T cell migration, activation, and exhaustion. Statistical significance was defined as 362 
+
+p < 0.05. 363 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 21, 2026. ;https://doi.org/10.64898/2026.07.20.739578 doi: bioRxiv preprint
+
+Agent -based modelling of the effect of cell organization on T -cell responses 364 
+
+To evaluate how ECM -driven changes in tumor cel l organization influences T ‑cell activation, and 365 
+
+to understand why T ‑cell activation shows weaker correlations with cell -density than infection, we 366 
+
+extended o ur agent ‑based modelling framework to incorporate T -cells. Here, we simulated T ‑cell 367 
+
+infiltration and killing to determine how spatial constraints modulate antitumor immune efficacy. In 368 
+
+particular, we studied the effect of how T -cell migration and killing across different distances 369 
+
+influences T -cell activation and cancer cell survival in the model. As illustrated in Fig6A , a shorter 370 
+
+T-cell killing radius ( Kr), e.g. Kr=10 would lead to killing of 3 target cells, whereas a longer radius, 371 
+
+e.g. Kr=50 would lead to killing of 7 target cells. 372 
+
+Across tumor spheroids of different radii, cancer cell death was distributed 373 
+
+heterogeneously, with killing occurring more often at the periphery in larger, less dense spheroids 374 
+
+(Fig6B) . The frequency of activated T cells per spheroid increased with increasing killing radius 375 
+
+and increasing local neighbor density (Fig6C) , indicating that densely packed regions provide 376 
+
+more accessible targets for serial killing. Similarly, increasing the T ‑cell killing radius led to efficient 377 
+
+killing across tumor spheroids of different densities (Fig6D) . However, at a single cell resolution, 378 
+
+we observed that the killing efficacy of a T -cell decreased with an increasing number of 379 
+
+neighboring cancer cells (Fig6E) correlating with a reduction in overall tumor cell killing (Fig6F) .380 
+
+Together, these simulation s suggest that the effect of cancer cell organization on T ‑cell 381 
+
+activation is partially buffered by spatial limitations on T ‑cell access and killing, explaining the more 382 
+
+modest experimental effects observed. 383 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 21, 2026. ;https://doi.org/10.64898/2026.07.20.739578 doi: bioRxiv preprint
+
+384 
+
+Figure 6: Computational modeling of the effec t of cell density on anticancer T cell 385 
+
+response. (A) Schematic representation of number of target cancer cells killed per T cell at 386 
+
+different killing radius (K r). ( B) Simulation of cancer cells death per spheroid s of varied density and 387 
+
+T cell killing radiu s. ( C) Frequency of activated T cells per spheroid with increasing spheroid 388 
+
+density and T cell killing radius. ( D) Fraction of cancer cells killed per tumor spheroid with 389 
+
+increasing density and T cell killing radius. Effect of the frequency of neighboring cancer cells on 390 
+
+the (E) number of cancer cells killed per T cell and (F) total fraction of cancer cells killed. 391 T cell 
+
+T cell killing radius (Kr) 
+
+1 10 20 50 100 
+
+Target cells killed 
+
+1 3 4 7 910 −6 10 −5 10 −5 10 −5 10 −4 10 −4 10 −4 10 −4 10 −3 10 −3 10 −3 10 −3
+
+> 10  20  50  100
+
+X-plane 
+
+> Y-plane
+
+Density (cells / μm³) 
+
+> T cell killing radius (Kr)
+
+Kr = 20 
+
+Kr = 50 
+
+Kr = 100 
+
+Kr = 10 
+
+> Fraction of tumor cells
+> killed /spheroid
+
+10 -6 10 -4
+
+Density (cells / μm³) 
+
+0
+
+0.5 
+
+1
+
+Kr = 20 
+
+Kr = 50 
+
+Kr = 100 
+
+Kr = 10 
+
+> Active T cells/spheroid
+
+10 -6 10 -4
+
+Density (cells / μm³) 
+
+0
+
+50 
+
+25 
+
+A
+
+B
+
+C D
+
+E F
+
+Dead /Alive 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 21, 2026. ;https://doi.org/10.64898/2026.07.20.739578 doi: bioRxiv preprint
+
+Discussion 392 
+
+In this study, we set out to understand how the extracellular matrix shapes the efficacy of 393 
+
+anticancer virotherapy by regulating cancer cell organization, viral infection, and T ‑cell activation. 394 
+
+ECM remodeling is a hallmark of tumor progression and has com plex effects on therapeutic 395 
+
+resistance and efficay 3,4 . While the influence of ECM -degradation during cancer virotherapy is 396 
+
+explored 39 –41 , its exact influence in viral infection and immune activation remain less defined. By 397 
+
+combining a controlled 3D in vitro system with computational modelling, we show how matrix 398 
+
+composition and abundance modulate the spatial arrangement of cancer cells and, in turn, th e399 
+
+dynamics of viral infection and immune activation. 400 
+
+Our results demonstrate that ECM abundance reorganizes tumor spheroids , thereby 401 
+
+directly influenc ing infection kinetics. Increasing concentrations of BME or Collagen ‑I reduced cell 402 
+
+density, but the magni tude and direction of this effect depended on both matrix type and the 403 
+
+intrinsic adhesion phenotype of the cancer cells. BME, a softer and less structured matrix, induced 404 
+
+pronounced cell -dispersion, whereas the stiffer and more organized Collagen ‑I produce d more 405 
+
+compact tumor spheroid structures. These observations are consistent with prior work showing 406 
+
+that ECM stiffness and composition regulate tumor architecture and cell organization 4,42 .407 
+
+Simult aneously, t ranscriptomic analysis revealed that embedding different cancer cells in the 408 
+
+same matrix can lead to distinct cell organization depending on the distinct adhesion phenotypes :409 
+
+PANC ‑1 cells, which express high levels of cell ‑to ‑matrix adhesion gen es, compact at low BME 410 
+
+levels before dispersing, while 22Rv1 cells, which rely more on cell ‑to ‑cell adhesion, disperse 411 
+
+more uniformly. These findings highlight that ECM abundance and cancer cell adhesion jointly 412 
+
+determine tumor architecture. 413 
+
+Cell reorganiz ation had a direct impact on viral infection. Lower ‑density spheroids exhibited 414 
+
+higher infection frequencies across cancer cell types . Our computational model recapitulated 415 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 21, 2026. ;https://doi.org/10.64898/2026.07.20.739578 doi: bioRxiv preprint
+
+these dynamics, showing that reduced neighbor ing cell density led to earlier and higher EGFP 416 
+
+expression at both a cell ular and spheroid level . These insights help explain why infection 417 
+
+correlated strongly with cell organization across multiple cancer cell lines. Notably, the effect of 418 
+
+ECM on infection was matrix -inde pendent : both BME and Collagen ‑I enhanced infection across 419 
+
+several lines , corresponding to a lower cell density . Our findings are consistent with prior work 420 
+
+demonstrating that ECM remodeling, for example via MMP activity, enhances virotherapy efficacy 421 
+
+by improvin g intra -tumoral spread and accessibility 17,18,21,22 . However, our results further suggest 422 
+
+that ECM -mediated effects extend beyond simple barrier removal 8,43  and include indirect 423 
+
+regulation through tumor architecture and cellular organization. This refines the prevailing view 424 
+
+that ECM uniformly hinders virotherapy, instead revealing that the cellular organ ization and local 425 
+
+cell -density determine whether it supports or restricts viral infection . Notably, our work may explain 426 
+
+why some studies observe that inhibiting MMP activity does not necessarily impair, and may even 427 
+
+enhance, therapeutic outcomes, highligh ting the complex and context -dependent role of ECM 428 
+
+remodeling in cancer virotherapy 44 –46 .429 
+
+T‑cell activation followed similar but less pronounced trends with respect to cell density . In 430 
+
+22Rv1 spheroids, lower cell density and BME embedding enhanced CD8 +T cell activation and 431 
+
+IFNγ secretion, whereas Collagen ‑I reduced both responses, even below levels observed without 432 
+
+matrix. These differences likely reflect the impact of environmental stiffness on T ‑cell motility and 433 
+
+activation, as rigid matrices , like Collagen ‑I, can restrict immune cell infiltration and 434 
+
+proliferation 9,47,48 . H owever, the weaker correlation between cell density and T ‑cell activation 435 
+
+compared to infection suggested that additional constraints shape immune responses. In depth 436 
+
+T-cell phenotyping supported this interpretation , while matrix presence increased markers of 437 
+
+motility and activation, exhaustion and differentiation signatures diverged sharply by matrix type. 438 
+
+Notably , Collagen ‑I but not BME, increased exhaustion marker expression as noted before 10 ,439 
+
+indicating that ECM composition modulates T ‑cell functional states independently of infection 440 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 21, 2026. ;https://doi.org/10.64898/2026.07.20.739578 doi: bioRxiv preprint
+
+levels. Our findings are furt her supported by real -time imaging studies that demonstrate how tumor 441 
+
+microenvironment composition directly regulates T-cell migration patterns and infiltration 442 
+
+efficiency 49 , while matrix stiffness and dimensionality further modulate T -cell activation states 9,48 .443 
+
+Finally, o ur computational modelling provided mechanistic insight into these observations. 444 
+
+While viral infection was highly sensitive to spatial organization, T ‑cell killing was constrained by 445 
+
+physical access , for example due to a stiffer matrix, and largely saturated at the spheroid 446 
+
+periphery. Killing efficiency decreased with spheroid radius and local neighbor density but 447 
+
+increased with T‑cell killing radius. These simulations suggest that T ‑cell responses are limited 448 
+
+more by spatial accessibility than by antigen availability, explaining why T ‑cell activation effects 449 
+
+were less pronounced and more variable across cell lines. This is consistent with previous 450 
+
+observations that population context and spatial organization strongly influence infection dynamics 451 
+
+at the single -cell level 24 . Together, the modelling and experimental data reveal that ECM -driven 452 
+
+changes in cancer cell density predominantly influence viral infection, whereas ECM -mediated 453 
+
+alterations in matrix stiffness and tissue accessibility primarily regulate T -cell cytotoxicity. Although 454 
+
+prior computational models have explored ECM –virus interactions 23,50 , our work uniquely 455 
+
+integrates these effects with immune dynamics at single -cell resolution. 456 
+
+To conclude , our results demonstrate that ECM composition and abundance regulate 457 
+
+cancer virotherapy through combined effects on cancer cell organization, viral infection, and T ‑cell 458 
+
+activation. By integrating a bottom -up experimental and computational framework , we provide 459 
+
+novel insights into how viral infection is governed primarily by matrix ‑induced changes in cell 460 
+
+organization, whereas T ‑cell activation is directly controlled by matrix composition and stiffness. 461 
+
+This mechanistic separation highlights opportunities to independently optimize infection and 462 
+
+immune engagement in future anticancer virotherapy designs. 463 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 21, 2026. ;https://doi.org/10.64898/2026.07.20.739578 doi: bioRxiv preprint
+
+Limitations 464 
+
+Our bottom -up experimental in vitro system enabled precise control over ECM abundance and 465 
+
+composition, allowing us to isolate their effects on cell organization, infection, and immune 466 
+
+activation. However, this reductionist approach excludes many regulatory factors present in vivo ,467 
+
+including stromal interactions, vascularization, and complex immune networks. In addition, 468 
+
+because we employed rSFV replicons that support only a single round of infection, our study does 469 
+
+not capture how ECM or cell organization might affect multicycle viral propag ation, secondary 470 
+
+infection waves, or long ‑term viral –immune dynamics. As a result, some observations may differ 471 
+
+from in vivo behavior. Computational modeling helped contextualize these findings, but further 472 
+
+integration with more complex systems will be req uired to fully capture ECM ‑immune dynamics 473 
+
+across multiple infection cycles . Despite these limitations, the experimental control afforded by our 474 
+
+in vitro model design was essential for disentangling the individual contributions of ECM 475 
+
+composition, cell org anization, and immune accessibility , providing insights that would be difficult 476 
+
+to resolve in more complex, heterogeneous in vivo settings. 477 
+
+478 
+
+Acknowledgements 479 
+
+This study was partially funded by ERASMUS mobility grant awarded to IS and by Dutch Council 480 
+
+of Research (NWO) (grant # OCENW.XS25.1.147 ) awarded to DKB. Part of the work has been 481 
+
+performed at the UMCG Imaging and Microscopy Center (UMIC) and the Flow Cytometry 482 
+
+Research Unit (FCU) which is sponsored by UMCG. We thank Thijs Janzen ( Uni versity of 483 
+
+Groningen ) for reviewing the code of the SAMI computational model and providing critical 484 
+
+feedback , and Debbie van Baarle (UMCG) for helpful discussions on T cell responses. 485 
+
+486 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 21, 2026. ;https://doi.org/10.64898/2026.07.20.739578 doi: bioRxiv preprint
+
+Declaration of interests 487 
+
+Not applicable. 488 
+
+489 
+
+Author contributions 490 
+
+All authors made substantial contributions to the manuscript. 491 
+
+IS : Conceptualization, Writing and editing manuscript, Data collection and analysis, Validation, 492 
+
+Visualization 493 
+
+FV : Editing manuscript, Data collection and analysis 494 
+
+AB : Editing manuscript, Data coll ection and analysis 495 
+
+AKW: Data collection and analysis , Validation 496 
+
+MJ: Editing manuscript, Software c ode review, Data collection and analysis, Visualization 497 
+
+MJMH : Conceptualization, Writing and editing manuscript, Supervision 498 
+
+DB: Conceptualization, Writing and editing manuscript, Data collection and analysis, Software, 499 
+
+Visualization, Supervision, Funding acquisition 500 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 21, 2026. ;https://doi.org/10.64898/2026.07.20.739578 doi: bioRxiv preprint
+
+Resource availability 501 
+
+Lead contact: Further information and requests for resources and reagents should be directed to 502 
+
+and will be fulfilled by the lead contact Darshak K. Bhatt (d.bhatt@umcg.nl) 503 
+
+Material availability: All unique/stable reagents generated in the study are available upon request, 504 
+
+except where restricted by institutional agreements or MTAs. 505 
+
+Data and code availability: All data reported in this paper will be shared by the lead contact upon 506 
+
+request. Any additional information required to reanalyze the data reported in this paper is 507 
+
+available from the lead contact upon request. The code used for thi s work and an executable 508 
+
+version of the SAMI model can be found at  https://github.com/d -bhatt/SAMI .509 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 21, 2026. ;https://doi.org/10.64898/2026.07.20.739578 doi: bioRxiv preprint
+
+References 510 
+
+1. Yun, C. -O. Overco ming the extracellular matrix barrier to improve intratumoral spread and 511 
+
+therapeutic potential of oncolytic virotherapy. Curr Opin Mol Ther 10 , 356 –361 (2008). 512 
+
+2. Soko, G. F. et al. Extracellular matrix re -normalization to improve cold tumor penetration by 513 
+
+oncolytic viruses. Front Immunol 15 , 1535647 (2024). 514 
+
+3. Hanahan, D. Hallmarks of cancer -Then and now, and beyond. Cell S0092 -8674(25)01498 –9515 
+
+(2026) doi:10.1016/j.cell.2025.12.049. 516 
+
+4. Finger, A. -M., Hendley, A. M., Figueroa, D., Gonzalez, H. & Weaver, V. M . Tissue 517 
+
+mechanics in tumor heterogeneity and aggression. Trends in Cancer 11 , 806 –824 (2025). 518 
+
+5. Rivera -Caraballo, K. A., Nair, M., Lee, T. J., Kaur, B. & Yoo, J. Y. The complex relationship 519 
+
+between integrins and oncolytic herpes Simplex Virus 1 in high -grade glioma therapeutics. 520 
+
+Mol Ther Oncolytics 26 , 63 –75 (2022). 521 
+
+6. Morla, S., Kumar, A. & Kumar, S . Newcastle disease virus mediated apoptosis and migration 522 
+
+inhibition of human oral cancer cells: A probable role of β -catenin and matrix 523 
+
+metalloproteinase -7. Sci Rep 9, 10882 (2019). 524 
+
+7. Yaacov, B. et al. Extracellular matrix constituents interfere with Ne wcastle disease virus 525 
+
+spread in solid tissue and diminish its potential oncolytic activity. J Gen Virol 93 , 1664 –1672 526 
+
+(2012). 527 
+
+8. McKee, T. D. et al. Degradation of fibrillar collagen in a human melanoma xenograft 528 
+
+improves the efficacy of an oncolytic herpe s simplex virus vector. Cancer Res 66 , 2509 –529 
+
+2513 (2006). 530 
+
+9. Kuczek, D. E. et al. Collagen density regulates the activity of tumor -infiltrating T cells. J531 
+
+Immunother Cancer 7, 68 (2019). 532 
+
+10. Nicolas -Boluda, A. et al. Tumor stiffening reversion through colla gen crosslinking inhibition 533 
+
+improves T cell migration and anti -PD -1 treatment. Elife 10 , e58688 (2021). 534 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 21, 2026. ;https://doi.org/10.64898/2026.07.20.739578 doi: bioRxiv preprint
+
+11. Palomäki, J. et al. Attenuated Replication -Competent Herpes Simplex Virus Expressing an 535 
+
+ECM -Modifying Transgene Hyaluronan Synthase 2 of Naked Mole Rat in Oncolytic Gene 536 
+
+Therapy. Microorganisms 11 , 2657 (2023). 537 
+
+12. Jung, B. -K. et al. Relaxin -expressing oncolytic adenovirus induces remodeling of physical 538 
+
+and immunological aspects of cold tumor to potentiate PD -1 blockade. J Immunother Cancer 539 
+
+8, e000763 (2020). 540 
+
+13. Guedan, S. et al. Hyaluronidase expression by an oncolytic adenovirus enhances its 541 
+
+intratumoral spread and suppresses tumor growth. Mol Ther 18 , 1275 –1283 (2010). 542 
+
+14. Cheng, J. et al. Human matrix metalloproteinase -8 gene delivery increases th e oncolytic 543 
+
+activity of a replicating adenovirus. Mol Ther 15 , 1982 –1990 (2007). 544 
+
+15. Farrera -Sal, M. et al. Hyaluronidase expression within tumors increases virotherapy efficacy 545 
+
+and T cell accumulation. Mol Ther Oncolytics 22 , 27 –35 (2021). 546 
+
+16. Wang, S., Li, Y., Xu, C., Dong, J. & Wei, J. An oncolytic vaccinia virus encoding 547 
+
+hyaluronidase reshapes the extracellular matrix to enhance cancer chemotherapy and 548 
+
+immunotherapy. J Immunother Cancer 12 , e008431 (2024). 549 
+
+17. Springfeld, C. et al. Oncolytic efficacy and enhanced safety of measles virus activated by 550 
+
+tumor -secreted matrix metalloproteinases. Cancer Res 66 , 7694 –7700 (2006). 551 
+
+18. José, A. et al. A genetic fiber modification to achieve matrix -metalloprotease -activated 552 
+
+infectivity of oncolytic aden ovirus. J Control Release 192 , 148 –156 (2014). 553 
+
+19. Schäfer, S. et al. Vaccinia virus -mediated intra -tumoral expression of matrix 554 
+
+metalloproteinase 9 enhances oncolysis of PC -3 xenograft tumors. BMC Cancer 12 , 366 555 
+
+(2012). 556 
+
+20. Sette, P. et al. GBM -Targeted o HSV Armed with Matrix Metalloproteinase 9 Enhances Anti -557 
+
+tumor Activity and Animal Survival. Mol Ther Oncolytics 15 , 214 –222 (2019). 558 
+
+21. Liang, M. et al. Targeting matrix metalloproteinase MMP3 greatly enhances oncolytic virus 559 
+
+mediated tumor therapy. Transl Oncol 14 , 101221 (2021). 560 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 21, 2026. ;https://doi.org/10.64898/2026.07.20.739578 doi: bioRxiv preprint
+
+22. Mühlebach, M. D. et al. Liver cancer protease activity profiles support therapeutic options 561 
+
+with matrix metalloproteinase -activatable oncolytic measles virus. Cancer Res 70 , 7620 –562 
+
+7629 (2010). 563 
+
+23. Alsisi, A., Eftimie, R. & Trucu, D. Nonlocal multiscale modelling of tumour -oncolytic viruses 564 
+
+interactions within a heterogeneous fibrous/non -fibrous extracellular matrix. Math Biosc i Eng 565 
+
+19 , 6157 –6185 (2022). 566 
+
+24. Snijder, B. et al. Population context determines cell -to -cell variability in endocytosis and virus 567 
+
+infection. Nature 461 , 520 –523 (2009). 568 
+
+25. Horvathova, L. et al. Alphavirus replicons encoding IFN -γ enhance cancer virothera py by 569 
+
+overcoming macrophage -mediated suppression. iScience 28 , 113545 (2025). 570 
+
+26. Huang, H. et al. Oncolytic adenovirus programmed by synthetic gene circuit for cancer 571 
+
+immunotherapy. Nat Commun 10 , 4801 (2019). 572 
+
+27. Jenner, A. L., Cassidy, T., Belaid, K., B ourgeois -Daigneault, M. -C. & Craig, M. In silico trials 573 
+
+predict that combination strategies for enhancing vesicular stomatitis oncolytic virus are 574 
+
+determined by tumor aggressivity. J Immunother Cancer 9, e001387 (2021). 575 
+
+28. Jenner, A. L. et al. Agent -based computational modeling of glioblastoma predicts that 576 
+
+stromal density is central to oncolytic virus efficacy. iScience 25 , 104395 (2022). 577 
+
+29. Bhatt, D. K., Janzen, T., Daemen, T. & Weissing, F. J. Modelling the spatial dynamics of 578 
+
+oncolytic virotherapy in the presence of virus -resistant tumour cells. PLoS Comput Biol 18 ,579 
+
+e1010076 (2022). 580 
+
+30. Bhatt, D. K., Janzen, T., Daemen, T. & Weissing, F. J. Effects of virus -induced immunogenic 581 
+
+cues on oncolytic virotherapy. Sci Rep 14 , 28861 (2024). 582 
+
+31. Bhatt, D. K., M euleman, S. L., Hoogeboom, B. N. & Daemen, T. Oncolytic alphavirus 583 
+
+replicons mediated recruitment and activation of T cells. iScience 27 , 109253 (2024). 584 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 21, 2026. ;https://doi.org/10.64898/2026.07.20.739578 doi: bioRxiv preprint
+
+32. Bhatt, D. K. et al.  Oncolytic alphavirus -induced extracellular vesicles counteract the 585 
+
+immunosuppre ssive effect of melanoma -derived extracellular vesicles. Sci Rep 15 , 803 586 
+
+(2025). 587 
+
+33. Smerdou, C. & Liljeström, P. Two -helper RNA system for production of recombinant Semliki 588 
+
+forest virus particles. J Virol 73 , 1092 –1098 (1999). 589 
+
+34. De Rooij, M. A. J. et al . A library of cancer testis specific T cell receptors for T cell receptor 590 
+
+gene therapy. Molecular Therapy - Oncolytics 28 , 1 –14 (2023). 591 
+
+35. Citing RStudio. Posit Support https://support.posit.co/hc/en -us/articles/206212048 -Citing -592 
+
+RStudio (2025). 593 
+
+36. Weige lin, B. et al. Cytotoxic T cells are able to efficiently eliminate cancer cells by additive 594 
+
+cytotoxicity. Nat Commun 12 , 5217 (2021). 595 
+
+37. Halle, S. et al. In Vivo Killing Capacity of Cytotoxic T Cells Is Limited and Involves Dynamic 596 
+
+Interactions and T Cell Cooperativity. Immunity 44 , 233 –245 (2016). 597 
+
+38. Lee, Y. -F. et al. CellExpress: a comprehensive microarray -based cancer cell line and clinical 598 
+
+sample gene expression analysis online system. Database 2018 , bax101 (2018). 599 
+
+39. Kuriyama, N., Kuriyama, H., Julin, C. M., Lamborn, K. & Israel, M. A. Pretreatment with 600 
+
+protease is a useful experimental strategy for enhancing adenovirus -mediated cancer gene 601 
+
+therapy. Hum Gene Ther 11 , 2219 –2230 (2000). 602 
+
+40. Hong, C. -S. et al. Ectopic matrix metalloproteinase -9 expression in human brain tumor cells 603 
+
+enhances oncolytic HSV vector infection. Gene Ther 17 , 1200 –1205 (2010). 604 
+
+41. Kiyokawa, J. et al. Modification of Extracellul ar Matrix Enhances Oncolytic Adenovirus 605 
+
+Immunotherapy in Glioblastoma. Clin Cancer Res 27 , 889 –902 (2021). 606 
+
+42. Mai, Z., Lin, Y., Lin, P., Zhao, X. & Cui, L. Modulating extracellular matrix stiffness: a 607 
+
+strategic approach to boost cancer immunotherapy. Cell Death Dis 15 , 307 (2024). 608 
+
+43. Mok, W., Boucher, Y. & Jain, R. K. Matrix metalloproteinases -1 and -8 improve the 609 
+
+distribution and efficacy of an oncolytic virus. Cancer Res 67 , 10664 –10668 (2007). 610 
+
+> .CC-BY-NC-ND 4.0 International license available under a (which was not certified by peer review) is the author/funder, who has granted bioRxiv a license to display the preprint in perpetuity. It is made The copyright holder for this preprint this version posted July 21, 2026. ;https://doi.org/10.64898/2026.07.20.739578 doi: bioRxiv preprint
+
+44. Lamfers, M. L. M. et al. Tissue inhibitor of metallopro teinase -3 expression from an oncolytic 611 
+
+adenovirus inhibits matrix metalloproteinase activity in vivo without affecting antitumor 612 
+
+efficacy in malignant glioma. Cancer Res 65 , 9398 –9405 (2005). 613 
+
+45. Mahller, Y. Y. et al. Tissue inhibitor of metalloproteinase -3 via oncolytic herpesvirus inhibits 614 
+
+tumor growth and vascular progenitors. Cancer Res 68 , 1170 –1179 (2008). 615 
+
+46. Zhang, T., Suryawanshi, Y. R., Szymczyna, B. R. & Essani, K. Neutralization of matrix 616 
+
+metalloproteinase -9 potentially enhances oncolytic efficacy of tanapox virus for melanoma 617 
+
+therapy. Med Oncol 34 , 129 (2017). 618 
+
+47. O’Connor, R. S. et al. Substrate Rigidity Regulates Human T Cell Activation and 619 
+
+Proliferation. The Journal of Immunology 189 , 1330 –1339 (2012). 620 
+
+48. Majedi, F. S. et al. T-cell activation is modulated by the 3D mechanical microenvironment. 621 
+
+Biomaterials 252 , 120058 (2020). 622 
+
+49. Bougherara, H. et al. Real -Time Imaging of Resident T Cells in Human Lung and Ovarian 623 
+
+Carcinomas Reveals How Different Tumor Microenvironments Control T Lymphocyte 624 
+
+Migration. Front. Immunol. 6, (2015). 625 
+
+50. Malinzi, J. A mathematical model for oncolytic virus spread using the telegraph equation. 626 
+
+Communications in Nonlinear Science and Numerical Simulation 102 , 105944 (2021). 627 
+
+628
