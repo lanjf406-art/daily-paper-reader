@@ -1,0 +1,54 @@
+{
+  "label": "2026-07-23",
+  "date": "2026-07-23",
+  "generated_at": "2026-07-23T20:43:45",
+  "count": 3,
+  "papers": [
+    {
+      "paper_id": "202607/23/biorxiv-10-64898-2026-01-16-696667-v3-medea-an-ai-agent-for-therapeutic-reasoning-across-biological-contexts",
+      "section": "quick",
+      "title_en": "Medea: An AI agent for therapeutic reasoning across biological contexts",
+      "authors": "Sui, P., Li, M., Munson, B. P., Gao, S., Shen, W., Giunchiglia, V., Shen, A., Huang, Y., Kong, Z., Licon, K., Ideker, T., Zitnik, M.",
+      "date": "2026-07-17",
+      "pdf": "https://www.biorxiv.org/content/10.64898/2026.01.16.696667v3.full.pdf",
+      "score": "6.0",
+      "evidence": "用于治疗推理的AI智能体，保留生物学上下文，可应用于耐药分析",
+      "tldr": "针对治疗推理中生物上下文丢失、工作流验证缺失及证据冲突等问题，提出Medea AI代理。Medea集成生物工具、机器学习模型和文献检索，在规划、执行和证据合成阶段强制验证。在5,673个开放分析中，覆盖5种疾病29种细胞类型的靶点提名、7种癌细胞系的合成致死预测、多模态患者免疫疗法响应预测，以及酵母238,046对基因对的合成致死实验验证。Medea在性能上超越大语言模型、推理模型、生物医学代理和专用机器学习模型，同时保持低失败率和校准弃权。表明可验证AI代理能跨生物上下文执行可靠的治疗分析。",
+      "tags": "query:neo-resist",
+      "abstract_en": "Therapeutic hypotheses can transfer across diseases but their relevance depends on biological context. The same target, perturbation, or treatment can produce different effects across cell types, disease states, genetic backgrounds, and patients. Therapeutic reasoning therefore requires methods that preserve context, test when evidence supports transfer, and identify where context-specific effects limit it. Although AI agents can perform therapeutic analyses, existing systems often fail to preserve biological context over long workflows, verify intermediate computational steps, or reconcile conflicting evidence across datasets and literature. Here, we present Medea, an AI agent for therapeutic reasoning across biological contexts. Medea executes multi-step analyses using biological tools, machine learning models, and literature retrieval while enforcing verification during planning, execution, and evidence synthesis. We evaluate Medea across 5,673 open-ended analyses in three domains: cell type specific therapeutic target nomination in five diseases and 29 cell types, synthetic lethality prediction in 7 cancer cell lines, and immunotherapy response prediction from multimodal patient profiles. Using a previously unpublished epistatic miniarray profiling screen performed under two DNA-damaging treatments, we evaluate Medea on predicting synthetic lethality among 238,046 gene-gene pairs in yeast. Medea predicts these experimentally measured synthetic lethal interactions, indicating that its performance reflects biological relevance rather than information leakage from benchmark datasets. Across these evaluations, Medea improves performance over large language models, reasoning models, biomedical agents, and specialized machine learning models while maintaining low failure rates and calibrated abstention. These results show that verifiable AI agents can perform therapeutic analyses across biological contexts.",
+      "source": "biorxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202607/23/biorxiv-10-64898-2026-07-10-737730-v1-differential-multi-omics-analysis-of-pulmonary-arterial-hypertension-microvascular-endothelial-cells-for-differential-drug-response",
+      "section": "quick",
+      "title_en": "Differential multi-omics analysis of pulmonary arterial hypertension microvascular endothelial cells for differential drug response",
+      "authors": "Hiort, P., Weiss, A., Krentz, J., Schermuly, R. T., Bogaard, H.-J., Conrad, T., Szulcek, R., Baum, K.",
+      "date": "2026-07-16",
+      "pdf": "https://www.biorxiv.org/content/10.64898/2026.07.10.737730v1.full.pdf",
+      "score": "6.0",
+      "evidence": "多组学网络框架可迁移至肿瘤耐药研究",
+      "tldr": "肺动脉高压（PAH）是一种异质性疾病，单组学分析难以捕捉其复杂分子失调。本研究应用DrDimont多组学网络分析框架，整合转录组、蛋白质组、磷酸化组和激酶筛选数据，构建条件特异性网络并引入激酶-激酶相互作用。结果发现以MAPK信号通路激酶（如MAPK13、MAP2K、IRAK1）为中心的差异，以及ACADSB、GPX7等高差异节点。药物优先化揭示他克莫司和MAPK抑制剂（如司美替尼、曲美替尼）等候选药物。该工作整合激酶活性筛选，揭示了激酶中心改变并提出了PAH的治疗假设。",
+      "tags": "query:neo-resist",
+      "abstract_en": "Pulmonary arterial hypertension (PAH) represents a heterogeneous group of disorders that involves complex molecular dysregulations, which are not fully captured by single-omics analyses. We apply our network-based multi-omics analysis framework, DrDimont, to transcriptomic, proteomic, phosphoproteomic, and kinase screening data from lung microvascular endothelial cells of PAH patients and controls.\n\nThereby, we extend the functionality of DrDimont to incorporate kinase-kinase interactions during the construction of condition-specific multi-omics networks. Kinase interactions are inferred from phosphorylations of screened substrates that are weighted by kinase-substrate predictions. Differential interaction scores from the network-based analysis between PAH and control uncover alterations centered on kinases, in particular top hits relating to MAPK signaling, such as MAPK13, MAP2K, or upstream IRAK1, and other MAPK/MAP2K family members. Further highly differential nodes were ACADSB, GPX7, DSE (for proteins), and AIM1, LY96, CHSY3 (for mRNAs). When prioritizing drug candidates by mapping drug targets onto the differential network, we find high scores for the drug tacrolimus (FK506) and several anti-neoplastic MAPK inhibitors (e.g., selumetinib, trametinib), as well as agents acting on general proliferation via (mitochondrial) DNA transcription (e.g., epirubicin, topotecan).\n\nIntegrating kinase activity screens into our explainable multi-omics network-based analyses reveals kinase-centered alterations and therapeutic hypotheses in PAH that complement single-layer classical differential expression analyses.",
+      "source": "biorxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202607/23/biorxiv-10-64898-2026-07-15-738621-v1-cell-hub-a-graphical-interface-for-end-to-end-single-cell-rna-sequencing-analysis",
+      "section": "quick",
+      "title_en": "Cell-Hub: a graphical interface for end-to-end single-cell RNA sequencing analysis",
+      "authors": "macaux, g., Di Gallo, M., Taglietti, V., Amthor, H., Maire, P.",
+      "date": "2026-07-17",
+      "pdf": "https://www.biorxiv.org/content/10.64898/2026.07.15.738621v1.full.pdf",
+      "score": "6.0",
+      "evidence": "为单细胞RNA测序分析提供图形界面，可用于耐药机制研究",
+      "tldr": "单细胞RNA测序分析需要生物信息学技能，限制了普通研究者的使用。Cell-Hub作为基于R/Shiny和Docker的开源图形界面框架，整合Seurat 5、CellChat 2和Monocle 3，支持从数据加载到空间转录组学的全流程分析，无需编程背景。其内置GaspouDB数据库实现配体-受体相互作用推断，并生成可直接发表的图表。该工具大幅降低了单细胞基因组学的分析门槛，推动了研究的民主化。",
+      "tags": "query:neo-resist",
+      "abstract_en": "Single-cell and single-nucleus RNA sequencing have become increasingly widespread, creating a significant demand for accessible analysis tools in research laboratories. Despite this need, the bioinformatics expertise required for such analyses remains rare. Cell-Hub addresses this gap by enabling single-cell data analysis for all researchers, regardless of computational background.\n\nCell-Hub is a comprehensive, free, and open-source framework built on R/Shiny and distributed as a Docker image, integrating Seurat 5, CellChat 2, and Monocle 3 within a unified graphical interface. It supports all essential steps of single-cell RNA-seq analysis: data loading, quality control, normalization, clustering, multi-dataset integration, differential expression, and biomarker detection. Cell-Hub further incorporates ligand-receptor interaction inference powered by GaspouDB, a consolidated database of 11,563 mouse and 9,604 human interactions derived from CellChat, CellPhoneDB, CellTalkDB, and MultiNicheNet as well as trajectory inference via Monocle 3 and spatial transcriptomics analysis for 10X Visium datasets. All analyses produce publication-ready visualizations with flexible export options.\n\nBy integrating these analytical frameworks into a single, intuitive interface requiring no programming expertise, Cell-Hub represents a significant step toward democratizing single-cell genomics for the broader research community.",
+      "source": "biorxiv",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "errors": []
+}

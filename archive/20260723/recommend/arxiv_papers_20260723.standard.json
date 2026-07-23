@@ -1,0 +1,143 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-07-23T20:40:09.312438+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 0,
+    "deep_cap": 6,
+    "deep_selected": 0,
+    "quick_candidates": 3,
+    "quick_skim_target": 11,
+    "quick_selected": 3
+  },
+  "deep_dive": [],
+  "quick_skim": [
+    {
+      "id": "biorxiv-10-64898-2026-01-16-696667-v3",
+      "source": "biorxiv",
+      "title": "Medea: An AI agent for therapeutic reasoning across biological contexts",
+      "abstract": "Therapeutic hypotheses can transfer across diseases but their relevance depends on biological context. The same target, perturbation, or treatment can produce different effects across cell types, disease states, genetic backgrounds, and patients. Therapeutic reasoning therefore requires methods that preserve context, test when evidence supports transfer, and identify where context-specific effects limit it. Although AI agents can perform therapeutic analyses, existing systems often fail to preserve biological context over long workflows, verify intermediate computational steps, or reconcile conflicting evidence across datasets and literature. Here, we present Medea, an AI agent for therapeutic reasoning across biological contexts. Medea executes multi-step analyses using biological tools, machine learning models, and literature retrieval while enforcing verification during planning, execution, and evidence synthesis. We evaluate Medea across 5,673 open-ended analyses in three domains: cell type specific therapeutic target nomination in five diseases and 29 cell types, synthetic lethality prediction in 7 cancer cell lines, and immunotherapy response prediction from multimodal patient profiles. Using a previously unpublished epistatic miniarray profiling screen performed under two DNA-damaging treatments, we evaluate Medea on predicting synthetic lethality among 238,046 gene-gene pairs in yeast. Medea predicts these experimentally measured synthetic lethal interactions, indicating that its performance reflects biological relevance rather than information leakage from benchmark datasets. Across these evaluations, Medea improves performance over large language models, reasoning models, biomedical agents, and specialized machine learning models while maintaining low failure rates and calibrated abstention. These results show that verifiable AI agents can perform therapeutic analyses across biological contexts.",
+      "authors": [
+        "Sui, P.",
+        "Li, M.",
+        "Munson, B. P.",
+        "Gao, S.",
+        "Shen, W.",
+        "Giunchiglia, V.",
+        "Shen, A.",
+        "Huang, Y.",
+        "Kong, Z.",
+        "Licon, K.",
+        "Ideker, T.",
+        "Zitnik, M."
+      ],
+      "primary_category": "bioinformatics",
+      "categories": [
+        "bioinformatics"
+      ],
+      "published": "2026-07-17T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.01.16.696667v3.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "AI agent for therapeutic reasoning that preserves biological context, applicable to drug resistance analysis",
+      "llm_evidence_cn": "用于治疗推理的AI智能体，保留生物学上下文，可应用于耐药分析",
+      "llm_evidence": "用于治疗推理的AI智能体，保留生物学上下文，可应用于耐药分析",
+      "canonical_evidence": "用于治疗推理的AI智能体，保留生物学上下文，可应用于耐药分析",
+      "llm_tldr_en": "Medea is an AI agent that performs multi-step therapeutic reasoning across contexts, verifying intermediate steps and reconciling conflicting evidence.",
+      "llm_tldr_cn": "该研究针对现有AI智能体在治疗推理中丢失生物上下文、无法验证中间步骤的问题，提出了Medea智能体。它能够跨生物上下文执行多步治疗推理，在推理过程中保持上下文信息，验证计算步骤的准确性，并调和不同来源的冲突证据。Medea为生物信息学中的耐药机制分析和治疗决策提供了强大的自动化推理工具。",
+      "llm_tldr": "该研究针对现有AI智能体在治疗推理中丢失生物上下文、无法验证中间步骤的问题，提出了Medea智能体。它能够跨生物上下文执行多步治疗推理，在推理过程中保持上下文信息，验证计算步骤的准确性，并调和不同来源的冲突证据。Medea为生物信息学中的耐药机制分析和治疗决策提供了强大的自动化推理工具。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "bioinformatics for drug resistance",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-07-10-737730-v1",
+      "source": "biorxiv",
+      "title": "Differential multi-omics analysis of pulmonary arterial hypertension microvascular endothelial cells for differential drug response",
+      "abstract": "Pulmonary arterial hypertension (PAH) represents a heterogeneous group of disorders that involves complex molecular dysregulations, which are not fully captured by single-omics analyses. We apply our network-based multi-omics analysis framework, DrDimont, to transcriptomic, proteomic, phosphoproteomic, and kinase screening data from lung microvascular endothelial cells of PAH patients and controls.\n\nThereby, we extend the functionality of DrDimont to incorporate kinase-kinase interactions during the construction of condition-specific multi-omics networks. Kinase interactions are inferred from phosphorylations of screened substrates that are weighted by kinase-substrate predictions. Differential interaction scores from the network-based analysis between PAH and control uncover alterations centered on kinases, in particular top hits relating to MAPK signaling, such as MAPK13, MAP2K, or upstream IRAK1, and other MAPK/MAP2K family members. Further highly differential nodes were ACADSB, GPX7, DSE (for proteins), and AIM1, LY96, CHSY3 (for mRNAs). When prioritizing drug candidates by mapping drug targets onto the differential network, we find high scores for the drug tacrolimus (FK506) and several anti-neoplastic MAPK inhibitors (e.g., selumetinib, trametinib), as well as agents acting on general proliferation via (mitochondrial) DNA transcription (e.g., epirubicin, topotecan).\n\nIntegrating kinase activity screens into our explainable multi-omics network-based analyses reveals kinase-centered alterations and therapeutic hypotheses in PAH that complement single-layer classical differential expression analyses.",
+      "authors": [
+        "Hiort, P.",
+        "Weiss, A.",
+        "Krentz, J.",
+        "Schermuly, R. T.",
+        "Bogaard, H.-J.",
+        "Conrad, T.",
+        "Szulcek, R.",
+        "Baum, K."
+      ],
+      "primary_category": "bioinformatics",
+      "categories": [
+        "bioinformatics"
+      ],
+      "published": "2026-07-16T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.07.10.737730v1.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "multi-omics network framework transferable to tumor resistance studies",
+      "llm_evidence_cn": "多组学网络框架可迁移至肿瘤耐药研究",
+      "llm_evidence": "多组学网络框架可迁移至肿瘤耐药研究",
+      "canonical_evidence": "多组学网络框架可迁移至肿瘤耐药研究",
+      "llm_tldr_en": "DrDimont multi-omics framework integrates transcriptomic, proteomic, phosphoproteomic and kinase data to identify differential drug response mechanisms, applicable to neoadjuvant resistance.",
+      "llm_tldr_cn": "该研究提出了一个网络基的多组学分析框架DrDimont，整合转录组、蛋白质组、磷酸化蛋白质组和激酶筛选数据，构建条件特异性多组学网络。虽然应用于肺动脉高压，但其方法可直接迁移至肿瘤新辅助治疗耐药研究，用于揭示多组学层面的耐药机制。这为生物信息学分析药物耐药提供了可复用的工具。",
+      "llm_tldr": "该研究提出了一个网络基的多组学分析框架DrDimont，整合转录组、蛋白质组、磷酸化蛋白质组和激酶筛选数据，构建条件特异性多组学网络。虽然应用于肺动脉高压，但其方法可直接迁移至肿瘤新辅助治疗耐药研究，用于揭示多组学层面的耐药机制。这为生物信息学分析药物耐药提供了可复用的工具。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "multi omics characterization of tumor resistance",
+      "matched_requirement_id": "req-10",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-07-15-738621-v1",
+      "source": "biorxiv",
+      "title": "Cell-Hub: a graphical interface for end-to-end single-cell RNA sequencing analysis",
+      "abstract": "Single-cell and single-nucleus RNA sequencing have become increasingly widespread, creating a significant demand for accessible analysis tools in research laboratories. Despite this need, the bioinformatics expertise required for such analyses remains rare. Cell-Hub addresses this gap by enabling single-cell data analysis for all researchers, regardless of computational background.\n\nCell-Hub is a comprehensive, free, and open-source framework built on R/Shiny and distributed as a Docker image, integrating Seurat 5, CellChat 2, and Monocle 3 within a unified graphical interface. It supports all essential steps of single-cell RNA-seq analysis: data loading, quality control, normalization, clustering, multi-dataset integration, differential expression, and biomarker detection. Cell-Hub further incorporates ligand-receptor interaction inference powered by GaspouDB, a consolidated database of 11,563 mouse and 9,604 human interactions derived from CellChat, CellPhoneDB, CellTalkDB, and MultiNicheNet as well as trajectory inference via Monocle 3 and spatial transcriptomics analysis for 10X Visium datasets. All analyses produce publication-ready visualizations with flexible export options.\n\nBy integrating these analytical frameworks into a single, intuitive interface requiring no programming expertise, Cell-Hub represents a significant step toward democratizing single-cell genomics for the broader research community.",
+      "authors": [
+        "macaux, g.",
+        "Di Gallo, M.",
+        "Taglietti, V.",
+        "Amthor, H.",
+        "Maire, P."
+      ],
+      "primary_category": "bioinformatics",
+      "categories": [
+        "bioinformatics"
+      ],
+      "published": "2026-07-17T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.07.15.738621v1.full.pdf",
+      "tags": [
+        "keyword:neo-resist"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "graphical interface for single-cell RNA-seq analysis enabling resistance mechanism studies",
+      "llm_evidence_cn": "为单细胞RNA测序分析提供图形界面，可用于耐药机制研究",
+      "llm_evidence": "为单细胞RNA测序分析提供图形界面，可用于耐药机制研究",
+      "canonical_evidence": "为单细胞RNA测序分析提供图形界面，可用于耐药机制研究",
+      "llm_tldr_en": "Cell-Hub is a graphical interface for end-to-end single-cell RNA-seq analysis, integrating Seurat, CellChat, and Monocle, enabling researchers without computational expertise to study cellular heterogeneity and potentially resistance mechanisms.",
+      "llm_tldr_cn": "Cell-Hub是一个全面的单细胞RNA测序分析图形界面工具，基于R/Shiny构建并以Docker镜像分发，集成了Seurat 5、CellChat 2和Monocle 3等主流分析包，支持数据加载、质量控制、聚类、整合、差异表达和细胞通讯分析等完整的分析流程。该工具降低了单细胞分析的技术门槛，使无生物信息学背景的研究者也能开展单细胞研究，为探索肿瘤耐药机制中的细胞异质性和微环境互动提供了便捷的分析手段。",
+      "llm_tldr": "Cell-Hub是一个全面的单细胞RNA测序分析图形界面工具，基于R/Shiny构建并以Docker镜像分发，集成了Seurat 5、CellChat 2和Monocle 3等主流分析包，支持数据加载、质量控制、聚类、整合、差异表达和细胞通讯分析等完整的分析流程。该工具降低了单细胞分析的技术门槛，使无生物信息学背景的研究者也能开展单细胞研究，为探索肿瘤耐药机制中的细胞异质性和微环境互动提供了便捷的分析手段。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "single cell sequencing resistance mechanism",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}
