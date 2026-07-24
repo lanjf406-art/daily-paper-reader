@@ -1,0 +1,107 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-07-24T20:36:19.003651+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 0,
+    "deep_cap": 6,
+    "deep_selected": 0,
+    "quick_candidates": 2,
+    "quick_skim_target": 11,
+    "quick_selected": 2
+  },
+  "deep_dive": [],
+  "quick_skim": [
+    {
+      "id": "biorxiv-10-64898-2026-06-28-735106-v3",
+      "source": "biorxiv",
+      "title": "Tabular Foundation Models Are Competitive Cellular Perturbation Predictors Across Biological Scales",
+      "abstract": "Predicting how cells respond to genetic and chemical perturbations is a central challenge in drug discovery and functional genomics. A growing ecosystem of specialized single-cell foundation models has been developed to address this problem, yet their practical advantage over domain-agnostic approaches remains unclear. Here we evaluate the power of Tabular Foundation Models such as TabICL and TabPFN, general-purpose pre-trained regression models, against domain-specific architectures including PRESAGE, scGPT, scLAMBDA, STACK and Prophet across four complementary evaluation settings: cell-level in-context cross-cell-type prediction, pseudobulk perturbation prediction on five Perturb-seq datasets of cell-lines, a genome-wide CRISPR screen in primary human CD4+ T cells, and embryo-level cell-type composition prediction in a zebrafish developmental perturbation atlas. In the cell-level cross-cell type perturbation prediction, Tabular Foundation Models perform on par or better than specialized models. On pseudobulk perturbation prediction, Tabular Foundation Models consistently outperform specialized baselines across multiple evaluation metrics and datasets. On whole-emrbryo cell-type composition prediction, Tabular Foundation Models are competitive with specialized baselines. These results demonstrate that general-purpose tabular in-context learning provides a strong and scalable alternative to bespoke biological architectures for perturbation response modeling across cell systems and scales.",
+      "authors": [
+        "Palla, G.",
+        "Hillsley, A.",
+        "Kim, Y.-J.",
+        "Royer, L. A."
+      ],
+      "primary_category": "bioinformatics",
+      "categories": [
+        "bioinformatics"
+      ],
+      "published": "2026-07-19T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.06.28.735106v3.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "evaluates tabular foundation models for cellular perturbation prediction, transferable to drug resistance prediction",
+      "llm_evidence_cn": "评估表格基础模型用于细胞扰动预测，可迁移至药物耐药预测",
+      "llm_evidence": "评估表格基础模型用于细胞扰动预测，可迁移至药物耐药预测",
+      "canonical_evidence": "评估表格基础模型用于细胞扰动预测，可迁移至药物耐药预测",
+      "llm_tldr_en": "Shows general-purpose tabular foundation models (TabICL, TabPFN) match or outperform specialized single-cell models for perturbation prediction, offering a versatile approach applicable to drug resistance prediction tasks.",
+      "llm_tldr_cn": "该研究评估了通用表格基础模型（TabICL、TabPFN）与领域专用模型（如scGPT、PRESAGE）在细胞扰动预测中的表现。在跨细胞类型预测、伪批量扰动预测等多个设置中，通用模型展现出竞争力甚至更优的性能。该结果表明，无需领域特定架构的表格基础模型可有效用于预测细胞对遗传和化学扰动的响应，提示其可直接应用于药物耐药预测，包括新辅助免疫治疗耐药性的机器学习建模。",
+      "llm_tldr": "该研究评估了通用表格基础模型（TabICL、TabPFN）与领域专用模型（如scGPT、PRESAGE）在细胞扰动预测中的表现。在跨细胞类型预测、伪批量扰动预测等多个设置中，通用模型展现出竞争力甚至更优的性能。该结果表明，无需领域特定架构的表格基础模型可有效用于预测细胞对遗传和化学扰动的响应，提示其可直接应用于药物耐药预测，包括新辅助免疫治疗耐药性的机器学习建模。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "machine learning drug resistance prediction",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-07-15-738646-v1",
+      "source": "biorxiv",
+      "title": "A multi-agent workflow converts CAR-T patient evidence into experimentally testable hypotheses",
+      "abstract": "The rapid expansion of chimeric antigen receptor (CAR) T cell studies has produced a fragmented evidence landscape linking publications, repository accessions, patient metadata and mechanistic observations. Here we present BioPathfinder, a multi-agent discovery engine for CAR-T research evidence construction, hypothesis generation and validation planning. Unlike existing LLM-based and agentic approaches centered on predefined CAR-T development tasks, BioPathfinder constructs a provenance-tracked resource linking scRNA-seq datasets from treated patients to their publications and uses it to generate diverse, falsifiable and dataset-aware mechanistic hypotheses prioritized for computational and experimental validation by role-specialized LLM reviewer subagents. Applied to the curated CAR-T-treated patient paper-dataset corpus, BioPathfinder nominated candidate mechanisms of CAR-T persistence, dysfunction and therapeutic resistance, including the hypothesis that genes associated with an NK-like transition program could be targeted to reduce CAR-T exhaustion and promote persistence. Patient scRNA-seq analysis showed that this NK-like transition-associated program was enriched in exhausted post-infusion CAR-T cell states. Virtual perturbation further prioritized transition-associated KLR-family receptor genes, including KLRC1, KLRD1 and KLRG1. Expert review selected KLRC1, encoding NKG2A, for experimental testing. In vitro and in vivo chronic-stimulation models showed that NKG2A marked CD8+ CAR-T cells with activated and exhaustion-associated phenotypes. NKG2A blockade improved antitumour function and persistence-associated readouts in vivo. These results show that structured clinical single-cell evidence can be transformed by domain-specialized multi-agent systems into experimentally actionable CAR-T engineering hypotheses.\n\nHighlightsO_LIBioPathfinder structures fragmented CAR-T patient evidence into a provenance-tracked paper-dataset resource.\nC_LIO_LIMulti-agent planning and review prioritize experimentally testable mechanisms of CAR-T dysfunction.\nC_LIO_LIExpert selection from BioPathfinder-nominated NK-like transition-associated genes identifies KLRC1/NKG2A blockade as a strategy to promote CAR-T persistence.\nC_LI",
+      "authors": [
+        "Wang, S.",
+        "Li, Y.-R.",
+        "Wang, Q.",
+        "Yang, Y.",
+        "Shen, X.",
+        "Li, H.",
+        "Nan, H.",
+        "Chen, Z.",
+        "Zhu, Y.",
+        "Zhang, B.",
+        "Ding, H.",
+        "Soto, J.",
+        "Park, S.",
+        "Zheng, Y.",
+        "Huang, X.",
+        "Yang, L.",
+        "Li, D.",
+        "Li, S."
+      ],
+      "primary_category": "bioengineering",
+      "categories": [
+        "bioengineering"
+      ],
+      "published": "2026-07-16T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.07.15.738646v1.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "multi-agent workflow utilizing scRNA-seq from CAR-T patients for hypothesis generation about resistance",
+      "llm_evidence_cn": "基于CAR-T患者scRNA-seq数据的多智能体工作流生成耐药相关假设",
+      "llm_evidence": "基于CAR-T患者scRNA-seq数据的多智能体工作流生成耐药相关假设",
+      "canonical_evidence": "基于CAR-T患者scRNA-seq数据的多智能体工作流生成耐药相关假设",
+      "llm_tldr_en": "BioPathfinder multi-agent system integrates CAR-T patient scRNA-seq with publications to generate testable mechanistic hypotheses.",
+      "llm_tldr_cn": "针对CAR-T研究证据碎片化问题，该研究提出BioPathfinder多智能体发现引擎，整合患者scRNA-seq数据与文献，构建可溯源资源并生成可验证的机制假设。该方法可用于挖掘耐药相关单细胞特征，为理解肿瘤免疫治疗耐药提供假设生成新途径。",
+      "llm_tldr": "针对CAR-T研究证据碎片化问题，该研究提出BioPathfinder多智能体发现引擎，整合患者scRNA-seq数据与文献，构建可溯源资源并生成可验证的机制假设。该方法可用于挖掘耐药相关单细胞特征，为理解肿瘤免疫治疗耐药提供假设生成新途径。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "single cell sequencing resistance mechanism",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}

@@ -6,32 +6,29 @@
 </div>
 
 ## 每次日报
-- 最新运行日期：2026-07-23
-- 运行时间：2026-07-23 20:43:38 UTC
+- 最新运行日期：2026-07-24
+- 运行时间：2026-07-24 20:38:05 UTC
 - 运行状态：成功
-- 本次总论文数：3
+- 本次总论文数：2
 - 精读区：0
-- 速读区：3
+- 速读区：2
 
 ### 今日简报（AI）
-今日三篇6分速读论文聚焦AI治疗推理、肺动脉高压多组学及单细胞测序分析工具。  
-最值得关注的是《Medea》中的AI跨背景治疗推理与《Cell-Hub》的端到端单细胞RNA分析界面。  
-建议优先阅读这两篇，了解AI如何辅助生物医学推理及简化单细胞数据分析流程。
-- 详情：[/202607/23/README](/202607/23/README)
+1) 今日速读2篇论文，分别聚焦表格基础模型预测细胞扰动和多智能体工作流转化CAR-T患者证据。  
+2) 最值得关注的结论：表格基础模型在跨生物尺度细胞扰动预测上表现竞争性；多智能体工作流能将临床证据转化为可实验验证的假设。  
+3) 建议后续重点跟踪表格基础模型在基因组学中的应用，并关注多智能体方法辅助临床决策的潜力。
+- 详情：[/202607/24/README](/202607/24/README)
 
 ### 精读区论文标签
 - 本次无精读推荐。
 
 ### 速读区论文标签
-1. [Medea: An AI agent for therapeutic reasoning across biological contexts](/202607/23/biorxiv-10-64898-2026-01-16-696667-v3-medea-an-ai-agent-for-therapeutic-reasoning-across-biological-contexts)  
+1. [Tabular Foundation Models Are Competitive Cellular Perturbation Predictors Across Biological Scales](/202607/24/biorxiv-10-64898-2026-06-28-735106-v3-tabular-foundation-models-are-competitive-cellular-perturbation-predictors-across-biological-scales)  
+   标签：评分：7.0/10、query:neo-resist
+   evidence：评估表格基础模型用于细胞扰动预测，可迁移至药物耐药预测
+2. [A multi-agent workflow converts CAR-T patient evidence into experimentally testable hypotheses](/202607/24/biorxiv-10-64898-2026-07-15-738646-v1-a-multi-agent-workflow-converts-car-t-patient-evidence-into-experimentally-testable-hypotheses)  
    标签：评分：6.0/10、query:neo-resist
-   evidence：用于治疗推理的AI智能体，保留生物学上下文，可应用于耐药分析
-2. [Differential multi-omics analysis of pulmonary arterial hypertension microvascular endothelial cells for differential drug response](/202607/23/biorxiv-10-64898-2026-07-10-737730-v1-differential-multi-omics-analysis-of-pulmonary-arterial-hypertension-microvascular-endothelial-cells-for-differential-drug-response)  
-   标签：评分：6.0/10、query:neo-resist
-   evidence：多组学网络框架可迁移至肿瘤耐药研究
-3. [Cell-Hub: a graphical interface for end-to-end single-cell RNA sequencing analysis](/202607/23/biorxiv-10-64898-2026-07-15-738621-v1-cell-hub-a-graphical-interface-for-end-to-end-single-cell-rna-sequencing-analysis)  
-   标签：评分：6.0/10、query:neo-resist
-   evidence：为单细胞RNA测序分析提供图形界面，可用于耐药机制研究
+   evidence：基于CAR-T患者scRNA-seq数据的多智能体工作流生成耐药相关假设
 
 
 <div class="dpr-home-promo-card">
