@@ -6,29 +6,30 @@
 </div>
 
 ## 每次日报
-- 最新运行日期：2026-07-24
-- 运行时间：2026-07-24 20:38:05 UTC
+- 最新运行日期：2026-07-25
+- 运行时间：2026-07-25 20:44:22 UTC
 - 运行状态：成功
-- 本次总论文数：2
+- 本次总论文数：3
 - 精读区：0
-- 速读区：2
+- 速读区：3
 
 ### 今日简报（AI）
-1) 今日速读2篇论文，分别聚焦表格基础模型预测细胞扰动和多智能体工作流转化CAR-T患者证据。  
-2) 最值得关注的结论：表格基础模型在跨生物尺度细胞扰动预测上表现竞争性；多智能体工作流能将临床证据转化为可实验验证的假设。  
-3) 建议后续重点跟踪表格基础模型在基因组学中的应用，并关注多智能体方法辅助临床决策的潜力。
-- 详情：[/202607/24/README](/202607/24/README)
+今日速读3篇论文，聚焦聚类算法、组织分子图谱和基因功能注释工具。最值得关注的是遗传算法引导的度量聚类（GCM）与自动化空间功能建模平台。建议优先尝试GeneAutomate等浏览器工具，快速上手双基因列表分析。
+- 详情：[/202607/25/README](/202607/25/README)
 
 ### 精读区论文标签
 - 本次无精读推荐。
 
 ### 速读区论文标签
-1. [Tabular Foundation Models Are Competitive Cellular Perturbation Predictors Across Biological Scales](/202607/24/biorxiv-10-64898-2026-06-28-735106-v3-tabular-foundation-models-are-competitive-cellular-perturbation-predictors-across-biological-scales)  
-   标签：评分：7.0/10、query:neo-resist
-   evidence：评估表格基础模型用于细胞扰动预测，可迁移至药物耐药预测
-2. [A multi-agent workflow converts CAR-T patient evidence into experimentally testable hypotheses](/202607/24/biorxiv-10-64898-2026-07-15-738646-v1-a-multi-agent-workflow-converts-car-t-patient-evidence-into-experimentally-testable-hypotheses)  
+1. [GCM: metric-guided clustering by genetic algorithm for correlation-defined modules](/202607/25/biorxiv-10-64898-2026-07-15-738632-v1-gcm-metric-guided-clustering-by-genetic-algorithm-for-correlation-defined-modules)  
    标签：评分：6.0/10、query:neo-resist
-   evidence：基于CAR-T患者scRNA-seq数据的多智能体工作流生成耐药相关假设
+   evidence：用于基因模块的机器学习聚类方法
+2. [An automated platform for spatial functional modeling and fingerprint analysis of tissue molecular landscapes](/202607/25/biorxiv-10-64898-2026-07-15-738836-v1-an-automated-platform-for-spatial-functional-modeling-and-fingerprint-analysis-of-tissue-molecular-landscapes)  
+   标签：评分：6.0/10、query:neo-resist
+   evidence：空间生物信息学平台，可用于分析耐药相关的通路互作
+3. [GeneAutomate: A Browser-Based, Integer-Indexed Platform for Dual-Gene-List Functional Annotation and Interactive Network Visualization](/202607/25/biorxiv-10-64898-2026-07-16-738882-v1-geneautomate-a-browser-based-integer-indexed-platform-for-dual-gene-list-functional-annotation-and-interactive-network-visualization)  
+   标签：评分：6.0/10、query:neo-resist
+   evidence：基于浏览器的双基因列表功能注释工具，可用于耐药相关基因集分析
 
 
 <div class="dpr-home-promo-card">

@@ -1,0 +1,54 @@
+{
+  "label": "2026-07-25",
+  "date": "2026-07-25",
+  "generated_at": "2026-07-25T20:44:28",
+  "count": 3,
+  "papers": [
+    {
+      "paper_id": "202607/25/biorxiv-10-64898-2026-07-15-738632-v1-gcm-metric-guided-clustering-by-genetic-algorithm-for-correlation-defined-modules",
+      "section": "quick",
+      "title_en": "GCM: metric-guided clustering by genetic algorithm for correlation-defined modules",
+      "authors": "Madrigal-Roca, L. J., Kelly, J. K.",
+      "date": "2026-07-20",
+      "pdf": "https://www.biorxiv.org/content/10.64898/2026.07.15.738632v1.full.pdf",
+      "score": "6.0",
+      "evidence": "用于基因模块的机器学习聚类方法",
+      "tldr": "基因共表达分析常通过贪心算法聚类后测量相关性，但优化目标与最终评估不一致。本文提出GCM，将模块检测视为块对角单因子高斯模型的最大似然推断，并用模因遗传算法全局优化相关性的轮廓似然。在噪声扫描中，GCM稳定性优于层次聚类和k-means，消融实验证实局部搜索是关键；模块数量未知时优势仍存在。GCM在乳腺癌RNA-seq中恢复出预测肿瘤与正常状态的相干模块，仅依赖NumPy和SciPy，提供原则性模型选择。",
+      "tags": "query:neo-resist",
+      "abstract_en": "Gene co-expression analyses identify \"good\" modules by a correlation criterion. However, standard pipelines detect modules with greedy algorithms that optimize other quantities and only measure correlation afterwards. We present a method called Genetic Clustering by Metric (GCM), an open-source Python tool that closes this gap by treating module detection as maximum-likelihood inference and solving it globally. In GCM, the correlation objective is, up to a constant and the sample-size factor, the profile log-likelihood of an explicit generative model: a block-diagonal one-factor Gaussian in which each module is a single regulator with equal-magnitude loadings. This bases model selection on a principled footing through a genuine BIC/AIC in correlation space. GCM maximizes this likelihood with a memetic genetic algorithm: a population-based search hybridized with a greedy local refinement that reassigns genes after the fact, a move the agglomerative clustering at the core of co-expression pipelines cannot make. Across a replicated noise sweep, GCM reproducibly surpasses hierarchical correlation clustering and k-means with the lowest variance, and an ablation shows the local-search step is responsible; the advantage persists when the number of modules is unknown and when unstructured genes must be ignored. GCM faithfully optimizes geometric indices on the Iris benchmark dataset. For a breast-cancer RNA-seq it recovers coherent modules that predict tumor-versus-normal status.GCM depends only on NumPy and SciPy and exposes one swappable-metric interface with single- and multi-objective modes.",
+      "source": "biorxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202607/25/biorxiv-10-64898-2026-07-15-738836-v1-an-automated-platform-for-spatial-functional-modeling-and-fingerprint-analysis-of-tissue-molecular-landscapes",
+      "section": "quick",
+      "title_en": "An automated platform for spatial functional modeling and fingerprint analysis of tissue molecular landscapes",
+      "authors": "Hajihosseini, M., Patino-Martinez, E., Ghosal, R., Kaplan, M. J., Pyne, S.",
+      "date": "2026-07-21",
+      "pdf": "https://www.biorxiv.org/content/10.64898/2026.07.15.738836v1.full.pdf",
+      "score": "6.0",
+      "evidence": "空间生物信息学平台，可用于分析耐药相关的通路互作",
+      "tldr": "现有空间转录组分析方法缺乏统一框架来建模组织切片内通路相互作用的空间变化。SFinx结合无参考反卷积、通路活性重建与空间函数数据分析，将混合点转录组转化为连续空间通路活性景观。应用于狼疮肾炎小鼠模型，识别出解剖限制的炎症域及通路串扰异质性，并量化疾病表型与通路间的空间变化关联。该方法揭示了传统分析无法观察到的炎症信号空间组织，为研究空间协调的生物学过程提供通用策略。",
+      "tags": "query:neo-resist",
+      "abstract_en": "Spatial transcriptomics (ST) enables high resolution molecular profiling while preserving tissue architecture, creating new opportunities to investigate how disease-associated pathways are organized within tissues. However, existing analytical approaches largely focus on individual pathways or cell types and do not provide a unified framework for modeling spatially varying pathway interactions across tissue sections and anatomical planes. Here, we present an integrative framework, Spatial Fingerprints Analytics (SFinx), that combines reference-free deconvolution, pathway activity reconstruction, and Spatial Functional Data Analysis (SFDA) to map localized pathway activity and pathway phenotype interactions in complex tissues. Applying SFinx to10x Visium ST datasets from murine lupus nephritis, we reconstructed continuous spatial landscapes of pathway activity and disease-associated phenotypes across kidney sections. This approach identified anatomically restricted inflammatory domains characterized by coordinated activation of immune pathways and revealed substantial spatial heterogeneity in pathway crosstalk across renal compartments. Using generalized additive models with tensor-product splines, we quantified spatially varying associations between lupus nephritis and neutrophil activation pathways across tissue sections, uncovering regions with both positive and negative relationships that would be obscured by conventional bulk analyses. Multi-slice integration further demonstrated reproducible spatial interaction patterns while accounting for section-specific variability. Together, SFinx transforms mixed-spot transcriptomic measurements into interpretable spatial pathway landscapes and interaction maps, providing a general framework for identifying localized disease mechanisms. This approach reveals previously unrecognized spatial organization of inflammatory signaling in lupus nephritis and presents a broadly applicable strategy for studying spatially coordinated biological processes in autoimmune disorders, cancer, and neurodegenerative diseases.",
+      "source": "biorxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202607/25/biorxiv-10-64898-2026-07-16-738882-v1-geneautomate-a-browser-based-integer-indexed-platform-for-dual-gene-list-functional-annotation-and-interactive-network-visualization",
+      "section": "quick",
+      "title_en": "GeneAutomate: A Browser-Based, Integer-Indexed Platform for Dual-Gene-List Functional Annotation and Interactive Network Visualization",
+      "authors": "Singh, R. P., Kumar, A.",
+      "date": "2026-07-21",
+      "pdf": "https://www.biorxiv.org/content/10.64898/2026.07.16.738882v1.full.pdf",
+      "score": "6.0",
+      "evidence": "基于浏览器的双基因列表功能注释工具，可用于耐药相关基因集分析",
+      "tldr": "现有基因列表比较工具多需本地安装或缺乏交互可视化，且大多仅支持单列表分析。GeneAutomate是一个基于浏览器的双基因列表功能注释平台，通过预编译的整数索引数据库实现无需服务器端查询的快速ORA和GSEA分析，并提供13种D3.js和Cytoscape.js交互式可视化，包括RRHO热图、GO-slim功能指纹和交叉对话图。它解决了现有工具在速度和可视化集成上的不足。该工具无需安装或登录，目前支持人类基因，将在后续版本扩展物种和分析功能。",
+      "tags": "query:neo-resist",
+      "abstract_en": "Comparative interpretation of two gene lists, for example, two treatment arms, two tissues, or a discovery and a validation cohort, is a routine task in functional genomics. While several tools offer dual-list comparison (e.g., EnrichmentMap, RRHO packages), they typically require local software installation, R/Bioconductor, or manual reconciliation of separate single-list outputs. Most widely used web-based enrichment tools (DAVID, g:Profiler, Enrichr, ShinyGO, WebGestalt) are built around the analysis of a single gene list at a time, and those that support comparison often lack interactive, publication-ready visualization or depend on server-side query latency. Here we present GeneAutomate, a browser-based tool purpose-built for side-by-side comparison of two gene lists. GeneAutomate performs Over-Representation Analysis (ORA) against Gene Ontology (GO) and Reactome using an exact hypergeometric test with Benjamini-Hochberg false discovery rate correction, and Gene Set Enrichment Analysis (GSEA) when ranked (log2 fold-change) input is supplied, alongside Protein-Protein Interaction (PPI) subgraph extraction from BioGRID physical interactions. All reference data (Gene Ontology, Reactome, BioGRID, and NCBI/Ensembl identifier cross-references) are pre-compiled offline into a single integer-indexed database of approximately 32 MB for Homo sapiens, in which every gene identifier Ensembl ID, Entrez ID, official symbol, or alias is resolved to one canonical integer prior to any user query. This design removes live database round-trips from the runtime path, enabling fast, at-your-desk enrichment without installation or a server-side per-query bottleneck. The tool renders thirteen interactive, D3.js- and Cytoscape.js-based comparative visualizations, including a Rank-Rank Hypergeometric Overlap (RRHO) heatmap, a GO-slim \"Radar/Spider\" functional fingerprint, and chord/edge-bundled cross-talk diagrams that are, to our knowledge, not offered as an integrated set by any existing academic or commercial ORA/GSEA platform. GeneAutomate is an unfunded, individual student project developed with feedback from a professor, and is in its final stage of development. It requires no installation or login. We describe the tool's architecture, statistical methods, and comparative feature set relative to established academic tools (DAVID, ShinyGO, g:Profiler, Enrichr, WebGestalt, STRING, PANTHER, GeneMANIA, Cytoscape, clusterProfiler, GSEA, Metascape) and commercial platforms (IPA, MetaCore, Pathway Studio, iPathwayGuide, Partek Pathway), and we state candidly the current version's limitations, which are planned to be the added in next version: single-species (human-only) coverage, no upstream regulator analysis, and comparison currently limited to two (occasionally three) concurrent lists. GeneAutomate is available at https://geneautomate.tech/.",
+      "source": "biorxiv",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "errors": []
+}
