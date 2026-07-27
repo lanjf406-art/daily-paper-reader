@@ -1,0 +1,252 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-07-27T20:59:54.502808+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 0,
+    "deep_cap": 6,
+    "deep_selected": 0,
+    "quick_candidates": 5,
+    "quick_skim_target": 11,
+    "quick_selected": 5
+  },
+  "deep_dive": [],
+  "quick_skim": [
+    {
+      "id": "biorxiv-10-64898-2026-07-15-724605-v1",
+      "source": "biorxiv",
+      "title": "Deep learning representations of human Immune Health for precision immunology",
+      "abstract": "The human immune system is composed of [~]30-50 distinct cell types, each of which can exist in different states of activation or differentiation. Indeed, the mammalian immune system has evolved to sense and respond to infections, cancers, injuries, and changes in tissue or host homeostasis (1). Moreover, an increasingly large fraction of approved drugs target the immune system directly, and/or cause immune changes (2-4). A key feature of the immune system is to store some of this information, for example as innate or adaptive immune memory (5). In addition, rewiring of immune network architecture induced by disease, environmental exposures, drug treatments, and/or chronological age allows the immune system to store information in the pattern of connections and activity across populations of immune cells. This ensemble information storage, in addition to changes to individual cells, functions as a major way the immune system encodes aspects of immune history and future potential. Genetic information can identify inherited risk alleles, but cannot capture the continual remodeling of the immune system shaped by exposures, infection, inflammation, therapy, and aging (6, 7). To define and use such ensemble immunotypes, we developed a self-supervised deep learning framework that transforms high-dimensional immune profiles into representations of immune health. MAESTRO (MAsked Encoding Set TRansformer with self-distillatiOn) encodes a set of cells from an individual into an embedding that captures immune cell population-level organization. Pretrained on 1,792 peripheral blood samples comprising over 418 million immune cells across 13 clinical diagnoses, MAESTRO learns immune fingerprints that are stable within individuals yet diverse across populations, states of health, disease, and treatment, providing a quantitative basis for comparing immune states across individuals and over time. These fingerprints capture immune architecture beyond coarse cell type proportions, enabling patient-efficient clinical prediction using simple task specific models. MAESTRO model embeddings retain a temporal dimension of immune history and potential, reflecting signatures of past exposures and baseline features that predict future immune responses. Finally, we demonstrate a translational precision immunotherapy application by testing this approach in metastatic Pancreatic Ductal Adenocarcinoma (PDAC), where pretreatment immune landscape circuitry maps enable patient stratification and therapeutic response prediction. Overall, we developed a large, attention-based model that captures deep network architecture of immune states through self-supervised representations of immune cytometry data as a reusable foundation for precision immunology, converting immune complexity into clinically actionable embeddings for diagnosis, monitoring, and therapy selection.",
+      "authors": [
+        "Lee, M. E.",
+        "Kim, J.",
+        "Ionita, M.",
+        "McKeague, M.",
+        "Lee, J.",
+        "Nam, Y.",
+        "Jeong, C.-U.",
+        "Nair, A.",
+        "Moyo, E. T.",
+        "Khavin, I.",
+        "Wang, K.",
+        "Shwetank,",
+        "Mathew, D. E.",
+        "Fang, V.",
+        "Fensterheim, B. A.",
+        "Pattekar, A.",
+        "Rangwala, Z.",
+        "Bar-Or, A.",
+        "Abramoff, B. A.",
+        "Rhee, R.",
+        "Schuster, S.",
+        "Huang, A. C.",
+        "Meyer, N.",
+        "Levy, M.",
+        "Garfall, A.",
+        "Bhoj, V.",
+        "Kaminski, M.",
+        "Naji, A.",
+        "Yang, E.",
+        "Cabanski, C.",
+        "Connolly, J.",
+        "Guercio, L.",
+        "Wagenaar, J.",
+        "Baxter, A. E.",
+        "Maseda, D.",
+        "Apostolidis, S. A.",
+        "Painter, M. M.",
+        "Vonderheide, R. H.",
+        "Greenplate, A. R.",
+        "Kim, D.",
+        "Wherry, E. J."
+      ],
+      "primary_category": "immunology",
+      "categories": [
+        "immunology"
+      ],
+      "published": "2026-07-20T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.07.15.724605v1.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "deep learning for immune health profiling, applicable to immunotherapy resistance",
+      "llm_evidence_cn": "深度学习免疫健康分析，可用于免疫治疗耐药",
+      "llm_evidence": "深度学习免疫健康分析，可用于免疫治疗耐药",
+      "canonical_evidence": "深度学习免疫健康分析，可用于免疫治疗耐药",
+      "llm_tldr_en": "Deep learning representations of human immune health for precision immunology, relevant to understanding resistance to neoadjuvant immunotherapy.",
+      "llm_tldr_cn": "该论文利用深度学习构建免疫健康图谱，表征免疫细胞状态和网络，为精准免疫学提供基础，其方法可用于研究新辅助免疫治疗耐药机制及免疫微环境变化。",
+      "llm_tldr": "该论文利用深度学习构建免疫健康图谱，表征免疫细胞状态和网络，为精准免疫学提供基础，其方法可用于研究新辅助免疫治疗耐药机制及免疫微环境变化。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "resistance to neoadjuvant immunotherapy",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-07-13-738201-v1",
+      "source": "biorxiv",
+      "title": "Quantifying Cross-Modal Shared Information Between Histomorphology and Spatial Transcriptomics via Spatiotemporal Trajectory Correlation",
+      "abstract": "Histopathological imaging and spatial transcriptomics (ST) provide synergistic morphological and molecular insights into tissue architecture. While conventional downstream analyses predominantly adopt a discrete paradigm, such as segmenting histological images or identifying spatial domains, emerging trajectory reconstruction methods offer a continuous perspective for analyzing these modalities. However, most current studies are confined to single-modality or single-organ analyses, lacking systematic integration across modalities and multiple organs. To address this limitation, we performed trajectory reconstruction on ST-derived gene expression data and on histopathological morphological features extracted using ten widely used pathology pretrained models across multiple cancer samples from six organs. The results demonstrate that trajectory reconstruction, as a continuous analytical framework, effectively bridges spatial transcriptomics and histopathological imaging. More importantly, we propose an innovative framework that uses trajectory pseudotime as a mediating variable to quantify the extent of information sharing between molecular and morphological features. This framework not only provides a new perspective for understanding the intrinsic links between modalities but also establishes a solid theoretical and methodological foundation for future cross-modal translation studies.",
+      "authors": [
+        "he, X.",
+        "Feng, M.",
+        "Wang, A.",
+        "Huang, X.",
+        "Luo, X.",
+        "Liu, X.",
+        "Sun, T.",
+        "Wang, L.",
+        "Xu, K."
+      ],
+      "primary_category": "pathology",
+      "categories": [
+        "pathology"
+      ],
+      "published": "2026-07-19T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.07.13.738201v1.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "multi-omics integration of histomorphology and spatial transcriptomics for tumor analysis",
+      "llm_evidence_cn": "整合组织形态学和空间转录组学的多组学肿瘤分析",
+      "llm_evidence": "整合组织形态学和空间转录组学的多组学肿瘤分析",
+      "canonical_evidence": "整合组织形态学和空间转录组学的多组学肿瘤分析",
+      "llm_tldr_en": "Integrates histomorphology and spatial transcriptomics via trajectory correlation, enabling multi-omics characterization of tumor tissue, relevant to resistance.",
+      "llm_tldr_cn": "该论文提出跨模态共享信息量化方法，通过时空轨迹相关性整合组织形态学和空间转录组学，为多组学表征肿瘤微环境提供新视角，可用于新辅助治疗耐药的微环境分析。",
+      "llm_tldr": "该论文提出跨模态共享信息量化方法，通过时空轨迹相关性整合组织形态学和空间转录组学，为多组学表征肿瘤微环境提供新视角，可用于新辅助治疗耐药的微环境分析。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "multi omics characterization of tumor resistance",
+      "matched_requirement_id": "req-10",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-07-17-739273-v1",
+      "source": "biorxiv",
+      "title": "Inactivation of HIF-P4H-1 Stabilizes IKKα, Modulates Non-Canonical NF-κB Signaling, and Sensitizes Cancer Cells to Cell Death",
+      "abstract": "Hypoxia and NF-kB signaling are well-established drivers of cancer progression and treatment failure, yet the oxygen-dependent regulation of non-canonical NF-kB signaling remains poorly defined. Here, we identify hypoxia-inducible factor prolyl-4-hydroxylase-1 (HIF-P4H-1/EGLN2) as a key modulator of the non-canonical NF-kB pathway. Using integrated biochemical, genetic, proteomic, and transcriptomic analyses across human cell lines, mouse models, and clinical tumor samples, we demonstrate that HIF-P4H-1 directly interacts with and hydroxylates IKKa at proline 367, thereby promoting its ubiquitination and proteasomal degradation. Loss or inhibition of HIF-P4H-1 results in accumulation of IKKa, impaired NF-kB2/p100 processing to p52, destabilization of NF-kB-inducing kinase (NIK), and suppression of non-canonical NF-kB-dependent survival gene expression. Structural modeling and mutagenesis identify proline 367 hydroxylation as a critical determinant of IKKa turnover. Analysis of TCGA cohorts reveals an inverse correlation between HIF-P4H-1 and IKKa expression, with elevated HIF-P4H-1 associating with advanced tumor stage and reduced overall survival in clear cell renal cell carcinoma. Functionally, targeting HIF-P4H-1 sensitizes cancer cells to cell death and impairs proliferation, clonogenic growth, and migration. Together, our findings define a previously unrecognized oxygen-dependent mechanism regulating non-canonical NF-kB signaling through direct control of IKKa stability and nominate the HIF-P4H-1-IKKa axis as a potential therapeutic vulnerability in hypoxia-adapted malignancies.",
+      "authors": [
+        "Ullah, K."
+      ],
+      "primary_category": "cancer biology",
+      "categories": [
+        "cancer biology"
+      ],
+      "published": "2026-07-20T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.07.17.739273v1.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "HIF-P4H-1 inactivation sensitizes cancer cells to cell death via NF-kB signaling",
+      "llm_evidence_cn": "HIF-P4H-1失活通过NF-κB信号增敏癌细胞死亡",
+      "llm_evidence": "HIF-P4H-1失活通过NF-κB信号增敏癌细胞死亡",
+      "canonical_evidence": "HIF-P4H-1失活通过NF-κB信号增敏癌细胞死亡",
+      "llm_tldr_en": "This paper identifies HIF-P4H-1 as a modulator of non-canonical NF-kB signaling; its inactivation stabilizes IKKa and sensitizes cancer cells to cell death, suggesting a new mechanism to overcome treatment resistance.",
+      "llm_tldr_cn": "缺氧和NF-κB信号是癌症进展和治疗失败的重要驱动因素，但非经典NF-κB通路的氧依赖性调控未知。本研究通过整合生化、遗传、蛋白质组和转录组分析，发现HIF-P4H-1羟化IKKα并促使其降解。抑制HIF-P4H-1可稳定IKKα，增强非经典NF-κB信号，并提高癌细胞对细胞死亡的敏感性，为克服耐药提供新靶点。",
+      "llm_tldr": "缺氧和NF-κB信号是癌症进展和治疗失败的重要驱动因素，但非经典NF-κB通路的氧依赖性调控未知。本研究通过整合生化、遗传、蛋白质组和转录组分析，发现HIF-P4H-1羟化IKKα并促使其降解。抑制HIF-P4H-1可稳定IKKα，增强非经典NF-κB信号，并提高癌细胞对细胞死亡的敏感性，为克服耐药提供新靶点。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "mechanisms of resistance to neoadjuvant therapy in tumors",
+      "matched_requirement_id": "req-7",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-07-18-734896-v1",
+      "source": "biorxiv",
+      "title": "Quantitative Description of C. elegans mRNA Landscapes From High Coverage Single Cell Transcriptomes",
+      "abstract": "Single cell gene expression profiling provides a rich and systematic characterization of complex systems which revolutionized the way biologists can interrogate transcriptomes. However, the amount and complexity of data generated by such methods poses new challenges for biologists who are trying to extract detailed insights on the genetic programs that drive cellular functions and differentiation. We propose a radically different approach to the analysis of scRNAseq data that provides much more intuitive understanding of cell specific gene expression programs. These high coverage cells, were found in all five scRNA-seq datasets we investigated and constitute direct quantitative experimental observations of the mRNA content of individual cells. We focussed on ~4500 individual cells with coverage ranging from 15,000 to hundreds of thousands of Unique Molecular Identifiers. Clustering these cells using a supervised strategy we devised allowed to describe cell specific mRNA contents with unprecedented resolution. We identified genes that are dominating cell specific transcriptomes as well as low expression genes that are restricted to particular cell types but are all but undetectable at lower coverage threshold. For each cell type (or subtype) we characterized, we identified a set of genes with expression restricted to those cells that were not previously associated with the corresponding tissue.",
+      "authors": [
+        "Bernard, F.",
+        "Kandel, E.",
+        "Dargere, D.",
+        "Cornes, E.",
+        "Dupuy, D."
+      ],
+      "primary_category": "systems biology",
+      "categories": [
+        "systems biology"
+      ],
+      "published": "2026-07-21T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.07.18.734896v1.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "single cell transcriptome analysis method for high coverage data",
+      "llm_evidence_cn": "单细胞转录组分析方法，适用于高覆盖度数据",
+      "llm_evidence": "单细胞转录组分析方法，适用于高覆盖度数据",
+      "canonical_evidence": "单细胞转录组分析方法，适用于高覆盖度数据",
+      "llm_tldr_en": "This paper proposes a novel analytical approach for single-cell RNA-seq data that extracts quantitative mRNA landscapes from high-coverage cells.",
+      "llm_tldr_cn": "单细胞转录组数据复杂程度高，现有方法难以直观解读。该研究提出一种新颖分析方法，通过高覆盖度细胞直接定量观测mRNA含量，实现对细胞特异性基因表达程序的更直观理解。该方法适用于多种单细胞数据集，可为耐药机制研究中单细胞转录组分析提供有力工具。",
+      "llm_tldr": "单细胞转录组数据复杂程度高，现有方法难以直观解读。该研究提出一种新颖分析方法，通过高覆盖度细胞直接定量观测mRNA含量，实现对细胞特异性基因表达程序的更直观理解。该方法适用于多种单细胞数据集，可为耐药机制研究中单细胞转录组分析提供有力工具。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "single cell sequencing resistance mechanism",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-07-18-739355-v1",
+      "source": "biorxiv",
+      "title": "Antibody-drug conjugate combination therapy targeting LGR5 and MET with different payloads enhances efficacy in preclinical colorectal cancer models",
+      "abstract": "Leucine-rich repeat-containing G protein-coupled receptor 5 (LGR5) is a marker of cancer stem-like cells frequently upregulated in colorectal cancer (CRC) with lower expression in normal tissues, making it a favorable target for antibody-drug conjugates (ADCs). ADCs combine antibody specificity with potent cytotoxic payloads to enhance efficacy while minimizing systemic toxicity. LGR5-targeting ADCs incorporating different payloads demonstrate strong initial tumor inhibition, yet tumors eventually recur due in part to LGR5 downregulation, necessitating more effective strategies to prevent relapse. We show treatment with chemotherapies or an LGR5-targeting ADC coupled to a topoisomerase 1 inhibitor payload (8E11-CPT2) reduces LGR5 levels and increases MET receptor expression and/or activation in CRC cells, supporting a therapeutic approach to target LGR5 and MET simultaneously. Accordingly, we engineered a MET-targeting ADC (ABT-700-SG3199) via site-specific conjugation of the anti-MET antibody telisotuzumab (ABT-700) with the DNA-crosslinking pyrrolobenzodiazepine (PBD) dimer SG3199. ABT-700-SG3199 exhibited superior potency and efficacy in CRC models compared to the clinical-stage MET-targeting ADCs ABBV-399 and ABBV-400, which use the same antibody backbone conjugated to different payloads. Treatment with ABT-700-SG3199 increased LGR5 expression, and the combination of ABT-700-SG3199 with 8E11-CPT2 enhanced CRC cell-killing efficacy, reinforcing the rationale for a dual-targeting approach. In patient-derived xenografts, combined administration of 8E11-CPT2 and ABT-700-SG3199 markedly delayed tumor relapse and prolonged survival compared with single-agent treatment. Taken together, these findings reveal a reciprocal regulation between MET and LGR5 in response to LGR5- or MET-targeting ADCs in CRC models and support a LGR5/MET dual-targeting therapeutic strategy to enhance efficacy and potentially overcome resistance and relapse.",
+      "authors": [
+        "Subramanian, S.",
+        "High, P. C.",
+        "Guernsey-Biddle, C.",
+        "Cappellino, M. G.",
+        "Liang, Z.",
+        "Aldana, A. M.",
+        "Li, L.",
+        "Pan, S.",
+        "Carmon, K. S."
+      ],
+      "primary_category": "cancer biology",
+      "categories": [
+        "cancer biology"
+      ],
+      "published": "2026-07-20T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.07.18.739355v1.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "targeting LGR5 and MET with ADC combinations to overcome resistance in colorectal cancer",
+      "llm_evidence_cn": "靶向LGR5和MET的ADC组合治疗结直肠癌以克服耐药",
+      "llm_evidence": "靶向LGR5和MET的ADC组合治疗结直肠癌以克服耐药",
+      "canonical_evidence": "靶向LGR5和MET的ADC组合治疗结直肠癌以克服耐药",
+      "llm_tldr_en": "This study explores ADC combination therapy targeting LGR5 and MET with different payloads in colorectal cancer, showing enhanced efficacy and addressing resistance due to LGR5 downregulation.",
+      "llm_tldr_cn": "结直肠癌中LGR5靶向ADC初始有效但肿瘤因LGR5下调复发。本研究提出同时靶向LGR5和MET的ADC组合疗法，使用不同载荷，在临床前模型中显示增强的抗肿瘤效果，并阐明通过协同抑制克服耐药性的机制，为实体瘤ADC组合策略提供新思路。",
+      "llm_tldr": "结直肠癌中LGR5靶向ADC初始有效但肿瘤因LGR5下调复发。本研究提出同时靶向LGR5和MET的ADC组合疗法，使用不同载荷，在临床前模型中显示增强的抗肿瘤效果，并阐明通过协同抑制克服耐药性的机制，为实体瘤ADC组合策略提供新思路。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "mechanisms of resistance to neoadjuvant therapy in tumors",
+      "matched_requirement_id": "req-7",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}

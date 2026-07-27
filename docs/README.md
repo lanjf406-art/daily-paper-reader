@@ -6,34 +6,36 @@
 </div>
 
 ## 每次日报
-- 最新运行日期：2026-07-26
-- 运行时间：2026-07-26 20:56:23 UTC
+- 最新运行日期：2026-07-27
+- 运行时间：2026-07-27 21:06:07 UTC
 - 运行状态：成功
-- 本次总论文数：4
-- 精读区：2
-- 速读区：2
+- 本次总论文数：5
+- 精读区：0
+- 速读区：5
 
 ### 今日简报（AI）
-今日精读两篇高分肿瘤免疫研究，速读两项空间组学与单细胞多模态工具新进展。  
-最值得关注：肿瘤源性硬脂酸通过巨噬细胞Egr2信号抑制抗肿瘤免疫，以及ADC与免疫治疗的联用机制。  
-建议后续关注肿瘤微环境脂质代谢与免疫逃逸的关联，以及ADC联合免疫疗法的临床转化潜力。
-- 详情：[/202607/26/README](/202607/26/README)
+今日速读5篇论文，聚焦深度学习免疫健康表示、空间转录组学跨模态共享信息及HIF-P4H-1失活与癌症信号调控。最值得关注的是7分论文《Deep learning representations of human Immune Health for precision immunology》，其深度学习框架有望推动精准免疫学发展。建议普通读者优先了解免疫健康表征的AI方法，关注其临床转化潜力。
+- 详情：[/202607/27/README](/202607/27/README)
 
 ### 精读区论文标签
-1. [Tumor-derived stearic acid induces macrophage Egr2 signaling to suppress anti-tumor immunity in breast cancer](/202607/26/biorxiv-10-64898-2026-07-15-738781-v1-tumor-derived-stearic-acid-induces-macrophage-egr2-signaling-to-suppress-anti-tumor-immunity-in-breast-cancer)  
-   标签：评分：8.0/10、query:neo-resist
-   evidence：肿瘤来源硬脂酸诱导巨噬细胞Egr2信号抑制抗肿瘤免疫，直接关联肿瘤微环境介导的耐药
-2. [Mechanisms regulating combination effect of antibody-drug conjugates and cancer immunotherapy](/202607/26/biorxiv-10-64898-2026-07-17-738956-v1-mechanisms-regulating-combination-effect-of-antibody-drug-conjugates-and-cancer-immunotherapy)  
-   标签：评分：8.0/10、query:neo-resist
-   evidence：癌症免疫治疗耐药机制
+- 本次无精读推荐。
 
 ### 速读区论文标签
-1. [An automated platform for spatial functional modeling and fingerprint analysis of tissue molecular landscapes](/202607/26/biorxiv-10-64898-2026-07-15-738836-v1-an-automated-platform-for-spatial-functional-modeling-and-fingerprint-analysis-of-tissue-molecular-landscapes)  
+1. [Deep learning representations of human Immune Health for precision immunology](/202607/27/biorxiv-10-64898-2026-07-15-724605-v1-deep-learning-representations-of-human-immune-health-for-precision-immunology)  
    标签：评分：7.0/10、query:neo-resist
-   evidence：空间转录组框架用于组织分子景观，可应用于耐药中的肿瘤微环境分析
-2. [Unifying multimodal single-cell data with a mixture-of-experts β-variational autoencoder framework](/202607/26/biorxiv-10-1101-2025-02-28-640429-v3-unifying-multimodal-single-cell-data-with-a-mixture-of-experts--variational-autoencoder-framework)  
+   evidence：深度学习免疫健康分析，可用于免疫治疗耐药
+2. [Quantifying Cross-Modal Shared Information Between Histomorphology and Spatial Transcriptomics via Spatiotemporal Trajectory Correlation](/202607/27/biorxiv-10-64898-2026-07-13-738201-v1-quantifying-cross-modal-shared-information-between-histomorphology-and-spatial-transcriptomics-via-spatiotemporal-trajectory-correlation)  
    标签：评分：6.0/10、query:neo-resist
-   evidence：单细胞数据整合方法，可用于耐药机制分析
+   evidence：整合组织形态学和空间转录组学的多组学肿瘤分析
+3. [Inactivation of HIF-P4H-1 Stabilizes IKKα, Modulates Non-Canonical NF-κB Signaling, and Sensitizes Cancer Cells to Cell Death](/202607/27/biorxiv-10-64898-2026-07-17-739273-v1-inactivation-of-hif-p4h-1-stabilizes-ikk-modulates-non-canonical-nf-b-signaling-and-sensitizes-cancer-cells-to-cell-death)  
+   标签：评分：6.0/10、query:neo-resist
+   evidence：HIF-P4H-1失活通过NF-κB信号增敏癌细胞死亡
+4. [Quantitative Description of C. elegans mRNA Landscapes From High Coverage Single Cell Transcriptomes](/202607/27/biorxiv-10-64898-2026-07-18-734896-v1-quantitative-description-of-c-elegans-mrna-landscapes-from-high-coverage-single-cell-transcriptomes)  
+   标签：评分：6.0/10、query:neo-resist
+   evidence：单细胞转录组分析方法，适用于高覆盖度数据
+5. [Antibody-drug conjugate combination therapy targeting LGR5 and MET with different payloads enhances efficacy in preclinical colorectal cancer models](/202607/27/biorxiv-10-64898-2026-07-18-739355-v1-antibody-drug-conjugate-combination-therapy-targeting-lgr5-and-met-with-different-payloads-enhances-efficacy-in-preclinical-colorectal-cancer-models)  
+   标签：评分：6.0/10、query:neo-resist
+   evidence：靶向LGR5和MET的ADC组合治疗结直肠癌以克服耐药
 
 
 <div class="dpr-home-promo-card">

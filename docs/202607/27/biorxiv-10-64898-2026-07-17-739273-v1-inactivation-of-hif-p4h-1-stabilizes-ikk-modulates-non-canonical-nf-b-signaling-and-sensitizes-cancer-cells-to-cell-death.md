@@ -1,0 +1,24 @@
+---
+title: "Inactivation of HIF-P4H-1 Stabilizes IKKα, Modulates Non-Canonical NF-κB Signaling, and Sensitizes Cancer Cells to Cell Death"
+title_zh: HIF-P4H-1的失活稳定IKKα、调节非经典NF-κB信号并增强癌细胞对细胞死亡的敏感性
+authors: "Ullah, K."
+date: 2026-07-20
+pdf: "https://www.biorxiv.org/content/10.64898/2026.07.17.739273v1.full.pdf"
+tags: ["query:neo-resist"]
+score: 6.0
+evidence: HIF-P4H-1失活通过NF-κB信号增敏癌细胞死亡
+tldr: 低氧和NF-κB信号是癌症进展的关键驱动因素，但非经典NF-κB的氧依赖调控机制不明。本研究通过整合生化、遗传、蛋白质组等方法，发现HIF-P4H-1通过羟基化IKKα的Pro367促进其泛素化降解，从而抑制非经典NF-κB信号；抑制HIF-P4H-1导致IKKα积累、p100加工受阻、NIK不稳定及生存基因表达下调，并增强癌细胞死亡敏感性。TCGA数据显示HIF-P4H-1与IKKα负相关，且高表达与肾癌不良预后相关。该发现揭示了氧依赖调控非经典NF-κB的新机制，并提出HIF-P4H-1-IKKα轴作为低氧适应肿瘤的潜在治疗靶点。
+source: biorxiv
+selection_source: fresh_fetch
+figures_json: "[{\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-07-17-739273-v1/fig-001.webp\", \"caption\": \"\", \"page\": 0, \"index\": 1, \"width\": 2098, \"height\": 2676, \"label\": \"Figure\"}, {\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-07-17-739273-v1/fig-002.webp\", \"caption\": \"\", \"page\": 0, \"index\": 2, \"width\": 2096, \"height\": 2468, \"label\": \"Figure\"}, {\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-07-17-739273-v1/fig-003.webp\", \"caption\": \"\", \"page\": 0, \"index\": 3, \"width\": 2138, \"height\": 2251, \"label\": \"Figure\"}, {\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-07-17-739273-v1/fig-004.webp\", \"caption\": \"\", \"page\": 0, \"index\": 4, \"width\": 1961, \"height\": 2637, \"label\": \"Figure\"}, {\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-07-17-739273-v1/fig-005.webp\", \"caption\": \"\", \"page\": 0, \"index\": 5, \"width\": 1938, \"height\": 2533, \"label\": \"Figure\"}, {\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-07-17-739273-v1/fig-006.webp\", \"caption\": \"\", \"page\": 0, \"index\": 6, \"width\": 2040, \"height\": 2313, \"label\": \"Figure\"}, {\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-07-17-739273-v1/fig-007.webp\", \"caption\": \"\", \"page\": 0, \"index\": 7, \"width\": 2005, \"height\": 2006, \"label\": \"Figure\"}, {\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-07-17-739273-v1/fig-008.webp\", \"caption\": \"\", \"page\": 0, \"index\": 8, \"width\": 2019, \"height\": 1872, \"label\": \"Figure\"}]"
+motivation: 低氧和NF-κB信号驱动癌症进展，但非经典NF-κB通路是否受氧依赖调控及其机制尚不清楚。
+method: 整合生化、遗传、蛋白质组、转录组分析，结合结构建模、突变及临床样本和TCGA数据库验证。
+result: HIF-P4H-1直接羟基化IKKα的Pro367促其降解；抑制HIF-P4H-1导致IKKα积累、p100加工受阻、NIK不稳定，抑制生存基因表达并增强癌细胞死亡。
+conclusion: 发现氧依赖调控非经典NF-κB的新机制，HIF-P4H-1-IKKα轴是低氧适应肿瘤的潜在治疗靶点。
+---
+
+## 摘要
+低氧和NF-κB信号是癌症进展和治疗失败的公认驱动因素，然而非经典NF-κB信号的氧依赖性调节仍不清楚。在此，我们确定低氧诱导因子脯氨酰-4-羟化酶-1（HIF-P4H-1/EGLN2）是非经典NF-κB通路的关键调节因子。通过整合人细胞系、小鼠模型和临床肿瘤样本中的生化、遗传、蛋白质组和转录组分析，我们证明HIF-P4H-1直接与IKKα相互作用并在脯氨酸367位点使其羟基化，从而促进其泛素化和蛋白酶体降解。HIF-P4H-1的缺失或抑制导致IKKα积累、NF-κB2/p100向p52加工受损、NF-κB诱导激酶（NIK）不稳定以及非经典NF-κB依赖性存活基因表达抑制。结构建模和诱变分析确定脯氨酸367羟基化是IKKα转换的关键决定因素。TCGA队列分析显示HIF-P4H-1与IKKα表达呈负相关，在透明细胞肾细胞癌中，HIF-P4H-1升高与肿瘤晚期和总生存期降低相关。功能上，靶向HIF-P4H-1可增强癌细胞对细胞死亡的敏感性，并抑制增殖、克隆形成和迁移。总之，我们的发现定义了一种先前未被识别的氧依赖性机制，该机制通过直接控制IKKα稳定性来调节非经典NF-κB信号，并将HIF-P4H-1-IKKα轴指定为低氧适应恶性肿瘤的潜在治疗脆弱性。
+
+## Abstract
+Hypoxia and NF-kB signaling are well-established drivers of cancer progression and treatment failure, yet the oxygen-dependent regulation of non-canonical NF-kB signaling remains poorly defined. Here, we identify hypoxia-inducible factor prolyl-4-hydroxylase-1 (HIF-P4H-1/EGLN2) as a key modulator of the non-canonical NF-kB pathway. Using integrated biochemical, genetic, proteomic, and transcriptomic analyses across human cell lines, mouse models, and clinical tumor samples, we demonstrate that HIF-P4H-1 directly interacts with and hydroxylates IKKa at proline 367, thereby promoting its ubiquitination and proteasomal degradation. Loss or inhibition of HIF-P4H-1 results in accumulation of IKKa, impaired NF-kB2/p100 processing to p52, destabilization of NF-kB-inducing kinase (NIK), and suppression of non-canonical NF-kB-dependent survival gene expression. Structural modeling and mutagenesis identify proline 367 hydroxylation as a critical determinant of IKKa turnover. Analysis of TCGA cohorts reveals an inverse correlation between HIF-P4H-1 and IKKa expression, with elevated HIF-P4H-1 associating with advanced tumor stage and reduced overall survival in clear cell renal cell carcinoma. Functionally, targeting HIF-P4H-1 sensitizes cancer cells to cell death and impairs proliferation, clonogenic growth, and migration. Together, our findings define a previously unrecognized oxygen-dependent mechanism regulating non-canonical NF-kB signaling through direct control of IKKa stability and nominate the HIF-P4H-1-IKKa axis as a potential therapeutic vulnerability in hypoxia-adapted malignancies.

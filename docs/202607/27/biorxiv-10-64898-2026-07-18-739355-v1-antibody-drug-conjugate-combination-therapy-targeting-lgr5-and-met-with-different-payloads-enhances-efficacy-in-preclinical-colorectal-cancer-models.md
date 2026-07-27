@@ -1,0 +1,24 @@
+---
+title: Antibody-drug conjugate combination therapy targeting LGR5 and MET with different payloads enhances efficacy in preclinical colorectal cancer models
+title_zh: 靶向LGR5和MET的不同载荷抗体-药物偶联物联合疗法在结直肠癌临床前模型中增强疗效
+authors: "Subramanian, S., High, P. C., Guernsey-Biddle, C., Cappellino, M. G., Liang, Z., Aldana, A. M., Li, L., Pan, S., Carmon, K. S."
+date: 2026-07-20
+pdf: "https://www.biorxiv.org/content/10.64898/2026.07.18.739355v1.full.pdf"
+tags: ["query:neo-resist"]
+score: 6.0
+evidence: 靶向LGR5和MET的ADC组合治疗结直肠癌以克服耐药
+tldr: LGR5是结直肠癌干细胞标志物，靶向ADC初始有效但复发，原因是LGR5下调并伴随MET上调。本研究构建了靶向MET的PBD二聚体ADC（ABT-700-SG3199），其效力优于临床阶段类似物，且能上调LGR5表达。联合LGR5-ADC（8E11-CPT2）在细胞和PDX模型中增强杀伤、显著延迟肿瘤复发并延长生存。该工作揭示了MET与LGR5的相互调控，支持双靶向ADC联合策略以克服耐药。
+source: biorxiv
+selection_source: fresh_fetch
+figures_json: "[{\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-07-18-739355-v1/fig-001.webp\", \"caption\": \"\", \"page\": 0, \"index\": 1, \"width\": 1724, \"height\": 2187, \"label\": \"Figure\"}, {\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-07-18-739355-v1/fig-002.webp\", \"caption\": \"\", \"page\": 0, \"index\": 2, \"width\": 1929, \"height\": 2189, \"label\": \"Figure\"}, {\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-07-18-739355-v1/fig-003.webp\", \"caption\": \"\", \"page\": 0, \"index\": 3, \"width\": 1865, \"height\": 2301, \"label\": \"Figure\"}, {\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-07-18-739355-v1/fig-004.webp\", \"caption\": \"\", \"page\": 0, \"index\": 4, \"width\": 1754, \"height\": 1487, \"label\": \"Figure\"}, {\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-07-18-739355-v1/fig-005.webp\", \"caption\": \"\", \"page\": 0, \"index\": 5, \"width\": 1913, \"height\": 2138, \"label\": \"Figure\"}, {\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-07-18-739355-v1/fig-006.webp\", \"caption\": \"\", \"page\": 0, \"index\": 6, \"width\": 1854, \"height\": 1837, \"label\": \"Figure\"}]"
+motivation: LGR5靶向ADC治疗后肿瘤复发，机制涉及LGR5下调与MET上调，需联合靶向MET以克服耐药。
+method: 分别构建LGR5-ADC（8E11-CPT2）和MET-ADC（ABT-700-SG3199），在CRC细胞系和PDX模型中评估单药及联合疗效。
+result: MET-ADC优于临床阶段ADC，联合LGR5-ADC增强细胞杀伤，在PDX中显著延迟复发并延长生存。
+conclusion: MET与LGR5在ADC治疗中相互调控，双靶向联合策略可增强疗效并克服复发。
+---
+
+## 摘要
+富含亮氨酸重复序列的G蛋白偶联受体5（LGR5）是结直肠癌（CRC）中常上调的癌症干细胞样细胞标志物，在正常组织中表达较低，使其成为抗体-药物偶联物（ADC）的有利靶点。ADC将抗体特异性与强效细胞毒性载荷结合，以增强疗效同时最小化全身毒性。靶向LGR5并包含不同载荷的ADC显示出强大的初始肿瘤抑制作用，但由于LGR5下调等原因，肿瘤最终复发，因此需要更有效的策略来防止复发。我们研究表明，使用化疗或与拓扑异构酶1抑制剂载荷（8E11-CPT2）偶联的靶向LGR5的ADC治疗，会降低CRC细胞中LGR5水平并增加MET受体表达和/或激活，支持同时靶向LGR5和MET的治疗策略。据此，我们通过将抗MET抗体telisotuzumab（ABT-700）与DNA交联的吡咯并苯并二氮杂卓（PBD）二聚体SG3199进行位点特异性偶联，设计了一种靶向MET的ADC（ABT-700-SG3199）。与使用相同抗体骨架偶联不同载荷的临床阶段靶向MET的ADC ABBV-399和ABBV-400相比，ABT-700-SG3199在CRC模型中表现出更优的效力和疗效。ABT-700-SG3199治疗增加了LGR5表达，而ABT-700-SG3199与8E11-CPT2联用增强了CRC细胞杀伤效应，强化了双靶向策略的合理性。在患者来源的异种移植模型中，与单药治疗相比，8E11-CPT2和ABT-700-SG3199联合给药显著延迟了肿瘤复发并延长了生存期。综上所述，这些发现揭示了在CRC模型中，针对LGR5或MET的ADC治疗下MET与LGR5之间的相互调节，并支持LGR5/MET双靶向治疗策略以增强疗效并可能克服耐药和复发。
+
+## Abstract
+Leucine-rich repeat-containing G protein-coupled receptor 5 (LGR5) is a marker of cancer stem-like cells frequently upregulated in colorectal cancer (CRC) with lower expression in normal tissues, making it a favorable target for antibody-drug conjugates (ADCs). ADCs combine antibody specificity with potent cytotoxic payloads to enhance efficacy while minimizing systemic toxicity. LGR5-targeting ADCs incorporating different payloads demonstrate strong initial tumor inhibition, yet tumors eventually recur due in part to LGR5 downregulation, necessitating more effective strategies to prevent relapse. We show treatment with chemotherapies or an LGR5-targeting ADC coupled to a topoisomerase 1 inhibitor payload (8E11-CPT2) reduces LGR5 levels and increases MET receptor expression and/or activation in CRC cells, supporting a therapeutic approach to target LGR5 and MET simultaneously. Accordingly, we engineered a MET-targeting ADC (ABT-700-SG3199) via site-specific conjugation of the anti-MET antibody telisotuzumab (ABT-700) with the DNA-crosslinking pyrrolobenzodiazepine (PBD) dimer SG3199. ABT-700-SG3199 exhibited superior potency and efficacy in CRC models compared to the clinical-stage MET-targeting ADCs ABBV-399 and ABBV-400, which use the same antibody backbone conjugated to different payloads. Treatment with ABT-700-SG3199 increased LGR5 expression, and the combination of ABT-700-SG3199 with 8E11-CPT2 enhanced CRC cell-killing efficacy, reinforcing the rationale for a dual-targeting approach. In patient-derived xenografts, combined administration of 8E11-CPT2 and ABT-700-SG3199 markedly delayed tumor relapse and prolonged survival compared with single-agent treatment. Taken together, these findings reveal a reciprocal regulation between MET and LGR5 in response to LGR5- or MET-targeting ADCs in CRC models and support a LGR5/MET dual-targeting therapeutic strategy to enhance efficacy and potentially overcome resistance and relapse.
