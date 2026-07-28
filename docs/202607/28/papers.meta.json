@@ -1,0 +1,54 @@
+{
+  "label": "2026-07-28",
+  "date": "2026-07-28",
+  "generated_at": "2026-07-28T20:23:08",
+  "count": 3,
+  "papers": [
+    {
+      "paper_id": "202607/28/biorxiv-10-64898-2026-07-17-739160-v1-a-label-free-multi-metric-pipeline-for-benchmarking-single-cell-rna-sequencing-clustering-and-testing-the-reproducibility-of-cell-type-heterogeneity",
+      "section": "quick",
+      "title_en": "A Label-Free Multi-Metric Pipeline for Benchmarking Single-Cell RNA-Sequencing Clustering and Testing the Reproducibility of Cell-Type Heterogeneity",
+      "authors": "Yousef, Z., Simone, J., Klein, D., Cho, H., Bhuyan, A., Bhatt, P., Wu, J., Wang, H., Cai, L.",
+      "date": "2026-07-20",
+      "pdf": "https://www.biorxiv.org/content/10.64898/2026.07.17.739160v1.full.pdf",
+      "score": "7.0",
+      "evidence": "单细胞RNA测序聚类流程",
+      "tldr": "单细胞转录组聚类通常只使用单一方法和嵌入，缺乏可重复性测试。本文提出了一种无标签多指标流水线，将聚类重构为可审计的方法盲决策，并分离了细胞重采样和重嵌入两种稳定性概念。在小鼠视网膜数据集上，该流水线无标签达到96.3%的准确率；在双极细胞和杆细胞上分别验证了子结构的可重复性和过聚类的拒绝能力。结果表明，重嵌入稳定性是区分真实子结构与过聚类的关键，为单细胞聚类提供了可重复的替代方案。",
+      "tags": "query:neo-resist",
+      "abstract_en": "A discovered sub-population from single-cell transcriptomic data is only meaningful if it is reproducible, yet clustering is usually done with one method on one embedding and rarely tested. We present a label- free, multi-metric pipeline that reframes clustering as an auditable, methods-blind decision and separates two notions of stability that are commonly conflated: reproducibility under cell resampling (bootstrap) and reproducibility under re-embedding (retraining the representation). The pipeline evaluates seven clustering configurations across cluster counts using five non-redundant quality metrics. As a whole- dataset control on a mouse retinal atlas, it recovers an eight-cell-type annotation at 96.3% accuracy (adjusted Rand index, ARI = 0.91) without labels. We then validate the discovery mode on two cell types with opposite ground truth. On bipolar cells, which have well-established subtypes, the pipeline accepts the sub-structure: across-embedding reproducibility rises with cluster number to a high plateau (mean pairwise ARI [~]0.93 near the [~]15 known bipolar subtypes), with quality metrics improving in parallel. On rod photoreceptors, treated as homogeneous, it rejects over-clustering: the metric-selected partition passes a bootstrap-stability check but is not reproducible when the embedding is retrained (mean pairwise ARI = 0.69), and the metrics do not improve with cluster number. On synthetic data, the test recovers real structure down to a 5% subpopulation while rejecting null data (high sensitivity and specificity).\n\nBootstrap stability alone is therefore insufficient evidence for sub-population; the across-embedding test discriminates real sub-structure from over-clustering and applies to any cell type as a reproducible alternative to single-method, single-embedding clustering.",
+      "source": "biorxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202607/28/biorxiv-10-64898-2026-07-21-739810-v1-spatialjepa-jepa-inspired-graph-context-distillation-for-spatially-aware-multiomics-integration",
+      "section": "quick",
+      "title_en": "SpatialJEPA: JEPA-inspired graph-context distillation for spatially aware multiomics integration",
+      "authors": "Mann-Krzisnik, D., Li, Y.",
+      "date": "2026-07-22",
+      "pdf": "https://www.biorxiv.org/content/10.64898/2026.07.21.739810v1.full.pdf",
+      "score": "7.0",
+      "evidence": "提供一种可用于表征肿瘤耐药的多组学整合方法",
+      "tldr": "空间多组学数据整合面临多数RNA-ATAC数据缺乏空间坐标的难题。SpatialJEPA提出一种JEPA启发的教师-学生框架，通过遮蔽空间邻域图迫使学生学习无空间上下文下的表征匹配，从而将空间知识迁移至非空间数据。在鼠脑多组学中，该方法实现了跨模态对齐并恢复空间转录组和染色质程序。其贡献在于首次将教师-学生蒸馏用于空间上下文迁移，拓展了非空间数据的空间分析能力。",
+      "tags": "query:neo-resist",
+      "abstract_en": "Computational frameworks for integrating spatial genomics modalities extend cell-based representation learning across molecular layers, but many paired RNA-ATAC datasets are dissociated and lack spatial coordinates. We introduce SpatialJEPA, a JEPA-inspired teacher-student framework for transferring spatial context from spatial multiomics data to non-spatial multiome data. In contrast to patch- or feature-masking objectives, SpatialJEPA masks spatial context by replacing the teacher's spatial neighborhood graph with a self-only identity graph during student training, making the spatial sample appear dissociated to the student. The student learns to match teacher embeddings from this graph-context-restricted view and can therefore be applied to dissociated RNA-ATAC data at inference time. In mouse brain multiomics, the resulting representation supports source-target alignment, recovers spatially organized transcriptomic and chromatin-accessibility programs, and shows concordance with ligand-receptor pathway structure compared with non-spatial references. Accepted at the CIBB 2026 conference (https://cibb2026.teralab.ai/)",
+      "source": "biorxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202607/28/biorxiv-10-64898-2026-07-20-739333-v1-a-pan-cancer-multi-omic-analysis-of-copy-number-signature-clusters-and-genomic-instability",
+      "section": "quick",
+      "title_en": "A Pan-Cancer Multi-Omic Analysis of Copy Number Signature Clusters and Genomic Instability",
+      "authors": "Rota Negroni, M., Billato, I., Romualdi, C.",
+      "date": "2026-07-21",
+      "pdf": "https://www.biorxiv.org/content/10.64898/2026.07.20.739333v1.full.pdf",
+      "score": "6.0",
+      "evidence": "全癌种拷贝数特征多组学分析，与耐药中的基因组不稳定性相关",
+      "tldr": "拷贝数特征用于表征癌症基因组不稳定性，但不同研究框架间一致性未知。本研究对比三大拷贝数特征目录，在5800+TCGA样本中评估重叠与生物学意义。发现个体特征跨框架一致性低，但特征衍生聚类能识别生物学不同的患者亚群，且利用多组学数据（基因表达、甲基化等）可预测这些聚类。结果表明不同拷贝数特征框架反映互补的基因组不稳定性维度，多组学信息可辅助无全基因组测序样本的分类。",
+      "tags": "query:neo-resist",
+      "abstract_en": "Copy number alterations (CNAs) are major contributors to genomic instability in cancer, and copy number signatures (CNS) provide a compact representation of the processes shaping CNA landscapes. However, the relationships among existing CNS frameworks and their predictability from molecular data other than whole-genome sequencing remain unclear. Here, we compare three major CNS compendia across more than 5,800 TCGA cancer samples, evaluating their overlap, complementarity, biological relevance, and prognostic associations. Individual signatures showed limited cross-study concordance, whereas signature-derived clusters identified biologically distinct patient groups, including favorable-outcome clusters observed across all frameworks. Using gene expression, DNA methylation, somatic mutation features, age, and tumor purity, XGBoost models predicted cluster membership with framework-dependent performance, achieving high F1-scores for the Drews and Steele compendia but limited performance for Tao. Feature importance analysis highlighted expression-driven predictors and pathways linked to genomic instability. These findings show that current CNS frameworks capture complementary rather than interchangeable dimensions of tumor genome instability and suggest that multi-omic profiles can extend signature-based stratification to cohorts without whole-genome sequencing.",
+      "source": "biorxiv",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,133 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-07-28T20:20:54.209198+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 0,
+    "deep_cap": 6,
+    "deep_selected": 0,
+    "quick_candidates": 3,
+    "quick_skim_target": 11,
+    "quick_selected": 3
+  },
+  "deep_dive": [],
+  "quick_skim": [
+    {
+      "id": "biorxiv-10-64898-2026-07-17-739160-v1",
+      "source": "biorxiv",
+      "title": "A Label-Free Multi-Metric Pipeline for Benchmarking Single-Cell RNA-Sequencing Clustering and Testing the Reproducibility of Cell-Type Heterogeneity",
+      "abstract": "A discovered sub-population from single-cell transcriptomic data is only meaningful if it is reproducible, yet clustering is usually done with one method on one embedding and rarely tested. We present a label- free, multi-metric pipeline that reframes clustering as an auditable, methods-blind decision and separates two notions of stability that are commonly conflated: reproducibility under cell resampling (bootstrap) and reproducibility under re-embedding (retraining the representation). The pipeline evaluates seven clustering configurations across cluster counts using five non-redundant quality metrics. As a whole- dataset control on a mouse retinal atlas, it recovers an eight-cell-type annotation at 96.3% accuracy (adjusted Rand index, ARI = 0.91) without labels. We then validate the discovery mode on two cell types with opposite ground truth. On bipolar cells, which have well-established subtypes, the pipeline accepts the sub-structure: across-embedding reproducibility rises with cluster number to a high plateau (mean pairwise ARI [~]0.93 near the [~]15 known bipolar subtypes), with quality metrics improving in parallel. On rod photoreceptors, treated as homogeneous, it rejects over-clustering: the metric-selected partition passes a bootstrap-stability check but is not reproducible when the embedding is retrained (mean pairwise ARI = 0.69), and the metrics do not improve with cluster number. On synthetic data, the test recovers real structure down to a 5% subpopulation while rejecting null data (high sensitivity and specificity).\n\nBootstrap stability alone is therefore insufficient evidence for sub-population; the across-embedding test discriminates real sub-structure from over-clustering and applies to any cell type as a reproducible alternative to single-method, single-embedding clustering.",
+      "authors": [
+        "Yousef, Z.",
+        "Simone, J.",
+        "Klein, D.",
+        "Cho, H.",
+        "Bhuyan, A.",
+        "Bhatt, P.",
+        "Wu, J.",
+        "Wang, H.",
+        "Cai, L."
+      ],
+      "primary_category": "bioinformatics",
+      "categories": [
+        "bioinformatics"
+      ],
+      "published": "2026-07-20T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.07.17.739160v1.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "single-cell RNA-seq clustering pipeline",
+      "llm_evidence_cn": "单细胞RNA测序聚类流程",
+      "llm_evidence": "单细胞RNA测序聚类流程",
+      "canonical_evidence": "单细胞RNA测序聚类流程",
+      "llm_tldr_en": "A label-free multi-metric pipeline benchmarks single-cell clustering reproducibility, enabling robust cell-type discovery for resistance mechanism studies.",
+      "llm_tldr_cn": "该论文提出一个无标签多指标流程，用于基准测试单细胞RNA测序的聚类结果，区分细胞重采样和重嵌入下的稳定性。该流程为提高单细胞数据分析的可靠性提供了工具，可应用于揭示耐药机制的细胞异质性。",
+      "llm_tldr": "该论文提出一个无标签多指标流程，用于基准测试单细胞RNA测序的聚类结果，区分细胞重采样和重嵌入下的稳定性。该流程为提高单细胞数据分析的可靠性提供了工具，可应用于揭示耐药机制的细胞异质性。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "single cell sequencing resistance mechanism",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-07-20-739333-v1",
+      "source": "biorxiv",
+      "title": "A Pan-Cancer Multi-Omic Analysis of Copy Number Signature Clusters and Genomic Instability",
+      "abstract": "Copy number alterations (CNAs) are major contributors to genomic instability in cancer, and copy number signatures (CNS) provide a compact representation of the processes shaping CNA landscapes. However, the relationships among existing CNS frameworks and their predictability from molecular data other than whole-genome sequencing remain unclear. Here, we compare three major CNS compendia across more than 5,800 TCGA cancer samples, evaluating their overlap, complementarity, biological relevance, and prognostic associations. Individual signatures showed limited cross-study concordance, whereas signature-derived clusters identified biologically distinct patient groups, including favorable-outcome clusters observed across all frameworks. Using gene expression, DNA methylation, somatic mutation features, age, and tumor purity, XGBoost models predicted cluster membership with framework-dependent performance, achieving high F1-scores for the Drews and Steele compendia but limited performance for Tao. Feature importance analysis highlighted expression-driven predictors and pathways linked to genomic instability. These findings show that current CNS frameworks capture complementary rather than interchangeable dimensions of tumor genome instability and suggest that multi-omic profiles can extend signature-based stratification to cohorts without whole-genome sequencing.",
+      "authors": [
+        "Rota Negroni, M.",
+        "Billato, I.",
+        "Romualdi, C."
+      ],
+      "primary_category": "cancer biology",
+      "categories": [
+        "cancer biology"
+      ],
+      "published": "2026-07-21T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.07.20.739333v1.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "pan-cancer multi-omic analysis of copy number signatures, relevant for genomic instability in resistance",
+      "llm_evidence_cn": "全癌种拷贝数特征多组学分析，与耐药中的基因组不稳定性相关",
+      "llm_evidence": "全癌种拷贝数特征多组学分析，与耐药中的基因组不稳定性相关",
+      "canonical_evidence": "全癌种拷贝数特征多组学分析，与耐药中的基因组不稳定性相关",
+      "llm_tldr_en": "Compares three copy number signature compendia across 5800 TCGA samples, identifying biologically distinct clusters with prognostic value.",
+      "llm_tldr_cn": "该研究系统比较了三种拷贝数特征框架在超过5800例TCGA样本中的异同。通过多组学分析发现特征衍生的聚类可识别具有不同预后意义的患者亚群。虽然未直接研究耐药，但拷贝数特征和基因组不稳定性是肿瘤耐药的重要基础，为耐药机制的多组学表征提供了参考框架。",
+      "llm_tldr": "该研究系统比较了三种拷贝数特征框架在超过5800例TCGA样本中的异同。通过多组学分析发现特征衍生的聚类可识别具有不同预后意义的患者亚群。虽然未直接研究耐药，但拷贝数特征和基因组不稳定性是肿瘤耐药的重要基础，为耐药机制的多组学表征提供了参考框架。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "multi omics characterization of tumor resistance",
+      "matched_requirement_id": "req-10",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-07-21-739810-v1",
+      "source": "biorxiv",
+      "title": "SpatialJEPA: JEPA-inspired graph-context distillation for spatially aware multiomics integration",
+      "abstract": "Computational frameworks for integrating spatial genomics modalities extend cell-based representation learning across molecular layers, but many paired RNA-ATAC datasets are dissociated and lack spatial coordinates. We introduce SpatialJEPA, a JEPA-inspired teacher-student framework for transferring spatial context from spatial multiomics data to non-spatial multiome data. In contrast to patch- or feature-masking objectives, SpatialJEPA masks spatial context by replacing the teacher's spatial neighborhood graph with a self-only identity graph during student training, making the spatial sample appear dissociated to the student. The student learns to match teacher embeddings from this graph-context-restricted view and can therefore be applied to dissociated RNA-ATAC data at inference time. In mouse brain multiomics, the resulting representation supports source-target alignment, recovers spatially organized transcriptomic and chromatin-accessibility programs, and shows concordance with ligand-receptor pathway structure compared with non-spatial references. Accepted at the CIBB 2026 conference (https://cibb2026.teralab.ai/)",
+      "authors": [
+        "Mann-Krzisnik, D.",
+        "Li, Y."
+      ],
+      "primary_category": "molecular biology",
+      "categories": [
+        "molecular biology"
+      ],
+      "published": "2026-07-22T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.07.21.739810v1.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "provides a multiomics integration method that can be applied to characterize tumor resistance",
+      "llm_evidence_cn": "提供一种可用于表征肿瘤耐药的多组学整合方法",
+      "llm_evidence": "提供一种可用于表征肿瘤耐药的多组学整合方法",
+      "canonical_evidence": "提供一种可用于表征肿瘤耐药的多组学整合方法",
+      "llm_tldr_en": "SpatialJEPA transfers spatial context from spatial multiomics to non-spatial data via teacher-student framework, enabling multiomics integration for resistance studies.",
+      "llm_tldr_cn": "针对空间多组学数据和非空间配对数据的整合挑战，提出SpatialJEPA框架。该方法采用JEPA启发的师生网络，通过图上下文蒸馏将空间信息从空间数据迁移到非空间数据。该框架能够实现跨分子层的表征学习，为肿瘤耐药的多组学表征提供可迁移技术。",
+      "llm_tldr": "针对空间多组学数据和非空间配对数据的整合挑战，提出SpatialJEPA框架。该方法采用JEPA启发的师生网络，通过图上下文蒸馏将空间信息从空间数据迁移到非空间数据。该框架能够实现跨分子层的表征学习，为肿瘤耐药的多组学表征提供可迁移技术。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "multi omics characterization of tumor resistance",
+      "matched_requirement_id": "req-10",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    }
+  ]
+}

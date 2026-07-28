@@ -1,0 +1,25 @@
+---
+title: A Pan-Cancer Multi-Omic Analysis of Copy Number Signature Clusters and Genomic Instability
+title_zh: 拷贝数特征簇与基因组不稳定性的泛癌多组学分析
+authors: "Rota Negroni, M., Billato, I., Romualdi, C."
+date: 2026-07-21
+pdf: "https://www.biorxiv.org/content/10.64898/2026.07.20.739333v1.full.pdf"
+tags: ["query:neo-resist"]
+score: 6.0
+evidence: 全癌种拷贝数特征多组学分析，与耐药中的基因组不稳定性相关
+tldr: 拷贝数特征用于表征癌症基因组不稳定性，但不同研究框架间一致性未知。本研究对比三大拷贝数特征目录，在5800+TCGA样本中评估重叠与生物学意义。发现个体特征跨框架一致性低，但特征衍生聚类能识别生物学不同的患者亚群，且利用多组学数据（基因表达、甲基化等）可预测这些聚类。结果表明不同拷贝数特征框架反映互补的基因组不稳定性维度，多组学信息可辅助无全基因组测序样本的分类。
+source: biorxiv
+selection_source: fresh_fetch
+figures_json: "[{\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-07-20-739333-v1/fig-001.webp\", \"caption\": \"\", \"page\": 0, \"index\": 1, \"width\": 503, \"height\": 518, \"label\": \"Figure\"}, {\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-07-20-739333-v1/fig-002.webp\", \"caption\": \"\", \"page\": 0, \"index\": 2, \"width\": 1770, \"height\": 1250, \"label\": \"Figure\"}, {\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-07-20-739333-v1/fig-003.webp\", \"caption\": \"\", \"page\": 0, \"index\": 3, \"width\": 1770, \"height\": 1220, \"label\": \"Figure\"}, {\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-07-20-739333-v1/fig-004.webp\", \"caption\": \"\", \"page\": 0, \"index\": 4, \"width\": 892, \"height\": 889, \"label\": \"Figure\"}, {\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-07-20-739333-v1/fig-005.webp\", \"caption\": \"\", \"page\": 0, \"index\": 5, \"width\": 772, \"height\": 636, \"label\": \"Figure\"}, {\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-07-20-739333-v1/fig-006.webp\", \"caption\": \"\", \"page\": 0, \"index\": 6, \"width\": 1697, \"height\": 1213, \"label\": \"Figure\"}, {\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-07-20-739333-v1/fig-007.webp\", \"caption\": \"\", \"page\": 0, \"index\": 7, \"width\": 2284, \"height\": 3129, \"label\": \"Figure\"}, {\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-07-20-739333-v1/fig-008.webp\", \"caption\": \"\", \"page\": 0, \"index\": 8, \"width\": 1770, \"height\": 1081, \"label\": \"Figure\"}, {\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-07-20-739333-v1/fig-009.webp\", \"caption\": \"\", \"page\": 0, \"index\": 9, \"width\": 1770, \"height\": 1290, \"label\": \"Figure\"}, {\"url\": \"assets/figures/biorxiv/biorxiv-10-64898-2026-07-20-739333-v1/fig-010.webp\", \"caption\": \"\", \"page\": 0, \"index\": 10, \"width\": 1041, \"height\": 586, \"label\": \"Figure\"}]"
+tables_json: "[{\"url\": \"assets/tables/biorxiv/biorxiv-10-64898-2026-07-20-739333-v1/table-001.webp\", \"caption\": \"\", \"page\": 0, \"index\": 1, \"width\": 1721, \"height\": 1148, \"label\": \"Table\"}]"
+motivation: 探索三大拷贝数特征框架的异同及其生物学意义，并评估多组学数据预测拷贝数特征簇的可行性。
+method: 整合三大拷贝数特征目录，基于5800+TCGA样本聚类，并用XGBoost模型结合基因表达、甲基化等多组学特征预测簇归属。
+result: 个体特征跨框架一致性低，但特征衍生簇可区分预后亚群；XGBoost对Drews和Steele框架预测F1高，对Tao预测效果有限。
+conclusion: 不同拷贝数特征框架互补且不可互换，多组学数据能扩展拷贝数特征分类至无全基因组测序队列。
+---
+
+## 摘要
+拷贝数改变是癌症基因组不稳定性的主要驱动因素，拷贝数特征为塑造CNA图谱的过程提供了紧凑表示。然而，现有CNS框架之间的关系及其从全基因组测序以外的分子数据中的可预测性仍不清楚。在此，我们比较了三大CNS汇编在超过5800个TCGA癌症样本中的表现，评估了它们的重叠性、互补性、生物学相关性及预后关联。单个特征显示出有限的跨研究一致性，而特征衍生的簇则识别出生物学上不同的患者群体，包括在所有框架中观察到的预后良好簇。利用基因表达、DNA甲基化、体细胞突变特征、年龄和肿瘤纯度，XGBoost模型以框架依赖的性能预测了簇成员身份，对Drews和Steele汇编获得了较高的F1分数，但对Tao汇编性能有限。特征重要性分析突出了与基因组不稳定性相关的表达驱动预测因子和通路。这些发现表明，当前CNS框架捕捉了肿瘤基因组不稳定性的互补而非可互换维度，并提示多组学图谱可以将基于特征的分层扩展到缺乏全基因组测序的队列。
+
+## Abstract
+Copy number alterations (CNAs) are major contributors to genomic instability in cancer, and copy number signatures (CNS) provide a compact representation of the processes shaping CNA landscapes. However, the relationships among existing CNS frameworks and their predictability from molecular data other than whole-genome sequencing remain unclear. Here, we compare three major CNS compendia across more than 5,800 TCGA cancer samples, evaluating their overlap, complementarity, biological relevance, and prognostic associations. Individual signatures showed limited cross-study concordance, whereas signature-derived clusters identified biologically distinct patient groups, including favorable-outcome clusters observed across all frameworks. Using gene expression, DNA methylation, somatic mutation features, age, and tumor purity, XGBoost models predicted cluster membership with framework-dependent performance, achieving high F1-scores for the Drews and Steele compendia but limited performance for Tao. Feature importance analysis highlighted expression-driven predictors and pathways linked to genomic instability. These findings show that current CNS frameworks capture complementary rather than interchangeable dimensions of tumor genome instability and suggest that multi-omic profiles can extend signature-based stratification to cohorts without whole-genome sequencing.
