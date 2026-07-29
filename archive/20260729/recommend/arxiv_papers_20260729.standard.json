@@ -1,0 +1,107 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-07-29T21:17:22.975222+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 0,
+    "deep_cap": 6,
+    "deep_selected": 0,
+    "quick_candidates": 2,
+    "quick_skim_target": 11,
+    "quick_selected": 2
+  },
+  "deep_dive": [],
+  "quick_skim": [
+    {
+      "id": "biorxiv-10-64898-2026-07-16-738997-v1",
+      "source": "biorxiv",
+      "title": "Organism-scale annotation with Pan-human Azimuth",
+      "abstract": "Single-cell atlases now span many human tissues, but inconsistent annotations across studies limit their utility as a unified reference. We introduce Pan-human Azimuth, a supervised neural network that maps human cells from diverse tissues and datasets onto a single hierarchical organism-scale typology. Developed through NIH HuBMAP, the model is trained on a uniquely curated corpus designed to maximize diversity across tissues and technologies while enforcing uniform, interpretable annotations and stringent quality control. The use of a single organism-wide reference enables us to map tens of millions of cells in the Tabula Sapiens and scBaseCamp repositories, perform cross-tissue comparisons across thousands of samples, and identify striking tissue specialization among fibroblast states. Pan-human Azimuth naturally extends to annotating spatial transcriptomic data, recovering canonical kidney cortical structures and distinguishing glomerular states consistent with expert pathology. We release Pan-human Azimuth alongside cloud, R, and Python interfaces to facilitate standardized organism-wide single-cell analysis.",
+      "authors": [
+        "Sarkar, S.",
+        "Li, Z.",
+        "Molla, G.",
+        "Shenoy, A.",
+        "Zhang, B.",
+        "Collins, D.",
+        "Vasilevsky, N.",
+        "Gaut, J. P.",
+        "Puig-Barbe, A.",
+        "Bueckle, A.",
+        "Osumi-Sutherland, D.",
+        "Börner, K.",
+        "Jain, S.",
+        "Satija, R."
+      ],
+      "primary_category": "genomics",
+      "categories": [
+        "genomics"
+      ],
+      "published": "2026-07-21T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.07.16.738997v1.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "single-cell annotation tool for organism-scale mapping",
+      "llm_evidence_cn": "适用于单细胞测序的细胞注释工具",
+      "llm_evidence": "适用于单细胞测序的细胞注释工具",
+      "canonical_evidence": "适用于单细胞测序的细胞注释工具",
+      "llm_tldr_en": "Pan-human Azimuth is a supervised neural network that maps human cells from diverse tissues onto a single hierarchical organism-scale typology, enabling consistent annotation across datasets and facilitating cross-tissue comparisons.",
+      "llm_tldr_cn": "针对于单细胞图谱间注释不一致的问题，本研究提出了Pan-human Azimuth，一种监督神经网络模型，能够将来自不同组织和数据集的细胞映射到一个统一的层次化全生物体尺度分类上。该模型基于精心策划的多样化语料库进行训练，强制统一且可解释的注释，并严格质控。它成功映射了Tabula Sapiens和scBaseCamp中的数千万细胞，实现了跨组织比较，并鉴定出成纤维细胞等类型的组织特异化。该工具极大地推动了单细胞数据的整合与利用。",
+      "llm_tldr": "针对于单细胞图谱间注释不一致的问题，本研究提出了Pan-human Azimuth，一种监督神经网络模型，能够将来自不同组织和数据集的细胞映射到一个统一的层次化全生物体尺度分类上。该模型基于精心策划的多样化语料库进行训练，强制统一且可解释的注释，并严格质控。它成功映射了Tabula Sapiens和scBaseCamp中的数千万细胞，实现了跨组织比较，并鉴定出成纤维细胞等类型的组织特异化。该工具极大地推动了单细胞数据的整合与利用。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "single cell sequencing resistance mechanism",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-07-20-739584-v1",
+      "source": "biorxiv",
+      "title": "Single-Cell Proteomics Reveals Heterogeneous and Bimodal Proteome Responses to DNA Damage",
+      "abstract": "DNA damage response (DDR) involves coordinated activation of repair, checkpoint, and stress adaptive signalling pathways following genomic toxicity. Bulk-cell proteomics, however, averages divergent responses across neighbouring cells, obscuring the characterisation of biologically meaningful proteome remodelling during genotoxic stress. This is particularly relevant to DDR, where a subset of cells undergo apoptosis, resulting in the sampling of dead cells that confound downstream biological interpretation. Here, we applied single cell proteomics (SCP) to investigate the proteome response of U-2 OS cells to 6-thioguanine (6TG)-induced DNA damage. By filtering individual cells according to predefined morphological-, sampling- and biological-criteria, to ensure a matched comparison between control and DNA-damaged populations; 6TG treatment was found to activate canonical DDR, including mismatch repair and base excision repair, together with secondary stress responses linked to oxidative stress, mitochondrial dysfunction, inflammatory signalling and proteostasis. Using SCP, we were able to probe neighbouring cell-to-cell heterogeneity, revealing globally increased protein abundance variability following DNA-damage. Importantly, mismatch repair protein MSH3 exhibited amongst the largest abundance increases, concomitant with the greatest reduction in cell-to-cell abundance heterogeneity across all quantified proteins, highlighting it as the most robust and reproducible respond-er to 6TG-induced DNA damage. Furthermore, analysis of protein-abundance heterogeneity revealed proteins that exhibit bifurcated abundance states across neighbouring cells, with DNA damage inducing either the emergence or loss of these bimodal abundance distributions. Proteins linked to gene expression and protein synthesis were driven towards bifurcation into discrete high-low protein abundance states across neighbouring cells following DNA-damage. Conversely, 6TG abolished the intrinsic high-low abundance bimodality of several core-signalling, stress-signalling and trafficking proteins, suggesting their coordinated homogenisation in response to genotoxic stress. Collectively, these findings demonstrate the power of SCP to resolve the coordinated, yet heterogeneous, cellular response to DNA damage within a population of genetically identical cells.",
+      "authors": [
+        "Adoni, K. R.",
+        "Charlton, G. H.",
+        "Ditcham, J. E.",
+        "Cook, D. T.",
+        "Ho, J.",
+        "Kirkpatrick, J.",
+        "Zenezini Chiozzi, R.",
+        "Thalassinos, K."
+      ],
+      "primary_category": "cell biology",
+      "categories": [
+        "cell biology"
+      ],
+      "published": "2026-07-21T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.07.20.739584v1.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "single-cell proteomics for drug response heterogeneity",
+      "llm_evidence_cn": "单细胞蛋白质组学用于药物反应异质性",
+      "llm_evidence": "单细胞蛋白质组学用于药物反应异质性",
+      "canonical_evidence": "单细胞蛋白质组学用于药物反应异质性",
+      "llm_tldr_en": "Applies single-cell proteomics to reveal heterogeneous and bimodal proteome responses to DNA damage, demonstrating cellular heterogeneity in drug response.",
+      "llm_tldr_cn": "传统批量蛋白质组学平均了细胞间差异，掩盖了DNA损伤响应中的异质性。本文采用单细胞蛋白质组学技术，对6-硫鸟嘌呤诱导的DNA损伤进行单细胞水平分析，通过筛选标准过滤细胞，揭示了双峰分布的蛋白质组响应。该工作展示了单细胞技术在解析药物反应异质性中的价值，为理解耐药机制提供了新视角。",
+      "llm_tldr": "传统批量蛋白质组学平均了细胞间差异，掩盖了DNA损伤响应中的异质性。本文采用单细胞蛋白质组学技术，对6-硫鸟嘌呤诱导的DNA损伤进行单细胞水平分析，通过筛选标准过滤细胞，揭示了双峰分布的蛋白质组响应。该工作展示了单细胞技术在解析药物反应异质性中的价值，为理解耐药机制提供了新视角。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "single cell sequencing resistance mechanism",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}

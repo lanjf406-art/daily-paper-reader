@@ -1,0 +1,39 @@
+{
+  "label": "2026-07-29",
+  "date": "2026-07-29",
+  "generated_at": "2026-07-29T21:19:05",
+  "count": 2,
+  "papers": [
+    {
+      "paper_id": "202607/29/biorxiv-10-64898-2026-07-16-738997-v1-organism-scale-annotation-with-pan-human-azimuth",
+      "section": "quick",
+      "title_en": "Organism-scale annotation with Pan-human Azimuth",
+      "authors": "Sarkar, S., Li, Z., Molla, G., Shenoy, A., Zhang, B., Collins, D., Vasilevsky, N., Gaut, J. P., Puig-Barbe, A., Bueckle, A., Osumi-Sutherland, D., Börner, K., Jain, S., Satija, R.",
+      "date": "2026-07-21",
+      "pdf": "https://www.biorxiv.org/content/10.64898/2026.07.16.738997v1.full.pdf",
+      "score": "6.0",
+      "evidence": "适用于单细胞测序的细胞注释工具",
+      "tldr": "单细胞图谱虽覆盖多种组织，但注释不一致限制了其作为统一参考的价值。本研究提出Pan-human Azimuth，一个监督神经网络，通过精心策划的语料库训练，将来自不同组织和数据集的人类细胞映射到单一层级式分类体系。该模型成功映射了数千万细胞，实现了跨组织比较，揭示了成纤维细胞的组织特异性，并扩展至空间转录组数据，恢复了肾脏皮质结构。同时提供云/R/Python接口以促进标准化分析。",
+      "tags": "query:neo-resist",
+      "abstract_en": "Single-cell atlases now span many human tissues, but inconsistent annotations across studies limit their utility as a unified reference. We introduce Pan-human Azimuth, a supervised neural network that maps human cells from diverse tissues and datasets onto a single hierarchical organism-scale typology. Developed through NIH HuBMAP, the model is trained on a uniquely curated corpus designed to maximize diversity across tissues and technologies while enforcing uniform, interpretable annotations and stringent quality control. The use of a single organism-wide reference enables us to map tens of millions of cells in the Tabula Sapiens and scBaseCamp repositories, perform cross-tissue comparisons across thousands of samples, and identify striking tissue specialization among fibroblast states. Pan-human Azimuth naturally extends to annotating spatial transcriptomic data, recovering canonical kidney cortical structures and distinguishing glomerular states consistent with expert pathology. We release Pan-human Azimuth alongside cloud, R, and Python interfaces to facilitate standardized organism-wide single-cell analysis.",
+      "source": "biorxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202607/29/biorxiv-10-64898-2026-07-20-739584-v1-single-cell-proteomics-reveals-heterogeneous-and-bimodal-proteome-responses-to-dna-damage",
+      "section": "quick",
+      "title_en": "Single-Cell Proteomics Reveals Heterogeneous and Bimodal Proteome Responses to DNA Damage",
+      "authors": "Adoni, K. R., Charlton, G. H., Ditcham, J. E., Cook, D. T., Ho, J., Kirkpatrick, J., Zenezini Chiozzi, R., Thalassinos, K.",
+      "date": "2026-07-21",
+      "pdf": "https://www.biorxiv.org/content/10.64898/2026.07.20.739584v1.full.pdf",
+      "score": "6.0",
+      "evidence": "单细胞蛋白质组学用于药物反应异质性",
+      "tldr": "DNA损伤反应涉及修复、检查点和应激信号通路的协调激活，但传统全细胞蛋白质组学平均了邻近细胞的差异响应。本研究采用单细胞蛋白质组学，通过形态、采样和生物学标准过滤单个细胞，发现6-巯基嘌呤诱导的DNA损伤激活了经典DDR及次级应激反应。单细胞分析揭示了蛋白质丰度异质性增加，MSH3蛋白丰度增幅最大且异质性降低，成为最稳健的响应者。还发现DNA损伤诱导或消除了蛋白质的双峰分布，涉及基因表达和蛋白合成等过程。",
+      "tags": "query:neo-resist",
+      "abstract_en": "DNA damage response (DDR) involves coordinated activation of repair, checkpoint, and stress adaptive signalling pathways following genomic toxicity. Bulk-cell proteomics, however, averages divergent responses across neighbouring cells, obscuring the characterisation of biologically meaningful proteome remodelling during genotoxic stress. This is particularly relevant to DDR, where a subset of cells undergo apoptosis, resulting in the sampling of dead cells that confound downstream biological interpretation. Here, we applied single cell proteomics (SCP) to investigate the proteome response of U-2 OS cells to 6-thioguanine (6TG)-induced DNA damage. By filtering individual cells according to predefined morphological-, sampling- and biological-criteria, to ensure a matched comparison between control and DNA-damaged populations; 6TG treatment was found to activate canonical DDR, including mismatch repair and base excision repair, together with secondary stress responses linked to oxidative stress, mitochondrial dysfunction, inflammatory signalling and proteostasis. Using SCP, we were able to probe neighbouring cell-to-cell heterogeneity, revealing globally increased protein abundance variability following DNA-damage. Importantly, mismatch repair protein MSH3 exhibited amongst the largest abundance increases, concomitant with the greatest reduction in cell-to-cell abundance heterogeneity across all quantified proteins, highlighting it as the most robust and reproducible respond-er to 6TG-induced DNA damage. Furthermore, analysis of protein-abundance heterogeneity revealed proteins that exhibit bifurcated abundance states across neighbouring cells, with DNA damage inducing either the emergence or loss of these bimodal abundance distributions. Proteins linked to gene expression and protein synthesis were driven towards bifurcation into discrete high-low protein abundance states across neighbouring cells following DNA-damage. Conversely, 6TG abolished the intrinsic high-low abundance bimodality of several core-signalling, stress-signalling and trafficking proteins, suggesting their coordinated homogenisation in response to genotoxic stress. Collectively, these findings demonstrate the power of SCP to resolve the coordinated, yet heterogeneous, cellular response to DNA damage within a population of genetically identical cells.",
+      "source": "biorxiv",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "errors": []
+}
