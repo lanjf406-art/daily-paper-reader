@@ -1,0 +1,69 @@
+{
+  "label": "2026-08-22",
+  "date": "2026-08-22",
+  "generated_at": "2026-08-22T19:26:54",
+  "count": 4,
+  "papers": [
+    {
+      "paper_id": "202608/22/biorxiv-10-64898-2026-08-17-745282-v1-a-permutation-free-family-wise-error-rate-for-the-moderated-top-gene-scan-under-gene-correlation",
+      "section": "quick",
+      "title_en": "A permutation-free family-wise error rate for the moderated top-gene scan under gene correlation",
+      "authors": "Dwyer, W. J.",
+      "date": "2026-08-21",
+      "pdf": "https://www.biorxiv.org/content/10.64898/2026.08.17.745282v1.full.pdf",
+      "score": "7.0",
+      "evidence": "免置换的差异表达全基因组家族错误率控制方法，可用于药物耐药转录组分析",
+      "tldr": "差异表达扫描报告最大调整t统计量，基因相关性使传统置换法复杂，且经验贝叶斯先验自由度被高估导致错误率膨胀。本文通过误差分解发现相关性主要破坏先验自由度，提出用无调参谱U统计量校正方差扩散，无需置换即可将全族错误率保持在独立基线且功效不降，并给出稳定性指标指导何时必须置换。",
+      "tags": "query:neo-resist",
+      "abstract_en": "A differential-expression scan reports the genes with the largest moderated t-statistics, so controlling the family-wise error rate means controlling the null distribution of the maximum statistic over genes. Under gene correlation this is widely believed to require permutation, because correlation changes the effective multiplicity and corrupts the empirical-Bayes variance prior behind the moderated t-statistic. We decompose that liberality by an error-budget ablation and show that, within the simulated model class, it reduces principally to an inflation of the empirical-Bayes prior degrees of freedom: substituting the true prior returns the family-wise error to the independent-gene small-sample baseline, so dependence imposes no separate barrier once the prior is correct. Correlation deflates the cross-gene spread of the log sample variances; because the prior degrees of freedom decreases in that spread, the prior is over-estimated and the moderated maximum turns liberal. Dividing the observed spread by one minus the mean squared gene correlation, estimated by a tuning-free spectral U-statistic with an unbiased trace target, reverses the mechanism and holds the family-wise error near the baseline at retained power without permutation. An observable instability index flags when severe co-expression should defer to permutation.",
+      "source": "biorxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202608/22/biorxiv-10-64898-2026-08-18-745411-v1-systematic-generation-of-mutations-at-topoisomerase-ii-cleavage-sites-enables-cancer-adaptation-to-doxorubicin-therapy",
+      "section": "quick",
+      "title_en": "Systematic Generation of Mutations at Topoisomerase II Cleavage Sites Enables Cancer Adaptation to Doxorubicin Therapy",
+      "authors": "Gahramanov, V., Edathil Kadangodan, A., Barazi, R., Hesin, A., Yaglom, J., Levit, V. E., Maman, Y., Sherman, M. Y.",
+      "date": "2026-08-19",
+      "pdf": "https://www.biorxiv.org/content/10.64898/2026.08.18.745411v1.full.pdf",
+      "score": "7.0",
+      "evidence": "阿霉素治疗获得性耐药的机制研究",
+      "tldr": "多柔比星通过抑制拓扑异构酶II诱导DNA双链断裂，但癌细胞耐药机制尚未明确。本研究发现，在反复药物暴露中存活的癌细胞亚群，其DNA修复在Top2切割位点系统性产生反复突变。这些突变阻止后续药物诱导的DNA断裂，赋予基因组保护并驱动耐药，同时增强对拓扑异构酶I抑制剂的敏感性。研究揭示了癌症在治疗压力下通过主动生成高适应性突变而进化的新机制。",
+      "tags": "query:neo-resist",
+      "abstract_en": "Acquired resistance to chemotherapy remains a major cause of treatment failure. Here, we investigate the early events underlying the development of resistance to doxorubicin (Dox), one of the most widely used anticancer agents, during repeated drug exposure. Dox intercalates into DNA at sites influenced by chromatin structure and inhibits the DNA religation step of topoisomerase II (Top2), thereby inducing double-strand DNA breaks (DSBs). Here, we show that, in the subpopulation of cancer cells that survive initial Dox treatment, repair of Dox-induced DSBs leads to the accumulation of recurrent mutations at Top2 cleavage sites. These mutations prevent the formation of Dox-induced DSBs at the same loci upon subsequent exposures, effectively protecting the genome from Top2-mediated DNA damage and promoting the development of drug resistance. Importantly, the loss of Top2-dependent DNA cleavage and relaxation caused by these mutations increases the reliance of adapted cells on topoisomerase I (Top1), thereby sensitizing them to Top1 inhibitors. Together, our findings reveal a previously unrecognized mechanism of resistance based on the active generation of highly adaptive mutations, providing new insight into cancer evolution under therapeutic pressure.",
+      "source": "biorxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202608/22/biorxiv-10-1101-2023-02-14-528486-v2-a-unique-polyfunctional-il-33-responsive-st2-nk-cell-state-potentiates-antitumor-immunity-and-response-to-immunotherapy",
+      "section": "quick",
+      "title_en": "A Unique Polyfunctional IL-33-responsive ST2⁺ NK cell State Potentiates Antitumor Immunity and Response to Immunotherapy",
+      "authors": "Eberhardt, A., Blanc, E., Picant, V., Voissiere, A., Revol-Bauz, L., Casini, T., Alcazer, V., Poujol, D., Tonon, L., Schneider, R., Picard, E., Rocca, Y., Ardin, M., Onodi, F., Degletagne, C., Rodriguez, C., Moudombi, L., Estavoyer, B., Charrier, E., Wang, X., Stojanovic, A., Rau, T., Tredan, O., Treilleux, I., Trinchieri, G., Vivier, E., Valladeau-Guilemond, J., Marcais, A., Walzer, T., Krebs, P., Cerwenka, A., Hubert, M., Caux, C., Michallet, M.-C., Bendriss-Vermare, N.",
+      "date": "2026-08-21",
+      "pdf": "https://www.biorxiv.org/content/10.1101/2023.02.14.528486v2.full.pdf",
+      "score": "6.0",
+      "evidence": "发现ST2+ NK细胞状态可增强免疫治疗应答，与肿瘤微环境中免疫治疗耐药/敏感机制相关",
+      "tldr": "NK细胞的功能异质性在肿瘤免疫中尚不明确。本研究揭示IL-12诱导产生独特的ST2/IL33R阳性NK细胞状态，该状态对IL-33刺激高度敏感，兼具增殖、细胞因子分泌和细胞毒性。小鼠乳腺癌模型中，IL-33与IL-12协同激活ST2 NK细胞并通过IFN-γ抑制肿瘤。临床数据表明ST2 NK细胞与患者生存期改善及免疫治疗疗效相关，为肿瘤免疫治疗提供了新的靶点。",
+      "tags": "query:neo-resist",
+      "abstract_en": "Despite increasing recognition of NK cell diversity, their functional heterogeneity and its relevance to cancer remain incompletely understood. Here, we show that IL-12 promotes the emergence of a distinct ST2/IL33R+ NK cell state poised for robust activation by IL-33. Human ST2 NK cells exhibit a unique transcriptional program, an intermediate differentiation state between CD56bright and CD56dim NK cells, and enhanced polyfunctionality combining proliferation, cytokine production, and cytotoxicity. ST2 NK cells were identified across human and murine tumor datasets. In murine breast cancer models, IL-33 and IL-12 cooperated to elicit potent antitumor responses dependent on IFN-{gamma} and ST2 NK cells. In cancer patients, IL-12 unleashed tumor-infiltrating ST2 NK cells' potential to produce IFN-g in response to IL-33, an IL33hi-NKhi score was associated with prolonged survival, and ST2 NK cells correlated with improved immunotherapy response. Collectively, these findings identify ST2 NK cells as a therapeutically actionable NK cell state promoting antitumor immunity.",
+      "source": "biorxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202608/22/biorxiv-10-64898-2026-08-19-745697-v1-a-self-supervised-dna-foundation-model-with-collapse-resistant-multimodal-fusion",
+      "section": "quick",
+      "title_en": "A self-supervised DNA foundation model with collapse-resistant multimodal fusion",
+      "authors": "Chen, Y.",
+      "date": "2026-08-20",
+      "pdf": "https://www.biorxiv.org/content/10.64898/2026.08.19.745697v1.full.pdf",
+      "score": "6.0",
+      "evidence": "结合多模态融合的DNA基础模型，适用于多组学耐药研究",
+      "tldr": "现有基因组基础模型仅用DNA序列，无法充分捕捉调控信息。本文提出自监督DNA多模态基础模型，将序列嵌入与局部/全局染色质可及性融合，并通过全局归一化解决异质性模态对齐坍塌。在调控功能预测任务上显著优于仅序列基线，峰值检测AUPRC提升4.6倍，外部数据集验证有效，且框架可扩展至更多调控模态。",
+      "tags": "query:neo-resist",
+      "abstract_en": "Genomic foundation models pretrained on DNA sequence have achieved strong performance across a range of tasks, but sequence-only representations cannot fully capture regulatory information reflected by additional DNA-centric modalities. Existing multimodal genomic models are often optimized for specific prediction tasks rather than for learning reusable embeddings shared across downstream analyses. However, directly fusing heterogeneous genomic modalities is challenging because sparse, peak-shaped regulatory signals and dense sequence representations have markedly different statistical structures, making naive multimodal alignment prone to degenerate near-zero solutions. We present a self-supervised DNA-centric multimodal foundation model that addresses this gap, integrating DNA sequence embeddings with local and global chromatin accessibility in a shared multimodal encoder to produce reusable window-level embeddings that support both masked reconstruction during pre-training and downstream prediction tasks. We diagnose this heterogeneous-modality alignment failure and show that global normalization substantially alleviates collapse, enabling effective joint learning across modalities. The resulting embeddings improve multiple downstream evaluations of regulatory function, including regulatory activity prediction, regulatory signal ranking and chromatin accessibility peak detection, achieving a 4.6-fold AUPRC improvement over the DNA-only baseline in peak detection, and further improving external validation on ClinVar, GTEx eQTL and PBMC caQTL datasets. The framework is extensible to additional regulatory modalities, providing a methodological basis for multimodal DNA foundation models.",
+      "source": "biorxiv",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "errors": []
+}

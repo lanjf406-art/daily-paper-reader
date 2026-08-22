@@ -1,0 +1,197 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-08-22T19:25:44.114789+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 0,
+    "deep_cap": 6,
+    "deep_selected": 0,
+    "quick_candidates": 4,
+    "quick_skim_target": 11,
+    "quick_selected": 4
+  },
+  "deep_dive": [],
+  "quick_skim": [
+    {
+      "id": "biorxiv-10-64898-2026-08-17-745282-v1",
+      "source": "biorxiv",
+      "title": "A permutation-free family-wise error rate for the moderated top-gene scan under gene correlation",
+      "abstract": "A differential-expression scan reports the genes with the largest moderated t-statistics, so controlling the family-wise error rate means controlling the null distribution of the maximum statistic over genes. Under gene correlation this is widely believed to require permutation, because correlation changes the effective multiplicity and corrupts the empirical-Bayes variance prior behind the moderated t-statistic. We decompose that liberality by an error-budget ablation and show that, within the simulated model class, it reduces principally to an inflation of the empirical-Bayes prior degrees of freedom: substituting the true prior returns the family-wise error to the independent-gene small-sample baseline, so dependence imposes no separate barrier once the prior is correct. Correlation deflates the cross-gene spread of the log sample variances; because the prior degrees of freedom decreases in that spread, the prior is over-estimated and the moderated maximum turns liberal. Dividing the observed spread by one minus the mean squared gene correlation, estimated by a tuning-free spectral U-statistic with an unbiased trace target, reverses the mechanism and holds the family-wise error near the baseline at retained power without permutation. An observable instability index flags when severe co-expression should defer to permutation.",
+      "authors": [
+        "Dwyer, W. J."
+      ],
+      "primary_category": "bioinformatics",
+      "categories": [
+        "bioinformatics"
+      ],
+      "published": "2026-08-21T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.08.17.745282v1.full.pdf",
+      "tags": [
+        "keyword:neo-resist"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "permutation-free FWER control for differential expression scans; a bioinformatics tool applicable to transcriptomics drug-resistance studies",
+      "llm_evidence_cn": "免置换的差异表达全基因组家族错误率控制方法，可用于药物耐药转录组分析",
+      "llm_evidence": "免置换的差异表达全基因组家族错误率控制方法，可用于药物耐药转录组分析",
+      "canonical_evidence": "免置换的差异表达全基因组家族错误率控制方法，可用于药物耐药转录组分析",
+      "llm_tldr_en": "A permutation-free FWER method for moderated top-gene scans under gene correlation corrects inflation from empirical-Bayes prior degrees of freedom, enabling valid differential expression analysis without permutations.",
+      "llm_tldr_cn": "差异表达扫描通常需要控制家族错误率，但基因相关条件下必须借助置换检验，且经验贝叶斯方差先验会破坏该控制。该研究通过误差预算分解发现，过度自由度是导致错误率膨胀的主因，并用真实先验将家族错误率恢复到独立基因小样本基线。该方法免除了置换检验的计算负担，为相关基因存在时的差异表达分析提供了有效且快速的控制方案。对转录组肿瘤耐药研究等需要可靠差异基因识别的场景具有重要工具价值。",
+      "llm_tldr": "差异表达扫描通常需要控制家族错误率，但基因相关条件下必须借助置换检验，且经验贝叶斯方差先验会破坏该控制。该研究通过误差预算分解发现，过度自由度是导致错误率膨胀的主因，并用真实先验将家族错误率恢复到独立基因小样本基线。该方法免除了置换检验的计算负担，为相关基因存在时的差异表达分析提供了有效且快速的控制方案。对转录组肿瘤耐药研究等需要可靠差异基因识别的场景具有重要工具价值。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "bioinformatics for drug resistance",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "biorxiv-10-1101-2023-02-14-528486-v2",
+      "source": "biorxiv",
+      "title": "A Unique Polyfunctional IL-33-responsive ST2⁺ NK cell State Potentiates Antitumor Immunity and Response to Immunotherapy",
+      "abstract": "Despite increasing recognition of NK cell diversity, their functional heterogeneity and its relevance to cancer remain incompletely understood. Here, we show that IL-12 promotes the emergence of a distinct ST2/IL33R+ NK cell state poised for robust activation by IL-33. Human ST2 NK cells exhibit a unique transcriptional program, an intermediate differentiation state between CD56bright and CD56dim NK cells, and enhanced polyfunctionality combining proliferation, cytokine production, and cytotoxicity. ST2 NK cells were identified across human and murine tumor datasets. In murine breast cancer models, IL-33 and IL-12 cooperated to elicit potent antitumor responses dependent on IFN-{gamma} and ST2 NK cells. In cancer patients, IL-12 unleashed tumor-infiltrating ST2 NK cells' potential to produce IFN-g in response to IL-33, an IL33hi-NKhi score was associated with prolonged survival, and ST2 NK cells correlated with improved immunotherapy response. Collectively, these findings identify ST2 NK cells as a therapeutically actionable NK cell state promoting antitumor immunity.",
+      "authors": [
+        "Eberhardt, A.",
+        "Blanc, E.",
+        "Picant, V.",
+        "Voissiere, A.",
+        "Revol-Bauz, L.",
+        "Casini, T.",
+        "Alcazer, V.",
+        "Poujol, D.",
+        "Tonon, L.",
+        "Schneider, R.",
+        "Picard, E.",
+        "Rocca, Y.",
+        "Ardin, M.",
+        "Onodi, F.",
+        "Degletagne, C.",
+        "Rodriguez, C.",
+        "Moudombi, L.",
+        "Estavoyer, B.",
+        "Charrier, E.",
+        "Wang, X.",
+        "Stojanovic, A.",
+        "Rau, T.",
+        "Tredan, O.",
+        "Treilleux, I.",
+        "Trinchieri, G.",
+        "Vivier, E.",
+        "Valladeau-Guilemond, J.",
+        "Marcais, A.",
+        "Walzer, T.",
+        "Krebs, P.",
+        "Cerwenka, A.",
+        "Hubert, M.",
+        "Caux, C.",
+        "Michallet, M.-C.",
+        "Bendriss-Vermare, N."
+      ],
+      "primary_category": "cancer biology",
+      "categories": [
+        "cancer biology"
+      ],
+      "published": "2026-08-21T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.1101/2023.02.14.528486v2.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "identifies ST2+ NK cell state that potentiates response to immunotherapy, relevant to mechanisms of immunotherapy resistance/sensitivity in the tumor microenvironment",
+      "llm_evidence_cn": "发现ST2+ NK细胞状态可增强免疫治疗应答，与肿瘤微环境中免疫治疗耐药/敏感机制相关",
+      "llm_evidence": "发现ST2+ NK细胞状态可增强免疫治疗应答，与肿瘤微环境中免疫治疗耐药/敏感机制相关",
+      "canonical_evidence": "发现ST2+ NK细胞状态可增强免疫治疗应答，与肿瘤微环境中免疫治疗耐药/敏感机制相关",
+      "llm_tldr_en": "Identifies a distinct ST2/IL33R+ NK cell state that is highly polyfunctional and cooperates with IL-12/IL-33 to enhance antitumor immunity and immunotherapy response, highlighting a new axis for immunotherapy sensitivity.",
+      "llm_tldr_cn": "尽管人们越来越认识到NK细胞的异质性，但其在肿瘤免疫治疗中的功能状态仍不明确。本文发现IL-12可诱导产生一种独特的ST2/IL33R+ NK细胞状态，这类细胞具有增强的多功能性和中间分化状态。在乳腺癌小鼠模型中，IL-33与IL-12协同激活ST2+ NK细胞，产生依赖IFN-γ的强效抗肿瘤免疫并改善免疫治疗应答。该发现为肿瘤免疫治疗提供了新的潜在靶点和预测生物标志物。",
+      "llm_tldr": "尽管人们越来越认识到NK细胞的异质性，但其在肿瘤免疫治疗中的功能状态仍不明确。本文发现IL-12可诱导产生一种独特的ST2/IL33R+ NK细胞状态，这类细胞具有增强的多功能性和中间分化状态。在乳腺癌小鼠模型中，IL-33与IL-12协同激活ST2+ NK细胞，产生依赖IFN-γ的强效抗肿瘤免疫并改善免疫治疗应答。该发现为肿瘤免疫治疗提供了新的潜在靶点和预测生物标志物。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "resistance to neoadjuvant immunotherapy",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-08-18-745411-v1",
+      "source": "biorxiv",
+      "title": "Systematic Generation of Mutations at Topoisomerase II Cleavage Sites Enables Cancer Adaptation to Doxorubicin Therapy",
+      "abstract": "Acquired resistance to chemotherapy remains a major cause of treatment failure. Here, we investigate the early events underlying the development of resistance to doxorubicin (Dox), one of the most widely used anticancer agents, during repeated drug exposure. Dox intercalates into DNA at sites influenced by chromatin structure and inhibits the DNA religation step of topoisomerase II (Top2), thereby inducing double-strand DNA breaks (DSBs). Here, we show that, in the subpopulation of cancer cells that survive initial Dox treatment, repair of Dox-induced DSBs leads to the accumulation of recurrent mutations at Top2 cleavage sites. These mutations prevent the formation of Dox-induced DSBs at the same loci upon subsequent exposures, effectively protecting the genome from Top2-mediated DNA damage and promoting the development of drug resistance. Importantly, the loss of Top2-dependent DNA cleavage and relaxation caused by these mutations increases the reliance of adapted cells on topoisomerase I (Top1), thereby sensitizing them to Top1 inhibitors. Together, our findings reveal a previously unrecognized mechanism of resistance based on the active generation of highly adaptive mutations, providing new insight into cancer evolution under therapeutic pressure.",
+      "authors": [
+        "Gahramanov, V.",
+        "Edathil Kadangodan, A.",
+        "Barazi, R.",
+        "Hesin, A.",
+        "Yaglom, J.",
+        "Levit, V. E.",
+        "Maman, Y.",
+        "Sherman, M. Y."
+      ],
+      "primary_category": "cancer biology",
+      "categories": [
+        "cancer biology"
+      ],
+      "published": "2026-08-19T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.08.18.745411v1.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Acquired resistance to doxorubicin in cancer cells via mutations at Top2 cleavage sites; mechanistic study of therapy resistance",
+      "llm_evidence_cn": "阿霉素治疗获得性耐药的机制研究",
+      "llm_evidence": "阿霉素治疗获得性耐药的机制研究",
+      "canonical_evidence": "阿霉素治疗获得性耐药的机制研究",
+      "llm_tldr_en": "The paper reveals that acquired doxorubicin resistance arises from recurrent mutations at topoisomerase II cleavage sites that prevent drug-induced DNA breaks, identifying an early adaptive mechanism of cancer therapy resistance.",
+      "llm_tldr_cn": "化疗耐药是治疗失败的重要原因。本研究探讨癌症细胞在重复接触阿霉素后产生耐药的早期事件，发现存活亚群修复药物诱导的DNA双链断裂时，在拓扑异构酶II切割位点积累反复突变。这些突变阻止后续阿霉素在该位点诱导DNA断裂，从而使癌细胞适应治疗。该机制为理解肿瘤获得性化疗耐药的起源提供了新见解。",
+      "llm_tldr": "化疗耐药是治疗失败的重要原因。本研究探讨癌症细胞在重复接触阿霉素后产生耐药的早期事件，发现存活亚群修复药物诱导的DNA双链断裂时，在拓扑异构酶II切割位点积累反复突变。这些突变阻止后续阿霉素在该位点诱导DNA断裂，从而使癌细胞适应治疗。该机制为理解肿瘤获得性化疗耐药的起源提供了新见解。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "mechanisms of resistance to neoadjuvant therapy in tumors",
+      "matched_requirement_id": "req-7",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-08-19-745697-v1",
+      "source": "biorxiv",
+      "title": "A self-supervised DNA foundation model with collapse-resistant multimodal fusion",
+      "abstract": "Genomic foundation models pretrained on DNA sequence have achieved strong performance across a range of tasks, but sequence-only representations cannot fully capture regulatory information reflected by additional DNA-centric modalities. Existing multimodal genomic models are often optimized for specific prediction tasks rather than for learning reusable embeddings shared across downstream analyses. However, directly fusing heterogeneous genomic modalities is challenging because sparse, peak-shaped regulatory signals and dense sequence representations have markedly different statistical structures, making naive multimodal alignment prone to degenerate near-zero solutions. We present a self-supervised DNA-centric multimodal foundation model that addresses this gap, integrating DNA sequence embeddings with local and global chromatin accessibility in a shared multimodal encoder to produce reusable window-level embeddings that support both masked reconstruction during pre-training and downstream prediction tasks. We diagnose this heterogeneous-modality alignment failure and show that global normalization substantially alleviates collapse, enabling effective joint learning across modalities. The resulting embeddings improve multiple downstream evaluations of regulatory function, including regulatory activity prediction, regulatory signal ranking and chromatin accessibility peak detection, achieving a 4.6-fold AUPRC improvement over the DNA-only baseline in peak detection, and further improving external validation on ClinVar, GTEx eQTL and PBMC caQTL datasets. The framework is extensible to additional regulatory modalities, providing a methodological basis for multimodal DNA foundation models.",
+      "authors": [
+        "Chen, Y."
+      ],
+      "primary_category": "bioinformatics",
+      "categories": [
+        "bioinformatics"
+      ],
+      "published": "2026-08-20T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.08.19.745697v1.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Generalizable DNA foundation model with multimodal fusion applicable to multi-omics resistance studies",
+      "llm_evidence_cn": "结合多模态融合的DNA基础模型，适用于多组学耐药研究",
+      "llm_evidence": "结合多模态融合的DNA基础模型，适用于多组学耐药研究",
+      "canonical_evidence": "结合多模态融合的DNA基础模型，适用于多组学耐药研究",
+      "llm_tldr_en": "Presents a self-supervised DNA-centric foundation model that fuses dense sequence embeddings with sparse regulatory signals using a collapse-resistant multimodal alignment, providing reusable representations for downstream genomic and multi-omics analyses.",
+      "llm_tldr_cn": "本文针对基因序列表示难以充分捕获调控信息以及多模态融合易退化的挑战，提出一种自监督的DNA基础模型，采用防坍缩策略融合稀疏的峰状调控信号与密集的序列嵌入。该模型学习可复用的跨模态表示，适用于多种下游基因组学分析，也可用于肿瘤耐药相关的多组学特征整合和预测。",
+      "llm_tldr": "本文针对基因序列表示难以充分捕获调控信息以及多模态融合易退化的挑战，提出一种自监督的DNA基础模型，采用防坍缩策略融合稀疏的峰状调控信号与密集的序列嵌入。该模型学习可复用的跨模态表示，适用于多种下游基因组学分析，也可用于肿瘤耐药相关的多组学特征整合和预测。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "multi omics characterization of tumor resistance",
+      "matched_requirement_id": "req-10",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}
