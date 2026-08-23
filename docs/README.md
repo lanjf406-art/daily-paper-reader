@@ -6,37 +6,35 @@
 </div>
 
 ## 每次日报
-- 最新运行日期：2026-08-22
-- 运行时间：2026-08-22 19:26:48 UTC
+- 最新运行日期：2026-08-23
+- 运行时间：2026-08-23 19:38:21 UTC
 - 运行状态：成功
 - 本次总论文数：4
 - 精读区：0
 - 速读区：4
 
 ### 今日简报（AI）
-今日速读4篇论文，无精读，重点关注统计遗传学与癌症治疗耐药机制。
-
-最值得看两篇：一篇提出基因关联下改进的族系错误率控制方法，另一篇揭示拓扑异构酶II切割位点突变助力癌细胞适应多柔比星治疗。
-
-建议优先精读这两篇7分文章，前者适合关注统计方法，后者对理解化疗耐药有直接启发。
-- 详情：[/202608/22/README](/202608/22/README)
+今日速读4篇，重点聚焦扰动签名与生物语境映射、以及局部照射下的远隔肿瘤与肠道微生物调控。  
+最值得关注两篇7分工作：跨生物语境的扰动签名重映射，及焦性没食子酸调控EAC模型放疗远隔效应与肠道菌群。  
+下一步可优先精读“计算方法决定扰动结果”的系统评估，以判断工具选择对结论的潜在影响。
+- 详情：[/202608/23/README](/202608/23/README)
 
 ### 精读区论文标签
 - 本次无精读推荐。
 
 ### 速读区论文标签
-1. [A permutation-free family-wise error rate for the moderated top-gene scan under gene correlation](/202608/22/biorxiv-10-64898-2026-08-17-745282-v1-a-permutation-free-family-wise-error-rate-for-the-moderated-top-gene-scan-under-gene-correlation)  
+1. [Signature Recontextualization: Mapping perturbational signatures across biological contexts](/202608/23/biorxiv-10-64898-2026-08-14-744937-v1-signature-recontextualization-mapping-perturbational-signatures-across-biological-contexts)  
    标签：评分：7.0/10、query:neo-resist
-   evidence：免置换的差异表达全基因组家族错误率控制方法，可用于药物耐药转录组分析
-2. [Systematic Generation of Mutations at Topoisomerase II Cleavage Sites Enables Cancer Adaptation to Doxorubicin Therapy](/202608/22/biorxiv-10-64898-2026-08-18-745411-v1-systematic-generation-of-mutations-at-topoisomerase-ii-cleavage-sites-enables-cancer-adaptation-to-doxorubicin-therapy)  
+   evidence：跨情境扰动特征预测，可迁移至药物应答与耐药建模
+2. [Pyrogallol Modulates Abscopal Tumour and Gut Microbial Responses to Localized Irradiation in an Ehrlich Ascites Carcinoma Model](/202608/23/biorxiv-10-64898-2026-08-16-745132-v1-pyrogallol-modulates-abscopal-tumour-and-gut-microbial-responses-to-localized-irradiation-in-an-ehrlich-ascites-carcinoma-model)  
    标签：评分：7.0/10、query:neo-resist
-   evidence：阿霉素治疗获得性耐药的机制研究
-3. [A Unique Polyfunctional IL-33-responsive ST2⁺ NK cell State Potentiates Antitumor Immunity and Response to Immunotherapy](/202608/22/biorxiv-10-1101-2023-02-14-528486-v2-a-unique-polyfunctional-il-33-responsive-st2-nk-cell-state-potentiates-antitumor-immunity-and-response-to-immunotherapy)  
+   evidence：利用转录组测序研究肿瘤放疗反应；涉及放疗抵抗机制
+3. [Method Choice, Not Biology, Determines In Silico Perturbation Results: A Systematic Evaluation of Eight Methods Across Four Datasets](/202608/23/biorxiv-10-64898-2026-08-11-744106-v1-method-choice-not-biology-determines-in-silico-perturbation-results-a-systematic-evaluation-of-eight-methods-across-four-datasets)  
    标签：评分：6.0/10、query:neo-resist
-   evidence：发现ST2+ NK细胞状态可增强免疫治疗应答，与肿瘤微环境中免疫治疗耐药/敏感机制相关
-4. [A self-supervised DNA foundation model with collapse-resistant multimodal fusion](/202608/22/biorxiv-10-64898-2026-08-19-745697-v1-a-self-supervised-dna-foundation-model-with-collapse-resistant-multimodal-fusion)  
+   evidence：系统评估八种单细胞转录组扰动预测方法，与机器学习药物耐药预测直接相关。
+4. [Pheno-MYCN maps the morphological footprint of MYCN amplification in paediatric neuroblastoma](/202608/23/biorxiv-10-64898-2026-08-20-745848-v1-pheno-mycn-maps-the-morphological-footprint-of-mycn-amplification-in-paediatric-neuroblastoma)  
    标签：评分：6.0/10、query:neo-resist
-   evidence：结合多模态融合的DNA基础模型，适用于多组学耐药研究
+   evidence：弱监督机器学习框架将切片水平的分子预测与可解释形态表型关联，可迁移至耐药预测
 
 
 <div class="dpr-home-promo-card">
