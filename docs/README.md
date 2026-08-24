@@ -6,35 +6,28 @@
 </div>
 
 ## 每次日报
-- 最新运行日期：2026-08-23
-- 运行时间：2026-08-23 19:38:21 UTC
+- 最新运行日期：2026-08-24
+- 运行时间：2026-08-24 19:55:44 UTC
 - 运行状态：成功
-- 本次总论文数：4
+- 本次总论文数：1
 - 精读区：0
-- 速读区：4
+- 速读区：1
 
 ### 今日简报（AI）
-今日速读4篇，重点聚焦扰动签名与生物语境映射、以及局部照射下的远隔肿瘤与肠道微生物调控。  
-最值得关注两篇7分工作：跨生物语境的扰动签名重映射，及焦性没食子酸调控EAC模型放疗远隔效应与肠道菌群。  
-下一步可优先精读“计算方法决定扰动结果”的系统评估，以判断工具选择对结论的潜在影响。
-- 详情：[/202608/23/README](/202608/23/README)
+今日精读0篇、速读1篇，共筛选1篇胃癌免疫相关论文。
+
+最值得关注：ARID1A对胃癌免疫的影响由肿瘤背景决定，提示不同亚型需区别对待。
+
+建议普通读者留意该研究对精准免疫治疗分层的潜在意义，后续可补充精读验证细节。
+- 详情：[/202608/24/README](/202608/24/README)
 
 ### 精读区论文标签
 - 本次无精读推荐。
 
 ### 速读区论文标签
-1. [Signature Recontextualization: Mapping perturbational signatures across biological contexts](/202608/23/biorxiv-10-64898-2026-08-14-744937-v1-signature-recontextualization-mapping-perturbational-signatures-across-biological-contexts)  
+1. [Tumor context determines ARID1A effects on gastric cancer immunity](/202608/24/biorxiv-10-64898-2026-08-18-745460-v1-tumor-context-determines-arid1a-effects-on-gastric-cancer-immunity)  
    标签：评分：7.0/10、query:neo-resist
-   evidence：跨情境扰动特征预测，可迁移至药物应答与耐药建模
-2. [Pyrogallol Modulates Abscopal Tumour and Gut Microbial Responses to Localized Irradiation in an Ehrlich Ascites Carcinoma Model](/202608/23/biorxiv-10-64898-2026-08-16-745132-v1-pyrogallol-modulates-abscopal-tumour-and-gut-microbial-responses-to-localized-irradiation-in-an-ehrlich-ascites-carcinoma-model)  
-   标签：评分：7.0/10、query:neo-resist
-   evidence：利用转录组测序研究肿瘤放疗反应；涉及放疗抵抗机制
-3. [Method Choice, Not Biology, Determines In Silico Perturbation Results: A Systematic Evaluation of Eight Methods Across Four Datasets](/202608/23/biorxiv-10-64898-2026-08-11-744106-v1-method-choice-not-biology-determines-in-silico-perturbation-results-a-systematic-evaluation-of-eight-methods-across-four-datasets)  
-   标签：评分：6.0/10、query:neo-resist
-   evidence：系统评估八种单细胞转录组扰动预测方法，与机器学习药物耐药预测直接相关。
-4. [Pheno-MYCN maps the morphological footprint of MYCN amplification in paediatric neuroblastoma](/202608/23/biorxiv-10-64898-2026-08-20-745848-v1-pheno-mycn-maps-the-morphological-footprint-of-mycn-amplification-in-paediatric-neuroblastoma)  
-   标签：评分：6.0/10、query:neo-resist
-   evidence：弱监督机器学习框架将切片水平的分子预测与可解释形态表型关联，可迁移至耐药预测
+   evidence：揭示ARID1A缺失重塑肿瘤微环境为免疫荒漠，直接涉及微环境在免疫逃逸/耐药中的作用
 
 
 <div class="dpr-home-promo-card">

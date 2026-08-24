@@ -1,6 +1,9 @@
 * <a class="dpr-sidebar-root-link" href="#/">首页</a>
 * <a class="dpr-sidebar-root-link dpr-sidebar-noactive-link" href="javascript:void(0)" data-dpr-hash="#/tutorial/README">使用教程</a>
 * Daily Papers
+  * 2026-08-24 <!--dpr-date:20260824-->
+    * 速读区
+      * <a class="dpr-sidebar-item-link dpr-sidebar-item-structured" href="#/202608/24/biorxiv-10-64898-2026-08-18-745460-v1-tumor-context-determines-arid1a-effects-on-gastric-cancer-immunity" data-sidebar-item="{&quot;title&quot;: &quot;Tumor context determines ARID1A effects on gastric cancer immunity&quot;, &quot;link&quot;: &quot;https://arxiv.org/abs/biorxiv-10-64898-2026-08-18-745460-v1-tumor-context-determines-arid1a-effects-on-gastric-cancer-immunity&quot;, &quot;score&quot;: &quot;7.0&quot;, &quot;tags&quot;: [{&quot;kind&quot;: &quot;query&quot;, &quot;label&quot;: &quot;neo-resist&quot;}], &quot;evidence&quot;: &quot;揭示ARID1A缺失重塑肿瘤微环境为免疫荒漠，直接涉及微环境在免疫逃逸/耐药中的作用&quot;}">Tumor context determines ARID1A effects on gastric cancer immunity</a>
   * 2026-08-23 <!--dpr-date:20260823-->
     * 速读区
       * <a class="dpr-sidebar-item-link dpr-sidebar-item-structured" href="#/202608/23/biorxiv-10-64898-2026-08-14-744937-v1-signature-recontextualization-mapping-perturbational-signatures-across-biological-contexts" data-sidebar-item="{&quot;title&quot;: &quot;Signature Recontextualization: Mapping perturbational signatures across biological contexts&quot;, &quot;link&quot;: &quot;https://arxiv.org/abs/biorxiv-10-64898-2026-08-14-744937-v1-signature-recontextualization-mapping-perturbational-signatures-across-biological-contexts&quot;, &quot;score&quot;: &quot;7.0&quot;, &quot;tags&quot;: [{&quot;kind&quot;: &quot;query&quot;, &quot;label&quot;: &quot;neo-resist&quot;}], &quot;evidence&quot;: &quot;跨情境扰动特征预测，可迁移至药物应答与耐药建模&quot;}">Signature Recontextualization: Mapping perturbational signatures across biological contexts</a>
