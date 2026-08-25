@@ -1,6 +1,9 @@
 * <a class="dpr-sidebar-root-link" href="#/">首页</a>
 * <a class="dpr-sidebar-root-link dpr-sidebar-noactive-link" href="javascript:void(0)" data-dpr-hash="#/tutorial/README">使用教程</a>
 * Daily Papers
+  * 2026-08-25 <!--dpr-date:20260825-->
+    * 速读区
+      * <a class="dpr-sidebar-item-link dpr-sidebar-item-structured" href="#/202608/25/biorxiv-10-64898-2026-08-21-746174-v1-decoding-tumour-specific-rewiring-and-synthetic-lethality-through-genome-scale-metabolic-models" data-sidebar-item="{&quot;title&quot;: &quot;Decoding Tumour-Specific Rewiring and Synthetic Lethality Through Genome-Scale Metabolic Models&quot;, &quot;link&quot;: &quot;https://arxiv.org/abs/biorxiv-10-64898-2026-08-21-746174-v1-decoding-tumour-specific-rewiring-and-synthetic-lethality-through-genome-scale-metabolic-models&quot;, &quot;score&quot;: &quot;6.0&quot;, &quot;tags&quot;: [{&quot;kind&quot;: &quot;query&quot;, &quot;label&quot;: &quot;neo-resist&quot;}], &quot;evidence&quot;: &quot;肿瘤转录组分析代谢重编程与合成致死&quot;}">Decoding Tumour-Specific Rewiring and Synthetic Lethality Through Genome-Scale Metabolic Models</a>
   * 2026-08-24 <!--dpr-date:20260824-->
     * 速读区
       * <a class="dpr-sidebar-item-link dpr-sidebar-item-structured" href="#/202608/24/biorxiv-10-64898-2026-08-18-745460-v1-tumor-context-determines-arid1a-effects-on-gastric-cancer-immunity" data-sidebar-item="{&quot;title&quot;: &quot;Tumor context determines ARID1A effects on gastric cancer immunity&quot;, &quot;link&quot;: &quot;https://arxiv.org/abs/biorxiv-10-64898-2026-08-18-745460-v1-tumor-context-determines-arid1a-effects-on-gastric-cancer-immunity&quot;, &quot;score&quot;: &quot;7.0&quot;, &quot;tags&quot;: [{&quot;kind&quot;: &quot;query&quot;, &quot;label&quot;: &quot;neo-resist&quot;}], &quot;evidence&quot;: &quot;揭示ARID1A缺失重塑肿瘤微环境为免疫荒漠，直接涉及微环境在免疫逃逸/耐药中的作用&quot;}">Tumor context determines ARID1A effects on gastric cancer immunity</a>

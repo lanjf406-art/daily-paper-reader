@@ -6,28 +6,24 @@
 </div>
 
 ## 每次日报
-- 最新运行日期：2026-08-24
-- 运行时间：2026-08-24 19:55:44 UTC
+- 最新运行日期：2026-08-25
+- 运行时间：2026-08-25 20:28:39 UTC
 - 运行状态：成功
 - 本次总论文数：1
 - 精读区：0
 - 速读区：1
 
 ### 今日简报（AI）
-今日精读0篇、速读1篇，共筛选1篇胃癌免疫相关论文。
-
-最值得关注：ARID1A对胃癌免疫的影响由肿瘤背景决定，提示不同亚型需区别对待。
-
-建议普通读者留意该研究对精准免疫治疗分层的潜在意义，后续可补充精读验证细节。
-- 详情：[/202608/24/README](/202608/24/README)
+今日速读聚焦肿瘤代谢重编程，一篇论文解析基因组尺度代谢模型下的合成致死策略；值得关注的方向是肿瘤特异性代谢弱点与潜在治疗靶点；可进一步了解代谢模型如何辅助筛选个体化联合用药。
+- 详情：[/202608/25/README](/202608/25/README)
 
 ### 精读区论文标签
 - 本次无精读推荐。
 
 ### 速读区论文标签
-1. [Tumor context determines ARID1A effects on gastric cancer immunity](/202608/24/biorxiv-10-64898-2026-08-18-745460-v1-tumor-context-determines-arid1a-effects-on-gastric-cancer-immunity)  
-   标签：评分：7.0/10、query:neo-resist
-   evidence：揭示ARID1A缺失重塑肿瘤微环境为免疫荒漠，直接涉及微环境在免疫逃逸/耐药中的作用
+1. [Decoding Tumour-Specific Rewiring and Synthetic Lethality Through Genome-Scale Metabolic Models](/202608/25/biorxiv-10-64898-2026-08-21-746174-v1-decoding-tumour-specific-rewiring-and-synthetic-lethality-through-genome-scale-metabolic-models)  
+   标签：评分：6.0/10、query:neo-resist
+   evidence：肿瘤转录组分析代谢重编程与合成致死
 
 
 <div class="dpr-home-promo-card">
