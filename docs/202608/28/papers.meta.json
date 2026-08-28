@@ -1,0 +1,39 @@
+{
+  "label": "2026-08-28",
+  "date": "2026-08-28",
+  "generated_at": "2026-08-28T03:26:23",
+  "count": 2,
+  "papers": [
+    {
+      "paper_id": "202608/28/biorxiv-10-64898-2026-08-16-745065-v1-pastri-resolving-stage-specific-cell-state-dynamics-from-annotated-cell-lineage-trees",
+      "section": "quick",
+      "title_en": "PASTRI: Resolving Stage-Specific Cell-State Dynamics from Annotated Cell Lineage Trees",
+      "authors": "Yang, W., Li, Z., Yu, X., Wu, P., Zhang, X., Ren, C., Liu, K., Chen, J., Chen, F., He, X., Zhang, J., Chen, X., Yang, J.",
+      "date": "2026-08-20",
+      "pdf": "https://www.biorxiv.org/content/10.64898/2026.08.16.745065v1.full.pdf",
+      "score": "7.0",
+      "evidence": "从单细胞谱系推断细胞状态转变的计算框架",
+      "tldr": "细胞在表型状态间的转换是发育和疾病的基础，但定量解析其动态过程颇具挑战。现有方法难以同时刻画阶段特异性的转变速率。本文提出PASTRI框架，基于带有末端状态注释的细胞谱系树，利用不同系统发育距离的细胞对推断状态转变速率，并避免发育过程中动态变化的影响。通过模拟数据和线虫胚胎谱系验证，并应用于三种谱系追踪数据集，揭示了肝星状细胞激活和肺祖细胞分化的限速步骤以及支持癌细胞增殖的吸引子状态，为解析细胞状态转变动态提供了新途径。",
+      "tags": "query:neo-resist",
+      "abstract_en": "Cellular transitions between phenotypic states are fundamental to development and disease, yet quantitative analysis of their dynamics remains challenging. Here we present PASTRI (Phylogenetic Adjacency-based State Transition Rate Inference), a computational framework that infers transition rates from cell lineages/phylogenies annotated with terminal phenotypic states, such as single-cell transcriptomes. We validate PASTRI using simulated lineages and the Caenorhabditis elegans embryonic lineage. Importantly, by leveraging cell pairs at varying phylogenetic distances, PASTRI accurately resolves stage-specific transition rates, circumventing the issue of developmental changes in dynamics. Applied to three cell phylogeny datasets from our lineage-tracing experiments spanning diverse developmental/disease models and tracing systems, PASTRI uncovers rate-limiting steps in the activation of hepatic stellate cells and the differentiation of primordial lung progenitors, as well as attractor states that support cancer cell proliferation. PASTRI thus opens up a venue for dissecting cell state transition dynamics from annotated cell lineage/phylogeny.",
+      "source": "biorxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202608/28/biorxiv-10-64898-2026-08-16-745093-v1-a-semantic--neuronal-approach-to-predict-pathogenic-variants-in-dna-sequences",
+      "section": "quick",
+      "title_en": "A Semantic + Neuronal Approach to Predict Pathogenic Variants in DNA Sequences",
+      "authors": "Motta, J. A., Motta, M. d. M., Fernandez, C.",
+      "date": "2026-08-20",
+      "pdf": "https://www.biorxiv.org/content/10.64898/2026.08.16.745093v1.full.pdf",
+      "score": "6.0",
+      "evidence": "用CRF和BiLSTM预测致病性变异，方法可迁移至耐药突变预测",
+      "tldr": "致病性基因变异预测是精准医学的重要任务，但现有方法依赖传统特征，性能有限。本文提出一种结合语义模型与深度学习的混合方法：从ClinVar数据库提取正常与致病序列，将DNA转换为符合语法的肽序列并应用词性标注，然后利用条件随机场与双向长短期记忆网络进行序列建模。在105个基因约27000个致病变异上的实验表明，该方法在精度、PR、ROC和AUC等指标上显著优于五种已有方法，达到当前最佳水平，为致病性变异预测提供了新途径。",
+      "tags": "query:neo-resist",
+      "abstract_en": "In this work, we present a machine learning model for identifying pathogenic DNA variants. The model was learned from the analysis of normal and pathogenic sequences extracted from the ClinVar database (supported by NCBI). This analysis was based on a conceptual semantic model of DNA sequences converted to peptide sequences (amino acid sequences) governed by a well-defined grammar, which allowed us to apply NLP techniques, specifically Part of Speech tagging (POS tagging). Our predictive model was built by combining two techniques: CRF (from the Markov model family), which performs the sequencing, and BiLSTM (a deep learning model) which captures the past and future content of the sequences. The training space was created with the sequences of 105 genes associated with approximately 27,000 pathogenic variants. The model was evaluated using the metrics precision, P-R and ROC curves, AUC, and confusion matrices. Its performance was also compared against five known methods for predicting pathogenic variants. The results show exceptional performance that exceeds expectations and places this new method at the state of the art for predicting pathogenic DNA sequences.",
+      "source": "biorxiv",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "errors": []
+}

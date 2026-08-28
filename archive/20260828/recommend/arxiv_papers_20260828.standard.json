@@ -1,0 +1,101 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-08-28T03:25:50.782769+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 0,
+    "deep_cap": 6,
+    "deep_selected": 0,
+    "quick_candidates": 2,
+    "quick_skim_target": 11,
+    "quick_selected": 2
+  },
+  "deep_dive": [],
+  "quick_skim": [
+    {
+      "id": "biorxiv-10-64898-2026-08-16-745065-v1",
+      "source": "biorxiv",
+      "title": "PASTRI: Resolving Stage-Specific Cell-State Dynamics from Annotated Cell Lineage Trees",
+      "abstract": "Cellular transitions between phenotypic states are fundamental to development and disease, yet quantitative analysis of their dynamics remains challenging. Here we present PASTRI (Phylogenetic Adjacency-based State Transition Rate Inference), a computational framework that infers transition rates from cell lineages/phylogenies annotated with terminal phenotypic states, such as single-cell transcriptomes. We validate PASTRI using simulated lineages and the Caenorhabditis elegans embryonic lineage. Importantly, by leveraging cell pairs at varying phylogenetic distances, PASTRI accurately resolves stage-specific transition rates, circumventing the issue of developmental changes in dynamics. Applied to three cell phylogeny datasets from our lineage-tracing experiments spanning diverse developmental/disease models and tracing systems, PASTRI uncovers rate-limiting steps in the activation of hepatic stellate cells and the differentiation of primordial lung progenitors, as well as attractor states that support cancer cell proliferation. PASTRI thus opens up a venue for dissecting cell state transition dynamics from annotated cell lineage/phylogeny.",
+      "authors": [
+        "Yang, W.",
+        "Li, Z.",
+        "Yu, X.",
+        "Wu, P.",
+        "Zhang, X.",
+        "Ren, C.",
+        "Liu, K.",
+        "Chen, J.",
+        "Chen, F.",
+        "He, X.",
+        "Zhang, J.",
+        "Chen, X.",
+        "Yang, J."
+      ],
+      "primary_category": "bioinformatics",
+      "categories": [
+        "bioinformatics"
+      ],
+      "published": "2026-08-20T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.08.16.745065v1.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "computational framework for cell-state transitions from single-cell lineages",
+      "llm_evidence_cn": "从单细胞谱系推断细胞状态转变的计算框架",
+      "llm_evidence": "从单细胞谱系推断细胞状态转变的计算框架",
+      "canonical_evidence": "从单细胞谱系推断细胞状态转变的计算框架",
+      "llm_tldr_en": "Cell state transitions drive development and disease, but quantifying stage-specific dynamics is challenging. PASTRI infers transition rates from annotated lineage trees and single-cell transcriptomes, validated on simulations and C. elegans lineage, enabling temporal resolution of cell-state reprogramming.",
+      "llm_tldr_cn": "细胞表型状态间的转变是发育与疾病的核心过程，现有方法难以解析不同阶段的转变动态。本文提出PASTRI框架，利用带终端表型注释的细胞谱系树推断状态转变速率，并在模拟数据及线虫胚胎谱系中验证其准确性。该方法可应用于单细胞转录组数据，揭示细胞状态重编程的时序特征，为肿瘤耐药等疾病机制研究提供新的分析工具。",
+      "llm_tldr": "细胞表型状态间的转变是发育与疾病的核心过程，现有方法难以解析不同阶段的转变动态。本文提出PASTRI框架，利用带终端表型注释的细胞谱系树推断状态转变速率，并在模拟数据及线虫胚胎谱系中验证其准确性。该方法可应用于单细胞转录组数据，揭示细胞状态重编程的时序特征，为肿瘤耐药等疾病机制研究提供新的分析工具。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "single cell sequencing resistance mechanism",
+      "matched_requirement_id": "req-6",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "biorxiv-10-64898-2026-08-16-745093-v1",
+      "source": "biorxiv",
+      "title": "A Semantic + Neuronal Approach to Predict Pathogenic Variants in DNA Sequences",
+      "abstract": "In this work, we present a machine learning model for identifying pathogenic DNA variants. The model was learned from the analysis of normal and pathogenic sequences extracted from the ClinVar database (supported by NCBI). This analysis was based on a conceptual semantic model of DNA sequences converted to peptide sequences (amino acid sequences) governed by a well-defined grammar, which allowed us to apply NLP techniques, specifically Part of Speech tagging (POS tagging). Our predictive model was built by combining two techniques: CRF (from the Markov model family), which performs the sequencing, and BiLSTM (a deep learning model) which captures the past and future content of the sequences. The training space was created with the sequences of 105 genes associated with approximately 27,000 pathogenic variants. The model was evaluated using the metrics precision, P-R and ROC curves, AUC, and confusion matrices. Its performance was also compared against five known methods for predicting pathogenic variants. The results show exceptional performance that exceeds expectations and places this new method at the state of the art for predicting pathogenic DNA sequences.",
+      "authors": [
+        "Motta, J. A.",
+        "Motta, M. d. M.",
+        "Fernandez, C."
+      ],
+      "primary_category": "bioinformatics",
+      "categories": [
+        "bioinformatics"
+      ],
+      "published": "2026-08-20T00:00:00+00:00",
+      "link": "https://www.biorxiv.org/content/10.64898/2026.08.16.745093v1.full.pdf",
+      "tags": [
+        "keyword:neo-resist",
+        "query:neo-resist"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Machine learning model (CRF+BiLSTM) for predicting pathogenic variants; transferable to drug resistance mutation prediction",
+      "llm_evidence_cn": "用CRF和BiLSTM预测致病性变异，方法可迁移至耐药突变预测",
+      "llm_evidence": "用CRF和BiLSTM预测致病性变异，方法可迁移至耐药突变预测",
+      "canonical_evidence": "用CRF和BiLSTM预测致病性变异，方法可迁移至耐药突变预测",
+      "llm_tldr_en": "The paper presents an ML approach to predict pathogenic DNA variants by combining CRF and BiLSTM on ClinVar sequences. It demonstrates that semantic modeling of amino acid sequences improves variant pathogenicity prediction, a method adaptable to predicting drug-resistance mutations.",
+      "llm_tldr_cn": "该研究提出结合条件随机场与双向长短期记忆网络的方法，基于ClinVar数据库的DNA序列预测致病性变异，利用序列语义模型和词性标注思想提升预测性能。其技术流程可推广至肿瘤耐药突变的预测，为机器学习预测药物耐药提供可迁移的方法学借鉴。",
+      "llm_tldr": "该研究提出结合条件随机场与双向长短期记忆网络的方法，基于ClinVar数据库的DNA序列预测致病性变异，利用序列语义模型和词性标注思想提升预测性能。其技术流程可推广至肿瘤耐药突变的预测，为机器学习预测药物耐药提供可迁移的方法学借鉴。",
+      "llm_tags": [
+        "query:neo-resist"
+      ],
+      "matched_query_tag": "query:neo-resist",
+      "matched_query_text": "machine learning drug resistance prediction",
+      "matched_requirement_id": "req-4",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}
