@@ -1,0 +1,24 @@
+{
+  "label": "2026-08-29",
+  "date": "2026-08-29",
+  "generated_at": "2026-08-29T03:07:39",
+  "count": 1,
+  "papers": [
+    {
+      "paper_id": "202608/29/biorxiv-10-64898-2026-08-17-744735-v1-the-everything-bagel-feature-finder-ultra-fast-automated-feature-finding-for-untargeted-metabolomics",
+      "section": "quick",
+      "title_en": "The Everything Bagel Feature Finder: Ultra-fast automated feature finding for untargeted metabolomics",
+      "authors": "Shin, Y., El Abiead, Y., Jarmusch, A. K., Strobel, M., Abraham, P. E., Thurmon, S., Acharya, D. D., Aron, A., Bilbao, A., Bowen, B. P., Broeckling, C. D., Brown, C. J., Charron-Lamoureux, V., Chen, X., Damiani, T., Doty, A., Du, X., Garg, N., Papadopoulos Lambidis, S., McCall, L.-I., Kirkwood-Donelson, K. I., Northen, T., Prenni, J., Rennie, E. E., Vining, O. B., Wang, C. X., Xiong, Q., Zhao, H. N., Dorrestein, P. C., Petras, D., Phelan, V. V., Wang, M.",
+      "date": "2026-08-21",
+      "pdf": "https://www.biorxiv.org/content/10.64898/2026.08.17.744735v1.full.pdf",
+      "score": "6.0",
+      "evidence": "超快速非靶向代谢组学自动特征发现工具",
+      "tldr": "代谢组学数据规模激增，现有特征查找工具计算开销大且需手动调参。本文提出Everything Bagel特征查找器，集成特征检测、保留时间对齐与补缺，在八个基准数据集上对比两种自动化方法，性能相当或更优，同时CPU时间最高降低150倍，墙钟时间最高降低113倍。重分析已发表生物标志物数据验证了其生物学有效性，有望支撑数千至数万样本的自动分析。",
+      "tags": "query:neo-resist",
+      "abstract_en": "Metabolomics studies are increasingly being applied with hundreds to thousands, even tens of thousands of samples that demand rapid, automated data processing while maintaining analytical sensitivity or quantitative accuracy. A major computational bottleneck is feature finding, which is the transformation of LC-MS and LC-MS/MS data into a set of analyte signals aligned and quantified across samples. Feature finding can be computationally intensive and often requires manual iterative parameter optimization. To accelerate this process, we present the Everything Bagel (EB) feature finder, an ultra-fast automated feature finding tool that integrates feature detection, retention-time alignment, and gap filling designed for run-time and memory efficiency. We benchmarked EB against two automated feature finding methods on eight benchmarking datasets. Specifically, we evaluated these three feature finding methods by measuring spike-in standard detection coverage, dilution series quantification accuracy, and yeast 12C/13C credentialed features. In this evaluation, the EB feature finder achieved performance comparable to, and often exceeding, existing methods while requiring up to 150-fold lower CPU hours and up to 113-fold lower wall time. We further demonstrated the bioanalytical validity of EB by reanalyzing published datasets used for biomarker discovery and reproduced biologically significant features that matched the published findings using manually tuned feature finding settings. Taken along with the speed improvements, we anticipate EB will enhance the ability to automatically analyze datasets with thousands to tens of thousands of samples for the community.",
+      "source": "biorxiv",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "errors": []
+}
